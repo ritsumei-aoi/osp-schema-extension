@@ -10,6 +10,18 @@
 ## Current State
 
 Issue **I01-1** (C(n+1) basis and root system design) is **closed**.
+Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
+
+### Completed Deliverables
+- **Phase 1**: Basis, PBW ordering, and notation finalized
+- **Phase 2 prep**: Schema 1 v5.0 specification created at `docs/json_schema_specification.md`
+  - `algebra` section with family="C", m=1, formula osp(2m|2n)
+  - `oscillator_generators` with standard fermionic pair (no supplementary fermion)
+  - `oscillator_relations` with CAR for a_1_p, a_1_m
+  - `central_elements` as new top-level key (κ, K)
+  - File naming: `C_n_structure.json` for n=1,2,3
+  - Backward compatibility with B(m,n) documented
+- **Signature conventions**: B1 (standard Frappat basis), Option A (conservative PBW)
 
 ### Completed Deliverables
 - **Even basis**: Standard Frappat convention (B1). Even roots are sp(2n)-only:
@@ -28,7 +40,7 @@ Issue **I01-1** (C(n+1) basis and root system design) is **closed**.
 | Phase | Description | Status |
 |---|---|---|
 | Phase 1 | Schema design for C(n+1): basis, parity, root system | **Complete** |
-| Phase 2 | Structure constant generator implementation | Not started |
+| Phase 2 | Structure constant generator implementation | **Ready to start** |
 | Phase 3 | Verification (Super Jacobi identity) | Not started |
 | Phase 4 | Schema 2–4 extension (gamma, evaluated, coboundary) | Not started |
 | Phase 5 | Library comparison (T2) | Not started |
@@ -43,6 +55,6 @@ Issue **I01-1** (C(n+1) basis and root system design) is **closed**.
 
 ## Next Session Goals
 
-1. Begin Phase 2: Implement the C(n+1) basis generator (C_generators.py)
-2. Create Issue I02-1 for structure constant generator implementation
+1. Implement the C(n+1) basis generator (C_generators.py) — Phase 2
+2. Create Issue I03-1 for structure constant generator implementation
 3. Write tests for the new generator

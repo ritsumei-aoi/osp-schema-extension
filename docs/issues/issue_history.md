@@ -20,9 +20,27 @@ A complete history of issue responses. Each issue's items and results are summar
 
 ---
 
+## I02-1: Schema 1 v5.0 extension for C(n+1)
+
+- **Date**: 2026-05-15
+- **Category**: proposal
+- **Branch**: `ai/t1-schema-extension`
+- **Archive**: `docs/issues/done/issue_260515_02.md`
+
+### Items Addressed
+- ✅ `algebra` field designed for C(n+1) family (family="C", m=1, formula osp(2m|2n))
+- ✅ `oscillator_generators` designed without supplementary fermion
+- ✅ `oscillator_relations` designed for standard fermionic pair (CAR)
+- ✅ `central_elements` added as new top-level key (κ and K)
+- ✅ File naming convention confirmed (`C_n_structure.json`)
+- ✅ Schema specification created at `docs/json_schema_specification.md`
+- ✅ Backward compatibility with B(m,n) v5.0 documented
+
+---
+
 ## Statistics
 
 | Category | File Count | Total Items | Resolved | In Progress |
 |----------|-----------|------------|----------|-------------|
-| proposal | 1 | 3 | 3 | 0 |
-| **Total** | **1** | **3** | **3** | **0** |
+| proposal | 2 | 10 | 10 | 0 |
+| **Total** | **2** | **10** | **10** | **0** |
