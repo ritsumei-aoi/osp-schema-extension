@@ -27,10 +27,13 @@ C(n+1) has roots involving both ε (fermionic) and δ (bosonic) indices:
 
 ### Even Roots
 
+The even subalgebra of C(n+1) = osp(2|2n) is **so(2) × sp(2n)** with dimension
+2n² + n + 1. The even root system consists of sp(2n) roots only — ε₁ roots
+appear only in combination with δ_k in the odd sector (standard Frappat
+convention). Generators a_1_p² and a_1_m² are not independent even root vectors.
+
 | Root | Generator | Oscillator Realization |
 |---|---|---|
-| ε_1 | E_eps1_p | a_1_p² (or a_0 a_1_p depending on convention) |
-| -ε_1 | E_eps1_m | a_1_m² |
 | 2δ_k | E_2del{k}_p | (b_k_p)² |
 | -2δ_k | E_2del{k}_m | (b_k_m)² |
 | δ_i + δ_j (i<j) | E_del{i}_del{j}_pp | b_i_p b_j_p |
@@ -61,21 +64,52 @@ C(n+1) has roots involving both ε (fermionic) and δ (bosonic) indices:
 |---|---|---|
 | `\Edp{k}` | E_{δ_k} | B(0,n) odd |
 | `\Edm{k}` | E_{-δ_k} | B(0,n) odd |
-| `\Eep{1}` | E_{ε_1} | C(n+1) even |
-| `\Eem{1}` | E_{-ε_1} | C(n+1) even |
 | `\Eepdp{1}{k}` | E_{ε_1+δ_k} | C(n+1) odd |
 | `\Eepdm{1}{k}` | E_{ε_1-δ_k} | C(n+1) odd |
+| `\Eemdp{1}{k}` | E_{-ε_1+δ_k} | C(n+1) odd |
+| `\Eemdm{1}{k}` | E_{-ε_1-δ_k} | C(n+1) odd |
+| `\E2dkp{k}` | E_{2δ_k} | C(n+1) even |
+| `\E2dkm{k}` | E_{-2δ_k} | C(n+1) even |
+| `\Edelpp{i}{j}` | E_{δ_i+δ_j} (i<j) | C(n+1) even |
+| `\Edelmm{i}{j}` | E_{-δ_i-δ_j} (i<j) | C(n+1) even |
+| `\Edelpm{i}{j}` | E_{δ_i-δ_j} (i<j) | C(n+1) even |
+| `\Edelmp{i}{j}` | E_{-δ_i+δ_j} (i<j) | C(n+1) even |
 
 ## PBW Ordering
 
-To be decided in Issue I-001. The ordering must be compatible with the
-existing B(0,n) v5.0 convention:
+Decided in Issue I01-1 (2026-05-15). C(n+1) uses the same structure as B(0,n) v5.0:
 
 ```
-κ < [fermionic generators] < [bosonic generators] < K
+κ < [odd generators] < [even generators] < K
 ```
 
-For C(n+1), the fermionic block contains a_1_p, a_1_m instead of a_0.
+### Odd block (fermionic)
+Ordered by positive then negative:
+```
+E_eps1_del{k}_pp (k=1..n)         # positive: ε₁ + δ_k
+E_eps1_del{k}_pm (k=1..n)         # positive: ε₁ − δ_k
+E_eps1_del{k}_mp (k=1..n)         # negative: −(ε₁ − δ_k)
+E_eps1_del{k}_mm (k=1..n)         # negative: −(ε₁ + δ_k)
+```
+
+### Even block (bosonic)
+```
+H_1, ..., H_{n-1}, H_n, H_{n+1}  # Cartan (n+1)
+E_2del{k}_p (k=1..n)              # positive long roots
+E_del{i}_del{j}_pp (i<j)          # positive sum roots
+E_2del{k}_m (k=1..n)              # negative long roots
+E_del{i}_del{j}_mm (i<j)          # negative sum roots
+E_del{i}_del{j}_pm (i<j)          # mixed (δ_i − δ_j)
+E_del{i}_del{j}_mp (i<j)          # mixed (−δ_i + δ_j)
+```
+
+### Dimension Summary
+
+| n | Even | Odd | Total | osp(2\|2n) |
+|---|------|-----|-------|------------|
+| 1 | 4    | 4   | 8     | 8 |
+| 2 | 11   | 8   | 19    | 19 |
+| 3 | 22   | 12  | 34    | 34 |
 
 ## References
 
