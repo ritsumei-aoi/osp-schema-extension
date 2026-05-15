@@ -22,6 +22,11 @@ Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
   - File naming: `C_n_structure.json` for n=1,2,3
   - Backward compatibility with B(m,n) documented
 - **Signature conventions**: B1 (standard Frappat basis), Option A (conservative PBW)
+- **Phase 2 implementation**: Structure constant generator completed
+  - `src/C_generators.py` with `build_C_basis()` and `build_C_structure_constants()`
+  - `tests/test_C_generators.py` with 29 tests (all pass for n=1,2,3)
+  - `data/algebra_structures/C_{1,2,3}_structure.json` generated
+  - `src/generate_C_json.py` for JSON output generation
 
 ### Completed Deliverables
 - **Even basis**: Standard Frappat convention (B1). Even roots are sp(2n)-only:
@@ -40,7 +45,7 @@ Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
 | Phase | Description | Status |
 |---|---|---|
 | Phase 1 | Schema design for C(n+1): basis, parity, root system | **Complete** |
-| Phase 2 | Structure constant generator implementation | **Ready to start** |
+| Phase 2 | Structure constant generator implementation | **Complete** |
 | Phase 3 | Verification (Super Jacobi identity) | Not started |
 | Phase 4 | Schema 2–4 extension (gamma, evaluated, coboundary) | Not started |
 | Phase 5 | Library comparison (T2) | Not started |
@@ -55,6 +60,7 @@ Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
 
 ## Next Session Goals
 
-1. Implement the C(n+1) basis generator (C_generators.py) — Phase 2
-2. Create Issue I03-1 for structure constant generator implementation
-3. Write tests for the new generator
+1. Phase 3: Verification — Super Jacobi identity checks for C(n+1) structure constants
+2. Phase 4: Schema 2–4 extensions (gamma, evaluated, coboundary)
+3. Phase 5: Library comparison (T2) with Garli or similar
+4. Phase 6: Metrics collection and analysis

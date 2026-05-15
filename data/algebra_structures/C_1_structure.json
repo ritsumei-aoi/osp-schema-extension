@@ -1,0 +1,397 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n)"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "count": 2,
+      "m": 1,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "description": "Standard fermionic oscillators a_1^\u00b1 (single pair, CAR). No supplementary fermion a_0."
+    },
+    "bosons": {
+      "count": 2,
+      "n": 1,
+      "labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "description": "Bosonic oscillators b_i^\u00b1 with i=1,...,1"
+    }
+  },
+  "oscillator_relations": {
+    "standard_fermion_anticommutators": {
+      "description": "Canonical anticommutation relations for standard fermionic pair",
+      "relations": {
+        "same_type": "{a_1^\u00b1, a_1^\u00b1} = 0",
+        "conjugate_pair": "{a_1^-, a_1^+} = 1"
+      },
+      "canonical_pairs": [
+        {
+          "index": 1,
+          "annihilation": "a_1_m",
+          "creation": "a_1_p",
+          "anticommutator": 1
+        }
+      ]
+    },
+    "bosonic_commutators": {
+      "description": "Canonical commutation relations for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_i^\u00b1, b_j^\u00b1] = 0 for all i, j",
+        "conjugate_pair": "[b_i^-, b_j^+] = \u03b4_{ij}"
+      },
+      "canonical_pairs": [
+        {
+          "index": 1,
+          "annihilation": "b_1_m",
+          "creation": "b_1_p",
+          "commutator": 1
+        }
+      ]
+    },
+    "mixed_commutators": {
+      "description": "Commutation relations between different oscillator types",
+      "boson_fermion": {
+        "relation": "[b_i^\u00b1, a_1^\u00b1] = 0",
+        "description": "Bosonic and fermionic oscillators commute"
+      }
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "label": "\u03ba",
+      "description": "Central element for the odd-odd anticommutator. Arises from normal-ordering constant -1/2 in the expansion of b_k^+b_k^- = sum_{t=k}^n H_t - 1/2. Stored as K in the bracket output.",
+      "parity": 0,
+      "note": "In the implementation, \u03ba is stored as generator 'K'."
+    },
+    "K": {
+      "label": "K",
+      "description": "Central element representing the constant term -1/2 from boson number operator expansion. Together with \u03ba, spans the 2-dimensional center of C(n+1).",
+      "parity": 0,
+      "note": "K is the constant term generator in bracket output."
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_{n+1}",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm"
+    ],
+    "ordering_convention": "PBW ordering (Option A): (1) Central element \u03ba; (2) Odd generators: E_eps1_del{k}_pp, E_eps1_del{k}_pm, E_eps1_del{k}_mp, E_eps1_del{k}_mm (k=1..n); (3) Even generators: Cartan H_1..H_{n+1}, positive long E_2del{k}_p, positive short sum E_del{i}_del{j}_pp (i<j), negative long E_2del{k}_m, negative short sum E_del{i}_del{j}_mm (i<j), mixed E_del{i}_del{j}_pm (i<j), E_del{i}_del{j}_mp (i<j); (4) Central element K."
+  },
+  "parity": {
+    "H_1": 0,
+    "H_{n+1}": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1
+  },
+  "generator_realization": {
+    "description": "Standard form expressions with oscillator realizations. No supplementary fermion a_0. Odd generators are E_{\u03b5\u2081\u00b1\u03b4_k} = a_1^\u00b1 b_k^\u00b1. No sqrt(2) factors in coefficients.",
+    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m",
+    "realizations": {
+      "\u03ba": {
+        "standard_form": [
+          {
+            "words": [],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "\u03ba",
+        "parity": 0,
+        "note": "Central element \u03ba (constant term center)."
+      },
+      "E_eps1_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^{+} b_1^{+}",
+        "parity": 1,
+        "note": "Odd root \u03b5\u2081+\u03b4_1. Frappat: E_{\u03b5\u2081+\u03b4_k} = a_1^+ b_k^+."
+      },
+      "E_eps1_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^{+} b_1^{-}",
+        "parity": 1,
+        "note": "Odd root \u03b5\u2081-\u03b4_1. Frappat: E_{\u03b5\u2081-\u03b4_k} = a_1^+ b_k^-."
+      },
+      "E_eps1_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^{-} b_1^{+}",
+        "parity": 1,
+        "note": "Odd root -(\u03b5\u2081-\u03b4_1). Frappat: E_{-(\u03b5\u2081-\u03b4_k)} = a_1^- b_k^+."
+      },
+      "E_eps1_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^{-} b_1^{-}",
+        "parity": 1,
+        "note": "Odd root -(\u03b5\u2081+\u03b4_1). Frappat: E_{-(\u03b5\u2081+\u03b4_k)} = a_1^- b_k^-."
+      },
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "b_1^+ b_1^- + 1/2",
+        "parity": 0,
+        "note": "Terminal bosonic Cartan H_1 = b_1^+ b_1^- + 1/2."
+      },
+      "H_{n+1}": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "a_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [],
+            "coeff": "-1/2"
+          }
+        ],
+        "frappat_form": "a_1^+ a_1^- - 1/2",
+        "parity": 0,
+        "note": "Fermionic Cartan generator H_{n+1} = a_1^+ a_1^- - 1/2."
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^+)^2",
+        "parity": 0,
+        "note": "Long even root +2\u03b4_1. Frappat: E_{\u00b12\u03b4_k} = (b_k^\u00b1)^2."
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^-)^2",
+        "parity": 0,
+        "note": "Long even root -2\u03b4_1. Frappat: E_{\u00b12\u03b4_k} = (b_k^\u00b1)^2."
+      },
+      "K": {
+        "standard_form": [
+          {
+            "words": [],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "K",
+        "parity": 0,
+        "note": "Central element K. Arises from normal-ordering constant -1/2 in b_k^+b_k^- expansion."
+      }
+    }
+  },
+  "structure_constants": {
+    "description": "Non-zero brackets [X, Y] = sum_Z c_Z Z. For odd-odd pairs: anticommutator {X,Y}. Otherwise: commutator [X,Y]. Coefficients are exact rational numbers (no sqrt(2)). Computed via direct Frappat formula (C_generators.py).",
+    "brackets": {
+      "H_1,E_eps1_del1_pp": {
+        "E_eps1_del1_pp": "1"
+      },
+      "E_eps1_del1_pp,H_1": {
+        "E_eps1_del1_pp": "-1"
+      },
+      "H_1,E_eps1_del1_pm": {
+        "E_eps1_del1_pm": "-1"
+      },
+      "E_eps1_del1_pm,H_1": {
+        "E_eps1_del1_pm": "1"
+      },
+      "H_1,E_eps1_del1_mp": {
+        "E_eps1_del1_mp": "1"
+      },
+      "E_eps1_del1_mp,H_1": {
+        "E_eps1_del1_mp": "-1"
+      },
+      "H_1,E_eps1_del1_mm": {
+        "E_eps1_del1_mm": "-1"
+      },
+      "E_eps1_del1_mm,H_1": {
+        "E_eps1_del1_mm": "1"
+      },
+      "H_{n+1},E_eps1_del1_pp": {
+        "E_eps1_del1_pp": "1"
+      },
+      "E_eps1_del1_pp,H_{n+1}": {
+        "E_eps1_del1_pp": "-1"
+      },
+      "H_{n+1},E_eps1_del1_pm": {
+        "E_eps1_del1_pm": "1"
+      },
+      "E_eps1_del1_pm,H_{n+1}": {
+        "E_eps1_del1_pm": "-1"
+      },
+      "H_{n+1},E_eps1_del1_mp": {
+        "E_eps1_del1_mp": "-1"
+      },
+      "E_eps1_del1_mp,H_{n+1}": {
+        "E_eps1_del1_mp": "1"
+      },
+      "H_{n+1},E_eps1_del1_mm": {
+        "E_eps1_del1_mm": "-1"
+      },
+      "E_eps1_del1_mm,H_{n+1}": {
+        "E_eps1_del1_mm": "1"
+      },
+      "E_eps1_del1_pp,E_eps1_del1_mp": {
+        "E_2del1_p": "1"
+      },
+      "E_eps1_del1_pp,E_eps1_del1_mm": {
+        "H_1": "1",
+        "H_{n+1}": "-1"
+      },
+      "E_eps1_del1_pm,E_eps1_del1_mp": {
+        "H_1": "1",
+        "H_{n+1}": "1"
+      },
+      "E_eps1_del1_pm,E_eps1_del1_mm": {
+        "E_2del1_m": "1"
+      },
+      "E_eps1_del1_mp,E_eps1_del1_pp": {
+        "E_2del1_p": "1"
+      },
+      "E_eps1_del1_mp,E_eps1_del1_pm": {
+        "H_1": "1",
+        "H_{n+1}": "1"
+      },
+      "E_eps1_del1_mm,E_eps1_del1_pp": {
+        "H_1": "1",
+        "H_{n+1}": "-1"
+      },
+      "E_eps1_del1_mm,E_eps1_del1_pm": {
+        "E_2del1_m": "1"
+      },
+      "H_1,E_2del1_p": {
+        "E_2del1_p": "2"
+      },
+      "E_2del1_p,H_1": {
+        "E_2del1_p": "-2"
+      },
+      "H_1,E_2del1_m": {
+        "E_2del1_m": "-2"
+      },
+      "E_2del1_m,H_1": {
+        "E_2del1_m": "2"
+      },
+      "E_2del1_p,E_2del1_m": {
+        "H_1": "-4"
+      },
+      "E_2del1_m,E_2del1_p": {
+        "H_1": "4"
+      },
+      "E_2del1_p,E_eps1_del1_pm": {
+        "E_eps1_del1_pp": "-2"
+      },
+      "E_eps1_del1_pm,E_2del1_p": {
+        "E_eps1_del1_pp": "2"
+      },
+      "E_2del1_p,E_eps1_del1_mm": {
+        "E_eps1_del1_mp": "-2"
+      },
+      "E_eps1_del1_mm,E_2del1_p": {
+        "E_eps1_del1_mp": "2"
+      },
+      "E_2del1_m,E_eps1_del1_pp": {
+        "E_eps1_del1_pm": "2"
+      },
+      "E_eps1_del1_pp,E_2del1_m": {
+        "E_eps1_del1_pm": "-2"
+      },
+      "E_2del1_m,E_eps1_del1_mp": {
+        "E_eps1_del1_mm": "2"
+      },
+      "E_eps1_del1_mp,E_2del1_m": {
+        "E_eps1_del1_mm": "-2"
+      }
+    }
+  },
+  "metadata": {
+    "reference": "Frappat et al., Dictionary on Lie Algebras and Superalgebras (2000), p.219-220. C(n+1) = osp(2|2n) oscillator realization.",
+    "generated_by": "src/C_generators.py and src/generate_C_json.py",
+    "computation_method": "Direct Frappat formula with exact rational arithmetic (Python Fraction). Sections: Cartan\u00d7odd, odd-odd, Cartan\u00d7even, even\u00d7even, even\u00d7odd, short\u00d7short.",
+    "basis_convention": {
+      "signature": "B1",
+      "pbw_ordering": "Option A",
+      "description": "Standard Frappat basis with even roots from sp(2n) only (no \u03b5-even roots). PBW: \u03ba < odd < even < K."
+    }
+  }
+}

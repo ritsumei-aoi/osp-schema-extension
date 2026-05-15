@@ -38,9 +38,26 @@ A complete history of issue responses. Each issue's items and results are summar
 
 ---
 
+## I03-1: C(n+1) structure constant generator
+
+- **Date**: 2026-05-15
+- **Category**: implementation
+- **Branch**: `ai/t1-schema-extension`
+- **Archive**: `docs/issues/done/issue_260515_03.md`
+
+### Items Addressed
+- ✅ Generator functions `build_C_basis` and `build_C_structure_constants` implemented in `src/C_generators.py`
+- ✅ Test suite `tests/test_C_generators.py` with 29 tests covering dimensions, parity, PBW ordering, antisymmetry, and specific bracket values
+- ✅ Schema 1 JSON generated for n=1, 2, 3 (`C_1_structure.json`, `C_2_structure.json`, `C_3_structure.json`)
+- ✅ Tests pass for all three values of n
+- ✅ Generation script created at `src/generate_C_json.py`
+
+---
+
 ## Statistics
 
 | Category | File Count | Total Items | Resolved | In Progress |
 |----------|-----------|------------|----------|-------------|
 | proposal | 2 | 10 | 10 | 0 |
-| **Total** | **2** | **10** | **10** | **0** |
+| implementation | 1 | 5 | 5 | 0 |
+| **Total** | **3** | **15** | **15** | **0** |

@@ -1,32 +1,27 @@
-# Issue I03-1: C(n+1) structure constant generator
+# Issue {ID}: {Title}
 
-**Date**: 2026-05-15
+**Date**: {YYYY-MM-DD}
 **Status**: open
-**Category**: implementation
-**Theme Working Branch**: ai/t1-schema-extension
+**Category**: {category}
+**Theme Working Branch**: {Branch Name}
 
 ## Context & Background
-Now that the basis, PBW ordering (I01-1), and Schema 1 specification (I02-1) have been finalized for C(n+1) = osp(2|2n), we need to implement the Python generator scripts to compute and output the structural constants in the defined JSON format for n=1, 2, 3.
+{Explain the context, why this issue is needed, and any references to past issues or literature.}
 
 ## Requirements
-1. Implement a Python script (e.g., `src/C_generators.py`) to build the C(n+1) basis following the PBW ordering defined in `handover/notation.md`.
-2. Implement the structure constant generator using the defined oscillator relations.
-3. Output the results as `C_1_structure.json`, `C_2_structure.json`, and `C_3_structure.json` in the `data/` folder.
-4. Add basic unit tests for parity, generator counts, and consistency.
+1. {Requirement 1}
+2. {Requirement 2}
 
 ## Deliverables
-- Code (Python generator script in `src/` and tests in `tests/`)
-- Data (JSON files in `data/`)
+- {List expected artifacts, such as document updates, code, schema changes, etc.}
 
 ## Completion Criteria
-- [ ] Generator functions implemented and tested.
-- [ ] Schema 1 JSON generated for n=1, 2, 3.
-- [ ] Tests pass for all three values of n.
-- [ ] Structure constants conform to the `json_schema_specification.md` design.
+- [ ] {Criterion 1}
+- [ ] {Criterion 2}
 
 ## Trust Boundary & Workflow Note
-- **Human Approval Required**: You must present the script logic and the output of the tests to the human for mathematical validation.
-- **Iterative Dialogue Expected**: Please propose the script implementation in the response section. **CRITICAL RULE**: Do NOT commit the code or generate the final JSON files, and do NOT proceed to Phase 4 until the human explicitly approves your implementation.
+- **Human Approval Required**: {Specify what decisions need human approval, if any.}
+- **Iterative Dialogue Expected**: {Specify if the AI should propose options and wait for human selection before proceeding.}
 
 ---
 ### Response
