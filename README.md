@@ -23,6 +23,14 @@ records are preserved as evidence of the workflow in action.
 - **Pre-defined metrics**: See [STUDY_PROTOCOL.md](STUDY_PROTOCOL.md)
 - **Measurement period**: May–June 2026
 
+## Theme-based Branching Strategy
+
+This repository uses persistent theme branches that act as the primary working branches for specific case studies:
+- **T1: C(n+1) Schema Extension**: `ai/t1-schema-extension`
+- **T2: Numerical Libraries**: `ai/t2-numerical-libraries`
+
+All issues, commits, and merges related to a theme must target its respective branch instead of the repository's `main` branch.
+
 ## Related Repositories
 
 | Repository | Role |

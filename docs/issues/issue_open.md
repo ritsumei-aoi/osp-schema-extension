@@ -1,46 +1,38 @@
-Created: 2026-05-15
-Category: proposal
+# Issue I01-1: C(n+1) basis and root system design
 
-## I01-1. C(n+1) basis and root system design
+**Date**: 2026-05-15
+**Status**: open
+**Category**: proposal
+**Theme Working Branch**: `ai/t1-schema-extension`
+*(Note: For this case study, `ai/t1-schema-extension` serves as the primary working branch for the T1 theme. Please branch off and perform operations against this branch, rather than the repository's `main` branch.)*
 
-### Background
+## Context & Background
+This issue is the first step in Phase 1 of extending the 4-layer JSON schema from `B(0,n) = osp(1|2n)` to `C(n+1) = osp(2|2n)` for `n = 1, 2, 3`. 
 
-C(n+1) = osp(2|2n) is a type-C basic classical Lie superalgebra.
-Unlike B(0,n) = osp(1|2n) which uses a supplementary real fermion a_0
-with {a_0, a_0} = 1, C(n+1) uses a standard fermionic pair (a_1_p, a_1_m)
-with {a_1_p, a_1_m} = 1.
+Unlike `B(0,n)` which relies on a supplementary fermion `a_0`, `C(n+1)` uses a standard fermionic pair `(a_1_p, a_1_m)`. This fundamental change impacts the basis structure, the PBW (Poincaré-Birkhoff-Witt) ordering, and the oscillator relations. The schema extension must be consistent with the existing `B(0,n)` schema available at: https://github.com/ritsumei-aoi/osp-triviality
 
-This changes the basis structure, introduces ε-roots (absent in B(0,n)),
-and requires a new PBW ordering decision.
+**Primary Reference for C(n+1)**:
+- Frappat et al., "Dictionary on Lie superalgebras", arXiv:hep-th/9607161 (https://arxiv.org/abs/hep-th/9607161)
 
-The mathematical reference is Frappat, Sciarrino, Sorba,
-*Dictionary on Lie Algebras and Superalgebras* (2000), Chapter on C(n+1).
+## Requirements
+1. Define the even and odd basis for `C(n+1)` following the standard Frappat notation.
+2. Determine the PBW ordering taking into account the new $\epsilon$-roots.
+3. Design the labels for the oscillator generators without the supplementary fermion `a_0`.
+4. Update `handover/notation.md` with these final conventions.
 
-### Requirements
+## Deliverables
+- A document update: specifically, modifying `handover/notation.md` to reflect the new basis and ordering.
 
-1. Define the even and odd basis elements for C(n+1) for n = 1, 2, 3,
-   following the oscillator realization in Frappat et al.
-2. Enumerate all root vectors (even: ε-roots, 2δ-roots, δ±δ-roots;
-   odd: ε±δ-roots) and Cartan generators
-3. Determine the PBW ordering convention for C(n+1), compatible with
-   the existing B(0,n) v5.0 ordering where possible
-4. Update `handover/notation.md` with the finalized conventions
+## Completion Criteria
+- [ ] Even and odd basis lists are clearly defined for `C(1)`, `C(2)`, and `C(3)`.
+- [ ] PBW ordering is decided and documented.
+- [ ] Notation conventions for the generators are finalized.
 
-### Supplementary Information
+## Trust Boundary & Workflow Note
+- **Human Approval Required**: The decision on the PBW ordering must be approved by a human researcher before finalization.
+- **Iterative Dialogue Expected**: The AI should first propose options for the PBW ordering and basis labels in the `### Response` section below. Stop and wait for human selection. Once the human selects an option, the AI will document it and complete the issue.
 
-#### Deliverable Format
-document (updated `handover/notation.md` + summary in Response section)
+---
+### Response
 
-#### Related Folders/Files
-- handover/notation.md
-- (reference) https://github.com/ritsumei-aoi/osp-triviality — B(0,n) notation
-
-#### Related Issues
-none (first issue)
-
-### Completion Criteria
-
-- [ ] Even and odd basis lists defined for C(1), C(2), C(3) with explicit
-      element counts matching the expected dimensions
-- [ ] PBW ordering decided, documented, and justified
-- [ ] `handover/notation.md` updated with finalized conventions
+*(AI Agent: Please append your proposals, analysis, and execution logs here.)*
