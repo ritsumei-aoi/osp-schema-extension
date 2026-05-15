@@ -5,21 +5,29 @@
 - **Name**: osp-schema-extension
 - **Goal**: Extend the 4-layer JSON schema from B(0,n) = osp(1|2n) to C(n+1) = osp(2|2n)
   for n = 1, 2, 3
-- **Status**: Initial setup — no implementation yet
+- **Status**: Phase 1 complete (basis design, PBW ordering)
 
 ## Current State
 
-Repository has been initialized with:
-- Workflow files (handover/, ai_trust_policy.md)
-- Study protocol (STUDY_PROTOCOL.md)
-- Quick start guide (QUICKSTART.md)
-- Empty source, test, and data directories
+Issue **I01-1** (C(n+1) basis and root system design) is **closed**.
+
+### Completed Deliverables
+- **Even basis**: Standard Frappat convention (B1). Even roots are sp(2n)-only:
+  ±2δ_k, ±(δ_i ± δ_j). No ε-even roots. Even dimension = 2n² + n + 1.
+- **Odd basis**: 4n generators E_eps1_del{k}_{pp/pm/mp/mm} for k=1..n.
+  Odd dimension = 4n.
+- **Cartan**: H_1, ..., H_{n-1} (differences), H_n (last bosonic), H_{n+1} (fermionic).
+- **PBW ordering**: κ < [odd] < [even] < K (Option A — conservative, B(0,n)-compatible).
+- **Dimension table**: C(1)=8, C(2)=19, C(3)=34 — all match osp(2|2n) formulas.
+- **LaTeX macros**: Updated to remove \Eep, \Eem (defunct ε-even); expanded with
+  odd-block and even-block macros.
+- **notation.md**: Fully updated with finalized conventions.
 
 ## Implementation Roadmap
 
 | Phase | Description | Status |
 |---|---|---|
-| Phase 1 | Schema design for C(n+1): basis, parity, root system | Not started |
+| Phase 1 | Schema design for C(n+1): basis, parity, root system | **Complete** |
 | Phase 2 | Structure constant generator implementation | Not started |
 | Phase 3 | Verification (Super Jacobi identity) | Not started |
 | Phase 4 | Schema 2–4 extension (gamma, evaluated, coboundary) | Not started |
@@ -35,6 +43,6 @@ Repository has been initialized with:
 
 ## Next Session Goals
 
-1. Design the basis and root system for C(n+1) = osp(2|2n)
-2. Create issue I-001 for the schema design task
-3. Begin implementation of the C(n+1) basis generator
+1. Begin Phase 2: Implement the C(n+1) basis generator (C_generators.py)
+2. Create Issue I02-1 for structure constant generator implementation
+3. Write tests for the new generator
