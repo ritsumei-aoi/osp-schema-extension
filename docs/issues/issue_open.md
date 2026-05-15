@@ -35,4 +35,51 @@ Unlike `B(0,n)` which relies on a supplementary fermion `a_0`, `C(n+1)` uses a s
 ---
 ### Response
 
-*(AI Agent: Please append your proposals, analysis, and execution logs here.)*
+Assumption: n = 1,2,3 → C(2), C(3), C(4). Proceeding autonomously because the user is not available; human approval is required for PBW ordering (see Trust Policy).
+
+Proposals
+
+1) Even and odd basis (root-generator form)
+
+- C(2) (n=1)
+  - Oscillators: a_1_p, a_1_m; b_1_p, b_1_m
+  - Even generators: E_{\pm\epsilon_1}, E_{\pm 2\delta_1}
+  - Odd generators: E_{\epsilon_1\pm\delta_1} and their negatives
+
+- C(3) (n=2)
+  - Oscillators: a_1_p, a_1_m; b_{1,2}_p, b_{1,2}_m
+  - Even generators: E_{\pm\epsilon_1}, E_{\pm 2\delta_1}, E_{\pm 2\delta_2}, E_{\delta_1\pm\delta_2}
+  - Odd generators: E_{\epsilon_1\pm\delta_1}, E_{\epsilon_1\pm\delta_2} and their negatives
+
+- C(4) (n=3)
+  - Oscillators: a_1_p, a_1_m; b_{1..3}_p, b_{1..3}_m
+  - Even generators: E_{\pm\epsilon_1}, E_{\pm 2\delta_i} (i=1..3), E_{\delta_i\pm\delta_j} (i<j)
+  - Odd generators: E_{\epsilon_1\pm\delta_i} (i=1..3) and their negatives
+
+2) PBW ordering — three options (human must choose)
+
+- Option A (recommended): Fermionic-first (continuity with B(0,n))
+  - Example sample ordering: κ < [fermionic oscillators a_1_p,a_1_m] < [odd root generators (lexicographic)] < [even positive root generators (lexicographic)] < [Cartan generators] < K
+  - Pros: maximal continuity with existing B(0,n) schema; simpler migration and schema reuse.
+  - Cons: some literature prefers root-height or bosonic-first order.
+
+- Option B: Bosonic-first
+  - Pros: groups all even generators together; may simplify some PBW constructions.
+  - Cons: breaks continuity with B(0,n) schema.
+
+- Option C: Root-height (graded) ordering
+  - Pros: algorithmically natural; orders by root degree/height.
+  - Cons: more invasive change; less compatible with current schema tooling.
+
+3) Generator label conventions
+
+- Keep existing naming: a_1_p, a_1_m; b_i_p, b_i_m; E_eps1_p/m, E_2del{i}_p/m, E_eps1_del{i}_pp/pm/mp/mm, etc. Map labels to oscillator realizations as in handover/notation.md.
+
+Next steps
+
+- Please reply with a choice: Option A, B, or C. After human selection the AI will finalize handover/notation.md and commit the finalized notation.
+
+Execution note
+
+- Draft proposals appended here and a small "Proposed (pending approval)" section was added to handover/notation.md in this commit.
+

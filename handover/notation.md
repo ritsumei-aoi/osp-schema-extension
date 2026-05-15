@@ -81,3 +81,14 @@ For C(n+1), the fermionic block contains a_1_p, a_1_m instead of a_0.
 
 - Frappat et al., *Dictionary on Lie Algebras and Superalgebras* (2000), Chapter on C(n+1)
 - osp-triviality notation: handover/notation.md in the primary case study
+
+## Proposed PBW ordering (Pending human approval)
+
+The following proposals are drafted for review. These are intentionally marked "Pending human approval" because PBW-ordering decisions are within the project's trust boundary and require a human sign-off.
+
+- Recommendation (default): Option A — Fermionic-first ordering to preserve continuity with the B(0,n) schema. If approved, the notation section will be updated to state the PBW ordering explicitly and the JSON schema labels will be finalized.
+
+- Alternatives: Option B (Bosonic-first) and Option C (Root-height/graded) are retained here for discussion; their consequences for schema generation are summarized in the issue I01-1 response.
+
+Please approve one option (A, B, or C) in the issue thread so the notation can be finalized and committed.
+
