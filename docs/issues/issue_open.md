@@ -83,3 +83,9 @@ Execution note
 
 - Draft proposals appended here and a small "Proposed (pending approval)" section was added to handover/notation.md in this commit.
 
+## Trust Boundary Remand
+
+This issue reached the project's trust boundary: PBW ordering decisions are explicitly not delegable to the AI (see ai_trust_policy.md). The AI has proposed three options (A: Fermionic-first — recommended; B: Bosonic-first; C: Root-height/graded) and recommends Option A for continuity with the existing B(0,n) schema. Human approval is required before finalizing the PBW ordering and completing the issue.
+
+To proceed, reply in this issue with a selection (A, B, or C). Once a choice is provided, the AI will finalize handover/notation.md, update completion criteria, and complete Phase 4 procedures.
+

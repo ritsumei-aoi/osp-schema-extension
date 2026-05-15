@@ -5,7 +5,7 @@
 - **Name**: osp-schema-extension
 - **Goal**: Extend the 4-layer JSON schema from B(0,n) = osp(1|2n) to C(n+1) = osp(2|2n)
   for n = 1, 2, 3
-- **Status**: Initial setup — no implementation yet
+- **Status**: In progress — Phase 1 started (I01-1)
 
 ## Current State
 
@@ -19,7 +19,7 @@ Repository has been initialized with:
 
 | Phase | Description | Status |
 |---|---|---|
-| Phase 1 | Schema design for C(n+1): basis, parity, root system | Not started |
+| Phase 1 | Schema design for C(n+1): basis, parity, root system | In progress (I01-1 started; awaiting PBW ordering approval) |
 | Phase 2 | Structure constant generator implementation | Not started |
 | Phase 3 | Verification (Super Jacobi identity) | Not started |
 | Phase 4 | Schema 2–4 extension (gamma, evaluated, coboundary) | Not started |
@@ -36,5 +36,5 @@ Repository has been initialized with:
 ## Next Session Goals
 
 1. Design the basis and root system for C(n+1) = osp(2|2n)
-2. Create issue I-001 for the schema design task
-3. Begin implementation of the C(n+1) basis generator
+2. Await PBW ordering approval for I01-1; finalize notation
+3. Begin implementation of the C(n+1) basis generator after PBW approval
