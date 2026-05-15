@@ -1,7 +1,7 @@
 # Issue I01-1: C(n+1) basis and root system design
 
 **Date**: 2026-05-15
-**Status**: open
+**Status**: needs_clarification
 **Category**: proposal
 **Theme Working Branch**: `ai/t1-schema-extension`
 *(Note: For this case study, `ai/t1-schema-extension` serves as the primary working branch for the T1 theme. Please branch off and perform operations against this branch, rather than the repository's `main` branch.)*
