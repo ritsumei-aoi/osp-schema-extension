@@ -302,7 +302,8 @@ def build_C_structure_constants(
         elif r < s:
             add(g1, g2, f"E_del{r}_del{s}_pm", coeff_str)
         else:
-            add(g1, g2, f"E_del{s}_del{r}_mp", _format_coeff(-c))
+            # r > s: b_r^+ b_s^- = b_s^- b_r^+ = E_del{s}_del{r}_mp (bosons commute)
+            add(g1, g2, f"E_del{s}_del{r}_mp", _format_coeff(c))
 
     def _add_pp_bilinear(g1, g2, r, s, coeff_str):
         """Add c * b_r^+ b_s^+ to bracket (g1,g2)."""
@@ -340,7 +341,8 @@ def build_C_structure_constants(
         elif r < s:
             add(g1, g2, f"E_del{r}_del{s}_mp", _format_coeff(c))
         else:
-            add(g1, g2, f"E_del{s}_del{r}_pm", _format_coeff(-c))
+            # r > s: b_r^- b_s^+ = b_s^+ b_r^- = E_del{s}_del{r}_pm (bosons commute)
+            add(g1, g2, f"E_del{s}_del{r}_pm", _format_coeff(c))
 
     def _odd_odd_partial(g1, g2, a_alpha, a_gamma, k_bos, l_bos, beta, delta):
         """
@@ -604,26 +606,18 @@ def build_C_structure_constants(
 
     # ===================================================================
     # Section 9: Same-index cross brackets [E_del{k}_del{l}_{pp,mm,pm,mp}]
-    #            Same as B(0,n) section 8c.
+    #            NOTE: [pp, pm] and [pp, mp] are handled by Section 13
+    #            (general formula [b_i^+b_j^+, b_k^+b_l^-] and [b_i^+b_j^+, b_k^-b_l^+]).
+    #            Section 9 only covers cases NOT in Section 13:
+    #            [mm, pm], [mm, mp], and [mp, pm].
     # ===================================================================
     for k in range(1, n + 1):
         for l in range(k + 1, n + 1):
-            pp = f"E_del{k}_del{l}_pp"
             mm = f"E_del{k}_del{l}_mm"
             pm = f"E_del{k}_del{l}_pm"
             mp = f"E_del{k}_del{l}_mp"
-            e2k_p = f"E_2del{k}_p"
             e2k_m = f"E_2del{k}_m"
-            e2l_p = f"E_2del{l}_p"
             e2l_m = f"E_2del{l}_m"
-
-            # [b_k^+b_l^+, b_k^+b_l^-] = -(b_k^+)^2
-            add(pp, pm, e2k_p, "-1")
-            add(pm, pp, e2k_p, "1")
-
-            # [b_k^+b_l^+, b_k^-b_l^+] = -(b_l^+)^2
-            add(pp, mp, e2l_p, "-1")
-            add(mp, pp, e2l_p, "1")
 
             # [b_k^-b_l^-, b_k^+b_l^-] = (b_l^-)^2
             add(mm, pm, e2l_m, "1")
@@ -753,10 +747,11 @@ def build_C_structure_constants(
     #             Same as B(0,n) section 13.
     #
     #   [b_i^+ b_j^+, b_k^- b_l^-] (i<j, k<l)
-    #   = -δ_{ik} b_j^+ b_l^- + δ_{il} b_j^+ b_k^- 
-    #     - δ_{jk} b_i^+ b_l^- + δ_{jl} b_i^+ b_k^-
+    #   = -δ_{ik} b_j^+ b_l^- - δ_{il} b_j^+ b_k^- 
+    #     - δ_{jk} b_i^+ b_l^- - δ_{jl} b_i^+ b_k^-
+    #     - δ_{jl}δ_{ik} - δ_{il}δ_{jk}
     #
-    #   where [b_i^+, b_k^-] = -δ_{ik}. The signs come from the expansion.
+    #   where [b_i^+, b_k^-] = -δ_{ik}. Derived from [AB, CD] expansion.
     # ===================================================================
     for i in range(1, n + 1):
         for j in range(i + 1, n + 1):
@@ -779,37 +774,49 @@ def build_C_structure_constants(
                             for t in range(r, n + 1):
                                 add(g1, g2, f"H_{t}", coeff_str)
                                 add(g2, g1, f"H_{t}", neg_str)
-                            # constant term
+                            # constant term (anti-symmetric: reverse direction is negated)
                             c = _parse_coeff(coeff_str)
                             const_str = _format_coeff(-c / 2)
+                            neg_const_str = _neg(const_str)
                             add(g1, g2, "K", const_str)
-                            add(g2, g1, "K", const_str)
+                            add(g2, g1, "K", neg_const_str)
                         else:
                             # b_r^+ b_s^- → mixed generator
                             if r < s:
                                 add(g1, g2, f"E_del{r}_del{s}_pm", coeff_str)
                                 add(g2, g1, f"E_del{r}_del{s}_pm", neg_str)
                             else:  # r > s
-                                add(g1, g2, f"E_del{s}_del{r}_mp", neg_str)
-                                add(g2, g1, f"E_del{s}_del{r}_mp", coeff_str)
+                                # b_r^+ b_s^- = b_s^- b_r^+ (bosons commute) = E_del{s}_del{r}_mp
+                                # Coefficient is c for (g1,g2), -c for (g2,g1)
+                                add(g1, g2, f"E_del{s}_del{r}_mp", coeff_str)
+                                add(g2, g1, f"E_del{s}_del{r}_mp", neg_str)
 
                     # -δ_{ik} * b_j^+ b_l^-
-                    _add_bilinear(pp_ij, mm_kl, j, l, "-1")
+                    if i == k:
+                        _add_bilinear(pp_ij, mm_kl, j, l, "-1")
 
-                    # δ_{il} * b_j^+ b_k^-
-                    _add_bilinear(pp_ij, mm_kl, j, k, "1")
+                    # -δ_{il} * b_j^+ b_k^-
+                    if i == l:
+                        _add_bilinear(pp_ij, mm_kl, j, k, "-1")
 
                     # -δ_{jk} * b_i^+ b_l^-
-                    _add_bilinear(pp_ij, mm_kl, i, l, "-1")
+                    if j == k:
+                        _add_bilinear(pp_ij, mm_kl, i, l, "-1")
 
-                    # δ_{jl} * b_i^+ b_k^-
-                    _add_bilinear(pp_ij, mm_kl, i, k, "1")
+                    # -δ_{jl} * b_i^+ b_k^-
+                    if j == l:
+                        _add_bilinear(pp_ij, mm_kl, i, k, "-1")
+
+                    # -δ_{jl}δ_{ik} constant term (same-generator case: i==k and j==l)
+                    if i == k and j == l:
+                        add(pp_ij, mm_kl, "K", "-1")
+                        add(mm_kl, pp_ij, "K", "1")
 
     # ===================================================================
     # Section 13: [b_i^+ b_j^+, b_k^+ b_l^-] and [b_i^+ b_j^+, b_k^- b_l^+]
     #
-    #   [b_i^+ b_j^+, b_k^+ b_l^-] = -δ_{jl} * b_i^+ b_k^+  (i<j, k<l)
-    #   [b_i^+ b_j^+, b_k^- b_l^+] = -δ_{ik} * b_j^+ b_l^+
+    #   [b_i^+ b_j^+, b_k^+ b_l^-] = -δ_{jl} * b_k^+ b_i^+ - δ_{il} * b_k^+ b_j^+  (i<j, k<l)
+    #   [b_i^+ b_j^+, b_k^- b_l^+] = -δ_{jk} * b_i^+ b_l^+ - δ_{ik} * b_j^+ b_l^+
     # ===================================================================
     for i in range(1, n + 1):
         for j in range(i + 1, n + 1):
@@ -819,8 +826,9 @@ def build_C_structure_constants(
                     pm_kl = f"E_del{k}_del{l}_pm"
                     mp_kl = f"E_del{k}_del{l}_mp"
 
-                    # [b_i^+ b_j^+, b_k^+ b_l^-]: -δ_{jl} * b_i^+ b_k^+
+                    # [b_i^+ b_j^+, b_k^+ b_l^-] = -δ_{jl} * b_k^+ b_i^+ - δ_{il} * b_k^+ b_j^+
                     if j == l:
+                        # -δ_{jl} * b_k^+ b_i^+  (normal order: b_k^+ b_i^+)
                         if i == k:
                             add(pp_ij, pm_kl, f"E_2del{i}_p", "-1")
                             add(pm_kl, pp_ij, f"E_2del{i}_p", "1")
@@ -831,8 +839,33 @@ def build_C_structure_constants(
                             add(pp_ij, pm_kl, f"E_del{k}_del{i}_pp", "-1")
                             add(pm_kl, pp_ij, f"E_del{k}_del{i}_pp", "1")
 
-                    # [b_i^+ b_j^+, b_k^- b_l^+]: -δ_{ik} * b_j^+ b_l^+
+                    if i == l:
+                        # -δ_{il} * b_k^+ b_j^+  (normal order: b_k^+ b_j^+)
+                        if k == j:
+                            add(pp_ij, pm_kl, f"E_2del{j}_p", "-1")
+                            add(pm_kl, pp_ij, f"E_2del{j}_p", "1")
+                        elif k < j:
+                            add(pp_ij, pm_kl, f"E_del{k}_del{j}_pp", "-1")
+                            add(pm_kl, pp_ij, f"E_del{k}_del{j}_pp", "1")
+                        else:  # k > j
+                            add(pp_ij, pm_kl, f"E_del{j}_del{k}_pp", "-1")
+                            add(pm_kl, pp_ij, f"E_del{j}_del{k}_pp", "1")
+
+                    # [b_i^+ b_j^+, b_k^- b_l^+] = -δ_{jk} * b_i^+ b_l^+ - δ_{ik} * b_j^+ b_l^+
+                    if j == k:
+                        # -δ_{jk} * b_i^+ b_l^+  (normal order: b_i^+ b_l^+)
+                        if i == l:
+                            add(pp_ij, mp_kl, f"E_2del{i}_p", "-1")
+                            add(mp_kl, pp_ij, f"E_2del{i}_p", "1")
+                        elif i < l:
+                            add(pp_ij, mp_kl, f"E_del{i}_del{l}_pp", "-1")
+                            add(mp_kl, pp_ij, f"E_del{i}_del{l}_pp", "1")
+                        else:  # i > l
+                            add(pp_ij, mp_kl, f"E_del{l}_del{i}_pp", "-1")
+                            add(mp_kl, pp_ij, f"E_del{l}_del{i}_pp", "1")
+
                     if i == k:
+                        # -δ_{ik} * b_j^+ b_l^+  (normal order: b_j^+ b_l^+)
                         if j == l:
                             add(pp_ij, mp_kl, f"E_2del{j}_p", "-1")
                             add(mp_kl, pp_ij, f"E_2del{j}_p", "1")
@@ -851,6 +884,204 @@ def build_C_structure_constants(
     # ===================================================================
     # Section 15: [E_{2δ_k}^+, E_del{i}_del{j}_mm]  Long × short negative
     #             Same as B(0,n) section 7 (already handled above).
+
+    # ===================================================================
+    # Section 18: [E_del{i}_del{j}_mp, E_del{k}_del{l}_pm]  Mixed × mixed (different indices)
+    #             [b_i^- b_j^+, b_k^+ b_l^-] (i<j, k<l)
+    #             = δ_{ik} * b_j^+ b_l^- - δ_{jl} * b_k^+ b_i^-
+    #
+    #             Derivation: [AB,CD] = A[B,C]D + [A,C]BD + CA[B,D] + C[A,D]B
+    #             A=b_i^-, B=b_j^+, C=b_k^+, D=b_l^-
+    #             [B,C]=0, [A,C]=δ_{ik}, [B,D]=-δ_{jl}, [A,D]=0
+    #             → δ_{ik} * b_j^+ b_l^- - δ_{jl} * b_k^+ b_i^-
+    #
+    #             NOTE: Same-index case (i,j)=(k,l) is handled by Section 9.
+    #             Here we handle the cross-index cases.
+    # ===================================================================
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            mp_ij = f"E_del{i}_del{j}_mp"
+            for k in range(1, n + 1):
+                for l in range(k + 1, n + 1):
+                    if i == k and j == l:
+                        continue  # handled by Section 9
+                    pm_kl = f"E_del{k}_del{l}_pm"
+
+                    # δ_{ik} * b_j^+ b_l^-
+                    if i == k:
+                        if j == l:
+                            # r=s=j → H_t and K
+                            for t in range(j, n + 1):
+                                add(mp_ij, pm_kl, f"H_{t}", "1")
+                                add(pm_kl, mp_ij, f"H_{t}", "-1")
+                            add(mp_ij, pm_kl, "K", "-1/2")
+                            add(pm_kl, mp_ij, "K", "1/2")
+                        elif j < l:
+                            add(mp_ij, pm_kl, f"E_del{j}_del{l}_pm", "1")
+                            add(pm_kl, mp_ij, f"E_del{j}_del{l}_pm", "-1")
+                        else:  # j > l
+                            add(mp_ij, pm_kl, f"E_del{l}_del{j}_mp", "1")
+                            add(pm_kl, mp_ij, f"E_del{l}_del{j}_mp", "-1")
+
+                    # -δ_{jl} * b_k^+ b_i^-  (mixed generator, not pp)
+                    if j == l:
+                        if k == i:
+                            # b_i^+ b_i^- = sum_{m=i}^n H_m - 1/2
+                            for t in range(i, n + 1):
+                                add(mp_ij, pm_kl, f"H_{t}", "-1")
+                                add(pm_kl, mp_ij, f"H_{t}", "1")
+                            add(mp_ij, pm_kl, "K", "1/2")
+                            add(pm_kl, mp_ij, "K", "-1/2")
+                        elif k < i:
+                            # b_k^+ b_i^- = E_del{k}_del{i}_pm
+                            add(mp_ij, pm_kl, f"E_del{k}_del{i}_pm", "-1")
+                            add(pm_kl, mp_ij, f"E_del{k}_del{i}_pm", "1")
+                        else:  # k > i
+                            # b_k^+ b_i^- = b_i^- b_k^+ = E_del{i}_del{k}_mp
+                            add(mp_ij, pm_kl, f"E_del{i}_del{k}_mp", "-1")
+                            add(pm_kl, mp_ij, f"E_del{i}_del{k}_mp", "1")
+
+    # ===================================================================
+    # Section 19: Cross-index even-even brackets (share exactly one index)
+    #             Process each unordered pair (ij, kl) only once.
+    #             These are ALL cross-index (i,j)≠(k,l) cases for six types:
+    #
+    #   Type C: [b_i^-b_j^-, b_k^+b_l^-] = δ_{jk}*b_i^-b_l^- + δ_{ik}*b_j^-b_l^-
+    #                                                                   (mm×pm)
+    #   Type D: [b_i^-b_j^-, b_k^-b_l^+] = δ_{jl}*b_k^-b_i^- + δ_{il}*b_k^-b_j^-
+    #                                                                   (mm×mp)
+    #   Type E: [b_i^-b_j^+, b_k^-b_l^+] = δ_{il}*b_k^-b_j^+ - δ_{jk}*b_i^-b_l^+
+    #                                                                   (mp×mp)
+    #   Type F: [b_i^+b_j^-, b_k^+b_l^-] = δ_{jk}*b_i^+b_l^- - δ_{il}*b_k^+b_j^-
+    #                                                                   (pm×pm)
+    #
+    #   Types A and B (pp×pm, pp×mp) are already handled by Section 13.
+    #   Section 12 already handles all pp×mm cases.
+    #   Section 18 already handles all mp×pm cases (cross-index).
+    #   Section 9 handles same-index mm×pm, mm×mp, mp×pm.
+    #
+    #   NOTE: Types E and F only process when (i,j) < (k,l) to avoid
+    #         double-counting symmetric cases. Types C and D use the
+    #         asymmetric formula [mm, pm] and [mm, mp] respectively,
+    #         so they naturally produce each unordered pair once.
+    # ===================================================================
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            for k in range(1, n + 1):
+                for l in range(k + 1, n + 1):
+                    if i == k and j == l:
+                        continue  # same-index, handled elsewhere
+
+                    mm_ij = f"E_del{i}_del{j}_mm"
+                    mp_ij = f"E_del{i}_del{j}_mp"
+                    pm_ij = f"E_del{i}_del{j}_pm"
+
+                    # --- Type C: [mm_ij, pm_kl] = δ_{jk}*b_i^-b_l^- + δ_{ik}*b_j^-b_l^-
+                    if j == k:
+                        if i == l:
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_2del{i}_m", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_2del{i}_m", "-1")
+                        elif i < l:
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_del{i}_del{l}_mm", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_del{i}_del{l}_mm", "-1")
+                        else:  # i > l
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_del{l}_del{i}_mm", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_del{l}_del{i}_mm", "-1")
+                    if i == k:
+                        if j == l:
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_2del{j}_m", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_2del{j}_m", "-1")
+                        elif j < l:
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_del{j}_del{l}_mm", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_del{j}_del{l}_mm", "-1")
+                        else:  # j > l
+                            add(mm_ij, f"E_del{k}_del{l}_pm", f"E_del{l}_del{j}_mm", "1")
+                            add(f"E_del{k}_del{l}_pm", mm_ij, f"E_del{l}_del{j}_mm", "-1")
+
+                    # --- Type D: [mm_ij, mp_kl] = δ_{jl}*b_k^-b_i^- + δ_{il}*b_k^-b_j^-
+                    if j == l:
+                        if i == k:
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_2del{i}_m", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_2del{i}_m", "-1")
+                        elif i < k:
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_del{i}_del{k}_mm", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_del{i}_del{k}_mm", "-1")
+                        else:  # i > k
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_del{k}_del{i}_mm", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_del{k}_del{i}_mm", "-1")
+                    if i == l:
+                        if j == k:
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_2del{j}_m", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_2del{j}_m", "-1")
+                        elif j < k:
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_del{j}_del{k}_mm", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_del{j}_del{k}_mm", "-1")
+                        else:  # j > k
+                            add(mm_ij, f"E_del{k}_del{l}_mp", f"E_del{k}_del{j}_mm", "1")
+                            add(f"E_del{k}_del{l}_mp", mm_ij, f"E_del{k}_del{j}_mm", "-1")
+
+                    # --- Types E and F: only process when (i,j) < (k,l) ---
+                    if (i, j) >= (k, l):
+                        continue
+
+                    mp_kl = f"E_del{k}_del{l}_mp"
+                    pm_kl = f"E_del{k}_del{l}_pm"
+
+                    # --- Type E: [mp_ij, mp_kl] = δ_{il}*b_k^-b_j^+ - δ_{jk}*b_i^-b_l^+
+                    if i == l:
+                        if k == j:
+                            for t in range(j, n + 1):
+                                add(mp_ij, mp_kl, f"H_{t}", "1")
+                                add(mp_kl, mp_ij, f"H_{t}", "-1")
+                            add(mp_ij, mp_kl, "K", "-1/2")
+                            add(mp_kl, mp_ij, "K", "1/2")
+                        elif k < j:
+                            add(mp_ij, mp_kl, f"E_del{k}_del{j}_mp", "1")
+                            add(mp_kl, mp_ij, f"E_del{k}_del{j}_mp", "-1")
+                        else:  # k > j
+                            add(mp_ij, mp_kl, f"E_del{j}_del{k}_pm", "1")
+                            add(mp_kl, mp_ij, f"E_del{j}_del{k}_pm", "-1")
+                    if j == k:
+                        if i == l:
+                            for t in range(i, n + 1):
+                                add(mp_ij, mp_kl, f"H_{t}", "-1")
+                                add(mp_kl, mp_ij, f"H_{t}", "1")
+                            add(mp_ij, mp_kl, "K", "1/2")
+                            add(mp_kl, mp_ij, "K", "-1/2")
+                        elif i < l:
+                            add(mp_ij, mp_kl, f"E_del{i}_del{l}_mp", "-1")
+                            add(mp_kl, mp_ij, f"E_del{i}_del{l}_mp", "1")
+                        else:  # i > l
+                            add(mp_ij, mp_kl, f"E_del{l}_del{i}_pm", "-1")
+                            add(mp_kl, mp_ij, f"E_del{l}_del{i}_pm", "1")
+
+                    # --- Type F: [pm_ij, pm_kl] = δ_{jk}*b_i^+b_l^- - δ_{il}*b_k^+b_j^-
+                    if j == k:
+                        if i == l:
+                            for t in range(i, n + 1):
+                                add(pm_ij, pm_kl, f"H_{t}", "1")
+                                add(pm_kl, pm_ij, f"H_{t}", "-1")
+                            add(pm_ij, pm_kl, "K", "-1/2")
+                            add(pm_kl, pm_ij, "K", "1/2")
+                        elif i < l:
+                            add(pm_ij, pm_kl, f"E_del{i}_del{l}_pm", "1")
+                            add(pm_kl, pm_ij, f"E_del{i}_del{l}_pm", "-1")
+                        else:  # i > l
+                            add(pm_ij, pm_kl, f"E_del{l}_del{i}_mp", "1")
+                            add(pm_kl, pm_ij, f"E_del{l}_del{i}_mp", "-1")
+                    if i == l:
+                        if k == j:
+                            for t in range(j, n + 1):
+                                add(pm_ij, pm_kl, f"H_{t}", "-1")
+                                add(pm_kl, pm_ij, f"H_{t}", "1")
+                            add(pm_ij, pm_kl, "K", "1/2")
+                            add(pm_kl, pm_ij, "K", "-1/2")
+                        elif k < j:
+                            add(pm_ij, pm_kl, f"E_del{k}_del{j}_pm", "-1")
+                            add(pm_kl, pm_ij, f"E_del{k}_del{j}_pm", "1")
+                        else:  # k > j
+                            add(pm_ij, pm_kl, f"E_del{j}_del{k}_mp", "-1")
+                            add(pm_kl, pm_ij, f"E_del{j}_del{k}_mp", "1")
 
     # ===================================================================
     # Section 16: [H_{n+1}, odd] — already handled in Section 1.

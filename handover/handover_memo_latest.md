@@ -46,7 +46,7 @@ Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
 |---|---|---|
 | Phase 1 | Schema design for C(n+1): basis, parity, root system | **Complete** |
 | Phase 2 | Structure constant generator implementation | **Complete** |
-| Phase 3 | Verification (Super Jacobi identity) | Not started |
+| Phase 3 | Verification (Super Jacobi identity) | **Complete** |
 | Phase 4 | Schema 2–4 extension (gamma, evaluated, coboundary) | Not started |
 | Phase 5 | Library comparison (T2) | Not started |
 | Phase 6 | Metrics collection and analysis | Not started |
@@ -60,7 +60,6 @@ Issue **I02-1** (Schema 1 v5.0 extension for C(n+1)) is **closed**.
 
 ## Next Session Goals
 
-1. Phase 3: Verification — Super Jacobi identity checks for C(n+1) structure constants
-2. Phase 4: Schema 2–4 extensions (gamma, evaluated, coboundary)
+1. Phase 4: Schema 2–4 extensions (gamma, evaluated, coboundary)
 3. Phase 5: Library comparison (T2) with Garli or similar
 4. Phase 6: Metrics collection and analysis

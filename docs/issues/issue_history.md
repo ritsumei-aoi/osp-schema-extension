@@ -54,10 +54,25 @@ A complete history of issue responses. Each issue's items and results are summar
 
 ---
 
+---
+
+## I04-1: Super Jacobi identity verification
+
+- **Date**: 2026-05-16
+- **Category**: verification
+- **Branch**: `ai/t1-schema-extension`
+- **Archive**: `docs/issues/done/issue_260516_04.md`
+
+### Items Addressed
+- ✅ Verification script `src/verify_C_structure.py` implemented (anti-symmetry + Super Jacobi)
+- ✅ All checks pass for n=1, 2, 3 after 8 bug fixes
+- ✅ Bug fixes documented with root cause analysis
+
 ## Statistics
 
 | Category | File Count | Total Items | Resolved | In Progress |
 |----------|-----------|------------|----------|-------------|
 | proposal | 2 | 10 | 10 | 0 |
 | implementation | 1 | 5 | 5 | 0 |
-| **Total** | **3** | **15** | **15** | **0** |
+| verification | 1 | 3 | 3 | 0 |
+| **Total** | **4** | **18** | **18** | **0** |
