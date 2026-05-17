@@ -1,41 +1,19 @@
-# Issue I01-1: C(n+1) basis and root system design
+Created:
+Category:
 
-**Date**: 
-**Status**: open
-**Model**: {Model Name}
-**Category**: proposal
-**Theme Working Branch**: study/thm01-02
+## I02-1. {Title}
 
-## Context & Background
-C(n+1) = osp(2|2n) uses a standard fermionic pair (a_1_p, a_1_m) instead of
-B(0,n)'s supplementary fermion a_0. This changes the basis structure, PBW
-ordering, and oscillator relations throughout the entire schema.
+### Background
 
-The existing B(0,n) implementation is available for reference at:
-https://github.com/ritsumei-aoi/osp-triviality
+### Requirements
 
-For C(n+1) root structure, refer to:
-Frappat et al., "Dictionary on Lie Algebras and Superalgebras", arXiv:hep-th/9607161
+### Supplementary Information
+#### Deliverable Format
 
-## Requirements
-1. Define even and odd basis lists for C(n+1) for n=1, 2, 3 (i.e., C(2), C(3), C(4)), following the Frappat notation.
-2. Determine PBW ordering with ε-roots, proposing concrete options for human selection.
-3. Design oscillator generator labels consistent with `handover/notation.md`.
-4. Update `handover/notation.md` with the finalized conventions.
+#### Related Folders/Files
 
-## Deliverables
-- Updated `handover/notation.md` documenting even/odd basis, PBW ordering, and generator labels.
+#### Related Issues
 
-## Completion Criteria
-- [ ] Even and odd basis lists are clearly defined for C(2), C(3), and C(4).
-- [ ] PBW ordering is decided and documented.
-- [ ] Notation conventions for the generators are finalized.
+### Completion Criteria
 
-## Trust Boundary & Workflow Note
-- **Human Approval Required**: The decision on PBW ordering must be approved by a human researcher before finalization.
-- **Iterative Dialogue Expected**: Propose concrete ordering options (at least two) and halt. **CRITICAL RULE**: Do NOT modify any files other than `issue_open.md` (append your proposals there), and do NOT create any commits until the human explicitly selects an option.
-
----
-### Response
-
-*(AI Agent: Please append your proposals, analysis, and execution logs here.)*
+- [ ] {Criterion 1}
