@@ -4,7 +4,7 @@
 **Status**: open
 **Model**: {Model Name}
 **Category**: proposal
-**Theme Working Branch**: study/thm{XX}-{YY}
+**Theme Working Branch**: study/thm01-02
 
 ## Context & Background
 C(n+1) = osp(2|2n) uses a standard fermionic pair (a_1_p, a_1_m) instead of
