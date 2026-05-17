@@ -1,1 +1,9 @@
-# Project Context\n\nRead the following files at the start of each session, in order:\n\n1. README.md (root)\n2. handover/README.md\n3. handover/workflow.md\n4. handover/ai_trust_policy.md\n5. docs/issues/issue_open.md
+# Project Context
+
+Read the following files at the start of each session, in order:
+
+1. README.md (root)
+2. handover/README.md
+3. handover/workflow.md
+4. handover/ai_trust_policy.md
+5. docs/issues/issue_open.md
