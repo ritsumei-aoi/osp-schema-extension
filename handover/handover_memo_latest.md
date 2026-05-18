@@ -5,14 +5,15 @@
 > Format definition: [handover_memo_format.md](handover_memo_format.md)
 
 **Date**: 2026-05-18
-**Issue**: I03-1 (Completed)
+**Issue**: I04-1 (Completed - FAILED with Root Cause Analysis)
 
 ## Accomplishments
-- Implemented the $C(n+1) = \mathfrak{osp}(2|2n)$ structure constant generator in `src/C_generators.py`.
-- Developed a comprehensive unit test suite in `tests/test_C_generators.py` covering dimension, parity, weight relations, and schema conformity.
-- Successfully generated Schema 1 JSON data (`C_1_structure.json`, `C_2_structure.json`, `C_3_structure.json`) in the `data/` directory.
-- All tests passed, and structure constants were verified to follow the finalized PBW ordering and CAR/CCR relations.
+- Implemented the Super Jacobi identity verification script `src/verify_C_structure.py`.
+- Performed mathematical verification on the $C(n+1)$ structure constants generated in I03.
+- Successfully identified a failure in the Super Jacobi identity across all ranks ($n=1, 2, 3$).
+- Conducted root cause analysis identifying normalization discrepancies ($E_{\pm 2\delta}$) and Cartan mapping errors in the oscillator realization logic.
+- Documented these findings in the archived Issue I04-1 report.
 
 ## Next Steps
-- Begin Issue I04-1: Implementation of Schema 2 (inhomogeneous deformation $\gamma$-structure) for $C(n+1)$.
-- Define the $\kappa$-central extension parameters for $C(n+1)$ analogous to the $B(0,n)$ implementation.
+- Address the identified discrepancies in the structure constant generator script (`src/C_generators.py`) in a subsequent correction cycle (I03 Correction).
+- Re-run verification once the generator logic is updated to use standard Lie superalgebra normalizations.
