@@ -8,14 +8,14 @@ The JSON data for each algebra is organized into 4 layers:
 
 | Layer | File pattern | Contents |
 |---|---|---|
-| Schema 1 | `<Family>_<n>_structure.json` | Algebra structure: basis, parity, oscillator realization, structure constants |
-| Schema 2 | `<Family>_<n>_gamma.json` | Inhomogeneous deformation (γ-structure) |
-| Schema 3 | `<Family>_<n>_evaluated_<gb>.json` | Numerically evaluated structure constants |
-| Schema 4 | `<Family>_<n>_coboundary_<gb>.json` | Coboundary data for triviality verification |
+| Schema 1 | `<Family>_{n}_structure.json` | Algebra structure: basis, parity, oscillator realization, structure constants |
+| Schema 2 | `<Family>_{n}_gamma.json` | Inhomogeneous deformation (γ-structure) |
+| Schema 3 | `<Family>_{n}_evaluated_<gb>.json` | Numerically evaluated structure constants |
+| Schema 4 | `<Family>_{n}_coboundary_<gb>.json` | Coboundary data for triviality verification |
 
 ### File Naming Conventions
-- **Family B**: `B_<n>_structure.json` (where `<n>` is the rank, e.g., $B(0,2)$ is `B_2_structure.json`)
-- **Family C**: `C_<n>_structure.json` (where `<n>` is the bosonic rank, e.g., $C(2)$ is `C_1_structure.json`)
+- **Family B**: `B_{n}_structure.json` (where `{n}` is the rank, e.g., $B(0,2)$ is `B_2_structure.json`)
+- **Family C**: `C_{n}_structure.json` (where `{n}` is the bosonic rank, e.g., $C(2)$ is `C_1_structure.json`)
 
 ---
 
@@ -51,11 +51,13 @@ Defines the algebraic family and dimensions.
 | `dimension.odd` | $2n$ | $4n$ |
 
 ### `oscillator_generators`
-Defines the oscillators used in the realization.
+Defines the oscillators used in the realization. Consists of two primary keys:
 
-- **Family B** uses a `supplementary_fermion` (label `a_0`).
-- **Family C** uses a `fermions` group (standard CAR pair `a_1_p`, `a_1_m`).
-- Both use a `bosons` group (`b_i_p`, `b_i_m`).
+- `fermions`: 
+  - For $B(0,n)$: uses `supplementary_fermion` (label `a_0`).
+  - For $C(n+1)$: uses standard CAR pair (`a_1_p`, `a_1_m`) with `m=1`.
+- `bosons`: 
+  - Standard bosonic oscillators (`b_i_p`, `b_i_m`) with rank `n`.
 
 ### `oscillator_relations`
 Defines the commutation/anticommutation relations.
@@ -65,7 +67,7 @@ Defines the commutation/anticommutation relations.
 - Both: `bosonic_commutators` ($[b_i^-, b_j^+] = \delta_{ij}$) and `mixed_relations`.
 
 ### `central_elements`
-Explicitly defines central elements for deformation.
+**Top-level key** explicitly defining central elements for deformation.
 
 ```json
 "central_elements": {
@@ -98,6 +100,6 @@ Oscillator words for each generator.
 
 Schema v5.0 maintains a consistent structure across families by:
 1. Using a unified `schema_version`.
-2. Grouping oscillators in `oscillator_generators` (allowing for both `supplementary_fermion` and standard `fermions`).
+2. Grouping oscillators in `oscillator_generators` under `fermions` and `bosons`.
 3. Providing family-specific blocks in `oscillator_relations`.
 4. Standardizing the 4-layer file architecture and PBW ordering across all extensions.
