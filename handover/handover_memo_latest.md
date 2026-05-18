@@ -5,14 +5,15 @@
 > Format definition: [handover_memo_format.md](handover_memo_format.md)
 
 **Date**: 2026-05-18
-**Issue**: I01-1 (Completed)
+**Issue**: I02-1 (Completed)
 
 ## Accomplishments
-- Defined $C(n+1) = \mathfrak{osp}(2|2n)$ basis and root system.
-- Established generator labels for bosonic/fermionic oscillators and root generators.
-- Finalized PBW ordering using **Option A** (Parity-based/Fermionic-first).
-- Documented all conventions and basis lists (for $n=1, 2, 3$) in `handover/notation.md`.
+- Designed Schema 1 v5.0 extension for $C(n+1) = \mathfrak{osp}(2|2n)$.
+- Updated `algebra`, `oscillator_generators`, and `oscillator_relations` fields for $C(n+1)$.
+- Introduced `central_elements` top-level key for explicit deformation parameters.
+- Standardized file naming conventions for the 4-layer schema architecture.
+- Created unified `docs/json_schema_specification.md` covering both $B(0,n)$ and $C(n+1)$ families.
 
 ## Next Steps
-- Begin Issue I02-1: Implementation of the $C(n+1)$ structure constant generator script.
-- Verify oscillator relations for the standard fermionic pair $a_1^\pm$ in the structure constant calculations.
+- Begin Issue I03-1: Implementation of the structure constant generation logic for $C(n+1)$.
+- Develop or update scripts (e.g., `src/build_C_structure_constants.py`) to produce the Schema 1 JSON files.
