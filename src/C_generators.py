@@ -23,9 +23,7 @@ class OscillatorOperator:
         return hash(self.label)
 
     def sort_key(self):
-        # Creation operators before annihilation operators
-        # a before b
-        # Lower index before higher index
+        # Normal order: Creation < Annihilation
         return (not self.is_creation, self.name, self.index)
 
 class OscillatorWord:
@@ -104,32 +102,22 @@ def normal_order(expr: OscillatorExpression) -> OscillatorExpression:
                     # a_p a_p = 0
                     word_changed = True
                     changed = True
-                    # This word becomes 0, so we don't add it to new_expr
                     break
 
-                # We want Creation < Annihilation
-                # If they are out of order, swap them
                 if op1.sort_key() > op2.sort_key():
-                    # Check if they are the same oscillator
                     if op1.name == op2.name and op1.index == op2.index and op1.is_creation != op2.is_creation:
-                        # Case a_m a_p or b_m b_p
+                        # Swap m and p
                         if op1.is_fermion:
                             # a_m a_p = 1 - a_p a_m
-                            term1 = OscillatorWord(ops_list[:i] + ops_list[i+2:], c)
-                            new_expr.add_word(term1)
-                            term2_ops = ops_list[:i] + [op2, op1] + ops_list[i+2:]
-                            new_expr.add_word(OscillatorWord(term2_ops, -c))
+                            new_expr.add_word(OscillatorWord(ops_list[:i] + ops_list[i+2:], c))
+                            new_expr.add_word(OscillatorWord(ops_list[:i] + [op2, op1] + ops_list[i+2:], -c))
                         else:
                             # b_m b_p = 1 + b_p b_m
-                            term1 = OscillatorWord(ops_list[:i] + ops_list[i+2:], c)
-                            new_expr.add_word(term1)
-                            term2_ops = ops_list[:i] + [op2, op1] + ops_list[i+2:]
-                            new_expr.add_word(OscillatorWord(term2_ops, c))
+                            new_expr.add_word(OscillatorWord(ops_list[:i] + ops_list[i+2:], c))
+                            new_expr.add_word(OscillatorWord(ops_list[:i] + [op2, op1] + ops_list[i+2:], c))
                     else:
-                        # Different oscillators or same type (p p or m m)
                         sign = -1 if (op1.is_fermion and op2.is_fermion) else 1
-                        term_ops = ops_list[:i] + [op2, op1] + ops_list[i+2:]
-                        new_expr.add_word(OscillatorWord(term_ops, c * sign))
+                        new_expr.add_word(OscillatorWord(ops_list[:i] + [op2, op1] + ops_list[i+2:], c * sign))
                     
                     word_changed = True
                     changed = True
@@ -163,55 +151,42 @@ def compute_bracket(e1: OscillatorExpression, e2: OscillatorExpression) -> Oscil
 class CGenerator:
     def __init__(self, n: int):
         self.n = n
-        self.fermions = [
-            OscillatorOperator("a", 1, True, True),
-            OscillatorOperator("a", 1, False, True)
-        ]
-        self.bosons = []
-        for i in range(1, n + 1):
-            self.bosons.append(OscillatorOperator("b", i, True, False))
-            self.bosons.append(OscillatorOperator("b", i, False, False))
-            
         self.generators: Dict[str, OscillatorExpression] = {}
         self.basis_even: List[str] = []
         self.basis_odd: List[str] = []
         self._build_basis()
 
     def _get_op(self, name: str, index: int, p_or_m: str) -> OscillatorOperator:
-        is_creation = (p_or_m == "p")
-        is_fermion = (name == "a")
-        return OscillatorOperator(name, index, is_creation, is_fermion)
+        return OscillatorOperator(name, index, p_or_m == "p", name == "a")
 
     def _build_basis(self):
         # 1. Odd Roots
-        a1p = self._get_op("a", 1, "p")
-        a1m = self._get_op("a", 1, "m")
-        
-        self.basis_odd = []
-        for eps_sign in ["p", "m"]:
-            a_op = a1p if eps_sign == "p" else a1m
-            for del_sign in ["p", "m"]:
+        for eps_s in ["p", "m"]:
+            for del_s in ["p", "m"]:
                 for k in range(1, self.n + 1):
-                    label = f"E_eps1_del{k}_{eps_sign}{del_sign}"
-                    b_op = self._get_op("b", k, del_sign)
-                    self.generators[label] = normal_order(OscillatorExpression([OscillatorWord([a_op, b_op])]))
+                    label = f"E_eps1_del{k}_{eps_s}{del_s}"
+                    self.generators[label] = normal_order(OscillatorExpression([
+                        OscillatorWord([self._get_op("a", 1, eps_s), self._get_op("b", k, del_s)])
+                    ]))
                     self.basis_odd.append(label)
 
         # 2. Even Cartan
-        self.basis_even = []
         for k in range(1, self.n + 2):
             label = f"H_{k}"
             if k == 1:
+                # H1 = N_a1 + N_b1
                 expr = OscillatorExpression([
                     OscillatorWord([self._get_op("a", 1, "p"), self._get_op("a", 1, "m")]),
                     OscillatorWord([self._get_op("b", 1, "p"), self._get_op("b", 1, "m")])
                 ])
             elif k <= self.n:
+                # Hk = N_b{k-1} - N_bk
                 expr = OscillatorExpression([
                     OscillatorWord([self._get_op("b", k-1, "p"), self._get_op("b", k-1, "m")]),
                     OscillatorWord([self._get_op("b", k, "p"), self._get_op("b", k, "m")], -1)
                 ])
             else:
+                # H{n+1} = -N_bn - 1/2
                 expr = OscillatorExpression([
                     OscillatorWord([self._get_op("b", self.n, "p"), self._get_op("b", self.n, "m")], -1),
                     OscillatorWord([], Fraction(-1, 2))
@@ -220,39 +195,32 @@ class CGenerator:
             self.basis_even.append(label)
 
         # 3. Even Roots
-        even_roots_pos = []
-        even_roots_neg = []
-        even_roots_mixed = []
-
+        even_pos, even_neg, even_mixed = [], [], []
+        
+        # E_2delk
         for k in range(1, self.n + 1):
-            p_label = f"E_2del{k}_p"
-            m_label = f"E_2del{k}_m"
-            self.generators[p_label] = normal_order(OscillatorExpression([OscillatorWord([self._get_op("b", k, "p"), self._get_op("b", k, "p")])]))
-            self.generators[m_label] = normal_order(OscillatorExpression([OscillatorWord([self._get_op("b", k, "m"), self._get_op("b", k, "m")])]))
-            even_roots_pos.append(p_label)
-            even_roots_neg.append(m_label)
+            lp, lm = f"E_2del{k}_p", f"E_2del{k}_m"
+            # Using coefficient 1 for (b+)^2 to stay consistent with the user's label
+            # But let's check if we should use 1/2. 
+            # If we use 1, then [E_p, E_m] = 4 * H_something.
+            self.generators[lp] = normal_order(OscillatorExpression([OscillatorWord([self._get_op("b", k, "p"), self._get_op("b", k, "p")])]))
+            self.generators[lm] = normal_order(OscillatorExpression([OscillatorWord([self._get_op("b", k, "m"), self._get_op("b", k, "m")])]))
+            even_pos.append(lp); even_neg.append(lm)
 
+        # E_del_del
         for i in range(1, self.n):
             for j in range(i + 1, self.n + 1):
-                labels = [f"E_del{i}_del{j}_pp", f"E_del{i}_del{j}_mm", f"E_del{i}_del{j}_pm", f"E_del{i}_del{j}_mp"]
-                ops = [
-                    ([self._get_op("b", i, "p"), self._get_op("b", j, "p")]),
-                    ([self._get_op("b", i, "m"), self._get_op("b", j, "m")]),
-                    ([self._get_op("b", i, "p"), self._get_op("b", j, "m")]),
-                    ([self._get_op("b", i, "m"), self._get_op("b", j, "p")])
-                ]
-                for label, op_list in zip(labels, ops):
-                    self.generators[label] = normal_order(OscillatorExpression([OscillatorWord(op_list)]))
-                    if "pp" in label: even_roots_pos.append(label)
-                    elif "mm" in label: even_roots_neg.append(label)
-                    else: even_roots_mixed.append(label)
+                for s1, s2 in [("p", "p"), ("m", "m"), ("p", "m"), ("m", "p")]:
+                    label = f"E_del{i}_del{j}_{s1}{s2}"
+                    self.generators[label] = normal_order(OscillatorExpression([
+                        OscillatorWord([self._get_op("b", i, s1), self._get_op("b", j, s2)])
+                    ]))
+                    if s1 == "p" and s2 == "p": even_pos.append(label)
+                    elif s1 == "m" and s2 == "m": even_neg.append(label)
+                    else: even_mixed.append(label)
 
-        even_roots_pos.sort()
-        even_roots_neg.sort()
-        even_roots_mixed.sort()
-        self.basis_even.extend(even_roots_pos)
-        self.basis_even.extend(even_roots_neg)
-        self.basis_even.extend(even_roots_mixed)
+        even_pos.sort(); even_neg.sort(); even_mixed.sort()
+        self.basis_even.extend(even_pos + even_neg + even_mixed)
 
     def identify_expression(self, expr: OscillatorExpression) -> List[Dict[str, Any]]:
         remaining = OscillatorExpression()
@@ -261,13 +229,10 @@ class CGenerator:
             
         results = []
         
-        # 1. Identify root generators (single words)
-        root_generators = {k: v for k, v in self.generators.items() if "H_" not in k}
-        # Sort to match longer words first? No, generators are all quadratic.
-        for name, gen_expr in root_generators.items():
-            gen_words = list(gen_expr.words.keys())
-            if not gen_words: continue
-            ref_word = gen_words[0]
+        # 1. Root generators (unique words)
+        root_gens = {k: v for k, v in self.generators.items() if "H_" not in k}
+        for name, gen_expr in root_gens.items():
+            ref_word = list(gen_expr.words.keys())[0]
             if ref_word in remaining.words:
                 coeff = remaining.words[ref_word] / gen_expr.words[ref_word]
                 results.append({"Z": name, "coeff": str(coeff)})
@@ -277,51 +242,50 @@ class CGenerator:
         if not remaining.words:
             return results
 
-        # 2. Identify Cartan generators and K
-        diag_words = [tuple()]
-        diag_words.append((self._get_op("a", 1, "p"), self._get_op("a", 1, "m")))
+        # 2. Cartan generators and K
+        # Basis for diagonal part: {K, Na1, Nb1, ..., Nbn}
+        diag_words = [tuple(), (self._get_op("a", 1, "p"), self._get_op("a", 1, "m"))]
         for i in range(1, self.n + 1):
             diag_words.append((self._get_op("b", i, "p"), self._get_op("b", i, "m")))
             
         target = [remaining.words.get(w, Fraction(0)) for w in diag_words]
         
-        # Solving for H_1, ..., H_{n+1}, K
-        # H_1 = N_a1 + N_b1
-        # H_2 = N_b1 - N_b2
-        # ...
-        # H_n = N_b{n-1} - N_bn
-        # H_{n+1} = -N_bn - 1/2
+        # Solve system: Matrix * Coeffs = Target
+        # H1 = Na1 + Nb1
+        # Hk = Nb{k-1} - Nbk
+        # H{n+1} = -Nbn - 1/2 K
+        # K = K
         
         h_coeffs = [Fraction(0)] * (self.n + 2)
-        # coeff(H_1) = target(N_a1)
+        # Na1 = coeff(H1) => coeff(H1) = target[1]
         if len(target) > 1:
             h_coeffs[1] = target[1]
-            # target(N_b1) = coeff(H_1) + coeff(H_2) => coeff(H_2) = target(N_b1) - coeff(H_1)
+            # Nb1 = coeff(H1) + coeff(H2) => coeff(H2) = Nb1 - H1
             if self.n >= 1:
-                if len(target) > 2:
-                    h_coeffs[2] = target[2] - h_coeffs[1]
-                    for k in range(2, self.n):
-                        # target(N_bk) = -coeff(H_k) + coeff(H_{k+1})
-                        h_coeffs[k+1] = target[k+1] + h_coeffs[k]
-                    # H_{n+1} has -N_bn
-                    # target(N_bn) = -coeff(H_n) - coeff(H_{n+1}) => coeff(H_{n+1}) = -target(N_bn) - coeff(H_n)
-                    # wait, let's re-verify H_{n+1}
-                    # H_{n+1} = -b_np b_nm - 1/2
-                    # so target(N_bn) = -coeff(H_n) - coeff(H_{n+1}) if n > 1
-                    # if n=1: H_1 = N_a1 + N_b1, H_2 = -N_b1 - 1/2.
-                    # target(N_b1) = coeff(H_1) - coeff(H_2) => coeff(H_2) = coeff(H_1) - target(N_b1)
-                    if self.n == 1:
-                        h_coeffs[2] = h_coeffs[1] - target[2]
-                    else:
-                        h_coeffs[self.n + 1] = h_coeffs[self.n] - target[self.n + 1]
+                h_coeffs[2] = target[2] - h_coeffs[1]
+                # Nbk = -coeff(Hk) + coeff(H{k+1}) if k < n
+                for k in range(2, self.n):
+                    h_coeffs[k+1] = target[k+1] + h_coeffs[k]
+                # Nbn = -coeff(Hn) - coeff(H{n+1}) if n > 1
+                if self.n > 1:
+                    h_coeffs[self.n + 1] = -target[self.n + 1] - h_coeffs[self.n]
+                else: # n=1 case: Nb1 = H1 + H2? No. 
+                    # If n=1: H1 = Na1 + Nb1, H2 = -Nb1 - 1/2.
+                    # Nb1 = H1 - (-Nb1) ... no.
+                    # Target: [K, Na1, Nb1]
+                    # H1: [0, 1, 1]
+                    # H2: [-1/2, 0, -1]
+                    # K: [1, 0, 0]
+                    # target[1] = Na1 = coeff(H1)
+                    # target[2] = Nb1 = coeff(H1) - coeff(H2) => coeff(H2) = coeff(H1) - target[2]
+                    h_coeffs[2] = h_coeffs[1] - target[2]
             
             for i in range(1, self.n + 2):
                 if h_coeffs[i] != 0:
                     results.append({"Z": f"H_{i}", "coeff": str(h_coeffs[i])})
                     gen_expr = self.generators[f"H_{i}"]
                     for w, c in gen_expr.words.items():
-                        if w == tuple():
-                            target[0] -= c * h_coeffs[i]
+                        if w == tuple(): target[0] -= c * h_coeffs[i]
         
         if target[0] != 0:
             results.append({"Z": "K", "coeff": str(target[0])})

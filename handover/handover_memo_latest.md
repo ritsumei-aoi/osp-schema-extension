@@ -5,15 +5,14 @@
 > Format definition: [handover_memo_format.md](handover_memo_format.md)
 
 **Date**: 2026-05-18
-**Issue**: I04-1 (Completed - FAILED with Root Cause Analysis)
+**Issue**: I04-1 (Recovery - PASSED)
 
 ## Accomplishments
-- Implemented the Super Jacobi identity verification script `src/verify_C_structure.py`.
-- Performed mathematical verification on the $C(n+1)$ structure constants generated in I03.
-- Successfully identified a failure in the Super Jacobi identity across all ranks ($n=1, 2, 3$).
-- Conducted root cause analysis identifying normalization discrepancies ($E_{\pm 2\delta}$) and Cartan mapping errors in the oscillator realization logic.
-- Documented these findings in the archived Issue I04-1 report.
+- Refactored `src/C_generators.py` to fix normalization discrepancies and Cartan mapping errors.
+- Implemented a systematic linear solver for identifying Cartan generators and identity elements.
+- Successfully verified $C(n+1)$ structure constants for $n=1, 2, 3$ using `src/verify_C_structure.py`.
+- Both **Graded Anti-symmetry** and **Super Jacobi Identity** now pass for all ranks.
+- Archived the recovery report in `docs/issues/done/issue_260518_04R.md`.
 
 ## Next Steps
-- Address the identified discrepancies in the structure constant generator script (`src/C_generators.py`) in a subsequent correction cycle (I03 Correction).
-- Re-run verification once the generator logic is updated to use standard Lie superalgebra normalizations.
+- Proceed to Issue I05-1: Schema 2 implementation (inhomogeneous deformation $\gamma$-structure).
