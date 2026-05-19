@@ -2,14 +2,13 @@ import json
 import os
 from fractions import Fraction
 from collections import defaultdict
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 
 class CCoboundaryGenerator:
-    def __init__(self, n: int, map_label: str = "cartan"):
+    def __init__(self, n: int):
         self.n = n
-        self.map_label = map_label
         self.s1_path = f"data/C_{n}_structure.json"
-        self.output_path = f"data/C_{n}_coboundary_{map_label}.json"
+        self.output_path = f"data/C_{n}_coboundary.json"
 
     def load_schema1(self) -> Dict[str, Any]:
         if not os.path.exists(self.s1_path):
@@ -17,74 +16,109 @@ class CCoboundaryGenerator:
         with open(self.s1_path, 'r') as f:
             return json.load(f)
 
-    def get_map_definition(self, basis_even: List[str], basis_odd: List[str]) -> Dict[str, int]:
-        phi = {}
-        # Default all to 0
-        all_gens = basis_even + basis_odd + ["K"]
-        for gen in all_gens:
-            phi[gen] = 0
-            
-        if self.map_label == "cartan":
-            # f(H_k) = 1, f(K) = 1
-            for gen in basis_even:
-                if gen.startswith("H_"):
-                    phi[gen] = 1
-            phi["K"] = 1
-        return phi
+    def get_odd_map_f(self, basis_even: List[str], basis_odd: List[str]) -> Dict[str, Dict[str, Fraction]]:
+        """
+        f: g -> g (odd map)
+        Returns a dict: source_gen -> {target_gen: coeff}
+        """
+        f_map = defaultdict(dict)
+        
+        # Approved Configuration:
+        # Even -> Odd: f(H_k) = E_eps1_del1_pp, f(K) = E_eps1_del1_pp
+        for gen in basis_even:
+            if gen.startswith("H_"):
+                f_map[gen]["E_eps1_del1_pp"] = Fraction(1)
+        f_map["K"]["E_eps1_del1_pp"] = Fraction(1)
+        
+        # Odd -> Even: f(E_eps1_del1_pp) = K
+        f_map["E_eps1_del1_pp"]["K"] = Fraction(1)
+        
+        return f_map
 
     def compute(self):
         s1 = self.load_schema1()
         basis_even = s1['basis']['even']
         basis_odd = s1['basis']['odd']
-        phi = self.get_map_definition(basis_even, basis_odd)
+        all_basis = basis_odd + basis_even + ["K"]
+        parity = s1['parity']
+        if "K" not in parity: parity["K"] = 0
         
-        # gamma_f(X, Y) = f([X, Y]_0) = sum_c f(Z_c) * C_{XY}^c
-        # results[(X, Y, Z_res)] = total_coeff
-        # Note: In Layer 4, we technically map to scalars, 
-        # but the JSON Schema 4 "Coboundary Matrix" usually records 
-        # the coefficients of the reference 2-cocycle.
-        # Since gamma_f is a map G x G -> R (scalars), 
-        # we store it as a list of entries with Z="K" (central identity) 
-        # to represent the scalar result in the algebra extension context.
+        f_map = self.get_odd_map_f(basis_even, basis_odd)
         
-        coboundary_results = defaultdict(Fraction)
-        
+        # Structure constants map: (X, Y) -> {Z: coeff}
+        sc = defaultdict(dict)
         for entry in s1['structure_constants']:
             X, Y, Z = entry['X'], entry['Y'], entry['Z']
-            coeff = Fraction(entry['coeff'])
-            
-            # contribution = phi(Z) * coeff
-            # Resulting Z in coboundary is always "K" (scalar part)
-            val = coeff * phi[Z]
-            if val != 0:
-                coboundary_results[(X, Y)] += val
+            sc[(X, Y)][Z] = Fraction(entry['coeff'])
 
-        gamma_f_list = []
-        for (X, Y), val in coboundary_results.items():
-            if val != 0:
-                gamma_f_list.append({
-                    "X": X,
-                    "Y": Y,
-                    "Z": "K", # Resulting scalar value associated with identity
-                    "coeff": str(val)
-                })
+        def get_bracket(X: str, Y: str) -> Dict[str, Fraction]:
+            if (X, Y) in sc: return sc[(X, Y)]
+            pX, pY = parity[X], parity[Y]
+            sign = -1 if (pX == 1 and pY == 1) else 1
+            if (Y, X) in sc:
+                return {Z: -val * sign for Z, val in sc[(Y, X)].items()}
+            return {}
 
-        # Sort for consistency
-        gamma_f_list.sort(key=lambda x: (x['X'], x['Y']))
+        def apply_f(X: str) -> Dict[str, Fraction]:
+            return f_map.get(X, {})
+
+        # (delta f)(X, Y) = (-1)^pX [X, f(Y)] - (-1)^{(pX+1)pY} [Y, f(X)] - f([X, Y])
+        coboundary_matrix = []
+
+        for i, X in enumerate(all_basis):
+            for j, Y in enumerate(all_basis):
+                pX, pY = parity[X], parity[Y]
+                
+                # Term 1: (-1)^pX [X, f(Y)]
+                t1 = defaultdict(Fraction)
+                s1_val = -1 if pX == 1 else 1
+                fY = apply_f(Y)
+                for W, cW in fY.items():
+                    br = get_bracket(X, W)
+                    for Z, cZ in br.items():
+                        t1[Z] += s1_val * cW * cZ
+
+                # Term 2: - (-1)^{(pX+1)pY} [Y, f(X)]
+                t2 = defaultdict(Fraction)
+                s2_val = - (-1 if ((pX + 1) == 1 and pY == 1) else 1)
+                fX = apply_f(X)
+                for W, cW in fX.items():
+                    br = get_bracket(Y, W)
+                    for Z, cZ in br.items():
+                        t2[Z] += s2_val * cW * cZ
+
+                # Term 3: - f([X, Y])
+                t3 = defaultdict(Fraction)
+                brXY = get_bracket(X, Y)
+                for Z, cZ in brXY.items():
+                    fZ = apply_f(Z)
+                    for W, cW in fZ.items():
+                        t3[W] -= cZ * cW
+
+                # Aggregate
+                total = defaultdict(Fraction)
+                for Z, val in t1.items(): total[Z] += val
+                for Z, val in t2.items(): total[Z] += val
+                for Z, val in t3.items(): total[Z] += val
+
+                for Z, val in total.items():
+                    if val != 0:
+                        coboundary_matrix.append({
+                            "X": X, "Y": Y, "Z": Z, "coeff": str(val)
+                        })
 
         data = {
             "schema_version": "5.0",
             "algebra": s1['algebra'],
-            "map_definition": {k: v for k, v in phi.items() if v != 0},
+            "map_definition": {k: {tk: str(tv) for tk, tv in v.items()} for k, v in f_map.items()},
             "coboundary_metadata": {
-                "label": self.map_label,
-                "formula": "gamma_f(X, Y) = f([X, Y]_0)",
-                "generated_by": "C_coboundary_generators.py"
+                "formula": "(delta f)(X, Y) = (-1)^pX [X, f(Y)] - (-1)^{(pX+1)pY} [Y, f(X)] - f([X, Y])",
+                "generated_by": "C_coboundary_generators.py",
+                "f_parity": 1
             },
-            "coboundary_structure": gamma_f_list
+            "coboundary_structure": coboundary_matrix
         }
 
-        os.makedirs("data", exist_ok=True)
         with open(self.output_path, 'w') as f:
             json.dump(data, f, indent=2)
         print(f"Generated {self.output_path}")
@@ -92,7 +126,7 @@ class CCoboundaryGenerator:
 if __name__ == "__main__":
     for n in [1, 2, 3]:
         try:
-            gen = CCoboundaryGenerator(n, "cartan")
+            gen = CCoboundaryGenerator(n)
             gen.compute()
         except FileNotFoundError as e:
             print(f"Skipping n={n}: {e}")
