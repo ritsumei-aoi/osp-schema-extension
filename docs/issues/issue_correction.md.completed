@@ -1,15 +1,18 @@
-# Issue Rework Request: I05-1 Final Symbolic Correction
+# Issue Rework Request: I07-1 Coboundary Recovery
 
-**Target Issue**: I05-1
+## 1. Human Feedback & Critique
+The previous construction of Layer 4 was based on a simplified linear functional definition rather than the correct superalgebra coboundary operator $\delta f$ for an odd map $f$. This resulted in an incorrect algebraic structure that cannot be used for triviality testing.
 
-## 1. AI Correction Plan
-Following feedback, I have updated the gamma generator script to utilize symbolic algebraic expressions (e.g., `-2*gb_a1p_b1p`) for the `coeff` fields instead of numerical constants. This ensures the output adheres to the theoretical requirements of Schema 2 for $C(n+1)$.
+## 2. AI Correction Plan
+- Replace the current coboundary logic in `src/C_coboundary_generator.py` with an implementation of the coboundary operator formula: 
+  $(\delta f)(X, Y) = (-1)^{p(X)}[X, f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y, f(X)] - f([X, Y])$.
+- Define an odd map $f$ that reverses parity.
+- Re-calculate the coboundary coefficients for all generator pairs $(X, Y)$ using the standard Lie superbracket structure constants (Layer 1).
+- Re-generate `C_n_coboundary.json` files.
 
-## 2. Execution Logs & Results
-The generator script now produces JSON files with symbolic coefficients.
-Example output for `C_1_gamma.json`:
-- `coeff`: `-2*gb_a1p_b1p`
+## 3. Execution Logs & Results
+The coboundary generator script was re-implemented using the formula $(\delta f)(X, Y) = (-1)^{p(X)}[X, f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y, f(X)] - f([X, Y])$. The Schema 4 JSON files for $n=1, 2, 3$ were successfully re-generated.
 
-## 3. Final Confirmation
-- [x] Schema 2 coefficients are symbolic.
-- [x] JSON files regenerated and verified.
+## 4. Final Confirmation
+- [x] Coboundary operator $\delta f$ implemented.
+- [x] Schema 4 JSON files regenerated correctly.
