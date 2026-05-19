@@ -1,0 +1,59 @@
+{
+  "schema_version": "5.0",
+  "layer": "4_coboundary",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "linear_map_f": {
+    "description": "Cartan-Restricted Configuration with K",
+    "map": {
+      "H_1": "phi_H_1",
+      "H_2": "phi_H_2",
+      "K": "phi_K"
+    }
+  },
+  "coboundary_matrix": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "coboundary_coeff": "-phi_H_1 - 2*phi_H_2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "coboundary_coeff": "phi_H_1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "coboundary_coeff": "phi_H_1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "coboundary_coeff": "-phi_H_1 - 2*phi_H_2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "coboundary_coeff": "4*phi_H_2"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "coboundary_coeff": "-4*phi_H_2"
+    }
+  ]
+}
