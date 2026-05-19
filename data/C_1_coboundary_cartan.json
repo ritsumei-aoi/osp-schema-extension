@@ -1,0 +1,48 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "map_definition": {
+    "H_1": 1,
+    "H_2": 1,
+    "K": 1
+  },
+  "coboundary_metadata": {
+    "label": "cartan",
+    "formula": "gamma_f(X, Y) = f([X, Y]_0)",
+    "generated_by": "C_coboundary_generators.py"
+  },
+  "coboundary_structure": [
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "K",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "K",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "K",
+      "coeff": "-3"
+    }
+  ]
+}
