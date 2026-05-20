@@ -1,0 +1,369 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm"
+    ],
+    "ordering_convention": "PBW: κ < [odd] < [even]  (K = 1 is excluded; see central_elements)"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1
+  },
+  "central_elements": {
+    "kappa": {
+      "parity": 0,
+      "relation": "kappa^2 = 0",
+      "description": "Formal central symbol for the nilpotent extension; recorded explicitly in the schema and excluded from basis lists."
+    },
+    "K": {
+      "parity": 0,
+      "relation": "K = 1",
+      "description": "Central identity element; recorded for completeness and excluded from basis lists."
+    }
+  },
+  "evaluation_profile": {
+    "name": "gb_zero",
+    "assignment_type": "explicit",
+    "description": "All gb deformation parameters are set to zero.",
+    "gb_values": {
+      "gb_a1p_b1p": "0",
+      "gb_a1p_b1m": "0",
+      "gb_a1m_b1p": "0",
+      "gb_a1m_b1m": "0"
+    }
+  },
+  "evaluated_structure_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": "4",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": "-4",
+      "sign_rule": "graded"
+    }
+  ],
+  "consistency_with_schema_2": {
+    "structure_file": "C_1_structure.json",
+    "gamma_file": "C_1_gamma.json",
+    "profile_matches_expected_gb_labels": true,
+    "profile_matches_gamma_matrix": true,
+    "evaluated_gamma_nonzero_count": 0,
+    "gb_zero_recovers_schema_1": true
+  },
+  "metadata": {
+    "generated_by": "src/C_evaluated.py",
+    "generation_date": "2026-05-20",
+    "references": [
+      "docs/math/C_inhomogeneous_definition.md",
+      "docs/json_schema_specification.md",
+      "data/C_1_structure.json",
+      "data/C_1_gamma.json"
+    ],
+    "profile_name": "gb_zero",
+    "structure_file": "C_1_structure.json",
+    "gamma_file": "C_1_gamma.json"
+  }
+}
