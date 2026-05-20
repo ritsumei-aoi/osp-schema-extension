@@ -21,6 +21,12 @@ class CEvaluatedTestCase(unittest.TestCase):
             self.assertEqual(list(profile["gb_values"].keys()), cgamma.gb_labels_in_order(n))
             self.assertTrue(all(value == Fraction(0) for value in profile["gb_values"].values()))
 
+    def test_gb_one_profile_covers_all_parameters_for_n_1_2_3(self) -> None:
+        for n in (1, 2, 3):
+            profile = cevaluated.build_profile_assignments(n, "gb_one")
+            self.assertEqual(list(profile["gb_values"].keys()), cgamma.gb_labels_in_order(n))
+            self.assertTrue(all(value == Fraction(1) for value in profile["gb_values"].values()))
+
     def test_zero_profile_annuls_known_gamma_entry(self) -> None:
         gamma_schema = cevaluated.load_gamma_schema(1)
         profile = cevaluated.build_profile_assignments(1, "gb_zero")
@@ -37,8 +43,21 @@ class CEvaluatedTestCase(unittest.TestCase):
             self.assertEqual(schema["evaluated_structure_constants"], structure_schema["structure_constants"])
             self.assertEqual(schema["evaluation_profile"]["name"], "gb_zero")
             self.assertEqual(schema["consistency_with_schema_2"]["evaluated_gamma_nonzero_count"], 0)
+            self.assertEqual(schema["evaluated_deformation"], [])
             self.assertTrue(schema["consistency_with_schema_2"]["profile_matches_gamma_matrix"])
             self.assertTrue(schema["consistency_with_schema_2"]["gb_zero_recovers_schema_1"])
+
+    def test_gb_one_deformation_matches_evaluated_gamma(self) -> None:
+        for n in (1, 2, 3):
+            schema = cevaluated.build_evaluated_schema(n, "gb_one")
+            gamma_schema = cevaluated.load_gamma_schema(n)
+            profile = cevaluated.build_profile_assignments(n, "gb_one")
+            self.assertEqual(
+                schema["evaluated_deformation"],
+                cevaluated.evaluate_gamma_matrix(gamma_schema, profile["gb_values"]),
+            )
+            self.assertGreater(schema["consistency_with_schema_2"]["evaluated_gamma_nonzero_count"], 0)
+            self.assertIn("K", {entry["Z"] for entry in schema["evaluated_deformation"]})
 
     def test_schema3_core_keys_for_n_1_2_3(self) -> None:
         expected_keys = {
@@ -48,7 +67,9 @@ class CEvaluatedTestCase(unittest.TestCase):
             "parity",
             "central_elements",
             "evaluation_profile",
+            "evaluation_relation",
             "evaluated_structure_constants",
+            "evaluated_deformation",
             "consistency_with_schema_2",
             "metadata",
         }

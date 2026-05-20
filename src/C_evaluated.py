@@ -32,14 +32,20 @@ def gamma_labels_from_schema(gamma_schema: dict[str, Any]) -> list[str]:
 
 
 def build_profile_assignments(n: int, profile_name: str) -> dict[str, Any]:
-    if profile_name != "gb_zero":
+    if profile_name not in {"gb_zero", "gb_one"}:
         raise ValueError(f"Unsupported evaluation profile: {profile_name}")
 
-    gb_values = {label: Fraction(0) for label in cgamma.gb_labels_in_order(n)}
+    value = Fraction(0 if profile_name == "gb_zero" else 1)
+    description = (
+        "All gb deformation parameters are set to zero."
+        if profile_name == "gb_zero"
+        else "All gb deformation parameters are set to 1."
+    )
+    gb_values = {label: value for label in cgamma.gb_labels_in_order(n)}
     return {
         "name": profile_name,
         "assignment_type": "explicit",
-        "description": "All gb deformation parameters are set to zero.",
+        "description": description,
         "gb_values": gb_values,
     }
 
@@ -147,7 +153,9 @@ def build_evaluated_schema(
         "parity": structure_schema["parity"],
         "central_elements": structure_schema["central_elements"],
         "evaluation_profile": serialize_profile(profile),
+        "evaluation_relation": "[X, Y]_eval = [X, Y]_0 + kappa * gamma_eval(X, Y)",
         "evaluated_structure_constants": deepcopy(structure_schema["structure_constants"]),
+        "evaluated_deformation": evaluated_gamma_entries,
         "consistency_with_schema_2": build_consistency_report(
             n,
             profile_name,
@@ -178,7 +186,12 @@ def write_evaluated_json(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate C(n+1) Schema 3 evaluated JSON files.")
-    parser.add_argument("--profile", choices=("gb_zero",), required=True, help="Approved gb evaluation profile")
+    parser.add_argument(
+        "--profile",
+        choices=("gb_zero", "gb_one"),
+        required=True,
+        help="Approved gb evaluation profile",
+    )
     parser.add_argument("--n", type=int, choices=(1, 2, 3), help="Bosonic rank n to generate")
     parser.add_argument("--all", action="store_true", help="Generate n=1,2,3")
     parser.add_argument("--out", type=Path, help="Output file path for a single n run")

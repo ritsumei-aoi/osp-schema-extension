@@ -11,6 +11,7 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 import C_coboundary as ccob
+import C_evaluated as cevaluated
 import C_generators as cg
 
 
@@ -61,6 +62,12 @@ class CCoboundaryTestCase(unittest.TestCase):
             schema = ccob.build_coboundary_schema(n, "gb_one")
             self.assertEqual(schema["conclusion"]["classification"], "Non-trivial")
             self.assertGreater(schema["rank_verification"]["augmented_rank"], schema["rank_verification"]["operator_rank"])
+
+    def test_layer3_gb_one_matches_layer4_target_cocycle_for_n_1_2_3(self) -> None:
+        for n in (1, 2, 3):
+            evaluated = cevaluated.build_evaluated_schema(n, "gb_one")
+            coboundary = ccob.build_coboundary_schema(n, "gb_one")
+            self.assertEqual(evaluated["evaluated_deformation"], coboundary["target_cocycle"])
 
 
 if __name__ == "__main__":
