@@ -2,7 +2,7 @@
 
 **Date**: 
 **Status**: open
-**Model**: {Model Name}
+**Model**: Gemma-4-31b-it
 **Category**: proposal
 **Theme Working Branch**: study/thm01-06
 
