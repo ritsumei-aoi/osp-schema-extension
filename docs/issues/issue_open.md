@@ -2,7 +2,7 @@
 
 **Date**: 
 **Status**: open
-**Model**: {Model Name}
+**Model**: GPT-5.4
 **Category**: proposal
 **Theme Working Branch**: study/thm01-05
 
