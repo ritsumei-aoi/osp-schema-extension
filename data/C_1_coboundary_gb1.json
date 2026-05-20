@@ -1,0 +1,43 @@
+{
+  "schema_version": "5.0",
+  "schema_layer": 4,
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "gb_assignment": {
+    "profile": "gb1",
+    "description": "All 4 gb parameters set to 1"
+  },
+  "coboundary_analysis": {
+    "coboundary_formula": "(-1)^{p(X)} [X,f(Y)] - (-1)^{(p(X)+1)p(Y)} [Y,f(X)] - f([X,Y])",
+    "f_space": "full space of parity-reversing odd linear maps g \u2192 g",
+    "f_parameter_count": 32,
+    "coboundary_operator_rows": 110,
+    "rank_coboundary_operator": 28,
+    "rank_augmented_matrix": 29,
+    "is_coboundary": false,
+    "conclusion": "The gb1 deformation gamma is NOT a coboundary in H^2(g;g). The inhomogeneous deformation of C(2) = osp(2|2) with all gb=1 is NON-TRIVIAL (a genuinely new algebra)."
+  },
+  "metadata": {
+    "generated_by": "C_coboundary.py",
+    "generation_date": "2026-05-20",
+    "issue": "I07-1",
+    "source_schema1": "C_1_structure.json",
+    "source_schema3": "C_1_evaluated_gb1.json",
+    "references": [
+      "docs/math/C_coboundary_definition.md"
+    ]
+  }
+}
