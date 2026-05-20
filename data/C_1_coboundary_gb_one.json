@@ -1,0 +1,5020 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm"
+    ],
+    "ordering_convention": "PBW: κ < [odd] < [even]  (K = 1 is excluded; see central_elements)"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1
+  },
+  "central_elements": {
+    "kappa": {
+      "parity": 0,
+      "relation": "kappa^2 = 0",
+      "description": "Formal central symbol for the nilpotent extension; recorded explicitly in the schema and excluded from basis lists."
+    },
+    "K": {
+      "parity": 0,
+      "relation": "K = 1",
+      "description": "Central identity element; recorded for completeness and excluded from basis lists."
+    }
+  },
+  "evaluation_profile": {
+    "name": "gb_one",
+    "assignment_type": "explicit",
+    "description": "All gb deformation parameters are set to 1.",
+    "gb_values": {
+      "gb_a1p_b1p": "1",
+      "gb_a1p_b1m": "1",
+      "gb_a1m_b1p": "1",
+      "gb_a1m_b1m": "1"
+    }
+  },
+  "coboundary_map": {
+    "type": "odd parity-reversing linear map",
+    "configuration": "full_basis_linear",
+    "parameter_count": 32,
+    "parameters": [
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m"
+      }
+    ],
+    "coboundary_coefficients": [
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_1",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_pm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mp_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "H_2",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_p",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_eps1_del1_mm_from_E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm",
+        "X": "E_2del1_m",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "E_2del1_m",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_m",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_m",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_2",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_1",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_p",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_1",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "H_1",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_2",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "H_1",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_1",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_1",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_1_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "H_2",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "H_2",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_H_2_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_pm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mp",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "E_2del1_p",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "E_2del1_p",
+        "coeff": "3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_p",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_p",
+        "coeff": "-3",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_p_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mm",
+        "coeff": "2",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "E_2del1_m",
+        "coeff": "-1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "H_2",
+        "coeff": "-4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_2del1_m",
+        "coeff": "1",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "H_2",
+        "coeff": "4",
+        "sign_rule": "graded"
+      },
+      {
+        "parameter": "phi_E_2del1_m_from_E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m",
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "-2",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "target_cocycle": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "K",
+      "coeff": "-1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "K",
+      "coeff": "1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "K",
+      "coeff": "-1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "K",
+      "coeff": "1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "K",
+      "coeff": "1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "K",
+      "coeff": "-1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "K",
+      "coeff": "1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "K",
+      "coeff": "-1/2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "K",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "K",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    }
+  ],
+  "rank_verification": {
+    "operator_rank": 28,
+    "augmented_rank": 29,
+    "basis_augmented_rank": 29,
+    "target_nonzero_count": 116,
+    "target_basis_nonzero_count": 96,
+    "target_k_nonzero_count": 20,
+    "k_component_nonzero": true,
+    "basis_component_in_image": false,
+    "is_trivial": false,
+    "obstruction_source": "K-and-basis"
+  },
+  "conclusion": {
+    "classification": "Non-trivial",
+    "statement": "For n=1 and profile gb_one, the evaluated deformation does not lie in the coboundary image.",
+    "witness": "Non-trivial because both K-components and basis components remain outside the coboundary image.",
+    "obstruction_source": "K-and-basis"
+  },
+  "metadata": {
+    "generated_by": "src/C_coboundary.py",
+    "generation_date": "2026-05-20",
+    "references": [
+      "docs/math/C_coboundary_definition.md",
+      "docs/math/C_inhomogeneous_definition.md",
+      "data/C_1_structure.json",
+      "data/C_1_gamma.json"
+    ],
+    "profile_name": "gb_one",
+    "structure_file": "C_1_structure.json",
+    "gamma_file": "C_1_gamma.json"
+  }
+}
