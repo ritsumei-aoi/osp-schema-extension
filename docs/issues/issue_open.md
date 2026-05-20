@@ -2,7 +2,7 @@
 
 **Date**: 
 **Status**: open
-**Model**: {Model Name}
+**Model**: Claude Sonnet 4.6
 **Category**: proposal
 **Theme Working Branch**: study/thm01-04
 
