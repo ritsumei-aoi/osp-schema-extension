@@ -1,4 +1,4 @@
-# Mathematical Definition of Coboundary Operator for C(n+1)
+# Mathematical Definition of Coboundary Operator for C(n+1) (revised)
 
 This document defines the coboundary operator used for triviality analysis of deformations of $C(n+1) = \mathfrak{osp}(2|2n)$.
 
@@ -20,9 +20,9 @@ Where $[ \cdot, \cdot ]$ is the standard Lie superalgebra bracket.
 
 ## 3. Triviality Condition
 
-A deformation $\gamma$ is trivial if and only if there exists an odd linear map $f: \mathfrak{g} \to \mathfrak{g}$ such that:
+A deformation $\gamma$ is trivial if and only if there exists an odd linear map $f: \mathfrak{g} \to \mathfrak{g}$ such that $\gamma$ is equal to the cobundary $\delta f$ as an adjoint representation, i.e., 
 $$ \gamma(X, Y) = (\delta f)(X, Y) $$
-for all $X, Y \in \mathfrak{g}$.
+for all $X, Y \in \mathfrak{g}$ up to scalar.
 
 ### Parameterization of $f$
 The map $f$ can be parameterized by coefficients $\phi_{ij}$ such that:

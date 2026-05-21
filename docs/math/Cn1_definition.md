@@ -1,4 +1,4 @@
-# Mathematical Definition of C(n+1) = osp(2|2n)
+# Mathematical Definition of C(n+1) = osp(2|2n) (revised)
 
 This document provides the self-contained mathematical definition of
 $C(n+1) = \mathfrak{osp}(2|2n)$ and its differences from $B(0,n)$.
