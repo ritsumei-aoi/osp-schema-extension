@@ -650,6 +650,193 @@ def run_direct_projection_tests(n_values=(1, 2, 3)):
 
 
 # ============================================================
+# Section 2d: Full-Vector Span Check via Weight Decomposition
+# (Response to Third Review: "Decomposition Error" Charge)
+# ============================================================
+#
+# The third reviewer claims our analysis commits a "Decomposition Error"
+# by checking scalar and N_{b_j} parts separately. They demand:
+#   1. Check if the ENTIRE operator result lies in span{ρ(H_1),...,ρ(H_{n+1})}.
+#   2. Prove the entire result vector is unreachable if a residual exists.
+#
+# MATHEMATICAL FRAMEWORK: Weight-space decomposition of End(V).
+# The Fock space V carries an action of the Cartan generators by diagonal
+# operators. End(V) decomposes canonically into eigenspaces (weight sectors)
+# under the adjoint action of those Cartan generators:
+#
+#   End(V) = ⊕_{weights λ} End(V)_λ
+#
+# The weight-0 (Cartan) sector is span{N_a, N_{b_1},...,N_{b_n}, I}.
+# All root operators {(b_k^±)², b_k^± b_l^±, ...} lie in nonzero weight sectors.
+#
+# This decomposition is CANONICAL (determined by the algebra, not by any
+# arbitrary choice), so projecting onto weight-0 is NOT a "decomposition error".
+#
+# PROJECTION METHOD: for γ(H_{j+1}, F(σ,j,s)) to lie in ρ(g), its weight-0
+# component must lie in span{ρ(H_k)}.  Root-sector components are automatically
+# g-valued (they ARE images of root generators in ρ(g)).  We check the weight-0
+# component as a SINGLE vector — exactly as the third reviewer demands.
+# ============================================================
+
+def compute_gamma_diagonal_component(n, j, s, gb_val):
+    """
+    Compute the Cartan-sector (weight-0) component of γ(H_{j+1}, F(σ,j,s))
+    as an operator vector in the (n+2)-dimensional space
+        span{N_a, N_{b_1}, ..., N_{b_n}, I}
+    using gb = gb_val for the relevant parameter.
+
+    From the oscillator computation (see Section 2a docstring):
+
+    For j = n  (H_{n+1} = -N_{b_n} - 1/2):
+        s = '+':  γ = gb(N_{b_n}+1) + root_terms
+            Diagonal component: N_{b_n} = +gb,  I = +gb
+        s = '-':  γ = gb·N_{b_n} + root_terms
+            Diagonal component: N_{b_n} = +gb,  I = 0
+
+    For j < n  (H_{j+1} = N_{b_j} - N_{b_{j+1}}):
+        s = '+':  γ = -gb(N_{b_j}+1) + root_terms
+            Diagonal component: N_{b_j} = -gb,  I = -gb
+        s = '-':  γ = -gb·N_{b_j} + root_terms
+            Diagonal component: N_{b_j} = -gb,  I = 0
+
+    Note: for s='-' the I coordinate of the target vector is zero, yet
+    the linear system is still inconsistent: the N_{b_j} equation forces
+    c_{n+1} ≠ 0, while the I equation forces c_{n+1} = 0.  The full-vector
+    check exposes this without any monomial splitting.
+
+    Returns:
+        list of Fraction: vector [N_a, N_{b_1}, ..., N_{b_n}, I]
+                          with N_{b_j} at index j (1-based) and I at index n+1.
+    """
+    gb = Fraction(gb_val)
+    vec = [Fraction(0)] * (n + 2)   # indices: 0=N_a, 1=N_{b_1},...,n=N_{b_n}, n+1=I
+    if j == n:
+        vec[n] += gb            # N_{b_n} component (both s=+ and s=-)
+        if s == '+':
+            vec[n + 1] += gb    # I component only for s='+'
+    else:                       # j < n
+        vec[j] -= gb            # N_{b_j} component (index j, 1-based in the vec)
+        if s == '+':
+            vec[n + 1] -= gb    # I component only for s='+'
+    return vec
+
+
+def full_vector_cartan_span_check(n, target_vec, label=""):
+    """
+    Check whether the operator vector `target_vec` in
+        span{N_a, N_{b_1}, ..., N_{b_n}, I}
+    lies in span{ρ(H_1), ..., ρ(H_{n+1})} using Gaussian elimination
+    with exact Fraction arithmetic.
+
+    This is the FULL-VECTOR check demanded by the third reviewer: the target
+    can have arbitrary components across all n+2 coordinates simultaneously
+    (both N_{b_j} and I together), without any monomial splitting.
+
+    Returns:
+        dict with system equations, consistency flag, and verdict.
+    """
+    n_rows = n + 2      # N_a, N_{b_1}, ..., N_{b_n}, I
+    n_cols = n + 1      # alpha_1, ..., alpha_{n+1}
+    col_labels = [f"alpha_{k}" for k in range(1, n + 2)]
+    row_labels = ["N_a"] + [f"N_b{j}" for j in range(1, n + 1)] + ["I"]
+
+    # Build coefficient matrix from official H_k definitions
+    A = [[Fraction(0)] * n_cols for _ in range(n_rows)]
+    # H_1 = N_a + N_{b_1}
+    A[0][0] = Fraction(1)    # N_a row
+    A[1][0] = Fraction(1)    # N_{b_1} row
+    # H_k = N_{b_{k-1}} - N_{b_k}  for k=2,...,n
+    for k in range(2, n + 1):
+        A[k - 1][k - 1] = Fraction(1)     # N_{b_{k-1}} row
+        A[k][k - 1]     = Fraction(-1)    # N_{b_k} row
+    # H_{n+1} = -N_{b_n} - 1/2
+    A[n][n]     = Fraction(-1)      # N_{b_n} row
+    A[n + 1][n] = Fraction(-1, 2)   # I row
+
+    b = [Fraction(v) for v in target_vec]
+    aug = [A[i][:] + [b[i]] for i in range(n_rows)]
+
+    # Gaussian elimination (exact Fraction arithmetic)
+    pivot_row = 0
+    for col in range(n_cols):
+        pr = next((r for r in range(pivot_row, n_rows) if aug[r][col] != 0), None)
+        if pr is None:
+            continue
+        aug[pivot_row], aug[pr] = aug[pr], aug[pivot_row]
+        piv = aug[pivot_row][col]
+        for row in range(n_rows):
+            if row != pivot_row and aug[row][col] != 0:
+                factor = aug[row][col] / piv
+                aug[row] = [aug[row][c] - factor * aug[pivot_row][c]
+                            for c in range(n_cols + 1)]
+        pivot_row += 1
+
+    inconsistencies = [
+        {"row_index": i, "equation": f"0 = {row[n_cols]}  (inconsistent!)"}
+        for i, row in enumerate(aug)
+        if all(row[c] == 0 for c in range(n_cols)) and row[n_cols] != 0
+    ]
+
+    equations = []
+    for i in range(n_rows):
+        lhs_terms = [f"({A[i][c]})*{col_labels[c]}" for c in range(n_cols) if A[i][c] != 0]
+        lhs = " + ".join(lhs_terms) if lhs_terms else "0"
+        equations.append(f"{row_labels[i]}: {lhs} = {b[i]}")
+
+    return {
+        "label": label,
+        "n": n,
+        "target_vec": [str(v) for v in target_vec],
+        "system_equations": equations,
+        "inconsistencies": inconsistencies,
+        "system_consistent": len(inconsistencies) == 0,
+        "verdict": (
+            "Target vector lies IN span of official Cartan generators."
+            if len(inconsistencies) == 0 else
+            "Target vector does NOT lie in span of official Cartan generators.  "
+            "Full-vector obstruction confirmed."
+        ),
+    }
+
+
+def run_full_vector_checks(n_values=(1, 2, 3)):
+    """
+    Run full-vector span checks for all (j, s) obstruction cases, n=1,2,3.
+
+    This directly addresses the third reviewer's demand: check whether the
+    ENTIRE Cartan-sector component of γ(H_{j+1}, F(σ,j,s)) — treated as one
+    vector in span{N_a, N_{b_j}, I} — lies in span{ρ(H_k)}, without splitting
+    into N_{b_j} and I parts.
+
+    For each n and each pair (j, s) with gb=1:
+      1. Compute the full diagonal vector (both N_{b_j} and I components together).
+      2. Check consistency of Σ c_k ρ(H_k) = target_vec via Gaussian elimination.
+      3. Assert the system is inconsistent (full-vector obstruction confirmed).
+
+    Returns:
+        dict mapping n -> list of check results for all (j, s) pairs.
+    """
+    all_results = {}
+    for n in n_values:
+        results = []
+        for j in range(1, n + 1):
+            for s in ['+', '-']:
+                target = compute_gamma_diagonal_component(n, j, s, gb_val=1)
+                label = (f"n={n}, j={j}, s={s}: "
+                         f"target={[str(v) for v in target]}")
+                check = full_vector_cartan_span_check(n, target, label=label)
+                assert not check["system_consistent"], (
+                    f"FAIL: full-vector check should be inconsistent "
+                    f"for n={n}, j={j}, s={s}"
+                )
+                results.append(check)
+        all_results[n] = results
+        print(f"  n={n}: {len(results)} full-vector checks, "
+              f"all show obstruction (system inconsistent).")
+    return all_results
+
+
+# ============================================================
 # Section 3: Triviality Check
 # ============================================================
 
@@ -832,6 +1019,7 @@ def build_artifact(n_values=(1, 2, 3)):
             for n in n_values
         },
         "rebuttal_direct_projection": run_direct_projection_tests(n_values),
+        "rebuttal_full_vector_checks": run_full_vector_checks(n_values),
         "verification_by_n": []
     }
 
@@ -919,6 +1107,30 @@ if __name__ == "__main__":
             print(f"    {step}")
         print(f"  => {res['verdict']}")
         print()
+
+    print()
+    print("=" * 60)
+    print("SECTION 2d: Full-Vector Span Check (Third Review Response)")
+    print("=" * 60)
+    print("Checking whether the ENTIRE Cartan-sector component of")
+    print("γ(H_{j+1}, F(σ,j,s)) lies in span{ρ(H_k)} without monomial splitting.")
+    print()
+    for n, checks in artifact["rebuttal_full_vector_checks"].items():
+        print(f"  n={n}:")
+        for chk in checks:
+            lbl = chk["label"]
+            consistent = chk["system_consistent"]
+            incons = chk["inconsistencies"]
+            status = "CONSISTENT (no obstruction)" if consistent else f"INCONSISTENT ({len(incons)} contradiction(s))"
+            print(f"    {lbl}")
+            print(f"      => {status}")
+            if not consistent:
+                for inc in incons:
+                    print(f"         {inc['equation']}")
+        print()
+    print("All full-vector checks confirm: the entire Cartan-sector target vector")
+    print("is NOT reachable by any linear combination of the official Cartan images.")
+    print("Full-vector obstruction confirmed for all (j,s) pairs and n=1,2,3.")
 
     print("\nVerification complete.")
 

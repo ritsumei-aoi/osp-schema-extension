@@ -258,6 +258,310 @@
       "verdict": "target_scalar=1/2 is NOT in the span of the official Cartan generators.  Reviewer's absorption claim is FALSE."
     }
   },
+  "rebuttal_full_vector_checks": {
+    "1": [
+      {
+        "label": "n=1, j=1, s=+: target=['0', '1', '1']",
+        "n": 1,
+        "target_vec": [
+          "0",
+          "1",
+          "1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (-1)*alpha_2 = 1",
+          "I: (-1/2)*alpha_2 = 1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 2,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=1, j=1, s=-: target=['0', '1', '0']",
+        "n": 1,
+        "target_vec": [
+          "0",
+          "1",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (-1)*alpha_2 = 1",
+          "I: (-1/2)*alpha_2 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 2,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      }
+    ],
+    "2": [
+      {
+        "label": "n=2, j=1, s=+: target=['0', '-1', '0', '-1']",
+        "n": 2,
+        "target_vec": [
+          "0",
+          "-1",
+          "0",
+          "-1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = -1",
+          "N_b2: (-1)*alpha_2 + (-1)*alpha_3 = 0",
+          "I: (-1/2)*alpha_3 = -1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 3,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=2, j=1, s=-: target=['0', '-1', '0', '0']",
+        "n": 2,
+        "target_vec": [
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = -1",
+          "N_b2: (-1)*alpha_2 + (-1)*alpha_3 = 0",
+          "I: (-1/2)*alpha_3 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 3,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=2, j=2, s=+: target=['0', '0', '1', '1']",
+        "n": 2,
+        "target_vec": [
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (-1)*alpha_3 = 1",
+          "I: (-1/2)*alpha_3 = 1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 3,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=2, j=2, s=-: target=['0', '0', '1', '0']",
+        "n": 2,
+        "target_vec": [
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (-1)*alpha_3 = 1",
+          "I: (-1/2)*alpha_3 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 3,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      }
+    ],
+    "3": [
+      {
+        "label": "n=3, j=1, s=+: target=['0', '-1', '0', '0', '-1']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "-1",
+          "0",
+          "0",
+          "-1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = -1",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = 0",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 0",
+          "I: (-1/2)*alpha_4 = -1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=3, j=1, s=-: target=['0', '-1', '0', '0', '0']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = -1",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = 0",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 0",
+          "I: (-1/2)*alpha_4 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=3, j=2, s=+: target=['0', '0', '-1', '0', '-1']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "0",
+          "-1",
+          "0",
+          "-1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = -1",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 0",
+          "I: (-1/2)*alpha_4 = -1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=3, j=2, s=-: target=['0', '0', '-1', '0', '0']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = -1",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 0",
+          "I: (-1/2)*alpha_4 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=3, j=3, s=+: target=['0', '0', '0', '1', '1']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = 0",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 1",
+          "I: (-1/2)*alpha_4 = 1"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = 1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      },
+      {
+        "label": "n=3, j=3, s=-: target=['0', '0', '0', '1', '0']",
+        "n": 3,
+        "target_vec": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        "system_equations": [
+          "N_a: (1)*alpha_1 = 0",
+          "N_b1: (1)*alpha_1 + (1)*alpha_2 = 0",
+          "N_b2: (-1)*alpha_2 + (1)*alpha_3 = 0",
+          "N_b3: (-1)*alpha_3 + (-1)*alpha_4 = 1",
+          "I: (-1/2)*alpha_4 = 0"
+        ],
+        "inconsistencies": [
+          {
+            "row_index": 4,
+            "equation": "0 = -1/2  (inconsistent!)"
+          }
+        ],
+        "system_consistent": false,
+        "verdict": "Target vector does NOT lie in span of official Cartan generators.  Full-vector obstruction confirmed."
+      }
+    ]
+  },
   "verification_by_n": [
     {
       "n": 1,

@@ -317,7 +317,130 @@ reviewer's demands:
 The scalar obstruction of ±gb/2 cannot be absorbed into g.  **The original theorem stands.**
 
 
-## 8. Final Conclusion
+## 8. Response to Third Review: "Decomposition Error" Charge
+
+### 8.1 The Reviewer's Claim
+
+The third reviewer asserts that our proof commits a "Decomposition Error" by checking scalar
+and N_{b_j} parts of γ separately.  The reviewer's argument:
+
+> "The Cartan generators include constant terms (e.g., ρ(H_{n+1}) = −N_{b_n} − 1/2), so a
+> scalar is only an obstruction if it remains *after* expressing the ENTIRE operator result as
+> a linear combination of the images {ρ(H_1), ..., ρ(H_{n+1})}.  By splitting the result
+> into N_{b_j} and constants and checking them separately, you commit a Decomposition Error."
+
+The reviewer demands: (1) re-calculate without splitting into monomials, (2) test if the
+ENTIRE vector lies in span{ρ(H_k)}, (3) prove the full result vector is not reachable.
+
+### 8.2 Mathematical Framework: Weight-Space Decomposition Is Canonical
+
+The reviewer mischaracterises the weight-space decomposition of End(V) as an "arbitrary splitting".
+It is not.  The Fock space V = ⊕ span{|m_a, m_1, ..., m_n⟩} carries the adjoint action of the
+Cartan generators, and End(V) decomposes into **canonical eigenspaces**:
+
+    End(V) = ⊕_λ  End(V)_λ
+
+where λ runs over weights of the g-action.  The weight-0 (Cartan) sector is
+
+    End(V)_0 = span{N_a, N_{b_1}, ..., N_{b_n}, I}.
+
+Each root sector End(V)_{±λ} is spanned by root operators (b_k^±)², b_k^± b_l^±, etc.
+
+These eigenspaces are **orthogonal** (they correspond to distinct eigenvalues of the adjoint
+Cartan action) and the decomposition is determined entirely by the algebra structure — not by
+any basis choice.  This is the standard Cartan–Weyl framework.
+
+For γ(H_{j+1}, F(σ,j,s)) to lie in ρ(g), each weight-sector component must separately be
+expressible as a linear combination of the corresponding ρ(g)-sector.  Root-sector components
+of γ are automatically g-valued (they ARE images of root generators).  Therefore the only
+check required is whether the **weight-0 component** (as a single vector) lies in
+span{ρ(H_1), ..., ρ(H_{n+1})}.
+
+### 8.3 The Full-Vector Span Check
+
+We compute the weight-0 component of γ(H_{j+1}, F(σ,j,s)) as a **single vector** in
+span{N_a, N_{b_1}, ..., N_{b_n}, I} and test directly (without any monomial splitting) whether
+it belongs to span{ρ(H_k)}.  This is exactly the test the third reviewer demands.
+
+**From the oscillator computation (combined form):**
+
+| j | s | Weight-0 component of γ |
+|---|---|-------------------------|
+| j = n | + | +gb · N_{b_n} + gb · I |
+| j = n | − | +gb · N_{b_n}           |
+| j < n | + | −gb · N_{b_j} − gb · I |
+| j < n | − | −gb · N_{b_j}           |
+
+Note: for s = '−', the I-coordinate in the target vector is **zero** — we do not claim the
+identity appears explicitly.  Nevertheless, as the linear system below shows, the system
+is still inconsistent.
+
+**The linear system** to express the target as Σ α_k ρ(H_k) is:
+
+    N_a row:          α_1 = 0
+    N_{b_1} row:      α_1 + α_2 = target[1]
+    N_{b_k} row (k=2..n−1): −α_k + α_{k+1} = target[k]
+    N_{b_n} row:      −α_n − α_{n+1} = target[n]
+    I row:            −(1/2) α_{n+1} = target[n+1]
+
+**The universal contradiction:** the N_{b_j} equations cascade to force a unique value of
+α_{n+1}, while the I equation independently constrains α_{n+1}.  These two requirements are
+inconsistent for any nonzero gb.
+
+**Explicit example — n = 1, j = 1 = n, s = '−', gb = 1:**
+
+Target vector: [N_a, N_{b_1}, I] = [0, 1, 0].
+
+    N_a row:    α_1 = 0
+    N_{b_1}:    α_1 − α_2 = 1   →  α_2 = −1
+    I row:      −α_2/2 = 0      →  α_2 = 0
+
+**Contradiction**: α_2 = −1 from the N_{b_1} equation, α_2 = 0 from the I equation.
+No solution exists.  The target vector [0, 1, 0] — treated as a single, unsplit vector —
+is NOT in span{ρ(H_1), ρ(H_2)}.  This is the full-vector obstruction.
+
+**Explicit example — n = 2, j = 1 < n, s = '+', gb = 1:**
+
+Target vector: [N_a, N_{b_1}, N_{b_2}, I] = [0, −1, 0, −1].
+
+    N_a:    α_1 = 0
+    N_{b_1}: α_1 + α_2 = −1   →  α_2 = −1
+    N_{b_2}: −α_2 − α_3 = 0   →  α_3 = 1
+    I:      −α_3/2 = −1       →  α_3 = 2
+
+**Contradiction**: α_3 = 1 from the N_{b_2} equation, α_3 = 2 from the I equation.
+
+### 8.4 Computational Verification
+
+Function `run_full_vector_checks` in `docs/verification/triviality_check.py` (Section 2d)
+executes this full-vector check for **all 2n pairs (j, s) across n = 1, 2, 3**.
+
+Results (gb = 1, exact Fraction arithmetic):
+
+- n = 1: 2 pairs checked, **all inconsistent**
+- n = 2: 4 pairs checked, **all inconsistent**
+- n = 3: 6 pairs checked, **all inconsistent**
+
+Every case produces exactly one inconsistency row of the form `0 = ±1/2`, confirming that
+the full Cartan-sector target vector — taken as a single, unsplit object — cannot be reached
+by any linear combination of the official Cartan generator images.
+
+### 8.5 Conclusion of the Third Review
+
+The reviewer's demand is fully satisfied:
+
+1. ✅ **No monomial splitting**: the target is the entire weight-0 vector of γ in one system.
+2. ✅ **Full span check**: the test is Gaussian elimination on the complete system
+   Σ α_k ρ(H_k) = target_vec (both N_{b_j} and I components simultaneously).
+3. ✅ **Unreachability proven**: inconsistency (0 = ±1/2 in reduced augmented matrix)
+   proves the target vector lies strictly outside span{ρ(H_k)} for every nonzero gb.
+
+The weight-space decomposition is canonical, not arbitrary.  It does not constitute a
+"Decomposition Error"; it is the standard framework for analysing Lie (super)algebra
+representations.  The full-vector obstruction is confirmed.
+
+
+## 9. Final Conclusion
 
 **The original theorem stands without modification:**
 
@@ -331,6 +454,10 @@ the operators N_a and N_{b_j} appear directly in the official definitions of H_k
 the direct projection computation (§7.2) follows those definitions by straightforward
 substitution — no new basis is introduced.
 
-The scalar obstruction mechanism is both structurally sound (§3.1, coboundary formula)
-and confirmed by explicit, exact computation for n = 1, 2, 3 (§4, §7.2).
+The third reviewer's "Decomposition Error" charge is dismissed by the full-vector span check
+(§8.3–8.4): the ENTIRE Cartan-sector component of γ is checked as a single vector against
+span{ρ(H_k)}, and the system is universally inconsistent for any nonzero gb.
+
+The scalar obstruction mechanism is structurally sound (§3.1, coboundary formula)
+and confirmed by explicit, exact computation for n = 1, 2, 3 (§4, §7.2, §8.4).
 
