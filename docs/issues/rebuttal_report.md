@@ -222,18 +222,115 @@ This is that document.
 
 ---
 
-## 6. Conclusion
+---
+
+## 7. Response to Second Review: The "Unauthorized Basis" Charge
+
+The second review alleges that our previous rebuttal used "individual number operators
+as an unauthorized basis instead of the official Cartan generators."  This charge is
+incorrect on mathematical grounds.
+
+### 7.1 The Operators N_a, N_{b_j} Are Part of the Official Definitions
+
+The official Cartan generators (`Cn1_definition.md`, §2) are:
+
+```
+H_1     = a_1^+ a_1^- + b_1^+ b_1^-   =  N_a + N_{b_1}
+H_k     = b_{k-1}^+ b_{k-1}^- - b_k^+ b_k^-  =  N_{b_{k-1}} - N_{b_k}   (k=2,...,n)
+H_{n+1} = -b_n^+ b_n^- - 1/2           =  -N_{b_n} - 1/2
+```
+
+The number operators N_a = a^+ a^-, N_{b_j} = b_j^+ b_j^- are **built into the official
+formulas**.  When one substitutes these definitions to solve
+
+```
+alpha_1 H_1 + alpha_2 H_2 + ... + alpha_{n+1} H_{n+1}  =  c · I
+```
+
+the operators N_a, N_{b_j} appear **because the H_k are made of them**, not because
+we introduced a new basis.  There is no substitution beyond what the definitions require.
+
+### 7.2 Direct Projection: The Explicit Linear System
+
+Substituting the official definitions and collecting operator terms yields:
+
+**For n = 1** (generators H_1, H_2; target c = 1/2):
+
+| Operator component | Linear equation              | Consequence     |
+|--------------------|------------------------------|-----------------|
+| N_a                | `alpha_1 = 0`               | alpha_1 = 0     |
+| N_{b_1}            | `alpha_1 − alpha_2 = 0`    | alpha_2 = 0     |
+| I (scalar)         | `−(1/2) alpha_2 = 1/2`     | alpha_2 = −1    |
+
+Row "N_{b_1}" and row "I" together force alpha_2 = 0 and alpha_2 = −1 simultaneously.
+**Contradiction: no solution exists.**
+
+**For n = 2** (generators H_1, H_2, H_3; target c = 1/2):
+
+| Operator component | Linear equation                       | Consequence     |
+|--------------------|---------------------------------------|-----------------|
+| N_a                | `alpha_1 = 0`                        | alpha_1 = 0     |
+| N_{b_1}            | `alpha_1 + alpha_2 = 0`             | alpha_2 = 0     |
+| N_{b_2}            | `−alpha_2 − alpha_3 = 0`            | alpha_3 = 0     |
+| I (scalar)         | `−(1/2) alpha_3 = 1/2`              | alpha_3 = −1    |
+
+Again: alpha_3 must be both 0 and −1. **Contradiction.**
+
+**For n = 3** (generators H_1,...,H_4; target c = 1/2):
+
+The same telescoping argument forces alpha_1 = alpha_2 = alpha_3 = alpha_4 = 0 from
+the N_a and N_{b_j} rows, while the I row then requires alpha_4 = −1. **Contradiction.**
+
+All three cases are verified by exact Gaussian elimination (using Python's `Fraction` class)
+in `docs/verification/triviality_check.py`, Section 2c, function `direct_cartan_projection_system`.
+
+### 7.3 Why the Contradiction Holds for All n (General Proof)
+
+The pattern is always the same:
+
+1. N_a row: `alpha_1 = 0`
+2. N_{b_1} row: `alpha_1 ± alpha_2 = 0` → `alpha_2 = 0`
+3. N_{b_j} rows (j=2,...,n−1): `−alpha_j + alpha_{j+1} = 0` → each `alpha_{j+1} = 0`
+4. N_{b_n} row: `−alpha_n − alpha_{n+1} = 0` → `alpha_{n+1} = 0`
+5. I row: `−(1/2) alpha_{n+1} = c` → `alpha_{n+1} = −2c`
+
+Steps 1–4 force all alpha_k = 0, while step 5 requires alpha_{n+1} = −2c.
+For c ≠ 0, this is a **contradiction with no possible resolution**.
+
+The algebra is forced: there is no linear combination of H_1, ..., H_{n+1} that equals
+any nonzero scalar.  This is not a choice of basis — it is an algebraic fact that follows
+from the official definitions by direct substitution.
+
+### 7.4 Conclusion of the Second Review
+
+The reviewer's charge of "unauthorized basis redefinition" is unfounded.  The calculation
+uses ONLY the official Cartan generator formulas, exactly as stated in `Cn1_definition.md`.
+The operators N_a and N_{b_j} appear because they are components of those generators,
+not because we introduced a different algebraic framework.
+
+The direct projection computation (Section 7.2) satisfies all three of the second
+reviewer's demands:
+1. ✅ Used the EXACT official Cartan generators H_1,...,H_{n+1}
+2. ✅ Attempted explicitly to write the scalar constant as their linear combination
+3. ✅ Provided the explicit linear system and the coordinate equations showing linear independence
+
+The scalar obstruction of ±gb/2 cannot be absorbed into g.  **The original theorem stands.**
+
+
+## 8. Final Conclusion
 
 **The original theorem stands without modification:**
 
 > **γ_gb is trivial (= δf for some odd f : g → g) if and only if all gb_{σ,j,s} = 0.**
 
-The reviewer's objection rests on a category error: confusing the `-1/2` normal-ordering
+The first reviewer's objection rested on a category error: confusing the `-1/2` normal-ordering
 constant in the Fock-space *realization* of `H_{n+1}` with an algebraic element of `g` itself.
-The identity operator `1` is not a member of any Lie superalgebra, and the explicit rank analysis
-(§2.2) confirms it is linearly independent of all Cartan generators for `n = 1, 2, 3` and, by
-the general argument in §2.1, for all `n ≥ 1`.
 
-The scalar obstruction mechanism identified in the original proof is both structurally sound
-(it follows from the definition of `g` and the coboundary formula, §3.1) and numerically
-verified (§4).
+The second reviewer's charge of "unauthorized basis redefinition" is equally unfounded:
+the operators N_a and N_{b_j} appear directly in the official definitions of H_k, and
+the direct projection computation (§7.2) follows those definitions by straightforward
+substitution — no new basis is introduced.
+
+The scalar obstruction mechanism is both structurally sound (§3.1, coboundary formula)
+and confirmed by explicit, exact computation for n = 1, 2, 3 (§4, §7.2).
+

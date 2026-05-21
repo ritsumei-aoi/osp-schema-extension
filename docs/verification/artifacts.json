@@ -139,6 +139,125 @@
       "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
     }
   },
+  "rebuttal_direct_projection": {
+    "1": {
+      "n": 1,
+      "target_scalar": "1/2",
+      "col_labels (unknowns)": [
+        "alpha_1",
+        "alpha_2"
+      ],
+      "row_labels (operator components from official H_k definitions)": [
+        "N_a",
+        "N_b1",
+        "I"
+      ],
+      "note": "N_a, N_{b_j}, I appear here because they are written in the official H_k formulas (Cn1_definition.md \u00a72). No new basis is introduced.",
+      "system_equations": [
+        "N_a component:  (1)*alpha_1 = 0",
+        "N_b1 component:  (1)*alpha_1 + (-1)*alpha_2 = 0",
+        "I component:  (-1/2)*alpha_2 = 1/2"
+      ],
+      "solution_walkthrough": [
+        "From N_a row:      alpha_1 = 0",
+        "From N_b1 row:     alpha_1 + alpha_2 = 0  =>  alpha_2 = 0",
+        "From I row:        -(1/2)*alpha_2 = 1/2  =>  alpha_2 = -1",
+        "CONTRADICTION: alpha_2 must be simultaneously 0 and -1.  No solution exists."
+      ],
+      "inconsistencies_after_elimination": [
+        {
+          "row_index": 2,
+          "equation": "0 = 1/2  (inconsistent!)",
+          "meaning": "After elimination, this equation reads 0 = nonzero: the system has no solution."
+        }
+      ],
+      "system_consistent": false,
+      "target_scalar_in_span_of_official_cartans": false,
+      "verdict": "target_scalar=1/2 is NOT in the span of the official Cartan generators.  Reviewer's absorption claim is FALSE."
+    },
+    "2": {
+      "n": 2,
+      "target_scalar": "1/2",
+      "col_labels (unknowns)": [
+        "alpha_1",
+        "alpha_2",
+        "alpha_3"
+      ],
+      "row_labels (operator components from official H_k definitions)": [
+        "N_a",
+        "N_b1",
+        "N_b2",
+        "I"
+      ],
+      "note": "N_a, N_{b_j}, I appear here because they are written in the official H_k formulas (Cn1_definition.md \u00a72). No new basis is introduced.",
+      "system_equations": [
+        "N_a component:  (1)*alpha_1 = 0",
+        "N_b1 component:  (1)*alpha_1 + (1)*alpha_2 = 0",
+        "N_b2 component:  (-1)*alpha_2 + (-1)*alpha_3 = 0",
+        "I component:  (-1/2)*alpha_3 = 1/2"
+      ],
+      "solution_walkthrough": [
+        "From N_a row:      alpha_1 = 0",
+        "From N_b1 row:     alpha_1 + alpha_2 = 0  =>  alpha_2 = 0",
+        "From N_b2 row:   -alpha_2 - alpha_3 = 0  =>  alpha_3 = 0",
+        "From I row:        -(1/2)*alpha_3 = 1/2  =>  alpha_3 = -1",
+        "CONTRADICTION: alpha_3 must be simultaneously 0 and -1.  No solution exists."
+      ],
+      "inconsistencies_after_elimination": [
+        {
+          "row_index": 3,
+          "equation": "0 = 1/2  (inconsistent!)",
+          "meaning": "After elimination, this equation reads 0 = nonzero: the system has no solution."
+        }
+      ],
+      "system_consistent": false,
+      "target_scalar_in_span_of_official_cartans": false,
+      "verdict": "target_scalar=1/2 is NOT in the span of the official Cartan generators.  Reviewer's absorption claim is FALSE."
+    },
+    "3": {
+      "n": 3,
+      "target_scalar": "1/2",
+      "col_labels (unknowns)": [
+        "alpha_1",
+        "alpha_2",
+        "alpha_3",
+        "alpha_4"
+      ],
+      "row_labels (operator components from official H_k definitions)": [
+        "N_a",
+        "N_b1",
+        "N_b2",
+        "N_b3",
+        "I"
+      ],
+      "note": "N_a, N_{b_j}, I appear here because they are written in the official H_k formulas (Cn1_definition.md \u00a72). No new basis is introduced.",
+      "system_equations": [
+        "N_a component:  (1)*alpha_1 = 0",
+        "N_b1 component:  (1)*alpha_1 + (1)*alpha_2 = 0",
+        "N_b2 component:  (-1)*alpha_2 + (1)*alpha_3 = 0",
+        "N_b3 component:  (-1)*alpha_3 + (-1)*alpha_4 = 0",
+        "I component:  (-1/2)*alpha_4 = 1/2"
+      ],
+      "solution_walkthrough": [
+        "From N_a row:      alpha_1 = 0",
+        "From N_b1 row:     alpha_1 + alpha_2 = 0  =>  alpha_2 = 0",
+        "From N_b2 row:    -alpha_2 + alpha_3 = 0  =>  alpha_3 = 0",
+        "From N_b3 row:   -alpha_3 - alpha_4 = 0  =>  alpha_4 = 0",
+        "From I row:        -(1/2)*alpha_4 = 1/2  =>  alpha_4 = -1",
+        "CONTRADICTION: alpha_4 must be simultaneously 0 and -1.  No solution exists."
+      ],
+      "inconsistencies_after_elimination": [
+        {
+          "row_index": 4,
+          "equation": "0 = 1/2  (inconsistent!)",
+          "meaning": "After elimination, this equation reads 0 = nonzero: the system has no solution."
+        }
+      ],
+      "system_consistent": false,
+      "target_scalar_in_span_of_official_cartans": false,
+      "verdict": "target_scalar=1/2 is NOT in the span of the official Cartan generators.  Reviewer's absorption claim is FALSE."
+    }
+  },
   "verification_by_n": [
     {
       "n": 1,

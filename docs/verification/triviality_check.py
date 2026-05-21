@@ -467,6 +467,189 @@ def rank_inconsistency_analysis(n, gb_dict):
 
 
 # ============================================================
+# Section 2c: Direct Projection Using Official Cartan Generators
+# ============================================================
+# Response to the reviewer's charge that we used an "unauthorized basis".
+#
+# The official Cartan generators (Cn1_definition.md, §2) are:
+#   H_1     = N_a + N_{b_1}               (= a^+a^- + b_1^+b_1^-)
+#   H_k     = N_{b_{k-1}} - N_{b_k}       (= b_{k-1}^+b_{k-1}^- - b_k^+b_k^-)
+#   H_{n+1} = -N_{b_n} - 1/2             (= -b_n^+b_n^- - 1/2)
+#
+# The operators N_a = a^+a^-, N_{b_j} = b_j^+b_j^-, and the identity I
+# appear IN THE OFFICIAL DEFINITIONS above.  There is no basis redefinition:
+# substituting the official formulas for H_k into alpha_1*H_1 + ... = c*I
+# yields equations whose unknowns are the operator coefficients appearing in
+# those very definitions.  We solve that system by Gaussian elimination.
+# ============================================================
+
+def direct_cartan_projection_system(n, target_scalar):
+    """
+    Attempt to write (target_scalar)*I as sum_{k=1}^{n+1} alpha_k * H_k
+    where H_k are the OFFICIAL Cartan generators from Cn1_definition.md.
+
+    Substituting the official realizations, the equation becomes:
+
+        alpha_1*(N_a + N_{b_1})
+      + sum_{k=2}^{n} alpha_k*(N_{b_{k-1}} - N_{b_k})
+      + alpha_{n+1}*(-N_{b_n} - 1/2)
+      = target_scalar * I
+
+    Collecting by independent operator types {N_a, N_{b_1},...,N_{b_n}, I}
+    gives n+2 scalar equations in n+1 unknowns alpha_1,...,alpha_{n+1}.
+
+    The system is overdetermined (n+2 equations, n+1 unknowns) and --
+    critically -- can only be consistent if target_scalar = 0.
+
+    The COEFFICIENT MATRIX A has rows indexed by operator types
+    {N_a, N_{b_1}, ..., N_{b_n}, I} and columns by alpha_k.  Its entries
+    come directly from the official H_k formulas -- no new basis is
+    introduced.
+
+    Returns:
+        dict with the full linear system, solution attempt, and verdict.
+    """
+    # Row labels: N_a=0, N_{b_1}=1, ..., N_{b_n}=n, I=n+1
+    row_labels = ["N_a"] + [f"N_b{j}" for j in range(1, n + 1)] + ["I"]
+    col_labels = [f"alpha_{k}" for k in range(1, n + 2)]
+
+    # Build coefficient matrix A as exact Fractions (n+2 rows, n+1 cols)
+    # -- derived directly from the official H_k formulas --
+    nrows = n + 2
+    ncols = n + 1
+    A = [[Fraction(0)] * ncols for _ in range(nrows)]
+
+    # H_1 = N_a + N_{b_1}  =>  col 0 (alpha_1)
+    A[0][0] = Fraction(1)   # N_a row
+    A[1][0] = Fraction(1)   # N_{b_1} row
+
+    # H_k = N_{b_{k-1}} - N_{b_k}  for k=2,...,n  =>  col k-1 (alpha_k)
+    for k in range(2, n + 1):
+        A[k - 1][k - 1] = Fraction(1)    # N_{b_{k-1}} row  (row index = k-1)
+        A[k][k - 1]     = Fraction(-1)   # N_{b_k}     row  (row index = k)
+
+    # H_{n+1} = -N_{b_n} - 1/2  =>  col n (alpha_{n+1})
+    A[n][n]     = Fraction(-1)      # N_{b_n} row
+    A[n + 1][n] = Fraction(-1, 2)   # I row
+
+    # Target vector b: all zeros except the I-component = target_scalar
+    b = [Fraction(0)] * nrows
+    b[n + 1] = Fraction(target_scalar)
+
+    # -- Gaussian elimination on augmented matrix [A | b] --
+    # Work with exact Fraction arithmetic to avoid floating-point errors.
+    aug = [row[:] + [b[i]] for i, row in enumerate(A)]
+    pivot_row = 0
+    pivot_cols = []
+    for col in range(ncols):
+        # Find pivot in current column
+        pr = None
+        for row in range(pivot_row, nrows):
+            if aug[row][col] != 0:
+                pr = row
+                break
+        if pr is None:
+            continue
+        # Swap
+        aug[pivot_row], aug[pr] = aug[pr], aug[pivot_row]
+        pivot_cols.append(col)
+        # Eliminate
+        piv = aug[pivot_row][col]
+        for row in range(nrows):
+            if row != pivot_row and aug[row][col] != 0:
+                factor = aug[row][col] / piv
+                aug[row] = [aug[row][c] - factor * aug[pivot_row][c]
+                            for c in range(ncols + 1)]
+        pivot_row += 1
+
+    # Check consistency: look for rows with all-zero coefficients but nonzero RHS
+    inconsistencies = []
+    for i, row in enumerate(aug):
+        lhs_zero = all(row[c] == 0 for c in range(ncols))
+        rhs_nonzero = row[ncols] != 0
+        if lhs_zero and rhs_nonzero:
+            inconsistencies.append({
+                "row_index": i,
+                "equation": f"0 = {row[ncols]}  (inconsistent!)",
+                "meaning": (
+                    "After elimination, this equation reads 0 = nonzero: "
+                    "the system has no solution."
+                )
+            })
+
+    # Express the equations for human-readability
+    equations = []
+    for i in range(nrows):
+        lhs_terms = []
+        for c in range(ncols):
+            coeff = A[i][c]
+            if coeff != 0:
+                lhs_terms.append(f"({coeff})*{col_labels[c]}")
+        lhs = " + ".join(lhs_terms) if lhs_terms else "0"
+        equations.append(f"{row_labels[i]} component:  {lhs} = {b[i]}")
+
+    # Human-readable solution walkthrough for general n
+    walkthrough = [
+        f"From N_a row:      alpha_1 = 0",
+        f"From N_b1 row:     alpha_1 + alpha_2 = 0  =>  alpha_2 = 0",
+    ]
+    for j in range(2, n):
+        walkthrough.append(
+            f"From N_b{j} row:    -alpha_{j} + alpha_{j+1} = 0  =>  alpha_{j+1} = 0"
+        )
+    if n >= 2:
+        walkthrough.append(
+            f"From N_b{n} row:   -alpha_{n} - alpha_{n+1} = 0  =>  alpha_{n+1} = 0"
+        )
+    walkthrough.append(
+        f"From I row:        -(1/2)*alpha_{n+1} = {Fraction(target_scalar)}"
+        f"  =>  alpha_{n+1} = {Fraction(target_scalar)*(-2)}"
+    )
+    if Fraction(target_scalar) != 0:
+        walkthrough.append(
+            f"CONTRADICTION: alpha_{n+1} must be simultaneously 0 and "
+            f"{Fraction(target_scalar)*(-2)}.  No solution exists."
+        )
+    else:
+        walkthrough.append("All equations give alpha_k = 0.  Solution: trivial (all zero).")
+
+    return {
+        "n": n,
+        "target_scalar": str(Fraction(target_scalar)),
+        "col_labels (unknowns)": col_labels,
+        "row_labels (operator components from official H_k definitions)": row_labels,
+        "note": (
+            "N_a, N_{b_j}, I appear here because they are written in the official "
+            "H_k formulas (Cn1_definition.md §2). No new basis is introduced."
+        ),
+        "system_equations": equations,
+        "solution_walkthrough": walkthrough,
+        "inconsistencies_after_elimination": inconsistencies,
+        "system_consistent": len(inconsistencies) == 0,
+        "target_scalar_in_span_of_official_cartans": len(inconsistencies) == 0,
+        "verdict": (
+            f"target_scalar={target_scalar} is IN the span of the official Cartan generators."
+            if len(inconsistencies) == 0 else
+            f"target_scalar={target_scalar} is NOT in the span of the official Cartan generators.  "
+            f"Reviewer's absorption claim is FALSE."
+        )
+    }
+
+
+def run_direct_projection_tests(n_values=(1, 2, 3)):
+    """
+    Run direct projection tests for n=1,2,3 using the canonical obstruction
+    value c = 1/2, showing it cannot be expressed as a linear combination of
+    the official Cartan generators for any tested n.
+    """
+    results = {}
+    for n in n_values:
+        res = direct_cartan_projection_system(n, Fraction(1, 2))
+        results[n] = res
+    return results
+
+
+# ============================================================
 # Section 3: Triviality Check
 # ============================================================
 
@@ -648,6 +831,7 @@ def build_artifact(n_values=(1, 2, 3)):
             n: check_identity_not_in_span_of_cartans(n)
             for n in n_values
         },
+        "rebuttal_direct_projection": run_direct_projection_tests(n_values),
         "verification_by_n": []
     }
 
@@ -719,12 +903,22 @@ if __name__ == "__main__":
     print(f"  Term 2: {proof['reason_term2']}")
     print(f"  Term 3: {proof['reason_term3']}")
     print()
-    print("Projection analysis (identity NOT in span of Cartan generators):")
+    print("Rank-increase check (identity NOT in span of Cartan generators):")
     for n, res in artifact["rebuttal_absorption_refutation"].items():
         print(f"  n={n}: rank(Cartans)={res['rank_cartans']}, "
               f"rank(Cartans + identity)={res['rank_cartans_plus_identity']}, "
               f"rank increases={res['rank_increases']}")
         print(f"        => {res['conclusion']}")
+    print()
+    print("Direct projection using OFFICIAL H_k formulas (target scalar = 1/2):")
+    for n, res in artifact["rebuttal_direct_projection"].items():
+        print(f"  n={n}: system consistent={res['system_consistent']}")
+        for eq in res["system_equations"]:
+            print(f"    {eq}")
+        for step in res["solution_walkthrough"]:
+            print(f"    {step}")
+        print(f"  => {res['verdict']}")
+        print()
 
     print("\nVerification complete.")
 
