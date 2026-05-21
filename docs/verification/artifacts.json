@@ -3,10 +3,141 @@
   "result": "gamma_gb is trivial (= delta f) if and only if all gb = 0",
   "mechanism": "For each (sigma, j, s), the scalar part of gamma(H_{j+1}, F(sigma,j,s)) equals pm gb_{sigma,j,s}/2. Since delta f is always g-valued (no scalar component), gamma_gb = delta f requires all scalars to vanish, i.e., all gb = 0. Conversely, if all gb = 0 then gamma_gb = 0 = delta 0.",
   "scalar_formula": "scalar(gamma(H_{j+1}, F(sigma,j,s))) = epsilon_j * sign_s * gb_{sigma,j,s} / 2  where epsilon_j = +1 (j=n), -1 (j<n); sign_s = +1 (s=+), -1 (s=-)",
+  "coboundary_structural_proof": {
+    "statement": "scalar_component((delta f)(X,Y)) = 0 for all X,Y in g, all odd f: g->g",
+    "reason_term1": "[X, f(Y)]: X in g, f(Y) in g => bracket in g => scalar = 0",
+    "reason_term2": "[Y, f(X)]: Y in g, f(X) in g => bracket in g => scalar = 0",
+    "reason_term3": "f([X,Y]): [X,Y] in g, f: g->g => result in g => scalar = 0",
+    "conclusion": "delta f is ALWAYS g-valued. For gamma_gb = delta f to hold, gamma_gb must also be g-valued, i.e., all scalar obstructions must vanish."
+  },
   "coboundary_argument": {
     "statement": "delta_f is always g-valued",
     "reason": "Each term of (delta f)(X,Y) is of the form [g-element, f(g-element)] or f([g-element, g-element]). Since f: g->g and g is closed under its own bracket, all three terms land in g. No scalar (identity) component is ever generated.",
     "conclusion": "delta f has zero scalar obstruction for any odd f: g -> g"
+  },
+  "rebuttal_absorption_refutation": {
+    "1": {
+      "n": 1,
+      "cartan_matrix": [
+        [
+          1.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          -0.5
+        ]
+      ],
+      "col_labels": [
+        "N_a",
+        "N_b1",
+        "identity"
+      ],
+      "row_labels": [
+        "H1",
+        "H2"
+      ],
+      "rank_cartans": 2,
+      "rank_cartans_plus_identity": 3,
+      "rank_increases": true,
+      "identity_in_span_of_cartans": false,
+      "reviewer_absorption_claim_valid": false,
+      "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+    },
+    "2": {
+      "n": 2,
+      "cartan_matrix": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          -0.5
+        ]
+      ],
+      "col_labels": [
+        "N_a",
+        "N_b1",
+        "N_b2",
+        "identity"
+      ],
+      "row_labels": [
+        "H1",
+        "H2",
+        "H3"
+      ],
+      "rank_cartans": 3,
+      "rank_cartans_plus_identity": 4,
+      "rank_increases": true,
+      "identity_in_span_of_cartans": false,
+      "reviewer_absorption_claim_valid": false,
+      "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+    },
+    "3": {
+      "n": 3,
+      "cartan_matrix": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0,
+          -0.5
+        ]
+      ],
+      "col_labels": [
+        "N_a",
+        "N_b1",
+        "N_b2",
+        "N_b3",
+        "identity"
+      ],
+      "row_labels": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "rank_cartans": 4,
+      "rank_cartans_plus_identity": 5,
+      "rank_increases": true,
+      "identity_in_span_of_cartans": false,
+      "reviewer_absorption_claim_valid": false,
+      "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+    }
   },
   "verification_by_n": [
     {
@@ -41,7 +172,44 @@
           "gamma_scalar": "-gb[-,1,-]/2",
           "forces_zero": "gb[-,1,-]"
         }
-      ]
+      ],
+      "rank_analysis_trivial_case": {
+        "n": 1,
+        "absorption_check": {
+          "n": 1,
+          "cartan_matrix": [
+            [
+              1.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              -0.5
+            ]
+          ],
+          "col_labels": [
+            "N_a",
+            "N_b1",
+            "identity"
+          ],
+          "row_labels": [
+            "H1",
+            "H2"
+          ],
+          "rank_cartans": 2,
+          "rank_cartans_plus_identity": 3,
+          "rank_increases": true,
+          "identity_in_span_of_cartans": false,
+          "reviewer_absorption_claim_valid": false,
+          "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+        },
+        "scalar_inconsistencies": [],
+        "num_inconsistencies": 0,
+        "system_consistent": true,
+        "conclusion": "TRIVIAL: gamma_gb = delta 0"
+      }
     },
     {
       "n": 2,
@@ -99,7 +267,54 @@
           "gamma_scalar": "-gb[-,2,-]/2",
           "forces_zero": "gb[-,2,-]"
         }
-      ]
+      ],
+      "rank_analysis_trivial_case": {
+        "n": 2,
+        "absorption_check": {
+          "n": 2,
+          "cartan_matrix": [
+            [
+              1.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              -0.5
+            ]
+          ],
+          "col_labels": [
+            "N_a",
+            "N_b1",
+            "N_b2",
+            "identity"
+          ],
+          "row_labels": [
+            "H1",
+            "H2",
+            "H3"
+          ],
+          "rank_cartans": 3,
+          "rank_cartans_plus_identity": 4,
+          "rank_increases": true,
+          "identity_in_span_of_cartans": false,
+          "reviewer_absorption_claim_valid": false,
+          "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+        },
+        "scalar_inconsistencies": [],
+        "num_inconsistencies": 0,
+        "system_consistent": true,
+        "conclusion": "TRIVIAL: gamma_gb = delta 0"
+      }
     },
     {
       "n": 3,
@@ -181,7 +396,66 @@
           "gamma_scalar": "-gb[-,3,-]/2",
           "forces_zero": "gb[-,3,-]"
         }
-      ]
+      ],
+      "rank_analysis_trivial_case": {
+        "n": 3,
+        "absorption_check": {
+          "n": 3,
+          "cartan_matrix": [
+            [
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              -1.0,
+              -0.5
+            ]
+          ],
+          "col_labels": [
+            "N_a",
+            "N_b1",
+            "N_b2",
+            "N_b3",
+            "identity"
+          ],
+          "row_labels": [
+            "H1",
+            "H2",
+            "H3",
+            "H4"
+          ],
+          "rank_cartans": 4,
+          "rank_cartans_plus_identity": 5,
+          "rank_increases": true,
+          "identity_in_span_of_cartans": false,
+          "reviewer_absorption_claim_valid": false,
+          "conclusion": "REFUTED: identity is NOT in span of Cartan generators; scalar obstruction cannot be absorbed into g."
+        },
+        "scalar_inconsistencies": [],
+        "num_inconsistencies": 0,
+        "system_consistent": true,
+        "conclusion": "TRIVIAL: gamma_gb = delta 0"
+      }
     }
   ]
 }

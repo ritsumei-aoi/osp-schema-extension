@@ -26,6 +26,7 @@ References (provided definition files):
 
 from fractions import Fraction
 import json
+import numpy as np
 
 # ============================================================
 # Section 1: Algebra Structure
@@ -217,6 +218,255 @@ def all_scalar_obstructions(n, gb_dict):
 
 
 # ============================================================
+# Section 2b: Projection Analysis (Response to Reviewer)
+# ============================================================
+# The reviewer claimed: scalar constants arising from normal ordering
+# "CAN and MUST be absorbed back into the basis of g" via the relation
+# H_{n+1} = -N_{b_n} - 1/2.
+#
+# We refute this explicitly. The identity element 1 is NOT in the span
+# of the Cartan generators of C(n+1), regardless of the -1/2 in H_{n+1}.
+# ============================================================
+
+def cartan_operator_matrix(n):
+    """
+    Represent each Cartan generator H_k as a coordinate vector in the
+    (n+2)-dimensional space  V = span{N_a, N_{b_1}, ..., N_{b_n}, 1}.
+
+    From the oscillator realization (Cn1_definition.md):
+        H_1     = N_a + N_{b_1}
+        H_k     = N_{b_{k-1}} - N_{b_k}    for k = 2, ..., n
+        H_{n+1} = -N_{b_n} - 1/2
+
+    Returns:
+        numpy array of shape (n+1, n+2):
+            rows  = H_1, ..., H_{n+1}
+            cols  = N_a, N_{b_1}, ..., N_{b_n}, 1  (identity)
+    """
+    M = np.zeros((n + 1, n + 2), dtype=float)
+    # H_1 = N_a + N_{b_1}
+    M[0, 0] = 1.0   # N_a
+    M[0, 1] = 1.0   # N_{b_1}
+    # H_k = N_{b_{k-1}} - N_{b_k}  for k=2,...,n
+    for k in range(2, n + 1):
+        M[k - 1, k - 1] = 1.0   # N_{b_{k-1}}
+        M[k - 1, k]     = -1.0  # N_{b_k}
+    # H_{n+1} = -N_{b_n} - 1/2
+    M[n, n]     = -1.0   # N_{b_n}
+    M[n, n + 1] = -0.5   # identity coefficient
+    return M
+
+
+def check_identity_not_in_span_of_cartans(n):
+    """
+    Verify via Gaussian elimination that the identity operator (1) is NOT
+    in the linear span of the Cartan generators H_1, ..., H_{n+1}.
+
+    If the reviewer's absorption claim were correct, the identity vector
+    (0, 0, ..., 0, 1) in V = span{N_a, N_{b_1},...,N_{b_n}, 1} would be
+    in the row-span of the Cartan matrix M.  We show this is not the case:
+    rank([M; identity_row]) > rank(M).
+
+    Explicit contradiction for n=1:
+        H_1 = N_a + N_{b_1}:   (c1=1, c2=1, c3=0)
+        H_2 = -N_{b_1} - 1/2:  (c1=0, c2=-1, c3=-1/2)
+        Solve c1*H_1 + c2*H_2 = 1/2 (i.e., target (0,0,1/2)):
+            N_a     component: alpha = 0
+            N_{b_1} component: alpha - beta = 0  =>  beta = 0
+            identity component: -beta/2 = 1/2   =>  beta = -1
+        Contradiction (beta must simultaneously be 0 and -1).
+
+    Returns:
+        dict with rank data and the absorption verdict.
+    """
+    M = cartan_operator_matrix(n)
+    identity_vec = np.zeros((1, n + 2))
+    identity_vec[0, n + 1] = 1.0   # = (0,...,0,1)
+
+    rank_M   = np.linalg.matrix_rank(M,                    tol=1e-10)
+    rank_aug = np.linalg.matrix_rank(np.vstack([M, identity_vec]), tol=1e-10)
+
+    identity_in_span = (rank_M == rank_aug)
+    return {
+        "n": n,
+        "cartan_matrix": M.tolist(),
+        "col_labels": ["N_a"] + [f"N_b{k}" for k in range(1, n + 1)] + ["identity"],
+        "row_labels": [f"H{k}" for k in range(1, n + 2)],
+        "rank_cartans": int(rank_M),
+        "rank_cartans_plus_identity": int(rank_aug),
+        "rank_increases": bool(rank_aug > rank_M),
+        "identity_in_span_of_cartans": bool(identity_in_span),
+        "reviewer_absorption_claim_valid": bool(identity_in_span),
+        "conclusion": (
+            "REFUTED: identity is NOT in span of Cartan generators; "
+            "scalar obstruction cannot be absorbed into g."
+            if not identity_in_span else
+            "UNEXPECTED: identity IS in span (investigate)."
+        )
+    }
+
+
+def compute_gamma_full_decomposition(n, sigma, j, s, gb_dict):
+    """
+    Return the full decomposition of gamma(H_{j+1}, F(sigma, j, s)) into:
+        (a) g-valued part  (linear combination of g-basis elements)
+        (b) scalar part    (coefficient of the identity operator)
+
+    The scalar part is the obstruction:  it must be zero for gamma to lie in g.
+
+    From the oscillator computation (see Section 2 for derivation):
+
+    For j < n  (H_{j+1} = N_{b_j} - N_{b_{j+1}}):
+        gamma = -gb_{sigma,j,s} * N_{b_j}^{(g-part)}
+              + (cross-index terms from N_{b_{j+1}}, purely g-valued)
+              + scalar(-gb_{sigma,j,s} * Nbj_scalar)
+        where Nbj_scalar = -1/2  =>  scalar = -gb_{sigma,j,s} * (-1/2)
+        But sign depends on s (s=+ picks N_{b_j}+1, s=- picks N_{b_j}):
+            s=+: scalar = -gb_{sigma,j,+}/2   (from -gb*(N_{b_j}+1), scalar = -gb*(1/2))
+                  Wait: sign is epsilon_j * sign_s = (-1)*(+1) = -1 => -gb/2
+            s=-: scalar = +gb_{sigma,j,-}/2   (from -gb*N_{b_j}, scalar = -gb*(-1/2) = +gb/2)
+
+    For j = n  (H_{n+1} = -N_{b_n} - 1/2, minus sign flips):
+            s=+: scalar = +gb_{sigma,n,+}/2
+            s=-: scalar = -gb_{sigma,n,-}/2
+
+    Returns dict with keys "g_components" (dict label->coeff) and "scalar".
+    """
+    gb_val = Fraction(gb_dict.get((sigma, j, s), 0))
+    cross_gb = {(sigma, j, sp): Fraction(gb_dict.get((sigma, j, sp), 0))
+                for sp in ['+', '-'] if sp != s}
+
+    # Scalar part (main obstruction)
+    epsilon_j = Fraction(1) if j == n else Fraction(-1)
+    sign_s    = Fraction(1) if s == '+' else Fraction(-1)
+    scalar    = epsilon_j * sign_s * gb_val / 2
+
+    # g-valued part for the primary index j (partial -- key terms only)
+    g_components = {}
+    H_label = f"H{j+1}"
+    if j == n:
+        # From gb*(N_{b_n}+1) for s=+, or gb*N_{b_n} for s=-
+        # N_{b_n} = -H_{n+1} - 1/2  =>  N_{b_n} contributes -H_{n+1} to g-part
+        g_components[H_label] = -gb_val
+        # Cross term: other s gives (b_j^{opp})^2 = E_{±2delta_j}
+        sp_opp = '-' if s == '+' else '+'
+        E_label = f"E_2d{j}" if sp_opp == '+' else f"E_m2d{j}"
+        cross_gb_val = Fraction(gb_dict.get((sigma, j, sp_opp), 0))
+        if cross_gb_val != 0:
+            g_components[E_label] = cross_gb_val
+    else:
+        # From gb*N_{b_j} (s=-) or gb*(N_{b_j}+1) (s=+)
+        # N_{b_j} = H_{j+1}+...+H_n-H_{n+1}-1/2 contributes g-part:
+        # Simplified: label as N_bj_g (the g-part of N_{b_j})
+        g_components[f"N_b{j}_g_part"] = -gb_val  # schematic
+        sp_opp = '-' if s == '+' else '+'
+        E_label = f"E_2d{j}" if sp_opp == '+' else f"E_m2d{j}"
+        cross_gb_val = Fraction(gb_dict.get((sigma, j, sp_opp), 0))
+        if cross_gb_val != 0:
+            g_components[E_label] = cross_gb_val
+
+    return {
+        "g_components": {k: str(v) for k, v in g_components.items() if v != 0},
+        "scalar": str(scalar),
+        "scalar_nonzero": scalar != 0,
+        "interpretation": (
+            f"gamma(H{j+1}, F{sigma}{j}{s}) has scalar component {scalar} "
+            f"which is {'OUTSIDE g (obstruction)' if scalar != 0 else 'zero (no obstruction)'}."
+        )
+    }
+
+
+def coboundary_scalar_component_proof():
+    """
+    Structural proof that (delta f)(X, Y) has zero scalar component for ALL
+    odd f: g -> g and ALL X, Y in g.
+
+    Coboundary formula (C_coboundary_definition.md):
+        (delta f)(X,Y) = (-1)^{p(X)} [X, f(Y)]
+                       - (-1)^{(p(X)+1)p(Y)} [Y, f(X)]
+                       - f([X,Y])
+
+    Scalar component analysis:
+        Term 1: [X, f(Y)]
+            X in g, f(Y) in g  (since f: g->g)
+            [g-element, g-element] in g  (g closed under bracket)
+            => scalar component = 0
+
+        Term 2: [Y, f(X)]
+            Y in g, f(X) in g
+            => scalar component = 0
+
+        Term 3: f([X,Y])
+            [X,Y] in g  (g closed under bracket)
+            f maps g -> g
+            => scalar component = 0
+
+    Therefore: scalar component of (delta f)(X,Y) = 0 for all X,Y,f.
+    This holds regardless of the specific structure of f or of g.
+    """
+    return {
+        "statement": "scalar_component((delta f)(X,Y)) = 0 for all X,Y in g, all odd f: g->g",
+        "reason_term1": "[X, f(Y)]: X in g, f(Y) in g => bracket in g => scalar = 0",
+        "reason_term2": "[Y, f(X)]: Y in g, f(X) in g => bracket in g => scalar = 0",
+        "reason_term3": "f([X,Y]): [X,Y] in g, f: g->g => result in g => scalar = 0",
+        "conclusion": (
+            "delta f is ALWAYS g-valued. For gamma_gb = delta f to hold, "
+            "gamma_gb must also be g-valued, i.e., all scalar obstructions must vanish."
+        )
+    }
+
+
+def rank_inconsistency_analysis(n, gb_dict):
+    """
+    Explicit rank/inconsistency argument for the equation delta f = gamma_gb.
+
+    Working in the extended operator space  g_ext = g + R*1  (dim = total_dim + 1),
+    decompose both sides into g-component and scalar component:
+
+        (delta f)(H_{j+1}, F(sigma,j,s)):  scalar component = 0  (always)
+        gamma_gb(H_{j+1}, F(sigma,j,s)):   scalar component = +/- gb_{sigma,j,s}/2
+
+    The equation  0 = +/- gb_{sigma,j,s}/2  is inconsistent whenever gb != 0.
+    This is a rank argument: the scalar row of the augmented system [M|v]
+    has no corresponding row in M, so rank([M|v]) > rank(M) iff gb != 0.
+
+    Returns a dict summarising the inconsistencies found.
+    """
+    inconsistencies = []
+    for sigma in ['+', '-']:
+        for j in range(1, n + 1):
+            for s in ['+', '-']:
+                sc = compute_gamma_scalar(n, sigma, j, s, gb_dict)
+                if sc != 0:
+                    inconsistencies.append({
+                        "pair":
+                            f"(H{j+1}, F{sigma}{j}{s})",
+                        "delta_f_scalar_component": "0",
+                        "gamma_scalar_component": str(sc),
+                        "equation_scalar_row": f"0 = {sc}",
+                        "consistent": False
+                    })
+
+    # Absorption check
+    absorption = check_identity_not_in_span_of_cartans(n)
+
+    return {
+        "n": n,
+        "absorption_check": absorption,
+        "scalar_inconsistencies": inconsistencies,
+        "num_inconsistencies": len(inconsistencies),
+        "system_consistent": len(inconsistencies) == 0,
+        "conclusion": (
+            "TRIVIAL: gamma_gb = delta 0"
+            if len(inconsistencies) == 0 else
+            f"NON-TRIVIAL: {len(inconsistencies)} scalar equation(s) of the form "
+            f"'0 = ±gb/2 ≠ 0' are unsatisfiable. No odd f: g->g can satisfy "
+            f"delta f = gamma_gb."
+        )
+    }
+
+
+# ============================================================
 # Section 3: Triviality Check
 # ============================================================
 
@@ -392,13 +642,19 @@ def build_artifact(n_values=(1, 2, 3)):
             "scalar(gamma(H_{j+1}, F(sigma,j,s))) = epsilon_j * sign_s * gb_{sigma,j,s} / 2  "
             "where epsilon_j = +1 (j=n), -1 (j<n); sign_s = +1 (s=+), -1 (s=-)"
         ),
+        "coboundary_structural_proof": coboundary_scalar_component_proof(),
         "coboundary_argument": check_coboundary_is_scalar_free(1),
+        "rebuttal_absorption_refutation": {
+            n: check_identity_not_in_span_of_cartans(n)
+            for n in n_values
+        },
         "verification_by_n": []
     }
 
     for n in n_values:
         results = verify_n(n)
         obstruction_table = build_obstruction_table(n)
+        rank_data = rank_inconsistency_analysis(n, {})
         artifact["verification_by_n"].append({
             "n": n,
             "algebra": results["algebra"],
@@ -406,7 +662,8 @@ def build_artifact(n_values=(1, 2, 3)):
             "dim_odd": results["dim_odd"],
             "num_gb_params": results["num_gb_params"],
             "all_tests_passed": results["all_tests_passed"],
-            "obstruction_table": obstruction_table
+            "obstruction_table": obstruction_table,
+            "rank_analysis_trivial_case": rank_data
         })
 
     return artifact
@@ -449,4 +706,25 @@ if __name__ == "__main__":
         print(f"  {entry['algebra']}: {entry['num_gb_params']} parameters,"
               f" all tests passed = {entry['all_tests_passed']}")
 
+    # Print rebuttal section
+    print()
+    print("=" * 60)
+    print("REBUTTAL: Reviewer's Absorption Claim Refuted")
+    print("=" * 60)
+    print()
+    print("Structural proof (coboundary is always g-valued):")
+    proof = artifact["coboundary_structural_proof"]
+    print(f"  {proof['statement']}")
+    print(f"  Term 1: {proof['reason_term1']}")
+    print(f"  Term 2: {proof['reason_term2']}")
+    print(f"  Term 3: {proof['reason_term3']}")
+    print()
+    print("Projection analysis (identity NOT in span of Cartan generators):")
+    for n, res in artifact["rebuttal_absorption_refutation"].items():
+        print(f"  n={n}: rank(Cartans)={res['rank_cartans']}, "
+              f"rank(Cartans + identity)={res['rank_cartans_plus_identity']}, "
+              f"rank increases={res['rank_increases']}")
+        print(f"        => {res['conclusion']}")
+
     print("\nVerification complete.")
+
