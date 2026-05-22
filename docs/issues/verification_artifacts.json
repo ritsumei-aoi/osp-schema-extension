@@ -1,0 +1,100 @@
+{
+  "startup_verification": [
+    {
+      "path": "docs/math/Cn1_definition.md",
+      "exists": true,
+      "contains_json_schema": false,
+      "note": "Contains algebra and oscillator realization only."
+    },
+    {
+      "path": "docs/math/C_inhomogeneous_definition.md",
+      "exists": true
+    },
+    {
+      "path": "docs/math/C_coboundary_definition.md",
+      "exists": true
+    },
+    {
+      "path": "docs/issues/issue_open.md",
+      "exists": true
+    },
+    {
+      "path": "final_reflection_template.md",
+      "exists": true
+    },
+    {
+      "path": "supplementary_metrics_template.md",
+      "exists": true
+    }
+  ],
+  "theorem": {
+    "name": "Triviality of the C(n+1) inhomogeneous deformation",
+    "statement": "For every n >= 1 and every choice of gb_{sigma,j,s}, the cocycle gamma_gb is a coboundary in the adjoint representation up to scalar.",
+    "triviality_condition": "all gb-configurations are trivial",
+    "nonzero_gb_can_be_trivial": true,
+    "nontrivial_classes_exist": false
+  },
+  "notation": {
+    "odd_generators": "Q_{sigma,j,s} = a_1^sigma b_j^s",
+    "even_bosonic_generators": "S_{(j,s),(k,t)} = b_j^s b_k^t",
+    "so2_cartan": "J = sum_{r=1}^{n+1} H_r = a_1^+ a_1^- - 1/2",
+    "parameter_labels": [
+      "gb_{+,j,+}",
+      "gb_{+,j,-}",
+      "gb_{-,j,+}",
+      "gb_{-,j,-}"
+    ]
+  },
+  "gauge_transformation": {
+    "a_tilde": {
+      "+": "a_1^+",
+      "-": "a_1^-"
+    },
+    "b_tilde_template": "b_j^s - kappa * (gb_{+,j,s} * a_1^- + gb_{-,j,s} * a_1^+)",
+    "effect": "[b_tilde_j^s, a_1^sigma]_0 = -gb_{sigma,j,s} * kappa"
+  },
+  "induced_f_map": {
+    "f(J)": "0",
+    "f(Q_{+,j,s})": "-gb_{+,j,s} * J",
+    "f(Q_{-,j,s})": "+gb_{-,j,s} * J",
+    "f(S_{(j,s),(k,t)})": "-gb_{+,j,s} * Q_{-,k,t} - gb_{-,j,s} * Q_{+,k,t} - gb_{+,k,t} * Q_{-,j,s} - gb_{-,k,t} * Q_{+,j,s}",
+    "parity_check": {
+      "even_to_odd": true,
+      "odd_to_even": true
+    }
+  },
+  "adjoint_up_to_scalar_handling": {
+    "identities": [
+      "a_1^+ a_1^- = J + 1/2",
+      "a_1^- a_1^+ = 1/2 - J"
+    ],
+    "reason_scalars_drop_out": "ad_{lambda * 1} = 0 in the adjoint representation",
+    "practical_consequence": "The odd-generator images are g-valued modulo scalars exactly as required by the issue statement."
+  },
+  "sample_dimensions": {
+    "n=1": {
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "gb_parameter_count": 4
+    },
+    "n=2": {
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "gb_parameter_count": 8
+    },
+    "n=3": {
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "gb_parameter_count": 12
+    }
+  },
+  "verification_targets": [
+    "Check that the gauge-transformed oscillators reproduce the deformed cross-brackets.",
+    "Check that T = id + kappa f is even and parity-preserving on the total space.",
+    "Check that T^{-1}[T(X),T(Y)]_0 = [X,Y]_0 + kappa * (delta f)(X,Y) modulo kappa^2.",
+    "Check that only scalar terms appear outside g, and that they vanish in the adjoint representation."
+  ]
+}
