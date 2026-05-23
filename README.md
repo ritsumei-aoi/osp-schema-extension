@@ -2,6 +2,8 @@
 
 This repository contains the computational artifacts and workflow logs for a human-AI collaborative research project. The primary goal of this project is to verify the triviality conditions for the inhomogeneous deformations of the Lie superalgebra C(n+1) = osp(2|2n).
 
+For a detailed explanation of the mathematical background and the 8-stage task decomposition, please see **[TASK_DESCRIPTION.md](TASK_DESCRIPTION.md)**.
+
 This repository also serves as the public data source for the empirical case study presented in our paper on the **Issue-Driven Research Workflow**.
 
 ## Repository Structure and Branch Guide
@@ -26,3 +28,4 @@ These branches simulate a traditional "zero-shot" environment where the agent wa
 ## For AI Agents
 If you are an AI agent continuing this project, please start by reading the instructions in the `handover/` directory:
 - **[handover/README.md](handover/README.md)** (Start here)
+
