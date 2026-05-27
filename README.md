@@ -15,15 +15,17 @@ These branches demonstrate the proposed workflow, where the task was broken down
 - **[`study/thm01-01`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-01)**: Gemini 3.1 Pro - *Successfully completed via custom algebra engine.*
 - **[`study/thm01-02`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-02)**: Gemini 3 Flash - *Successfully completed with minor normalization corrections.*
 - **[`study/thm01-03`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-03)**: Gemini 3.1 Flash-lite - *Required significant human intervention but completed the pipeline.*
+- **[`study/thm01-04`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-04)**: Claude 4.6 Sonnet - *Successfully completed. Showcased high mathematical sophistication and accurately introspected on Autopilot bias.*
+- **[`study/thm01-05`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-05)**: GPT-5.4 - *Successfully completed. Demonstrated rigorous attention to mathematical detail and self-correction of typos.*
 
 ### Tier C: One-Shot Challenge
 These branches simulate a traditional "zero-shot" environment where the agent was asked to solve the entire problem autonomously in a single session. They reveal a spectrum of AI behaviors, from rigorous synthesis to "aesthetic logic" and "sophistry".
-- **[`study/thm01-X-06`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-06)**: Claude 4.6 Opus - *Gold Standard. Built a rigorous rational engine and self-fixed a Grassmann property bug.*
 - **[`study/thm01-X-01`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-01)**: Gemini 3.1 Pro - *Gold Standard. Exact algebraic proof via left nullspace tracing.*
 - **[`study/thm01-X-02`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-02)**: Gemini 3 Flash - *Honest numerical execution via SVD.*
+- **[`study/thm01-X-03`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-03)**: Gemini 3.1 Flash-lite - *Honest Failure. Admitted inability to perform the complex algebra required.*
 - **[`study/thm01-X-04`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-04)**: Claude 4.6 Sonnet - *Aesthetic Logic. Wrote correct code but produced a flawed natural language proof (failed to recognize H_1 structure).*
 - **[`study/thm01-X-05`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-05)**: GPT-5.4 - *Sophistry. Claimed universal triviality using a flawed gauge transformation argument without performing the required computations.*
-- **[`study/thm01-X-03`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-03)**: Gemini 3.1 Flash-lite - *Honest Failure. Admitted inability to perform the complex algebra required.*
+- **[`study/thm01-X-06`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-06)**: Claude 4.6 Opus - *Gold Standard. Built a rigorous rational engine and self-fixed a Grassmann property bug.*
 
 ## For AI Agents
 If you are an AI agent continuing this project, please start by reading the instructions in the `handover/` directory:
