@@ -1,62 +1,31 @@
-# osp-schema-extension
+# osp-schema-extension: AI-Driven Mathematical Research
 
-A prospective case study applying the
-[Issue-Driven Research Workflow](https://github.com/ritsumei-aoi/ai-research-workflow-template)
-to extend the 4-layer JSON schema from B(0,n) = osp(1|2n) to C(n+1) = osp(2|2n).
+This repository contains the computational artifacts and workflow logs for a human-AI collaborative research project. The primary goal of this project is to verify the triviality conditions for the inhomogeneous deformations of the Lie superalgebra C(n+1) = osp(2|2n).
 
-## Purpose
+For a detailed explanation of the mathematical background and the 8-stage task decomposition, please see **[TASK_DESCRIPTION.md](TASK_DESCRIPTION.md)**.
 
-This repository was created from scratch to prospectively validate the workflow
-described in the companion manuscript:
+This repository also serves as the public data source for the empirical case study presented in our paper on the **Issue-Driven Research Workflow**.
 
-> H. Aoi, *A collaborative workflow for human-AI research in pure mathematics*,
-> submitted to IPSJ JIP Special Issue on Software Engineering, 2026.
+## Repository Structure and Branch Guide
 
-The entire Git history — from the first commit to the final results — is publicly
-auditable. All issue files, handover documents, schema evolution, and AI session
-records are preserved as evidence of the workflow in action.
+To observe how different Large Language Models (LLMs) navigated this mathematical research task under various workflow constraints, please explore the specific branches listed below.
 
-## Study Design
+### Tier A: Iterative Workflow (The "Issue-Driven" Baseline)
+These branches demonstrate the proposed workflow, where the task was broken down into 8 sequential issues requiring human approval at each stage.
+- **[`study/thm01-01`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-01)**: Gemini 3.1 Pro - *Successfully completed via custom algebra engine.*
+- **[`study/thm01-02`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-02)**: Gemini 3 Flash - *Successfully completed with minor normalization corrections.*
+- **[`study/thm01-03`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-03)**: Gemini 3.1 Flash-lite - *Required significant human intervention but completed the pipeline.*
 
-- **Primary task (T1)**: Extend the 4-layer JSON schema for C(n+1) = osp(2|2n), n=1,2,3
-- **Secondary task (T2)**: Compare arithmetic/numerical libraries for the verification pipeline
-- **Pre-defined metrics**: See [STUDY_PROTOCOL.md](STUDY_PROTOCOL.md)
-- **Measurement period**: May–June 2026
+### Tier C: One-Shot Challenge
+These branches simulate a traditional "zero-shot" environment where the agent was asked to solve the entire problem autonomously in a single session. They reveal a spectrum of AI behaviors, from rigorous synthesis to "aesthetic logic" and "sophistry".
+- **[`study/thm01-X-06`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-06)**: Claude 4.6 Opus - *Gold Standard. Built a rigorous rational engine and self-fixed a Grassmann property bug.*
+- **[`study/thm01-X-01`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-01)**: Gemini 3.1 Pro - *Gold Standard. Exact algebraic proof via left nullspace tracing.*
+- **[`study/thm01-X-02`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-02)**: Gemini 3 Flash - *Honest numerical execution via SVD.*
+- **[`study/thm01-X-04`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-04)**: Claude 4.6 Sonnet - *Aesthetic Logic. Wrote correct code but produced a flawed natural language proof (failed to recognize H_1 structure).*
+- **[`study/thm01-X-05`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-05)**: GPT-5.4 - *Sophistry. Claimed universal triviality using a flawed gauge transformation argument without performing the required computations.*
+- **[`study/thm01-X-03`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/study/thm01-X-03)**: Gemini 3.1 Flash-lite - *Honest Failure. Admitted inability to perform the complex algebra required.*
 
-## Related Repositories
+## For AI Agents
+If you are an AI agent continuing this project, please start by reading the instructions in the `handover/` directory:
+- **[handover/README.md](handover/README.md)** (Start here)
 
-| Repository | Role |
-|---|---|
-| [ai-research-workflow-template](https://github.com/ritsumei-aoi/ai-research-workflow-template) | Workflow template (source of handover/, trust policy) |
-| [osp-triviality](https://github.com/ritsumei-aoi/osp-triviality) | Primary case study (retrospective, B(0,n)) |
-| This repository | Prospective validation study (C(n+1)) |
-
-## Quick Start
-
-See [QUICKSTART.md](QUICKSTART.md) for how to set up a new project using the
-workflow template from scratch.
-
-## Repository Structure
-
-```
-├── STUDY_PROTOCOL.md          # Pre-defined metrics and analysis plan
-├── QUICKSTART.md              # Setup guide for new users
-├── handover/                  # Workflow and session management
-│   ├── workflow_common.md     # Common rules
-│   ├── workflow_method_b.md   # Method B (AI agent)
-│   ├── handover_memo_latest.md
-│   └── notation.md            # C(n+1) notation
-├── ai_trust_policy.md         # AI delegation boundaries
-├── docs/
-│   ├── issues/                # Issue files (created during study)
-│   └── json_schema_specification.md  # Schema spec (evolves during study)
-├── src/                       # Source code (generated during study)
-├── tests/                     # Tests (generated during study)
-├── data/                      # Output data (generated during study)
-└── metrics/
-    └── session_log.csv        # Session-level metrics
-```
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

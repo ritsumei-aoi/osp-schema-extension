@@ -56,9 +56,9 @@ $$
 H_1 &= a_1^+ a_1^- + b_1^+ b_1^-, &
 E_{\varepsilon - \delta_1} &= a_1^+ b_1^-, &
 E_{\delta_1 - \varepsilon} &= b_1^+ a_1^-, \\
-H_k &= b_{k-1}^+ b_{k-1}^- - b_k^+ b_k^-, &
-E_{\delta_{k-1} - \delta_k} &= b_{k-1}^+ b_k^-, &
-E_{\delta_k - \delta_{k-1}} &= b_k^+ b_{k-1}^-, \\
+H_k &= b_k^+ b_k^- - b_{k+1}^+ b_{k+1}^-, &
+E_{\delta_k - \delta_{k+1}} &= b_k^+ b_{k+1}^-, &
+E_{\delta_{k+1} - \delta_k} &= b_{k+1}^+ b_k^-, \\
 H_{n+1} &= -b_n^+ b_n^- - \tfrac{1}{2}, &
 E_{2\delta_n} &= \tfrac{1}{2}(b_n^+)^2, &
 E_{-2\delta_n} &= \tfrac{1}{2}(b_n^-)^2.
@@ -91,9 +91,9 @@ $$
 | $-(\delta_i+\delta_j)$ ($i<j$) | `E_del{i}_del{j}_mm` | $b_i^- b_j^-$ |
 | $\delta_i - \delta_j$ ($i<j$) | `E_del{i}_del{j}_pm` | $b_i^+ b_j^-$ |
 | $-\delta_i + \delta_j$ ($i<j$) | `E_del{i}_del{j}_mp` | $b_i^- b_j^+$ |
-| Cartan ($k = 1$) | `H_{1}` | $a_1^+ a_1^- + b_1^+ b_1^-$ |
-| Cartan ($k = 2,\ldots,n$) | `H_{k}` | $b_{k-1}^+ b_{k-1}^- - b_k^+ b_k^-$ |
-| Cartan ($k = n+1$) | `H_{n+1}` | $-b_n^+ b_n^- - \tfrac{1}{2}$ |
+| Cartan ($k = 1,\ldots,n-1$) | `H_{k}` | $b_k^+ b_k^- - b_{k+1}^+ b_{k+1}^-$ |
+| Cartan ($k = n$) | `H_{n}` | $-b_n^+ b_n^- - \tfrac{1}{2}$ |
+| Cartan ($k = n+1$) | `H_{n+1}` | $a_1^+ a_1^- + b_1^+ b_1^-$ |
 
 **Odd generators** ($k = 1, \ldots, n$):
 
