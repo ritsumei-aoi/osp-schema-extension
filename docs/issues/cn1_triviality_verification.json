@@ -1,0 +1,95 @@
+{
+  "artifact": "C(n+1) inhomogeneous deformation triviality input audit",
+  "status": "underdetermined_from_supplied_definitions",
+  "source_scope": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "algebra": {
+    "name": "C(n+1)",
+    "realization": "osp(2|2n)",
+    "root_families_as_stated": [
+      "±delta_k ± delta_l, 1 <= k < l <= n",
+      "±2delta_k, 1 <= k <= n",
+      "±epsilon ± delta_k, 1 <= k <= n"
+    ],
+    "dimensions_by_n": {
+      "1": {
+        "even": 4,
+        "odd": 4,
+        "total": 8
+      },
+      "2": {
+        "even": 11,
+        "odd": 8,
+        "total": 19
+      },
+      "3": {
+        "even": 22,
+        "odd": 12,
+        "total": 34
+      }
+    },
+    "dimension_formulas": {
+      "even": "2*n^2 + n + 1",
+      "odd": "4*n",
+      "total": "2*n^2 + 5*n + 1"
+    }
+  },
+  "gb_parameters": {
+    "parity": 1,
+    "index_set": {
+      "sigma": [
+        "+",
+        "-"
+      ],
+      "boson_index": "j=1,...,n",
+      "boson_sign": [
+        "+",
+        "-"
+      ]
+    },
+    "count_formula": "4*n",
+    "count_by_n": {
+      "1": 4,
+      "2": 8,
+      "3": 12
+    },
+    "exchange_relation_as_stated": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa"
+  },
+  "coboundary": {
+    "map_parity": 1,
+    "map_type": "f: g -> g",
+    "formula": "(delta f)(X,Y)=(-1)^p(X)[X,f(Y)]-(-1)^((p(X)+1)p(Y))[Y,f(X)]-f([X,Y])",
+    "result_parity": "p(X)+p(Y)+1"
+  },
+  "coefficient_space_audit": {
+    "oscillator_exchange_codomain_as_stated": "central line C*kappa",
+    "later_deformation_description": "kappa*g, with g-valued gamma and adjoint module",
+    "relationship_between_descriptions_defined": false,
+    "meaning_of_up_to_scalar_defined": false,
+    "literal_central_reading": {
+      "equality_with_g_valued_delta_f": "forces both components to vanish in the direct sum",
+      "all_gb_zero": "follows only if the exchange relations themselves are the deformation data and gb coordinates are independent"
+    },
+    "intended_adjoint_reading": {
+      "conclusion": "cannot determine without an explicit map from gb to g-valued gamma coefficients"
+    }
+  },
+  "computational_inputs": {
+    "homogeneous_basis": null,
+    "basis_parities": null,
+    "structure_constants": null,
+    "gb_to_gamma_coefficients": null,
+    "delta_matrix_on_odd_endomorphisms": null,
+    "reason_unavailable": "The cited documents do not specify these tensors or an executable construction sufficient to derive them."
+  },
+  "verified_computations": [
+    "Substitution of n=1,2,3 into the stated even/odd dimension formulas.",
+    "Counting 2 fermionic signs times 2 bosonic signs times n bosonic indices gives 4*n gb coordinates.",
+    "Parity of every term in the stated delta-f formula is p(X)+p(Y)+1."
+  ],
+  "external_sources_used": false
+}
