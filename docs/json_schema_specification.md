@@ -294,3 +294,32 @@ the required top-level `central_elements`. Consumers must branch on
 `algebra.family` and must not assume B-family odd basis or fermion fields
 when reading C-family files. File names are family-specific (`B_...` versus
 `C_{n}_structure.json`), so adding C files does not overwrite B(m,n) data.
+
+## Schema 2: Inhomogeneous deformation
+
+Schema 2 files are named `C_{n}_gamma.json` and refer to the corresponding
+Schema 1 file through `source_schema`. They contain the algebra descriptor,
+the `gb_matrix`, `inhomogeneous_deformation`, and metadata.
+
+`gb_matrix` has two rows (`a_1_p`, `a_1_m`) and `2n` columns (the bosonic
+oscillator labels in Schema 1 order). Each cell has one distinct parity-1
+parameter; labels use `gb_a1_{p|m}_b{i}_{p|m}`, such as
+`gb_a1_p_b1_m`. Its `shape` is `[2, 2n]`.
+
+`inhomogeneous_deformation.relations` records each literal relation
+`[b_i^s, a_1^σ] = -gb_a1_σ_bi_s κ`. Each nonzero entry in
+`gamma_coefficients` has `X`, `Y`, `Z`, and a list of exact rational
+coefficients indexed by parameter. The pair `X,Y` is stored once in basis
+order. `Z` is a Schema 1 basis label, or `K` when an identity term is
+required to express the oscillator result; `K` is the identity recorded in
+Schema 1 `central_elements`, not a new basis generator. Reversed pairs follow
+the documented graded antisymmetry rule. These fields encode formal
+first-order parameter terms and omit the common factor `κ`.
+
+**Parity caveat:** `C_inhomogeneous_definition.md` states that both `gb` and
+`κ` are odd but also assigns their product to the mixed bracket
+`[b_{\bar 0},a_{\bar 1}]`, which is odd. The stated parities make that product
+even. The generator preserves the literal exchange-relation coefficients as
+formal labels and does not infer coefficient sign changes from their parity.
+This makes the generated coefficients explicit, but does not resolve the
+source definition's parity inconsistency.
