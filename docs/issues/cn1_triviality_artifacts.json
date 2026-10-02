@@ -1,0 +1,77 @@
+{
+  "artifact_version": 1,
+  "subject": "C(n+1) = osp(2|2n) inhomogeneous deformation triviality",
+  "source_scope": "Repository definitions only; no external sources used",
+  "status": "adjoint_valued_problem_underdetermined_and_definitions_inconsistent",
+  "formulas_from_definitions": {
+    "even_dimension": "2*n^2 + n + 1",
+    "odd_dimension": "4*n",
+    "gb_parameter_count": "4*n",
+    "oscillator_relation": "[b_j^s, a_1^sigma] = -gb_sigma_j_s*kappa",
+    "oscillator_parity": {
+      "b": 0,
+      "a": 1,
+      "kappa": 1,
+      "declared_gb": 1,
+      "bracket": 1,
+      "right_hand_side": 0,
+      "required_gb_if_kappa_is_odd": 0,
+      "consistent": false
+    }
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "parameter_count": 4,
+      "parameters": [
+        "gb_{sigma,j,s}: sigma in {+,-}, j=1, s in {+,-}"
+      ]
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "parameter_count": 8,
+      "parameters": [
+        "gb_{sigma,j,s}: sigma in {+,-}, j=1..2, s in {+,-}"
+      ]
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "parameter_count": 12,
+      "parameters": [
+        "gb_{sigma,j,s}: sigma in {+,-}, j=1..3, s in {+,-}"
+      ]
+    }
+  ],
+  "target_space_analysis": {
+    "literal_deformation_target": "C*kappa",
+    "coboundary_target": "g",
+    "literal_extension": "g direct_sum C*kappa",
+    "intersection": "zero",
+    "literal_equality_consequence": "gamma_gb = 0 and delta_f = 0",
+    "intended_adjoint_module_map_specified": false,
+    "meaning_of_up_to_scalar_specified": false
+  },
+  "coboundary_coefficient_formula": {
+    "basis_bracket": "[e_i,e_j] = sum_k c[i,j,k]*e_k",
+    "odd_map": "f(e_j) = sum_l F[l,j]*e_l; F[l,j]=0 unless parity(e_l)=parity(e_j)+1",
+    "delta_f": "(-1)^p_i sum_l F[l,j] c[i,l,k] - (-1)^((p_i+1)*p_j) sum_l F[l,i] c[j,l,k] - sum_l c[i,j,l] F[k,l]",
+    "verification_equation": "D*F = gamma_gb"
+  },
+  "missing_inputs_for_adjoint_valued_decision": [
+    "consistent parity assignment for gb, kappa, and the bracket correction",
+    "coefficient module and distinction between central C*kappa and adjoint module kappa*g",
+    "explicit map from oscillator deformation parameters to gamma_gb(X,Y) coordinates",
+    "definition of up to scalar, projection, or module identification",
+    "full structure constants in a specified homogeneous basis"
+  ],
+  "conditional_conclusion": "If gamma_gb is literally C*kappa-valued and delta_f is g-valued in g direct_sum C*kappa, equality forces both to be zero. At the oscillator-relation level, all gb parameters vanish exactly when all displayed exchange relations are undeformed, assuming kappa is nonzero and the parameters are independent. This does not determine the kernel of an unspecified induced adjoint-valued cocycle."
+}
