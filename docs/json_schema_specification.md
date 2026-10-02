@@ -246,6 +246,67 @@ the repository's established duplicate-bracket convention applied consistently.
 Replace the date and generator name with the actual generation information
 when a file is produced.
 
+## Schema 2: Inhomogeneous deformation
+
+Schema 2 files use `C_{n}_gamma.json` and reference the corresponding
+`C_{n}_structure.json` through `source_schema`. They retain `schema_version`
+and the C-family algebra identity, then record the deformation parameters and
+the first-order gamma coefficients:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)"
+  },
+  "source_schema": "C_2_structure.json",
+  "gb_matrix": {
+    "shape": [2, 4],
+    "rows": ["a_1_p", "a_1_m"],
+    "columns": ["b_1_p", "b_1_m", "b_2_p", "b_2_m"],
+    "entries": [
+      ["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m", "gb_a_1_p_b_2_p", "gb_a_1_p_b_2_m"],
+      ["gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m", "gb_a_1_m_b_2_p", "gb_a_1_m_b_2_m"]
+    ],
+    "parameter_parity": 1
+  },
+  "inhomogeneous_deformation": {
+    "exchange_relations": [],
+    "bracket_convention": "[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y)",
+    "gamma_coefficients": [
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps_del1_mp",
+        "Z": "K",
+        "coeff": "-gb_a_1_m_b_1_m",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+The matrix has two fermion rows and $2n$ boson columns, hence $4n$ odd
+parameters. `exchange_relations` enumerates
+$[b_j^s,a_1^\sigma]=-\mathrm{gb}_{a_1^\sigma,b_j^s}\kappa$ for every row and
+column pair. Each `gamma_coefficients` entry contributes
+`coeff * Z` to $\gamma(X,Y)$; expressions are exact rational linear
+combinations of named `gb` parameters. Bracket records use the same canonical
+pair order and `sign_rule` as Schema 1. A scalar contraction is represented by
+`Z: "K"`: the central identity is permitted as a Schema 2 output, but remains
+excluded from the independent Schema 1 basis.
+
+The generator factors odd central $\kappa$ to the left of the gamma value using
+supercentral signs. The source assigns odd parity to `gb` parameters; it also
+states the mixed exchange relation in a way whose right-hand parity is
+ambiguous. Schema 2 therefore follows the displayed exchange relation
+literally and records this parity convention explicitly rather than inferring
+another relation.
+
 ## Compatibility with B(m,n) v5.0
 
 The C-family keeps the v5.0 top-level structure and field roles for `schema_version`,
