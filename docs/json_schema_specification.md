@@ -356,6 +356,57 @@ Substitution is exact over rational coefficients. A zero component is encoded
 as `"0"`; records are emitted when either component is nonzero. `K` remains a
 central output available to Schema 2, not a Schema 1 basis element.
 
+## Schema 4: Coboundary structure
+
+Schema 4 files use `C_{n}_coboundary.json` and reference the corresponding
+Schema 1 basis. They encode a generic odd linear map by one independent
+coefficient for every parity-reversing source/target pair. The coefficient
+parameters are even scalars; the map itself has parity 1.
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)"
+  },
+  "source_schema": "C_1_structure.json",
+  "odd_linear_map": {
+    "parity": 1,
+    "parameter_parity": 0,
+    "entries": [
+      {
+        "source": "H_1",
+        "target": "E_eps_del1_pm",
+        "coefficient": "phi_E_eps_del1_pm_from_H_1"
+      }
+    ]
+  },
+  "coboundary": {
+    "formula": "(delta f)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])",
+    "coefficients": [
+      {
+        "X": "E_2del1_m",
+        "Y": "E_2del1_m",
+        "Z": "E_eps_del1_mm",
+        "coeff": "4*phi_E_eps_del1_mp_from_E_2del1_m",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+For each generator $Z_j$, `odd_linear_map.entries` includes every basis
+generator $Z_i$ of opposite parity with independent coefficient
+`phi_{Z_i_from_Z_j}`. Each coboundary record gives the exact symbolic
+coefficient of $Z$ in $(\delta f)(X,Y)$; expressions are rational linear
+combinations of these map parameters. Inputs and outputs must be Schema 1
+basis labels, and all brackets use the Schema 1 graded structure constants.
+
 ## Compatibility with B(m,n) v5.0
 
 The C-family keeps the v5.0 top-level structure and field roles for `schema_version`,
