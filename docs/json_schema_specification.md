@@ -307,6 +307,55 @@ ambiguous. Schema 2 therefore follows the displayed exchange relation
 literally and records this parity convention explicitly rather than inferring
 another relation.
 
+## Schema 3: Evaluated structure
+
+Schema 3 files use `C_{n}_evaluated.json` and reference both source layers.
+The initial representative profile sets every parameter to `+1`. Each
+evaluated structure-constant record preserves the undeformed coefficient and
+the substituted coefficient of $\kappa$ separately:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)"
+  },
+  "source_schema": "C_1_structure.json",
+  "source_gamma_schema": "C_1_gamma.json",
+  "gb_assignment": {
+    "name": "all_plus",
+    "description": "All 4 gb parameters set to +1",
+    "values": {
+      "gb_a_1_p_b_1_p": 1,
+      "gb_a_1_p_b_1_m": 1,
+      "gb_a_1_m_b_1_p": 1,
+      "gb_a_1_m_b_1_m": 1
+    }
+  },
+  "evaluated_structure": {
+    "coefficient_convention": "base_coeff + kappa * kappa_coeff",
+    "structure_constants": [
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps_del1_mp",
+        "Z": "K",
+        "base_coeff": "0",
+        "kappa_coeff": "-1",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+Substitution is exact over rational coefficients. A zero component is encoded
+as `"0"`; records are emitted when either component is nonzero. `K` remains a
+central output available to Schema 2, not a Schema 1 basis element.
+
 ## Compatibility with B(m,n) v5.0
 
 The C-family keeps the v5.0 top-level structure and field roles for `schema_version`,
