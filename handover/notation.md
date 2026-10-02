@@ -33,8 +33,8 @@ signs \(+\) and \(-\). The first sign suffix in an odd-root label is the
 
 | Root | Generator label | Oscillator realization |
 |---|---|---|
-| \(2\delta_i\) | `E_2del{i}_p` | `(b_i_p)^2` |
-| \(-2\delta_i\) | `E_2del{i}_m` | `(b_i_m)^2` |
+| \(2\delta_i\) | `E_2del{i}_p` | \(\tfrac12(b_i^+)^2\) |
+| \(-2\delta_i\) | `E_2del{i}_m` | \(\tfrac12(b_i^-)^2\) |
 | \(\delta_i+\delta_j\), \(i<j\) | `E_del{i}_del{j}_pp` | `b_i_p b_j_p` |
 | \(\delta_i-\delta_j\), \(i<j\) | `E_del{i}_del{j}_pm` | `b_i_p b_j_m` |
 | \(-\delta_i+\delta_j\), \(i<j\) | `E_del{i}_del{j}_mp` | `b_i_m b_j_p` |
@@ -43,6 +43,9 @@ signs \(+\) and \(-\). The first sign suffix in an odd-root label is the
 | \(\varepsilon-\delta_i\) | `E_eps1_del{i}_pm` | `a_1_p b_i_m` |
 | \(-\varepsilon+\delta_i\) | `E_eps1_del{i}_mp` | `a_1_m b_i_p` |
 | \(-\varepsilon-\delta_i\) | `E_eps1_del{i}_mm` | `a_1_m b_i_m` |
+
+The long-root normalization follows the I02 approval: use the factor
+\(\tfrac12\) uniformly for every \(E_{\pm2\delta_i}\).
 
 ### Basis lists
 
