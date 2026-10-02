@@ -259,9 +259,10 @@ generators. Each entry has the following shape:
 
 `X`, `Y`, and `Z` are basis labels, and `coeff` is an exact rational number
 stored as a string. Store a bracket's result as a coefficient and basis label;
-omit zero brackets. The brackets are computed from the undeformed oscillator
-relations and the graded commutator. Deformation cocycle terms belong to
-Schema 2, not this array.
+omit zero brackets. Store each nonzero pair once in basis order; the reversed
+bracket is determined by graded antisymmetry. The brackets are computed from
+the undeformed oscillator relations and the graded commutator. Deformation
+cocycle terms belong to Schema 2, not this array.
 
 ### `metadata`
 
