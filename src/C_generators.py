@@ -10,8 +10,6 @@ from itertools import combinations
 from pathlib import Path
 from typing import TypeAlias
 
-import sympy as sp
-
 Word: TypeAlias = tuple[str, ...]
 Polynomial: TypeAlias = dict[Word, Fraction]
 
@@ -162,26 +160,50 @@ def _coordinates(
     words = sorted(
         set(bracket).union(*(set(realizations[name]) for name in names))
     )
-    matrix = sp.Matrix([
-        [sp.Rational(realizations[name].get(word, 0).numerator,
-                     realizations[name].get(word, 0).denominator) for name in names]
+    matrix = [
+        [realizations[name].get(word, Fraction()) for name in names]
         for word in words
-    ])
-    target = sp.Matrix([
-        sp.Rational(bracket.get(word, 0).numerator, bracket.get(word, 0).denominator)
-        for word in words
-    ])
-    pivot_rows = matrix.T.rref()[1]
-    square = matrix[list(pivot_rows), :]
-    coeffs = square.inv() * target[list(pivot_rows), :]
-    if matrix * coeffs != target:
+    ]
+    target = [bracket.get(word, Fraction()) for word in words]
+    augmented = [row + [value] for row, value in zip(matrix, target)]
+    pivot_rows = []
+    pivot_row = 0
+    for column in range(len(names)):
+        pivot = next(
+            (row for row in range(pivot_row, len(augmented))
+             if augmented[row][column]),
+            None,
+        )
+        if pivot is None:
+            raise ValueError("Generator realizations are linearly dependent")
+        augmented[pivot_row], augmented[pivot] = augmented[pivot], augmented[pivot_row]
+        pivot_value = augmented[pivot_row][column]
+        augmented[pivot_row] = [value / pivot_value for value in augmented[pivot_row]]
+        for row in range(len(augmented)):
+            if row == pivot_row or not augmented[row][column]:
+                continue
+            factor = augmented[row][column]
+            augmented[row] = [
+                value - factor * pivot_entry
+                for value, pivot_entry in zip(augmented[row], augmented[pivot_row])
+            ]
+        pivot_rows.append(pivot_row)
+        pivot_row += 1
+
+    if any(not any(row[:-1]) and row[-1] for row in augmented):
+        raise ValueError("Oscillator bracket is not in the declared generator span")
+    coefficients = [augmented[row][-1] for row in pivot_rows]
+    if any(
+        sum((value * coefficient for value, coefficient in zip(row, coefficients)),
+            Fraction())
+        != expected
+        for row, expected in zip(matrix, target)
+    ):
         raise ValueError("Oscillator bracket is not in the declared generator span")
     return {
-        name: Fraction(int(coeffs[index]), 1)
-        if coeffs[index].q == 1
-        else Fraction(int(coeffs[index].p), int(coeffs[index].q))
-        for index, name in enumerate(names)
-        if coeffs[index]
+        name: coefficient
+        for name, coefficient in zip(names, coefficients)
+        if coefficient
     }
 
 

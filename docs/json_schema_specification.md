@@ -224,6 +224,57 @@ skew-symmetry. Schema 1 contains no `gb`-dependent terms.
 The date is the actual generation date for a generated data file. Keep
 rank-independent references and identify the C-family generator or tool.
 
+## Schema 2: Inhomogeneous Deformation
+
+Schema 2 files are named `C_{n}_gamma.json`, with `n` the bosonic rank. They
+reference the corresponding Schema 1 file and preserve its algebra rank and
+generator labels.
+
+### `gb_matrix`
+
+```json
+{
+  "rows": ["a_1_p", "a_1_m"],
+  "columns": ["b_1_p", "b_1_m"],
+  "shape": [2, 2],
+  "parameters": [
+    "gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m",
+    "gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m"
+  ],
+  "parity": 1
+}
+```
+
+For rank $n$, the matrix has shape $2\times2n$ and contains $4n$
+parameters, row-major by fermion label and then boson label. Each parameter
+names the coefficient in the mixed oscillator relation.
+
+### `inhomogeneous_deformation`
+
+This object contains:
+
+- `kappa`: the odd nilpotent extension symbol and its square-zero relation;
+- `relations`: one record per matrix entry, with `fermion`, `boson`,
+  `parameter`, and the literal exchange relation
+  `[boson, fermion] = -parameter * kappa`;
+- `gamma_coefficients`: records with `X`, `Y`, `Z`, `parameter`, and rational
+  `coeff`, representing that parameter's contribution to $\gamma(X,Y)$;
+- `gamma_convention`: $\left[X,Y\right]_\gamma =
+  \left[X,Y\right]_0+\kappa\gamma(X,Y)$.
+
+The gamma records are obtained by normal-ordering the Schema 1 oscillator
+realizations with the mixed relation, retaining first-order terms and dropping
+terms with $\kappa^2$. `Z` may be a Schema 1 basis generator or `K`, the scalar
+identity recorded in `central_elements`. The latter is needed when an exact
+first-order correction contains a scalar component.
+
+**Parity caveat**: the source definitions state that both `gb` and `kappa`
+are odd while also specifying their product in a mixed commutator between an
+even and an odd oscillator. Those statements do not determine a consistent
+parity for the right-hand side. The generated coefficients follow the
+exchange relation literally as formal first-order symbols; the serialization
+does not claim to resolve that parity inconsistency.
+
 ## Compatibility with B(m,n)
 
 B(m,n) files retain their existing `"family": "B"` values, supplementary
