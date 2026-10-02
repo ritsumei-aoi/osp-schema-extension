@@ -1,0 +1,109 @@
+{
+  "artifact_version": 1,
+  "purpose": "Machine-readable inventory and linear-algebra specification for the C(n+1) triviality question",
+  "source_documents": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "scope": {
+    "n_values": [1, 2, 3],
+    "base_field_named_by_sources": "C",
+    "external_sources_used": false
+  },
+  "parameter_convention": {
+    "name": "gb",
+    "index_sets": {
+      "fermionic_sign": ["+", "-"],
+      "bosonic_index": "j = 1..n",
+      "bosonic_sign": ["+", "-"]
+    },
+    "count_formula": "4*n",
+    "parity_claim_in_source": "odd",
+    "parity_status": "inconsistent_with_[b_even,a_odd]=-gb*kappa_if_kappa_is_odd_and_the_bracket_is_parity_preserving"
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "gb_parameter_count": 4,
+      "odd_linear_map_coefficient_count": 32,
+      "gb_parameters": [
+        "gb_{a1^+,b1^+}",
+        "gb_{a1^+,b1^-}",
+        "gb_{a1^-,b1^+}",
+        "gb_{a1^-,b1^-}"
+      ]
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "gb_parameter_count": 8,
+      "odd_linear_map_coefficient_count": 176,
+      "gb_parameters": [
+        "gb_{a1^+,b1^+}",
+        "gb_{a1^+,b1^-}",
+        "gb_{a1^-,b1^+}",
+        "gb_{a1^-,b1^-}",
+        "gb_{a1^+,b2^+}",
+        "gb_{a1^+,b2^-}",
+        "gb_{a1^-,b2^+}",
+        "gb_{a1^-,b2^-}"
+      ]
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "gb_parameter_count": 12,
+      "odd_linear_map_coefficient_count": 528,
+      "gb_parameters": [
+        "gb_{a1^+,b1^+}",
+        "gb_{a1^+,b1^-}",
+        "gb_{a1^-,b1^+}",
+        "gb_{a1^-,b1^-}",
+        "gb_{a1^+,b2^+}",
+        "gb_{a1^+,b2^-}",
+        "gb_{a1^-,b2^+}",
+        "gb_{a1^-,b2^-}",
+        "gb_{a1^+,b3^+}",
+        "gb_{a1^+,b3^-}",
+        "gb_{a1^-,b3^+}",
+        "gb_{a1^-,b3^-}"
+      ]
+    }
+  ],
+  "triviality_test_specification": {
+    "basis": "homogeneous basis Z_a of g",
+    "structure_constants": "[Z_a,Z_b] = sum_k c_{ab}^k Z_k",
+    "unknown_map": "odd f with f(Z_j) = sum_i phi_{ij} Z_i and p(Z_i) = p(Z_j)+1",
+    "coboundary": "delta_f(X,Y)=(-1)^p(X)[X,f(Y)]-(-1)^((p(X)+1)p(Y))[Y,f(X)]-f([X,Y])",
+    "gamma_parameterization_needed": "gamma_gb(Z_a,Z_b) = sum_r G^r_{ab}(gb) Z_r",
+    "criterion_for_fixed_gb": "vec(gamma_gb) is in the column space of D, where D maps odd-map coefficients phi to vec(delta_f)",
+    "equivalent_left_kernel_criterion_when_gamma_is_linear": "N^T G gb = 0, where columns of N span the left nullspace of D",
+    "global_nonzero_scalar_convention": "gamma=lambda*delta_f with one global lambda != 0 is equivalent to gamma=delta_f for some odd f, since delta is linear and lambda can be absorbed into f",
+    "scalar_convention_warning": "If lambda=0 is allowed, the condition is vacuous; input-dependent or componentwise scalars define a different relation."
+  },
+  "missing_inputs_for_numerical_verification": [
+    "A complete homogeneous basis and its parity assignment, matched to the oscillator generators",
+    "Complete undeformed structure constants in that basis",
+    "Explicit deformed oscillator relations and the resulting coefficients G^r_{ab}(gb)",
+    "The coefficient ring and a parity-consistent interpretation of the gb parameters",
+    "An explicit nonzero-global-scalar convention if equality is intended only up to scalar"
+  ],
+  "verification_status": {
+    "dimension_and_parameter_counts": "checked_against_the_supplied_definitions",
+    "structure_constant_matrices_constructed": false,
+    "gamma_matrices_constructed": false,
+    "rank_or_nullspace_computed": false,
+    "reason": "The source documents do not specify the data needed to construct these matrices; reporting numerical ranks would fabricate evidence.",
+    "triviality_classification": "not_determined_by_supplied_data"
+  },
+  "conclusion": "The supplied definitions do not determine necessary and sufficient conditions on gb or whether nonzero configurations are trivial."
+}
