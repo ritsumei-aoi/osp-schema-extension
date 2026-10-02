@@ -338,3 +338,19 @@ the profile name `all_plus_one`. The values are recorded by parameter label;
 each assignment must cover exactly the 4n entries in the Schema 2 gb matrix.
 The κ-order field keeps the undeformed bracket and first-order deformation
 distinct rather than combining them into a scalar coefficient.
+
+## Schema 4: Coboundary structure
+
+Schema 4 files are named `C_{n}_coboundary.json` and reference their
+Schema 1 input through `source_schema`. `odd_linear_map.coefficients` maps
+each source basis generator to all target generators of opposite parity,
+with independent symbolic coefficients named
+`phi_{target}_from_{source}`. This is the general odd map
+$f:\mathfrak g\to\mathfrak g$, not a selected numerical map.
+
+`coboundary_definition.formula` records the convention used for $\delta f$.
+Each nonzero `coboundary_coefficients` entry has input labels `X`, `Y`,
+output label `Z`, and a list of exact rational `parameter`/`coeff` terms.
+Input pairs are stored once in canonical basis order. The output is
+calculated from Schema 1 brackets and must have parity
+$p(X)+p(Y)+1\pmod 2$.
