@@ -275,6 +275,21 @@ parity for the right-hand side. The generated coefficients follow the
 exchange relation literally as formal first-order symbols; the serialization
 does not claim to resolve that parity inconsistency.
 
+## Schema 3: Evaluated Structure
+
+Evaluated files are named `C_{n}_evaluated.json`. The current representative
+profile sets every `gb` parameter to `+1`. The file records all assignments
+explicitly and stores one record per `(X,Y,Z)` with separate `base_coeff` and
+`kappa_coeff` values, representing
+$[X,Y]_0+\kappa[X,Y]_{\mathrm{gamma,evaluated}}$. Thus numerical
+specialization does not discard the first-order extension symbol. Base
+coefficients are copied from the matching Schema 1 file; `kappa_coeff` is the
+sum of the matching Schema 2 terms multiplied by their assigned signs.
+
+The profile is a formal coefficient evaluation following the documented
+parity caveat in Schema 2; it is not an assignment of odd Grassmann elements
+to ordinary real numbers.
+
 ## Compatibility with B(m,n)
 
 B(m,n) files retain their existing `"family": "B"` values, supplementary
