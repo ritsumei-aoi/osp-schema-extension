@@ -318,3 +318,31 @@ Preserve the v5.0 metadata fields:
 ```
 
 Use the actual generation date and generator name in each produced data file.
+
+## Schema 3: Evaluated structure
+
+Schema 3 records one concrete assignment of the Schema 2 deformation
+parameters. Use `C_{n}_evaluated.json` for bosonic rank \(n\). Preserve the
+Schema 2 `schema_version`, `algebra`, and `inhomogeneous_deformation` metadata,
+and include the corresponding Schema 1 `structure_constants` unchanged.
+
+Within `inhomogeneous_deformation`, retain `gb_matrix`, `deformed_relations`,
+and any scalar-projection metadata. Add `parameter_assignment`, an object
+mapping every `gb_matrix` parameter name to its assigned integer value, and
+replace the symbolic `gamma_structure` array with
+`evaluated_gamma_structure`. The latter uses the same `X`, `Y`, `Z`, `coeff`,
+and `sign_rule` fields; `coeff` is a canonical exact rational string after
+substitution. Omit entries whose evaluated coefficient is zero. As in Schema
+2, \(\kappa\) is implicit in each gamma record, and `Z` remains a Schema 1
+basis label.
+
+For the representative rank-two profile used by Issue I06-1, repeat the
+following assignment for each bosonic index \(i\):
+
+| Parameter row | `b_i_p` | `b_i_m` |
+|---|---:|---:|
+| `a_1_p` | `1` | `1` |
+| `a_1_m` | `-1` | `1` |
+
+The `metadata` object identifies `C_evaluated_generator.py` as the generator,
+records the generation date, and retains the relevant references.
