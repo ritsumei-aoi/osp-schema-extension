@@ -323,3 +323,18 @@ even. The generator preserves the literal exchange-relation coefficients as
 formal labels and does not infer coefficient sign changes from their parity.
 This makes the generated coefficients explicit, but does not resolve the
 source definition's parity inconsistency.
+
+## Schema 3: Evaluated structure
+
+Schema 3 files are named `C_{n}_evaluated.json`. They identify both
+`source_schema` and `source_gamma`, record the complete `gb_assignment`, and
+contain `evaluated_structure_constants`. Each evaluated coefficient has
+`X`, `Y`, `Z`, an exact rational-string `coeff`, and `kappa_order` (`0` for
+the undeformed bracket and `1` for its evaluated $\kappa\gamma$ coefficient).
+The `Z` target may be a basis generator or central identity `K`.
+
+The reference assignment sets every parameter to `+1` and is identified by
+the profile name `all_plus_one`. The values are recorded by parameter label;
+each assignment must cover exactly the 4n entries in the Schema 2 gb matrix.
+The κ-order field keeps the undeformed bracket and first-order deformation
+distinct rather than combining them into a scalar coefficient.
