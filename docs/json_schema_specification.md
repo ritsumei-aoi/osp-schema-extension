@@ -290,6 +290,28 @@ The profile is a formal coefficient evaluation following the documented
 parity caveat in Schema 2; it is not an assignment of odd Grassmann elements
 to ordinary real numbers.
 
+## Schema 4: Coboundary Structure
+
+Coboundary files are named `C_{n}_coboundary.json` and reference the
+corresponding Schema 1 basis and Schema 2 algebra rank. `linear_map` records
+an odd map $f:\mathfrak{g}\to\mathfrak{g}$ by all coefficients
+`phi_<output>_from_<input>` for which output and input have opposite parity.
+Its parameter count is $2\,\dim(\mathfrak{g}_{\bar0})\dim(\mathfrak{g}_{\bar1})$.
+
+`coboundary.coboundary_coefficients` stores records with `X`, `Y`, `Z`,
+`parameter`, and rational `coeff`. Each record is one term in the basis
+expansion of the coboundary defined by
+`docs/math/C_coboundary_definition.md`:
+
+$$
+(\delta f)(X,Y)=(-1)^{p(X)}[X,f(Y)]
+-(-1)^{(p(X)+1)p(Y)}[Y,f(X)]-f([X,Y]).
+$$
+
+Only independent ordered pairs are stored, with the complementary order
+determined by graded skew-symmetry. Since $f$ is odd, every nonzero output
+generator has parity $p(X)+p(Y)+1$ modulo 2.
+
 ## Compatibility with B(m,n)
 
 B(m,n) files retain their existing `"family": "B"` values, supplementary
