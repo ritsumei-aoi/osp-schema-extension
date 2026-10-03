@@ -71,21 +71,14 @@ def _multiply_monomial(m1, m2, order_idx):
     return _normal_order(m1 + m2, order_idx)
 
 
-def _is_zero_monomial(m):
-    """Return True if monomial is zero: any fermion letter appears twice."""
-    seen = set()
-    for label in m:
-        if osc_par(label) == 1:
-            if label in seen:
-                return True
-            seen.add(label)
-    return False
-
-
 def _normal_order(mon, order_idx):
     """
     Reduce a monomial tuple to normal order using CAR/CCR.
     Returns dict: tuple -> Fraction.
+
+    Zero condition: applied only when two IDENTICAL fermions are ADJACENT
+    in the already-normal-ordered monomial (i.e., after all swaps, if two
+    identical fermion labels appear next to each other, the product is zero).
     """
     results = {tuple(mon): Fraction(1)}
 
@@ -94,31 +87,25 @@ def _normal_order(mon, order_idx):
         changed = False
         new_results = {}
         for m, coeff in results.items():
-            # Check if this monomial is zero (fermion squared)
-            if _is_zero_monomial(m):
-                changed = True
-                continue  # term vanishes
-
             m = list(m)
             swapped = False
             for i in range(len(m) - 1):
                 a, b = m[i], m[i + 1]
                 ia, ib = order_idx[a], order_idx[b]
+
                 if ia > ib:
+                    # Need to swap a and b
                     pa, pb = osc_par(a), osc_par(b)
                     sign = (-1) ** (pa * pb)
 
                     # Remainder from CAR/CCR
                     remainder = None
                     if pa == 0 and pb == 0:
-                        # bosons: CCR [b_k^-, b_k^+] = 1
-                        # a is "later" in order (higher idx), b is "earlier"
-                        # Case: a = bkm, b = bkp (same k) → bkm*bkp = 1 + bkp*bkm
-                        if (a.endswith("m") and b.endswith("p") and
-                                a[:-1] == b[:-1]):
+                        # CCR: b_k^- b_k^+ = 1 + b_k^+ b_k^- (for same k)
+                        if a.endswith("m") and b.endswith("p") and a[:-1] == b[:-1]:
                             remainder = tuple(m[:i] + m[i + 2:])
                     elif pa == 1 and pb == 1:
-                        # fermions: {a1m, a1p} = 1
+                        # CAR: a1m * a1p = 1 - a1p * a1m  ({a1m, a1p}=1)
                         if a == "a1m" and b == "a1p":
                             remainder = tuple(m[:i] + m[i + 2:])
 
@@ -130,6 +117,12 @@ def _normal_order(mon, order_idx):
                     swapped = True
                     changed = True
                     break
+
+                elif ia == ib and osc_par(a) == 1:
+                    # Two identical fermions adjacent in normal order → zero
+                    swapped = True  # mark as processed
+                    changed = True
+                    break  # term vanishes
 
             if not swapped:
                 t = tuple(m)
