@@ -412,6 +412,99 @@ def _element_to_gen(elem: dict, gens: dict, basis: list, tol=Fraction(0)) -> dic
     return result
 
 
+def _build_decomposition_matrix(gens: dict, basis: list) -> tuple:
+    """
+    Build the word-to-generator matrix for linear decomposition.
+    Returns (words_list, word_to_idx, matrix) where matrix[i][j] = coeff of word_i in gen_j.
+    """
+    # Collect all words appearing in generators, including scalar ()
+    word_set = set()
+    word_set.add(())  # scalar term needed for Cartan generators with constants
+    for label in basis:
+        elem, _ = gens[label]
+        for word in elem:
+            word_set.add(word)
+
+    words = sorted(word_set, key=lambda w: (len(w), w))
+    word_to_idx = {w: i for i, w in enumerate(words)}
+    n_words = len(words)
+    n_gens = len(basis)
+
+    # Build matrix: A[i][j] = coeff of words[i] in basis[j]
+    A = [[Fraction(0)] * n_gens for _ in range(n_words)]
+    for j, label in enumerate(basis):
+        elem, _ = gens[label]
+        for word, coeff in elem.items():
+            if word in word_to_idx:
+                A[word_to_idx[word]][j] = coeff
+
+    return words, word_to_idx, A
+
+
+def _solve_decomposition(bracket: dict, words: list, word_to_idx: dict, A: list, basis: list) -> dict:
+    """
+    Solve: sum_j coeff[j] * gen_j = bracket using Gaussian elimination.
+    Returns {gen_label: coeff} or raises ValueError if unsolvable.
+    """
+    n_words = len(words)
+    n_gens = len(basis)
+
+    # Build RHS vector from bracket
+    b_vec = [Fraction(0)] * n_words
+    for word, coeff in bracket.items():
+        if word in word_to_idx:
+            b_vec[word_to_idx[word]] = coeff
+        # Scalar term (): skip (should not appear in Lie algebra brackets)
+        # or add as extra constraint if needed
+
+    # Augmented matrix [A | b] — solve for x such that A*x = b
+    # Use subset: only rows with nonzero entries in A or b
+    active_rows = [i for i in range(n_words) if any(A[i][j] != 0 for j in range(n_gens)) or b_vec[i] != 0]
+
+    if not active_rows:
+        return {}
+
+    # Build reduced system
+    nR = len(active_rows)
+    aug = [[A[active_rows[i]][j] for j in range(n_gens)] + [b_vec[active_rows[i]]] for i in range(nR)]
+
+    # Gaussian elimination
+    pivot_col = {}
+    row = 0
+    for col in range(n_gens):
+        # Find pivot
+        pivot_r = None
+        for r in range(row, nR):
+            if aug[r][col] != 0:
+                pivot_r = r
+                break
+        if pivot_r is None:
+            continue
+        aug[row], aug[pivot_r] = aug[pivot_r], aug[row]
+        pivot_val = aug[row][col]
+        aug[row] = [v / pivot_val for v in aug[row]]
+        for r in range(nR):
+            if r != row and aug[r][col] != 0:
+                factor = aug[r][col]
+                aug[r] = [aug[r][c] - factor * aug[row][c] for c in range(n_gens + 1)]
+        pivot_col[col] = row
+        row += 1
+
+    # Check consistency: rows after pivot phase with 0 LHS but nonzero RHS
+    for r in range(row, nR):
+        if aug[r][-1] != 0:
+            return None  # Inconsistent
+
+    # Extract solution
+    result = {}
+    for col, r in pivot_col.items():
+        coeff = aug[r][-1]
+        if coeff != 0:
+            result[basis[col]] = coeff
+
+    return result
+
+
 def compute_structure_constants(n: int) -> list:
     """
     Compute all non-zero structure constants [X, Y} = sum_Z f^Z_{XY} Z
@@ -420,12 +513,14 @@ def compute_structure_constants(n: int) -> list:
     """
     gens = build_generators(n)
     basis = build_basis_order(n)
+
+    # Build decomposition matrix once
+    words, word_to_idx, A = _build_decomposition_matrix(gens, basis)
+
     constants = []
 
-    for i, X_label in enumerate(basis):
-        for j, Y_label in enumerate(basis):
-            # Only compute upper triangle to avoid duplicates (will add antisym later)
-            # Actually compute all and filter non-zero
+    for X_label in basis:
+        for Y_label in basis:
             X_elem, pX = gens[X_label]
             Y_elem, pY = gens[Y_label]
 
@@ -433,35 +528,13 @@ def compute_structure_constants(n: int) -> list:
             if not bracket:
                 continue
 
-            # Express bracket in terms of basis generators
-            # First, normalize bracket
-            # Try to match against each generator
-            remaining = dict(bracket)
-            decomp = {}
-            for Z_label in basis:
-                Z_elem, _ = gens[Z_label]
-                if not Z_elem:
-                    continue
-                # Find the first word of Z that appears in remaining
-                for word in Z_elem:
-                    if word in remaining and remaining[word] != 0:
-                        # coefficient: remaining[word] / Z_elem[word]
-                        c = remaining[word] / Z_elem[word]
-                        if c != 0:
-                            decomp[Z_label] = c
-                            remaining = _add(remaining, _scale(Z_elem, -c))
-                        break
+            bracket_filtered = {w: c for w, c in bracket.items() if c != 0}
+            if not bracket_filtered:
+                continue
 
-            # Check scalar residual (should be zero for bracket of basis elements)
-            remaining_clean = {w: c for w, c in remaining.items() if c != 0}
-            # Scalar part: if () in remaining, it means a central element contribution
-            # For the Lie algebra itself, scalars should vanish
-            scalar = remaining_clean.pop((), Fraction(0))
-
-            if remaining_clean:
-                # Unexpressed part - this can happen with b^+ b^+ b^+ etc (degree > 2)
-                # For the generators we're using, this shouldn't happen
-                pass
+            decomp = _solve_decomposition(bracket_filtered, words, word_to_idx, A, basis)
+            if decomp is None:
+                raise ValueError(f"Cannot decompose bracket [{X_label}, {Y_label}]")
 
             for Z_label, coeff in decomp.items():
                 if coeff != 0:
