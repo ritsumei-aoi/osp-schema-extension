@@ -18,6 +18,86 @@ For C(n+1), `n` is the bosonic rank:
 The corresponding patterns for other layers are `C_{n}_gamma.json`,
 `C_{n}_evaluated_<gb>.json`, and `C_{n}_coboundary_<gb>.json`.
 
+## Schema 3: Evaluated Structure
+
+Schema 3 records an explicit numeric assignment to the `gb_matrix` from
+Schema 2 and the resulting bracket coefficients. The selected profile is
+part of the filename; for example, the all-plus profile uses
+`C_1_evaluated_all_plus.json`.
+
+### Top-Level Keys
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {},
+  "source_schemas": {},
+  "gb_assignment": {},
+  "evaluation": {},
+  "structure_constants": [],
+  "metadata": {}
+}
+```
+
+`source_schemas` identifies the Schema 1 and Schema 2 inputs. `gb_assignment`
+contains the profile, matrix shape, row and column labels, and numeric entries.
+`evaluation` documents the substitution and the convention for retaining
+`κ`. `structure_constants` contains every nonzero ordered bracket from the
+undeformed or evaluated structure.
+
+Each evaluated bracket record has `X`, `Y`, `Z`, `base_coeff`,
+`kappa_coeff`, and `sign_rule`. Its value is interpreted as
+`base_coeff + κ * kappa_coeff`, with `κ` factored to the left. `K` may appear
+as `Z` for a central identity contribution to the deformation; it is not an
+independent basis generator.
+
+Example for the all-plus evaluation of C(2):
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "osp": "osp(2|2)"
+  },
+  "source_schemas": {
+    "schema_1": "C_1_structure.json",
+    "schema_2": "C_1_gamma.json"
+  },
+  "gb_assignment": {
+    "profile": "all_plus",
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "entries": [[1, 1], [1, 1]]
+  },
+  "evaluation": {
+    "substitution": "All gb parameters are set to +1.",
+    "kappa": "Formal odd central element with kappa^2 = 0.",
+    "expression": "base_coeff + kappa * kappa_coeff",
+    "coefficient_order": "kappa is factored to the left."
+  },
+  "structure_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "base_coeff": "0",
+      "kappa_coeff": "2",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/evaluate_C_structure.py",
+    "generation_date": "YYYY-MM-DD",
+    "profile": "all_plus"
+  }
+}
+```
+
 ## Schema 1: Algebra Structure
 
 ### Top-Level Keys
