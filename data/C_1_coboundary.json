@@ -1,0 +1,1872 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "phi_matrix": {
+    "description": "Odd linear map f: g->g, f(Z_j)=sum_i phi_{ij}*Z_i",
+    "parity_constraint": "p(f(Z)) = 1 - p(Z) (f reverses parity)",
+    "count": 32,
+    "parameters": {
+      "phi_4_0": {
+        "i": 4,
+        "j": 0,
+        "target_generator": "H_1",
+        "source_generator": "E_eps1_del1_pp",
+        "meaning": "f(E_eps1_del1_pp) includes phi_4_0 * H_1"
+      },
+      "phi_5_0": {
+        "i": 5,
+        "j": 0,
+        "target_generator": "H_2",
+        "source_generator": "E_eps1_del1_pp",
+        "meaning": "f(E_eps1_del1_pp) includes phi_5_0 * H_2"
+      },
+      "phi_6_0": {
+        "i": 6,
+        "j": 0,
+        "target_generator": "E_2del1_p",
+        "source_generator": "E_eps1_del1_pp",
+        "meaning": "f(E_eps1_del1_pp) includes phi_6_0 * E_2del1_p"
+      },
+      "phi_7_0": {
+        "i": 7,
+        "j": 0,
+        "target_generator": "E_2del1_m",
+        "source_generator": "E_eps1_del1_pp",
+        "meaning": "f(E_eps1_del1_pp) includes phi_7_0 * E_2del1_m"
+      },
+      "phi_4_1": {
+        "i": 4,
+        "j": 1,
+        "target_generator": "H_1",
+        "source_generator": "E_eps1_del1_pm",
+        "meaning": "f(E_eps1_del1_pm) includes phi_4_1 * H_1"
+      },
+      "phi_5_1": {
+        "i": 5,
+        "j": 1,
+        "target_generator": "H_2",
+        "source_generator": "E_eps1_del1_pm",
+        "meaning": "f(E_eps1_del1_pm) includes phi_5_1 * H_2"
+      },
+      "phi_6_1": {
+        "i": 6,
+        "j": 1,
+        "target_generator": "E_2del1_p",
+        "source_generator": "E_eps1_del1_pm",
+        "meaning": "f(E_eps1_del1_pm) includes phi_6_1 * E_2del1_p"
+      },
+      "phi_7_1": {
+        "i": 7,
+        "j": 1,
+        "target_generator": "E_2del1_m",
+        "source_generator": "E_eps1_del1_pm",
+        "meaning": "f(E_eps1_del1_pm) includes phi_7_1 * E_2del1_m"
+      },
+      "phi_4_2": {
+        "i": 4,
+        "j": 2,
+        "target_generator": "H_1",
+        "source_generator": "E_eps1_del1_mp",
+        "meaning": "f(E_eps1_del1_mp) includes phi_4_2 * H_1"
+      },
+      "phi_5_2": {
+        "i": 5,
+        "j": 2,
+        "target_generator": "H_2",
+        "source_generator": "E_eps1_del1_mp",
+        "meaning": "f(E_eps1_del1_mp) includes phi_5_2 * H_2"
+      },
+      "phi_6_2": {
+        "i": 6,
+        "j": 2,
+        "target_generator": "E_2del1_p",
+        "source_generator": "E_eps1_del1_mp",
+        "meaning": "f(E_eps1_del1_mp) includes phi_6_2 * E_2del1_p"
+      },
+      "phi_7_2": {
+        "i": 7,
+        "j": 2,
+        "target_generator": "E_2del1_m",
+        "source_generator": "E_eps1_del1_mp",
+        "meaning": "f(E_eps1_del1_mp) includes phi_7_2 * E_2del1_m"
+      },
+      "phi_4_3": {
+        "i": 4,
+        "j": 3,
+        "target_generator": "H_1",
+        "source_generator": "E_eps1_del1_mm",
+        "meaning": "f(E_eps1_del1_mm) includes phi_4_3 * H_1"
+      },
+      "phi_5_3": {
+        "i": 5,
+        "j": 3,
+        "target_generator": "H_2",
+        "source_generator": "E_eps1_del1_mm",
+        "meaning": "f(E_eps1_del1_mm) includes phi_5_3 * H_2"
+      },
+      "phi_6_3": {
+        "i": 6,
+        "j": 3,
+        "target_generator": "E_2del1_p",
+        "source_generator": "E_eps1_del1_mm",
+        "meaning": "f(E_eps1_del1_mm) includes phi_6_3 * E_2del1_p"
+      },
+      "phi_7_3": {
+        "i": 7,
+        "j": 3,
+        "target_generator": "E_2del1_m",
+        "source_generator": "E_eps1_del1_mm",
+        "meaning": "f(E_eps1_del1_mm) includes phi_7_3 * E_2del1_m"
+      },
+      "phi_0_4": {
+        "i": 0,
+        "j": 4,
+        "target_generator": "E_eps1_del1_pp",
+        "source_generator": "H_1",
+        "meaning": "f(H_1) includes phi_0_4 * E_eps1_del1_pp"
+      },
+      "phi_1_4": {
+        "i": 1,
+        "j": 4,
+        "target_generator": "E_eps1_del1_pm",
+        "source_generator": "H_1",
+        "meaning": "f(H_1) includes phi_1_4 * E_eps1_del1_pm"
+      },
+      "phi_2_4": {
+        "i": 2,
+        "j": 4,
+        "target_generator": "E_eps1_del1_mp",
+        "source_generator": "H_1",
+        "meaning": "f(H_1) includes phi_2_4 * E_eps1_del1_mp"
+      },
+      "phi_3_4": {
+        "i": 3,
+        "j": 4,
+        "target_generator": "E_eps1_del1_mm",
+        "source_generator": "H_1",
+        "meaning": "f(H_1) includes phi_3_4 * E_eps1_del1_mm"
+      },
+      "phi_0_5": {
+        "i": 0,
+        "j": 5,
+        "target_generator": "E_eps1_del1_pp",
+        "source_generator": "H_2",
+        "meaning": "f(H_2) includes phi_0_5 * E_eps1_del1_pp"
+      },
+      "phi_1_5": {
+        "i": 1,
+        "j": 5,
+        "target_generator": "E_eps1_del1_pm",
+        "source_generator": "H_2",
+        "meaning": "f(H_2) includes phi_1_5 * E_eps1_del1_pm"
+      },
+      "phi_2_5": {
+        "i": 2,
+        "j": 5,
+        "target_generator": "E_eps1_del1_mp",
+        "source_generator": "H_2",
+        "meaning": "f(H_2) includes phi_2_5 * E_eps1_del1_mp"
+      },
+      "phi_3_5": {
+        "i": 3,
+        "j": 5,
+        "target_generator": "E_eps1_del1_mm",
+        "source_generator": "H_2",
+        "meaning": "f(H_2) includes phi_3_5 * E_eps1_del1_mm"
+      },
+      "phi_0_6": {
+        "i": 0,
+        "j": 6,
+        "target_generator": "E_eps1_del1_pp",
+        "source_generator": "E_2del1_p",
+        "meaning": "f(E_2del1_p) includes phi_0_6 * E_eps1_del1_pp"
+      },
+      "phi_1_6": {
+        "i": 1,
+        "j": 6,
+        "target_generator": "E_eps1_del1_pm",
+        "source_generator": "E_2del1_p",
+        "meaning": "f(E_2del1_p) includes phi_1_6 * E_eps1_del1_pm"
+      },
+      "phi_2_6": {
+        "i": 2,
+        "j": 6,
+        "target_generator": "E_eps1_del1_mp",
+        "source_generator": "E_2del1_p",
+        "meaning": "f(E_2del1_p) includes phi_2_6 * E_eps1_del1_mp"
+      },
+      "phi_3_6": {
+        "i": 3,
+        "j": 6,
+        "target_generator": "E_eps1_del1_mm",
+        "source_generator": "E_2del1_p",
+        "meaning": "f(E_2del1_p) includes phi_3_6 * E_eps1_del1_mm"
+      },
+      "phi_0_7": {
+        "i": 0,
+        "j": 7,
+        "target_generator": "E_eps1_del1_pp",
+        "source_generator": "E_2del1_m",
+        "meaning": "f(E_2del1_m) includes phi_0_7 * E_eps1_del1_pp"
+      },
+      "phi_1_7": {
+        "i": 1,
+        "j": 7,
+        "target_generator": "E_eps1_del1_pm",
+        "source_generator": "E_2del1_m",
+        "meaning": "f(E_2del1_m) includes phi_1_7 * E_eps1_del1_pm"
+      },
+      "phi_2_7": {
+        "i": 2,
+        "j": 7,
+        "target_generator": "E_eps1_del1_mp",
+        "source_generator": "E_2del1_m",
+        "meaning": "f(E_2del1_m) includes phi_2_7 * E_eps1_del1_mp"
+      },
+      "phi_3_7": {
+        "i": 3,
+        "j": 7,
+        "target_generator": "E_eps1_del1_mm",
+        "source_generator": "E_2del1_m",
+        "meaning": "f(E_2del1_m) includes phi_3_7 * E_eps1_del1_mm"
+      }
+    }
+  },
+  "coboundary_coefficients": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_4_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_2",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_5_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_6_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_6_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_p component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_6_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_p component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "-3"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_0",
+      "phi_meaning": "f(E_eps1_del1_pp) has E_2del1_m component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_4_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_5_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "3"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_6_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_p component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_7_1",
+      "phi_meaning": "f(E_eps1_del1_pm) has E_2del1_m component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_4_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_5_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "-3"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_2",
+      "phi_meaning": "f(E_eps1_del1_mp) has E_2del1_m component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_4_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_1 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_2",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_5_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has H_2 component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "3"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_6_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_p component",
+      "coeff": "4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_7_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_7_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_m component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_7_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_m component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_7_3",
+      "phi_meaning": "f(E_eps1_del1_mm) has E_2del1_m component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_2",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_0_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_1_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_pm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_2_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_2",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_3_4",
+      "phi_meaning": "f(H_1) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pp component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_1_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_1_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_1_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_pm component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mp component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_2_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_2_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_2_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mp component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "-2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_5",
+      "phi_meaning": "f(H_2) has E_eps1_del1_mm component",
+      "coeff": "-4"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_0_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_1_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_1_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pm component",
+      "coeff": "-2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_pm component",
+      "coeff": "3"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_2_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mp component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "-4"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_6",
+      "phi_meaning": "f(E_2del1_p) has E_eps1_del1_mm component",
+      "coeff": "3"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "4"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_0_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pp component",
+      "coeff": "-3"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "phi_label": "phi_1_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_pm component",
+      "coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "phi_label": "phi_2_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_2_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mp component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mp component",
+      "coeff": "2"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_2_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mp component",
+      "coeff": "-3"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "2"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "-1"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "phi_label": "phi_3_7",
+      "phi_meaning": "f(E_2del1_m) has E_eps1_del1_mm component",
+      "coeff": "-2"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_coboundary.py",
+    "generation_date": "2026-10-03",
+    "formula": "(delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])"
+  }
+}
