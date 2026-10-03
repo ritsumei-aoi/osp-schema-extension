@@ -346,3 +346,27 @@ following assignment for each bosonic index \(i\):
 
 The `metadata` object identifies `C_evaluated_generator.py` as the generator,
 records the generation date, and retains the relevant references.
+
+## Schema 4: Coboundary structure
+
+Schema 4 stores the coboundary of a fully general odd linear map
+\(f:\mathfrak g\to\mathfrak g\). Use `C_{n}_coboundary.json` for bosonic rank
+\(n\). The top-level object contains `schema_version`, `algebra`,
+`coboundary`, and `metadata`.
+
+The `coboundary` object has `map_parity: 1`, `parameter_parity: 0`, a
+`f_map` array, and a `coboundary_structure` array. For each source basis
+generator, `f_map` lists every target generator of opposite parity with its
+independent coefficient `phi__<target>__from__<source>`. Source and target
+lists follow the PBW basis order. There is no additional overall scale; the
+free coefficients already span all odd linear maps.
+
+Compute the records using the exact convention
+\[
+(\delta f)(X,Y)=(-1)^{p(X)}[X,f(Y)]
+-(-1)^{(p(X)+1)p(Y)}[Y,f(X)]-f([X,Y]).
+\]
+Each nonzero `coboundary_structure` record has `X`, `Y`, `Z`, `coeff`, and
+`sign_rule`; `coeff` is an exact linear expression in the \(\phi\)
+parameters, and `sign_rule` is `"graded"`. The `Z` output must belong to the
+Schema 1 basis; the scalar identity \(K\) is not a basis element or output.
