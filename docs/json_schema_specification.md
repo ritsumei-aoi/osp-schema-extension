@@ -348,6 +348,50 @@ representative profile assigns `+1` to every gb parameter. Validation must
 confirm complete assignment coverage and reproduce every merged coefficient
 from the referenced Schema 1 and Schema 2 inputs.
 
+## Schema 4: Coboundary structure
+
+Use `C_{n}_coboundary.json` for the symbolic coboundary of a general odd map.
+The `odd_linear_map.parameters` array enumerates exactly one coefficient
+`phi__<target>__<source>` for every ordered basis pair of opposite parity;
+`parameter_count` is twice the product of the even and odd dimensions.
+`coboundary_coefficients` stores sparse coefficient expressions grouped by
+`(X,Y,Z)`:
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 4,
+  "algebra": {},
+  "base_structure_file": "C_1_structure.json",
+  "odd_linear_map": {
+    "parity": 1,
+    "rule": "f(Z_j) = sum_i phi_{i,j} Z_i with parity(Z_i) = 1 - parity(Z_j).",
+    "parameter_count": 32,
+    "parameters": [
+      {"parameter": "phi__E_eps1_del1_pp__H_1", "target": "E_eps1_del1_pp", "source": "H_1"}
+    ]
+  },
+  "coboundary_definition": {
+    "formula": "(delta f)(X,Y) = ...",
+    "sign_rule": "graded",
+    "coefficient_convention": "Each term coeff * parameter contributes to the stated Z coefficient."
+  },
+  "coboundary_coefficients": [
+    {
+      "X": "H_1",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "terms": [{"parameter": "phi__E_eps1_del1_pp__H_1", "coeff": "1"}]
+    }
+  ],
+  "metadata": {}
+}
+```
+
+The full coboundary formula is the one in
+`docs/math/C_coboundary_definition.md`. Coefficients are exact rational
+strings and are computed from the referenced Schema 1 brackets.
+
 ## References
 
 - `handover/notation.md` — finalized C(n+1) root, label, basis, and PBW
