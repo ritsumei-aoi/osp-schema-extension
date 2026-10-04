@@ -1,0 +1,166 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)"
+    }
+  },
+  "gb_matrix": {
+    "description": "4n = 4 deformation parameters, parity 1",
+    "size": 4,
+    "parameters": [
+      "gb_a1p_b1p",
+      "gb_a1p_b1m",
+      "gb_a1m_b1p",
+      "gb_a1m_b1m"
+    ],
+    "relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa",
+    "parameter_parity": 1
+  },
+  "gamma_coefficients": [
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff_expr": "-2*gb_a1p_b1p",
+      "gb_param": "gb_a1p_b1p",
+      "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff_expr": "-2*gb_a1m_b1p",
+      "gb_param": "gb_a1m_b1p",
+      "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff_expr": "-2*gb_a1p_b1m",
+      "gb_param": "gb_a1p_b1m",
+      "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff_expr": "-2*gb_a1m_b1m",
+      "gb_param": "gb_a1m_b1m",
+      "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": "-gb_a1p_b1p",
+      "gb_param": "gb_a1p_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": "-gb_a1p_b1m",
+      "gb_param": "gb_a1p_b1m",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": "-gb_a1m_b1p",
+      "gb_param": "gb_a1m_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": "-gb_a1p_b1p",
+      "gb_param": "gb_a1p_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": "-gb_a1m_b1p",
+      "gb_param": "gb_a1m_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": "-gb_a1p_b1m",
+      "gb_param": "gb_a1p_b1m",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": "-gb_a1m_b1m",
+      "gb_param": "gb_a1m_b1m",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": "-gb_a1p_b1p",
+      "gb_param": "gb_a1p_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": "-gb_a1m_b1m",
+      "gb_param": "gb_a1m_b1m",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": "-gb_a1p_b1m",
+      "gb_param": "gb_a1p_b1m",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": "-gb_a1m_b1p",
+      "gb_param": "gb_a1m_b1p",
+      "numeric_coeff": "-1"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": "-gb_a1m_b1m",
+      "gb_param": "gb_a1m_b1m",
+      "numeric_coeff": "-1"
+    }
+  ],
+  "consistency_check": {
+    "description": "Gamma computed from deformed oscillator relations",
+    "schema1_basis_used": "C_1_structure.json"
+  },
+  "metadata": {
+    "generated_by": "src/C_gamma.py",
+    "generation_date": "2026-10-04",
+    "references": [
+      "docs/math/C_inhomogeneous_definition.md",
+      "Frappat, Sciarrino, Sorba (2000)"
+    ]
+  }
+}
