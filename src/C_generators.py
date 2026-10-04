@@ -308,17 +308,22 @@ class CAlgebra:
         # Since number of basis elements is small (4, 11, 22), let's collect all monomial keys present
         # in the basis realizations and solve a linear system!
         
+        # Include K (even central element, realization = 1) in candidates
+        basis_cand = list(self.basis_all) + ["K"]
+        realizations_cand = dict(self.realizations)
+        realizations_cand["K"] = OscillatorPoly.constant(self.n, Fraction(1))
+
         all_monos = set()
-        for g_name in self.basis_all:
-            all_monos.update(self.realizations[g_name].terms.keys())
+        for g_name in basis_cand:
+            all_monos.update(realizations_cand[g_name].terms.keys())
         all_monos.update(poly.terms.keys())
         mono_list = sorted(list(all_monos))
 
         import numpy as np
-        # Build matrix A (len(mono_list) x len(basis_all))
-        A = np.zeros((len(mono_list), len(self.basis_all)), dtype=object)
-        for col, g_name in enumerate(self.basis_all):
-            g_poly = self.realizations[g_name]
+        # Build matrix A (len(mono_list) x len(basis_cand))
+        A = np.zeros((len(mono_list), len(basis_cand)), dtype=object)
+        for col, g_name in enumerate(basis_cand):
+            g_poly = realizations_cand[g_name]
             for row, mono in enumerate(mono_list):
                 if mono in g_poly.terms:
                     A[row, col] = g_poly.terms[mono]
@@ -337,7 +342,7 @@ class CAlgebra:
         if x is None:
             raise ValueError(f"Poly {poly.terms} cannot be expressed in basis!")
 
-        for col, g_name in enumerate(self.basis_all):
+        for col, g_name in enumerate(basis_cand):
             if x[col] != 0:
                 coeffs[g_name] = x[col]
         return coeffs
