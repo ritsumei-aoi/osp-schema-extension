@@ -200,8 +200,9 @@ Use the v5.0 realization format: `realizations` is an object keyed by every
 basis generator; each value has a `standard_form` array of terms with
 `words` (an ordered oscillator-label array) and rational-string `coeff`,
 the corresponding `frappat_form`, and integer `parity`. Constant terms use
-an empty `words` array. The oscillator word order is
-`a_1_p`, `a_1_m`, `b_1_p`, `b_1_m`, ..., `b_n_p`, `b_n_m`.
+an empty `words` array. The `ordering` field is a comma-separated string
+listing the oscillator word order: `a_1_p`, `a_1_m`, `b_1_p`, `b_1_m`, ...,
+`b_n_p`, `b_n_m`.
 
 Use these realization rules, matching the root-label sign conventions in
 `handover/notation.md`:
@@ -242,13 +243,16 @@ realizations and the CAR/CCR relations. Use basis labels for `X`, `Y`, and
 `Z`, rational strings for `coeff`, and `"graded"` for `sign_rule`; omit zero
 brackets. Bracket data must obey
 $[X,Y\}=-(-1)^{p(X)p(Y)}[Y,X\}$ and the parity map, with the sign convention
-used by the repository's graded-bracket implementation.
+used by the repository's graded-bracket implementation. Store only the
+canonical input pair with `X` no later than `Y` in the PBW order
+`odd`-then-`even`; for odd-odd pairs the bracket is symmetric, as implied by
+graded skew-symmetry.
 
 ## `metadata`
 
 ```json
 {
-  "generated_by": "build_C_structure_constants.py",
+  "generated_by": "src/C_generators.py",
   "generation_date": "YYYY-MM-DD",
   "references": [
     "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
