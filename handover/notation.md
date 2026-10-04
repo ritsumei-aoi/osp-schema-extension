@@ -45,7 +45,7 @@ Explicit lists (in PBW order) for the first three ranks are:
 
 ### C(2) = osp(2|2), n=1
 
-- Even: `H_1, H_2, E_2del1_m, E_2del1_p`
+- Even: `E_2del1_m, H_1, H_2, E_2del1_p`
 - Odd: `E_eps1_del1_mp, E_eps1_del1_mm, E_eps1_del1_pm, E_eps1_del1_pp`
 - Dimensions: 4 even, 4 odd, 8 total.
 
