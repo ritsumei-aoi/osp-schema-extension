@@ -244,3 +244,22 @@ relation is homogeneous and preserves the CAR for independent parameters.
 corrected parity. Gamma outputs close in the Schema 1 generator labels plus
 the declared central identity `K`; terms with `K` are reported explicitly
 because `K` is excluded from the basis arrays.
+
+## Schema 3: Evaluated structure
+
+Evaluated files are named `C_{n}_evaluated.json`. The generator uses one
+representative profile, `all_positive`, assigning every parameter in the
+Schema 2 gb matrix the integer value `+1`. The top-level object contains
+`schema_version`, the Schema 1 `algebra`, `basis`, and `parity`, an
+`evaluation` object with the profile and complete `gb_assignment`, an
+array of evaluated `structure_constants`, the evaluated
+`inhomogeneous_deformation`, and `metadata`.
+
+Each evaluated structure-constant record identifies `X`, `Y`, and `Z`,
+and supplies exact rational strings `undeformed_coeff` and `kappa_coeff`
+for the corresponding parts of
+\([X,Y]_0+\kappa[X,Y]_{\gamma,\mathrm{evaluated}}\), along with
+`"sign_rule": "graded"`. The inhomogeneous object contains the `kappa`
+description, the non-zero evaluated gamma coefficients, symbolic and
+evaluated term counts, and the inherited consistency report. The
+evaluation is reproducible from the matching Schema 1 and Schema 2 files.
