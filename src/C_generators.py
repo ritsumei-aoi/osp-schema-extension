@@ -322,21 +322,36 @@ def _root_bracket(Xt, Xdata, Yt, Ydata, n, parity, add):
     px = 1 if Xt == "eps_del" else 0
     py = 1 if Yt == "eps_del" else 0
 
-    # [eps_del, eps_del}: {a_1^{s1} b_k^{t1}, a_1^{s2} b_l^{t2}}
-    # = {a_1^{s1}, a_1^{s2}} b_k^{t1} b_l^{t2} (graded, CAR)
-    # {a_1^+, a_1^-} = 1, {a_1^+, a_1^+} = 0, {a_1^-, a_1^-} = 0
+    # [eps_del, eps_del}: {a_1^{es1}b_k^{ds1}, a_1^{es2}b_l^{ds2}}
+    # Full formula: XY+YX = N_a*b_k^{ds1}b_l^{ds2} + (1-N_a)*b_l^{ds2}b_k^{ds1}
+    # Non-zero only when es1+es2==0.
     if Xt == "eps_del" and Yt == "eps_del":
         es1, k, ds1 = Xdata
         es2, l, ds2 = Ydata
-        # Anticommutator: {a_1^{es1}, a_1^{es2}}
-        # Non-zero only if es1 != es2 (one + one -)
-        if es1 + es2 != 0:  # one is +1 other is -1
-            # {a_1^+, a_1^-} = 1, coefficient = 1 regardless of order (symmetric)
-            # Result: b_k^{ds1} b_l^{ds2}
-            # This is an even generator
-            # Identify which even generator this is
-            _identify_boson_product(k, ds1, l, ds2, n, Fraction(1), add)
+        if es1 + es2 == 0:
+            if k != l:
+                # Different bosonic indices: no eps_N mixing -> pure bosonic product
+                _identify_boson_product(k, ds1, l, ds2, n, Fraction(1), add)
+            elif ds1 == ds2:
+                # Same bosonic index, same delta-sign: (b_k^{ds})^2
+                sign_str = "p" if ds1 > 0 else "m"
+                add(f"E_2del{k}_{sign_str}", Fraction(1))
+            elif ds1 * es1 < 0:
+                # ds1 opposite to es1: result = eps_N + N_{b_k} = H_1 - H_2 - ... - H_k
+                add("H_1", Fraction(1))
+                for m in range(2, k + 1):
+                    add(f"H_{m}", Fraction(-1))
+            else:
+                # ds1 same as es1: result = N_{b_k}+1-eps_N
+                # = -H_1 + H_2+...+H_k + 2*(H_{k+1}+...+H_n) - 2*H_{n+1}
+                add("H_1", Fraction(-1))
+                for m in range(2, k + 1):
+                    add(f"H_{m}", Fraction(1))
+                for m in range(k + 1, n + 1):
+                    add(f"H_{m}", Fraction(2))
+                add(f"H_{n+1}", Fraction(-2))
         return
+
 
     # [2del, 2del}: [(b_k^{s1})^2, (b_l^{s2})^2]
     # = [b_k^s1 b_k^s1, b_l^s2 b_l^s2]
@@ -345,92 +360,14 @@ def _root_bracket(Xt, Xdata, Yt, Ydata, n, parity, add):
         k, s1 = Xdata
         l, s2 = Ydata
         if k == l and s1 + s2 == 0:
-            # [( b_k^+)^2, (b_k^-)^2] = -4 H_k' (in terms of number op)
-            # (b^+)^2 (b^-)^2 - (b^-)^2 (b^+)^2 = (b^+b^- + b^-b^+ + ... ) -> let's compute
-            # Using [b^-, b^+] = 1:
-            # (b^+)^2(b^-)^2 = b^+ (b^+ b^-) b^- = b^+(b^-b^+ - 1)b^-
-            # = b^+b^-b^+b^- - b^+b^- = (b^+b^-)^2 - b^+b^-
-            # (b^-)^2(b^+)^2 = b^-(b^-b^+)b^+ = b^-(b^+b^-+1)b^+
-            # = b^-b^+b^-b^+ + b^-b^+ = (b^+b^-+1)(b^+b^-+1) - ... let me do it cleanly
-            # Let N = b^+b^-. Then b^-b^+ = N+1.
-            # (b^+)^2(b^-)^2: b^+(N b^-) ... use b^+ N = (N-1)b^+, b^- N = (N+1)b^-
-            # (b^+)^2(b^-)^2 = b^+( b^+ b^- b^- ) = b^+(b^-(b^+b^-) - b^-) [using b^+b^- = N, b^+b^- - b^-b^+ = -1]
-            # Simpler: use the known formula [(b^+)^2, (b^-)^2] = -2(2N+1) = -2(2b^+b^-+1)
-            # In terms of H generators: For simple case, 2del roots correspond to sp(2n) part.
-            # [(b_k^+)^2, (b_k^-)^2] contributes to Cartan H.
-            # Actually let's compute directly:
-            # Let X = (b^+)^2, Y = (b^-)^2
-            # XY - YX (since both even)
-            # XY = b^+b^+b^-b^- = b^+(b^+b^-)b^- = b^+(b^-b^++1-1... wait
-            # [b^+, b^-] = -1 => b^+b^- = b^-b^+ - 1 (if [b^-, b^+]=1 means b^-b^+ - b^+b^- = 1)
-            # So b^+b^- = b^-b^+ - 1, N = b^+b^-
-            # b^+b^+b^-b^- = b^+(b^-b^+-1)b^- = b^+b^-b^+b^- - b^+b^-
-            # = (b^-b^+-1)(b^-b^+-1) - (b^-b^+-1) ... hmm getting complex
-            # Standard result: [(b^+)^2, (b^-)^2] = -4b^+b^- - 2 = -4N - 2
-            # where N = b^+b^-
-            # In our basis: contribution to Cartan of b_k
-            # H_{k} for k=1: H_1 = a_1^+a_1^- + b_1^+b_1^- (so N_{b_1} contributes)
-            # H_{m} for m>=2: = b_{m-1}^+b_{m-1}^- - b_m^+b_m^-
-            # H_{n+1} = -b_n^+b_n^- - 1/2
-            # So we need to express N_{b_k} in terms of Cartan generators.
-            # N_{b_k} = b_k^+b_k^- maps to:
-            # for k=1: from H_1 and H_2: H_1 = a_1^+a_1^- + N_{b_1}, H_2 = N_{b_1}-N_{b_2}
-            # This is getting complicated. Let me use a different approach:
-            # express the result in terms of H generators by direct computation.
-            #
-            # [(b_k^+)^2, (b_k^-)^2] = -4N_{b_k} - 2
-            # We need to express N_{b_k} (= b_k^+b_k^-) in terms of H generators.
-            # From the Cartan structure:
-            # H_1 = eps_N + N_{b_1}  (eps_N = a_1^+a_1^-)
-            # H_m = N_{b_{m-1}} - N_{b_m} for 2<=m<=n
-            # H_{n+1} = -N_{b_n} - 1/2
-            # Sum: H_1 + H_2 + ... + H_{k} for k>=2:
-            # = eps_N + N_{b_1} + (N_{b_1}-N_{b_2}) + ... + (N_{b_{k-1}}-N_{b_k})
-            # = eps_N + ... not clean for expressing N_{b_k}.
-            # Better: N_{b_k} in terms of H:
-            # From H_{k+1} = N_{b_k} - N_{b_{k+1}} (for k+1 <= n)
-            # From H_{n+1} = -N_{b_n} - 1/2 => N_{b_n} = -H_{n+1} - 1/2
-            # We can compute coefficients of H_m for N_{b_k}:
-            # N_{b_k} = -H_{k+1} - H_{k+2} - ... - H_n - H_{n+1} - 1/2  (for k < n)
-            # N_{b_n} = -H_{n+1} - 1/2
-            # Let's compute:
-            coeff_H = {}  # H_idx -> coeff for N_{b_k}
-            for m in range(k + 1, n + 1):
-                coeff_H[m] = coeff_H.get(m, Fraction(0)) - 1
-            coeff_H[n + 1] = coeff_H.get(n + 1, Fraction(0)) - 1
-            const = Fraction(-1, 2)
-            # [(b_k^+)^2, (b_k^-)^2] = -4*N_{b_k} - 2
-            # = sum_m (-4*coeff_H[m])*H_m + (-4*const - 2)
-            # The constant term (-4*(-1/2) - 2) = 2 - 2 = 0 for n>=1
-            # Wait, let me verify: for k=n: N_{b_n} = -H_{n+1} - 1/2
-            # [-4*N_{b_n} - 2] = [-4*(-H_{n+1}-1/2) - 2] = [4H_{n+1} + 2 - 2] = 4H_{n+1}
-            # Hmm, but the sign convention: s1=+1 (X = (b^+)^2) and s2=-1 (Y=(b^-)^2)
-            # [(b_k^+)^2, (b_k^-)^2]:
-            # For s1=+1, s2=-1: sign of bracket is s1*s2 relative.
-            # Standard result for sp: [(b^+)^2, (b^-)^2] = 2(2N+1) or -2(2N+1)?
-            # Let N=b^+b^-, [b^-,b^+]=1:
-            # b^+b^+b^-b^- : apply b^+b^- = N
-            # = b^+(b^-b^++1-1... Use b^+b^- - b^-b^+ = -1 => b^-b^+ = b^+b^- + 1 = N+1
-            # b^+b^+(b^-b^-) = b^+(b^+b^-)b^- = b^+(N)b^-
-            # b^+N = b^+(b^+b^-) = (b^-b^++1-1+1)...
-            # Use [b^-, b^+] = 1 => b^-b^+ - b^+b^- = 1
-            # b^+N = b^+(b^+b^-) = b^+b^+b^- = ... need commutation
-            # Nb^+ = b^+b^-b^+ = b^+(b^-b^+-1) = b^+(N+1-1) ... ugh circular
-            # Use: b^+N = (N-1)b^+ (standard result from CCR)
-            # So (b^+)^2(b^-)^2 = b^+ (b^+b^-)b^- = b^+Nb^-
-            # = (N-1)b^+b^- = (N-1)N = N^2 - N
-            # (b^-)^2(b^+)^2 = b^-(b^-b^+)b^+ = b^-(N+1)b^+
-            # b^-(N+1) = (N+2)b^- (since b^-N = (N+1)b^-)
-            # So (b^-)^2(b^+)^2 = (N+2)b^-b^+ = (N+2)(N+1) = N^2+3N+2
-            # [(b^+)^2, (b^-)^2] = (N^2-N) - (N^2+3N+2) = -4N-2
-            # So: [(b_k^+)^2, (b_k^-)^2] = -4N_{b_k} - 2
-            # Express in H: subtract const term
-            total_const = -4 * const - 2  # = -4*(-1/2)-2 = 2-2 = 0
-            for m, c in coeff_H.items():
-                lbl = f"H_{m}"
-                add(lbl, Fraction(-4) * c)
-            if total_const != 0:
-                pass  # constant should be 0; if not, we have an error
+            # [(b_k^{s1})^2, (b_k^{s2})^2] = s1*(-4N_{b_k} - 2)
+            # N_{b_k} = H_{k+1}+...+H_n - H_{n+1} - 1/2 (from Cartan structure)
+            # -4N_{b_k} - 2 = -4*(H_{k+1}+...+H_n) + 4*H_{n+1} (constant cancels)
+            # Multiply by s1: sign = s1
+            sign = s1
+            for m in range(k + 1, n + 1):  # H_{k+1} through H_n
+                add(f"H_{m}", Fraction(-4 * sign))
+            add(f"H_{n+1}", Fraction(4 * sign))
         return
 
     # [del_del, del_del}: [b_i^{s1}b_j^{s2}, b_k^{t1}b_l^{t2}]
