@@ -10,8 +10,9 @@ fields are described below.
 
 Use the bosonic rank in filenames: `C_{n}_structure.json`,
 `C_{n}_gamma.json`, `C_{n}_evaluated_<gb>.json`, and
-`C_{n}_coboundary_<gb>.json`. For the representative all-plus evaluation in
-this study, use the fixed filenames `C_{n}_evaluated.json`. Thus
+`C_{n}_coboundary_<f>.json`. For the representative all-plus evaluation and
+generic odd-map coboundary in this study, use the fixed filenames
+`C_{n}_evaluated.json` and `C_{n}_coboundary.json`. Thus
 C(2) = osp(2|2) (`n=1`) uses
 `C_1_structure.json`, C(3) (`n=2`) uses `C_2_structure.json`, and C(4)
 (`n=3`) uses `C_3_structure.json`.
@@ -214,6 +215,24 @@ The issue's representative profile is `all_plus`: every gb parameter is
 assigned integer `1`. This assignment is a concrete representative, not a
 claim that all deformations are equivalent. A different profile must be
 identified in the filename or assignment metadata.
+
+## Schema 4: Coboundary
+
+The coboundary file records an odd linear map $f$ and the symbolic
+coefficients of $\delta f$ relative to a Schema 1 basis. It has top-level
+fields `schema_version`, `schema_layer` (integer `4`), `algebra`,
+`source_schema`, `f`, `coboundary`, and `metadata`. `f.map` lists every
+source/target basis pair of opposite parity with an even formal coefficient
+`phi_<target>_<source>`, so `f.coefficient_count` equals the number of such
+pairs. Central symbols `K` and $\kappa$ are excluded from the domain and
+codomain basis.
+
+`coboundary.formula` identifies the operator used. Each entry in
+`coboundary.entries` has canonical `X`, `Y`, and `Z` labels,
+`sign_rule: "graded"`, and a `terms` list of `{ "phi", "coeff" }` records.
+The entry represents the linear combination
+$\sum_{\phi}\mathrm{coeff}(\phi)\,\phi\,Z$ in $(\delta f)(X,Y)$. The
+operator is the one defined in `docs/math/C_coboundary_definition.md`.
 
 ## Compatibility with B(m,n)
 
