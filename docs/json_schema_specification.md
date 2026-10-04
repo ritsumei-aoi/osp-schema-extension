@@ -263,6 +263,54 @@ $\pm\varepsilon\pm\delta_k$ odd-root labels. Dimension formulas and Cartan
 rank also differ. B(m,n) files remain unchanged; consumers that validate
 top-level keys should accept `central_elements` for C files.
 
+## Schema 2: Inhomogeneous deformation
+
+Use `C_{n}_gamma.json` for rank `n`. Schema 2 references the matching
+`C_{n}_structure.json` and records its deformation as follows:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "base_structure_file": "C_1_structure.json"
+  },
+  "gb_matrix": {
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "parameters": [
+      ["gb_a1p_b1p", "gb_a1p_b1m"],
+      ["gb_a1m_b1p", "gb_a1m_b1m"]
+    ],
+    "parameter_parity": 1,
+    "parameter_count": 4
+  },
+  "inhomogeneous_deformation": {
+    "bracket_formula": "[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y)",
+    "oscillator_exchange_relations": [],
+    "gamma_coefficients": [],
+    "coefficient_convention": "gamma(X,Y) is the sum of coeff * gb_parameter * Z over records."
+  },
+  "metadata": {}
+}
+```
+
+The `gb_matrix` rows index the two fermion modes and its columns enumerate
+the `2n` bosonic oscillator labels (`b_i_p`, `b_i_m`). Each exchange-relation
+record specifies `X`, `Y`, the formal relation, and its parameter. Each
+`gamma_coefficients` record specifies `X`, `Y`, output `Z`, `parameter`,
+rational-string `coeff`, and `"sign_rule": "graded"`; the represented term in
+$\gamma(X,Y)$ is `coeff * gb_parameter * Z`. `Z` may be a Schema 1 basis
+generator or `K`, the central identity, when scalar oscillator terms occur.
+Deformation files record assumptions and parity exceptions rather than
+silently changing the base Schema 1 parity map. The parity conflict in the
+source exchange relation is documented in
+`docs/math/C_inhomogeneous_definition.md`.
+
 ## References
 
 - `handover/notation.md` — finalized C(n+1) root, label, basis, and PBW

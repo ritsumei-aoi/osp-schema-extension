@@ -34,3 +34,12 @@ The coefficients $\gamma_{abc}$ are derived by substituting the oscillator reali
 
 
 **Parity Note**: Since $\kappa$ is odd ($p(\kappa)=1$) and the bracket preserves total parity, the deformation parameters $\mathrm{gb}$ must have parity 1.
+
+**Consistency caveat**: With these stated parities, $\mathrm{gb}\,\kappa$ is
+even, while the mixed commutator $[b_j^s,a_1^\sigma]$ of an even and an odd
+oscillator is odd. Thus the exchange relation and the parity assignment cannot
+both be homogeneous in a Lie superalgebra. Schema 2 generation retains the
+specified exchange relation and parameter labels formally, reports
+parity-discrepant coefficients, and does not infer a corrected parity or
+discard scalar terms. Scalar identity contributions are represented by the
+central identity $K=1$ from Schema 1.
