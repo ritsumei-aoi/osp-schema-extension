@@ -392,3 +392,48 @@ Its `Z` may be a Schema 1 basis generator or `K`. The top-level fields
 layers. Preserve the Schema 2 `parity_status` and warning: an all-plus
 assignment is a formal numerical specialization, not a resolution of its
 parity conflict.
+
+## Schema 4: Coboundary structure
+
+Name Schema 4 documents `C_{n}_coboundary.json`. It is symbolic in the entries
+of an odd linear map $f$ and is based on the Schema 1 bracket:
+
+```json
+{
+  "linear_map_f": {
+    "parity": 1,
+    "description": "Odd map: f reverses basis parity",
+    "parameter_count": 32,
+    "coefficients": [
+      {
+        "input": "H_1",
+        "output": "E_eps1_del1_mp",
+        "parameter": "phi_E_eps1_del1_mp_H_1",
+        "parity": 0
+      }
+    ]
+  },
+  "coboundary": {
+    "formula": "(delta f)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])",
+    "coefficients": [
+      {
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "phi_parameter": "phi_E_2del1_m_E_eps1_del1_mp",
+        "Z": "E_2del1_m",
+        "coeff": "2",
+        "sign_rule": "graded"
+      }
+    ]
+  }
+}
+```
+
+Only parity-reversing input/output pairs are included in `linear_map_f`; its
+parameters are even scalars and there are
+$2(2n^2+n+1)(4n)$ of them. For `coboundary.coefficients`, each row is one
+nonzero coefficient of one $\phi$ parameter in $(\delta f)(X,Y)$. Pairs
+`(X,Y)` follow full PBW order, multiple rows may share the same pair, and
+`Z` is a Schema 1 basis generator. The top-level basis and `pbw_order` are
+copied from Schema 1, whose source file is identified by
+`source_structure_file`.
