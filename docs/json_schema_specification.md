@@ -293,3 +293,66 @@ Consumers must branch on `algebra.family` and must accept the additional
 top-level `central_elements` field. The oscillator groups, root labels,
 parity map, PBW ordering, and dimension values are family-specific and must
 not be assumed identical to B(m,n).
+
+## Schema 2: Inhomogeneous deformation
+
+Name Schema 2 documents `C_{n}_gamma.json`, retaining the bosonic-rank
+filename convention. Each document carries the same `algebra` object as its
+Schema 1 source and identifies that source in `consistency.source_structure_file`.
+
+`gb_matrix` contains the full $2\times 2n$ parameter collection:
+
+```json
+{
+  "shape": [2, 2],
+  "row_labels": ["a_1_p", "a_1_m"],
+  "column_labels": ["b_1_p", "b_1_m"],
+  "entries": [
+    ["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m"],
+    ["gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m"]
+  ],
+  "parameters": [
+    {
+      "label": "gb_a_1_p_b_1_p",
+      "fermion": "a_1_p",
+      "boson": "b_1_p",
+      "parity": 1
+    }
+  ]
+}
+```
+
+For each rank, populate all parameters, row and column labels, and the
+corresponding entries. The entries encode
+$[b_j^s,a_1^\sigma]=-\mathrm{gb}_{a_1^\sigma,b_j^s}\kappa$.
+
+`inhomogeneous_deformation.gamma_coefficients` is an array with one row per
+nonzero output term:
+
+```json
+{
+  "X": "E_eps1_del1_mp",
+  "Y": "E_eps1_del1_mp",
+  "gb_parameter": "gb_a_1_m_b_1_p",
+  "Z": "E_eps1_del1_mp",
+  "coeff": "2",
+  "sign_rule": "graded"
+}
+```
+
+As in Schema 1, input pairs use full PBW order and multiple output terms may
+repeat `X` and `Y`. `Z` is a Schema 1 basis generator or `K` (the scalar
+identity) when the coefficient has a central component. The relation and
+`coefficient_convention` fields record that $\kappa$ is factored on the left
+and terms containing $\kappa^2$ are discarded. With the stated odd parity
+for both `gb` and $\kappa$, the convention rewrites
+$-\mathrm{gb}\,\kappa=+\kappa\,\mathrm{gb}$. `consistency` records the source
+Schema 1 file and parity/basis matching.
+
+**Parity caveat:** The inhomogeneous definition assigns parity 1 to both
+`gb` and $\kappa$, making their product even, but the stated mixed
+commutator has one even and one odd input and therefore must be odd. Schema 2
+records the parameters' stated parity and generates formal first-order
+coefficients from the stated exchange relation, but this parity conflict
+remains unresolved; the output must not be interpreted as a parity-consistent
+deformation until the convention is corrected.
