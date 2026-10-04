@@ -1,0 +1,103 @@
+{
+  "artifact_version": 1,
+  "purpose": "Machine-readable parity and parameter-count audit of the supplied C(n+1) inhomogeneous-deformation definitions",
+  "source_scope": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "external_sources_accessed": false,
+  "parity_audit": {
+    "bracket_rule": "p([x,y]) = p(x) + p(y) modulo 2",
+    "b_parity": 0,
+    "a_parity": 1,
+    "kappa_parity": 1,
+    "gb_parity_as_declared": 1,
+    "lhs_parity": 1,
+    "rhs_parity": 0,
+    "homogeneous_relation_consistent_for_nonzero_gb": false,
+    "condition_for_a_homogeneous_relation": "gb[sigma,j,s] = 0 for every sigma,j,s, assuming independent parameters and nonzero kappa"
+  },
+  "oscillator_relation_template": {
+    "relation": "[b_j^s, a_1^sigma] = -gb[sigma,j,s] * kappa",
+    "normalized_scalar_kappa_coefficient": "-gb[sigma,j,s]",
+    "sigma_values": [
+      "+",
+      "-"
+    ],
+    "s_values": [
+      "+",
+      "-"
+    ]
+  },
+  "coboundary": {
+    "f_parity": 1,
+    "formula": "(delta f)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])",
+    "triviality_equality": "gamma(X,Y) = (delta f)(X,Y) for every homogeneous pair, with no unspecified proportionality",
+    "zero_configuration_witness": "f = 0"
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "parameter_count": 4,
+      "parameters": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]"
+      ],
+      "parity_admissible_condition": "all listed parameters are zero",
+      "gamma_at_admissible_point": "zero"
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "parameter_count": 8,
+      "parameters": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]",
+        "gb[+,2,+]",
+        "gb[+,2,-]",
+        "gb[-,2,+]",
+        "gb[-,2,-]"
+      ],
+      "parity_admissible_condition": "all listed parameters are zero",
+      "gamma_at_admissible_point": "zero"
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "parameter_count": 12,
+      "parameters": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]",
+        "gb[+,2,+]",
+        "gb[+,2,-]",
+        "gb[-,2,+]",
+        "gb[-,2,-]",
+        "gb[+,3,+]",
+        "gb[+,3,-]",
+        "gb[-,3,+]",
+        "gb[-,3,-]"
+      ],
+      "parity_admissible_condition": "all listed parameters are zero",
+      "gamma_at_admissible_point": "zero"
+    }
+  ],
+  "scope_limitations": {
+    "full_homogeneous_basis_and_structure_constants_supplied": false,
+    "full_g_valued_gamma_table_supplied": false,
+    "nonzero_parameter_coboundary_linear_system_computable_from_supplied_definitions": false,
+    "reason": "The inhomogeneous definition provides scalar-kappa oscillator relations but no complete map to the kappa*g-valued adjoint cochain."
+  },
+  "conclusion": "Under the stated parity assignments, only the zero parameter configuration defines a homogeneous Lie-superalgebra relation; it is trivial via f=0. This does not classify nonzero parameters under a corrected definition."
+}
