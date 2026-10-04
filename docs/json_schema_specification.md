@@ -311,6 +311,43 @@ silently changing the base Schema 1 parity map. The parity conflict in the
 source exchange relation is documented in
 `docs/math/C_inhomogeneous_definition.md`.
 
+## Schema 3: Evaluated structure
+
+Use `C_{n}_evaluated.json` for an exact substitution into Schema 2. It
+references the matching Schema 1 and Schema 2 files, records one value for
+every gb parameter, and merges base and deformation terms by `(X,Y,Z)`:
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 3,
+  "algebra": {},
+  "base_structure_file": "C_1_structure.json",
+  "gamma_source_file": "C_1_gamma.json",
+  "parameter_assignment": {"gb_a1p_b1p": 1},
+  "assignment_profile": "all_plus_one",
+  "evaluated_structure_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "base_coeff": "1",
+      "kappa_coeff": "2",
+      "evaluated_coefficient": "1 + kappa * (2)",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {}
+}
+```
+
+`base_coeff` and `kappa_coeff` are exact rational strings and represent the
+formal first-order coefficient `base_coeff + kappa * kappa_coeff`; they are
+not a numerical assignment to the nilpotent element `kappa`. The default
+representative profile assigns `+1` to every gb parameter. Validation must
+confirm complete assignment coverage and reproduce every merged coefficient
+from the referenced Schema 1 and Schema 2 inputs.
+
 ## References
 
 - `handover/notation.md` — finalized C(n+1) root, label, basis, and PBW
