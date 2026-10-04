@@ -272,7 +272,7 @@ def solve_linear_combination(bracket_poly, basis_realizations, all_basis_names):
 
     # 1. Match non-Cartan basis generators
     for name in all_basis_names:
-        if name.startswith("H_"):
+        if name.startswith("H_") or name == "K":
             continue
         poly = basis_realizations[name]
         # non-Cartan poly has a single term (w: 1)
@@ -283,11 +283,9 @@ def solve_linear_combination(bracket_poly, basis_realizations, all_basis_names):
             # subtract c * poly
             rem = rem.add(poly.scale(-c))
 
-    # 2. Match Cartan generators if rem is non-zero
+    # 2. Match Cartan & central generators if rem is non-zero
     if not rem.is_zero():
-        # Cartans: H_1 ... H_{n+1}
-        # Build linear system for Cartan words
-        cartan_names = [name for name in all_basis_names if name.startswith("H_")]
+        cartan_names = [name for name in all_basis_names if name.startswith("H_") or name == "K"]
         # Gather all words present in cartan realizations
         cartan_words = list(set(w for name in cartan_names for w in basis_realizations[name].terms.keys()))
         
