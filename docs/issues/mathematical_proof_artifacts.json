@@ -1,0 +1,92 @@
+{
+  "artifact_version": 1,
+  "subject": "Triviality of the stated C(n+1) inhomogeneous deformation",
+  "source_documents": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "documented_ranks": {
+    "1": {
+      "dimension_even": 4,
+      "dimension_odd": 4,
+      "dimension_total": 8,
+      "parameters": [
+        "gb_a1+_b1+",
+        "gb_a1+_b1-",
+        "gb_a1-_b1+",
+        "gb_a1-_b1-"
+      ]
+    },
+    "2": {
+      "dimension_even": 11,
+      "dimension_odd": 8,
+      "dimension_total": 19,
+      "parameters": [
+        "gb_a1+_b1+",
+        "gb_a1+_b1-",
+        "gb_a1-_b1+",
+        "gb_a1-_b1-",
+        "gb_a1+_b2+",
+        "gb_a1+_b2-",
+        "gb_a1-_b2+",
+        "gb_a1-_b2-"
+      ]
+    },
+    "3": {
+      "dimension_even": 22,
+      "dimension_odd": 12,
+      "dimension_total": 34,
+      "parameters": [
+        "gb_a1+_b1+",
+        "gb_a1+_b1-",
+        "gb_a1-_b1+",
+        "gb_a1-_b1-",
+        "gb_a1+_b2+",
+        "gb_a1+_b2-",
+        "gb_a1-_b2+",
+        "gb_a1-_b2-",
+        "gb_a1+_b3+",
+        "gb_a1+_b3-",
+        "gb_a1-_b3+",
+        "gb_a1-_b3-"
+      ]
+    }
+  },
+  "triviality_equation": "D_n * vec(f) = vec(gamma_gb)",
+  "necessary_and_sufficient_test": "rank([D_n | vec(gamma_gb)]) == rank(D_n)",
+  "available_inputs": {
+    "dimensions_and_parameter_count": true,
+    "coboundary_formula": true,
+    "complete_homogeneous_basis_and_structure_constants": false,
+    "evaluated_gamma_coefficients_as_functions_of_gb": false,
+    "parameter_coefficient_superalgebra": false,
+    "2_cocycle_verification": false
+  },
+  "parity_audit": {
+    "oscillator_relation": "[b_j^s, a_1^sigma] = -gb_sigma_j_s * kappa",
+    "left_hand_side_parity": 1,
+    "declared_gb_parity": 1,
+    "declared_kappa_parity": 1,
+    "right_hand_side_parity": 0,
+    "homogeneous_relation_consistent_for_nonzero_rhs": false,
+    "requires_unprovided_parameter_algebra_or_parity_correction": true
+  },
+  "conclusion": {
+    "status": "underdetermined_from_supplied_documents",
+    "zero_parameter_configuration": "trivial if gamma(0)=0 as implied by the deformation construction",
+    "nonzero_parameter_configurations": "cannot be classified without the missing structure constants and gamma map",
+    "external_sources_used": false
+  },
+  "verifier": "docs/issues/verify_coboundary.py",
+  "verifier_input": {
+    "n": "1, 2, or 3 (used to validate the documented dimension)",
+    "basis": "ordered list of {name, parity} objects",
+    "bracket": "sparse list of {x, y, terms} entries; omitted output terms mean zero",
+    "gamma": "sparse list of {x, y, terms} entries for one fixed parameter assignment; omitted output terms mean zero",
+    "coefficients": "integers or rational strings such as '-3/7'; exact rational arithmetic only"
+  },
+  "parity_convention": "For odd f, delta f(Z_a,Z_b) has parity p(Z_a)+p(Z_b)+1; gamma must match.",
+  "scalar_convention": "A single global nonzero scalar is absorbed into f by linearity of delta."
+}
