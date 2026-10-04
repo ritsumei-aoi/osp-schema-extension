@@ -114,3 +114,13 @@ def test_graded_skew_symmetry(n):
                 c_XY = brackets.get((X, Y, Z), 0)
                 c_YX = brackets.get((Y, X, Z), 0)
                 assert c_YX == expected_sign * c_XY, f"Skew-symmetry failed for ({X}, {Y}) -> {Z}"
+
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_super_jacobi_identity(n):
+    from src.verify_C_structure import verify_algebra
+    filepath = f"data/C_{n}_structure.json"
+    report = verify_algebra(n, filepath)
+    assert report["passed"] is True
+    assert report["antisymmetry_failures_count"] == 0
+    assert report["jacobi_failures_count"] == 0
