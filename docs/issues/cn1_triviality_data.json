@@ -1,0 +1,102 @@
+{
+  "artifact": "C(n+1) inhomogeneous triviality verification metadata",
+  "convention": "Values taken only from docs/math/Cn1_definition.md, docs/math/C_inhomogeneous_definition.md, and docs/math/C_coboundary_definition.md; missing tensors are intentionally null.",
+  "field": {
+    "stated": "C",
+    "odd_scalar_extension_specified": false
+  },
+  "families": [
+    {
+      "n": 1,
+      "algebra": "osp(2|2)",
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "gb_parameter_count": 4,
+      "gb_parameters": [
+        "gb[+,+,1]",
+        "gb[+,-,1]",
+        "gb[-,+,1]",
+        "gb[-,-,1]"
+      ]
+    },
+    {
+      "n": 2,
+      "algebra": "osp(2|4)",
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "gb_parameter_count": 8,
+      "gb_parameters": [
+        "gb[+,+,1]",
+        "gb[+,-,1]",
+        "gb[-,+,1]",
+        "gb[-,-,1]",
+        "gb[+,+,2]",
+        "gb[+,-,2]",
+        "gb[-,+,2]",
+        "gb[-,-,2]"
+      ]
+    },
+    {
+      "n": 3,
+      "algebra": "osp(2|6)",
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "gb_parameter_count": 12,
+      "gb_parameters": [
+        "gb[+,+,1]",
+        "gb[+,-,1]",
+        "gb[-,+,1]",
+        "gb[-,-,1]",
+        "gb[+,+,2]",
+        "gb[+,-,2]",
+        "gb[-,+,2]",
+        "gb[-,-,2]",
+        "gb[+,+,3]",
+        "gb[+,-,3]",
+        "gb[-,+,3]",
+        "gb[-,-,3]"
+      ]
+    }
+  ],
+  "stated_oscillator_relations": {
+    "boson_parity": 0,
+    "fermion_parity": 1,
+    "kappa_parity": 1,
+    "gb_parity": 1,
+    "relation": "[b[j,s], a[ sigma ]] = -gb[sigma,j,s] * kappa",
+    "lhs_parity": 1,
+    "rhs_parity_from_stated_assignments": 0,
+    "homogeneous": false,
+    "literal_nonzero_gb_admissible": false,
+    "literal_triviality_condition": "all gb parameters equal zero",
+    "witness_for_zero_coboundary": "f = 0"
+  },
+  "coboundary_data": {
+    "basis": null,
+    "structure_constants_c_ij_r": null,
+    "reason_unavailable": "The cited definitions give root and oscillator descriptions but no complete homogeneous basis with structure constants in the basis needed for the stated coboundary calculation.",
+    "formula": "delta_f(e_i,e_j)^r = (-1)^p_i sum_k x_kj c_ik^r - (-1)^((p_i+1)p_j) sum_k x_ki c_jk^r - sum_t c_ij^t x_rt, with f(e_j)=sum_k x_kj e_k and p_k=p_j+1 mod 2."
+  },
+  "inhomogeneous_cocycle_data": {
+    "gamma_gb_ij_r": null,
+    "reason_unavailable": "Oscillator exchange parameters are listed, but their conversion into coefficients of an adjoint-valued 2-cochain is not defined. The relation outputs a central kappa term and the module identification with kappa*g is unspecified.",
+    "adjoint_module_identification": null,
+    "up_to_scalar_interpretation": "A single global scalar can be absorbed into f; pairwise or componentwise scalars define a different relation and are unspecified."
+  },
+  "verification_scope": {
+    "verified": [
+      "dimension formulas for n=1,2,3",
+      "4n gb parameter indexing for n=1,2,3",
+      "parity mismatch in the stated oscillator exchange relation"
+    ],
+    "not_verified": [
+      "structure constants",
+      "2-cocycle identity for gamma_gb",
+      "nonzero-parameter triviality locus for a corrected parity-consistent model"
+    ],
+    "external_sources_used": false
+  }
+}
