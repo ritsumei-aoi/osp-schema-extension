@@ -373,3 +373,46 @@ output label `K` is permitted for the central scalar component, as in Schema
 2, without making it an independent Schema 1 basis element. Metadata records
 `src/evaluate_C_gamma.py`, the generation date, and the evaluated-bracket
 formula.
+
+## Schema 4: coboundary structure
+
+Use `C_{n}_coboundary.json`, paired with `C_{n}_structure.json`. The object
+contains `schema_version`, `algebra`, `source_schema1`, `basis`, `parity`,
+`linear_map_f`, `coboundary_convention`, `coboundary_coefficients`, and
+`metadata`. The copied basis, parity, and algebra must match the source Schema
+1 data.
+
+`linear_map_f` describes a generic odd map
+$f(Z_j)=\sum_{i:p(Z_i)\ne p(Z_j)}\phi_{i,j}Z_i$. Its `parameters` array has
+one entry per parity-reversing input/output pair:
+
+```json
+{
+  "input": "E_eps1_del1_pp",
+  "output": "H_1",
+  "parameter": "phi_H_1_from_E_eps1_del1_pp"
+}
+```
+
+`coboundary_convention` records the formula from
+`docs/math/C_coboundary_definition.md`. `coboundary_coefficients` stores each
+nonzero canonical input pair and output basis label:
+
+```json
+{
+  "X": "E_eps1_del1_pp",
+  "Y": "E_eps1_del1_mm",
+  "Z": "H_1",
+  "coefficients": [
+    {"parameter": "phi_H_1_from_E_eps1_del1_pp", "coeff": "2"}
+  ],
+  "sign_rule": "graded"
+}
+```
+
+The `coefficients` array is a sparse exact rational linear combination of
+the parameters in `linear_map_f`; omit zero terms. Store input pairs once in
+PBW order. Since $f$ is odd, every nonzero output has parity
+$p(Z)=p(X)+p(Y)+1\pmod2$. Metadata records
+`src/C_coboundary_generator.py`, the generation date, and the coboundary
+reference.
