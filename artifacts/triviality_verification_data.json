@@ -1,0 +1,704 @@
+{
+  "C(2)": {
+    "algebra": "C(2)",
+    "superalgebra": "osp(2|2)",
+    "n": 1,
+    "dimensions": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    },
+    "basis": [
+      {
+        "name": "H_0",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d1",
+        "parity": 1,
+        "type": "odd"
+      }
+    ],
+    "num_gb_parameters": 4,
+    "gb_parameters": [
+      "gb_+_1_+",
+      "gb_+_1_-",
+      "gb_-_1_+",
+      "gb_-_1_-"
+    ],
+    "coboundary_operator": {
+      "f_dimension": 32,
+      "rank": 28,
+      "kernel_dimension (1-cocycles)": 4
+    },
+    "all_gb_are_coboundaries": true,
+    "solutions": {
+      "gb_+_1_+": {
+        "parameter": "gb_+_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e-d1": "-1",
+          "f(E_+2d_1) -> E_-e+d1": "-1",
+          "f(E_+e+d1) -> H_0": "1"
+        }
+      },
+      "gb_+_1_-": {
+        "parameter": "gb_+_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e+d1": "-1",
+          "f(E_-2d_1) -> E_-e-d1": "-1",
+          "f(E_+e-d1) -> H_0": "1"
+        }
+      },
+      "gb_-_1_+": {
+        "parameter": "gb_-_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e-d1": "-1",
+          "f(E_+2d_1) -> E_+e+d1": "-1",
+          "f(E_-e+d1) -> H_0": "-1"
+        }
+      },
+      "gb_-_1_-": {
+        "parameter": "gb_-_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e+d1": "-1",
+          "f(E_-2d_1) -> E_+e-d1": "-1",
+          "f(E_-e-d1) -> H_0": "-1"
+        }
+      }
+    }
+  },
+  "C(3)": {
+    "algebra": "C(3)",
+    "superalgebra": "osp(2|4)",
+    "n": 2,
+    "dimensions": {
+      "total": 19,
+      "even": 11,
+      "odd": 8
+    },
+    "basis": [
+      {
+        "name": "H_0",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1+d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1-d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1-d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1+d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e+d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d2",
+        "parity": 1,
+        "type": "odd"
+      }
+    ],
+    "num_gb_parameters": 8,
+    "gb_parameters": [
+      "gb_+_1_+",
+      "gb_+_1_-",
+      "gb_+_2_+",
+      "gb_+_2_-",
+      "gb_-_1_+",
+      "gb_-_1_-",
+      "gb_-_2_+",
+      "gb_-_2_-"
+    ],
+    "coboundary_operator": {
+      "f_dimension": 176,
+      "rank": 168,
+      "kernel_dimension (1-cocycles)": 8
+    },
+    "all_gb_are_coboundaries": true,
+    "solutions": {
+      "gb_+_1_+": {
+        "parameter": "gb_+_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e-d1": "-1",
+          "f(E_+2d_1) -> E_-e+d1": "-1",
+          "f(E_+d1+d2) -> E_-e+d2": "-1",
+          "f(E_+d1-d2) -> E_-e-d2": "-1",
+          "f(E_+e+d1) -> H_0": "1"
+        }
+      },
+      "gb_+_1_-": {
+        "parameter": "gb_+_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e+d1": "-1",
+          "f(E_-2d_1) -> E_-e-d1": "-1",
+          "f(E_-d1-d2) -> E_-e-d2": "-1",
+          "f(E_-d1+d2) -> E_-e+d2": "-1",
+          "f(E_+e-d1) -> H_0": "1"
+        }
+      },
+      "gb_+_2_+": {
+        "parameter": "gb_+_2_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_-e-d2": "-1",
+          "f(E_+2d_2) -> E_-e+d2": "-1",
+          "f(E_+d1+d2) -> E_-e+d1": "-1",
+          "f(E_-d1+d2) -> E_-e-d1": "-1",
+          "f(E_+e+d2) -> H_0": "1"
+        }
+      },
+      "gb_+_2_-": {
+        "parameter": "gb_+_2_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_-e+d2": "-1",
+          "f(E_-2d_2) -> E_-e-d2": "-1",
+          "f(E_-d1-d2) -> E_-e-d1": "-1",
+          "f(E_+d1-d2) -> E_-e+d1": "-1",
+          "f(E_+e-d2) -> H_0": "1"
+        }
+      },
+      "gb_-_1_+": {
+        "parameter": "gb_-_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e-d1": "-1",
+          "f(E_+2d_1) -> E_+e+d1": "-1",
+          "f(E_+d1+d2) -> E_+e+d2": "-1",
+          "f(E_+d1-d2) -> E_+e-d2": "-1",
+          "f(E_-e+d1) -> H_0": "-1"
+        }
+      },
+      "gb_-_1_-": {
+        "parameter": "gb_-_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e+d1": "-1",
+          "f(E_-2d_1) -> E_+e-d1": "-1",
+          "f(E_-d1-d2) -> E_+e-d2": "-1",
+          "f(E_-d1+d2) -> E_+e+d2": "-1",
+          "f(E_-e-d1) -> H_0": "-1"
+        }
+      },
+      "gb_-_2_+": {
+        "parameter": "gb_-_2_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_+e-d2": "-1",
+          "f(E_+2d_2) -> E_+e+d2": "-1",
+          "f(E_+d1+d2) -> E_+e+d1": "-1",
+          "f(E_-d1+d2) -> E_+e-d1": "-1",
+          "f(E_-e+d2) -> H_0": "-1"
+        }
+      },
+      "gb_-_2_-": {
+        "parameter": "gb_-_2_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_+e+d2": "-1",
+          "f(E_-2d_2) -> E_+e-d2": "-1",
+          "f(E_-d1-d2) -> E_+e-d1": "-1",
+          "f(E_+d1-d2) -> E_+e+d1": "-1",
+          "f(E_-e-d2) -> H_0": "-1"
+        }
+      }
+    }
+  },
+  "C(4)": {
+    "algebra": "C(4)",
+    "superalgebra": "osp(2|6)",
+    "n": 3,
+    "dimensions": {
+      "total": 34,
+      "even": 22,
+      "odd": 12
+    },
+    "basis": [
+      {
+        "name": "H_0",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "N_3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_1",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+2d_3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-2d_3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1+d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1-d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1-d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1+d2",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1+d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1-d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d1-d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d1+d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d2+d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d2-d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+d2-d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_-d2+d3",
+        "parity": 0,
+        "type": "even"
+      },
+      {
+        "name": "E_+e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d1",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e+d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d2",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e+d3",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_+e-d3",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e+d3",
+        "parity": 1,
+        "type": "odd"
+      },
+      {
+        "name": "E_-e-d3",
+        "parity": 1,
+        "type": "odd"
+      }
+    ],
+    "num_gb_parameters": 12,
+    "gb_parameters": [
+      "gb_+_1_+",
+      "gb_+_1_-",
+      "gb_+_2_+",
+      "gb_+_2_-",
+      "gb_+_3_+",
+      "gb_+_3_-",
+      "gb_-_1_+",
+      "gb_-_1_-",
+      "gb_-_2_+",
+      "gb_-_2_-",
+      "gb_-_3_+",
+      "gb_-_3_-"
+    ],
+    "coboundary_operator": {
+      "f_dimension": 528,
+      "rank": 516,
+      "kernel_dimension (1-cocycles)": 12
+    },
+    "all_gb_are_coboundaries": true,
+    "solutions": {
+      "gb_+_1_+": {
+        "parameter": "gb_+_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e-d1": "-1",
+          "f(E_+2d_1) -> E_-e+d1": "-1",
+          "f(E_+d1+d2) -> E_-e+d2": "-1",
+          "f(E_+d1-d2) -> E_-e-d2": "-1",
+          "f(E_+d1+d3) -> E_-e+d3": "-1",
+          "f(E_+d1-d3) -> E_-e-d3": "-1",
+          "f(E_+e+d1) -> H_0": "1"
+        }
+      },
+      "gb_+_1_-": {
+        "parameter": "gb_+_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_-e+d1": "-1",
+          "f(E_-2d_1) -> E_-e-d1": "-1",
+          "f(E_-d1-d2) -> E_-e-d2": "-1",
+          "f(E_-d1+d2) -> E_-e+d2": "-1",
+          "f(E_-d1-d3) -> E_-e-d3": "-1",
+          "f(E_-d1+d3) -> E_-e+d3": "-1",
+          "f(E_+e-d1) -> H_0": "1"
+        }
+      },
+      "gb_+_2_+": {
+        "parameter": "gb_+_2_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_-e-d2": "-1",
+          "f(E_+2d_2) -> E_-e+d2": "-1",
+          "f(E_+d1+d2) -> E_-e+d1": "-1",
+          "f(E_-d1+d2) -> E_-e-d1": "-1",
+          "f(E_+d2+d3) -> E_-e+d3": "-1",
+          "f(E_+d2-d3) -> E_-e-d3": "-1",
+          "f(E_+e+d2) -> H_0": "1"
+        }
+      },
+      "gb_+_2_-": {
+        "parameter": "gb_+_2_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_-e+d2": "-1",
+          "f(E_-2d_2) -> E_-e-d2": "-1",
+          "f(E_-d1-d2) -> E_-e-d1": "-1",
+          "f(E_+d1-d2) -> E_-e+d1": "-1",
+          "f(E_-d2-d3) -> E_-e-d3": "-1",
+          "f(E_-d2+d3) -> E_-e+d3": "-1",
+          "f(E_+e-d2) -> H_0": "1"
+        }
+      },
+      "gb_+_3_+": {
+        "parameter": "gb_+_3_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_3) -> E_-e-d3": "-1",
+          "f(E_+2d_3) -> E_-e+d3": "-1",
+          "f(E_+d1+d3) -> E_-e+d1": "-1",
+          "f(E_-d1+d3) -> E_-e-d1": "-1",
+          "f(E_+d2+d3) -> E_-e+d2": "-1",
+          "f(E_-d2+d3) -> E_-e-d2": "-1",
+          "f(E_+e+d3) -> H_0": "1"
+        }
+      },
+      "gb_+_3_-": {
+        "parameter": "gb_+_3_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_3) -> E_-e+d3": "-1",
+          "f(E_-2d_3) -> E_-e-d3": "-1",
+          "f(E_-d1-d3) -> E_-e-d1": "-1",
+          "f(E_+d1-d3) -> E_-e+d1": "-1",
+          "f(E_-d2-d3) -> E_-e-d2": "-1",
+          "f(E_+d2-d3) -> E_-e+d2": "-1",
+          "f(E_+e-d3) -> H_0": "1"
+        }
+      },
+      "gb_-_1_+": {
+        "parameter": "gb_-_1_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e-d1": "-1",
+          "f(E_+2d_1) -> E_+e+d1": "-1",
+          "f(E_+d1+d2) -> E_+e+d2": "-1",
+          "f(E_+d1-d2) -> E_+e-d2": "-1",
+          "f(E_+d1+d3) -> E_+e+d3": "-1",
+          "f(E_+d1-d3) -> E_+e-d3": "-1",
+          "f(E_-e+d1) -> H_0": "-1"
+        }
+      },
+      "gb_-_1_-": {
+        "parameter": "gb_-_1_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_1) -> E_+e+d1": "-1",
+          "f(E_-2d_1) -> E_+e-d1": "-1",
+          "f(E_-d1-d2) -> E_+e-d2": "-1",
+          "f(E_-d1+d2) -> E_+e+d2": "-1",
+          "f(E_-d1-d3) -> E_+e-d3": "-1",
+          "f(E_-d1+d3) -> E_+e+d3": "-1",
+          "f(E_-e-d1) -> H_0": "-1"
+        }
+      },
+      "gb_-_2_+": {
+        "parameter": "gb_-_2_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_+e-d2": "-1",
+          "f(E_+2d_2) -> E_+e+d2": "-1",
+          "f(E_+d1+d2) -> E_+e+d1": "-1",
+          "f(E_-d1+d2) -> E_+e-d1": "-1",
+          "f(E_+d2+d3) -> E_+e+d3": "-1",
+          "f(E_+d2-d3) -> E_+e-d3": "-1",
+          "f(E_-e+d2) -> H_0": "-1"
+        }
+      },
+      "gb_-_2_-": {
+        "parameter": "gb_-_2_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_2) -> E_+e+d2": "-1",
+          "f(E_-2d_2) -> E_+e-d2": "-1",
+          "f(E_-d1-d2) -> E_+e-d1": "-1",
+          "f(E_+d1-d2) -> E_+e+d1": "-1",
+          "f(E_-d2-d3) -> E_+e-d3": "-1",
+          "f(E_-d2+d3) -> E_+e+d3": "-1",
+          "f(E_-e-d2) -> H_0": "-1"
+        }
+      },
+      "gb_-_3_+": {
+        "parameter": "gb_-_3_+",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_3) -> E_+e-d3": "-1",
+          "f(E_+2d_3) -> E_+e+d3": "-1",
+          "f(E_+d1+d3) -> E_+e+d1": "-1",
+          "f(E_-d1+d3) -> E_+e-d1": "-1",
+          "f(E_+d2+d3) -> E_+e+d2": "-1",
+          "f(E_-d2+d3) -> E_+e-d2": "-1",
+          "f(E_-e+d3) -> H_0": "-1"
+        }
+      },
+      "gb_-_3_-": {
+        "parameter": "gb_-_3_-",
+        "is_coboundary": true,
+        "exact_residual": 0,
+        "f_canonical_matrix_entries": {
+          "f(N_3) -> E_+e+d3": "-1",
+          "f(E_-2d_3) -> E_+e-d3": "-1",
+          "f(E_-d1-d3) -> E_+e-d1": "-1",
+          "f(E_+d1-d3) -> E_+e+d1": "-1",
+          "f(E_-d2-d3) -> E_+e-d2": "-1",
+          "f(E_+d2-d3) -> E_+e+d2": "-1",
+          "f(E_-e-d3) -> H_0": "-1"
+        }
+      }
+    }
+  }
+}
