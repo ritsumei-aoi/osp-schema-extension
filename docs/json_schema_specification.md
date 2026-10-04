@@ -356,3 +356,39 @@ records the parameters' stated parity and generates formal first-order
 coefficients from the stated exchange relation, but this parity conflict
 remains unresolved; the output must not be interpreted as a parity-consistent
 deformation until the convention is corrected.
+
+## Schema 3: Evaluated structure
+
+Use `C_{n}_evaluated.json`. The document contains the source algebra object
+and undeformed `structure_constants` from Schema 1, plus
+`deformation_evaluation`:
+
+```json
+{
+  "profile": "all_plus",
+  "parameter_assignment": {
+    "gb_a_1_p_b_1_p": 1,
+    "gb_a_1_p_b_1_m": 1,
+    "gb_a_1_m_b_1_p": 1,
+    "gb_a_1_m_b_1_m": 1
+  },
+  "gamma_coefficients": [
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    }
+  ],
+  "bracket_convention": "[X,Y]_evaluated = [X,Y]_0 + kappa*gamma(X,Y)"
+}
+```
+
+`gamma_coefficients` contains the exact sum of Schema 2 terms after
+substitution, combining rows with the same `(X,Y,Z)` and omitting zero sums.
+Its `Z` may be a Schema 1 basis generator or `K`. The top-level fields
+`source_structure_file` and `source_gamma_file` identify the two source
+layers. Preserve the Schema 2 `parity_status` and warning: an all-plus
+assignment is a formal numerical specialization, not a resolution of its
+parity conflict.
