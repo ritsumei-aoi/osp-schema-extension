@@ -182,7 +182,14 @@ def _normalize(word, n):
                 break
 
         if not moved:
-            # Word is in normal order
+            # Word is in normal order; check for adjacent identical fermions (which square to 0)
+            has_zero = False
+            for i in range(len(w) - 1):
+                if osc_type(w[i]) == "f" and w[i] == w[i + 1]:
+                    has_zero = True
+                    break
+            if has_zero:
+                continue
             key = tuple(w)
             result[key] = result.get(key, Fraction(0)) + c
 
@@ -291,68 +298,90 @@ def build_monomial_to_generator_map(gens):
 
 def express_in_basis(elem, gens, n):
     """
-    Try to express elem (oscillator element) as a linear combination of generators.
-    Returns dict {generator_label: Fraction} or None if not expressible.
+    Express elem (oscillator element) as a linear combination of generators
+    using Gaussian elimination over the rationals.
 
-    We match against each generator's realization.
+    Returns dict {generator_label: Fraction} or None if not expressible.
+    Scalar multiples of the identity (empty monomial) are silently ignored
+    since K is identified with 1 and not a basis element.
     """
     if not elem:
         return {}
 
-    result = {}
-    remaining = dict(elem)
+    # Non-scalar part of elem
+    elem_ns = {m: c for m, c in elem.items() if m != ()}
+    if not elem_ns:
+        return {}
 
-    # Try generators in a fixed order
-    gen_order = list(gens.keys())
+    # Collect ALL non-scalar monomials from all generators
+    all_gen_monos = set()
+    for g_elem in gens.values():
+        for m in g_elem:
+            if m != ():
+                all_gen_monos.add(m)
 
-    for label in gen_order:
-        gen_elem = gens[label]
-        if not gen_elem:
-            continue
+    # Use all monomials from elem AND from generators as rows
+    # This over-constrains the system properly
+    all_monos = sorted(all_gen_monos | set(elem_ns.keys()), key=str)
+    mono_idx = {m: i for i, m in enumerate(all_monos)}
+    nrow = len(all_monos)
+    gen_list = list(gens.items())
+    ncol = len(gen_list)
 
-        # Find how many times gen_elem fits in remaining
-        # Pick a representative monomial from gen_elem
-        rep_mono = next(iter(gen_elem))
-        if rep_mono not in remaining:
-            continue
+    # Augmented matrix [A | b]
+    mat = [[Fraction(0)] * (ncol + 1) for _ in range(nrow)]
+    for j, (label, g_elem) in enumerate(gen_list):
+        for m, c in g_elem.items():
+            if m != ():
+                mat[mono_idx[m]][j] = c
+    for m, c in elem_ns.items():
+        mat[mono_idx[m]][ncol] = c
 
-        # Scale: coefficient in remaining / coefficient in gen_elem
-        scale = remaining[rep_mono] / gen_elem[rep_mono]
-        if scale == 0:
-            continue
-
-        # Check that scale * gen_elem matches remaining (for all monomials in gen_elem)
-        consistent = True
-        for m, c in gen_elem.items():
-            expected = scale * c
-            actual = remaining.get(m, Fraction(0))
-            if expected != actual:
-                consistent = False
+    # Gaussian elimination (full — operates on all rows)
+    pivot_col = {}  # row_used -> col of pivot
+    row_used = 0
+    for col in range(ncol):
+        pivot_row = None
+        for r in range(row_used, nrow):
+            if mat[r][col] != 0:
+                pivot_row = r
                 break
+        if pivot_row is None:
+            continue
+        mat[row_used], mat[pivot_row] = mat[pivot_row], mat[row_used]
+        pivot_col[row_used] = col
+        pv = mat[row_used][col]
+        mat[row_used] = [x / pv for x in mat[row_used]]
+        for r in range(nrow):
+            if r != row_used and mat[r][col] != 0:
+                factor = mat[r][col]
+                mat[r] = [mat[r][k] - factor * mat[row_used][k] for k in range(ncol + 1)]
+        row_used += 1
 
-        if consistent:
-            # Subtract scale * gen_elem from remaining
-            for m, c in gen_elem.items():
-                remaining[m] = remaining.get(m, Fraction(0)) - scale * c
-                if remaining[m] == 0:
-                    del remaining[m]
-            result[label] = result.get(label, Fraction(0)) + scale
+    # Check consistency
+    for r in range(row_used, nrow):
+        if mat[r][ncol] != 0:
+            return None
 
-    # Remove zeros
-    result = {k: v for k, v in result.items() if v != 0}
+    # Extract solution (free variables default to 0)
+    solution = {label: Fraction(0) for label, _ in gen_list}
+    for r, col in pivot_col.items():
+        label = gen_list[col][0]
+        solution[label] = mat[r][ncol]
 
-    if remaining:
-        # Some part unexpressible in the generator basis
-        # This may happen for the constant term () from Cartan generators
-        # Check if remaining is only the empty monomial (a scalar)
-        if set(remaining.keys()) == {()}:
-            # This is a scalar — represents the identity, which is K=1
-            # We don't include it in structure constants (K is central/scalar)
-            pass
-        else:
-            return None  # Cannot express
+    # Verify (should be redundant, but kept as safety check)
+    check = {}
+    for label, coeff in solution.items():
+        if coeff == 0:
+            continue
+        for m, c in gens[label].items():
+            if m != ():
+                check[m] = check.get(m, Fraction(0)) + coeff * c
+    check = {m: c for m, c in check.items() if c != 0}
+    if check != elem_ns:
+        return None
 
-    return result
+    return {k: v for k, v in solution.items() if v != 0}
 
 
 # ---------------------------------------------------------------------------
