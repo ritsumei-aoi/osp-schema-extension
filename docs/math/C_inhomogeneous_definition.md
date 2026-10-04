@@ -33,4 +33,8 @@ We note that the bracket can be extend to $L:=\mathfrak{g}\oplus \kappa\mathfrak
 The coefficients $\gamma_{abc}$ are derived by substituting the oscillator realizations of generators $X, Y$ and evaluating the bracket using the deformed oscillator relations.
 
 
-**Parity Note**: Since $\kappa$ is odd ($p(\kappa)=1$) and the bracket preserves total parity, the deformation parameters $\mathrm{gb}$ must have parity 1.
+**Parity Note**: Since $b_j^s$ is even, $a_1^\sigma$ is odd, and $\kappa$ is
+odd, homogeneity of the defining relation
+$[b_j^s,a_1^\sigma]=-\mathrm{gb}_{\sigma,j,s}\kappa$ requires
+$p(\mathrm{gb})=0$. An earlier parity-1 statement is inconsistent with this
+relation and is not used by the schema implementation.

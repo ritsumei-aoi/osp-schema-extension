@@ -263,3 +263,79 @@ graded skew-symmetry.
 ```
 
 Record the actual generator and ISO date used for a concrete output file.
+
+## Schema 2: inhomogeneous gamma structure
+
+Use `C_{n}_gamma.json`, paired with `C_{n}_structure.json`. The Schema 2
+object has these top-level keys:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {},
+  "source_schema1": "C_2_structure.json",
+  "gb_matrix": {},
+  "inhomogeneous_deformation": {},
+  "metadata": {}
+}
+```
+
+`algebra` must equal the corresponding Schema 1 `algebra` object, and
+`source_schema1` identifies that exact basis and rank.
+
+### `gb_matrix`
+
+The two rows correspond, in order, to `a_1_p`, `a_1_m`; columns are bosonic
+labels `b_1_p`, `b_1_m`, ..., `b_n_p`, `b_n_m`. It has shape $2\times2n$
+and exactly $4n$ distinct parameters:
+
+```json
+{
+  "row_labels": ["a_1_p", "a_1_m"],
+  "column_labels": ["b_1_p", "b_1_m"],
+  "shape": [2, 2],
+  "parity": 0,
+  "entries": [
+    ["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m"],
+    ["gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m"]
+  ]
+}
+```
+
+Each row of `entries` aligns with a row label, each column with a column
+label. The source text's parity-1 note conflicts with its relation
+$[b,a]=-\mathrm{gb}\,\kappa$: since $p(b)=0$, $p(a)=1$, and $p(\kappa)=1$,
+homogeneity requires $p(\mathrm{gb})=0$. The schema uses parity 0.
+
+### `inhomogeneous_deformation`
+
+`deformed_mixed_commutators` lists all $4n$ relations
+$[b_j^s,a_1^\sigma]=-\mathrm{gb}_{a_1^\sigma,b_j^s}\kappa$, with `X` the
+boson, `Y` the fermion, and `relation` the explicit string. `gamma_convention`
+declares the factorization
+$[X,Y]_\gamma=[X,Y]_0+\kappa\gamma(X,Y)$.
+
+`gamma_coefficients` stores each nonzero canonical pair and output component:
+
+```json
+{
+  "X": "E_eps1_del1_pp",
+  "Y": "H_2",
+  "Z": "E_eps1_del1_pp",
+  "coefficients": [
+    {"parameter": "gb_a_1_p_b_1_m", "coeff": "1"}
+  ],
+  "sign_rule": "graded"
+}
+```
+
+`X` and `Y` are basis labels in canonical PBW pair order. `Z` is a Schema 1
+basis label or `K`; `K` denotes the scalar identity when a central scalar
+term occurs and is not added to the Schema 1 basis or dimension. The
+`coefficients` array represents the exact rational linear combination of
+named gb parameters; omit zero coefficients. With even gb parameters and odd
+$\kappa$, each basis-valued output has parity
+$p(Z)=p(X)+p(Y)+1\pmod2$; a `K` output is even.
+
+The metadata records `src/C_gamma_generator.py`, the generation date, and
+the inhomogeneous-deformation reference.
