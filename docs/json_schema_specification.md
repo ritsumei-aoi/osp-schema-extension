@@ -344,7 +344,9 @@ the inhomogeneous-deformation reference.
 
 The representative evaluated profile is `all_plus`: every parameter named
 in Schema 2's `gb_matrix.entries` is assigned the integer `+1`. Files are
-named `C_{n}_evaluated.json`, as required for this C(n+1) dataset.
+named `C_{n}_evaluated.json`, as required for this C(n+1) dataset. An
+additional `all_zero` profile is available for the zero-deformation case and
+is written to `C_{n}_evaluated_zero.json`.
 
 Each file has `schema_version`, `algebra`, `source_schema1`,
 `source_schema2`, `gb_assignment`, `evaluated_structure_constants`, and

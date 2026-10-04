@@ -32,6 +32,8 @@ def evaluate_schema1_schema2(
         raise ValueError("gb_matrix contains duplicate parameter names")
     if profile == "all_plus":
         assignment = {parameter: 1 for parameter in parameter_labels}
+    elif profile == "all_zero":
+        assignment = {parameter: 0 for parameter in parameter_labels}
     else:
         raise ValueError(f"Unsupported gb assignment profile: {profile}")
 
@@ -95,7 +97,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--n", type=int, nargs="+", default=[1, 2, 3])
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
-    parser.add_argument("--profile", choices=("all_plus",), default="all_plus")
+    parser.add_argument(
+        "--profile",
+        choices=("all_plus", "all_zero"),
+        default="all_plus",
+    )
     args = parser.parse_args()
 
     for n in args.n:
@@ -104,7 +110,8 @@ def main() -> None:
         structure = json.loads(structure_path.read_text(encoding="utf-8"))
         gamma = json.loads(gamma_path.read_text(encoding="utf-8"))
         result = evaluate_schema1_schema2(structure, gamma, args.profile)
-        output_path = args.data_dir / f"C_{n}_evaluated.json"
+        suffix = "" if args.profile == "all_plus" else "_zero"
+        output_path = args.data_dir / f"C_{n}_evaluated{suffix}.json"
         output_path.write_text(
             json.dumps(result, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
