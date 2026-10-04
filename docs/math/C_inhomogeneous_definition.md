@@ -15,7 +15,10 @@ In this note, we always consider that $C(n+1)$ is realized as a subalgebra of $\
 
 ## 1. Deformation parameters (gb)
 
-The inhomogeneous deformation is parametrized by a set of parity-1 parameters collections referred to as the **gb matrix**.
+The inhomogeneous deformation is parametrized by a set of parity-0 parameters
+collected into the **gb matrix**. This parity makes the right-hand side of the
+exchange relation odd, matching the bracket of an even boson with an odd
+fermion, and preserves the CAR for independent parameters.
 
 The role of the fermionic sector is played by the standard pair $a_1^+, a_1^-$. The deformation is defined by the exchange relations between fermionic and bosonic oscillators:
 
@@ -33,4 +36,9 @@ We note that the bracket can be extend to $L:=\mathfrak{g}\oplus \kappa\mathfrak
 The coefficients $\gamma_{abc}$ are derived by substituting the oscillator realizations of generators $X, Y$ and evaluating the bracket using the deformed oscillator relations.
 
 
-**Parity Note**: Since $\kappa$ is odd ($p(\kappa)=1$) and the bracket preserves total parity, the deformation parameters $\mathrm{gb}$ must have parity 1.
+**Parity Note**: The deformation parameters $\mathrm{gb}$ have parity 0,
+while $\kappa$ has parity 1. Thus $\mathrm{gb}\,\kappa$ is odd, as required
+for $[b_j^s,a_1^\sigma]$, and the first-order cochain $\gamma$ is odd, in
+agreement with the odd coboundary map used for triviality analysis. An
+earlier parity-1 assignment for $\mathrm{gb}$ is incompatible with these
+relations and is superseded here.

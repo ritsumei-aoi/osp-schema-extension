@@ -208,3 +208,39 @@ realizations use the C root labels, and the top-level `central_elements`
 key is added. In particular, consumers must not infer that the
 supplementary B(0,n) oscillator `a_0` or B odd roots `E_del{k}_p/m` exist
 in a C document.
+
+## Schema 2: Inhomogeneous deformation
+
+Schema 2 files are named `C_{n}_gamma.json` and use the same `schema_version`
+and rank-identifying `algebra` fields as Schema 1. The top-level
+`gb_matrix` and `inhomogeneous_deformation` fields describe the formal
+deformation; `metadata` identifies the generator and references.
+
+`gb_matrix` contains a `[2, 2*n]` shape, row labels `["a_1_p", "a_1_m"]`,
+the ordered bosonic column labels, a matching 2-by-2n `entries` matrix,
+and parameter records with `name`, `fermion`, `boson`, and `parity`.
+Parameter names are `gb_{fermion-label}_{boson-label}`; all 4n parameters
+are marked parity 0.
+
+`inhomogeneous_deformation` contains the exchange-relation string, the
+central nilpotent `kappa` description, `gamma_coefficients`, and a
+`consistency` report. Each gamma record has `X`, `Y`, `Z`, `gb_parameter`,
+a rational-string `coeff`, and `"sign_rule": "graded"`, representing the
+term \(\kappa\,\mathrm{gb}_{parameter}\,\mathrm{coeff}\,Z\). `X` and `Y`
+are canonical Schema 1 basis labels. `Z` is a Schema 1 basis label, or
+`K` when the oscillator calculation produces the scalar identity. Such a
+`K` term is explicitly a central contribution and is not an addition to the
+Schema 1 basis. The `consistency` object reports closure both in the
+Schema 1 generators alone and with the declared central identity, whether
+all outputs are representable in that extended set, whether the stated
+oscillator relations are associative, and any oscillator terms that fail
+to decompose.
+
+**Parity decision:** the earlier source note assigned parity 1 to `gb`,
+but the exchange relation \([b,a]=-gb\,\kappa\) requires parity 0 for `gb`
+because \(b\) is even, \(a\) and \(\kappa\) are odd. With this choice the
+relation is homogeneous and preserves the CAR for independent parameters.
+`C_inhomogeneous_definition.md` and the generated Schema 2 files use this
+corrected parity. Gamma outputs close in the Schema 1 generator labels plus
+the declared central identity `K`; terms with `K` are reported explicitly
+because `K` is excluded from the basis arrays.
