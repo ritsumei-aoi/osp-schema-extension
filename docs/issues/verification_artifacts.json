@@ -1,0 +1,23 @@
+{
+  "algebra": "C(n+1) = osp(2|2n)",
+  "generators": {
+    "even": ["B_{k,l}^{s1,s2} = b_k^{s1} b_l^{s2}"],
+    "odd": ["F_{m,sigma}^{s3} = a_1^{sigma} b_m^{s3}"]
+  },
+  "gamma_deformation": {
+    "gamma_BB": 0,
+    "gamma_BF": "- gb(sigma, k, s1) b_l^{s2} b_m^{s3} - gb(sigma, l, s2) b_k^{s1} b_m^{s3}",
+    "gamma_FF": "- gb(sigma2, k, s1) a_1^{sigma1} b_l^{s2} - gb(sigma1, l, s2) a_1^{sigma2} b_k^{s1}"
+  },
+  "coboundary_operator": {
+    "delta_f_BB": "[B1, f(B2)] - [B2, f(B1)] - f([B1, B2])",
+    "delta_f_BF": "[B, f(F)] - [F, f(B)] - f([B, F])",
+    "delta_f_FF": "- [F1, f(F2)] - [F2, f(F1)] - f([F1, F2])"
+  },
+  "triviality_proof": {
+    "step1": "Assume f(B) = 0 by Whitehead's lemma for sp(2n) and non-zero action of so(2).",
+    "step2": "gamma(B, F) = delta_f(B, F) uniquely determines an even mapping f(F).",
+    "step3": "gamma(F1, F2) evaluates to -delta_f(F1, F2) for this unique mapping.",
+    "conclusion": "The signs strictly require gamma(F1, F2) = 0, which implies all gb parameters must be zero."
+  }
+}
