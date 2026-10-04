@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from src.C_generators import generate_schema
+from src.verify_C_structure import verify_directory
 
 
 @pytest.mark.parametrize(
@@ -95,6 +96,17 @@ def test_generated_data_files_match_schema_contract(n):
         schema["algebra"]["dimension"]["even"]
         + schema["algebra"]["dimension"]["odd"]
     )
+
+
+def test_committed_json_passes_independent_verification():
+    data_dir = Path(__file__).parents[1] / "data"
+    reports = verify_directory(data_dir)
+    assert all(report["passed"] for report in reports)
+    assert [report["triples_checked"] for report in reports] == [
+        8**3,
+        19**3,
+        34**3,
+    ]
 
 
 def test_invalid_rank_is_rejected():
