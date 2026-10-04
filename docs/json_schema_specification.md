@@ -10,7 +10,9 @@ fields are described below.
 
 Use the bosonic rank in filenames: `C_{n}_structure.json`,
 `C_{n}_gamma.json`, `C_{n}_evaluated_<gb>.json`, and
-`C_{n}_coboundary_<gb>.json`. Thus C(2) = osp(2|2) (`n=1`) uses
+`C_{n}_coboundary_<gb>.json`. For the representative all-plus evaluation in
+this study, use the fixed filenames `C_{n}_evaluated.json`. Thus
+C(2) = osp(2|2) (`n=1`) uses
 `C_1_structure.json`, C(3) (`n=2`) uses `C_2_structure.json`, and C(4)
 (`n=3`) uses `C_3_structure.json`.
 
@@ -190,6 +192,28 @@ following the B(m,n) Schema 1 convention. For example:
   ]
 }
 ```
+
+## Schema 3: Evaluated structure
+
+The evaluated file records the chosen numeric gb assignment and merges
+Schema 1 brackets with the first-order Schema 2 correction. Its top-level
+fields are `schema_version`, `schema_layer` (integer `3`), `algebra`,
+`source_files`, `gb_assignment`, `central_elements`,
+`structure_constants`, and `metadata`. `gb_assignment.values` must specify
+every parameter named by the source gamma file exactly once.
+
+Each evaluated structure-constant record has canonical `X`, `Y`, and `Z`
+labels, `coeff` (the Schema 1 rational coefficient), `kappa_coeff` (the
+Schema 2 coefficient after numeric substitution), and `sign_rule: "graded"`.
+The represented bracket is
+`[X,Y] = coeff * Z + kappa_coeff * κ * Z`; omit a record only when both
+coefficients are zero. `K` is permitted as `Z` for scalar identity terms.
+The nilpotence relation `κ^2=0` means no higher powers are evaluated.
+
+The issue's representative profile is `all_plus`: every gb parameter is
+assigned integer `1`. This assignment is a concrete representative, not a
+claim that all deformations are equivalent. A different profile must be
+identified in the filename or assignment metadata.
 
 ## Compatibility with B(m,n)
 
