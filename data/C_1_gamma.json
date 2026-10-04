@@ -1,0 +1,302 @@
+{
+  "schema_version": "5.0",
+  "algebra_ref": "C_1_structure.json",
+  "inhomogeneous_deformation": {
+    "description": "Inhomogeneous deformation of C(n+1) via gb matrix",
+    "deformed_relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa",
+    "gb_matrix": {
+      "size": "2 x 2",
+      "description": "4 symbolic deformation parameters (parity 1)",
+      "parameters": [
+        "gb_a1p_b1p",
+        "gb_a1p_b1m",
+        "gb_a1m_b1p",
+        "gb_a1m_b1m"
+      ]
+    },
+    "gamma_coefficients": [
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del1_pp",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_eps_del1_pp": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del1_pm",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_eps_del1_pm": "-1"
+          },
+          "gb_a1p_b1m": {
+            "E_eps_del1_pp": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del1_mp",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_eps_del1_mp": "-1"
+          },
+          "gb_a1m_b1p": {
+            "E_eps_del1_pp": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del1_mm",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_eps_del1_mp": "-1"
+          },
+          "gb_a1m_b1p": {
+            "E_eps_del1_pm": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "H_1",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_2del1_p": "2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "H_2",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_2del1_p": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_2del1_p",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_2del1_p": "2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del1_pm",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_eps_del1_pm": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del1_mp",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_eps_del1_mm": "-1"
+          },
+          "gb_a1m_b1m": {
+            "E_eps_del1_pp": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del1_mm",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_eps_del1_mm": "-1"
+          },
+          "gb_a1m_b1m": {
+            "E_eps_del1_pm": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "H_1",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_2del1_m": "2"
+          },
+          "gb_a1p_b1m": {
+            "H_1": "-1",
+            "H_2": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "H_2",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "E_2del1_m": "-2"
+          },
+          "gb_a1p_b1m": {
+            "H_2": "1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_2del1_p",
+        "gamma_coeffs": {
+          "gb_a1p_b1p": {
+            "H_2": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_2del1_m",
+        "gamma_coeffs": {
+          "gb_a1p_b1m": {
+            "E_2del1_m": "2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mp",
+        "Y": "E_eps_del1_mp",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_eps_del1_mp": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mp",
+        "Y": "E_eps_del1_mm",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_eps_del1_mm": "-1"
+          },
+          "gb_a1m_b1m": {
+            "E_eps_del1_mp": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mp",
+        "Y": "H_1",
+        "gamma_coeffs": {
+          "gb_a1m_b1m": {
+            "E_2del1_p": "2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mp",
+        "Y": "H_2",
+        "gamma_coeffs": {
+          "gb_a1m_b1m": {
+            "E_2del1_p": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mp",
+        "Y": "E_2del1_p",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_2del1_p": "2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mm",
+        "Y": "E_eps_del1_mm",
+        "gamma_coeffs": {
+          "gb_a1m_b1m": {
+            "E_eps_del1_mm": "-2"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mm",
+        "Y": "H_1",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_2del1_m": "2"
+          },
+          "gb_a1m_b1m": {
+            "H_1": "1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mm",
+        "Y": "H_2",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_2del1_m": "-2"
+          },
+          "gb_a1m_b1m": {
+            "H_2": "1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mm",
+        "Y": "E_2del1_p",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "H_2": "-1"
+          }
+        }
+      },
+      {
+        "X": "E_eps_del1_mm",
+        "Y": "E_2del1_m",
+        "gamma_coeffs": {
+          "gb_a1m_b1m": {
+            "E_2del1_m": "2"
+          }
+        }
+      },
+      {
+        "X": "H_1",
+        "Y": "H_2",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_eps_del1_pm": "-1"
+          },
+          "gb_a1m_b1m": {
+            "E_eps_del1_pp": "-1"
+          }
+        }
+      },
+      {
+        "X": "H_1",
+        "Y": "E_2del1_p",
+        "gamma_coeffs": {
+          "gb_a1m_b1p": {
+            "E_eps_del1_pp": "1"
+          }
+        }
+      },
+      {
+        "X": "H_1",
+        "Y": "E_2del1_m",
+        "gamma_coeffs": {
+          "gb_a1m_b1m": {
+            "E_eps_del1_pm": "1"
+          }
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "generated_by": "src/C_gamma.py",
+    "generation_date": "2026-10-05",
+    "n_gamma_entries": 27
+  }
+}
