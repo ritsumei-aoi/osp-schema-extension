@@ -339,3 +339,37 @@ $p(Z)=p(X)+p(Y)+1\pmod2$; a `K` output is even.
 
 The metadata records `src/C_gamma_generator.py`, the generation date, and
 the inhomogeneous-deformation reference.
+
+## Schema 3: evaluated structure
+
+The representative evaluated profile is `all_plus`: every parameter named
+in Schema 2's `gb_matrix.entries` is assigned the integer `+1`. Files are
+named `C_{n}_evaluated.json`, as required for this C(n+1) dataset.
+
+Each file has `schema_version`, `algebra`, `source_schema1`,
+`source_schema2`, `gb_assignment`, `evaluated_structure_constants`, and
+`metadata`. The two source fields identify the Schema 1 and Schema 2 inputs;
+`algebra` matches both inputs. `gb_assignment` contains the profile name and
+a `values` object with every gb parameter set to `1`.
+
+Each evaluated record merges the undeformed Schema 1 coefficient and the
+numerically evaluated Schema 2 coefficient for a single `(X,Y,Z)`:
+
+```json
+{
+  "X": "E_eps1_del1_pp",
+  "Y": "H_2",
+  "Z": "E_eps1_del1_pp",
+  "coeff": "1",
+  "kappa_coeff": "2",
+  "sign_rule": "graded"
+}
+```
+
+The record means that the bracket contains `coeff * Z` plus
+`kappa_coeff * kappa * Z`; either coefficient may be `"0"`, but records with
+both coefficients zero are omitted. Rational values are exact strings. The
+output label `K` is permitted for the central scalar component, as in Schema
+2, without making it an independent Schema 1 basis element. Metadata records
+`src/evaluate_C_gamma.py`, the generation date, and the evaluated-bracket
+formula.
