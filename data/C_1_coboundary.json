@@ -1,0 +1,458 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "odd_map_f": {
+    "description": "Odd linear map f: g->g defined by phi coefficients",
+    "parametrization": "f(H_1) = sum_{j,sigma,s} gb_{sigma,j,s} * E_eps1_delj_{sigma_s}; f(other) = 0",
+    "phi_coefficients": {
+      "H_1->E_eps1_del1_pp": {
+        "gb_a1p_b1p": "1"
+      },
+      "H_1->E_eps1_del1_pm": {
+        "gb_a1p_b1m": "1"
+      },
+      "H_1->E_eps1_del1_mp": {
+        "gb_a1m_b1p": "1"
+      },
+      "H_1->E_eps1_del1_mm": {
+        "gb_a1m_b1m": "1"
+      }
+    }
+  },
+  "coboundary_delta_f": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1m_b1m": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff_expr": {
+        "gb_a1m_b1m": "2"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1p_b1p": "1"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff_expr": {
+        "gb_a1p_b1p": "2"
+      }
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff_expr": {
+        "gb_a1m_b1p": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-2"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1m_b1p": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff_expr": {
+        "gb_a1m_b1m": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff_expr": {
+        "gb_a1p_b1p": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1p_b1m": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-2"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff_expr": {
+        "gb_a1p_b1m": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-1"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1m": "2"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1m": "2"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-2"
+      }
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-2"
+      }
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1p": "-1"
+      }
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1m": "1"
+      }
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1p": "-1"
+      }
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1m": "1"
+      }
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff_expr": {
+        "gb_a1p_b1m": "-2"
+      }
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff_expr": {
+        "gb_a1m_b1m": "-2"
+      }
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff_expr": {
+        "gb_a1p_b1p": "2"
+      }
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff_expr": {
+        "gb_a1m_b1p": "2"
+      }
+    }
+  ],
+  "metadata": {
+    "generated_by": "C_coboundary.py",
+    "generation_date": "2026-10-04",
+    "formula": "(delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])"
+  }
+}
