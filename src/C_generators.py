@@ -194,8 +194,6 @@ def generate_algebra(n):
     # Decompose commutator into basis
     for i, X in enumerate(all_gens):
         for j, Y in enumerate(all_gens):
-            if j < i: continue # Compute for j >= i
-            
             Z_terms = graded_commutator(gens[X], parities[X], gens[Y], parities[Y])
             if not Z_terms:
                 continue
