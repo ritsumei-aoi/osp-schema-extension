@@ -263,3 +263,16 @@ for the corresponding parts of
 description, the non-zero evaluated gamma coefficients, symbolic and
 evaluated term counts, and the inherited consistency report. The
 evaluation is reproducible from the matching Schema 1 and Schema 2 files.
+
+## Schema 4: Coboundary structure
+
+Coboundary files are named `C_{n}_coboundary.json`. They retain the
+matching Schema 1 `algebra`, `basis`, and `parity`, define an
+`odd_linear_map` with parity 1 and even matrix coefficients
+`phi_{target}__from__{source}`, and list all nonzero symbolic terms in
+`coboundary_coefficients`. Each record gives `X`, `Y`, `Z`, a `terms` array
+of `{phi_parameter, coeff}` rational-string pairs, and
+`"sign_rule": "graded"`. The coefficients follow the project formula for
+\(\delta f\) in `C_coboundary_definition.md`; output labels are basis
+generators. Metadata references the source definition and corresponding
+Schema 1 document.
