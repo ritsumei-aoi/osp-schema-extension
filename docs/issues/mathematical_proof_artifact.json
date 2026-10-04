@@ -1,0 +1,73 @@
+{
+  "artifact_version": 1,
+  "purpose": "Auditable inputs and symbolic test for triviality of the stated C(n+1) deformation",
+  "source_scope": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "external_sources_used": false,
+  "cases": [
+    {
+      "n": 1,
+      "dimension_even": 4,
+      "dimension_odd": 4,
+      "dimension_total": 8,
+      "gb_parameter_count": 4
+    },
+    {
+      "n": 2,
+      "dimension_even": 11,
+      "dimension_odd": 8,
+      "dimension_total": 19,
+      "gb_parameter_count": 8
+    },
+    {
+      "n": 3,
+      "dimension_even": 22,
+      "dimension_odd": 12,
+      "dimension_total": 34,
+      "gb_parameter_count": 12
+    }
+  ],
+  "parameter_labels": {
+    "pattern": "gb_{sigma,j,s}",
+    "sigma_values": ["+", "-"],
+    "j_values": "1..n",
+    "s_values": ["+", "-"],
+    "count_formula": "4*n"
+  },
+  "provided_structure_constants": null,
+  "provided_gb_to_gamma_matrix": null,
+  "coboundary_coefficient_formula": {
+    "basis": "Z_1,...,Z_m",
+    "bracket": "[Z_i,Z_j] = sum_k C[i,j,k] Z_k",
+    "odd_map": "f(Z_j) = sum_a phi[a,j] Z_a; phi[a,j]=0 unless p(a)=p(j)+1 mod 2",
+    "delta_coefficient": "delta[i,j,k] = sum_a((-1)^p(i)*C[i,a,k]*phi[a,j] - (-1)^((p(i)+1)*p(j))*C[j,a,k]*phi[a,i]) - sum_l C[i,j,l]*phi[k,l]"
+  },
+  "conditional_triviality_test": {
+    "assumption": "Explicit cochain coefficients are linear in gb, c(gb)=G*gb",
+    "coboundary_matrix": "D is assembled from the recorded delta_coefficient and the supplied structure constants",
+    "necessary_and_sufficient": "G*gb belongs to image(D)",
+    "equivalent_constraint": "Q*G*gb=0 for any Q with kernel(image(D))",
+    "status_with_current_sources": "not evaluable: D and G are unspecified"
+  },
+  "consistency_audit": {
+    "oscillator_relation": "[b_j^s,a_1^sigma] = -gb_{sigma,j,s}*kappa",
+    "parities_stated_or_implied": {
+      "b": 0,
+      "a": 1,
+      "kappa": 1,
+      "gb_required_by_relation": 0,
+      "gb_claimed_in_inhomogeneous_definition": 1
+    },
+    "parity_status": "inconsistent unless an unstated convention changes the displayed relation or parity assignment",
+    "adjoint_copy_status": "identification of the parity-shifted kappa*g coefficient module with the target of delta f is unspecified",
+    "up_to_scalar_status": "equivalence relation is unspecified"
+  },
+  "conclusion": {
+    "zero_parameter_vector": "trivial with f=0",
+    "nonzero_parameter_classification": "not determined by the supplied definitions"
+  }
+}
