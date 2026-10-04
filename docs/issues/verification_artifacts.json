@@ -1,0 +1,56 @@
+{
+  "title": "Inhomogeneous Deformation Triviality Verification Artifacts for C(n+1)",
+  "algebra": "C(n+1) = osp(2|2n)",
+  "n_cases_analyzed": [
+    1,
+    2,
+    3
+  ],
+  "summary_theorem": "An inhomogeneous deformation gamma_gb of C(n+1) is trivial (i.e., gamma_gb = delta f for an odd map f) if and only if all deformation parameters gb_{sigma, j, s} vanish identically.",
+  "cases": [
+    {
+      "n": 1,
+      "dim_even": 4,
+      "dim_odd": 4,
+      "num_equations": 100,
+      "num_phi_vars": 32,
+      "num_gb_vars": 4,
+      "rank_A_phi": 32,
+      "left_nullspace_dim": 68,
+      "gb_rank": 4,
+      "sol_gb": "{gb_+_1_+: 0, gb_+_1_-: 0, gb_-_1_+: 0, gb_-_1_-: 0}"
+    },
+    {
+      "n": 2,
+      "dim_even": 11,
+      "dim_odd": 8,
+      "num_equations": 1320,
+      "num_phi_vars": 176,
+      "num_gb_vars": 8,
+      "rank_A_phi": 176,
+      "left_nullspace_dim": 1144,
+      "gb_rank": 8,
+      "sol_gb": "{gb_+_1_+: 0, gb_+_1_-: 0, gb_+_2_+: 0, gb_+_2_-: 0, gb_-_1_+: 0, gb_-_1_-: 0, gb_-_2_+: 0, gb_-_2_-: 0}"
+    },
+    {
+      "n": 3,
+      "dim_even": 22,
+      "dim_odd": 12,
+      "num_equations": 6708,
+      "num_phi_vars": 528,
+      "num_gb_vars": 12,
+      "rank_A_phi": 528,
+      "left_nullspace_dim": 6180,
+      "gb_rank": 12,
+      "sol_gb": "{gb_+_1_+: 0, gb_+_1_-: 0, gb_+_2_+: 0, gb_+_2_-: 0, gb_+_3_+: 0, gb_+_3_-: 0, gb_-_1_+: 0, gb_-_1_-: 0, gb_-_2_+: 0, gb_-_2_-: 0, gb_-_3_+: 0, gb_-_3_-: 0}"
+    }
+  ],
+  "analytical_proof_outline": {
+    "step_1": "Evaluate gamma_gb(Z, F_{sigma, j, s}) where Z is the so(2) generator. Finds Z-component equal to sigma * gb_{sigma, j, s}.",
+    "step_2": "Evaluate coboundary (delta f)(Z, F_{sigma, j, s}). Since [Z, sp(2n)] = 0 and {F, F} has no Z component, Z component of delta f is -sigma * c_{sigma, j, s}.",
+    "step_3": "Equating Z components forces f(F_{sigma, j, s}) = -gb_{sigma, j, s} Z + sp(2n) terms.",
+    "step_4": "Evaluate (delta f)(F_{sigma, j, s}, F_{sigma, k, t}) for odd generators. Coboundary term yields +sigma * gb_{sigma, j, s} F_{sigma, k, t}, whereas deformation term is -gb_{sigma, j, s} F_{sigma, k, t}.",
+    "step_5": "Equating coefficients requires -gb_{sigma, j, s} = sigma * gb_{sigma, j, s}, forcing gb_{+, j, s} = 0.",
+    "step_6": "Evaluating mixed odd-odd brackets forces gb_{-, j, s} = 0 for all j, s."
+  }
+}
