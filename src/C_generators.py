@@ -142,7 +142,7 @@ def generate_schema(n):
     # Compute structure constants
     sc = []
     for i in range(len(order)):
-        for j in range(i, len(order)):
+        for j in range(len(order)):
             X = order[i]
             Y = order[j]
             comm = supercommutator(gens[X], gens[Y])
