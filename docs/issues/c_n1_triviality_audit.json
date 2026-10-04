@@ -1,0 +1,88 @@
+{
+  "title": "C(n+1) inhomogeneous deformation triviality audit",
+  "scope": "Data stated in the repository definitions only; no external sources used.",
+  "conclusion": {
+    "status": "underdetermined_by_supplied_definitions",
+    "can_decide_nonzero_gb_triviality": false,
+    "reason": "No explicit map from gb parameters to adjoint-valued 2-cochains and no complete structure-constant table in a fixed homogeneous basis are supplied."
+  },
+  "algebra_facts": {
+    "name": "C(n+1) = osp(2|2n)",
+    "even_dimension_formula": "2*n^2 + n + 1",
+    "odd_dimension_formula": "4*n",
+    "total_dimension_formula": "2*n^2 + 5*n + 1",
+    "root_system_description": [
+      "±delta_k ± delta_l for 1 <= k < l <= n",
+      "±2*delta_k for 1 <= k <= n",
+      "±epsilon ± delta_k for 1 <= k <= n"
+    ]
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "gb_parameter_count": 4,
+      "odd_endomorphism_dimension": 32,
+      "odd_super_skew_2_cochain_dimension": 128
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "gb_parameter_count": 8,
+      "odd_endomorphism_dimension": 176,
+      "odd_super_skew_2_cochain_dimension": 1696
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "gb_parameter_count": 12,
+      "odd_endomorphism_dimension": 528,
+      "odd_super_skew_2_cochain_dimension": 9516
+    }
+  ],
+  "parameter_indexing": {
+    "labels": "gb_{sigma,j,s}",
+    "sigma_values": ["+", "-"],
+    "j_range": "1..n",
+    "s_values": ["+", "-"],
+    "count_formula": "2 * n * 2 = 4*n",
+    "oscillator_relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa"
+  },
+  "cochain_coordinate_convention": {
+    "parity": "odd cochains: output parity is input parity sum plus 1 modulo 2",
+    "super_skew": "c(X,Y) = -(-1)^(p(X)*p(Y)) c(Y,X)",
+    "dimension_formula": "q*(binom(m,2)+binom(q+1,2)) + m^2*q, where m=dim(g_even), q=dim(g_odd)",
+    "coordinate_blocks": [
+      "even-even input pairs: binom(m,2), output in g_odd",
+      "odd-odd input pairs: binom(q+1,2), output in g_odd",
+      "mixed input pairs: m*q, output in g_even"
+    ]
+  },
+  "triviality_system": {
+    "definition": "D_n*x = G_n*gb",
+    "D_n": "matrix of the supplied coboundary formula on odd endomorphisms f",
+    "G_n": "matrix of the missing parameter-to-cocycle map",
+    "necessary_and_sufficient_test": "rank(D_n) = rank([D_n | G_n*gb])",
+    "equivalent_parameter_conditions": "L_n*G_n*gb = 0, where rows of L_n span the left nullspace of D_n",
+    "overall_fixed_nonzero_scalar": "Does not change the test; absorb it into f by linearity.",
+    "pair_dependent_scalar": "Not a defined cochain equality and is not used."
+  },
+  "known_formulas": {
+    "coboundary": "(delta f)(X,Y)=(-1)^p(X)[X,f(Y)]-(-1)^((p(X)+1)*p(Y))[Y,f(X)]-f([X,Y])",
+    "deformed_bracket_as_stated": "[X,Y]_gamma=[X,Y]_0+kappa*gamma(X,Y)"
+  },
+  "unavailable_required_data": {
+    "homogeneous_basis": null,
+    "complete_structure_constants": null,
+    "gamma_parameter_to_cochain_matrix": null,
+    "rule_identifying_central_kappa_terms_with_adjoint_module_values": null,
+    "normalization_resolution_for_E_2delta_n": "Simple-root display uses 1/2*(b_n^+)^2; all-root display uses (b_k^+)^2.",
+    "effect": "D_n and G_n cannot be instantiated from the supplied files; no individual gb triviality conditions or nonzero examples can be verified."
+  }
+}
