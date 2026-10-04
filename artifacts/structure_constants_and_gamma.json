@@ -1,0 +1,412 @@
+{
+  "algebra": "C(2) = osp(2|2)",
+  "basis": {
+    "H1": {
+      "parity": 0,
+      "type": "Cartan"
+    },
+    "H2": {
+      "parity": 0,
+      "type": "Cartan"
+    },
+    "Ep": {
+      "parity": 0,
+      "type": "Even Root"
+    },
+    "Em": {
+      "parity": 0,
+      "type": "Even Root"
+    },
+    "F_pp": {
+      "parity": 1,
+      "type": "Odd Root"
+    },
+    "F_pm": {
+      "parity": 1,
+      "type": "Odd Root"
+    },
+    "F_mp": {
+      "parity": 1,
+      "type": "Odd Root"
+    },
+    "F_mm": {
+      "parity": 1,
+      "type": "Odd Root"
+    }
+  },
+  "structure_constants_bracket_0": {
+    "[H1, Ep]": {
+      "Ep": 2
+    },
+    "[H1, Em]": {
+      "Em": -2
+    },
+    "[H1, F_pp]": {
+      "F_pp": 2
+    },
+    "[H1, F_mm]": {
+      "F_mm": -2
+    },
+    "[H2, Ep]": {
+      "Ep": -2
+    },
+    "[H2, Em]": {
+      "Em": 2
+    },
+    "[H2, F_pp]": {
+      "F_pp": -1
+    },
+    "[H2, F_pm]": {
+      "F_pm": 1
+    },
+    "[H2, F_mp]": {
+      "F_mp": -1
+    },
+    "[H2, F_mm]": {
+      "F_mm": 1
+    },
+    "[Ep, H1]": {
+      "Ep": -2
+    },
+    "[Ep, H2]": {
+      "Ep": 2
+    },
+    "[Ep, Em]": {
+      "H2": 1
+    },
+    "[Ep, F_pm]": {
+      "F_pp": -1
+    },
+    "[Ep, F_mm]": {
+      "F_mp": -1
+    },
+    "[Em, H1]": {
+      "Em": 2
+    },
+    "[Em, H2]": {
+      "Em": -2
+    },
+    "[Em, Ep]": {
+      "H2": -1
+    },
+    "[Em, F_pp]": {
+      "F_pm": 1
+    },
+    "[Em, F_mp]": {
+      "F_mm": 1
+    },
+    "[F_pp, H1]": {
+      "F_pp": -2
+    },
+    "[F_pp, H2]": {
+      "F_pp": 1
+    },
+    "[F_pp, Em]": {
+      "F_pm": -1
+    },
+    "[F_pp, F_mp]": {
+      "Ep": 2
+    },
+    "[F_pp, F_mm]": {
+      "H1": -1,
+      "H2": -2
+    },
+    "[F_pm, H2]": {
+      "F_pm": -1
+    },
+    "[F_pm, Ep]": {
+      "F_pp": 1
+    },
+    "[F_pm, F_mp]": {
+      "H1": 1
+    },
+    "[F_pm, F_mm]": {
+      "Em": 2
+    },
+    "[F_mp, H2]": {
+      "F_mp": 1
+    },
+    "[F_mp, Em]": {
+      "F_mm": -1
+    },
+    "[F_mp, F_pp]": {
+      "Ep": 2
+    },
+    "[F_mp, F_pm]": {
+      "H1": 1
+    },
+    "[F_mm, H1]": {
+      "F_mm": 2
+    },
+    "[F_mm, H2]": {
+      "F_mm": -1
+    },
+    "[F_mm, Ep]": {
+      "F_mp": 1
+    },
+    "[F_mm, F_pp]": {
+      "H1": -1,
+      "H2": -2
+    },
+    "[F_mm, F_pm]": {
+      "Em": 2
+    }
+  },
+  "gamma_structures": {
+    "gamma(H1, H2)": {
+      "F_pp": "-gb_mm",
+      "F_pm": "-gb_mp",
+      "F_mp": "-gb_pm",
+      "F_mm": "-gb_pp"
+    },
+    "gamma(H1, Ep)": {
+      "F_pp": "gb_mp",
+      "F_mp": "gb_pp"
+    },
+    "gamma(H1, Em)": {
+      "F_pm": "gb_mm",
+      "F_mm": "gb_pm"
+    },
+    "gamma(H1, F_pp)": {
+      "H1": "gb_pp",
+      "H2": "2*gb_pp",
+      "Ep": "-2*gb_pm"
+    },
+    "gamma(H1, F_pm)": {
+      "H1": "gb_pm",
+      "H2": "2*gb_pm",
+      "Em": "-2*gb_pp"
+    },
+    "gamma(H1, F_mp)": {
+      "H1": "-gb_mp",
+      "Ep": "-2*gb_mm"
+    },
+    "gamma(H1, F_mm)": {
+      "H1": "-gb_mm",
+      "Em": "-2*gb_mp"
+    },
+    "gamma(H2, H1)": {
+      "F_pp": "gb_mm",
+      "F_pm": "gb_mp",
+      "F_mp": "gb_pm",
+      "F_mm": "gb_pp"
+    },
+    "gamma(H2, F_pp)": {
+      "H2": "-gb_pp",
+      "Ep": "2*gb_pm"
+    },
+    "gamma(H2, F_pm)": {
+      "H2": "-gb_pm",
+      "Em": "2*gb_pp"
+    },
+    "gamma(H2, F_mp)": {
+      "H2": "-gb_mp",
+      "Ep": "2*gb_mm"
+    },
+    "gamma(H2, F_mm)": {
+      "H2": "-gb_mm",
+      "Em": "2*gb_mp"
+    },
+    "gamma(Ep, H1)": {
+      "F_pp": "-gb_mp",
+      "F_mp": "-gb_pp"
+    },
+    "gamma(Ep, F_pp)": {
+      "Ep": "-2*gb_pp"
+    },
+    "gamma(Ep, F_pm)": {
+      "H2": "gb_pp"
+    },
+    "gamma(Ep, F_mp)": {
+      "Ep": "-2*gb_mp"
+    },
+    "gamma(Ep, F_mm)": {
+      "H2": "gb_mp"
+    },
+    "gamma(Em, H1)": {
+      "F_pm": "-gb_mm",
+      "F_mm": "-gb_pm"
+    },
+    "gamma(Em, F_pp)": {
+      "H2": "gb_pm"
+    },
+    "gamma(Em, F_pm)": {
+      "Em": "-2*gb_pm"
+    },
+    "gamma(Em, F_mp)": {
+      "H2": "gb_mm"
+    },
+    "gamma(Em, F_mm)": {
+      "Em": "-2*gb_mm"
+    },
+    "gamma(F_pp, H1)": {
+      "H1": "-gb_pp",
+      "H2": "-2*gb_pp",
+      "Ep": "2*gb_pm"
+    },
+    "gamma(F_pp, H2)": {
+      "H2": "gb_pp",
+      "Ep": "-2*gb_pm"
+    },
+    "gamma(F_pp, Ep)": {
+      "Ep": "2*gb_pp"
+    },
+    "gamma(F_pp, Em)": {
+      "H2": "-gb_pm"
+    },
+    "gamma(F_pp, F_pp)": {
+      "F_pp": "-2*gb_pp"
+    },
+    "gamma(F_pp, F_pm)": {
+      "F_pp": "-gb_pm",
+      "F_pm": "-gb_pp"
+    },
+    "gamma(F_pp, F_mp)": {
+      "F_pp": "-gb_mp",
+      "F_mp": "-gb_pp"
+    },
+    "gamma(F_pp, F_mm)": {
+      "F_pm": "-gb_mp",
+      "F_mp": "-gb_pm"
+    },
+    "gamma(F_pm, H1)": {
+      "H1": "-gb_pm",
+      "H2": "-2*gb_pm",
+      "Em": "2*gb_pp"
+    },
+    "gamma(F_pm, H2)": {
+      "H2": "gb_pm",
+      "Em": "-2*gb_pp"
+    },
+    "gamma(F_pm, Ep)": {
+      "H2": "-gb_pp"
+    },
+    "gamma(F_pm, Em)": {
+      "Em": "2*gb_pm"
+    },
+    "gamma(F_pm, F_pp)": {
+      "F_pp": "-gb_pm",
+      "F_pm": "-gb_pp"
+    },
+    "gamma(F_pm, F_pm)": {
+      "F_pm": "-2*gb_pm"
+    },
+    "gamma(F_pm, F_mp)": {
+      "F_pp": "-gb_mm",
+      "F_mm": "-gb_pp"
+    },
+    "gamma(F_pm, F_mm)": {
+      "F_pm": "-gb_mm",
+      "F_mm": "-gb_pm"
+    },
+    "gamma(F_mp, H1)": {
+      "H1": "gb_mp",
+      "Ep": "2*gb_mm"
+    },
+    "gamma(F_mp, H2)": {
+      "H2": "gb_mp",
+      "Ep": "-2*gb_mm"
+    },
+    "gamma(F_mp, Ep)": {
+      "Ep": "2*gb_mp"
+    },
+    "gamma(F_mp, Em)": {
+      "H2": "-gb_mm"
+    },
+    "gamma(F_mp, F_pp)": {
+      "F_pp": "-gb_mp",
+      "F_mp": "-gb_pp"
+    },
+    "gamma(F_mp, F_pm)": {
+      "F_pp": "-gb_mm",
+      "F_mm": "-gb_pp"
+    },
+    "gamma(F_mp, F_mp)": {
+      "F_mp": "-2*gb_mp"
+    },
+    "gamma(F_mp, F_mm)": {
+      "F_mp": "-gb_mm",
+      "F_mm": "-gb_mp"
+    },
+    "gamma(F_mm, H1)": {
+      "H1": "gb_mm",
+      "Em": "2*gb_mp"
+    },
+    "gamma(F_mm, H2)": {
+      "H2": "gb_mm",
+      "Em": "-2*gb_mp"
+    },
+    "gamma(F_mm, Ep)": {
+      "H2": "-gb_mp"
+    },
+    "gamma(F_mm, Em)": {
+      "Em": "2*gb_mm"
+    },
+    "gamma(F_mm, F_pp)": {
+      "F_pm": "-gb_mp",
+      "F_mp": "-gb_pm"
+    },
+    "gamma(F_mm, F_pm)": {
+      "F_pm": "-gb_mm",
+      "F_mm": "-gb_pm"
+    },
+    "gamma(F_mm, F_mp)": {
+      "F_mp": "-gb_mm",
+      "F_mm": "-gb_mp"
+    },
+    "gamma(F_mm, F_mm)": {
+      "F_mm": "-2*gb_mm"
+    }
+  },
+  "analytic_obstructions": {
+    "gb_pp": {
+      "triplet_equations": [
+        "(delta f)(H1, H2) at F_mm = -phi_H1_F_mm - 2*phi_H2_F_mm = -gb_pp",
+        "(delta f)(H1, F_pp) at H1 = -2*phi_F_pp_H1 - phi_H1_F_mm = gb_pp",
+        "(delta f)(H2, F_pp) at H1 = phi_F_pp_H1 - phi_H2_F_mm = 0"
+      ],
+      "algebraic_deduction": [
+        "From Eq 3: phi_F_pp_H1 = phi_H2_F_mm",
+        "Substitute into Eq 2: phi_H1_F_mm + 2*phi_H2_F_mm = -gb_pp",
+        "From Eq 1: phi_H1_F_mm + 2*phi_H2_F_mm = gb_pp",
+        "Equating: gb_pp = -gb_pp => 2*gb_pp = 0 => gb_pp = 0"
+      ]
+    },
+    "gb_mm": {
+      "triplet_equations": [
+        "(delta f)(H1, H2) at F_pp = phi_H1_F_pp + 2*phi_H2_F_pp = -gb_mm",
+        "(delta f)(H1, F_mm) at H1 = 2*phi_F_mm_H1 - phi_H1_F_pp = -gb_mm",
+        "(delta f)(H2, F_mm) at H1 = -phi_F_mm_H1 - phi_H2_F_pp = 0"
+      ],
+      "algebraic_deduction": [
+        "From Eq 3: phi_F_mm_H1 = -phi_H2_F_pp",
+        "Substitute into Eq 2: phi_H1_F_pp + 2*phi_H2_F_pp = gb_mm",
+        "From Eq 1: phi_H1_F_pp + 2*phi_H2_F_pp = -gb_mm",
+        "Equating: gb_mm = -gb_mm => 2*gb_mm = 0 => gb_mm = 0"
+      ]
+    },
+    "gb_pm": {
+      "pair_equations": [
+        "(delta f)(H1, H2) at F_mp = phi_H1_F_mp = -gb_pm",
+        "(delta f)(H1, F_pm) at H1 = phi_H1_F_mp = gb_pm"
+      ],
+      "algebraic_deduction": [
+        "From Eq 1: phi_H1_F_mp = -gb_pm",
+        "From Eq 2: phi_H1_F_mp = +gb_pm",
+        "Equating: gb_pm = -gb_pm => 2*gb_pm = 0 => gb_pm = 0"
+      ]
+    },
+    "gb_mp": {
+      "pair_equations": [
+        "(delta f)(H1, H2) at F_pm = -phi_H1_F_pm = -gb_mp",
+        "(delta f)(H1, F_mp) at H1 = phi_H1_F_pm = -gb_mp"
+      ],
+      "algebraic_deduction": [
+        "From Eq 1: phi_H1_F_pm = gb_mp",
+        "From Eq 2: phi_H1_F_pm = -gb_mp",
+        "Equating: gb_mp = -gb_mp => 2*gb_mp = 0 => gb_mp = 0"
+      ]
+    }
+  },
+  "theorem": "The inhomogeneous deformation gamma_gb of C(n+1) is trivial if and only if gb = 0."
+}
