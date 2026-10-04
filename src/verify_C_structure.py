@@ -1,11 +1,10 @@
-"""
-verify_C_structure.py: Verifies graded skew-symmetry and Super Jacobi identity
-for C(n+1) structure constants across n=1, 2, 3.
-"""
-
+import os
+import sys
 import json
 from fractions import Fraction
 from typing import Dict, Tuple, List, Any
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 def load_structure(path: str):

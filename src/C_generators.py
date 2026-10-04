@@ -107,56 +107,42 @@ class SuperElement:
         return len(self.terms) == 0
 
 
+FERMION_MULT = {
+    ((0, 0), (0, 0)): [((0, 0), Fraction(1))],
+    ((0, 0), (1, 0)): [((1, 0), Fraction(1))],
+    ((0, 0), (0, 1)): [((0, 1), Fraction(1))],
+    ((0, 0), (1, 1)): [((1, 1), Fraction(1))],
+
+    ((1, 0), (0, 0)): [((1, 0), Fraction(1))],
+    ((1, 0), (1, 0)): [],
+    ((1, 0), (0, 1)): [((1, 1), Fraction(1))],
+    ((1, 0), (1, 1)): [],
+
+    ((0, 1), (0, 0)): [((0, 1), Fraction(1))],
+    ((0, 1), (1, 0)): [((0, 0), Fraction(1)), ((1, 1), Fraction(-1))],
+    ((0, 1), (0, 1)): [],
+    ((0, 1), (1, 1)): [((0, 1), Fraction(1))],
+
+    ((1, 1), (0, 0)): [((1, 1), Fraction(1))],
+    ((1, 1), (1, 0)): [((1, 0), Fraction(1))],
+    ((1, 1), (0, 1)): [],
+    ((1, 1), (1, 1)): [((1, 1), Fraction(1))],
+}
+
+
 def multiply_monomials(m1: Monomial, m2: Monomial) -> SuperElement:
     """
     Compute m1 * m2 using CAR and CCR normal ordering relations.
-    CAR:
-      a_1_m * a_1_p = 1 - a_1_p * a_1_m
-      (a_1_p)^2 = 0, (a_1_m)^2 = 0
-    CCR:
-      b_k_m * b_k_p = b_k_p * b_k_m + 1
-      [b_j, b_k] = 0 for j != k
-      [a, b] = 0 (mixed)
     """
     n = m1.n
-    # Fermionic sector:
-    # m1 has (a_p1, a_m1), m2 has (a_p2, a_m2)
-    # Total product is (a_1_p^a_p1 a_1_m^a_m1) * (a_1_p^a_p2 a_1_m^a_m2)
-    fermion_terms: List[Tuple[int, int, Fraction]] = []
-    
-    # Case analysis for fermions:
-    a_p1, a_m1 = m1.a_p, m1.a_m
-    a_p2, a_m2 = m2.a_p, m2.a_m
-
-    if a_p1 == 1 and a_p2 == 1:
-        # a_1_p ... a_1_p = 0
-        return SuperElement.zero()
-    if a_m1 == 1 and a_m2 == 1 and a_p2 == 0:
-        # a_1_m * a_1_m = 0
+    # Fermionic sector from lookup table
+    f1 = (m1.a_p, m1.a_m)
+    f2 = (m2.a_p, m2.a_m)
+    fermion_terms_raw = FERMION_MULT.get((f1, f2), [])
+    if not fermion_terms_raw:
         return SuperElement.zero()
 
-    if a_m1 == 0:
-        # (a_1_p^a_p1) * (a_1_p^a_p2 a_1_m^a_m2)
-        if a_p1 == 1 and a_p2 == 1:
-            return SuperElement.zero()
-        fermion_terms.append((a_p1 + a_p2, a_m2, Fraction(1)))
-    else:
-        # a_m1 == 1
-        if a_p2 == 0:
-            # (a_1_p^a_p1 a_1_m) * (a_1_m^a_m2)
-            if a_m2 == 1:
-                return SuperElement.zero()
-            fermion_terms.append((a_p1, 1, Fraction(1)))
-        else:
-            # a_p2 == 1
-            # (a_1_p^a_p1 a_1_m) * (a_1_p a_1_m^a_m2)
-            # a_1_m * a_1_p = 1 - a_1_p * a_1_m
-            # Term 1: 1 -> a_1_p^a_p1 * a_1_m^a_m2
-            fermion_terms.append((a_p1, a_m2, Fraction(1)))
-            # Term 2: - a_1_p * a_1_m -> - a_1_p^(a_p1+1) * a_1_m^(1+a_m2)
-            if a_p1 == 0 and a_m2 == 0:
-                fermion_terms.append((1, 1, Fraction(-1)))
-            # If a_p1 == 1 or a_m2 == 1, (a_1_p)^2 or (a_1_m)^2 becomes 0
+    fermion_terms = [(ap, am, c) for (ap, am), c in fermion_terms_raw]
 
     # Bosonic sector:
     # For each mode k, we have (b_k_p^p1 b_k_m^m1) * (b_k_p^p2 b_k_m^m2)
