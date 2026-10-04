@@ -233,6 +233,16 @@ For example:
 For each rank, populate all Cartan, even-root, and odd-root realizations.
 Use the C(n+1) formulas in `docs/math/Cn1_definition.md`, with a single,
 consistent normalization for root generators and structure constants.
+The generator in `src/C_generators.py` follows the document's all-root
+normalization `E_±2δ_k=(b_k^±)^2`. The separate simple-generator display gives
+half of this for the terminal simple root; when using that alternative
+normalization, rescale the corresponding structure constants consistently.
+
+Generate the rank-1, rank-2, and rank-3 documents with:
+
+```sh
+python3 src/C_generators.py
+```
 
 ## `structure_constants`
 
@@ -253,7 +263,10 @@ Represent each nonzero undeformed graded bracket as an entry of an array:
 For each rank, include the complete set of nonzero brackets computed from
 the oscillator relations and realizations. A bracket's result is expressed
 as a basis generator and rational coefficient; omit zero brackets. Encode
-each ordered pair once under the schema's graded-skew-symmetry convention.
+input pairs in full PBW order (`X` no later than `Y`), relying on graded
+skew-symmetry rather than storing the reversed pair. Store one row per
+nonzero output term, so a bracket that is a linear combination has multiple
+rows with the same `X` and `Y` but distinct `Z` labels.
 
 ## `metadata`
 
