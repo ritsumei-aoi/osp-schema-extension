@@ -21,7 +21,7 @@ def normal_order_word_v2(w):
         if v == 'a_1_m': return 1
         return 2 * int(v.split('_')[1]) + (0 if v.split('_')[2]=='p' else 1)
     
-    terms = {(tuple(w),): 1.0}
+    terms = {(tuple(w),): 1}
     final_terms = {}
     
     while terms:
@@ -30,8 +30,15 @@ def normal_order_word_v2(w):
             word = list(word)
             swapped = False
             for i in range(len(word)-1):
+                u, v = word[i], word[i+1]
+                if get_p(u) == 1 and u == v:
+                    # fermion square is 0
+                    swapped = True
+                    coeff = 0
+                    new_terms = {} # annihilates
+                    break
+                    
                 if rank(word[i]) > rank(word[i+1]):
-                    u, v = word[i], word[i+1]
                     pu, pv = get_p(u), get_p(v)
                     om = omega(u, v)
                     
@@ -55,9 +62,9 @@ def normal_order_word_v2(w):
                     break
             if not swapped:
                 final_terms[tuple(word)] = final_terms.get(tuple(word), 0) + coeff
-        terms = {k: v for k, v in new_terms.items() if abs(v) > 1e-9}
+        terms = {k: v for k, v in new_terms.items() if v != 0}
         
-    return [(w, c) for w, c in final_terms.items() if abs(c) > 1e-9]
+    return [(w, c) for w, c in final_terms.items() if c != 0]
 
 def multiply(t1, t2):
     res = {}
@@ -65,7 +72,7 @@ def multiply(t1, t2):
         for w2, c2 in t2:
             for nw, nc in normal_order_word_v2(w1 + w2):
                 res[nw] = res.get(nw, 0) + c1 * c2 * nc
-    return [(w, c) for w, c in res.items() if abs(c) > 1e-9]
+    return [(w, c) for w, c in res.items() if c != 0]
 
 def format_c(c):
     if abs(c - int(c)) < 1e-9: return str(int(c))
@@ -178,18 +185,18 @@ def build_schema(n):
     for g in all_gen:
         terms = []
         for term in realizations[g]['standard_form']:
-            c = float(eval(term['coeff'])) if '/' in term['coeff'] else float(term['coeff'])
+            c = sp.Rational(term['coeff'])
             w = tuple(term['words'])
             terms.append((w, c))
         res_t = {}
         for w, c in terms:
             for nw, nc in normal_order_word_v2(w):
                 res_t[nw] = res_t.get(nw, 0) + c * nc
-        parsed[g] = [(w, c) for w, c in res_t.items() if abs(c) > 1e-9]
+        parsed[g] = [(w, c) for w, c in res_t.items() if c != 0]
 
     brackets_out = []
     for i, X in enumerate(all_gen):
-        for j in range(i, len(all_gen)):
+        for j in range(len(all_gen)):
             Y = all_gen[j]
             pX, pY = parity[X], parity[Y]
             XY = multiply(parsed[X], parsed[Y])
@@ -198,21 +205,28 @@ def build_schema(n):
             comm = {}
             for w, c in XY: comm[w] = comm.get(w, 0) + c
             for w, c in YX: comm[w] = comm.get(w, 0) - sign * c
-            comm = {w: c for w, c in comm.items() if abs(c) > 1e-9}
+            comm = {w: c for w, c in comm.items() if c != 0}
             if not comm: continue
             
             words_in_eq = list(set(list(comm.keys()) + [w for g in all_gen for w, c in parsed[g]]))
             M = sp.Matrix([[next((c for w_, c in parsed[g] if w_ == word), 0) for g in all_gen] for word in words_in_eq])
             b = sp.Matrix([[comm.get(word, 0)] for word in words_in_eq])
             
-            x = M.pinv() * b
+            try:
+                x = (M.T * M).inv() * M.T * b
+            except sp.matrices.common.NonInvertibleMatrixError:
+                # Fallback to least squares using LUsolve if possible, or just pinv as fallback (but pinv is slow/float)
+                x = M.pinv() * b
+            
+            residual = M * x - b
+            if not all(val == 0 for val in residual):
+                print(f"WARNING: commutator of {X} and {Y} not in span!")
             
             for k, coeff in enumerate(x):
-                c = float(coeff)
-                if abs(c) > 1e-9:
+                if coeff != 0:
                     Z = all_gen[k]
                     brackets_out.append({
-                        "X": X, "Y": Y, "Z": Z, "coeff": format_c(c), "sign_rule": "graded"
+                        "X": X, "Y": Y, "Z": Z, "coeff": str(coeff), "sign_rule": "graded"
                     })
 
     schema = {
