@@ -1,0 +1,48 @@
+{
+  "algebra": "C(2) = osp(2|2)",
+  "n": 1,
+  "dimensions": {
+    "even": 4,
+    "odd": 4,
+    "total": 8
+  },
+  "generators": {
+    "even": [
+      "H_1",
+      "E_{2\u03b4_1}",
+      "E_{-2\u03b4_1}",
+      "U(1)"
+    ],
+    "odd": [
+      "a_1^+",
+      "a_1^-",
+      "E_{\u03b5+\u03b4_1}",
+      "E_{\u03b5-\u03b4_1}"
+    ]
+  },
+  "deformation_parameters": {
+    "count": 4,
+    "labels": [
+      "gb_{+,1,+}",
+      "gb_{+,1,-}",
+      "gb_{-,1,+}",
+      "gb_{-,1,-}"
+    ],
+    "definition": "[b_j^s, a_1^\u03c3] = -gb_{\u03c3,j,s} \u00b7 \u03ba"
+  },
+  "affected_brackets": {
+    "description": "Brackets with mixed parity (fermionic-bosonic)",
+    "count": 12,
+    "structure": "\u03b3_gb(X, Y) appears only when X, Y have opposite parity"
+  },
+  "coboundary_map": {
+    "domain": "odd linear maps f: g \u2192 g",
+    "parity_property": "f reverses parity",
+    "degrees_of_freedom": 16,
+    "formula": "(\u03b4f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])"
+  },
+  "triviality_claim": {
+    "statement": "\u03b3_gb is trivial for ALL values of gb parameters",
+    "reason": "Structure of f allows complete cancellation via choice of odd map"
+  }
+}
