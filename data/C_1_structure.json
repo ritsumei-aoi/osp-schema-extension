@@ -1,0 +1,240 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1, n=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "central_elements": [
+    {
+      "label": "kappa",
+      "parity": 1,
+      "property": "nilpotent",
+      "relation": "kappa^2 = 0",
+      "description": "Central odd element for deformation cocycle"
+    },
+    {
+      "label": "K",
+      "parity": 0,
+      "property": "identity",
+      "relation": "K = 1",
+      "description": "Central even identity (excluded from PBW basis)"
+    }
+  ],
+  "oscillator_generators": {
+    "fermions": {
+      "label": "standard pair",
+      "m": 1,
+      "parity": 1,
+      "count": 2,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "description": "Standard fermionic CAR pair a_1^+, a_1^-"
+    },
+    "bosons": {
+      "count": 2,
+      "n": 1,
+      "labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "description": "Bosonic oscillators b_k^\u00b1 with k=1,...,1"
+    }
+  },
+  "oscillator_relations": {
+    "fermion_relations": {
+      "description": "Standard CAR for fermionic pair",
+      "relations": {
+        "anticommutation": "{a_1^-, a_1^+} = 1",
+        "self_annihilation": "a_1^- a_1^- = 0",
+        "self_creation": "a_1^+ a_1^+ = 0"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "Canonical commutation relations for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_j^\u00b1, b_k^\u00b1] = 0 for all j, k",
+        "conjugate_pair": "[b_j^-, b_k^+] = \u03b4_{jk}"
+      }
+    },
+    "mixed_commutators": {
+      "fermion_boson": "[b_j^\u00b1, a_1^\u00b1] = 0 (undeformed)"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps_del1_pp",
+      "E_eps_del1_pm",
+      "E_eps_del1_mp",
+      "E_eps_del1_mm"
+    ],
+    "central": [
+      "kappa"
+    ],
+    "ordering_convention": "PBW: kappa < [odd: \u03b5-roots] < [even: Cartan, pairs, doubles]"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps_del1_pp": 1,
+    "E_eps_del1_pm": 1,
+    "E_eps_del1_mp": 1,
+    "E_eps_del1_mm": 1,
+    "kappa": 1,
+    "K": 0
+  },
+  "generator_realization": {
+    "description": "Oscillator realization in standard form with PBW ordering",
+    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m",
+    "realizations": {
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "a_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^-",
+        "parity": 0
+      },
+      "H_2": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "-1"
+          },
+          {
+            "words": [],
+            "coeff": "-1/2"
+          }
+        ],
+        "frappat_form": "-b_1^+ b_1^- - 1/2",
+        "parity": 0
+      },
+      "E_eps_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^+",
+        "parity": 1
+      },
+      "E_eps_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^-",
+        "parity": 1
+      },
+      "E_eps_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^+",
+        "parity": 1
+      },
+      "E_eps_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^-",
+        "parity": 1
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_1^+)^2/2",
+        "parity": 0
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_1^-)^2/2",
+        "parity": 0
+      }
+    }
+  },
+  "structure_constants": [],
+  "metadata": {
+    "generated_by": "C_generators.py",
+    "generation_date": "2026-10-05",
+    "schema_version": "5.0",
+    "algebra_family": "C",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "Bakalov and Sullivan (2017), arXiv:1612.09400",
+      "Issue I01 notation document"
+    ],
+    "notes": "C(2) = osp(2|2) with fermionic CAR pair and 4 odd roots"
+  }
+}
