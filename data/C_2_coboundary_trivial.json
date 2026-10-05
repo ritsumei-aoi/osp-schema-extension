@@ -1,0 +1,179 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)",
+    "alternative_notation": {
+      "osp": "osp(2|4)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 19,
+      "even": 11,
+      "odd": 8
+    }
+  },
+  "triviality_analysis": {
+    "description": "Coboundary structure for triviality verification",
+    "case": "trivial_deformation",
+    "deformation": "trivial",
+    "gb_parameters": {
+      "gb_+_1_p": 0.0,
+      "gb_+_1_m": 0.0,
+      "gb_-_1_p": 0.0,
+      "gb_-_1_m": 0.0,
+      "gb_+_2_p": 0.0,
+      "gb_+_2_m": 0.0,
+      "gb_-_2_p": 0.0,
+      "gb_-_2_m": 0.0
+    }
+  },
+  "coboundary_structure": {
+    "coboundary_operator": {
+      "formula": "(\u03b4f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+      "parity_rule": "\u03b4f inherits bracket parity: odd if p(X) \u2260 p(Y), even otherwise"
+    },
+    "linear_map_f": {
+      "description": "Odd linear map with parity-reversing property",
+      "parity_property": "p(f(Z)) \u2260 p(Z) for all Z",
+      "parametrization": {
+        "odd_to_even": {
+          "description": "f maps odd generators to even",
+          "source": [
+            "E_eps_del1_pp",
+            "E_eps_del2_pp",
+            "E_eps_del1_pm",
+            "E_eps_del2_pm",
+            "E_eps_del2_mp",
+            "E_eps_del1_mp",
+            "E_eps_del2_mm",
+            "E_eps_del1_mm"
+          ],
+          "target": [
+            "H_1",
+            "H_2",
+            "H_3",
+            "E_2del1_p",
+            "E_2del2_p",
+            "E_del1_del2_pm",
+            "E_del1_del2_pp",
+            "E_del1_del2_pp",
+            "E_del1_del2_pm",
+            "E_2del2_m",
+            "E_2del1_m"
+          ],
+          "parameter_count": 88
+        },
+        "even_to_odd": {
+          "description": "f maps even generators to odd",
+          "source": [
+            "H_1",
+            "H_2",
+            "H_3",
+            "E_2del1_p",
+            "E_2del2_p",
+            "E_del1_del2_pm",
+            "E_del1_del2_pp",
+            "E_del1_del2_pp",
+            "E_del1_del2_pm",
+            "E_2del2_m",
+            "E_2del1_m"
+          ],
+          "target": [
+            "E_eps_del1_pp",
+            "E_eps_del2_pp",
+            "E_eps_del1_pm",
+            "E_eps_del2_pm",
+            "E_eps_del2_mp",
+            "E_eps_del1_mp",
+            "E_eps_del2_mm",
+            "E_eps_del1_mm"
+          ],
+          "parameter_count": 88
+        }
+      }
+    },
+    "triviality_condition": {
+      "statement": "\u03b3(X,Y) = (\u03b4f)(X,Y) for all X,Y \u2208 g",
+      "meaning": "Deformation is trivial if \u03b3 is a coboundary"
+    }
+  },
+  "f_parameter_space": {
+    "total_parameters": 176,
+    "dimension": "dim(g)^2 / 2 (half, due to parity constraint)",
+    "note": "For C(3): 176 parameters total"
+  },
+  "coboundary_coefficients": {
+    "status": "to be computed",
+    "method": "bracket evaluation with f substitution",
+    "dimensions": "19^2 triples",
+    "note": "\u03b4f_{abc} computed for all (X_a, X_b) \u2192 X_c"
+  },
+  "triviality_verification": {
+    "approach": "Solve \u03b3 = \u03b4f for f coefficients",
+    "procedure": [
+      "1. Compute \u03b3 from deformation parameters",
+      "2. Set up linear system: \u03b4f_{abc} = \u03b3_{abc}",
+      "3. Solve for f coefficients \u03c6_ij",
+      "4. Check if solution exists and is consistent"
+    ],
+    "result": "to be determined"
+  },
+  "basis_reference": {
+    "even": [
+      "H_1",
+      "H_2",
+      "H_3",
+      "E_2del1_p",
+      "E_2del2_p",
+      "E_del1_del2_pm",
+      "E_del1_del2_pp",
+      "E_del1_del2_pp",
+      "E_del1_del2_pm",
+      "E_2del2_m",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps_del1_pp",
+      "E_eps_del2_pp",
+      "E_eps_del1_pm",
+      "E_eps_del2_pm",
+      "E_eps_del2_mp",
+      "E_eps_del1_mp",
+      "E_eps_del2_mm",
+      "E_eps_del1_mm"
+    ],
+    "parity": {
+      "H_1": 0,
+      "H_2": 0,
+      "H_3": 0,
+      "E_eps_del1_pp": 1,
+      "E_eps_del2_pp": 1,
+      "E_eps_del1_pm": 1,
+      "E_eps_del2_pm": 1,
+      "E_2del1_p": 0,
+      "E_2del2_p": 0,
+      "E_del1_del2_pm": 0,
+      "E_del1_del2_pp": 0,
+      "E_2del2_m": 0,
+      "E_2del1_m": 0,
+      "E_eps_del2_mp": 1,
+      "E_eps_del1_mp": 1,
+      "E_eps_del2_mm": 1,
+      "E_eps_del1_mm": 1
+    }
+  },
+  "consistency": {
+    "schema1_reference": "C_2_structure.json",
+    "schema3_reference": "C_2_evaluated_trivial.json",
+    "basis_aligned": true
+  },
+  "metadata": {
+    "generated_by": "C_coboundary_generator.py",
+    "algebra": "C(3) = osp(2|4)",
+    "analysis_case": "trivial_deformation",
+    "status": "coboundary framework defined; coefficient computation pending"
+  }
+}
