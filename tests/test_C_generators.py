@@ -95,3 +95,46 @@ def test_super_jacobi_identity_all_ranks():
     from src.verify_C_structure import verify_all
     assert verify_all("data") is True
 
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_schema_2_consistency(n):
+    path_s1 = os.path.join("data", f"C_{n}_structure.json")
+    path_s2 = os.path.join("data", f"C_{n}_gamma.json")
+    assert os.path.exists(path_s2), f"Missing {path_s2}"
+    
+    with open(path_s1, "r") as f1, open(path_s2, "r") as f2:
+        d1 = json.load(f1)
+        d2 = json.load(f2)
+        
+    assert d2["schema_version"] == "5.0"
+    assert d2["algebra"]["family"] == "C"
+    assert d2["algebra"]["n"] == n
+    assert d2["basis"]["even"] == d1["basis"]["even"]
+    assert d2["basis"]["odd"] == d1["basis"]["odd"]
+    assert d2["parity"] == d1["parity"]
+    assert d2["gb_matrix"]["dimensions"] == [2, 2 * n]
+    assert len(d2["gb_matrix"]["matrix"]) == 2
+    assert len(d2["gb_matrix"]["matrix"][0]) == 2 * n
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_gamma_graded_antisymmetry(n):
+    from fractions import Fraction
+    path_s2 = os.path.join("data", f"C_{n}_gamma.json")
+    with open(path_s2, "r") as f:
+        data = json.load(f)
+        
+    parities = data["parity"]
+    gamma_dict = {}
+    for entry in data["inhomogeneous_deformation"]["gamma_coefficients"]:
+        key = (entry["X"], entry["Y"], entry["Z"], entry["gb_param"])
+        gamma_dict[key] = Fraction(entry["coeff"])
+        
+    basis = data["basis"]["even"] + data["basis"]["odd"]
+    # Verify antisymmetry for all non-zero entries
+    for (x, y, z, param), c_xy in gamma_dict.items():
+        p_xy = (-1) ** (parities[x] * parities[y])
+        c_yx = gamma_dict.get((y, x, z, param), Fraction(0))
+        assert c_xy == - p_xy * c_yx, (
+            f"Gamma graded antisymmetry violated for [{x}, {y}] vs [{y}, {x}] on {z} with {param}: "
+            f"c_xy={c_xy}, c_yx={c_yx}"
+        )
+
