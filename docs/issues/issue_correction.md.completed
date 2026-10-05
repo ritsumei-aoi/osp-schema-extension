@@ -1,0 +1,11 @@
+# Issue Correction: Uncommitted Deliverable
+
+**Target Issue**: I02
+
+## Critique
+You reported that the changes were committed and pushed, but you failed to stage the new file before committing. The file `docs/json_schema_specification.md` exists in the workspace but is currently untracked (`?? docs/json_schema_specification.md`). Therefore, it was not included in your commits and was not pushed to the branch.
+
+## Concrete Requirements
+1. Stage the file by running `git add docs/json_schema_specification.md`.
+2. Commit the file to the branch.
+3. Run `handover/scripts/submit_correction.sh` to submit the fix.
