@@ -1,0 +1,161 @@
+{
+  "schema_version": "5.0",
+  "schema_layer": 2,
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "label": "kappa",
+      "parity": 1,
+      "relation": "kappa^2 = 0"
+    },
+    "K": {
+      "label": "K",
+      "parity": 0,
+      "relation": "scalar 1"
+    }
+  },
+  "deformation_structure": {
+    "description": "Inhomogeneous deformation (gamma structure) for C(n+1)",
+    "deformation_type": "oscillator_interaction",
+    "gb_matrix": {
+      "rows": 2,
+      "row_labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "columns": 2,
+      "column_labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "total_parameters": 4
+    },
+    "deformation_parameters": {
+      "gb_a_1_p_b_1_p": {
+        "label": "gb_a_1_p_b_1_p",
+        "parity": 1,
+        "fermionic_index": "a_1_p",
+        "bosonic_index": "b_1_p",
+        "description": "Deformation parameter between a_1_p and b_1_p"
+      },
+      "gb_a_1_p_b_1_m": {
+        "label": "gb_a_1_p_b_1_m",
+        "parity": 1,
+        "fermionic_index": "a_1_p",
+        "bosonic_index": "b_1_m",
+        "description": "Deformation parameter between a_1_p and b_1_m"
+      },
+      "gb_a_1_m_b_1_p": {
+        "label": "gb_a_1_m_b_1_p",
+        "parity": 1,
+        "fermionic_index": "a_1_m",
+        "bosonic_index": "b_1_p",
+        "description": "Deformation parameter between a_1_m and b_1_p"
+      },
+      "gb_a_1_m_b_1_m": {
+        "label": "gb_a_1_m_b_1_m",
+        "parity": 1,
+        "fermionic_index": "a_1_m",
+        "bosonic_index": "b_1_m",
+        "description": "Deformation parameter between a_1_m and b_1_m"
+      }
+    },
+    "gamma_structure": [
+      {
+        "generators": [
+          "b_1_p",
+          "a_1_p"
+        ],
+        "coefficient": "-gb_a_1_p_b_1_p",
+        "result_element": "kappa",
+        "description": "Fermionic-bosonic interaction: [b_1_p, a_1_p]_\u03b3"
+      },
+      {
+        "generators": [
+          "a_1_p",
+          "b_1_p"
+        ],
+        "coefficient": "gb_a_1_p_b_1_p",
+        "result_element": "kappa",
+        "description": "Anti-symmetry: [a_1_p, b_1_p]_\u03b3"
+      },
+      {
+        "generators": [
+          "b_1_m",
+          "a_1_p"
+        ],
+        "coefficient": "-gb_a_1_p_b_1_m",
+        "result_element": "kappa",
+        "description": "Fermionic-bosonic interaction: [b_1_m, a_1_p]_\u03b3"
+      },
+      {
+        "generators": [
+          "a_1_p",
+          "b_1_m"
+        ],
+        "coefficient": "gb_a_1_p_b_1_m",
+        "result_element": "kappa",
+        "description": "Anti-symmetry: [a_1_p, b_1_m]_\u03b3"
+      },
+      {
+        "generators": [
+          "b_1_p",
+          "a_1_m"
+        ],
+        "coefficient": "-gb_a_1_m_b_1_p",
+        "result_element": "kappa",
+        "description": "Fermionic-bosonic interaction: [b_1_p, a_1_m]_\u03b3"
+      },
+      {
+        "generators": [
+          "a_1_m",
+          "b_1_p"
+        ],
+        "coefficient": "gb_a_1_m_b_1_p",
+        "result_element": "kappa",
+        "description": "Anti-symmetry: [a_1_m, b_1_p]_\u03b3"
+      },
+      {
+        "generators": [
+          "b_1_m",
+          "a_1_m"
+        ],
+        "coefficient": "-gb_a_1_m_b_1_m",
+        "result_element": "kappa",
+        "description": "Fermionic-bosonic interaction: [b_1_m, a_1_m]_\u03b3"
+      },
+      {
+        "generators": [
+          "a_1_m",
+          "b_1_m"
+        ],
+        "coefficient": "gb_a_1_m_b_1_m",
+        "result_element": "kappa",
+        "description": "Anti-symmetry: [a_1_m, b_1_m]_\u03b3"
+      }
+    ]
+  },
+  "bracket_deformation": {
+    "undeformed": "[X, Y]_0 (from Schema 1)",
+    "deformed": "[X, Y]_\u03b3 = [X, Y]_0 + \u03ba \u00b7 \u03b3(X, Y)",
+    "central_extension": "\u03ba is odd central element with \u03ba^2 = 0"
+  },
+  "metadata": {
+    "generated_by": "src/C_gamma_generator.py",
+    "generation_date": "2026-10-05T17:32:48.423849",
+    "algebra": "C(2)",
+    "references": [
+      "C_inhomogeneous_definition.md"
+    ]
+  }
+}
