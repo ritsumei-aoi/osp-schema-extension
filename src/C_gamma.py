@@ -63,13 +63,15 @@ def _osc_parity(o: Tuple[str, int, str]) -> int:
 def _single_bracket_deformed(o1: Tuple[str, int, str], o2: Tuple[str, int, str]) -> Dict[str, Fraction]:
     fam1, idx1, s1 = o1
     fam2, idx2, s2 = o2
+    s1_code = "p" if s1 == "+" else "m"
+    s2_code = "p" if s2 == "+" else "m"
     # [b_j^s, a_1^sigma] = - gb_{a_1^sigma, b_j^s} * kappa
     # [a_1^sigma, b_j^s] = + gb_{a_1^sigma, b_j^s} * kappa
     if fam1 == "b" and fam2 == "a":
-        param = f"gb_a_1_{s2}_b_{idx1}_{s1}"
+        param = f"gb_a_1_{s2_code}_b_{idx1}_{s1_code}"
         return {param: Fraction(-1)}
     elif fam1 == "a" and fam2 == "b":
-        param = f"gb_a_1_{s1}_b_{idx2}_{s2}"
+        param = f"gb_a_1_{s1_code}_b_{idx2}_{s2_code}"
         return {param: Fraction(1)}
     return {}
 
