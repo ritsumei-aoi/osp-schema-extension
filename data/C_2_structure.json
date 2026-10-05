@@ -5,10 +5,6 @@
     "m": 1,
     "n": 2,
     "cartan_type": "C(3)",
-    "alternative_notation": {
-      "osp": "osp(2|4)",
-      "dimension_formula": "osp(2m|2n) with m=1"
-    },
     "dimension": {
       "total": 19,
       "even": 11,
@@ -17,16 +13,14 @@
   },
   "central_elements": {
     "kappa": {
-      "label": "\u03ba",
+      "label": "kappa",
       "parity": 1,
-      "relation": "\u03ba^2 = 0",
-      "description": "Odd central element; generates cohomology deformation"
+      "relation": "kappa^2 = 0"
     },
     "K": {
       "label": "K",
       "parity": 0,
-      "relation": "scalar 1",
-      "description": "Even central element; identified with scalar 1"
+      "relation": "scalar 1"
     }
   },
   "oscillator_generators": {
@@ -36,8 +30,7 @@
       "labels": [
         "a_1_p",
         "a_1_m"
-      ],
-      "description": "Standard fermionic pair a_1^\u00b1 with m=1"
+      ]
     },
     "bosons": {
       "count": 4,
@@ -47,31 +40,12 @@
         "b_1_m",
         "b_2_p",
         "b_2_m"
-      ],
-      "description": "Bosonic oscillators b_k^\u00b1 with k=1,...,2"
+      ]
     }
   },
   "oscillator_relations": {
-    "fermionic_anticommutators": {
-      "description": "Standard CAR for the fermionic pair",
-      "relations": {
-        "anticommutator": "{a_1^-, a_1^+} = 1",
-        "self_relations": "a_1^+ a_1^+ = 0, a_1^- a_1^- = 0"
-      }
-    },
-    "bosonic_commutators": {
-      "description": "Canonical commutation relations",
-      "relations": {
-        "same_type": "[b_k^\u00b1, b_l^\u00b1] = 0",
-        "conjugate_pair": "[b_k^-, b_l^+] = \u03b4_{kl}"
-      }
-    },
-    "mixed_anticommutators": {
-      "description": "Mixed relations between fermions and bosons",
-      "relations": {
-        "boson_fermion": "{a_1^\u00b1, b_k^\u00b1} = 0"
-      }
-    }
+    "fermionic": "{a_1-, a_1+} = 1",
+    "bosonic": "[b_k-, b_l+] = delta_kl"
   },
   "basis": {
     "even": [
@@ -96,8 +70,7 @@
       "E_eps_del2_pm",
       "E_eps_del2_mp",
       "E_eps_del2_mm"
-    ],
-    "ordering_convention": "PBW: \u03ba < [odd] < [even]"
+    ]
   },
   "parity": {
     "H_1": 0,
@@ -121,8 +94,6 @@
     "E_eps_del2_mm": 1
   },
   "generator_realization": {
-    "description": "Standard form with PBW ordering",
-    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m, b_2_p, b_2_m",
     "realizations": {
       "H_1": {
         "standard_form": [
@@ -148,7 +119,6 @@
             "coeff": "-1"
           }
         ],
-        "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^- - b_2^+ b_2^- - ... \u00b1 b_n^+ b_n^-",
         "parity": 0
       },
       "H_2": {
@@ -168,7 +138,6 @@
             "coeff": "-1"
           }
         ],
-        "frappat_form": "b_1^+ b_1^- - b_2^+ b_2^-",
         "parity": 0
       },
       "H_3": {
@@ -185,7 +154,6 @@
             "coeff": "-1/2"
           }
         ],
-        "frappat_form": "-b_n^+ b_n^- - 1/2",
         "parity": 0
       },
       "E_2del1_p": {
@@ -198,7 +166,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "(b_1^+)^2",
         "parity": 0
       },
       "E_2del1_m": {
@@ -211,7 +178,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "(b_1^-)^2",
         "parity": 0
       },
       "E_2del2_p": {
@@ -224,7 +190,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "(b_2^+)^2",
         "parity": 0
       },
       "E_2del2_m": {
@@ -237,7 +202,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "(b_2^-)^2",
         "parity": 0
       },
       "E_eps_del1_pp": {
@@ -250,7 +214,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^+ b_1^+",
         "parity": 1
       },
       "E_eps_del1_pm": {
@@ -263,7 +226,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^+ b_1^-",
         "parity": 1
       },
       "E_eps_del1_mp": {
@@ -276,7 +238,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^- b_1^+",
         "parity": 1
       },
       "E_eps_del1_mm": {
@@ -289,7 +250,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^- b_1^-",
         "parity": 1
       },
       "E_eps_del2_pp": {
@@ -302,7 +262,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^+ b_2^+",
         "parity": 1
       },
       "E_eps_del2_pm": {
@@ -315,7 +274,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^+ b_2^-",
         "parity": 1
       },
       "E_eps_del2_mp": {
@@ -328,7 +286,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^- b_2^+",
         "parity": 1
       },
       "E_eps_del2_mm": {
@@ -341,7 +298,6 @@
             "coeff": "1"
           }
         ],
-        "frappat_form": "a_1^- b_2^-",
         "parity": 1
       }
     }
@@ -355,10 +311,10 @@
       "sign_rule": "graded"
     },
     {
-      "X": "H_1",
-      "Y": "E_eps_del2_pp",
-      "Z": "E_eps_del2_pp",
-      "coeff": "1",
+      "X": "E_eps_del1_pp",
+      "Y": "H_1",
+      "Z": "E_eps_del1_pp",
+      "coeff": "-1",
       "sign_rule": "graded"
     },
     {
@@ -369,6 +325,55 @@
       "sign_rule": "graded"
     },
     {
+      "X": "E_eps_del1_pm",
+      "Y": "H_1",
+      "Z": "E_eps_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps_del1_mp",
+      "Z": "E_eps_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del1_mp",
+      "Y": "H_1",
+      "Z": "E_eps_del1_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps_del1_mm",
+      "Z": "E_eps_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del1_mm",
+      "Y": "H_1",
+      "Z": "E_eps_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps_del2_pp",
+      "Z": "E_eps_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del2_pp",
+      "Y": "H_1",
+      "Z": "E_eps_del2_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
       "X": "H_1",
       "Y": "E_eps_del2_pm",
       "Z": "E_eps_del2_pm",
@@ -376,9 +381,9 @@
       "sign_rule": "graded"
     },
     {
-      "X": "H_1",
-      "Y": "E_eps_del1_mp",
-      "Z": "E_eps_del1_mp",
+      "X": "E_eps_del2_pm",
+      "Y": "H_1",
+      "Z": "E_eps_del2_pm",
       "coeff": "-1",
       "sign_rule": "graded"
     },
@@ -390,10 +395,10 @@
       "sign_rule": "graded"
     },
     {
-      "X": "H_1",
-      "Y": "E_eps_del1_mm",
-      "Z": "E_eps_del1_mm",
-      "coeff": "-1",
+      "X": "E_eps_del2_mp",
+      "Y": "H_1",
+      "Z": "E_eps_del2_mp",
+      "coeff": "1",
       "sign_rule": "graded"
     },
     {
@@ -404,6 +409,13 @@
       "sign_rule": "graded"
     },
     {
+      "X": "E_eps_del2_mm",
+      "Y": "H_1",
+      "Z": "E_eps_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
       "X": "E_eps_del1_pp",
       "Y": "E_eps_del1_mm",
       "Z": "H_1",
@@ -411,8 +423,8 @@
       "sign_rule": "graded"
     },
     {
-      "X": "E_eps_del2_pp",
-      "Y": "E_eps_del2_mm",
+      "X": "E_eps_del1_mm",
+      "Y": "E_eps_del1_pp",
       "Z": "H_1",
       "coeff": "1",
       "sign_rule": "graded"
@@ -425,8 +437,36 @@
       "sign_rule": "graded"
     },
     {
+      "X": "E_eps_del1_mp",
+      "Y": "E_eps_del1_pm",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del2_pp",
+      "Y": "E_eps_del2_mm",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del2_mm",
+      "Y": "E_eps_del2_pp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
       "X": "E_eps_del2_pm",
       "Y": "E_eps_del2_mp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps_del2_mp",
+      "Y": "E_eps_del2_pm",
       "Z": "H_1",
       "coeff": "1",
       "sign_rule": "graded"
@@ -439,10 +479,24 @@
       "sign_rule": "graded"
     },
     {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
       "X": "H_2",
       "Y": "E_2del2_p",
       "Z": "E_2del2_p",
       "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_p",
+      "Y": "H_2",
+      "Z": "E_2del2_p",
+      "coeff": "-2",
       "sign_rule": "graded"
     },
     {
@@ -451,16 +505,18 @@
       "Z": "E_2del2_p",
       "coeff": "-2",
       "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_p",
+      "Y": "H_3",
+      "Z": "E_2del2_p",
+      "coeff": "2",
+      "sign_rule": "graded"
     }
   ],
   "metadata": {
     "generated_by": "src/C_generators.py",
-    "generation_date": "2026-10-05T17:29:42.173976",
-    "algebra": "C(3)",
-    "osp_notation": "osp(2|4)",
-    "references": [
-      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
-      "handover/notation.md: PBW ordering and generator labels"
-    ]
+    "generation_date": "2026-10-05T17:32:06.193808",
+    "algebra": "C(3)"
   }
 }
