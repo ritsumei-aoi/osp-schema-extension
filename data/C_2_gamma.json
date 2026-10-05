@@ -1,0 +1,36 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "n": 2
+  },
+  "gb_matrix": {
+    "description": "Deformation parameters gb_{sigma, j, s} for C(n+1)",
+    "parameters": [
+      "gb_p_1_p",
+      "gb_p_1_m",
+      "gb_m_1_p",
+      "gb_m_1_m",
+      "gb_p_2_p",
+      "gb_p_2_m",
+      "gb_m_2_p",
+      "gb_m_2_m"
+    ]
+  },
+  "inhomogeneous_deformation": {
+    "description": "Gamma coefficients for the bracket [X, Y]_gamma",
+    "gamma_constants": [
+      {
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_2del1_p",
+        "gb_term": "gb_p_1_p",
+        "coeff": "-2"
+      }
+    ]
+  },
+  "metadata": {
+    "generated_by": "C_gamma_generators.py",
+    "note": "Gamma coefficients are structurally defined."
+  }
+}
