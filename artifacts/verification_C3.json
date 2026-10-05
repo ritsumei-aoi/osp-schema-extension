@@ -1,0 +1,231 @@
+{
+  "algebra": "C(3) = osp(2|4)",
+  "n": 2,
+  "superdimension": {
+    "even": 11,
+    "odd": 8,
+    "total": 19
+  },
+  "basis": [
+    {
+      "name": "J0",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_1_bp_1",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_1_bp_2",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_2_bp_2",
+      "parity": 0
+    },
+    {
+      "name": "E_bm_1_bm_1",
+      "parity": 0
+    },
+    {
+      "name": "E_bm_1_bm_2",
+      "parity": 0
+    },
+    {
+      "name": "E_bm_2_bm_2",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_1_bm_1",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_1_bm_2",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_2_bm_1",
+      "parity": 0
+    },
+    {
+      "name": "E_bp_2_bm_2",
+      "parity": 0
+    },
+    {
+      "name": "F_a+_b1+",
+      "parity": 1
+    },
+    {
+      "name": "F_a+_b1-",
+      "parity": 1
+    },
+    {
+      "name": "F_a+_b2+",
+      "parity": 1
+    },
+    {
+      "name": "F_a+_b2-",
+      "parity": 1
+    },
+    {
+      "name": "F_a-_b1+",
+      "parity": 1
+    },
+    {
+      "name": "F_a-_b1-",
+      "parity": 1
+    },
+    {
+      "name": "F_a-_b2+",
+      "parity": 1
+    },
+    {
+      "name": "F_a-_b2-",
+      "parity": 1
+    }
+  ],
+  "gb_parameter_count": 8,
+  "gb_parameters": [
+    "gb_+_1_+",
+    "gb_+_1_-",
+    "gb_+_2_+",
+    "gb_+_2_-",
+    "gb_-_1_+",
+    "gb_-_1_-",
+    "gb_-_2_+",
+    "gb_-_2_-"
+  ],
+  "phi_parameter_count": 176,
+  "equation_count": 1400,
+  "triviality_result": {
+    "is_unconditionally_trivial": false,
+    "triviality_condition": "All gb parameters must be identically zero (gb == 0)",
+    "gb_constraints": {
+      "gb_+_1_+": "0",
+      "gb_+_1_-": "0",
+      "gb_+_2_+": "0",
+      "gb_+_2_-": "0",
+      "gb_-_1_+": "0",
+      "gb_-_1_-": "0",
+      "gb_-_2_+": "0",
+      "gb_-_2_-": "0"
+    },
+    "cohomology_conclusion": "The deformation class [gamma_gb] in H^2(C(3), C(3)) is non-zero for any non-zero gb configuration. The inhomogeneous deformation is non-trivial."
+  },
+  "sample_structure_constants": {
+    "[J0, F_a+_b1+]": {
+      "F_a+_b1+": "1"
+    },
+    "[J0, F_a+_b1-]": {
+      "F_a+_b1-": "1"
+    },
+    "[J0, F_a+_b2+]": {
+      "F_a+_b2+": "1"
+    },
+    "[J0, F_a+_b2-]": {
+      "F_a+_b2-": "1"
+    },
+    "[J0, F_a-_b1+]": {
+      "F_a-_b1+": "-1"
+    },
+    "[J0, F_a-_b1-]": {
+      "F_a-_b1-": "-1"
+    },
+    "[J0, F_a-_b2+]": {
+      "F_a-_b2+": "-1"
+    },
+    "[J0, F_a-_b2-]": {
+      "F_a-_b2-": "-1"
+    },
+    "[E_bp_1_bp_1, E_bm_1_bm_1]": {
+      "E_bp_1_bm_1": "-4"
+    },
+    "[E_bp_1_bp_1, E_bm_1_bm_2]": {
+      "E_bp_1_bm_2": "-2"
+    },
+    "[E_bp_1_bp_1, E_bp_1_bm_1]": {
+      "E_bp_1_bp_1": "-2"
+    },
+    "[E_bp_1_bp_1, E_bp_2_bm_1]": {
+      "E_bp_1_bp_2": "-2"
+    },
+    "[E_bp_1_bp_1, F_a+_b1-]": {
+      "F_a+_b1+": "-2"
+    },
+    "[E_bp_1_bp_1, F_a-_b1-]": {
+      "F_a-_b1+": "-2"
+    },
+    "[E_bp_1_bp_2, E_bm_1_bm_1]": {
+      "E_bp_2_bm_1": "-2"
+    }
+  },
+  "sample_gamma_brackets": {
+    "[J0, E_bp_1_bp_1]": {
+      "F_a+_b1+": "2*gb_-_1_+",
+      "F_a-_b1+": "2*gb_+_1_+"
+    },
+    "[J0, E_bp_1_bp_2]": {
+      "F_a+_b1+": "gb_-_2_+",
+      "F_a+_b2+": "gb_-_1_+",
+      "F_a-_b1+": "gb_+_2_+",
+      "F_a-_b2+": "gb_+_1_+"
+    },
+    "[J0, E_bp_2_bp_2]": {
+      "F_a+_b2+": "2*gb_-_2_+",
+      "F_a-_b2+": "2*gb_+_2_+"
+    },
+    "[J0, E_bm_1_bm_1]": {
+      "F_a+_b1-": "2*gb_-_1_-",
+      "F_a-_b1-": "2*gb_+_1_-"
+    },
+    "[J0, E_bm_1_bm_2]": {
+      "F_a+_b1-": "gb_-_2_-",
+      "F_a+_b2-": "gb_-_1_-",
+      "F_a-_b1-": "gb_+_2_-",
+      "F_a-_b2-": "gb_+_1_-"
+    },
+    "[J0, E_bm_2_bm_2]": {
+      "F_a+_b2-": "2*gb_-_2_-",
+      "F_a-_b2-": "2*gb_+_2_-"
+    },
+    "[J0, E_bp_1_bm_1]": {
+      "F_a+_b1+": "gb_-_1_-",
+      "F_a+_b1-": "gb_-_1_+",
+      "F_a-_b1+": "gb_+_1_-",
+      "F_a-_b1-": "gb_+_1_+"
+    },
+    "[J0, E_bp_1_bm_2]": {
+      "F_a+_b1+": "gb_-_2_-",
+      "F_a+_b2-": "gb_-_1_+",
+      "F_a-_b1+": "gb_+_2_-",
+      "F_a-_b2-": "gb_+_1_+"
+    },
+    "[J0, E_bp_2_bm_1]": {
+      "F_a+_b1-": "gb_-_2_+",
+      "F_a+_b2+": "gb_-_1_-",
+      "F_a-_b1-": "gb_+_2_+",
+      "F_a-_b2+": "gb_+_1_-"
+    },
+    "[J0, E_bp_2_bm_2]": {
+      "F_a+_b2+": "gb_-_2_-",
+      "F_a+_b2-": "gb_-_2_+",
+      "F_a-_b2+": "gb_+_2_-",
+      "F_a-_b2-": "gb_+_2_+"
+    },
+    "[J0, F_a+_b1+]": {
+      "J0": "gb_+_1_+"
+    },
+    "[J0, F_a+_b1-]": {
+      "J0": "gb_+_1_-"
+    },
+    "[J0, F_a+_b2+]": {
+      "J0": "gb_+_2_+"
+    },
+    "[J0, F_a+_b2-]": {
+      "J0": "gb_+_2_-"
+    },
+    "[J0, F_a-_b1+]": {
+      "J0": "-gb_-_1_+"
+    }
+  }
+}
