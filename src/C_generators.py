@@ -211,19 +211,81 @@ class CnGenerator:
             }
 
     def _compute_structure_constants(self):
-        """Compute all non-zero graded brackets."""
-        # For now, store basic structure constants from oscillator relations
-        # Full computation would require systematic PBW expansion
-        all_generators = self.basis_even + self.basis_odd
+        """Compute basic structure constants for verification.
 
-        for i, X in enumerate(all_generators):
-            for j, Y in enumerate(all_generators):
-                if i >= j:  # avoid duplicates
-                    continue
-                # Compute bracket based on oscillator realization
-                # This is a placeholder; full implementation would compute all brackets
-                # For the schema, we need at minimum the Cartan-root relations
-                pass
+        For now, compute key Cartan-root relations.
+        Full computation will be in Schema 2 with deformation parameters.
+        """
+        self.structure_constants = []
+
+        # Key Cartan-root relations for verification
+        # [H_1, E_eps_del{k}_{pp}] = E_eps_del{k}_{pp}  (eps weight +1)
+        # [H_1, E_eps_del{k}_{pm}] = E_eps_del{k}_{pm}
+        # [H_1, E_eps_del{k}_{mp}] = -E_eps_del{k}_{mp}  (eps weight -1)
+        # [H_1, E_eps_del{k}_{mm}] = -E_eps_del{k}_{mm}
+
+        for k in range(1, self.n + 1):
+            # H_1 acting on fermionic generators (forward)
+            self.structure_constants.append({
+                'X': 'H_1',
+                'Y': f'E_eps_del{k}_pp',
+                'Z': f'E_eps_del{k}_pp',
+                'coeff': '1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': 'H_1',
+                'Y': f'E_eps_del{k}_pm',
+                'Z': f'E_eps_del{k}_pm',
+                'coeff': '1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': 'H_1',
+                'Y': f'E_eps_del{k}_mp',
+                'Z': f'E_eps_del{k}_mp',
+                'coeff': '-1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': 'H_1',
+                'Y': f'E_eps_del{k}_mm',
+                'Z': f'E_eps_del{k}_mm',
+                'coeff': '-1',
+                'sign_rule': 'graded'
+            })
+
+            # Inverse relations: [E_eps_del{k}_*, H_1]
+            # By graded anti-symmetry: [E, H} = -(-1)^(p(E)p(H))[H, E}
+            # Since p(E)=1, p(H)=0: [E, H} = -[H, E}
+            self.structure_constants.append({
+                'X': f'E_eps_del{k}_pp',
+                'Y': 'H_1',
+                'Z': f'E_eps_del{k}_pp',
+                'coeff': '-1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': f'E_eps_del{k}_pm',
+                'Y': 'H_1',
+                'Z': f'E_eps_del{k}_pm',
+                'coeff': '-1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': f'E_eps_del{k}_mp',
+                'Y': 'H_1',
+                'Z': f'E_eps_del{k}_mp',
+                'coeff': '1',
+                'sign_rule': 'graded'
+            })
+            self.structure_constants.append({
+                'X': f'E_eps_del{k}_mm',
+                'Y': 'H_1',
+                'Z': f'E_eps_del{k}_mm',
+                'coeff': '1',
+                'sign_rule': 'graded'
+            })
 
     def _get_dimension(self) -> Tuple[int, int, int]:
         """Get dimensions: (even, odd, total)."""
