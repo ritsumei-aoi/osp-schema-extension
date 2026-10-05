@@ -138,3 +138,37 @@ def test_gamma_graded_antisymmetry(n):
             f"c_xy={c_xy}, c_yx={c_yx}"
         )
 
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_schema_3_consistency(n):
+    path_s2 = os.path.join("data", f"C_{n}_gamma.json")
+    path_s3 = os.path.join("data", f"C_{n}_evaluated.json")
+    assert os.path.exists(path_s3), f"Missing {path_s3}"
+    
+    with open(path_s2, "r") as f2, open(path_s3, "r") as f3:
+        d2 = json.load(f2)
+        d3 = json.load(f3)
+        
+    assert d3["schema_version"] == "5.0"
+    assert d3["layer"] == 3
+    assert d3["algebra"]["family"] == "C"
+    assert d3["algebra"]["n"] == n
+    assert d3["parameter_assignment"]["profile_name"] == "all_ones"
+    assert len(d3["parameter_assignment"]["values"]) == 4 * n
+    
+    # Check that substitution of gb=1 matches evaluated_deformation
+    from fractions import Fraction
+    from collections import defaultdict
+    expected_eval = defaultdict(Fraction)
+    for entry in d2["inhomogeneous_deformation"]["gamma_coefficients"]:
+        key = (entry["X"], entry["Y"], entry["Z"])
+        expected_eval[key] += Fraction(entry["coeff"]) * 1
+        
+    actual_eval = {}
+    for entry in d3["evaluated_deformation"]["gamma_coefficients"]:
+        key = (entry["X"], entry["Y"], entry["Z"])
+        actual_eval[key] = Fraction(entry["coeff"])
+        
+    for k, v in expected_eval.items():
+        if v != 0:
+            assert actual_eval.get(k) == v, f"Evaluated coefficient mismatch at {k}: expected {v}, got {actual_eval.get(k)}"
+
