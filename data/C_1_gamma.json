@@ -1,0 +1,104 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "inhomogeneous_deformation": {
+    "description": "Inhomogeneous deformation parametrization via gb-matrix",
+    "reference": "docs/math/C_inhomogeneous_definition.md",
+    "deformation_type": "oscillator_exchange_relation",
+    "central_element": "\u03ba",
+    "exchange_relation": "[b_j^s, a_1^\u03c3] = -gb_{\u03c3,j,s} \u00b7 \u03ba",
+    "gb_matrix": {
+      "shape": "2 \u00d7 2",
+      "size": 4,
+      "parity": 1,
+      "description": "Deformation parameters indexed by (fermionic sign, bosonic oscillator)"
+    },
+    "gb_parameters": [
+      {
+        "label": "gb_+_1_p",
+        "index": {
+          "fermionic": "+",
+          "bosonic_k": 1,
+          "bosonic_sign": "p"
+        },
+        "parity": 1,
+        "description": "Deformation parameter for [b_1^p, a_1^+] = -gb_{sigma,1,p} \u00b7 \u03ba"
+      },
+      {
+        "label": "gb_+_1_m",
+        "index": {
+          "fermionic": "+",
+          "bosonic_k": 1,
+          "bosonic_sign": "m"
+        },
+        "parity": 1,
+        "description": "Deformation parameter for [b_1^m, a_1^+] = -gb_{sigma,1,m} \u00b7 \u03ba"
+      },
+      {
+        "label": "gb_-_1_p",
+        "index": {
+          "fermionic": "-",
+          "bosonic_k": 1,
+          "bosonic_sign": "p"
+        },
+        "parity": 1,
+        "description": "Deformation parameter for [b_1^p, a_1^-] = -gb_{sigma,1,p} \u00b7 \u03ba"
+      },
+      {
+        "label": "gb_-_1_m",
+        "index": {
+          "fermionic": "-",
+          "bosonic_k": 1,
+          "bosonic_sign": "m"
+        },
+        "parity": 1,
+        "description": "Deformation parameter for [b_1^m, a_1^-] = -gb_{sigma,1,m} \u00b7 \u03ba"
+      }
+    ],
+    "gamma_cocycle": {
+      "status": "to be computed",
+      "method": "oscillator bracket evaluation",
+      "formula": "\u03b3_abc derived from [X_a, X_b] = \u03b4(a,b) + \u03ba\u00b7\u03b3_abc(gb)\u00b7X_c",
+      "note": "Gamma coefficients depend on gb parameters and are computed in evaluation layer"
+    }
+  },
+  "coboundary_structure": {
+    "description": "Framework for triviality analysis (Schema 4)",
+    "linear_map_f": {
+      "parity": "odd (reverses parity of input)",
+      "domain": "Lie algebra g",
+      "codomain": "Lie algebra g",
+      "parametrization": "to be determined"
+    },
+    "coboundary_operator": {
+      "formula": "(\u03b4f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+      "triviality_condition": "\u03b3(X,Y) = (\u03b4f)(X,Y) for all X,Y \u2208 g"
+    }
+  },
+  "consistency": {
+    "schema1_elements": 8,
+    "cartan_dimension": 4,
+    "gb_matrix_size": 4,
+    "note": "\u03b3-coefficients will be computed for all ${dim(g)^2}$ pairs"
+  },
+  "metadata": {
+    "generated_by": "C_gamma_generator.py",
+    "schema1_source": "C_1_structure.json",
+    "algebra": "C(2) = osp(2|2)",
+    "status": "parametrization defined; gamma computation pending"
+  }
+}
