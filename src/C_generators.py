@@ -189,6 +189,7 @@ def normal_order(word, n):
     """Normal order a word of oscillator symbols.
     Order: a1p, a1m, b1p, b1m, b2p, b2m, ...
     Uses bubble sort with commutation/anticommutation relations.
+    Adjacent identical fermions vanish: a*a = 0 since {a,a} = 0.
     Returns list of (coeff, word_list).
     """
     def osc_order(osc):
@@ -208,18 +209,15 @@ def normal_order(word, n):
             return 2 + 2 * (k - 1) + (0 if s == "p" else 1)
         raise ValueError(f"Unknown oscillator: {osc}")
 
-    def has_duplicate_fermion(w):
-        fermions_seen = set()
-        for osc in w:
-            if osc_parity(osc) == 1:
-                if osc in fermions_seen:
-                    return True
-                fermions_seen.add(osc)
+    def has_adjacent_identical_fermions(w):
+        for i in range(len(w) - 1):
+            if w[i] == w[i + 1] and osc_parity(w[i]) == 1:
+                return True
         return False
 
     results = [(Fraction(1), list(word))]
     changed = True
-    max_iter = 100
+    max_iter = 200
     iteration = 0
 
     while changed and iteration < max_iter:
@@ -227,7 +225,8 @@ def normal_order(word, n):
         iteration += 1
         new_results = []
         for coeff, w in results:
-            if has_duplicate_fermion(w):
+            if has_adjacent_identical_fermions(w):
+                changed = True
                 continue
             swapped = False
             for i in range(len(w) - 1):
@@ -407,18 +406,49 @@ def compute_bracket(X, Y, n, osc_forms, basis_osc_map, parity_map):
     return express_in_basis(raw_result, n, parity_map)
 
 
+def compute_number_to_cartan(n):
+    """Compute the inverse mapping from number operators to Cartan generators.
+
+    Number operators: N_f = a1p a1m, N_{bk} = b_kp b_km (k=1..n)
+    Cartan generators:
+      H_1 = N_f + N_{b1}
+      H_k = N_{b(k-1)} - N_{bk}  for k=2,...,n
+      H_{n+1} = -N_{bn} - 1/2
+
+    Returns dict mapping number operator key to {H_label: coeff, "scalar": coeff}.
+    """
+    nops = {}
+    nops[f"b{n}"] = {f"H_{n+1}": Fraction(-1), "scalar": Fraction(-1, 2)}
+    for k in range(n - 1, 0, -1):
+        nops[f"b{k}"] = {f"H_{k+1}": Fraction(1)}
+        for key, val in nops[f"b{k+1}"].items():
+            nops[f"b{k}"][key] = nops[f"b{k}"].get(key, Fraction(0)) + val
+
+    nops["f"] = {f"H_1": Fraction(1)}
+    for key, val in nops["b1"].items():
+        nops["f"][key] = nops["f"].get(key, Fraction(0)) - val
+
+    for nop_key in nops:
+        nops[nop_key] = {k: v for k, v in nops[nop_key].items() if v != 0}
+
+    return nops
+
+
 def express_in_basis(raw_result, n, parity_map):
     """Convert oscillator expression to basis generator coefficients."""
     even_basis, odd_basis = build_basis(n)
     all_basis = odd_basis + even_basis
 
     osc_to_gen = {}
-
     for g in all_basis:
+        if g.startswith("H_"):
+            continue
         form = oscillator_form(g, n)
         if len(form) == 1:
             c, w = form[0]
             osc_to_gen[w] = (g, Fraction(1) / c)
+
+    nop_map = compute_number_to_cartan(n)
 
     result = {}
 
@@ -430,57 +460,34 @@ def express_in_basis(raw_result, n, parity_map):
             result[gen] = result.get(gen, Fraction(0)) + coeff * scale
         elif len(word) == 2:
             a, b = word
-            if a.startswith("b") and b.startswith("b"):
+            if a == "a1p" and b == "a1m":
+                for hk, hc in nop_map["f"].items():
+                    if hk == "scalar":
+                        continue
+                    result[hk] = result.get(hk, Fraction(0)) + coeff * hc
+            elif a.startswith("b") and b.startswith("b"):
                 ka = extract_boson_index(a)
                 sa = extract_boson_sign(a)
                 kb = extract_boson_index(b)
                 sb = extract_boson_sign(b)
                 if ka == kb and sa == "p" and sb == "m":
-                    found_cartan = False
-                    for g in all_basis:
-                        if g.startswith("H_"):
-                            form = oscillator_form(g, n)
-                            for fc, fw in form:
-                                if fw == word:
-                                    result[g] = result.get(g, Fraction(0)) + coeff / fc
-                                    found_cartan = True
-                            if found_cartan:
-                                break
-                    if not found_cartan:
-                        result[f"raw_{a}_{b}"] = coeff
+                    nop_key = f"b{ka}"
+                    for hk, hc in nop_map[nop_key].items():
+                        if hk == "scalar":
+                            continue
+                        result[hk] = result.get(hk, Fraction(0)) + coeff * hc
                 else:
-                    matched = False
-                    for g in all_basis:
-                        form = oscillator_form(g, n)
-                        if len(form) == 1:
-                            fc, fw = form[0]
-                            if fw == word:
-                                result[g] = result.get(g, Fraction(0)) + coeff / fc
-                                matched = True
-                                break
-                    if not matched:
+                    if word in osc_to_gen:
+                        gen, scale = osc_to_gen[word]
+                        result[gen] = result.get(gen, Fraction(0)) + coeff * scale
+                    else:
                         result[f"raw_{a}_{b}"] = coeff
             elif a.startswith("a") and b.startswith("b"):
-                matched = False
-                for g in all_basis:
-                    form = oscillator_form(g, n)
-                    if len(form) == 1:
-                        fc, fw = form[0]
-                        if fw == word:
-                            result[g] = result.get(g, Fraction(0)) + coeff / fc
-                            matched = True
-                            break
-                if not matched:
+                if word in osc_to_gen:
+                    gen, scale = osc_to_gen[word]
+                    result[gen] = result.get(gen, Fraction(0)) + coeff * scale
+                else:
                     result[f"raw_{a}_{b}"] = coeff
-            elif a == "a1p" and b == "a1m":
-                for g in all_basis:
-                    if g.startswith("H_"):
-                        form = oscillator_form(g, n)
-                        for fc, fw in form:
-                            if fw == ("a1p", "a1m"):
-                                result[g] = result.get(g, Fraction(0)) + coeff / fc
-                                break
-                        break
             else:
                 result[f"raw_{'_'.join(word)}"] = coeff
         else:
