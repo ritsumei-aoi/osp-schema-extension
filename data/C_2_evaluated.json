@@ -1,0 +1,736 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)",
+    "alternative_notation": {
+      "osp": "osp(2|4)",
+      "dimension_formula": "osp(2m|2n) with m=1, n=2"
+    },
+    "dimension": {
+      "total": 19,
+      "even": 11,
+      "odd": 8
+    }
+  },
+  "central_elements": [
+    {
+      "label": "kappa",
+      "parity": 1,
+      "property": "nilpotent",
+      "relation": "kappa^2 = 0",
+      "description": "Central odd element for deformation cocycle"
+    },
+    {
+      "label": "K",
+      "parity": 0,
+      "property": "identity",
+      "relation": "K = 1",
+      "description": "Central even identity (excluded from PBW basis)"
+    }
+  ],
+  "oscillator_generators": {
+    "fermions": {
+      "label": "standard pair",
+      "m": 1,
+      "parity": 1,
+      "count": 2,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "description": "Standard fermionic CAR pair a_1^+, a_1^-"
+    },
+    "bosons": {
+      "count": 4,
+      "n": 2,
+      "labels": [
+        "b_1_p",
+        "b_1_m",
+        "b_2_p",
+        "b_2_m"
+      ],
+      "description": "Bosonic oscillators b_k^\u00b1 with k=1,...,2"
+    }
+  },
+  "oscillator_relations": {
+    "fermion_relations": {
+      "description": "Standard CAR for fermionic pair",
+      "relations": {
+        "anticommutation": "{a_1^-, a_1^+} = 1",
+        "self_annihilation": "a_1^- a_1^- = 0",
+        "self_creation": "a_1^+ a_1^+ = 0"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "Canonical commutation relations for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_j^\u00b1, b_k^\u00b1] = 0 for all j, k",
+        "conjugate_pair": "[b_j^-, b_k^+] = \u03b4_{jk}"
+      }
+    },
+    "mixed_commutators": {
+      "fermion_boson": "[b_j^\u00b1, a_1^\u00b1] = 0 (undeformed)"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "H_3",
+      "E_2del1_p",
+      "E_2del1_m",
+      "E_2del2_p",
+      "E_2del2_m",
+      "E_del1_del2_pp",
+      "E_del1_del2_pm",
+      "E_del1_del2_mp",
+      "E_del1_del2_mm"
+    ],
+    "odd": [
+      "E_eps_del1_pp",
+      "E_eps_del1_pm",
+      "E_eps_del1_mp",
+      "E_eps_del1_mm",
+      "E_eps_del2_pp",
+      "E_eps_del2_pm",
+      "E_eps_del2_mp",
+      "E_eps_del2_mm"
+    ],
+    "central": [
+      "kappa"
+    ],
+    "ordering_convention": "PBW: kappa < [odd: \u03b5-roots] < [even: Cartan, pairs, doubles]"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "H_3": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_2del2_p": 0,
+    "E_2del2_m": 0,
+    "E_del1_del2_pp": 0,
+    "E_del1_del2_pm": 0,
+    "E_del1_del2_mp": 0,
+    "E_del1_del2_mm": 0,
+    "E_eps_del1_pp": 1,
+    "E_eps_del1_pm": 1,
+    "E_eps_del1_mp": 1,
+    "E_eps_del1_mm": 1,
+    "E_eps_del2_pp": 1,
+    "E_eps_del2_pm": 1,
+    "E_eps_del2_mp": 1,
+    "E_eps_del2_mm": 1,
+    "kappa": 1,
+    "K": 0
+  },
+  "generator_realization": {
+    "description": "Oscillator realization in standard form with PBW ordering",
+    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m, b_2_p, b_2_m",
+    "realizations": {
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "a_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^-",
+        "parity": 0
+      },
+      "H_2": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_2_p",
+              "b_2_m"
+            ],
+            "coeff": "-1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_1^- - b_2^+ b_2^-",
+        "parity": 0
+      },
+      "H_3": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_p",
+              "b_2_m"
+            ],
+            "coeff": "-1"
+          },
+          {
+            "words": [],
+            "coeff": "-1/2"
+          }
+        ],
+        "frappat_form": "-b_2^+ b_2^- - 1/2",
+        "parity": 0
+      },
+      "E_eps_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^+",
+        "parity": 1
+      },
+      "E_eps_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^-",
+        "parity": 1
+      },
+      "E_eps_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^+",
+        "parity": 1
+      },
+      "E_eps_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^-",
+        "parity": 1
+      },
+      "E_eps_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_2^+",
+        "parity": 1
+      },
+      "E_eps_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_2^-",
+        "parity": 1
+      },
+      "E_eps_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_2^+",
+        "parity": 1
+      },
+      "E_eps_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_2^-",
+        "parity": 1
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_1^+)^2/2",
+        "parity": 0
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_1^-)^2/2",
+        "parity": 0
+      },
+      "E_2del2_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_p",
+              "b_2_p"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_2^+)^2/2",
+        "parity": 0
+      },
+      "E_2del2_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_m",
+              "b_2_m"
+            ],
+            "coeff": "1/2"
+          }
+        ],
+        "frappat_form": "(b_2^-)^2/2",
+        "parity": 0
+      },
+      "E_del1_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_2^+",
+        "parity": 0
+      },
+      "E_del1_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_2^-",
+        "parity": 0
+      },
+      "E_del1_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^- b_2^+",
+        "parity": 0
+      },
+      "E_del1_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^- b_2^-",
+        "parity": 0
+      }
+    }
+  },
+  "structure_constants": [],
+  "metadata": {
+    "generated_by": "C_generators.py",
+    "generation_date": "2026-10-05",
+    "schema_version": "5.0",
+    "algebra_family": "C",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "Bakalov and Sullivan (2017), arXiv:1612.09400",
+      "Issue I01 notation document"
+    ],
+    "notes": "C(3) = osp(2|4) with 4n=8 deformation parameters",
+    "schema_type": "Schema 3: Evaluated Structure",
+    "deformation_type": "inhomogeneous",
+    "gb_assignment_profile": "all_positive"
+  },
+  "deformation_parameters": {
+    "gb_matrix": {
+      "description": "Inhomogeneous deformation parameters",
+      "size": [
+        2,
+        2,
+        2
+      ],
+      "total_count": 8,
+      "parity": 1,
+      "parameters": [
+        {
+          "label": "gb_a1p_b1p",
+          "fermion": "a_1_p",
+          "boson": "b_1_p",
+          "parity": 1,
+          "index": [
+            "p",
+            1,
+            "p"
+          ]
+        },
+        {
+          "label": "gb_a1p_b1m",
+          "fermion": "a_1_p",
+          "boson": "b_1_m",
+          "parity": 1,
+          "index": [
+            "p",
+            1,
+            "m"
+          ]
+        },
+        {
+          "label": "gb_a1p_b2p",
+          "fermion": "a_1_p",
+          "boson": "b_2_p",
+          "parity": 1,
+          "index": [
+            "p",
+            2,
+            "p"
+          ]
+        },
+        {
+          "label": "gb_a1p_b2m",
+          "fermion": "a_1_p",
+          "boson": "b_2_m",
+          "parity": 1,
+          "index": [
+            "p",
+            2,
+            "m"
+          ]
+        },
+        {
+          "label": "gb_a1m_b1p",
+          "fermion": "a_1_m",
+          "boson": "b_1_p",
+          "parity": 1,
+          "index": [
+            "m",
+            1,
+            "p"
+          ]
+        },
+        {
+          "label": "gb_a1m_b1m",
+          "fermion": "a_1_m",
+          "boson": "b_1_m",
+          "parity": 1,
+          "index": [
+            "m",
+            1,
+            "m"
+          ]
+        },
+        {
+          "label": "gb_a1m_b2p",
+          "fermion": "a_1_m",
+          "boson": "b_2_p",
+          "parity": 1,
+          "index": [
+            "m",
+            2,
+            "p"
+          ]
+        },
+        {
+          "label": "gb_a1m_b2m",
+          "fermion": "a_1_m",
+          "boson": "b_2_m",
+          "parity": 1,
+          "index": [
+            "m",
+            2,
+            "m"
+          ]
+        }
+      ]
+    }
+  },
+  "gamma_coefficients": {
+    "description": "2-cocycle coefficients \u03b3(X, Y) for inhomogeneous deformation",
+    "definition": "[X, Y]_\u03b3 = [X, Y]_0 + \u03ba \u00b7 \u03b3(X, Y)",
+    "data": [
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_pp",
+        "gamma_symbolic": "gb_a1p_b1p",
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_pm",
+        "gamma_symbolic": "gb_a1p_b1m",
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_mp",
+        "gamma_symbolic": "gb_a1m_b1p",
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_mm",
+        "gamma_symbolic": "gb_a1m_b1m",
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_pp",
+        "gamma_symbolic": "gb_a1p_b2p",
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_pm",
+        "gamma_symbolic": "gb_a1p_b2m",
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "gb_a1m_b2p",
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "gb_a1m_b2m",
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "{gb_a1p_b1p, gb_a1m_b2p}",
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "{gb_a1p_b1p, gb_a1m_b2m}",
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "{gb_a1p_b1m, gb_a1m_b2p}",
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "{gb_a1p_b1m, gb_a1m_b2m}",
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true
+      }
+    ]
+  },
+  "gb_assignment": {
+    "profile": "all_positive",
+    "description": "All gb parameters set to +1",
+    "values": {
+      "gb_a1p_b1p": 1.0,
+      "gb_a1p_b1m": 1.0,
+      "gb_a1p_b2p": 1.0,
+      "gb_a1p_b2m": 1.0,
+      "gb_a1m_b1p": 1.0,
+      "gb_a1m_b1m": 1.0,
+      "gb_a1m_b2p": 1.0,
+      "gb_a1m_b2m": 1.0
+    }
+  },
+  "gamma_coefficients_evaluated": {
+    "description": "Gamma coefficients with gb parameters substituted",
+    "data": [
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_pp",
+        "gamma_symbolic": "gb_a1p_b1p",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_pm",
+        "gamma_symbolic": "gb_a1p_b1m",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_mp",
+        "gamma_symbolic": "gb_a1m_b1p",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del1_mm",
+        "gamma_symbolic": "gb_a1m_b1m",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_1]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_pp",
+        "gamma_symbolic": "gb_a1p_b2p",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_pm",
+        "gamma_symbolic": "gb_a1p_b2m",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "gb_a1m_b2p",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "gb_a1m_b2m",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Deformation from [a_1 interaction with b_2]",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "{gb_a1p_b1p, gb_a1m_b2p}",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "E_eps_del1_pp",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "{gb_a1p_b1p, gb_a1m_b2m}",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del2_mp",
+        "gamma_symbolic": "{gb_a1p_b1m, gb_a1m_b2p}",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      },
+      {
+        "X": "E_eps_del1_pm",
+        "Y": "E_eps_del2_mm",
+        "gamma_symbolic": "{gb_a1p_b1m, gb_a1m_b2m}",
+        "gamma_evaluated": 1.0,
+        "gamma_description": "Anticommutator interaction",
+        "involves_kappa": true,
+        "coeff": "1.0"
+      }
+    ]
+  }
+}
