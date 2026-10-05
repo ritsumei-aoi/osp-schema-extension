@@ -1,0 +1,603 @@
+{
+  "n": 1,
+  "algebra": "C(2) = osp(2|2)",
+  "dimension": 8,
+  "even_dimension": 4,
+  "odd_dimension": 4,
+  "basis_names": [
+    "H1",
+    "H2",
+    "E_2d1",
+    "E_-2d1",
+    "E_eps+d1",
+    "E_eps-d1",
+    "E_-eps+d1",
+    "E_-eps-d1"
+  ],
+  "basis_parity": {
+    "H1": 0,
+    "H2": 0,
+    "E_2d1": 0,
+    "E_-2d1": 0,
+    "E_eps+d1": 1,
+    "E_eps-d1": 1,
+    "E_-eps+d1": 1,
+    "E_-eps-d1": 1
+  },
+  "num_c0_nonzero_entries": 20,
+  "structure_constants_c0": [
+    {
+      "i": "H1",
+      "j": "E_2d1",
+      "k": "E_2d1",
+      "coeff": "2"
+    },
+    {
+      "i": "H1",
+      "j": "E_-2d1",
+      "k": "E_-2d1",
+      "coeff": "-2"
+    },
+    {
+      "i": "H1",
+      "j": "E_eps+d1",
+      "k": "E_eps+d1",
+      "coeff": "2"
+    },
+    {
+      "i": "H1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps-d1",
+      "coeff": "-2"
+    },
+    {
+      "i": "H2",
+      "j": "E_2d1",
+      "k": "E_2d1",
+      "coeff": "-2"
+    },
+    {
+      "i": "H2",
+      "j": "E_-2d1",
+      "k": "E_-2d1",
+      "coeff": "2"
+    },
+    {
+      "i": "H2",
+      "j": "E_eps+d1",
+      "k": "E_eps+d1",
+      "coeff": "-1"
+    },
+    {
+      "i": "H2",
+      "j": "E_eps-d1",
+      "k": "E_eps-d1",
+      "coeff": "1"
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps+d1",
+      "k": "E_-eps+d1",
+      "coeff": "-1"
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps-d1",
+      "k": "E_-eps-d1",
+      "coeff": "1"
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_-2d1",
+      "k": "H2",
+      "coeff": "1"
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_eps-d1",
+      "k": "E_eps+d1",
+      "coeff": "-1"
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps+d1",
+      "coeff": "-1"
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_eps+d1",
+      "k": "E_eps-d1",
+      "coeff": "1"
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_-eps+d1",
+      "k": "E_-eps-d1",
+      "coeff": "1"
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps+d1",
+      "k": "E_2d1",
+      "coeff": "2"
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps-d1",
+      "k": "H1",
+      "coeff": "-1"
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps-d1",
+      "k": "H2",
+      "coeff": "-2"
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps+d1",
+      "k": "H1",
+      "coeff": "1"
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps-d1",
+      "k": "E_-2d1",
+      "coeff": "2"
+    }
+  ],
+  "num_gamma_nonzero_entries": 50,
+  "deformation_cocycle_gamma": [
+    {
+      "i": "H1",
+      "j": "H2",
+      "k": "E_eps+d1",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "H2",
+      "k": "E_eps-d1",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "H2",
+      "k": "E_-eps+d1",
+      "expr": "-gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "H2",
+      "k": "E_-eps-d1",
+      "expr": "-gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_2d1",
+      "k": "E_eps+d1",
+      "expr": "gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_2d1",
+      "k": "E_-eps+d1",
+      "expr": "gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-2d1",
+      "k": "E_eps-d1",
+      "expr": "gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-2d1",
+      "k": "E_-eps-d1",
+      "expr": "gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps+d1",
+      "k": "H1",
+      "expr": "gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps+d1",
+      "k": "H2",
+      "expr": "2*gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "2"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps+d1",
+      "k": "E_2d1",
+      "expr": "-2*gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-2"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps-d1",
+      "k": "H1",
+      "expr": "gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps-d1",
+      "k": "H2",
+      "expr": "2*gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "2"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_eps-d1",
+      "k": "E_-2d1",
+      "expr": "-2*gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-2"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-eps+d1",
+      "k": "H1",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-eps+d1",
+      "k": "E_2d1",
+      "expr": "-2*gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-2"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-eps-d1",
+      "k": "H1",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "H1",
+      "j": "E_-eps-d1",
+      "k": "E_-2d1",
+      "expr": "-2*gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-2"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_eps+d1",
+      "k": "H2",
+      "expr": "-gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-1"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_eps+d1",
+      "k": "E_2d1",
+      "expr": "2*gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "2"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_eps-d1",
+      "k": "H2",
+      "expr": "-gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-1"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_eps-d1",
+      "k": "E_-2d1",
+      "expr": "2*gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "2"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps+d1",
+      "k": "H2",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps+d1",
+      "k": "E_2d1",
+      "expr": "2*gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "2"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps-d1",
+      "k": "H2",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "H2",
+      "j": "E_-eps-d1",
+      "k": "E_-2d1",
+      "expr": "2*gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "2"
+      }
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_eps+d1",
+      "k": "E_2d1",
+      "expr": "-2*gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-2"
+      }
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_eps-d1",
+      "k": "H2",
+      "expr": "gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "1"
+      }
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_-eps+d1",
+      "k": "E_2d1",
+      "expr": "-2*gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-2"
+      }
+    },
+    {
+      "i": "E_2d1",
+      "j": "E_-eps-d1",
+      "k": "H2",
+      "expr": "gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "1"
+      }
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_eps+d1",
+      "k": "H2",
+      "expr": "gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "1"
+      }
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_eps-d1",
+      "k": "E_-2d1",
+      "expr": "-2*gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-2"
+      }
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_-eps+d1",
+      "k": "H2",
+      "expr": "gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "1"
+      }
+    },
+    {
+      "i": "E_-2d1",
+      "j": "E_-eps-d1",
+      "k": "E_-2d1",
+      "expr": "-2*gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-2"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_eps+d1",
+      "k": "E_eps+d1",
+      "expr": "-2*gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-2"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_eps-d1",
+      "k": "E_eps+d1",
+      "expr": "-gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_eps-d1",
+      "k": "E_eps-d1",
+      "expr": "-gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps+d1",
+      "k": "E_eps+d1",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps+d1",
+      "k": "E_-eps+d1",
+      "expr": "-gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps-d1",
+      "k": "E_eps-d1",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_eps+d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps+d1",
+      "expr": "-gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_eps-d1",
+      "k": "E_eps-d1",
+      "expr": "-2*gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-2"
+      }
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps+d1",
+      "k": "E_eps+d1",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps+d1",
+      "k": "E_-eps-d1",
+      "expr": "-gb_+_1_+",
+      "linear_terms": {
+        "gb_+_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps-d1",
+      "k": "E_eps-d1",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_eps-d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps-d1",
+      "expr": "-gb_+_1_-",
+      "linear_terms": {
+        "gb_+_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_-eps+d1",
+      "j": "E_-eps+d1",
+      "k": "E_-eps+d1",
+      "expr": "-2*gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-2"
+      }
+    },
+    {
+      "i": "E_-eps+d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps+d1",
+      "expr": "-gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-1"
+      }
+    },
+    {
+      "i": "E_-eps+d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps-d1",
+      "expr": "-gb_-_1_+",
+      "linear_terms": {
+        "gb_-_1_+": "-1"
+      }
+    },
+    {
+      "i": "E_-eps-d1",
+      "j": "E_-eps-d1",
+      "k": "E_-eps-d1",
+      "expr": "-2*gb_-_1_-",
+      "linear_terms": {
+        "gb_-_1_-": "-2"
+      }
+    }
+  ]
+}
