@@ -2,6 +2,7 @@ import os
 import json
 import pytest
 from src.C_generators import build_C_basis, generate_C_structure_json, save_all_C_json
+from src.verify_C_structure import verify_structure_file
 
 def test_basis_dimensions():
     # C(2): n=1 -> even 4, odd 4, total 8
@@ -47,7 +48,6 @@ def test_graded_antisymmetry():
                 py = parity[y]
                 sign = -1 if (px == 1 and py == 1) else 1
                 
-                # Check for each target z
                 for z in basis:
                     c1_str = sc_map.get((x, y, z), "0")
                     c2_str = sc_map.get((y, x, z), "0")
@@ -57,6 +57,15 @@ def test_graded_antisymmetry():
                     c2 = Fraction(c2_str)
                     
                     assert c1 == -sign * c2, f"Graded antisymmetry violation for [{x}, {y}] vs [{y}, {x}] on {z}"
+
+def test_super_jacobi_identity():
+    save_all_C_json()
+    for n in (1, 2, 3):
+        filepath = f"data/C_{n}_structure.json"
+        res = verify_structure_file(filepath)
+        assert res["status"] == "PASS", f"Super Jacobi verification failed for n={n}"
+        assert res["antisymmetry_failures"] == 0
+        assert res["jacobi_failures"] == 0
 
 def test_json_schema_conformance():
     save_all_C_json()
