@@ -1,0 +1,47 @@
+{
+  "problem": "Triviality of C(n+1) inhomogeneous GB deformation",
+  "claim": "GB deformation is trivial iff gb parameters vanish",
+  "n_values": [
+    1,
+    2,
+    3
+  ],
+  "analysis": {
+    "C(2)": {
+      "n": 1,
+      "dimension": {
+        "even": 4,
+        "odd": 4,
+        "total": 8
+      },
+      "gb_parameters": 4,
+      "coboundary_freedom": 33,
+      "key_observation": "GB deformation affects \u03ba-term; coboundary affects g-term",
+      "triviality_condition": "gb_parameters = 0 (all vanish)"
+    },
+    "C(3)": {
+      "n": 2,
+      "dimension": {
+        "even": 11,
+        "odd": 8,
+        "total": 19
+      },
+      "gb_parameters": 8,
+      "coboundary_freedom": 177,
+      "key_observation": "GB deformation affects \u03ba-term; coboundary affects g-term",
+      "triviality_condition": "gb_parameters = 0 (all vanish)"
+    },
+    "C(4)": {
+      "n": 3,
+      "dimension": {
+        "even": 22,
+        "odd": 12,
+        "total": 34
+      },
+      "gb_parameters": 12,
+      "coboundary_freedom": 529,
+      "key_observation": "GB deformation affects \u03ba-term; coboundary affects g-term",
+      "triviality_condition": "gb_parameters = 0 (all vanish)"
+    }
+  }
+}
