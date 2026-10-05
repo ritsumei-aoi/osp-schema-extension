@@ -216,3 +216,10 @@ def test_coboundary_graded_antisymmetry(n):
             f"c_xy={c_xy}, c_yx={c_yx}"
         )
 
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_triviality_analysis_execution(n):
+    from src.analyze_triviality import analyze_cohomological_triviality
+    res = analyze_cohomological_triviality(n, "data")
+    assert res["intersection_dimension"] == 0
+    assert res["trivial_only_if_gb_zero"] is True
+
