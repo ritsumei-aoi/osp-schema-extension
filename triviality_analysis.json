@@ -1,0 +1,210 @@
+{
+  "n1": {
+    "n1": {
+      "n": 1,
+      "algebra": "C(2) = osp(2|2)",
+      "basis_size": [
+        6,
+        6,
+        12
+      ],
+      "num_gb_params": 4,
+      "gb_parameters": [
+        "gb_+_1_+",
+        "gb_+_1_-",
+        "gb_-_1_+",
+        "gb_-_1_-"
+      ],
+      "affected_brackets": [
+        [
+          "a1_plus",
+          "b1_+",
+          "gb_+_1_+"
+        ],
+        [
+          "a1_plus",
+          "b1_-",
+          "gb_+_1_-"
+        ],
+        [
+          "a1_minus",
+          "b1_+",
+          "gb_-_1_+"
+        ],
+        [
+          "a1_minus",
+          "b1_-",
+          "gb_-_1_-"
+        ]
+      ],
+      "coboundary_analysis": {
+        "description": "For triviality, we need \u03b3_gb = \u03b4f for some odd map f: g \u2192 g",
+        "key_equation": "(\u03b4f)(a_1^\u03c3, b_j^s) = gb_{\u03c3,j,s} \u00b7 \u03ba (up to adjoint representation)",
+        "map_f_requirement": "f must be odd (reverse parity) and satisfy specific commutation relations"
+      }
+    }
+  },
+  "n2": {
+    "n2": {
+      "n": 2,
+      "algebra": "C(3) = osp(2|4)",
+      "basis_size": [
+        15,
+        10,
+        25
+      ],
+      "num_gb_params": 8,
+      "gb_parameters": [
+        "gb_+_1_+",
+        "gb_+_1_-",
+        "gb_+_2_+",
+        "gb_+_2_-",
+        "gb_-_1_+",
+        "gb_-_1_-",
+        "gb_-_2_+",
+        "gb_-_2_-"
+      ],
+      "affected_brackets": [
+        [
+          "a1_plus",
+          "b1_+",
+          "gb_+_1_+"
+        ],
+        [
+          "a1_plus",
+          "b1_-",
+          "gb_+_1_-"
+        ],
+        [
+          "a1_plus",
+          "b2_+",
+          "gb_+_2_+"
+        ],
+        [
+          "a1_plus",
+          "b2_-",
+          "gb_+_2_-"
+        ],
+        [
+          "a1_minus",
+          "b1_+",
+          "gb_-_1_+"
+        ],
+        [
+          "a1_minus",
+          "b1_-",
+          "gb_-_1_-"
+        ],
+        [
+          "a1_minus",
+          "b2_+",
+          "gb_-_2_+"
+        ],
+        [
+          "a1_minus",
+          "b2_-",
+          "gb_-_2_-"
+        ]
+      ]
+    }
+  },
+  "n3": {
+    "n3": {
+      "n": 3,
+      "algebra": "C(4) = osp(2|6)",
+      "basis_size": [
+        28,
+        14,
+        42
+      ],
+      "num_gb_params": 12,
+      "gb_parameters": [
+        "gb_+_1_+",
+        "gb_+_1_-",
+        "gb_+_2_+",
+        "gb_+_2_-",
+        "gb_+_3_+",
+        "gb_+_3_-",
+        "gb_-_1_+",
+        "gb_-_1_-",
+        "gb_-_2_+",
+        "gb_-_2_-",
+        "gb_-_3_+",
+        "gb_-_3_-"
+      ],
+      "affected_brackets": [
+        [
+          "a1_plus",
+          "b1_+",
+          "gb_+_1_+"
+        ],
+        [
+          "a1_plus",
+          "b1_-",
+          "gb_+_1_-"
+        ],
+        [
+          "a1_plus",
+          "b2_+",
+          "gb_+_2_+"
+        ],
+        [
+          "a1_plus",
+          "b2_-",
+          "gb_+_2_-"
+        ],
+        [
+          "a1_plus",
+          "b3_+",
+          "gb_+_3_+"
+        ],
+        [
+          "a1_plus",
+          "b3_-",
+          "gb_+_3_-"
+        ],
+        [
+          "a1_minus",
+          "b1_+",
+          "gb_-_1_+"
+        ],
+        [
+          "a1_minus",
+          "b1_-",
+          "gb_-_1_-"
+        ],
+        [
+          "a1_minus",
+          "b2_+",
+          "gb_-_2_+"
+        ],
+        [
+          "a1_minus",
+          "b2_-",
+          "gb_-_2_-"
+        ],
+        [
+          "a1_minus",
+          "b3_+",
+          "gb_-_3_+"
+        ],
+        [
+          "a1_minus",
+          "b3_-",
+          "gb_-_3_-"
+        ]
+      ]
+    }
+  },
+  "theoretical": {
+    "summary": "Triviality of C(n+1) inhomogeneous gb deformation",
+    "key_observation": "The gb deformation introduces terms proportional to the odd central element \u03ba in specific bracket relations. For triviality, we need a map f: g \u2192 g such that all generated coboundary terms match the gb deformation.",
+    "constraint_analysis": {
+      "coboundary_range": "The coboundary operator generates terms by commuting f(X) with elements of g. Since \u03ba is central, [X, \u03ba] = 0 for all X. This severely restricts what deformations can be coboundaries.",
+      "gb_structure": "The gb parameters appear linearly in the deformed brackets as [b_j^s, a_1^\u03c3] = -gb_{\u03c3,j,s} \u00b7 \u03ba. A coboundary must reproduce these exact terms.",
+      "parity_argument": "f must reverse parity. So f maps even elements to odd and vice versa. The map f(b_j^s) must be odd, and f(a_1^\u03c3) must be even."
+    },
+    "theoretical_conclusion": "The inhomogeneous gb deformation is GENERICALLY NON-TRIVIAL. For the deformation to be trivial, the gb parameters must satisfy very specific constraints. Analysis suggests that most configurations of gb parameters do NOT yield coboundaries.",
+    "condition_for_triviality": "A deformation with non-zero gb parameters can be trivial only if there exists an odd map f: g \u2192 g satisfying the coboundary equation. This imposes stringent algebraic constraints on the gb parameters."
+  }
+}
