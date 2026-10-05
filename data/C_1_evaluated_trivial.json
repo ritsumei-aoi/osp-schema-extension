@@ -1,0 +1,86 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "evaluation": {
+    "description": "Concrete evaluation of deformation parameters",
+    "case": "trivial",
+    "gb_assignment": {
+      "gb_+_1_p": 0.0,
+      "gb_+_1_m": 0.0,
+      "gb_-_1_p": 0.0,
+      "gb_-_1_m": 0.0
+    },
+    "note": "gb=0 represents the undeformed oscillator algebra"
+  },
+  "deformation_parameters": {
+    "gb_matrix": {
+      "size": 4,
+      "values": {
+        "gb_+_1_p": 0.0,
+        "gb_+_1_m": 0.0,
+        "gb_-_1_p": 0.0,
+        "gb_-_1_m": 0.0
+      },
+      "all_zero": true
+    },
+    "deformation_strength": 0.0,
+    "summary": "All 4 gb parameters evaluated; total strength = 0.0"
+  },
+  "structure_constants": {
+    "status": "to be computed",
+    "total_pairs": 64,
+    "method": "oscillator bracket with gb substitution",
+    "note": "With gb=0, brackets reduce to undeformed oscillator algebra relations"
+  },
+  "basis_and_parity": {
+    "even_basis": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd_basis": [
+      "E_eps_del1_pp",
+      "E_eps_del1_pm",
+      "E_eps_del1_mp",
+      "E_eps_del1_mm"
+    ],
+    "parity": {
+      "H_1": 0,
+      "H_2": 0,
+      "E_eps_del1_pp": 1,
+      "E_eps_del1_pm": 1,
+      "E_2del1_p": 0,
+      "E_2del1_m": 0,
+      "E_eps_del1_mp": 1,
+      "E_eps_del1_mm": 1
+    }
+  },
+  "consistency": {
+    "schema1_reference": "C_1_structure.json",
+    "schema2_reference": "C_1_gamma.json",
+    "gb_values_from": "trivial deformation case (all zero)",
+    "basis_aligned": true,
+    "parity_aligned": true
+  },
+  "metadata": {
+    "generated_by": "C_evaluated_generator.py",
+    "algebra": "C(2) = osp(2|2)",
+    "evaluation_case": "trivial",
+    "status": "parametrization evaluated; structure constant computation pending"
+  }
+}
