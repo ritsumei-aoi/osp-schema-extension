@@ -1,0 +1,71 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "linear_map_f": {
+    "description": "Odd linear map f parameterized by phi",
+    "parameters": [
+      "phi_E_eps1_del1_mm_E_2del1_m",
+      "phi_E_2del1_m_E_eps1_del1_mm",
+      "phi_E_eps1_del1_mp_E_2del1_m",
+      "phi_E_2del1_m_E_eps1_del1_mp",
+      "phi_E_eps1_del1_pm_E_2del1_m",
+      "phi_E_2del1_m_E_eps1_del1_pm",
+      "phi_E_eps1_del1_pp_E_2del1_m",
+      "phi_E_2del1_m_E_eps1_del1_pp",
+      "phi_E_eps1_del1_mm_E_2del1_p",
+      "phi_E_2del1_p_E_eps1_del1_mm",
+      "phi_E_eps1_del1_mp_E_2del1_p",
+      "phi_E_2del1_p_E_eps1_del1_mp",
+      "phi_E_eps1_del1_pm_E_2del1_p",
+      "phi_E_2del1_p_E_eps1_del1_pm",
+      "phi_E_eps1_del1_pp_E_2del1_p",
+      "phi_E_2del1_p_E_eps1_del1_pp",
+      "phi_E_eps1_del1_mm_H_1",
+      "phi_H_1_E_eps1_del1_mm",
+      "phi_E_eps1_del1_mp_H_1",
+      "phi_H_1_E_eps1_del1_mp",
+      "phi_E_eps1_del1_pm_H_1",
+      "phi_H_1_E_eps1_del1_pm",
+      "phi_E_eps1_del1_pp_H_1",
+      "phi_H_1_E_eps1_del1_pp",
+      "phi_E_eps1_del1_mm_H_2",
+      "phi_H_2_E_eps1_del1_mm",
+      "phi_E_eps1_del1_mp_H_2",
+      "phi_H_2_E_eps1_del1_mp",
+      "phi_E_eps1_del1_pm_H_2",
+      "phi_H_2_E_eps1_del1_pm",
+      "phi_E_eps1_del1_pp_H_2",
+      "phi_H_2_E_eps1_del1_pp"
+    ]
+  },
+  "coboundary_structure": {
+    "description": "Coboundary coefficients for (delta f)(X, Y)",
+    "coboundary_constants": [
+      {
+        "X": "E_2del1_m",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "phi_term": "phi_E_eps1_del1_mm_E_2del1_m",
+        "coeff": "1.0"
+      }
+    ]
+  },
+  "metadata": {
+    "generated_by": "C_coboundary_generators.py",
+    "note": "Coboundary constants are structurally defined."
+  }
+}
