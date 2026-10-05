@@ -172,3 +172,47 @@ def test_schema_3_consistency(n):
         if v != 0:
             assert actual_eval.get(k) == v, f"Evaluated coefficient mismatch at {k}: expected {v}, got {actual_eval.get(k)}"
 
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_schema_4_consistency(n):
+    path_s4 = os.path.join("data", f"C_{n}_coboundary.json")
+    assert os.path.exists(path_s4), f"Missing {path_s4}"
+    
+    with open(path_s4, "r") as f4:
+        d4 = json.load(f4)
+        
+    assert d4["schema_version"] == "5.0"
+    assert d4["layer"] == 4
+    assert d4["algebra"]["family"] == "C"
+    assert d4["algebra"]["n"] == n
+    
+    # Check that f strictly reverses parity
+    parities = d4["parity"]
+    map_table = d4["odd_linear_map_f"]["map_table"]
+    for src_gen, targets in map_table.items():
+        p_src = parities[src_gen]
+        for tgt_gen in targets.keys():
+            p_tgt = parities[tgt_gen]
+            assert p_tgt == 1 - p_src, f"Parity reversal failure: f({src_gen}) has component {tgt_gen}"
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_coboundary_graded_antisymmetry(n):
+    from fractions import Fraction
+    path_s4 = os.path.join("data", f"C_{n}_coboundary.json")
+    with open(path_s4, "r") as f:
+        data = json.load(f)
+        
+    parities = data["parity"]
+    cb_dict = {}
+    for entry in data["coboundary_operator"]["coboundary_coefficients"]:
+        key = (entry["X"], entry["Y"], entry["Z"])
+        cb_dict[key] = Fraction(entry["coeff"])
+        
+    # Verify graded antisymmetry: delta f(X, Y) = - (-1)^{px py} delta f(Y, X)
+    for (x, y, z), c_xy in cb_dict.items():
+        p_xy = (-1) ** (parities[x] * parities[y])
+        c_yx = cb_dict.get((y, x, z), Fraction(0))
+        assert c_xy == - p_xy * c_yx, (
+            f"Coboundary graded antisymmetry violated for ({x}, {y}) on {z}: "
+            f"c_xy={c_xy}, c_yx={c_yx}"
+        )
+
