@@ -1,0 +1,20 @@
+{
+  "algebra": "C(n+1) = osp(2|2n)",
+  "deformation_type": "inhomogeneous (gb parameters)",
+  "generators_evaluated": ["a_1^+ b_j^-", "a_1^+ b_j^+", "a_1^- b_j^-", "a_1^- b_j^+"],
+  "gb_parameters": ["gb_{+, j, -}", "gb_{+, j, +}", "gb_{-, j, -}", "gb_{-, j, +}"],
+  "scalar_obstructions": {
+    "a_1^+ b_j^-": "1/2 * beta_{j, -, -} - 1/2 * alpha_{+, j, +}",
+    "a_1^+ b_j^+": "1/2 * beta_{j, +, -} + 1/2 * alpha_{+, j, -}",
+    "a_1^- b_j^-": "1/2 * beta_{j, -, +} - 1/2 * alpha_{-, j, +}",
+    "a_1^- b_j^+": "1/2 * beta_{j, +, +} + 1/2 * alpha_{-, j, -}"
+  },
+  "coboundary_relations": {
+    "gb_{+, j, -}": "-2 * (scalar part of f(a_1^+ b_j^-))",
+    "gb_{+, j, +}": "-2 * (scalar part of f(a_1^+ b_j^+))",
+    "gb_{-, j, -}": "-2 * (scalar part of f(a_1^- b_j^-))",
+    "gb_{-, j, +}": "-2 * (scalar part of f(a_1^- b_j^+))"
+  },
+  "triviality_conclusion": "For a valid coboundary map f: g -> g, the scalar obstructions must vanish, forcing all gb parameters to zero.",
+  "is_trivial": false
+}
