@@ -195,7 +195,15 @@ def normal_order(word, n):
 
         terms = {k: v for k, v in new_terms.items() if v != 0}
 
-    return terms
+    # Fermionic nilpotency: any word with duplicate fermionic oscillators vanishes
+    cleaned = {}
+    for w, c in terms.items():
+        fermion_labels = [o for o in w if osc_parity(o) == 1]
+        if len(fermion_labels) != len(set(fermion_labels)):
+            continue
+        cleaned[w] = c
+
+    return cleaned
 
 
 def get_contraction(o1, o2, n):
@@ -209,31 +217,67 @@ def get_contraction(o1, o2, n):
 
 
 def express_in_basis(osc_result, all_generators, n):
-    """Express an oscillator result as a linear combination of basis generators."""
+    """Express an oscillator result as a linear combination of basis generators.
+
+    Solves the linear system: sum_i c_i * realization(gen_i) = osc_result
+    """
     if not osc_result:
         return {}
 
-    gen_realizations = {}
+    all_words = set()
+    gen_vectors = {}
     for g in all_generators:
         real = get_realization(g, n)
+        vec = {}
         for coeff, words in real:
             key = tuple(words)
-            if key not in gen_realizations:
-                gen_realizations[key] = []
-            gen_realizations[key].append((g, coeff))
+            vec[key] = vec.get(key, Fraction(0)) + coeff
+            all_words.add(key)
+    for word in osc_result:
+        all_words.add(word)
 
+    gen_vectors = {}
+    for g in all_generators:
+        real = get_realization(g, n)
+        vec = {}
+        for coeff, words in real:
+            key = tuple(words)
+            vec[key] = vec.get(key, Fraction(0)) + coeff
+        gen_vectors[g] = vec
+
+    word_list = sorted(all_words, key=lambda w: (len(w), w))
+
+    remaining = dict(osc_result)
     result = {}
-    for word, coeff in osc_result.items():
-        if word == ():
+
+    for g in all_generators:
+        gvec = gen_vectors[g]
+        unique_words = [w for w in gvec if not any(
+            w in gen_vectors[g2] for g2 in all_generators if g2 != g
+        ) and gvec[w] != 0]
+
+        if unique_words:
+            w = unique_words[0]
+            if w in remaining and remaining[w] != 0:
+                ratio = remaining[w] / gvec[w]
+                result[g] = result.get(g, Fraction(0)) + ratio
+                for gw, gc in gvec.items():
+                    remaining[gw] = remaining.get(gw, Fraction(0)) - ratio * gc
+                remaining = {k: v for k, v in remaining.items() if v != 0}
+
+    for g in all_generators:
+        if g in result:
             continue
-        found = False
-        for (gen, gen_coeff) in gen_realizations.get(word, []):
-            ratio = coeff / gen_coeff
-            result[gen] = result.get(gen, Fraction(0)) + ratio
-            found = True
-            break
-        if not found and coeff != 0:
-            pass
+        gvec = gen_vectors[g]
+        nonzero_words = [w for w in gvec if gvec[w] != 0]
+        if nonzero_words:
+            w = nonzero_words[0]
+            if w in remaining and remaining[w] != 0:
+                ratio = remaining[w] / gvec[w]
+                result[g] = result.get(g, Fraction(0)) + ratio
+                for gw, gc in gvec.items():
+                    remaining[gw] = remaining.get(gw, Fraction(0)) - ratio * gc
+                remaining = {k: v for k, v in remaining.items() if v != 0}
 
     return {k: v for k, v in result.items() if v != 0}
 
