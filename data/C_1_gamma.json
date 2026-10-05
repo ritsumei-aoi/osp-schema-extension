@@ -1,0 +1,379 @@
+{
+  "schema_version": "5.0",
+  "schema_layer": 2,
+  "schema_name": "inhomogeneous_deformation",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "m": 1,
+      "count": 2,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "description": "Standard fermionic pair with CAR: {a_1^-, a_1^+} = 1"
+    },
+    "bosons": {
+      "count": 2,
+      "n": 1,
+      "labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "description": "Bosonic oscillators with CCR [b_k^-, b_l^+] = \u03b4_{kl}"
+    }
+  },
+  "oscillator_relations": {
+    "standard_fermion_anticommutators": {
+      "description": "CAR for standard fermionic pair",
+      "relations": {
+        "hermitian_conjugate": "{a_1^-, a_1^+} = 1",
+        "self_anticommutator_minus": "{a_1^-, a_1^-} = 0",
+        "self_anticommutator_plus": "{a_1^+, a_1^+} = 0"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "CCR for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_i^+, b_j^+] = 0, [b_i^-, b_j^-] = 0",
+        "conjugate_pair": "[b_i^-, b_j^+] = \u03b4_{ij}"
+      }
+    },
+    "mixed_commutators": {
+      "boson_fermion": "[b_k^\u00b1, a_1^\u00b1] = 0 (Schema 1; deformed in Schema 2)"
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "label": "\u03ba",
+      "parity": 1,
+      "nilpotency": 2,
+      "relation": "\u03ba^2 = 0",
+      "description": "Odd central element; parametrizes inhomogeneous deformations"
+    },
+    "K": {
+      "label": "K",
+      "parity": 0,
+      "definition": "scalar 1",
+      "description": "Even central identity element (Bakalov-Sullivan convention)"
+    }
+  },
+  "deformation_parameters": {
+    "gb_matrix": {
+      "description": "Parity-1 parameters for inhomogeneous deformation",
+      "total_count": 4,
+      "dimensions": {
+        "fermionic_pair_count": 1,
+        "fermionic_signs": 2,
+        "bosonic_pairs": 1,
+        "bosonic_signs": 2,
+        "formula": "2 \u00d7 2 \u00d7 n"
+      },
+      "parameters": [
+        {
+          "label": "gb_a1_p_b1_p",
+          "index": {
+            "fermionic": "a_1^+",
+            "bosonic_index": 1,
+            "bosonic_sign": "+"
+          },
+          "parity": 1,
+          "description": "Deformation parameter for [b_1^+, a_1^+]"
+        },
+        {
+          "label": "gb_a1_p_b1_m",
+          "index": {
+            "fermionic": "a_1^+",
+            "bosonic_index": 1,
+            "bosonic_sign": "-"
+          },
+          "parity": 1,
+          "description": "Deformation parameter for [b_1^-, a_1^+]"
+        },
+        {
+          "label": "gb_a1_m_b1_p",
+          "index": {
+            "fermionic": "a_1^-",
+            "bosonic_index": 1,
+            "bosonic_sign": "+"
+          },
+          "parity": 1,
+          "description": "Deformation parameter for [b_1^+, a_1^-]"
+        },
+        {
+          "label": "gb_a1_m_b1_m",
+          "index": {
+            "fermionic": "a_1^-",
+            "bosonic_index": 1,
+            "bosonic_sign": "-"
+          },
+          "parity": 1,
+          "description": "Deformation parameter for [b_1^-, a_1^-]"
+        }
+      ]
+    }
+  },
+  "inhomogeneous_deformation": {
+    "description": "Gamma structure: [X, Y]_\u03b3 = [X, Y]_0 + \u03ba \u00b7 \u03b3(X, Y)",
+    "deformed_bracket": "[X, Y]_\u03b3",
+    "parametrization": "via gb exchange relations",
+    "exchange_relations": [
+      "[b_j^s, a_1^\u03c3] = -gb_{\u03c3,j,s} \u00b7 \u03ba"
+    ],
+    "gamma_terms": [
+      {
+        "X": "H_1",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "-gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "-gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "-gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_1",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "-gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_2",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "-gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_2",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "-gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_2",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "-gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "H_2",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "-gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "-gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "-gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "-gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_p",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "-gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "-gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_pm",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "-gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "-gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_2del1_m",
+        "Y": "E_eps1_del1_mm",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "-gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pp",
+        "gamma_coeff": "gb_1_pp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_pm",
+        "gamma_coeff": "gb_1_pm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mp",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mp",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mp",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mp",
+        "gamma_coeff": "gb_1_mp",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mm",
+        "Y": "H_1",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mm",
+        "Y": "H_2",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_p",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "gb_1_mm",
+        "parametrization": "via gb matrix"
+      },
+      {
+        "X": "E_eps1_del1_mm",
+        "Y": "E_2del1_m",
+        "Z": "E_eps1_del1_mm",
+        "gamma_coeff": "gb_1_mm",
+        "parametrization": "via gb matrix"
+      }
+    ]
+  },
+  "schema1_reference": {
+    "file": "data/C_1_structure.json",
+    "generation_date": "2026-10-05"
+  },
+  "metadata": {
+    "generated_by": "src/C_gamma_generator.py",
+    "generation_date": "2026-10-05",
+    "schema_version": "5.0",
+    "schema_layer": 2,
+    "references": [
+      "Frappat, Sciarrino, Sorba (2000), Dictionary on Lie Algebras and Superalgebras",
+      "C_inhomogeneous_definition.md",
+      "handover/notation.md"
+    ]
+  }
+}
