@@ -90,3 +90,8 @@ def test_schema_1_file_conformance(n):
     assert "bosons" in data["oscillator_generators"]
     assert len(data["oscillator_generators"]["fermions"]["labels"]) == 2
     assert len(data["oscillator_generators"]["bosons"]["labels"]) == 2 * n
+
+def test_super_jacobi_identity_all_ranks():
+    from src.verify_C_structure import verify_all
+    assert verify_all("data") is True
+
