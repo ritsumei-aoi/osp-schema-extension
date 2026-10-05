@@ -372,13 +372,6 @@ def decompose_in_basis(bracket_result, gen_realizations, all_basis, parity_map):
     if not bracket_result:
         return []
 
-    # Build a map from normalized term -> list of (gen, contribution_coeff)
-    # For single-term generators this is straightforward.
-    # For multi-term generators (Cartan), we need to solve.
-
-    # Strategy: process single-term generators first to absorb those terms,
-    # then handle Cartan elements.
-
     remaining = {}
     for c, t in bracket_result:
         remaining[t] = remaining.get(t, Fraction(0)) + c
@@ -392,13 +385,10 @@ def decompose_in_basis(bracket_result, gen_realizations, all_basis, parity_map):
         terms = gen_realizations[gen]
         if len(terms) == 1:
             c_gen, t_gen = terms[0]
-            # Normalize
             no = normal_order_bilinear(t_gen[0], t_gen[1]) if len(t_gen) == 2 else [(Fraction(1), t_gen)]
             for cn, tn in no:
                 actual_coeff = c_gen * cn
-                if tn in single_term_gens:
-                    pass  # shouldn't happen for distinct generators
-                else:
+                if tn not in single_term_gens:
                     single_term_gens[tn] = (gen, actual_coeff)
 
     for t, c in list(remaining.items()):
@@ -408,36 +398,74 @@ def decompose_in_basis(bracket_result, gen_realizations, all_basis, parity_map):
             result[gen] = result.get(gen, Fraction(0)) + coeff_in_gen
             del remaining[t]
 
-    # Second pass: Cartan elements (multi-term)
-    for gen in all_basis:
-        if not gen.startswith("H_"):
-            continue
-        terms = gen_realizations[gen]
-        if len(terms) <= 1:
-            continue
+    if not remaining:
+        return [(g, c) for g, c in result.items() if c != 0]
 
-        # Normalize all terms of this generator
-        normalized = []
+    # Second pass: solve for Cartan coefficients via forward sweep.
+    # The Cartan elements form a tridiagonal system in the oscillator words:
+    #   H_1 uses (a_1^+, a_1^-) and (b_1^+, b_1^-)
+    #   H_k uses (b_{k-1}^+, b_{k-1}^-) and (b_k^+, b_k^-)  for 2<=k<=n
+    #   H_{n+1} uses (b_n^+, b_n^-) and constant ()
+    # Solve in order: H_1 from (a_1^+, a_1^-), then H_k from (b_{k-1}^+, b_{k-1}^-)
+    # after subtracting previous Cartan contributions.
+
+    # Build normalized Cartan term lists
+    cartan_gens = [g for g in all_basis if g.startswith("H_") and len(gen_realizations[g]) > 1]
+    cartan_normalized = {}
+    for gen in cartan_gens:
+        terms = gen_realizations[gen]
+        norm = []
         for c_gen, t_gen in terms:
             if len(t_gen) == 2:
                 no = normal_order_bilinear(t_gen[0], t_gen[1])
                 for cn, tn in no:
-                    normalized.append((c_gen * cn, tn))
+                    norm.append((c_gen * cn, tn))
             else:
-                normalized.append((c_gen, t_gen))
+                norm.append((c_gen, t_gen))
+        cartan_normalized[gen] = norm
 
-        # Find the coefficient by matching any remaining term
-        for c_gen_norm, t_gen_norm in normalized:
-            if t_gen_norm in remaining and c_gen_norm != 0:
-                coeff_in_gen = remaining[t_gen_norm] / c_gen_norm
-                result[gen] = result.get(gen, Fraction(0)) + coeff_in_gen
-                # Remove all terms of this generator from remaining
-                for cn2, tn2 in normalized:
-                    if tn2 in remaining:
-                        remaining[tn2] = remaining[tn2] - coeff_in_gen * cn2
-                        if remaining[tn2] == 0:
-                            del remaining[tn2]
+    def _subtract_gen(gen, coeff):
+        for cn, tn in cartan_normalized[gen]:
+            delta = coeff * cn
+            if delta == 0:
+                continue
+            if tn in remaining:
+                remaining[tn] -= delta
+                if remaining[tn] == 0:
+                    del remaining[tn]
+            else:
+                remaining[tn] = -delta
+
+    # H_1: pivot on (a_1^+, a_1^-)
+    a1_word = (('a', 1, 'p'), ('a', 1, 'm'))
+    c1 = remaining.get(a1_word, Fraction(0))
+    if c1 != 0:
+        result["H_1"] = result.get("H_1", Fraction(0)) + c1
+        _subtract_gen("H_1", c1)
+
+    # H_k (k=2,...): pivot on (b_{k-1}^+, b_{k-1}^-)
+    for gen in cartan_gens:
+        if gen == "H_1":
+            continue
+        k = int(gen.split("_")[1])
+        # The pivot word is the first bilinear term, which for H_k (k>=2)
+        # is b_{k-1}^+ b_{k-1}^- with coefficient +1 (for k<=n)
+        # or b_n^+ b_n^- with coefficient -1 (for k=n+1)
+        pivot_word = None
+        pivot_coeff = None
+        for cn, tn in cartan_normalized[gen]:
+            if len(tn) == 2:
+                pivot_word = tn
+                pivot_coeff = cn
                 break
+        if pivot_word is None or pivot_coeff == 0:
+            continue
+        val = remaining.get(pivot_word, Fraction(0))
+        if val == 0:
+            continue
+        ck = val / pivot_coeff
+        result[gen] = result.get(gen, Fraction(0)) + ck
+        _subtract_gen(gen, ck)
 
     return [(g, c) for g, c in result.items() if c != 0]
 
