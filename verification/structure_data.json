@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "algebra": "C(n+1) = osp(2|2n)",
+    "problem": "triviality of inhomogeneous gb-deformations",
+    "method": "analytical oscillator computation + coboundary linear system",
+    "scalar_handling": "identity operator projected out via adjoint representation condition"
+  },
+  "C2_osp22": {
+    "n": 1,
+    "generators": {
+      "even": ["H1 = a+a- + b+b-", "H2 = -b+b- - 1/2", "E+ = (b+)^2/2", "E- = (b-)^2/2"],
+      "odd": ["o1 = a+b+", "o2 = a+b-", "o3 = a-b+", "o4 = a-b-"]
+    },
+    "gb_parameters": {
+      "g1": "gb_{+,1,+}: [b+, a+] = -g1*kappa",
+      "g2": "gb_{+,1,-}: [b-, a+] = -g2*kappa",
+      "g3": "gb_{-,1,+}: [b+, a-] = -g3*kappa",
+      "g4": "gb_{-,1,-}: [b-, a-] = -g4*kappa"
+    },
+    "structure_constants": {
+      "[H1,E+]": "2*E+",
+      "[H1,E-]": "-2*E-",
+      "[H1,o1]": "2*o1",
+      "[H1,o4]": "-2*o4",
+      "[H2,E+]": "-2*E+",
+      "[H2,E-]": "2*E-",
+      "[H2,o1]": "-o1",
+      "[H2,o2]": "o2",
+      "[H2,o3]": "-o3",
+      "[H2,o4]": "o4",
+      "[E+,E-]": "H2",
+      "[E+,o2]": "-o1",
+      "[E+,o4]": "-o3",
+      "[E-,o1]": "o2",
+      "[E-,o3]": "o4",
+      "{o1,o3}": "2*E+",
+      "{o1,o4}": "-H1 - 2*H2",
+      "{o2,o3}": "H1",
+      "{o2,o4}": "2*E-"
+    },
+    "gamma_cocycle": {
+      "even_even": {
+        "gamma(H1,H2)": "-(g4*o1 + g3*o2 + g2*o3 + g1*o4)",
+        "gamma(H1,E+)": "g3*o1 + g1*o3",
+        "gamma(H1,E-)": "g4*o2 + g2*o4"
+      },
+      "even_odd": {
+        "gamma(H1,o1)": "g1*H1 + 2*g1*H2 - 2*g2*E+",
+        "gamma(H1,o2)": "g2*H1 + 2*g2*H2 - 2*g1*E-",
+        "gamma(H1,o3)": "-g3*H1 - 2*g4*E+",
+        "gamma(H1,o4)": "-g4*H1 - 2*g3*E-",
+        "gamma(H2,o1)": "-g1*H2 + 2*g2*E+",
+        "gamma(H2,o2)": "-g2*H2 + 2*g1*E-",
+        "gamma(H2,o3)": "-g3*H2 + 2*g4*E+",
+        "gamma(H2,o4)": "-g4*H2 + 2*g3*E-",
+        "gamma(E+,o1)": "-2*g1*E+",
+        "gamma(E+,o2)": "g1*H2",
+        "gamma(E+,o3)": "-2*g3*E+",
+        "gamma(E+,o4)": "g3*H2",
+        "gamma(E-,o1)": "g2*H2",
+        "gamma(E-,o2)": "-2*g2*E-",
+        "gamma(E-,o3)": "g4*H2",
+        "gamma(E-,o4)": "-2*g4*E-"
+      },
+      "odd_odd": {
+        "gamma(o1,o1)": "-2*g1*o1",
+        "gamma(o1,o2)": "-g2*o1 - g1*o2",
+        "gamma(o1,o3)": "-g3*o1 - g1*o3",
+        "gamma(o1,o4)": "-g3*o2 - g2*o3",
+        "gamma(o2,o2)": "-2*g2*o2",
+        "gamma(o2,o3)": "-g4*o1 - g1*o4",
+        "gamma(o2,o4)": "-g4*o2 - g2*o4",
+        "gamma(o3,o3)": "-2*g3*o3",
+        "gamma(o3,o4)": "-g4*o3 - g3*o4",
+        "gamma(o4,o4)": "-2*g4*o4"
+      }
+    },
+    "triviality_result": {
+      "coboundary_rank": 28,
+      "n_phi_params": 32,
+      "n_equations": 288,
+      "n_constraints_on_gb": 4,
+      "dim_trivial_space": 0,
+      "conclusion": "gamma_gb = delta_f iff gb = 0"
+    }
+  },
+  "C3_osp24": {
+    "n": 2,
+    "n_gb_params": 8,
+    "coboundary_rank": 176,
+    "n_phi_params": 176,
+    "n_constraints_on_gb": 8,
+    "dim_trivial_space": 0,
+    "conclusion": "gamma_gb = delta_f iff gb = 0"
+  },
+  "general_Cn1": {
+    "n_gb_params": "4n",
+    "conclusion": "gamma_gb = delta_f iff gb = 0 for all n >= 1",
+    "proof_method": "explicit computation for n=1,2 plus structural induction"
+  }
+}
