@@ -188,3 +188,38 @@ dispatch on `algebra.family`.
 
 ### 1.10 File naming
 `C_{n}_structure.json` with `n` = bosonic rank: `C_1_structure.json` (C(2)), `C_2_structure.json` (C(3)), `C_3_structure.json` (C(4)).
+
+## 2. Schema 2: gamma structure (`C_{n}_gamma.json`, added in I05)
+
+Models the inhomogeneous deformation of `docs/math/C_inhomogeneous_definition.md`:
+`[b_j^s, a_1^σ] = -gb_{σ,j,s} κ`, `[X,Y]_γ = [X,Y]_0 + κ γ(X,Y)`.
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 2,
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "dimension": {"even": 4, "odd": 4, "total": 8}},
+  "structure_file": "C_1_structure.json",
+  "gb_matrix": {
+    "shape": [2, 2],
+    "rows": ["a_1_p", "a_1_m"],
+    "cols": ["b_1_p", "b_1_m"],
+    "entries": [["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m"], ["gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m"]],
+    "parameters": [{"name": "gb_a_1_p_b_1_p", "row": "a_1_p", "col": "b_1_p", "parity": 1, "relation": "..."}]
+  },
+  "inhomogeneous_deformation": {
+    "definition": "...", "parameter_count": 4, "parameter_parity": 1, "basis_order": ["..."],
+    "gamma": [{"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "H_1", "coeff": {"gb_a_1_p_b_1_p": "-1"}}],
+    "central_component": {"entries": [{"X": "H_1", "Y": "E_eps1_del1_pp", "coeff": {"gb_a_1_p_b_1_p": "-1"}}]}
+  },
+  "consistency": {},
+  "metadata": {}
+}
+```
+
+- `gb_matrix` is `2 x 2n` (rows `a_1_p`, `a_1_m`; columns `b_1_p, b_1_m, ..., b_n_p, b_n_m`); entry `[σ][(j,s)]` is `gb_a_1_{σ}_b_{j}_{s}`; `4n` parameters.
+- `gamma[*].coeff` maps each gb symbol to a rational string; γ_{XYZ} is linear in gb. Only non-zero entries are listed. γ is **odd**: `p(Z) = p(X)+p(Y)+1`.
+- `central_component`: coefficient of `κ·K` (= κ) in `[X,Y]_γ`. This part lies outside g because `K=1` is not a basis element; it occurs only for pairs with `[X,Y]` odd. It is kept separate so that `gamma` stays a g-valued 2-cochain.
+- The gb values are ordinary scalars (the "parity 1" of the docs labels the odd oscillator pair; see the I05 response).
+- Consistency conditions (checked by `src/C_gamma.py`): same basis/algebra as Schema 1; gb = 0 recovers Schema 1; the κ-linear super Jacobi identity holds, using `[X, κZ] = (-1)^{p(X)} κ[X,Z]`, `[κZ, X] = κ[Z,X]`:
+  `(-1)^{p(X)}[X,γ(Y,Z)] + γ(X,[Y,Z]) = [γ(X,Y),Z] + γ([X,Y],Z) + (-1)^{p(X)p(Y)}((-1)^{p(Y)}[Y,γ(X,Z)] + γ(Y,[X,Z]))`.
