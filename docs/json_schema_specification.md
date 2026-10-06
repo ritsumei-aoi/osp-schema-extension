@@ -238,5 +238,14 @@ Details: I06 Response.
 
 ## 5. Schema 4: coboundary structure (`C_{n}_coboundary.json`)
 
-General odd 1-cochain $f(Z_j) = \sum_i \phi_{ij} Z_i + \phi_{K,j} K$ and $(\delta f)(X,Y)$ as linear forms in
-the unknowns. Details: I07 Response.
+General odd 1-cochain $f(Z_j) = \sum_{p(Z_i)\ne p(Z_j)} \phi_{ij} Z_i + \phi_{K,j} K$ ($K$-term for odd $Z_j$ only)
+and $(\delta f)(X,Y)$ as linear forms in the unknowns.
+
+Keys: `schema_version`, `layer` (=4), `algebra`, `structure_file`, `basis_ordering`,
+`odd_linear_map` {`definition`, `parity`, `K_component_note`, `num_unknowns`, `num_unknowns_breakdown`,
+`unknowns`: list of labels `phi[Z_i,Z_j]` / `phi[K,Z_j]`},
+`coboundary` {`formula`, `pairs`, `entry_format`, `num_entries`,
+`entries`: `{"X","Y","Z","terms": [[unknown index, "coeff"], ...]}`}, `metadata`.
+Only PBW-ordered pairs $X \le Y$ are stored; the other order follows from
+$(\delta f)(Y,X) = -(-1)^{p(X)p(Y)}(\delta f)(X,Y)$ (verified). Unknown counts: $2\cdot\mathrm{even}\cdot\mathrm{odd} + \mathrm{odd}$
+= 36 / 184 / 540 for n = 1 / 2 / 3. Details: I07 Response.
