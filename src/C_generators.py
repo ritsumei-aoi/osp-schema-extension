@@ -37,6 +37,7 @@ def basis_names(n):
 
 
 def parity_of(name):
+    """Parity of a basis element (K and H, E_2del, E_del are even)."""
     return 1 if name.startswith("E_eps1") else 0
 
 
@@ -147,11 +148,15 @@ class Oscillators:
 class BasisExpander:
     """Exact expansion of oscillator polynomials in the span of the basis."""
 
-    def __init__(self, n):
+    def __init__(self, n, with_K=False):
+        """with_K=True adds the even central element K (scalar 1, label "K") as an extra
+        target column; needed for the kappa-part gamma (kappa*K terms), see I05."""
         import sympy
         self.n = n
-        self.names = basis_names(n)
-        self.real = {nm: realization(nm, n) for nm in self.names}
+        self.names = basis_names(n) + (["K"] if with_K else [])
+        self.real = {nm: realization(nm, n) for nm in basis_names(n)}
+        if with_K:
+            self.real["K"] = {(): Fraction(1)}
         words = sorted({w for r in self.real.values() for w in r}, key=lambda w: (len(w), w))
         self.words = words
         self.widx = {w: i for i, w in enumerate(words)}

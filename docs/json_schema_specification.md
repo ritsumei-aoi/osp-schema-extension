@@ -120,3 +120,21 @@ A reader that dispatches on `algebra.family` and ignores unknown keys can load b
 
 ## File naming
 `C_1_structure.json` (C(2)), `C_2_structure.json` (C(3)), `C_3_structure.json` (C(4)); likewise `_gamma`, `_evaluated`, `_coboundary`.
+
+---
+
+## Schema 2: Inhomogeneous deformation (`C_{n}_gamma.json`)
+
+Top-level keys: `schema_version` ("5.0"), `layer` ("gamma"), `algebra` (family, m, n, cartan_type), `source_structure` (Schema 1 file name), `inhomogeneous_deformation`, `metadata`.
+
+`inhomogeneous_deformation`:
+- `deformed_relation`: `[b_j^s, a_1^σ] = -gb_{σ,j,s} κ` (κ odd, central, κ² = 0).
+- `gb_matrix`: `shape [2, 2n]`, `parity 1`, `count 4n`, `rows` = `["a_1_p","a_1_m"]`, `columns` = `["b_1_p","b_1_m",...,"b_n_m"]`, `entries` (2 × 2n matrix of parameter names), `parameters` (flat list). Name pattern: `gb_a_1_{σ}_b_{j}_{s}` (σ, s ∈ {p, m}).
+- `gamma`: list of records `{"X","Y","Z","coeff","sign_rule"}` for every ordered pair, meaning
+  `[X,Y}_γ = [X,Y]_0 + κ Σ_Z γ_{XY}^Z Z`, with `coeff` a **linear form in gb**: `{"gb_a_1_p_b_1_m": "-2", ...}` (exact rational strings). Linearity is exact because κ² = 0.
+- Targets `Z`: basis elements of Schema 1, **plus the label `"K"`** (even central element, scalar 1). κ·K terms arise because `K` is not in the span of the basis (only its combination with N in `H_{n+1}` is). So γ: g ⊗ g → g ⊕ ℂK. Parity rule: `p(Z) = p(X) + p(Y) + 1` (K even).
+- The undeformed part of the deformed bracket equals Schema 1 (checked).
+- γ is a graded 2-cocycle: first-order Jacobi on g ⊕ κg holds (checked by `C_gamma.check_cocycle`).
+
+## Schema 3 / Schema 4
+Appended in I06 / I07.
