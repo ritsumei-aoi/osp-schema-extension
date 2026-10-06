@@ -212,3 +212,23 @@ So $\gamma:\mathfrak g\otimes\mathfrak g\to\mathfrak g\oplus\mathbb C K$.
 3. 2-cocycle identity w.r.t. the Schema 1 bracket (order-$\kappa$ part of the super Jacobi identity, using
    $[X,\kappa W]=(-1)^{p(X)}\kappa[X,W]$, $[\kappa W,Z]=\kappa[W,Z]$, $[K,\cdot]=0$);
 4. the $\kappa$-free part of $[X,Y]_\gamma$ equals Schema 1 (tested).
+
+---
+
+## Schema 3: Evaluated structure — `C_{n}_evaluated.json`, `C_{n}_evaluated_<profile>.json`
+
+gb replaced by concrete numbers. `C_{n}_evaluated.json` is the representative profile `all_plus` (all 4n parameters = +1);
+other profiles: `zero` (control), `alternating`, `fermion_sign` (+1 for row `a_1_p`, −1 for `a_1_m`),
+`boson_sign` (+1 for column `b_j_p`, −1 for `b_j_m`), `single_first` (only the first parameter = 1).
+
+Top-level keys: `schema_version`, `schema_layer` (3), `algebra`, `central_elements`, `basis`, `parity`, `gb_assignment`,
+`evaluated_structure`, `metadata`.
+```json
+{"gb_assignment": {"profile": "all_plus", "values": {"gb_a_1_p_b_1_p": "1", "...": "..."}},
+ "evaluated_structure": {"description": "...", "entries": [
+   {"X": "E_eps1_del1_pp", "Y": "H_1", "Z": "E_eps1_del1_pp", "coeff": "-2", "kappa_coeff": "0"},
+   {"X": "E_eps1_del1_pp", "Y": "H_1", "Z": "K", "coeff": "0", "kappa_coeff": "1"}]}}
+```
+$[X,Y]_\gamma = \sum_Z (\mathrm{coeff} + \mathrm{kappa\_coeff}\cdot\kappa)\,Z$: `coeff` is the Schema 1 constant, `kappa_coeff` $=\gamma(X,Y)_Z$ at the
+given gb (Schema 2 linear combination, exact rationals). Entries with both coefficients 0 are omitted; `Z="K"` entries have `coeff = "0"`.
+Consistency with Schema 2 is tested by re-evaluating directly in the deformed oscillator algebra (`tests/test_C_evaluate.py`).
