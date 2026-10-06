@@ -233,3 +233,29 @@ Schemas 3/4 is replaced by storing all evaluated profiles inside one file, keyed
 ```
 `coeff` is a linear form in the gb parameters: $\gamma_{XY}^{Z} = \sum_{g} \mathrm{coeff}[g]\cdot g$.
 `central_component` holds the component along $K=1$ (constant term of the oscillator polynomial).
+
+---
+
+## Schema 3: Evaluated structure (`C_{n}_evaluated.json`) — added in I06
+
+```json
+{
+  "schema_version": "5.0", "layer": 3,
+  "algebra": {..., "structure_file": "C_{n}_structure.json", "gamma_file": "C_{n}_gamma.json"},
+  "convention": "[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y) with gb substituted",
+  "gb_matrix_layout": {"rows": [...], "cols": [...], "entries": [[...], [...]]},
+  "profiles": {
+    "all_plus": {
+      "gb_values": {"gb_p_1_p": 1, ...},
+      "gb_matrix_values": [[1, 1, ...], [1, 1, ...]],
+      "gamma": [{"X": ..., "Y": ..., "Z": ..., "coeff": "2"}],
+      "central_component": [{"X": ..., "Y": ..., "Z": "K", "coeff": "1"}],
+      "n_gamma_entries": 92, "n_central_entries": 20
+    },
+    "...": {}
+  },
+  "metadata": {...}
+}
+```
+Profiles: `zero`, `all_plus`, `all_minus`, `row_sign`, `col_sign`, `checkerboard`,
+`index_parity`, `single_p_1_p`, `random_signs` (definitions in `src/C_evaluate.py`).
