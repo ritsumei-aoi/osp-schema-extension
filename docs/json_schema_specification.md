@@ -111,3 +111,18 @@ Key names, `sign_rule`, coefficient encoding and PBW convention are unchanged, s
 
 ## Schemas 2–4
 Specified in the sections appended by issues I05–I07 below.
+
+---
+## Schema 2: `C_{n}_gamma.json` (added in I05)
+Top-level keys: `schema_version`, `layer` (=2), `algebra`, `basis`, `parity`, `central_elements` (copied from Schema 1),
+`inhomogeneous_deformation`, `metadata` (`base_file` = the Schema 1 file).
+
+`inhomogeneous_deformation`:
+- `gb_matrix`: `rows` `["a_1_p","a_1_m"]`, `cols` `["b_1_p","b_1_m",...]`, `shape` `[2, 2n]`, `parity` 1,
+  `parameters` = list of the 4n names `gb_a_1_{σ}_b_{j}_{s}` (row-major).
+  Defining relation: `[b_j^s, a_1^σ] = -gb_{σ,j,s} κ`.
+- `gamma_structure`: list of `{"X","Y","Z","gamma":[{"param","coeff"}, ...]}` meaning
+  `γ(X,Y) = Σ_Z (Σ_p coeff_p · gb_p) Z`, where `[X,Y}_γ = [X,Y}_0 + κ·γ(X,Y)` (κ on the left). Only non-zero entries; all ordered pairs listed.
+- γ is **linear** in gb (κ²=0); parity of γ(X,Y) is p(X)+p(Y)+1.
+- Realization used: Weyl-symmetrised generators; in the deformed algebra the odd generators are `E = a_σ b_τ − ½ gb_{σ,k,τ} κ`
+  (normal-ordered `a b`), which makes γ take values in g (no `κK` term).
