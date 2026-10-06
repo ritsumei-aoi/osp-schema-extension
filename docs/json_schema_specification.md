@@ -178,5 +178,40 @@ A reader that dispatches on `algebra.family` and reads fermion data from either
 `supplementary_fermion` (B) or `fermions` (C) can process both families; all other keys
 have identical structure.
 
-## 2–4. Schemas 2, 3, 4
-Specified in the following sections (added by issues I05–I07).
+## 2. Schema 2: `C_{n}_gamma.json`
+
+Deformation: $[b_j^s, a_1^\sigma] = -\mathrm{gb}_{\sigma,j,s}\,\kappa$. For basis elements,
+computed in $U(A)$ and decomposed exactly:
+$$[X,Y]_\gamma = [X,Y]_0 + \kappa\big(\gamma(X,Y) + \gamma_K(X,Y)\,K\big),\qquad \kappa \text{ on the left}.$$
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 2,
+  "algebra": {...}, "central_elements": {...}, "basis": {...}, "parity": {...},   // copied from Schema 1
+  "inhomogeneous_deformation": {
+    "deformed_relation": "[b_j^s, a_1^σ] = -gb_{σ,j,s} κ",
+    "bracket_form": "[X,Y]_γ = [X,Y]_0 + κ (γ(X,Y) + γ_K(X,Y) K), κ on the left",
+    "gb_matrix": {"shape": [2, 2n], "rows": ["a_1_p","a_1_m"], "columns": ["b_1_p","b_1_m",...],
+                  "symbols": [["gb_a1p_b1p","gb_a1p_b1m",...], ["gb_a1m_b1p",...]],
+                  "parameter_type": "scalar (even) coefficient; the deformation term κ·gb is odd"},
+    "parameters": ["gb_a1p_b1p", ...],                     // 4n names, row-major
+    "gamma_parity": "p(γ(X,Y)) = p(X) + p(Y) + 1",
+    "pair_coverage": "all ordered pairs (X, Y); only non-zero coefficients listed",
+    "gamma_coefficients": [{"X": "...", "Y": "...", "Z": "...", "coeff": {"gb_a1p_b1p": "2"}}],
+    "gamma_central":      [{"X": "...", "Y": "...", "coeff": {"gb_a1p_b1p": "-1/2"}}]
+  },
+  "consistency_checks": {
+    "undeformed_part_equals_schema1": true, "gamma_parity_odd": true,
+    "central_only_for_mixed_parity": true, "gamma_graded_antisymmetric": true,
+    "cocycle_gamma_g_valued_failures": 0, "cocycle_gamma_with_central_failures": 0,
+    "linear_in_gb": true
+  },
+  "metadata": {...}
+}
+```
+`coeff` is a linear form in the gb parameters. `gamma_central` is the κK component; it only
+occurs for pairs of opposite parity.
+
+## 3–4. Schemas 3, 4
+Specified in the following sections (added by issues I06–I07).
