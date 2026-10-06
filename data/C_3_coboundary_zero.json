@@ -1,0 +1,45 @@
+{
+ "schema_version": "5.0",
+ "layer": "coboundary",
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 3,
+  "cartan_type": "C(4)"
+ },
+ "source_structure": "C_3_structure.json",
+ "gb_assignment": {
+  "profile": "zero",
+  "values": {
+   "gb_a_1_p_b_1_p": "0",
+   "gb_a_1_p_b_1_m": "0",
+   "gb_a_1_p_b_2_p": "0",
+   "gb_a_1_p_b_2_m": "0",
+   "gb_a_1_p_b_3_p": "0",
+   "gb_a_1_p_b_3_m": "0",
+   "gb_a_1_m_b_1_p": "0",
+   "gb_a_1_m_b_1_m": "0",
+   "gb_a_1_m_b_2_p": "0",
+   "gb_a_1_m_b_2_m": "0",
+   "gb_a_1_m_b_3_p": "0",
+   "gb_a_1_m_b_3_m": "0"
+  }
+ },
+ "coboundary": {
+  "formula": "(df)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+  "odd_linear_map": {
+   "description": "f(Z_j) = sum_i phi_ij Z_i, parity-reversing; K = even central scalar",
+   "codomain": "g + CK",
+   "origin": "trivializing map f_gb (delta f_gb = gamma(gb)) from a -> a + kappa c",
+   "phi": []
+  },
+  "delta_f": [],
+  "nonzero_count": 0,
+  "K_component_count": 0
+ },
+ "metadata": {
+  "generated_by": "src/C_coboundary.py",
+  "generation_date": "2026-10-06",
+  "note": "delta f is computed from Schema 1 brackets only (independent of Schema 2/3)"
+ }
+}

@@ -186,8 +186,87 @@ def trivializing_map(n, gb, ex=None):
     return dict((X, dict((Z, -c) for Z, c in zs.items())) for X, zs in f.items())
 
 
+def drop_K(f):
+    """Strict variant f: g -> g (the K-components removed)."""
+    out = {}
+    for x, zs in f.items():
+        z2 = dict((z, c) for z, c in zs.items() if z != "K")
+        if z2:
+            out[x] = z2
+    return out
+
+
+def ad_map(n, Z0, br=None):
+    """f(X) = [Z0, X] for odd Z0: an odd derivation, so delta f = 0 (used as a sign check)."""
+    br = br or load_bracket(n)
+    return dict((X, br[(Z0, X)]) for X in G.basis_names(n) if (Z0, X) in br)
+
+
+def build_schema4(n, profile, strict=False, today="2026-10-06"):
+    import C_evaluate as E
+    gb = E.profile_values(n, profile)
+    f = trivializing_map(n, gb)
+    if strict:
+        f = drop_K(f)
+    if not f_is_odd(f):
+        raise ValueError("f is not odd")
+    df = delta_f(n, f)
+    names = G.basis_names(n)
+    fmap = [{"from": X, "to": Z, "coeff": G.frac_str(c)}
+            for X in names for Z, c in sorted(f.get(X, {}).items())]
+    entries = [{"X": X, "Y": Y, "Z": Z, "coeff": G.frac_str(df[(X, Y)][Z]),
+                "sign_rule": "graded"}
+               for X in names for Y in names for Z in names + ["K"]
+               if (X, Y) in df and Z in df[(X, Y)]]
+    return {
+        "schema_version": "5.0",
+        "layer": "coboundary",
+        "algebra": {"family": "C", "m": 1, "n": n, "cartan_type": f"C({n+1})"},
+        "source_structure": f"C_{n}_structure.json",
+        "gb_assignment": {"profile": profile,
+                          "values": dict((CG.gb_name(k), G.frac_str(Fraction(v)))
+                                         for k, v in gb.items())},
+        "coboundary": {
+            "formula": "(df)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+            "odd_linear_map": {
+                "description": "f(Z_j) = sum_i phi_ij Z_i, parity-reversing; K = even central scalar",
+                "codomain": "g" if strict else "g + CK",
+                "origin": ("trivializing map f_gb (delta f_gb = gamma(gb)) from a -> a + kappa c"
+                           + ("; K-components dropped (strict f: g -> g)" if strict else "")),
+                "phi": fmap,
+            },
+            "delta_f": entries,
+            "nonzero_count": len(entries),
+            "K_component_count": sum(1 for e in entries if e["Z"] == "K"),
+        },
+        "metadata": {"generated_by": "src/C_coboundary.py", "generation_date": today,
+                     "note": "delta f is computed from Schema 1 brackets only (independent of Schema 2/3)"},
+    }
+
+
+def main(ns=(1, 2, 3)):
+    import C_evaluate as E
+    for n in ns:
+        for profile in E.PROFILES:
+            variants = [False] + ([True] if profile == "all_plus" else [])
+            for strict in variants:
+                d = build_schema4(n, profile, strict)
+                suffix = ("" if profile == "all_plus" else f"_{profile}") + \
+                    ("_strictg" if strict else "")
+                path = os.path.join(DATA_DIR, f"C_{n}_coboundary{suffix}.json")
+                with open(path, "w") as fh:
+                    json.dump(d, fh, indent=1)
+                cb = d["coboundary"]
+                print(os.path.basename(path), len(cb["odd_linear_map"]["phi"]), "phi,",
+                      cb["nonzero_count"], "delta_f entries")
+
+
 if __name__ == "__main__":
-    for n in (1, 2):
-        for allow_K in (False, True):
-            info, *_ = trivial_subspace(n, allow_K)
-            print(info)
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "dims":
+        for n in (1, 2, 3):
+            for allow_K in (False, True):
+                info, *_ = trivial_subspace(n, allow_K)
+                print(info)
+    else:
+        main()

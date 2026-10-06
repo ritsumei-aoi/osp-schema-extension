@@ -145,5 +145,13 @@ Top-level keys: `schema_version`, `layer` ("evaluated"), `algebra`, `source_stru
 - The canonical file `C_{n}_evaluated.json` uses profile `all_plus` (all gb = +1). Other profiles: `all_minus`, `zero`, `sigma_p_only` (gb_{a_1^+,*}=1, gb_{a_1^-,*}=0), `sigma_m_only`, `alternating` (signs +,-,+,... in parameter order), `unit_first` (only the first parameter = 1).
 - Consistency requirement: substitution into Schema 2 equals direct computation in the deformed oscillator algebra (enforced in `C_evaluate.build_schema3`).
 
-## Schema 4
-Appended in I07.
+## Schema 4: Coboundary structure (`C_{n}_coboundary[_<profile>|_strictg].json`)
+
+Top-level keys: `schema_version`, `layer` ("coboundary"), `algebra`, `source_structure`, `gb_assignment` (profile the f was built from), `coboundary`, `metadata`.
+
+`coboundary`:
+- `formula`: `(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])`.
+- `odd_linear_map`: `codomain` (`"g + CK"` or `"g"` for the strict variant), `origin`, and `phi`: list of `{"from": X, "to": Z, "coeff": φ_{ZX}}`, i.e. `f(X) = Σ_Z φ_{ZX} Z`, parity-reversing (`p(Z) = p(X)+1`, K even). Only non-zero φ are listed.
+- `delta_f`: records `{"X","Y","Z","coeff","sign_rule"}` for the non-zero `(δf)_{XY}^Z` over all ordered pairs; computed from Schema 1 brackets only (K is central).
+- `nonzero_count`, `K_component_count`.
+- Files: `C_{n}_coboundary.json` uses the trivializing map of the canonical `all_plus` assignment (δf = γ by construction of f, checked independently in tests); `_<profile>` for the other Schema 3 profiles; `_strictg` is the `all_plus` map with K-components dropped (f: g → g).
