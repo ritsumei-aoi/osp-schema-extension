@@ -135,6 +135,39 @@ Everything outside the odd-label grammar and the fermion keys is format-identica
 
 ---
 
-## Schema 2–4
+## Schema 2: Gamma structure (`C_{n}_gamma.json`, added in I05)
 
-Defined in the sections added by Issues I05–I07 (below).
+Deformation: $[b_j^s,a_1^\sigma]=-\mathrm{gb}_{\sigma,j,s}\,\kappa$, bracket
+$[X,Y\}_\gamma=[X,Y\}_0+\kappa\,\gamma(X,Y)$ ($\kappa$ written on the left; $\kappa$ supercommutes with all oscillators).
+$\gamma$ is **linear** in gb. $\gamma(X,Y)\in\mathfrak g\oplus\mathbb C K$: the component `Z = "K"` is the coefficient of $\kappa\cdot1$
+(it is non-zero in general, see I05 response). gb are numeric scalars.
+
+Top-level keys: `schema_version`, `algebra`, `basis`, `parity`, `central_elements` (copied from Schema 1),
+`gb_matrix`, `inhomogeneous_deformation`, `metadata`.
+
+```json
+"gb_matrix": {"rows": ["a_1_p","a_1_m"], "cols": ["b_1_p","b_1_m", "..."], "shape": [2, "2n"],
+              "entries": [["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m", "..."], ["gb_a_1_m_b_1_p", "..."]]}
+```
+Parameter names: `gb_a_1_{σ}_b_{j}_{s}` (σ, s ∈ {p, m}); $4n$ in total; row = fermion label, column = boson label.
+
+```json
+"inhomogeneous_deformation": {
+  "description": "...", "relation": "[b_j^s, a_1^σ] = -gb_{σ,j,s} κ",
+  "bracket": "[X,Y}_γ = [X,Y}_0 + κ γ(X,Y), κ written on the left",
+  "parameters": {"count": 4, "parity": 1, "names": ["gb_a_1_p_b_1_p", "..."], "note": "..."},
+  "central_direction": "Z = 'K' denotes the coefficient of κ·1 (K = 1) in γ(X,Y)",
+  "gamma": [
+    {"X": "E_eps1_del1_pp", "Y": "H_1", "Z": "E_eps1_del1_pp", "coeff": {"gb_a_1_p_b_1_p": "-2", "...": "..."}}
+  ]
+}
+```
+`gamma` lists all ordered pairs $(X,Y)$ and targets `Z` (a Schema 1 label or `"K"`) with non-zero $\gamma$;
+`coeff` maps parameter names to rational strings: $\gamma(X,Y)_Z=\sum_p \mathrm{coeff}[p]\cdot p$.
+Parity rule: $p(Z)=p(X)+p(Y)+1 \pmod 2$ (with $p(K)=0$) — the extra $+1$ is the parity of $\kappa$.
+Consistency with Schema 1: same `basis`/`parity`; the $\kappa$-free part of the deformed bracket is gb-independent and equals Schema 1;
+$\gamma$ satisfies the first-order super Jacobi (2-cocycle) condition, checked in `src/C_gamma.py` (`cocycle_failures`).
+
+## Schema 3 and 4
+
+Defined in the sections added by Issues I06–I07 (below).
