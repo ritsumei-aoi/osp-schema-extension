@@ -27,3 +27,20 @@ Consider two types of deformations of the bracket on $\mathfrak{g}$:
 ## Deliverables
 - A comprehensive analytical report appended to the Response section below.
 - Reusable verification code or data artifacts committed to the repository.
+
+## Response
+
+Full report: [`docs/issues/mathematical_proof.md`](mathematical_proof.md).
+Code and data: `verification/cn1_deformation.py`, `verification/artifacts/cn1_n{1,2,3}.json`, `verification/artifacts/summary.json`.
+
+**Conclusion.** In the adjoint representation, where the unit $K$ acts by zero ("up to scalar"), $\gamma_{gb}$ is trivial for
+**every** $gb\in\mathbb C^{4n}$. So the necessary and sufficient condition is vacuous.
+- The trivialising map is $f_{gb}=-F_{gb}$, which comes from the fermion shift $a^\sigma\mapsto a^\sigma+\kappa L_\sigma$ with
+  $L_\sigma=\sum_j(gb_{\sigma,j,-}b_j^+-gb_{\sigma,j,+}b_j^-)$:
+  - $F(S)=0$
+  - $F(a^\sigma b)=L_\sigma b$
+  - $F(J)=a^-L_+-a^+L_-$
+- $f_{gb}$ is unique modulo $\operatorname{ad}(\mathfrak g_{\bar1})$ (checked for $n\le3$).
+- $\gamma_{gb}\ne0$ for $gb\ne0$. So every non-zero configuration gives a non-zero cocycle that is a coboundary.
+- Under the strict reading (keep the $K$-component, $f:\mathfrak g\to\mathfrak g$), only $gb=0$ is trivial.
+- These claims are proved for all $n$ and verified by exact computation for $n=1,2,3$.
