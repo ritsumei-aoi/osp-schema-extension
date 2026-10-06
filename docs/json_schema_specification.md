@@ -241,5 +241,31 @@ Profiles: `all_plus`, `all_minus`, `row_sign` (a_1^+ row +1, a_1^- row −1), `b
 `check_direct_oscillator_substitution`: the same numbers recomputed by inserting the numeric gb
 directly into the oscillator relation (independent of Schema 2).
 
-## 4. Schema 4
-Specified in the following section (added by issue I07).
+## 4. Schema 4: `C_{n}_coboundary.json`
+
+Symbolic coboundary of a general odd linear map (no gb dependence).
+
+```json
+{
+  "schema_version": "5.0", "layer": 4,
+  "algebra": {...}, "basis": {...}, "parity": {...},
+  "global_index": {"E_eps1_del1_pp": 0, ...},
+  "odd_linear_map": {
+    "definition": "f(Z_j) = sum_i phi_{i}_{j} Z_i ...; phi_{i}_{j} = 0 unless p(Z_i) != p(Z_j)",
+    "parameters": ["phi_0_4", ...], "parameter_count": 2·dim_even·dim_odd,
+    "central_extension": {"definition": "h(Z_j) = psi_{j} K for odd Z_j; (δh)(X,Y) = -h([X,Y])",
+                          "parameters": ["psi_0", ...]}
+  },
+  "coboundary_formula": "(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+  "pair_coverage": "unordered: index(X) <= index(Y); (δf)(Y,X) = -(-1)^{p(X)p(Y)} (δf)(X,Y)",
+  "coboundary_coefficients": [{"X": "...", "Y": "...", "Z": "...", "coeff": {"phi_4_0": "1", ...}}],
+  "coboundary_central": [{"X": "...", "Y": "...", "coeff": {"psi_0": "-1"}}],
+  "consistency_checks": {"labels_in_layer1_basis": true, "odd_parity_shift": true,
+                         "graded_antisymmetric": true, "delta_squared_zero_random_f_failures": 0},
+  "metadata": {...}
+}
+```
+Only index(X) ≤ index(Y) is stored (the n=3 file would otherwise double to ~1.9 MB);
+`src/C_coboundary.load_schema4` restores all ordered pairs using graded antisymmetry, which
+is itself verified at generation time.
+Parameter counts: n=1: 32 φ + 4 ψ; n=2: 176 φ + 8 ψ; n=3: 528 φ + 12 ψ.
