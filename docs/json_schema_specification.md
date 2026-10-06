@@ -372,6 +372,11 @@ unknowns; solving γ = δf for a given gb is done in I08 (`src/C_triviality.py`)
   "metadata": {"generated_by": "src/C_coboundary.py", "...": "..."}
 }
 ```
+Auxiliary analysis output (Issue I08, not a schema layer): `data/C_{n}_triviality.json`
+(`src/C_triviality.py`) — per reading (`mod_K`, `exact`, `strict`) the rank/kernel of δ, and per
+target (Layer 3 profiles and unit gb vectors) whether γ = δf is solvable, a particular solution,
+or the inconsistent equations; plus the analytic f (symbolic in gb) and its residuals.
+
 Unknown counts: φ: 2·(2n²+n+1)·4n (32 / 176 / 528), ψ: 4n. Only X ≤ Y is stored (size: the
 n=3 file would otherwise double to ~3.5 MB); readers restore (Y,X) by the symmetry rule
 (`C_coboundary.load_coboundary`).
