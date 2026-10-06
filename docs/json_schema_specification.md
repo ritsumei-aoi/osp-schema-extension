@@ -136,5 +136,14 @@ Top-level keys: `schema_version` ("5.0"), `layer` ("gamma"), `algebra` (family, 
 - The undeformed part of the deformed bracket equals Schema 1 (checked).
 - γ is a graded 2-cocycle: first-order Jacobi on g ⊕ κg holds (checked by `C_gamma.check_cocycle`).
 
-## Schema 3 / Schema 4
-Appended in I06 / I07.
+## Schema 3: Evaluated structure (`C_{n}_evaluated.json`, `C_{n}_evaluated_<profile>.json`)
+
+Top-level keys: `schema_version`, `layer` ("evaluated"), `algebra`, `source_structure`, `source_gamma`, `gb_assignment`, `evaluated_deformation`, `metadata`.
+
+- `gb_assignment`: `{"profile": <name>, "values": {"gb_a_1_p_b_1_p": "1", ...}}`, all 4n parameters present (exact rational strings).
+- `evaluated_deformation.gamma`: records `{"X","Y","Z","coeff","sign_rule"}` with numeric `coeff`; only non-zero entries; `Z` may be `"K"`. Same meaning as Schema 2 after substitution. Also `nonzero_count`, `K_component_count`.
+- The canonical file `C_{n}_evaluated.json` uses profile `all_plus` (all gb = +1). Other profiles: `all_minus`, `zero`, `sigma_p_only` (gb_{a_1^+,*}=1, gb_{a_1^-,*}=0), `sigma_m_only`, `alternating` (signs +,-,+,... in parameter order), `unit_first` (only the first parameter = 1).
+- Consistency requirement: substitution into Schema 2 equals direct computation in the deformed oscillator algebra (enforced in `C_evaluate.build_schema3`).
+
+## Schema 4
+Appended in I07.

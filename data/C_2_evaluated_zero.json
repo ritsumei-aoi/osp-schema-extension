@@ -1,0 +1,37 @@
+{
+ "schema_version": "5.0",
+ "layer": "evaluated",
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 2,
+  "cartan_type": "C(3)"
+ },
+ "source_structure": "C_2_structure.json",
+ "source_gamma": "C_2_gamma.json",
+ "gb_assignment": {
+  "profile": "zero",
+  "values": {
+   "gb_a_1_p_b_1_p": "0",
+   "gb_a_1_p_b_1_m": "0",
+   "gb_a_1_p_b_2_p": "0",
+   "gb_a_1_p_b_2_m": "0",
+   "gb_a_1_m_b_1_p": "0",
+   "gb_a_1_m_b_1_m": "0",
+   "gb_a_1_m_b_2_p": "0",
+   "gb_a_1_m_b_2_m": "0"
+  }
+ },
+ "evaluated_deformation": {
+  "description": "[X,Y}_gamma = [X,Y]_0 + kappa * sum_Z gamma_{XY}^Z Z, gb numeric",
+  "target_labels": "Schema 1 basis names plus 'K' (even central scalar)",
+  "gamma": [],
+  "nonzero_count": 0,
+  "K_component_count": 0
+ },
+ "metadata": {
+  "generated_by": "src/C_evaluate.py",
+  "generation_date": "2026-10-06",
+  "cross_check": "substitution into Schema 2 == direct deformed oscillator computation"
+ }
+}
