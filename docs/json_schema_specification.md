@@ -133,3 +133,13 @@ Top-level: `schema_version`, `layer` (=3), `algebra`, `basis`, `parity`, `centra
 `profiles`: list of `{"name", "gb": {param: integer}, "gamma_evaluated": [{"X","Y","Z","coeff"}]}`;
 `gamma_evaluated` lists the non-zero γ(X,Y) = Σ_Z coeff·Z at that gb (convention as Schema 2). Names: `all_plus`, `all_minus`,
 `alternating`, `row_a_1_{p,m}_only`, `{plus,minus}_sector_only`, `{diagonal,antidiagonal}_pm`, `unit_<param>`, and for n=1 all 16 `sign_±±±±`.
+
+---
+## Schema 4: `C_{n}_coboundary.json` (added in I07)
+Top-level: `schema_version`, `layer` (=4), `algebra`, `basis`, `parity`, `central_elements`, `coboundary_formula`, `f_parametrization`,
+`elementary_maps`, `profiles`, `metadata`.
+- `elementary_maps`: for every parity-reversing pair (Z_j → Z_i): `{"from": Z_j, "to": Z_i, "delta_f": [{"X","Y","Z","coeff"}]}`
+  = coboundary of f(Z_j)=Z_i (zero elsewhere). Count = 2·(#even)(#odd) = 32, 176, 528 for n=1,2,3.
+- `profiles` (same names as Schema 3): `{"name","gb","trivial","f":[{"from","to","coeff"}],"delta_f":[...],"residual":[...]}`;
+  `f` is the closed-form odd map f = −D_gb (`src/gauge_f.py`), `delta_f` = δf (sum of elementary coboundaries),
+  `residual` = γ(gb) − δf (empty ⇔ trivial); `trivial` is cross-checked by exact elimination against all elementary δE_ij.

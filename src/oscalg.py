@@ -103,8 +103,11 @@ class OscAlgebra:
         return out
 
 
-def make_decomposer(vectors):
-    """Return decompose(v) -> (coeffs, residual) w.r.t. the given (independent) vectors."""
+def make_decomposer(vectors, skip_dependent=False):
+    """Return decompose(v) -> (coeffs, residual) w.r.t. the given vectors.
+
+    With skip_dependent=True, linearly dependent vectors are dropped (basic solution: their coefficient is 0).
+    """
     reduced = []  # (pivot, vec, transform)
     for idx, v in enumerate(vectors):
         v = dict(v)
@@ -115,6 +118,8 @@ def make_decomposer(vectors):
                 OscAlgebra._add(v, rv, -c)
                 OscAlgebra._add(t, rt, -c)
         if not v:
+            if skip_dependent:
+                continue
             raise ValueError("basis vectors are linearly dependent")
         piv = min(v)
         c = v[piv]
