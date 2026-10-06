@@ -251,6 +251,41 @@ def test_structure_constants_nonempty(n):
 
 
 @pytest.mark.parametrize("n", [1, 2, 3])
+def test_both_orderings_present(n):
+    """Every (X,Y) entry with X≠Y must have a corresponding (Y,X) entry."""
+    schema = build_schema(n)
+    sc = schema["structure_constants"]
+    # Build a set of all (X,Y) pairs that appear
+    pairs = {(e["X"], e["Y"]) for e in sc}
+    for x, y in list(pairs):
+        if x != y:
+            assert (y, x) in pairs, (
+                f"n={n}: found ({x},{y}) in structure constants but not ({y},{x})"
+            )
+
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_reverse_pair_sign(n):
+    """[Y,X} = -(-1)^{px*py} [X,Y} — check one concrete pair."""
+    schema = build_schema(n)
+    gens, par, _ = build_generators(n)
+    sc = schema["structure_constants"]
+
+    def get_coeffs(x, y):
+        return {e["Z"]: Fraction(e["coeff"]) for e in sc if e["X"] == x and e["Y"] == y}
+
+    lx, ly = "H_1", "E_eps1_del1_pp"
+    px, py = par[lx], par[ly]
+    sign = (-1) ** (px * py)
+    fwd = get_coeffs(lx, ly)
+    rev = get_coeffs(ly, lx)
+    for z in set(fwd) | set(rev):
+        assert fwd.get(z, Fraction(0)) == -sign * rev.get(z, Fraction(0)), (
+            f"n={n}: sign rule failed on Z={z}"
+        )
+
+
+@pytest.mark.parametrize("n", [1, 2, 3])
 def test_parity_map_complete(n):
     """Every basis element appears in the parity map."""
     schema = build_schema(n)
