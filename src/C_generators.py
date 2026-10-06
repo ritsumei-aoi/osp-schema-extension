@@ -292,7 +292,9 @@ def _frac_str(f: Fraction) -> str:
 def build_schema(n: int) -> dict:
     gens, par, basis = build_generators(n)
 
-    # Compute all non-zero structure constants [Z_i, Z_j}  (i ≤ j in basis order)
+    # Compute all non-zero structure constants [Z_i, Z_j} for ALL ordered pairs.
+    # We compute each unordered pair once, then emit both (X,Y) and (Y,X) entries
+    # using the graded antisymmetry [Y,X} = -(-1)^{px*py} [X,Y}.
     sc = []
     for i, xi in enumerate(basis):
         for j, xj in enumerate(basis):
@@ -304,6 +306,7 @@ def build_schema(n: int) -> dict:
             coeffs = express(br, n, gens)
             if not coeffs:
                 continue
+            # Forward pair (xi, xj)
             for z, c in sorted(coeffs.items()):
                 sc.append({
                     "X": xi,
@@ -312,6 +315,20 @@ def build_schema(n: int) -> dict:
                     "coeff": _frac_str(c),
                     "sign_rule": "graded",
                 })
+            # Reverse pair (xj, xi): [Y,X} = -(-1)^{px*py} [X,Y}
+            # Skip self-pairs where xi == xj (reversed pair is identical)
+            if i != j:
+                sign = Fraction((-1) ** (par[xi] * par[xj]))
+                for z, c in sorted(coeffs.items()):
+                    rev_c = -sign * c
+                    if rev_c:
+                        sc.append({
+                            "X": xj,
+                            "Y": xi,
+                            "Z": z,
+                            "coeff": _frac_str(rev_c),
+                            "sign_rule": "graded",
+                        })
 
     # Oscillator labels
     boson_labels = []
