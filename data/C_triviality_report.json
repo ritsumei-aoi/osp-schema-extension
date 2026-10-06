@@ -1,0 +1,1571 @@
+{
+ "generated_by": "src/C_triviality.py",
+ "reports": [
+  {
+   "n": 1,
+   "algebra": "C(2) = osp(2|2)",
+   "gb_parameters": [
+    "gb_a1p_b1p",
+    "gb_a1p_b1m",
+    "gb_a1m_b1p",
+    "gb_a1m_b1m"
+   ],
+   "odd_1_cochains": 32,
+   "rank_delta": 28,
+   "dim_ker_delta_odd": 4,
+   "dim_odd_part_of_g": 4,
+   "T1_g_valued": {
+    "rank": 28,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T2_with_central_h": {
+    "rank": 32,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T3_strict_no_h": {
+    "rank": 28,
+    "n_consistency_conditions": 10,
+    "independent_conditions_on_gb": [
+     {
+      "gb_a1p_b1p": "1"
+     },
+     {
+      "gb_a1p_b1m": "1"
+     },
+     {
+      "gb_a1m_b1p": "1"
+     },
+     {
+      "gb_a1m_b1m": "1"
+     }
+    ],
+    "example_obstructions": [
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "-1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_2del1_m",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1m": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pm",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1m": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pm",
+       "E_2del1_p",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "-1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_mp",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1m_b1p": "-1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_mp",
+       "E_2del1_m",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1m_b1m": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_mm",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1m_b1m": "-1"
+      }
+     }
+    ],
+    "trivial_for_all_gb": false
+   },
+   "closed_form_check_mismatches": 0,
+   "closed_form_examples": {
+    "E_eps1_del1_pp": {
+     "H_2": {
+      "gb_a1p_b1p": "1"
+     },
+     "E_2del1_p": {
+      "gb_a1p_b1m": "1"
+     },
+     "K": {
+      "gb_a1p_b1p": "-1/2"
+     }
+    },
+    "H_1": {
+     "E_eps1_del1_pp": {
+      "gb_a1m_b1m": "-1"
+     },
+     "E_eps1_del1_pm": {
+      "gb_a1m_b1p": "1"
+     },
+     "E_eps1_del1_mp": {
+      "gb_a1p_b1m": "1"
+     },
+     "E_eps1_del1_mm": {
+      "gb_a1p_b1p": "-1"
+     }
+    },
+    "H_2": {},
+    "E_2del1_p": {}
+   },
+   "profiles": [
+    {
+     "profile": "all_plus",
+     "gb_nonzero": 4,
+     "mismatches_with_f_equal_0": 112,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 20
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 24
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 10,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "all_minus",
+     "gb_nonzero": 4,
+     "mismatches_with_f_equal_0": 112,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 20
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 24
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 10,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "row_sign",
+     "gb_nonzero": 4,
+     "mismatches_with_f_equal_0": 112,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 20
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 24
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 10,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "boson_sign",
+     "gb_nonzero": 4,
+     "mismatches_with_f_equal_0": 112,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 20
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 24
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 10,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "alternating_j",
+     "gb_nonzero": 4,
+     "mismatches_with_f_equal_0": 112,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 20
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 24
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 10,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "single_a1p_b1p",
+     "gb_nonzero": 1,
+     "mismatches_with_f_equal_0": 29,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 5
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 6
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 3,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "zero",
+     "gb_nonzero": 0,
+     "mismatches_with_f_equal_0": 0,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T3": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     }
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "algebra": "C(3) = osp(2|4)",
+   "gb_parameters": [
+    "gb_a1p_b1p",
+    "gb_a1p_b1m",
+    "gb_a1p_b2p",
+    "gb_a1p_b2m",
+    "gb_a1m_b1p",
+    "gb_a1m_b1m",
+    "gb_a1m_b2p",
+    "gb_a1m_b2m"
+   ],
+   "odd_1_cochains": 176,
+   "rank_delta": 168,
+   "dim_ker_delta_odd": 8,
+   "dim_odd_part_of_g": 8,
+   "T1_g_valued": {
+    "rank": 168,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T2_with_central_h": {
+    "rank": 176,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T3_strict_no_h": {
+    "rank": 168,
+    "n_consistency_conditions": 42,
+    "independent_conditions_on_gb": [
+     {
+      "gb_a1p_b1p": "1"
+     },
+     {
+      "gb_a1p_b1m": "1"
+     },
+     {
+      "gb_a1p_b2m": "1"
+     },
+     {
+      "gb_a1p_b2p": "1"
+     },
+     {
+      "gb_a1m_b1p": "1"
+     },
+     {
+      "gb_a1m_b1m": "1"
+     },
+     {
+      "gb_a1m_b2m": "1"
+     },
+     {
+      "gb_a1m_b2p": "1"
+     }
+    ],
+    "example_obstructions": [
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_2del1_m",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1m": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del2_mm",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2m": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del2_mp",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del2_pp",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del2_pp",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "-1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del2_pp",
+       "H_3",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "-1/2"
+      }
+     }
+    ],
+    "trivial_for_all_gb": false
+   },
+   "closed_form_check_mismatches": 0,
+   "closed_form_examples": {
+    "E_eps1_del1_pp": {
+     "H_2": {
+      "gb_a1p_b1p": "-1"
+     },
+     "H_3": {
+      "gb_a1p_b1p": "1"
+     },
+     "E_2del1_p": {
+      "gb_a1p_b1m": "1"
+     },
+     "E_del1_del2_pp": {
+      "gb_a1p_b2m": "1"
+     },
+     "E_del1_del2_pm": {
+      "gb_a1p_b2p": "-1"
+     },
+     "K": {
+      "gb_a1p_b1p": "-1/2"
+     }
+    },
+    "H_1": {
+     "E_eps1_del1_pp": {
+      "gb_a1m_b1m": "-1"
+     },
+     "E_eps1_del2_pp": {
+      "gb_a1m_b2m": "-1"
+     },
+     "E_eps1_del1_pm": {
+      "gb_a1m_b1p": "1"
+     },
+     "E_eps1_del2_pm": {
+      "gb_a1m_b2p": "1"
+     },
+     "E_eps1_del1_mp": {
+      "gb_a1p_b1m": "1"
+     },
+     "E_eps1_del2_mp": {
+      "gb_a1p_b2m": "1"
+     },
+     "E_eps1_del1_mm": {
+      "gb_a1p_b1p": "-1"
+     },
+     "E_eps1_del2_mm": {
+      "gb_a1p_b2p": "-1"
+     }
+    },
+    "H_3": {},
+    "E_2del1_p": {}
+   },
+   "profiles": [
+    {
+     "profile": "all_plus",
+     "gb_nonzero": 8,
+     "mismatches_with_f_equal_0": 652,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 64
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 72
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 42,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mp",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "all_minus",
+     "gb_nonzero": 8,
+     "mismatches_with_f_equal_0": 652,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 64
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 72
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 42,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mp",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "row_sign",
+     "gb_nonzero": 8,
+     "mismatches_with_f_equal_0": 652,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 64
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 72
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 42,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mp",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "boson_sign",
+     "gb_nonzero": 8,
+     "mismatches_with_f_equal_0": 652,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 64
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 72
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 42,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mp",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "alternating_j",
+     "gb_nonzero": 8,
+     "mismatches_with_f_equal_0": 652,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 64
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 72
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 42,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mp",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "single_a1p_b1p",
+     "gb_nonzero": 1,
+     "mismatches_with_f_equal_0": 77,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 8
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 9
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 5,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del2_pp",
+        "Y": "E_del1_del2_pm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del2_pm",
+        "Y": "E_del1_del2_pp",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "zero",
+     "gb_nonzero": 0,
+     "mismatches_with_f_equal_0": 0,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T3": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     }
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "algebra": "C(4) = osp(2|6)",
+   "gb_parameters": [
+    "gb_a1p_b1p",
+    "gb_a1p_b1m",
+    "gb_a1p_b2p",
+    "gb_a1p_b2m",
+    "gb_a1p_b3p",
+    "gb_a1p_b3m",
+    "gb_a1m_b1p",
+    "gb_a1m_b1m",
+    "gb_a1m_b2p",
+    "gb_a1m_b2m",
+    "gb_a1m_b3p",
+    "gb_a1m_b3m"
+   ],
+   "odd_1_cochains": 528,
+   "rank_delta": 516,
+   "dim_ker_delta_odd": 12,
+   "dim_odd_part_of_g": 12,
+   "T1_g_valued": {
+    "rank": 516,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T2_with_central_h": {
+    "rank": 528,
+    "n_consistency_conditions": 0,
+    "independent_conditions_on_gb": [],
+    "example_obstructions": [],
+    "particular_solution_residual_mismatches": 0,
+    "trivial_for_all_gb": true
+   },
+   "T3_strict_no_h": {
+    "rank": 516,
+    "n_consistency_conditions": 90,
+    "independent_conditions_on_gb": [
+     {
+      "gb_a1p_b1p": "1"
+     },
+     {
+      "gb_a1p_b1m": "1"
+     },
+     {
+      "gb_a1p_b2m": "1"
+     },
+     {
+      "gb_a1p_b3m": "1"
+     },
+     {
+      "gb_a1p_b2p": "1"
+     },
+     {
+      "gb_a1p_b3p": "1"
+     },
+     {
+      "gb_a1m_b1p": "1"
+     },
+     {
+      "gb_a1m_b1m": "1"
+     },
+     {
+      "gb_a1m_b2m": "1"
+     },
+     {
+      "gb_a1m_b3m": "1"
+     },
+     {
+      "gb_a1m_b2p": "1"
+     },
+     {
+      "gb_a1m_b3p": "1"
+     }
+    ],
+    "example_obstructions": [
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "H_2",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_2del1_m",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b1m": "1"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del2_mm",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2m": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del3_mm",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b3m": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del2_mp",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del1_pp",
+       "E_del1_del3_mp",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b3p": "1/2"
+      }
+     },
+     {
+      "pair": [
+       "E_eps1_del2_pp",
+       "H_1",
+       "K"
+      ],
+      "required_zero": {
+       "gb_a1p_b2p": "1/2"
+      }
+     }
+    ],
+    "trivial_for_all_gb": false
+   },
+   "closed_form_check_mismatches": 0,
+   "closed_form_examples": {
+    "E_eps1_del1_pp": {
+     "H_2": {
+      "gb_a1p_b1p": "-1"
+     },
+     "H_3": {
+      "gb_a1p_b1p": "-1"
+     },
+     "H_4": {
+      "gb_a1p_b1p": "1"
+     },
+     "E_2del1_p": {
+      "gb_a1p_b1m": "1"
+     },
+     "E_del1_del2_pp": {
+      "gb_a1p_b2m": "1"
+     },
+     "E_del1_del3_pp": {
+      "gb_a1p_b3m": "1"
+     },
+     "E_del1_del2_pm": {
+      "gb_a1p_b2p": "-1"
+     },
+     "E_del1_del3_pm": {
+      "gb_a1p_b3p": "-1"
+     },
+     "K": {
+      "gb_a1p_b1p": "-1/2"
+     }
+    },
+    "H_1": {
+     "E_eps1_del1_pp": {
+      "gb_a1m_b1m": "-1"
+     },
+     "E_eps1_del2_pp": {
+      "gb_a1m_b2m": "-1"
+     },
+     "E_eps1_del3_pp": {
+      "gb_a1m_b3m": "-1"
+     },
+     "E_eps1_del1_pm": {
+      "gb_a1m_b1p": "1"
+     },
+     "E_eps1_del2_pm": {
+      "gb_a1m_b2p": "1"
+     },
+     "E_eps1_del3_pm": {
+      "gb_a1m_b3p": "1"
+     },
+     "E_eps1_del1_mp": {
+      "gb_a1p_b1m": "1"
+     },
+     "E_eps1_del2_mp": {
+      "gb_a1p_b2m": "1"
+     },
+     "E_eps1_del3_mp": {
+      "gb_a1p_b3m": "1"
+     },
+     "E_eps1_del1_mm": {
+      "gb_a1p_b1p": "-1"
+     },
+     "E_eps1_del2_mm": {
+      "gb_a1p_b2p": "-1"
+     },
+     "E_eps1_del3_mm": {
+      "gb_a1p_b3p": "-1"
+     }
+    },
+    "H_4": {},
+    "E_2del1_p": {}
+   },
+   "profiles": [
+    {
+     "profile": "all_plus",
+     "gb_nonzero": 12,
+     "mismatches_with_f_equal_0": 1840,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 132
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 144
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 90,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del3_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "all_minus",
+     "gb_nonzero": 12,
+     "mismatches_with_f_equal_0": 1840,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 132
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 144
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 90,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del3_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "row_sign",
+     "gb_nonzero": 12,
+     "mismatches_with_f_equal_0": 1840,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 132
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 144
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 90,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del3_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "boson_sign",
+     "gb_nonzero": 12,
+     "mismatches_with_f_equal_0": 1840,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 132
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 144
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 90,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del3_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "alternating_j",
+     "gb_nonzero": 12,
+     "mismatches_with_f_equal_0": 1840,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 132
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 144
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 90,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_2del1_m",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del2_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "-1/2"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_del1_del3_mm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "single_a1p_b1p",
+     "gb_nonzero": 1,
+     "mismatches_with_f_equal_0": 145,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 11
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 12
+     },
+     "T3": {
+      "trivial": false,
+      "n_inconsistent_equations": 7,
+      "first_inconsistencies": [
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "gamma_value_not_matched": "1"
+       },
+       {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_2",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del2_pp",
+        "Y": "E_del1_del2_pm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del3_pp",
+        "Y": "E_del1_del3_pm",
+        "Z": "K",
+        "gamma_value_not_matched": "1/2"
+       },
+       {
+        "X": "E_eps1_del1_pm",
+        "Y": "E_2del1_p",
+        "Z": "K",
+        "gamma_value_not_matched": "-1"
+       }
+      ]
+     }
+    },
+    {
+     "profile": "zero",
+     "gb_nonzero": 0,
+     "mismatches_with_f_equal_0": 0,
+     "T1": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T2": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     },
+     "T3": {
+      "trivial": true,
+      "residual_mismatches": 0,
+      "nonzero_f_coefficients_in_solution": 0
+     }
+    }
+   ]
+  }
+ ]
+}
