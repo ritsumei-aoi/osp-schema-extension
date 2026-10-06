@@ -1,0 +1,1525 @@
+{
+ "reports": [
+  {
+   "n": 1,
+   "modes": {
+    "mod_K": {
+     "equations": 110,
+     "unknowns": 32,
+     "rank_delta": 28,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 4,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 5
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 20
+      }
+     }
+    },
+    "strict": {
+     "equations": 120,
+     "unknowns": 32,
+     "rank_delta": 28,
+     "gb_condition_rank": 4,
+     "gb_conditions": [
+      "gb_p_1_p = 0",
+      "gb_p_1_m = 0",
+      "gb_m_1_p = 0",
+      "gb_m_1_m = 0"
+     ],
+     "trivial_gb_subspace_dim": 0,
+     "obstruction_examples": [
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_2del1_p",
+       "Z": "K",
+       "residual": "-gb_m_1_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "H_1",
+       "Z": "K",
+       "residual": "-gb_m_1_m"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "H_2",
+       "Z": "K",
+       "residual": "1/2*gb_m_1_m"
+      },
+      {
+       "X": "E_eps1_del1_mp",
+       "Y": "E_2del1_m",
+       "Z": "K",
+       "residual": "gb_m_1_m"
+      },
+      {
+       "X": "E_eps1_del1_mp",
+       "Y": "H_2",
+       "Z": "K",
+       "residual": "-1/2*gb_m_1_p"
+      },
+      {
+       "X": "E_eps1_del1_pm",
+       "Y": "E_2del1_p",
+       "Z": "K",
+       "residual": "-gb_p_1_p"
+      }
+     ],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "all_minus": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "single_p1p": {
+       "trivial": false,
+       "violated_conditions": 3,
+       "mismatched_equations": 3,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_pm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "fermion_sign": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "boson_sign": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "alternating_j": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "random_signs": {
+       "trivial": false,
+       "violated_conditions": 10,
+       "mismatched_equations": 10,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mp",
+         "Y": "E_2del1_m",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      }
+     }
+    },
+    "strict_cent": {
+     "equations": 120,
+     "unknowns": 36,
+     "rank_delta": 32,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 4,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 6
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 24
+      }
+     }
+    }
+   },
+   "closed_form": {
+    "oscillator_substitution_ok": true,
+    "f_closed_nonzero_entries": 16,
+    "f_closed_has_K_component": true,
+    "mismatches_including_K": 0,
+    "mismatches_mod_K": 0,
+    "f_closed_sample": {
+     "E_eps1_del1_pp": {
+      "H_2": "-gb_p_1_p",
+      "E_2del1_p": "-gb_p_1_m",
+      "K": "1/2*gb_p_1_p"
+     },
+     "E_eps1_del1_pm": {
+      "H_2": "gb_p_1_m",
+      "E_2del1_m": "gb_p_1_p",
+      "K": "1/2*gb_p_1_m"
+     },
+     "H_1": {
+      "E_eps1_del1_pp": "gb_m_1_m",
+      "E_eps1_del1_pm": "-gb_m_1_p",
+      "E_eps1_del1_mp": "-gb_p_1_m",
+      "E_eps1_del1_mm": "gb_p_1_p"
+     },
+     "H_2": {}
+    }
+   }
+  },
+  {
+   "n": 2,
+   "modes": {
+    "mod_K": {
+     "equations": 1390,
+     "unknowns": 176,
+     "rank_delta": 168,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 8,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 6
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 44
+      }
+     }
+    },
+    "strict": {
+     "equations": 1432,
+     "unknowns": 176,
+     "rank_delta": 168,
+     "gb_condition_rank": 8,
+     "gb_conditions": [
+      "gb_p_1_p = 0",
+      "gb_p_1_m = 0",
+      "gb_p_2_p = 0",
+      "gb_p_2_m = 0",
+      "gb_m_1_p = 0",
+      "gb_m_1_m = 0",
+      "gb_m_2_p = 0",
+      "gb_m_2_m = 0"
+     ],
+     "trivial_gb_subspace_dim": 0,
+     "obstruction_examples": [
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_2del1_p",
+       "Z": "K",
+       "residual": "-gb_m_1_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del2_pm",
+       "Z": "K",
+       "residual": "-1/2*gb_m_2_m"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del2_pp",
+       "Z": "K",
+       "residual": "-1/2*gb_m_2_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "H_1",
+       "Z": "K",
+       "residual": "-gb_m_1_m"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "H_2",
+       "Z": "K",
+       "residual": "-1/2*gb_m_1_m"
+      },
+      {
+       "X": "E_eps1_del1_mp",
+       "Y": "E_2del1_m",
+       "Z": "K",
+       "residual": "gb_m_1_m"
+      }
+     ],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "all_minus": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "single_p1p": {
+       "trivial": false,
+       "violated_conditions": 5,
+       "mismatched_equations": 5,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_pm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del2_pm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "fermion_sign": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "boson_sign": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "alternating_j": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "random_signs": {
+       "trivial": false,
+       "violated_conditions": 42,
+       "mismatched_equations": 42,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        }
+       ],
+       "solution_nonzero_phi": null
+      }
+     }
+    },
+    "strict_cent": {
+     "equations": 1432,
+     "unknowns": 184,
+     "rank_delta": 176,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 8,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 7
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 52
+      }
+     }
+    }
+   },
+   "closed_form": {
+    "oscillator_substitution_ok": true,
+    "f_closed_nonzero_entries": 52,
+    "f_closed_has_K_component": true,
+    "mismatches_including_K": 0,
+    "mismatches_mod_K": 0,
+    "f_closed_sample": {
+     "E_eps1_del1_pp": {
+      "H_2": "gb_p_1_p",
+      "H_3": "-gb_p_1_p",
+      "E_2del1_p": "-gb_p_1_m",
+      "E_del1_del2_pp": "-gb_p_2_m",
+      "E_del1_del2_pm": "gb_p_2_p",
+      "K": "1/2*gb_p_1_p"
+     },
+     "E_eps1_del2_pp": {
+      "H_3": "-gb_p_2_p",
+      "E_2del2_p": "-gb_p_2_m",
+      "E_del1_del2_pp": "-gb_p_1_m",
+      "E_del1_del2_mp": "gb_p_1_p",
+      "K": "1/2*gb_p_2_p"
+     },
+     "E_eps1_del1_pm": {
+      "H_2": "-gb_p_1_m",
+      "H_3": "gb_p_1_m",
+      "E_2del1_m": "gb_p_1_p",
+      "E_del1_del2_mm": "gb_p_2_p",
+      "E_del1_del2_mp": "-gb_p_2_m",
+      "K": "1/2*gb_p_1_m"
+     },
+     "E_eps1_del2_pm": {
+      "H_3": "gb_p_2_m",
+      "E_2del2_m": "gb_p_2_p",
+      "E_del1_del2_mm": "gb_p_1_p",
+      "E_del1_del2_pm": "-gb_p_1_m",
+      "K": "1/2*gb_p_2_m"
+     },
+     "H_1": {
+      "E_eps1_del1_pp": "gb_m_1_m",
+      "E_eps1_del2_pp": "gb_m_2_m",
+      "E_eps1_del1_pm": "-gb_m_1_p",
+      "E_eps1_del2_pm": "-gb_m_2_p",
+      "E_eps1_del1_mp": "-gb_p_1_m",
+      "E_eps1_del2_mp": "-gb_p_2_m",
+      "E_eps1_del1_mm": "gb_p_1_p",
+      "E_eps1_del2_mm": "gb_p_2_p"
+     },
+     "H_2": {},
+     "H_3": {}
+    }
+   }
+  },
+  {
+   "n": 3,
+   "modes": {
+    "mod_K": {
+     "equations": 7024,
+     "unknowns": 528,
+     "rank_delta": 516,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 12,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 9
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 96
+      }
+     }
+    },
+    "strict": {
+     "equations": 7114,
+     "unknowns": 528,
+     "rank_delta": 516,
+     "gb_condition_rank": 12,
+     "gb_conditions": [
+      "gb_p_1_p = 0",
+      "gb_p_1_m = 0",
+      "gb_p_2_p = 0",
+      "gb_p_2_m = 0",
+      "gb_p_3_p = 0",
+      "gb_p_3_m = 0",
+      "gb_m_1_p = 0",
+      "gb_m_1_m = 0",
+      "gb_m_2_p = 0",
+      "gb_m_2_m = 0",
+      "gb_m_3_p = 0",
+      "gb_m_3_m = 0"
+     ],
+     "trivial_gb_subspace_dim": 0,
+     "obstruction_examples": [
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_2del1_p",
+       "Z": "K",
+       "residual": "-gb_m_1_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del2_pm",
+       "Z": "K",
+       "residual": "-1/2*gb_m_2_m"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del2_pp",
+       "Z": "K",
+       "residual": "-1/2*gb_m_2_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del3_pm",
+       "Z": "K",
+       "residual": "-1/2*gb_m_3_m"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "E_del1_del3_pp",
+       "Z": "K",
+       "residual": "-1/2*gb_m_3_p"
+      },
+      {
+       "X": "E_eps1_del1_mm",
+       "Y": "H_1",
+       "Z": "K",
+       "residual": "-gb_m_1_m"
+      }
+     ],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "all_minus": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "single_p1p": {
+       "trivial": false,
+       "violated_conditions": 7,
+       "mismatched_equations": 7,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_pm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_1",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_pp",
+         "Y": "H_2",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del2_pm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "fermion_sign": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "boson_sign": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "alternating_j": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      },
+      "random_signs": {
+       "trivial": false,
+       "violated_conditions": 90,
+       "mismatched_equations": 90,
+       "mismatch_examples": [
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_2del1_p",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del2_pp",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "-1/2"
+        },
+        {
+         "X": "E_eps1_del1_mm",
+         "Y": "E_del1_del3_pm",
+         "Z": "K",
+         "delta_f": "0",
+         "gamma": "1/2"
+        }
+       ],
+       "solution_nonzero_phi": null
+      }
+     }
+    },
+    "strict_cent": {
+     "equations": 7114,
+     "unknowns": 540,
+     "rank_delta": 528,
+     "gb_condition_rank": 0,
+     "gb_conditions": [],
+     "trivial_gb_subspace_dim": 12,
+     "obstruction_examples": [],
+     "profiles": {
+      "zero": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 0
+      },
+      "all_plus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      },
+      "all_minus": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      },
+      "single_p1p": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 10
+      },
+      "fermion_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      },
+      "boson_sign": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      },
+      "alternating_j": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      },
+      "random_signs": {
+       "trivial": true,
+       "violated_conditions": 0,
+       "mismatched_equations": 0,
+       "mismatch_examples": [],
+       "solution_nonzero_phi": 108
+      }
+     }
+    }
+   },
+   "closed_form": {
+    "oscillator_substitution_ok": true,
+    "f_closed_nonzero_entries": 108,
+    "f_closed_has_K_component": true,
+    "mismatches_including_K": 0,
+    "mismatches_mod_K": 0,
+    "f_closed_sample": {
+     "E_eps1_del1_pp": {
+      "H_2": "gb_p_1_p",
+      "H_3": "gb_p_1_p",
+      "H_4": "-gb_p_1_p",
+      "E_2del1_p": "-gb_p_1_m",
+      "E_del1_del2_pp": "-gb_p_2_m",
+      "E_del1_del3_pp": "-gb_p_3_m",
+      "E_del1_del2_pm": "gb_p_2_p",
+      "E_del1_del3_pm": "gb_p_3_p",
+      "K": "1/2*gb_p_1_p"
+     },
+     "E_eps1_del2_pp": {
+      "H_3": "gb_p_2_p",
+      "H_4": "-gb_p_2_p",
+      "E_2del2_p": "-gb_p_2_m",
+      "E_del1_del2_pp": "-gb_p_1_m",
+      "E_del2_del3_pp": "-gb_p_3_m",
+      "E_del2_del3_pm": "gb_p_3_p",
+      "E_del1_del2_mp": "gb_p_1_p",
+      "K": "1/2*gb_p_2_p"
+     },
+     "E_eps1_del3_pp": {
+      "H_4": "-gb_p_3_p",
+      "E_2del3_p": "-gb_p_3_m",
+      "E_del1_del3_pp": "-gb_p_1_m",
+      "E_del2_del3_pp": "-gb_p_2_m",
+      "E_del1_del3_mp": "gb_p_1_p",
+      "E_del2_del3_mp": "gb_p_2_p",
+      "K": "1/2*gb_p_3_p"
+     },
+     "E_eps1_del1_pm": {
+      "H_2": "-gb_p_1_m",
+      "H_3": "-gb_p_1_m",
+      "H_4": "gb_p_1_m",
+      "E_2del1_m": "gb_p_1_p",
+      "E_del1_del2_mm": "gb_p_2_p",
+      "E_del1_del3_mm": "gb_p_3_p",
+      "E_del1_del2_mp": "-gb_p_2_m",
+      "E_del1_del3_mp": "-gb_p_3_m",
+      "K": "1/2*gb_p_1_m"
+     },
+     "E_eps1_del2_pm": {
+      "H_3": "-gb_p_2_m",
+      "H_4": "gb_p_2_m",
+      "E_2del2_m": "gb_p_2_p",
+      "E_del1_del2_mm": "gb_p_1_p",
+      "E_del2_del3_mm": "gb_p_3_p",
+      "E_del1_del2_pm": "-gb_p_1_m",
+      "E_del2_del3_mp": "-gb_p_3_m",
+      "K": "1/2*gb_p_2_m"
+     },
+     "E_eps1_del3_pm": {
+      "H_4": "gb_p_3_m",
+      "E_2del3_m": "gb_p_3_p",
+      "E_del1_del3_mm": "gb_p_1_p",
+      "E_del2_del3_mm": "gb_p_2_p",
+      "E_del1_del3_pm": "-gb_p_1_m",
+      "E_del2_del3_pm": "-gb_p_2_m",
+      "K": "1/2*gb_p_3_m"
+     },
+     "H_1": {
+      "E_eps1_del1_pp": "gb_m_1_m",
+      "E_eps1_del2_pp": "gb_m_2_m",
+      "E_eps1_del3_pp": "gb_m_3_m",
+      "E_eps1_del1_pm": "-gb_m_1_p",
+      "E_eps1_del2_pm": "-gb_m_2_p",
+      "E_eps1_del3_pm": "-gb_m_3_p",
+      "E_eps1_del1_mp": "-gb_p_1_m",
+      "E_eps1_del2_mp": "-gb_p_2_m",
+      "E_eps1_del3_mp": "-gb_p_3_m",
+      "E_eps1_del1_mm": "gb_p_1_p",
+      "E_eps1_del2_mm": "gb_p_2_p",
+      "E_eps1_del3_mm": "gb_p_3_p"
+     },
+     "H_2": {},
+     "H_3": {},
+     "H_4": {}
+    }
+   }
+  }
+ ]
+}

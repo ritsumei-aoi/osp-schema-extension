@@ -151,6 +151,8 @@ class OscAlgebra:
         out: dict = {}
         for wx, cx in x.items():
             for wy, cy in y.items():
+                if "kappa" in wx and "kappa" in wy:  # kappa^2 = 0
+                    continue
                 c = cx * cy
                 if c:
                     _acc(out, self._nf(wx + wy), c)
