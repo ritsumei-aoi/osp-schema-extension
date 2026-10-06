@@ -99,23 +99,26 @@ def coboundary_matrix(n, allow_K):
     return slots, rows, entries
 
 
-def gamma_matrix(n, rows):
-    """gamma per gb parameter as columns over the same row index (extends rows if needed)."""
+def gamma_matrix(n, rows, gamma_K=True):
+    """gamma per gb parameter as columns over the same row index (extends rows if needed).
+    gamma_K=False drops the K-components (the g-valued part of gamma only)."""
     sym = CG.symbolic_gamma(n)
     keys = CG.gb_keys(n)
-    kidx = {k: i for i, k in enumerate(keys)}
+    kidx = dict((k, i) for i, k in enumerate(keys))
     entries = []
     for (X, Y, Z), cs in sym.items():
+        if Z == "K" and not gamma_K:
+            continue
         r = rows.setdefault((X, Y, Z), len(rows))
         for k, c in cs.items():
             entries.append((r, kidx[k], float(c)))
     return keys, entries
 
 
-def trivial_subspace(n, allow_K, tol=1e-9):
+def trivial_subspace(n, allow_K, tol=1e-9, gamma_K=True):
     """Dimension data of {gb : gamma(gb) in im(delta)} and a basis of it (numerical)."""
     slots, rows, ent_d = coboundary_matrix(n, allow_K)
-    keys, ent_g = gamma_matrix(n, rows)
+    keys, ent_g = gamma_matrix(n, rows, gamma_K)
     R = len(rows)
     D = np.zeros((R, len(slots)))
     for r, j, v in ent_d:
