@@ -1,11 +1,9 @@
 # Supplementary Session Metrics
 
-**Run ID**: study/thm01-{NN}
-**Model**: [Your Model Name]
+**Run ID**: study/thm01-R-sonnet55-b09-C
+**Model**: Claude Sonnet 5.5
 
-Please provide the following information from your gemini-cli session statistics:
-
-- **Total Execution Time (Wall clock)**:
-- **Total Thinking Time**:
-- **Token Usage (if known)**:
-- **Any other session-level statistics available in your interface**:
+- **Total Execution Time (Wall clock)**: not available to me in this interface
+- **Total Thinking Time**: not available
+- **Token Usage (if known)**: not available
+- **Any other session-level statistics available in your interface**: none; the session was run with Claude Code, not gemini-cli
