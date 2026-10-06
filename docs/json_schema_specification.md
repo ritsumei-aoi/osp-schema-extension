@@ -259,3 +259,29 @@ Schemas 3/4 is replaced by storing all evaluated profiles inside one file, keyed
 ```
 Profiles: `zero`, `all_plus`, `all_minus`, `row_sign`, `col_sign`, `checkerboard`,
 `index_parity`, `single_p_1_p`, `random_signs` (definitions in `src/C_evaluate.py`).
+
+---
+
+## Schema 4: Coboundary structure (`C_{n}_coboundary.json`) — added in I07
+
+```json
+{
+  "schema_version": "5.0", "layer": 4,
+  "algebra": {..., "structure_file": "C_{n}_structure.json"},
+  "odd_linear_map": {"definition": "f(Z_j) = sum_i phi[Z_i|Z_j] Z_i, p(Z_i) != p(Z_j); phi[K|Z_j] optional central part",
+                     "unknowns_g": 2*even*odd, "unknowns_central": odd},
+  "coboundary_formula": "(delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+  "general_coboundary": [{"X": ..., "Y": ..., "Z": ..., "coeff": {"phi[Z_i|Z_j]": "c", ...}}],
+  "reference_map": {
+    "description": "f_gb = -F from the odd fermion shift a' = a + kappa sum_j (gb_{s,j,-} b_j^+ - gb_{s,j,+} b_j^-)",
+    "f": [{"generator": "H_1", "Z": "E_eps1_del1_pp", "coeff": {"gb_m_1_m": "1"}}],
+    "delta_f": [{"X": ..., "Y": ..., "Z": ..., "coeff": {"gb_...": "c"}}],
+    "delta_f_central": [{"X": ..., "Y": ..., "Z": "K", "coeff": {...}}]
+  },
+  "profiles": {"all_plus": {"gb_values": {...}, "f": [...], "delta_f": [...], "delta_f_central": [...]}},
+  "metadata": {...}
+}
+```
+`general_coboundary` is $\delta f$ for a generic odd $f$ (linear form in the $\phi$ unknowns);
+`reference_map` is one specific odd map (linear in gb) and its coboundary; `profiles` evaluates it
+at the same gb profiles as Schema 3 so that Layers 3 and 4 can be compared entry by entry.
