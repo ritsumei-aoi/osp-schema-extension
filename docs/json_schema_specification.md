@@ -256,3 +256,47 @@ C(n+1) files.
 3. Every structure constant has $p(Z) = p(X)+p(Y) \bmod 2$.
 4. Re-expanding $\sum_Z c^Z_{XY}\,\mathrm{real}(Z)$ reproduces the oscillator bracket exactly.
 5. Graded antisymmetry and super Jacobi hold (Issue I04).
+
+---
+
+## 2. Schema 2: Inhomogeneous deformation (`C_{n}_gamma.json`)
+
+Defined in Issue I05. Mathematical source: `docs/math/C_inhomogeneous_definition.md`.
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 2,
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "osp": "osp(2|2)"},
+  "structure_ref": "C_1_structure.json",
+  "basis_order": ["E_eps1_del1_pp", "...", "E_2del1_m"],
+  "parity": {"E_eps1_del1_pp": 1, "...": 0},
+  "inhomogeneous_deformation": {
+    "description": "...",
+    "bracket_convention": "[X,Y]_γ = [X,Y]_0 + κ γ(X,Y), κ written on the left; [X,Y] graded commutator",
+    "gb_matrix": {
+      "rows": ["a_1_p", "a_1_m"],
+      "columns": ["b_1_p", "b_1_m"],
+      "symbols": [["gb_p_1_p", "gb_p_1_m"], ["gb_m_1_p", "gb_m_1_m"]],
+      "count": 4, "shape": [2, 2],
+      "defining_relation": "[b_j^s, a_1^σ] = -gb_{σ,j,s} κ   (σ = row, (j,s) = column)",
+      "parameter_parity": 1,
+      "parity_note": "..."
+    },
+    "gamma_target_space": "g ⊕ C K; an entry with Z = 'K' is the central part",
+    "gamma_parity_rule": "p(Z) = p(X) + p(Y) + 1 mod 2",
+    "symmetry": "γ(Y,X) = -(-1)^{p(X)p(Y)} γ(X,Y); all ordered pairs are stored",
+    "linearity": "γ is exactly linear in gb",
+    "gamma": [
+      {"X": "E_eps1_del1_pp", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp",
+       "coeff": {"gb_p_1_p": "2"}, "expr": "2*gb_p_1_p"}
+    ],
+    "statistics": {"entries": 112, "central_entries": 20, "nonzero_pairs": 54, "parameters": 4}
+  },
+  "metadata": {"generated_by": "src/C_gamma.py", "generation_date": "YYYY-MM-DD", "...": "..."}
+}
+```
+- `gamma[i].coeff` maps gb symbols to rational strings; γ^Z_{XY} = Σ_g coeff[g]·g.
+- `Z = "K"` records the central part (the coefficient of κK = κ). It is kept for completeness;
+  triviality in I07/I08 is tested modulo this part ("up to scalar") and, separately, with it.
+- gb symbols: `gb_{σ}_{j}_{s}`, σ, s ∈ {p, m}.
