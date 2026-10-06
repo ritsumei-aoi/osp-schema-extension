@@ -87,7 +87,7 @@ def solve_gb_subspace(S, variant):
     else:
         A = np.vstack([np.hstack([M, -Gm]), np.hstack([MK, -GKm])])
     # nullspace of A -> project onto gb coordinates
-    u, s, vt = np.linalg.svd(A, full_matrices=True) if A.shape[0] < 3000 else _svd_gram(A)
+    u, s, vt = np.linalg.svd(A, full_matrices=False)
     tol = 1e-9 * max(1.0, s.max() if len(s) else 1.0)
     rank = int((s > tol).sum())
     null = vt[rank:].T
@@ -97,16 +97,6 @@ def solve_gb_subspace(S, variant):
     uu, ss, _ = np.linalg.svd(gb_part, full_matrices=False)
     r = int((ss > 1e-8).sum())
     return uu[:, :r], null
-
-
-def _svd_gram(A):
-    """SVD via eigen-decomposition of A^T A (A is tall and sparse-ish)."""
-    G = A.T @ A
-    w, V = np.linalg.eigh(G)
-    order = np.argsort(-w)
-    w, V = w[order], V[:, order]
-    s = np.sqrt(np.clip(w, 0, None))
-    return None, s, V.T
 
 
 if __name__ == "__main__":
