@@ -168,6 +168,25 @@ Parity rule: $p(Z)=p(X)+p(Y)+1 \pmod 2$ (with $p(K)=0$) — the extra $+1$ is th
 Consistency with Schema 1: same `basis`/`parity`; the $\kappa$-free part of the deformed bracket is gb-independent and equals Schema 1;
 $\gamma$ satisfies the first-order super Jacobi (2-cocycle) condition, checked in `src/C_gamma.py` (`cocycle_failures`).
 
-## Schema 3 and 4
+## Schema 3: Evaluated structure (`C_{n}_evaluated.json`, added in I06)
 
-Defined in the sections added by Issues I06–I07 (below).
+Schema 2 with a numerical gb substituted. The representative assignment `all_plus` (all $4n$ gb $=+1$) is `C_{n}_evaluated.json`;
+other sign profiles are `C_{n}_evaluated_<profile>.json` (`all_minus`, `alternating`, `sigma_p_only`, `single_first`, `zero`;
+definitions in `src/C_evaluate.py::profiles`).
+
+Top-level keys: `schema_version`, `algebra`, `basis`, `parity`, `central_elements`, `gb_assignment`, `evaluated_structure`, `metadata`.
+```json
+"gb_assignment": {"profile": "all_plus", "values": {"gb_a_1_p_b_1_p": "1", "...": "1"}},
+"evaluated_structure": {
+  "description": "...",
+  "undeformed_structure_constants": [ /* Schema 1 list, verbatim */ ],
+  "gamma": [ {"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": "-1"} ],
+  "central_direction": "Z = 'K' is the coefficient of κ·1"
+}
+```
+`gamma[*].coeff` is a rational string equal to $\sum_p \mathrm{coeff}_{\text{Schema 2}}[p]\,\mathrm{gb}[p]$; only non-zero entries are listed.
+The deformed bracket is $[X,Y\}_\gamma=\sum_Z c^{\,\text{Schema 1}}_{XYZ}Z+\kappa\sum_Z\gamma_{XYZ}Z$.
+
+## Schema 4: Coboundary structure
+
+Defined in the section added by Issue I07 (below).
