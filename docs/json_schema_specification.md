@@ -168,3 +168,47 @@ anti-symmetry $[X,Y\} = -(-1)^{p(X)p(Y)}[Y,X\}$ is independently verifiable. Ent
 
 Even-sector entries of B(0,n) (`E_2del*`, `E_del*_del*_*`) reappear unchanged as the $\mathfrak{sp}(2n)$ part of C(n+1);
 C(n+1) adds the $\mathfrak{so}(2)$ Cartan direction and the $\pm\varepsilon\pm\delta_k$ odd generators.
+
+---
+
+## Schema 2: Inhomogeneous deformation (gamma structure) — `C_{n}_gamma.json`
+
+Defined by the deformed oscillator relation (`docs/math/C_inhomogeneous_definition.md`)
+$[b_j^s, a_1^\sigma] = -\mathrm{gb}_{\sigma,j,s}\,\kappa$, giving
+$[X,Y]_\gamma = [X,Y]_0 + \kappa\,\gamma(X,Y)$ with $\gamma$ **linear in gb**.
+
+Top-level keys: `schema_version` ("5.0"), `schema_layer` (2), `algebra`, `central_elements`, `basis`, `parity`
+(copied from Schema 1), `gb_matrix`, `inhomogeneous_deformation`, `metadata`.
+
+### `gb_matrix`
+```json
+{"shape": [2, 4], "rows": ["a_1_p", "a_1_m"], "columns": ["b_1_p", "b_1_m", "b_2_p", "b_2_m"],
+ "parity": 1, "relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa",
+ "entries": [["gb_a_1_p_b_1_p", "gb_a_1_p_b_1_m", "gb_a_1_p_b_2_p", "gb_a_1_p_b_2_m"],
+             ["gb_a_1_m_b_1_p", "gb_a_1_m_b_1_m", "gb_a_1_m_b_2_p", "gb_a_1_m_b_2_m"]],
+ "parameter_count": 8}
+```
+Size $2\times 2n$, i.e. $4n$ parameters; row = fermion label, column = boson label.
+
+### `inhomogeneous_deformation`
+```json
+{"description": "...", "bracket": "[X,Y]_gamma = [X,Y]_0 + kappa*gamma(X,Y)",
+ "gamma_codomain": "g (+) C*K",
+ "gamma_parity_rule": "p(Z) = p(X) + p(Y) + 1 (mod 2); Z='K' has parity 0",
+ "parameters": ["gb_a_1_p_b_1_p", "..."],
+ "gamma_structure": [
+   {"X": "E_eps1_del1_pp", "Y": "H_1", "Z": "K", "coeff": {"gb_a_1_p_b_1_p": "1"}},
+   {"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": {"gb_a_1_p_b_1_p": "-1"}}]}
+```
+$\gamma(X,Y) = \sum_Z \sum_{\text{param}} \mathrm{coeff}[\text{param}]\cdot \text{param}\cdot Z$, stored for all ordered pairs with
+$\gamma\neq0$. `coeff` maps each gb symbol to the exact rational coefficient (omitted = 0).
+**`Z = "K"`**: the constant component. Because $K=1$ is central and $\kappa K = \kappa$, this is a multiple of the central
+element $\kappa$ in the bracket; it arises from Weyl-ordering constants (e.g. $b^-b^+ = b^+b^- + 1$) and is **not** in $\mathfrak g$.
+So $\gamma:\mathfrak g\otimes\mathfrak g\to\mathfrak g\oplus\mathbb C K$.
+
+### Consistency conditions with Schema 1 (verified by `src/verify_C_gamma.py`)
+1. all labels are in the Schema 1 basis (or `K`) and $p(Z)=p(X)+p(Y)+1$;
+2. skew-symmetry $\gamma(X,Y) = -(-1)^{p(X)p(Y)}\gamma(Y,X)$;
+3. 2-cocycle identity w.r.t. the Schema 1 bracket (order-$\kappa$ part of the super Jacobi identity, using
+   $[X,\kappa W]=(-1)^{p(X)}\kappa[X,W]$, $[\kappa W,Z]=\kappa[W,Z]$, $[K,\cdot]=0$);
+4. the $\kappa$-free part of $[X,Y]_\gamma$ equals Schema 1 (tested).
