@@ -213,5 +213,33 @@ $$[X,Y]_\gamma = [X,Y]_0 + \kappa\big(\gamma(X,Y) + \gamma_K(X,Y)\,K\big),\qquad
 `coeff` is a linear form in the gb parameters. `gamma_central` is the κK component; it only
 occurs for pairs of opposite parity.
 
-## 3–4. Schemas 3, 4
-Specified in the following sections (added by issues I06–I07).
+## 3. Schema 3: `C_{n}_evaluated.json`
+
+One file per n containing several gb sign profiles (instead of B's one file per profile
+`B_n_evaluated_<gb>.json`, so that I08 can compare profiles side by side).
+
+```json
+{
+  "schema_version": "5.0", "layer": 3,
+  "algebra": {...}, "basis": {...}, "parity": {...},
+  "bracket_form": "[X,Y]_γ = [X,Y]_0 + κ (γ(X,Y) + γ_K(X,Y) K), κ on the left",
+  "undeformed_structure_constants": "C_{n}_structure.json (κ⁰ part, unchanged by gb)",
+  "primary_profile": "all_plus",
+  "profiles": [
+    {"name": "all_plus", "description": "every gb = +1 (primary profile)",
+     "gb_values": {"gb_a1p_b1p": "1", ...},
+     "gb_matrix_values": [["1", ...], ["1", ...]],
+     "gamma_evaluated": [{"X": "...", "Y": "...", "Z": "...", "coeff": "2"}],
+     "gamma_central_evaluated": [{"X": "...", "Y": "...", "coeff": "-1/2"}],
+     "check_direct_oscillator_substitution": true}
+  ],
+  "metadata": {...}
+}
+```
+Profiles: `all_plus`, `all_minus`, `row_sign` (a_1^+ row +1, a_1^- row −1), `boson_sign`
+(b^+ columns +1, b^- columns −1), `alternating_j` ((−1)^{j+1}), `single_a1p_b1p`, `zero` (control).
+`check_direct_oscillator_substitution`: the same numbers recomputed by inserting the numeric gb
+directly into the oscillator relation (independent of Schema 2).
+
+## 4. Schema 4
+Specified in the following section (added by issue I07).

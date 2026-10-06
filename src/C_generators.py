@@ -77,9 +77,9 @@ def realization_terms(n):
 class CAlgebra:
     """Realization of C(n+1) inside U(A); optionally with the gb deformation."""
 
-    def __init__(self, n, deformed=False):
+    def __init__(self, n, deformed=False, gb_values=None):
         self.n = n
-        self.osc = Oscillators(n, deformed=deformed)
+        self.osc = Oscillators(n, deformed=deformed, gb_values=gb_values)
         self.basis = full_basis(n)
         self.idx = {x: i for i, x in enumerate(self.basis)}
         self.parity = parity_map(n)
@@ -135,8 +135,8 @@ class CAlgebra:
         return bracket(self.osc, self.gen[x], self.gen[y], self.parity[x], self.parity[y])
 
 
-def make_algebra(n, deformed=False):
-    return CAlgebra(n, deformed=deformed)
+def make_algebra(n, deformed=False, gb_values=None):
+    return CAlgebra(n, deformed=deformed, gb_values=gb_values)
 
 
 # ---------------------------------------------------------------- Schema 1

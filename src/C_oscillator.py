@@ -60,9 +60,11 @@ def lin_from_json(d):
 class Oscillators:
     """Oscillator labels/indices for rank n.  Order: a_1_p, a_1_m, b_1_p, b_1_m, ..."""
 
-    def __init__(self, n, deformed=False):
+    def __init__(self, n, deformed=False, gb_values=None):
+        """gb_values: optional {gb name: number}; substitutes numeric gb directly in the relation."""
         self.n = n
-        self.deformed = deformed
+        self.deformed = deformed or gb_values is not None
+        self.gb_values = gb_values
         self.labels = ["a_1_p", "a_1_m"]
         for k in range(1, n + 1):
             self.labels += [f"b_{k}_p", f"b_{k}_m"]
@@ -91,6 +93,8 @@ class Oscillators:
                 return 0, {}
             j, s = (x - 2) // 2 + 1, "pm"[(x - 2) % 2]
             sigma = "pm"[y]
+            if self.gb_values is not None:
+                return 1, lin(-Fraction(self.gb_values.get(self.gb_name(sigma, j, s), 0)))
             return 1, lin(-1, self.gb_name(sigma, j, s))
         if x >= 2 and y >= 2 and x % 2 == 1 and y == x - 1:  # [b_j^-, b_j^+] = 1
             return 0, lin(1)
