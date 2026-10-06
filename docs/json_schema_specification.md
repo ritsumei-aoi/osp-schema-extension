@@ -300,3 +300,39 @@ Defined in Issue I05. Mathematical source: `docs/math/C_inhomogeneous_definition
 - `Z = "K"` records the central part (the coefficient of κK = κ). It is kept for completeness;
   triviality in I07/I08 is tested modulo this part ("up to scalar") and, separately, with it.
 - gb symbols: `gb_{σ}_{j}_{s}`, σ, s ∈ {p, m}.
+
+---
+
+## 3. Schema 3: Evaluated structure (`C_{n}_evaluated.json`)
+
+Defined in Issue I06. One file per n containing all representative gb profiles.
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 3,
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "osp": "osp(2|2)"},
+  "structure_ref": "C_1_structure.json",
+  "gamma_ref": "C_1_gamma.json",
+  "basis_order": ["..."],
+  "evaluation": {
+    "bracket_convention": "[X,Y]_gb = [X,Y]_0 (structure_ref) + κ Σ_Z gamma_evaluated[X,Y,Z] Z; Z = 'K' is the central part",
+    "gb_matrix_layout": {"rows": ["a_1_p", "a_1_m"], "columns": ["b_1_p", "b_1_m"]},
+    "profiles": [
+      {
+        "name": "all_plus",
+        "description": "all gb = +1",
+        "gb": {"gb_p_1_p": 1, "gb_p_1_m": 1, "gb_m_1_p": 1, "gb_m_1_m": 1},
+        "gb_matrix": [[1, 1], [1, 1]],
+        "gamma_evaluated": [{"X": "E_eps1_del1_pp", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp", "coeff": "2"}],
+        "statistics": {"entries": 112, "central_entries": 20, "nonzero_pairs": 54}
+      }
+    ]
+  },
+  "metadata": {"generated_by": "src/C_evaluate.py", "generation_date": "YYYY-MM-DD"}
+}
+```
+Profiles (all n): `zero` (control), `all_plus`, `all_minus`, `row_split` (sign σ),
+`column_split` (sign s), `alternating_j` ((−1)^{j+1}), `checkerboard` (product of the three
+signs), `unit_p_1_p`, `unit_m_1_m` (single non-zero parameter). Undeformed constants are not
+duplicated: they are read from `structure_ref`.
