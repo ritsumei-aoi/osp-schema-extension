@@ -243,3 +243,25 @@ Schema 2 with every gb replaced by a number. `C_{n}_evaluated.json` is the profi
 }
 ```
 Only non-zero entries are stored. Profiles: `plus` (all +1), `minus` (all -1), `alt` (+1,-1,+1,... in the order of `gb_names`: `(j,s,σ)` with σ fastest), `zero` (undeformed; empty γ), `single` (only the first gb = 1).
+
+## 4. Schema 4: coboundary structure (`C_{n}_coboundary[_<profile>].json`, added in I07)
+
+```json
+{
+  "schema_version": "5.0", "layer": 4,
+  "algebra": {}, "structure_file": "C_1_structure.json", "evaluated_file": "C_1_evaluated.json",
+  "profile": {"name": "plus", "gb_values": {}},
+  "odd_map": {
+    "description": "f = -D ...",
+    "phi": [{"X": "E_eps1_del1_pp", "Z": "H_1", "coeff": "1/2"}],
+    "central_component": [{"X": "E_eps1_del1_pp", "coeff": "1/2"}],
+    "central_component_note": "...", "counts": {}
+  },
+  "coboundary": {"formula": "...", "delta_f": [{"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "H_1", "coeff": "-1"}], "counts": {}},
+  "metadata": {}
+}
+```
+- `phi[*]`: `f(X) ∋ coeff · Z` (the matrix φ_{ZX} of `C_coboundary_definition.md`, `f(Z_j) = Σ_i φ_ij Z_i`). `f` is odd: `p(Z) = p(X)+1`.
+- `central_component`: K-component of `f(X)` (K even, so only odd `X`); outside g, ignored by `delta_f`.
+- `delta_f[*]`: `(δf)_{XYZ}` for `(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])`, brackets from Schema 1. Only non-zero entries; `p(Z) = p(X)+p(Y)+1`.
+- The reference `f` is the map induced by the oscillator shift `b_j^s -> b_j^s + κ D(b_j^s)` with `D(b_j^s) = Σ_σ' gb_{-σ',j,s} a_1^{σ'}`, `D(a)=0` (see the I07 response for the derivation).

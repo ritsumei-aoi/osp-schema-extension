@@ -1,0 +1,50 @@
+{
+ "schema_version": "5.0",
+ "layer": 4,
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 1,
+  "cartan_type": "C(2)",
+  "dimension": {
+   "even": 4,
+   "odd": 4,
+   "total": 8
+  }
+ },
+ "structure_file": "C_1_structure.json",
+ "evaluated_file": "C_1_evaluated_zero.json",
+ "profile": {
+  "name": "zero",
+  "gb_values": {
+   "gb_a_1_p_b_1_p": "0",
+   "gb_a_1_m_b_1_p": "0",
+   "gb_a_1_p_b_1_m": "0",
+   "gb_a_1_m_b_1_m": "0"
+  }
+ },
+ "odd_map": {
+  "description": "f = -D with D the odd derivation D(a_1^±)=0, D(b_j^s)=Σ_σ' gb_{-σ',j,s} a_1^σ'; f(Z_X) = Σ_Z φ[X→Z] Z. f maps even->odd and odd->even.",
+  "phi": [],
+  "central_component": [],
+  "central_component_note": "K-component of f(X) (outside g); not used in δf",
+  "counts": {
+   "phi_entries": 0,
+   "central_entries": 0
+  }
+ },
+ "coboundary": {
+  "formula": "(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+  "delta_f": [],
+  "counts": {
+   "delta_f_entries": 0
+  }
+ },
+ "metadata": {
+  "generated_by": "src/C_coboundary.py",
+  "generation_date": "2026-10-06",
+  "references": [
+   "docs/math/C_coboundary_definition.md"
+  ]
+ }
+}
