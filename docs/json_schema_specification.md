@@ -223,3 +223,23 @@ Models the inhomogeneous deformation of `docs/math/C_inhomogeneous_definition.md
 - The gb values are ordinary scalars (the "parity 1" of the docs labels the odd oscillator pair; see the I05 response).
 - Consistency conditions (checked by `src/C_gamma.py`): same basis/algebra as Schema 1; gb = 0 recovers Schema 1; the κ-linear super Jacobi identity holds, using `[X, κZ] = (-1)^{p(X)} κ[X,Z]`, `[κZ, X] = κ[Z,X]`:
   `(-1)^{p(X)}[X,γ(Y,Z)] + γ(X,[Y,Z]) = [γ(X,Y),Z] + γ([X,Y],Z) + (-1)^{p(X)p(Y)}((-1)^{p(Y)}[Y,γ(X,Z)] + γ(Y,[X,Z]))`.
+
+## 3. Schema 3: evaluated structure (`C_{n}_evaluated[_<profile>].json`, added in I06)
+
+Schema 2 with every gb replaced by a number. `C_{n}_evaluated.json` is the profile `plus` (all gb = +1).
+
+```json
+{
+  "schema_version": "5.0", "layer": 3,
+  "algebra": {}, "structure_file": "C_1_structure.json", "gamma_file": "C_1_gamma.json",
+  "profile": {"name": "plus", "gb_values": {"gb_a_1_p_b_1_p": "1", "...": "1"}},
+  "evaluated_deformation": {
+    "description": "...",
+    "gamma": [{"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "H_1", "coeff": "-1"}],
+    "central_component": [{"X": "H_1", "Y": "E_eps1_del1_pp", "coeff": "-1"}],
+    "counts": {"gamma_entries": 0, "central_entries": 0}
+  },
+  "metadata": {}
+}
+```
+Only non-zero entries are stored. Profiles: `plus` (all +1), `minus` (all -1), `alt` (+1,-1,+1,... in the order of `gb_names`: `(j,s,σ)` with σ fastest), `zero` (undeformed; empty γ), `single` (only the first gb = 1).
