@@ -336,3 +336,42 @@ Profiles (all n): `zero` (control), `all_plus`, `all_minus`, `row_split` (sign �
 `column_split` (sign s), `alternating_j` ((−1)^{j+1}), `checkerboard` (product of the three
 signs), `unit_p_1_p`, `unit_m_1_m` (single non-zero parameter). Undeformed constants are not
 duplicated: they are read from `structure_ref`.
+
+---
+
+## 4. Schema 4: Coboundary structure (`C_{n}_coboundary.json`)
+
+Defined in Issue I07. Mathematical source: `docs/math/C_coboundary_definition.md`.
+The file is **gb-independent**: it stores δf for a generic odd map f as linear forms in the
+unknowns; solving γ = δf for a given gb is done in I08 (`src/C_triviality.py`).
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 4,
+  "algebra": {"family": "C", "m": 1, "n": 1, "...": "..."},
+  "structure_ref": "C_1_structure.json",
+  "basis_order": ["..."],
+  "coboundary": {
+    "definition": "(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+    "odd_map": {
+      "parametrization": "f(Z_j) = Σ_i phi__{Z_i}__{Z_j} Z_i  (+ psi__{Z_j} K for odd Z_j)",
+      "phi_unknowns": 32, "phi_rule": "free iff p(Z_i) != p(Z_j)",
+      "psi_unknowns": 4,  "psi_rule": "optional scalar part; psi = 0 is the strict reading f: g -> g",
+      "phi_order": ["phi__H_1__E_eps1_del1_pp", "..."],
+      "psi_order": ["psi__E_eps1_del1_pp", "..."]
+    },
+    "symmetry": "stored only for index(X) <= index(Y); (δf)(Y,X) = -(-1)^{p(X)p(Y)} (δf)(X,Y)",
+    "target_space": "g ⊕ C K",
+    "parity_rule": "p(Z) = p(X) + p(Y) + 1 mod 2",
+    "entries": [
+      {"X": "...", "Y": "...", "Z": "...", "coeff": {"phi__A__B": "1", "...": "-2"}, "expr": "phi__A__B - 2*..."}
+    ],
+    "statistics": {"entries": 120, "pairs_stored": 32, "central_entries": 10}
+  },
+  "metadata": {"generated_by": "src/C_coboundary.py", "...": "..."}
+}
+```
+Unknown counts: φ: 2·(2n²+n+1)·4n (32 / 176 / 528), ψ: 4n. Only X ≤ Y is stored (size: the
+n=3 file would otherwise double to ~3.5 MB); readers restore (Y,X) by the symmetry rule
+(`C_coboundary.load_coboundary`).
