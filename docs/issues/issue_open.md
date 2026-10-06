@@ -27,3 +27,14 @@ Consider two types of deformations of the bracket on $\mathfrak{g}$:
 ## Deliverables
 - A comprehensive analytical report appended to the Response section below.
 - Reusable verification code or data artifacts committed to the repository.
+
+## Response
+
+**Conclusion: the deformation is trivial for every gb.** For all $n\ge1$ and all $\mathrm{gb}\in\mathbf C^{4n}$, $\gamma_{\mathrm{gb}}=\delta f_{\mathrm{gb}}$ holds in the adjoint representation, i.e. up to scalars. So the necessary and sufficient condition on gb is empty.
+
+- **Why.** $\kappa$ is odd and central, so $\kappa^2=0$. In the deformed algebra, the shifted bosons $b_j'^{\,s}=b_j^s+\kappa(\mathrm{gb}_{-,j,s}a^++\mathrm{gb}_{+,j,s}a^-)$ satisfy the undeformed CCR/CAR together with $a^\pm$. Rewriting $C(n+1)$ in these oscillators is the change of basis $X\mapsto X+\kappa\varphi(X)$, and it gives $\gamma_{\mathrm{gb}}=\delta(-\varphi)$.
+- **Scalars.** The $\kappa\cdot$scalar terms are central, so they are invisible in the adjoint representation. The identity still holds exactly in $\mathcal U(A)$ if $f$ is allowed a scalar component.
+- **Non-zero gb.** Non-zero gb give non-zero cochains: $\mathrm{gb}\mapsto\gamma$ is injective. Each of these cochains is still a coboundary.
+- **Verification.** Exact rational computation for $n=1,2,3$ gives $\mathrm{rank}[\delta\mid\gamma]=\mathrm{rank}\,\delta$ (28, 168, 516) and $\dim\ker\delta=4n$. A random-cochain negative control correctly fails.
+
+Full proof and data: [`docs/issues/mathematical_proof.md`](mathematical_proof.md), `verification/cn1_deformation.py`, `verification/artifacts/*.json`.
