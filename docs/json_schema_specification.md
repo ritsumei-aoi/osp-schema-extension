@@ -187,6 +187,22 @@ Top-level keys: `schema_version`, `algebra`, `basis`, `parity`, `central_element
 `gamma[*].coeff` is a rational string equal to $\sum_p \mathrm{coeff}_{\text{Schema 2}}[p]\,\mathrm{gb}[p]$; only non-zero entries are listed.
 The deformed bracket is $[X,Y\}_\gamma=\sum_Z c^{\,\text{Schema 1}}_{XYZ}Z+\kappa\sum_Z\gamma_{XYZ}Z$.
 
-## Schema 4: Coboundary structure
+## Schema 4: Coboundary structure (`C_{n}_coboundary.json`, added in I07)
 
-Defined in the section added by Issue I07 (below).
+Odd linear map $f:\mathfrak g\to\mathfrak g\oplus\mathbb CK$, $f(Z_j)=\sum_i\phi_{ij}Z_i$ ($\phi_{ij}\ne0$ only if $p(Z_i)\ne p(Z_j)$, $p(K)=0$) and
+$(\delta f)(X,Y)=(-1)^{p(X)}[X,f(Y)]-(-1)^{(p(X)+1)p(Y)}[Y,f(X)]-f([X,Y])$ (`docs/math/C_coboundary_definition.md`).
+The map is the one induced by the fermion shift $a_1^\sigma\mapsto a_1^\sigma+\kappa\sum_{j,s}c^\sigma_{j,s}b_j^s$ ($4n$ parameters $c$).
+`C_{n}_coboundary.json` uses the $c$ that corresponds to gb $=$ all $+1$ (profile `all_plus`); `C_{n}_coboundary_<profile>.json` use the $c$ of the other profiles
+($c_{\sigma,j,p}=-\mathrm{gb}_{\sigma,j,m}$, $c_{\sigma,j,m}=+\mathrm{gb}_{\sigma,j,p}$).
+
+Top-level keys: `schema_version`, `algebra`, `basis`, `parity`, `central_elements`, `odd_linear_map`, `coboundary`, `metadata`.
+```json
+"odd_linear_map": {"description": "...", "family": "fermion shift", "profile": "all_plus",
+                   "c_parameters": {"c_a_1_p_b_1_p": "-1", "...": "..."},
+                   "gb_correspondence": "...",
+                   "phi": [ {"from": "E_eps1_del1_pp", "to": "E_2del1_p", "phi": "1"} ]},
+"coboundary": {"formula": "...", "central_direction": "...",
+               "delta_f": [ {"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": "1"} ]}
+```
+`phi` lists the non-zero $\phi_{ij}$ (`to` may be `"K"`); `delta_f` has the same entry format as the Schema 3 `gamma` list
+(`Z = "K"`: coefficient of $\kappa\cdot1$), so Layers 3 and 4 are compared entry by entry.
