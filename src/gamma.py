@@ -35,7 +35,9 @@ def param_name(key):
 class DeformedC:
     """C(n+1) realized in the oscillator algebra deformed by gb (dict key -> number)."""
 
-    def __init__(self, n, gb=None):
+    def __init__(self, n, gb=None, symmetrize=True):
+        """symmetrize=False keeps the normal-ordered product a b as the odd generator (used only in I08 to
+        exhibit the central kappa*K residual); the default Weyl-symmetrised choice is the one of Schema 2."""
         self.n = n
         base = CAlgebra(n)
         self.labels, self.parity = base.labels, base.parity
@@ -45,7 +47,7 @@ class DeformedC:
         self.real = {}
         for l in self.labels:
             r = dict(base.real[l])
-            if l in self.odd:
+            if l in self.odd and symmetrize:
                 (aw, bw), = r.keys()
                 key = ("p" if aw == 1 else "m", (bw - 3) // 2 + 1, "p" if (bw - 3) % 2 == 0 else "m")
                 g = self.gb.get(key, 0)
@@ -61,16 +63,17 @@ class DeformedC:
                 OscAlgebra._add(kv, self.osc.normal((KAPPA,) + w), c)
             kvecs.append(kv)
         self.N = N
-        self.decompose = make_decomposer(vecs + kvecs)
+        self.decompose = make_decomposer(vecs + kvecs + [{(KAPPA,): Fraction(1)}])
 
     def bracket(self, X, Y):
-        """Return (g0, gamma): dicts label -> coeff with [X,Y} = g0 + kappa*gamma."""
+        """Return (g0, gamma): dicts label -> coeff with [X,Y} = g0 + kappa*gamma (+ last_central * kappa*K)."""
         v = self.osc.bracket(self.real[X], self.parity[X], self.real[Y], self.parity[Y])
         co, resid = self.decompose(v)
         if resid:
             raise ValueError(f"[{X},{Y}] not in g + kappa g: residual {resid}")
         g0 = {self.labels[i]: c for i, c in co.items() if i < self.N}
-        gam = {self.labels[i - self.N]: c for i, c in co.items() if i >= self.N}
+        gam = {self.labels[i - self.N]: c for i, c in co.items() if self.N <= i < 2 * self.N}
+        self.last_central = co.get(2 * self.N, Fraction(0))  # coefficient of kappa*K (zero if symmetrised)
         return g0, gam
 
 

@@ -137,4 +137,5 @@ def make_decomposer(vectors, skip_dependent=False):
                 OscAlgebra._add(coeffs, rt, c)
         return coeffs, v
 
+    decompose.rank = len(reduced)
     return decompose
