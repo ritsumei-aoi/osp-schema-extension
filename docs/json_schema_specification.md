@@ -228,8 +228,13 @@ Details: I05 Response.
 
 ## 4. Schema 3: evaluated structure (`C_{n}_evaluated_{profile}.json`)
 
-Same as Schema 2 with a concrete `gb_values` map and `evaluated_deformation.entries`
-`{"X","Y","Z","coeff": "<rational>"}`. Details: I06 Response.
+Keys: `schema_version`, `layer` (=3), `algebra`, `structure_file`, `gamma_file`, `basis_ordering`,
+`profile` {`name`, `description`}, `gb_values` {label: rational}, `gb_matrix_values` (2 × 2n),
+`evaluated_deformation` {`entries`: `{"X","Y","Z","coeff": "<rational>"}` with `Z ∈ basis ∪ {"K"}`},
+`evaluated_structure_constants` {`entries`: `{"X","Y","Z","coeff","part"}`, `part` = `"g"` (undeformed,
+copied from Schema 1) or `"kappa"` (coefficient of κ·Z)}, `metadata`.
+Profiles: `allplus` (default file `C_{n}_evaluated.json`), `allminus`, `checker`, `rowsign`, `single`, `zero`.
+Details: I06 Response.
 
 ## 5. Schema 4: coboundary structure (`C_{n}_coboundary.json`)
 
