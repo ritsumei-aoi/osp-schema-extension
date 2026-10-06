@@ -27,3 +27,26 @@ Consider two types of deformations of the bracket on $\mathfrak{g}$:
 ## Deliverables
 - A comprehensive analytical report appended to the Response section below.
 - Reusable verification code or data artifacts committed to the repository.
+
+---
+
+## Response (resolved 2026-10-06)
+
+**Conclusion.** For $\mathfrak g = C(n+1)=\mathfrak{osp}(2|2n)$, the inhomogeneous
+deformation $\gamma_{gb}$ is **trivial for every value of the parameters**
+$\{\mathrm{gb}_{\sigma,j,s}\}$: there is always an odd linear map
+$f:\mathfrak g\to\mathfrak g$ with $\gamma_{gb}=\delta f$ (adjoint-valued, up to
+the odd central $\kappa$-scalar). The necessary-and-sufficient triviality
+condition is therefore vacuous — **no** non-zero $gb$ gives a non-trivial
+deformation; the adjoint $H^2$-contribution of the $gb$-family is $0$.
+
+Verified exactly (rational SymPy) for $n=1,2,3$ by two independent methods, with
+the full graded Jacobiator vanishing identically and an explicit, symbolically
+verified trivializing $f$ (zero residual). The deformations are *inner*: they are
+removed by the $\kappa$-linear redefinition
+$a_1^\sigma\mapsto a_1^\sigma+\kappa\sum_j(\lambda_{\sigma j}b_j^++\mu_{\sigma j}b_j^-)$
+with $\lambda_{\sigma j}=-\mathrm{gb}_{\sigma,j,-}$,
+$\mu_{\sigma j}=\mathrm{gb}_{\sigma,j,+}$.
+
+Full derivation: **`docs/issues/mathematical_proof.md`**. Artifacts: `artifacts/`,
+code: `code/`.
