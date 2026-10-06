@@ -121,9 +121,10 @@ class Decomposer:
         coef_h[1] += -alpha          # h_a = H_1 - h_1
         coefH = {k: Fraction(0) for k in range(1, n + 2)}
         coefH[1] += alpha
-        for k in range(1, n + 1):    # h_k = -(H_{k+1} + ... + H_{n+1})
-            for j in range(k + 1, n + 2):
-                coefH[j] += -coef_h[k]
+        for k in range(1, n + 1):    # h_k = H_{k+1} + ... + H_n - H_{n+1}
+            for j in range(k + 1, n + 1):
+                coefH[j] += coef_h[k]
+            coefH[n + 1] += -coef_h[k]
         for k in range(1, n + 2):
             if coefH[k] != 0:
                 out[f"H_{k}"] = out.get(f"H_{k}", 0) + coefH[k]

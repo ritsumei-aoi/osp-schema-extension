@@ -71,6 +71,15 @@ def test_known_brackets(n):
     assert sc0[("E_eps1_del1_pp", "E_eps1_del1_mm")]
 
 
+@pytest.mark.parametrize("n", NS)
+def test_decomposer_roundtrip(n):
+    dec = G.Decomposer(n)
+    for lab, words in dec.real.items():
+        d, resid = dec.decompose(words)
+        assert resid == 0
+        assert d == {lab: 1}
+
+
 def test_cartan_weights_n1():
     sc0, _, _ = G.structure_constants(1)
     # H_2 = -(b+b- + 1/2) acts on a+ b+ by -1 (weight of b+ is +delta)
