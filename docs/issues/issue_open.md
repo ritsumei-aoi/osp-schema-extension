@@ -27,3 +27,25 @@ Consider two types of deformations of the bracket on $\mathfrak{g}$:
 ## Deliverables
 - A comprehensive analytical report appended to the Response section below.
 - Reusable verification code or data artifacts committed to the repository.
+
+---
+
+## Response
+
+**Conclusion.** For every $n\ge1$, the inhomogeneous deformation $\gamma_{gb}$ is trivial for **every**
+$gb\in\mathbf C^{4n}$. There is no condition on the parameters: every non-zero configuration satisfies
+$\gamma_{gb}=\delta f$ (modulo central scalars, i.e. in the adjoint representation).
+
+**Why.** The substitution $a_1^\sigma\mapsto a_1^\sigma+\kappa\ell_\sigma$, with
+$\ell_\sigma=\sum_j(gb_{\sigma,j,-}b_j^+-gb_{\sigma,j,+}b_j^-)$, restores the undeformed oscillator relations
+(using $\kappa^2=0$). The induced odd map
+$f(a^\sigma b)=-\ell_\sigma b$, $f(a^+a^-)=a^+\ell_--a^-\ell_+$, $f|_{\mathfrak{sp}(2n)}=0$
+satisfies $\gamma_{gb}=\delta f$. This $f$ is unique up to odd inner derivations.
+
+**Verification.** For $n=1,2,3$ this was checked with exact rational arithmetic, together with an
+independent least-squares image test; all checks pass. The map $gb\mapsto\gamma_{gb}$ is injective, so
+these are genuinely non-zero cocycles.
+
+- Full proof: `docs/issues/mathematical_proof.md`.
+- Code: `verification/cn1_triviality.py`.
+- Data: `verification/artifacts/*.json`.
