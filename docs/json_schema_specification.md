@@ -208,3 +208,28 @@ on `algebra.family`.
 `C_{n}_structure.json`, `C_{n}_gamma.json`, `C_{n}_evaluated.json`, `C_{n}_coboundary.json`
 in `data/`, with $n\in\{1,2,3\}$ the bosonic rank. (The v5.0 per-gb suffix `_<gb>` of
 Schemas 3/4 is replaced by storing all evaluated profiles inside one file, keyed by profile name.)
+
+---
+
+## Schema 2: Inhomogeneous deformation (`C_{n}_gamma.json`) — added in I05
+
+```json
+{
+  "schema_version": "5.0", "layer": 2,
+  "algebra": {"family": "C", "m": 1, "n": n, "cartan_type": "C(n+1)", "structure_file": "C_{n}_structure.json"},
+  "gb_matrix": {
+    "shape": [2, 2n], "rows": ["a_1_p", "a_1_m"], "cols": ["b_1_p", "b_1_m", ..., "b_n_m"],
+    "entries": [["gb_p_1_p", "gb_p_1_m", ...], ["gb_m_1_p", "gb_m_1_m", ...]],
+    "parameter_count": 4n, "parameter_parity": 1, "parity_note": "...",
+    "relation": "[b_j^s, a_1^sigma] = - gb_{sigma}_{j}_{s} * kappa"
+  },
+  "inhomogeneous_deformation": {
+    "convention": "[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y), kappa written on the left",
+    "gamma": [{"X": "E_eps1_del1_pp", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp", "coeff": {"gb_p_1_p": "2"}}],
+    "central_component": [{"X": "E_eps1_del1_pp", "Y": "H_1", "Z": "K", "coeff": {"gb_p_1_p": "1"}}]
+  },
+  "metadata": {...}
+}
+```
+`coeff` is a linear form in the gb parameters: $\gamma_{XY}^{Z} = \sum_{g} \mathrm{coeff}[g]\cdot g$.
+`central_component` holds the component along $K=1$ (constant term of the oscillator polynomial).
