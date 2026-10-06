@@ -232,3 +232,30 @@ Top-level keys: `schema_version`, `schema_layer` (3), `algebra`, `central_elemen
 $[X,Y]_\gamma = \sum_Z (\mathrm{coeff} + \mathrm{kappa\_coeff}\cdot\kappa)\,Z$: `coeff` is the Schema 1 constant, `kappa_coeff` $=\gamma(X,Y)_Z$ at the
 given gb (Schema 2 linear combination, exact rationals). Entries with both coefficients 0 are omitted; `Z="K"` entries have `coeff = "0"`.
 Consistency with Schema 2 is tested by re-evaluating directly in the deformed oscillator algebra (`tests/test_C_evaluate.py`).
+
+---
+
+## Schema 4: Coboundary structure — `C_{n}_coboundary.json`
+
+Top-level keys: `schema_version`, `schema_layer` (4), `algebra`, `central_elements`, `basis`, `parity`, `odd_linear_map`,
+`coboundary_structure`, `gb_correspondence`, `metadata`.
+
+### `odd_linear_map` (the map f)
+$f_c$ is the odd derivation induced by $a_1^\sigma \to a_1^\sigma + \kappa\,\ell^\sigma$, $\ell^\sigma=\sum_{j,s}c_{\sigma,j,s}b_j^s$
+(4n parameters `f_a_1_{p|m}_b_{j}_{p|m}`); on the basis $f(Z_j)=\sum_i\phi_{ij}Z_i$ with $\phi$ linear in $c$.
+```json
+{"parameters": ["f_a_1_p_b_1_p", "..."],
+ "f_structure": [{"source": "E_eps1_del1_pp", "target": "H_2", "coeff": {"f_a_1_p_b_1_m": "-1"}},
+                 {"source": "E_eps1_del1_pp", "target": "K",   "coeff": {"f_a_1_p_b_1_m": "1/2"}}]}
+```
+Parity rule $p(f(Z))=p(Z)+1$; target `K` (even) occurs only for odd sources (Weyl-ordering constants).
+
+### `coboundary_structure`
+`entries`: `{"X","Y","Z","coeff": {param: rational}}` = $(\delta f)(X,Y)_Z$ with
+$(\delta f)(X,Y)=(-1)^{p(X)}[X,f(Y)]-(-1)^{(p(X)+1)p(Y)}[Y,f(X)]-f([X,Y])$; `Z="K"` is the central constant
+($[K,\cdot]=0$, so $K$-parts of $f$ only enter through $-f([X,Y])$).
+
+### `gb_correspondence`
+Exact identity $\delta f_c=\gamma(\mathrm{gb})$ for $\mathrm{gb}_{\sigma,j,p}=c_{\sigma,j,m}$, $\mathrm{gb}_{\sigma,j,m}=-c_{\sigma,j,p}$
+(stored as `map`: f-parameter → {gb-parameter: ±1}, i.e. $\delta f_{c_q}=\pm\gamma_{p(q)}$).
+Verified for all pairs and all $Z$ including `K`.
