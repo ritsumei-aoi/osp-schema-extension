@@ -46,7 +46,7 @@ Sign suffix: first letter = sign of $\varepsilon$ (`a_1_p`/`a_1_m`), second lett
 | $-\delta_i-\delta_j$ ($i<j$) | `E_del{i}_del{j}_mm` | $b_i^-b_j^-$ |
 
 (The $\tfrac12$ in `E_2del` follows `Cn1_definition.md` §2 simple generators; with it
-$[E_{2\delta_n},E_{-2\delta_n}] = -H_{n+1}$ closes without a free constant. Note the table of
+$[E_{2\delta_n},E_{-2\delta_n}] = H_{n+1}$ closes without a free constant. Note the table of
 "all root generators" in `Cn1_definition.md` omits the $\tfrac12$; this is only a rescaling.)
 Weyl symmetrization: $b^+b^-$ appears only through $b^+b^- + \tfrac12$ and $a^+a^- - \tfrac12$;
 $H_1,\dots,H_{n+1}$ span exactly $\{a^+a^- - \tfrac12,\ b_k^+b_k^- + \tfrac12\}$.
