@@ -218,7 +218,13 @@ A B(0,n) reader that ignores unknown keys can load Schema 1 C-files except for t
 }
 ```
 
-γ is linear in gb; `coeff` maps gb labels to rationals. All ordered pairs are stored. Details: I05 Response.
+γ is linear in gb; `coeff` maps gb labels to rationals. All ordered pairs are stored.
+Additional keys in generated files: `basis_ordering` (copied from Schema 1),
+`inhomogeneous_deformation.{value_space, linearity, pairs, parity_rule, num_entries, num_K_entries}`.
+Invariants (checked by `src/C_gamma.py`): undeformed part of every deformed bracket equals Schema 1;
+$\gamma(Y,X) = -(-1)^{p(X)p(Y)}\gamma(X,Y)$; $p(Z) = p(X)+p(Y)+1$ ($K$ even); the κ-part of the
+super-Jacobiator of $L = \mathfrak{g} \oplus \kappa(\mathfrak{g} \oplus \mathbb{C}K)$ vanishes (2-cocycle condition).
+Details: I05 Response.
 
 ## 4. Schema 3: evaluated structure (`C_{n}_evaluated_{profile}.json`)
 
