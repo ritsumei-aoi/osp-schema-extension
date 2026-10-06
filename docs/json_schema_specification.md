@@ -126,3 +126,10 @@ Top-level keys: `schema_version`, `layer` (=2), `algebra`, `basis`, `parity`, `c
 - γ is **linear** in gb (κ²=0); parity of γ(X,Y) is p(X)+p(Y)+1.
 - Realization used: Weyl-symmetrised generators; in the deformed algebra the odd generators are `E = a_σ b_τ − ½ gb_{σ,k,τ} κ`
   (normal-ordered `a b`), which makes γ take values in g (no `κK` term).
+
+---
+## Schema 3: `C_{n}_evaluated.json` (added in I06)
+Top-level: `schema_version`, `layer` (=3), `algebra`, `basis`, `parity`, `central_elements`, `gb_matrix`, `convention`, `profiles`, `metadata`.
+`profiles`: list of `{"name", "gb": {param: integer}, "gamma_evaluated": [{"X","Y","Z","coeff"}]}`;
+`gamma_evaluated` lists the non-zero γ(X,Y) = Σ_Z coeff·Z at that gb (convention as Schema 2). Names: `all_plus`, `all_minus`,
+`alternating`, `row_a_1_{p,m}_only`, `{plus,minus}_sector_only`, `{diagonal,antidiagonal}_pm`, `unit_<param>`, and for n=1 all 16 `sign_±±±±`.
