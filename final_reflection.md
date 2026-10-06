@@ -7,8 +7,12 @@
 ## 1. Quantitative Performance (Self-Reported)
 - **Workflow Type**: One-Shot Challenge.
 - **Total Human Interventions (Nudges/Approvals)**: 0 after the initial prompt.
-- **Major Blockers Encountered**: None. One tool call was rejected by the harness (a shell loop
-  containing a variable), and I replaced it with individual file reads.
+- **Major Blockers Encountered**: None. Three tool calls were rejected by the harness and I routed
+  around each one:
+  - A shell loop containing a variable; I replaced it with individual file reads.
+  - Two shell redirections that would have written files; I used the file-editing tools instead.
+- **Minor slip**: I accidentally committed a compiled `__pycache__` file. I removed it in a follow-up
+  commit and added a `.gitignore`.
 - **Total Wall Time**: Not available to me; I cannot see session timing logs.
 - **Total Thinking Time**: Not available to me.
 
