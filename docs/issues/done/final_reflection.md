@@ -26,7 +26,7 @@
 
 ### Tools & Instructions
 - The mathematical documents were sufficient for the core root, oscillator, and coboundary mathematics, but the schema and deformation conventions needed human clarification. A small canonical Schema 2 example and explicit rules for parity, scalar terms, and comparison would reduce ambiguity.
-- The repository records report successful exact-arithmetic tests and verification scripts. I had not used `close_issue.sh` in the earlier stages; it is being used for this final closeout, so the earlier workflow offers no prior runtime evidence about it. The script's explicit file staging is a useful safeguard, although the final reflection must be staged deliberately as an additional file.
+- The repository records report successful exact-arithmetic tests and verification scripts. Git history confirms that `close_issue.sh` was successfully used to close I01-I08, with each cycle producing its issue commit and completion marker; my earlier statement that I had not used it before I09 was incorrect. This repeated use shows that the script supports consistent archive/reset and commit/push closeouts. For I09, its dry run and actual run both succeeded. Because the script stages only its configured files, I staged `final_reflection.md` explicitly so it would be included in the closeout commit.
 
 ## 4. Honesty & Integrity (Audit Disclosure)
 - **Independence**: In this finalization session, I read only files in this repository; I did not access sibling workspaces or fetch external repositories. The study artifacts cite the `osp-triviality` repository and the Frappat reference, but the available records do not let me independently establish which external materials were accessed during earlier stages.

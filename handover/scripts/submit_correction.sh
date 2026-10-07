@@ -35,7 +35,7 @@ fi
 
 # 2. Extract Target Issue Number
 # Expected format in issue_correction.md: **Target Issue**: I{NN}-{n}
-TARGET_ISSUE=$(grep -i "**Target Issue**:" "$CORRECTION_FILE" | grep -o "I[0-9]\{2\}" | sed 's/I//') || ""
+TARGET_ISSUE=$(grep -i "Target Issue" "$CORRECTION_FILE" | grep -oE "I[0-9]{2}" | sed 's/I//' || true)
 if [ -z "$TARGET_ISSUE" ]; then
   warn "Could not determine target issue number from $CORRECTION_FILE. Archiving may be incomplete."
 fi
