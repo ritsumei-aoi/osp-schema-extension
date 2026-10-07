@@ -1,0 +1,17 @@
+# Issue Correction
+**Target Issue**: I09
+
+## Critique
+Your final reflection report contains several quantitative and factual hallucinations. This occurred because you relied on your summarized memory instead of reading the actual archived issue files and inspecting the repository. Specifically:
+
+1. **Human Interventions**: You reported 8 interventions. In reality, you received 11 messages from the Manager, including 3 revision requests.
+2. **Revision Requests**: You completely missed the revision requests in I03 (regarding the 10 top-level keys of Schema 1) and I04 (regarding the failure to save the verification script to `src/`).
+3. **I05 Revisions**: You reported "two rounds of proposal-revision in I05-1", but there was only one revision (Rev.1 to Rev.2, caused by the γ(even, even) and H_1 realization issue).
+4. **Tool Usage**: You claimed `--dry-run` was used before "each actual close", but the logs show it was used exactly once (in I08).
+5. **Test Suite Stats**: You reported 5 test files and 61 tests. The `tests/` directory actually contains 4 test files and exactly 30 tests.
+
+## Requirements
+1. Read the archived issues in `docs/issues/done/` and inspect the `tests/` directory to ground your reflection in actual facts.
+2. Update `docs/issues/done/final_reflection.md` to correct all factual inaccuracies regarding the number of interventions, the specific revision requests (I03, I04, I05), tool usage, and test statistics.
+3. Ensure the revised reflection accurately reflects the true sequence of events in the study.
+4. Run `handover/scripts/submit_correction.sh` when you are done.
