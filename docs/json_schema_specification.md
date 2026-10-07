@@ -351,3 +351,63 @@ Use `C_{n}_structure.json`, where `n` is the bosonic rank:
 | C(2) = osp(2\|2), n=1 | `C_1_structure.json` |
 | C(3) = osp(2\|4), n=2 | `C_2_structure.json` |
 | C(4) = osp(2\|6), n=3 | `C_3_structure.json` |
+
+## Schema 2: Inhomogeneous Deformation
+
+Schema 2 files are named `C_{n}_gamma.json`. They use the Schema 1 algebra
+identity and identify the source structure file:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {},
+  "source_schema": "C_1_structure.json",
+  "gb_matrix": {
+    "rows": ["a_1_p", "a_1_m"],
+    "columns": ["b_1_p", "b_1_m"],
+    "entries": [
+      [
+        {"parameter": "gb_a1_p_b1_p", "parity": 0},
+        {"parameter": "gb_a1_p_b1_m", "parity": 0}
+      ],
+      [
+        {"parameter": "gb_a1_m_b1_p", "parity": 0},
+        {"parameter": "gb_a1_m_b1_m", "parity": 0}
+      ]
+    ],
+    "parameter_order": [
+      "gb_a1_p_b1_p", "gb_a1_p_b1_m",
+      "gb_a1_m_b1_p", "gb_a1_m_b1_m"
+    ]
+  },
+  "inhomogeneous_deformation": {
+    "central_symbol": "kappa",
+    "central_parity": 1,
+    "parameter_parity": 0,
+    "sign_convention": "gram_entry",
+    "exchange_relations": [],
+    "coefficient_format": "Exact rational linear combinations of the even gb parameters",
+    "gamma_structure": []
+  },
+  "metadata": {}
+}
+```
+
+The `gb_matrix` has two rows in fermion order `a_1_p`, `a_1_m`; its columns
+are ordered `b_1_p`, `b_1_m`, ..., `b_n_p`, `b_n_m`. `entries` is a 2-by-2n
+array aligned with those labels. The parameters are even scalars; their
+products with the odd central symbol `kappa` are odd. Each mixed relation is
+stored in the approved Gram-entry convention
+`[b_j^s, a_1^σ] = -gb_{a_1^σ,b_j^s} * kappa`.
+
+Each nonzero `gamma_structure` record uses the Schema 1 bracket fields
+`X`, `Y`, `Z`, `coeff`, and `sign_rule`. `coeff` is an exact symbolic linear
+combination of `gb` parameters, with rational coefficients formatted as
+`1/2*gb_name` and terms joined by ` + ` or ` - `. The deformation calculation
+retains scalar identity components as `Z: "K"` even though `K` is excluded
+from the Schema 1 Lie-superalgebra basis. These scalar terms are intentional;
+triviality comparisons use the up-to-scalar convention in
+`C_coboundary_definition.md`.
+
+Files are `data/C_1_gamma.json`, `data/C_2_gamma.json`, and
+`data/C_3_gamma.json` for bosonic ranks 1, 2, and 3.
