@@ -463,3 +463,60 @@ are copied unchanged from Schema 1. The assignment object records both the
 profile name and the complete ordered mapping of all `4n` parameters.
 Files are `data/C_1_evaluated.json`, `data/C_2_evaluated.json`, and
 `data/C_3_evaluated.json`.
+
+## Schema 4: Coboundary Structure
+
+Schema 4 represents the coboundary of the full unrestricted odd linear map
+on the Schema 1 basis. Files are `C_{n}_coboundary.json` for ranks 1, 2,
+and 3. The map has one independent even symbolic parameter for every
+opposite-parity output/input pair:
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 4,
+  "algebra": {},
+  "source_schema": "C_1_structure.json",
+  "odd_linear_map": {
+    "parity": 1,
+    "coefficient_parity": 0,
+    "definition": "f(input) = sum_output phi_output_from_input * output, over all outputs of parity opposite to input",
+    "same_parity_coefficients": "zero",
+    "scaling_convention": "No separate global scale; scaling is absorbed into the independent symbolic coefficients",
+    "parameter_order": ["phi_E_eps1_del1_pp_from_H_1"],
+    "coefficients": [
+      {
+        "output": "E_eps1_del1_pp",
+        "input": "H_1",
+        "parameter": "phi_E_eps1_del1_pp_from_H_1"
+      }
+    ]
+  },
+  "coboundary": {
+    "formula": "(-1)^p(X) [X, f(Y)] - (-1)^((p(X)+1)p(Y)) [Y, f(X)] - f([X,Y])",
+    "coefficient_format": "Exact rational linear combinations of the even phi parameters",
+    "structure": [
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_pp",
+        "Z": "E_eps1_del1_pp",
+        "coeff": "4*phi_H_1_from_E_eps1_del1_pp - 2*phi_H_2_from_E_eps1_del1_pp",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+The parameter array is ordered first by output and then input, using the
+combined Schema 1 basis order (odd block followed by even block). The
+deterministic parameter name is `phi_{output}_from_{input}`. There are
+`2 * dim(g_even) * dim(g_odd)` parameters: 32, 176, and 528 for n=1, 2,
+and 3. The `coboundary.structure` records store the resulting
+`(X,Y,Z)` coefficients using the exact sign convention in
+`C_coboundary_definition.md`; each nonzero coefficient is a linear
+combination of the even symbolic map parameters. The global scaling of `f`
+is already included in those coefficients, so no separate scale parameter is
+used. Files are `data/C_1_coboundary.json`, `data/C_2_coboundary.json`, and
+`data/C_3_coboundary.json`.
