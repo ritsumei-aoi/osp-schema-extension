@@ -411,3 +411,55 @@ triviality comparisons use the up-to-scalar convention in
 
 Files are `data/C_1_gamma.json`, `data/C_2_gamma.json`, and
 `data/C_3_gamma.json` for bosonic ranks 1, 2, and 3.
+
+## Schema 3: Evaluated Structure
+
+Schema 3 substitutes a concrete assignment for every even scalar `gb`
+parameter in the Schema 2 `gamma_structure`. The base Lie-superalgebra
+brackets remain in `structure_constants`; the evaluated deformation terms
+remain separate because they contribute with the odd central factor `kappa`
+to `[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y)`.
+
+For I06-1, the approved profile is `uniform_all_positive`: every parameter
+listed in `gb_matrix.parameter_order` has value `1`. Its output shape is:
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 3,
+  "algebra": {},
+  "source_schema": "C_1_structure.json",
+  "source_gamma_schema": "C_1_gamma.json",
+  "gb_assignment": {
+    "profile": "uniform_all_positive",
+    "parameter_order": ["gb_a1_p_b1_p", "gb_a1_p_b1_m"],
+    "values": {
+      "gb_a1_p_b1_p": 1,
+      "gb_a1_p_b1_m": 1
+    }
+  },
+  "structure_constants": [],
+  "inhomogeneous_deformation": {
+    "central_symbol": "kappa",
+    "central_parity": 1,
+    "gamma_structure": [
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "E_eps1_del1_mp",
+        "Z": "E_2del1_p",
+        "coeff": "2",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+Each evaluated `gamma_structure` entry retains the Schema 2 fields, but
+`coeff` is now a nonzero exact rational string with no remaining `gb`
+symbols. Entries that evaluate to zero are omitted. `structure_constants`
+are copied unchanged from Schema 1. The assignment object records both the
+profile name and the complete ordered mapping of all `4n` parameters.
+Files are `data/C_1_evaluated.json`, `data/C_2_evaluated.json`, and
+`data/C_3_evaluated.json`.
