@@ -65,7 +65,8 @@ $$
 
 $$
 E_{\pm\delta_k \pm \delta_l} = b_k^\pm b_l^\pm, \quad
-E_{\pm 2\delta_k} = (b_k^\pm)^2, \quad
+E_{\pm 2\delta_i} = (b_i^\pm)^2 \quad (i<n), \quad
+E_{\pm 2\delta_n} = \tfrac12(b_n^\pm)^2, \quad
 E_{\varepsilon \pm \delta_l} = a_1^+ b_l^\pm, \quad
 E_{-\varepsilon \pm \delta_l} = a_1^- b_l^\pm.
 $$

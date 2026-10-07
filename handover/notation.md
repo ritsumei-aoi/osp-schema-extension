@@ -60,7 +60,8 @@ Even-root labels retain the B(0,n) convention. For $i<j$:
 
 | Root | Label | Oscillator realization |
 |---|---|---|
-| $2\delta_i$, $-2\delta_i$ | `E_2del{i}_p`, `E_2del{i}_m` | $(b_i^+)^2$, $(b_i^-)^2$ |
+| $2\delta_i$, $-2\delta_i$ ($i<n$) | `E_2del{i}_p`, `E_2del{i}_m` | $(b_i^+)^2$, $(b_i^-)^2$ |
+| $2\delta_n$, $-2\delta_n$ | `E_2del{n}_p`, `E_2del{n}_m` | $\tfrac12(b_n^+)^2$, $\tfrac12(b_n^-)^2$ |
 | $\delta_i+\delta_j$, $-(\delta_i+\delta_j)$ | `E_del{i}_del{j}_pp`, `E_del{i}_del{j}_mm` | $b_i^+b_j^+$, $b_i^-b_j^-$ |
 | $\delta_i-\delta_j$, $-(\delta_i-\delta_j)$ | `E_del{i}_del{j}_pm`, `E_del{i}_del{j}_mp` | $b_i^+b_j^-$, $b_i^-b_j^+$ |
 
