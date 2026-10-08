@@ -366,7 +366,62 @@ Entry counts: n=1: 112 entries / 54 pairs (20 with `Z = "K"`); n=2: 652 / 260 (8
 
 ## 7. Schema 3: evaluated structure (`C_{n}_evaluated.json`)
 
-*(Specified in Issue I06.)*
+Produced by `src/C_evaluate.py` (Issue I06). One file per (n, gb profile): the representative profile
+`all_plus` is `C_{n}_evaluated.json`; other profiles are `C_{n}_evaluated_<profile>.json`
+(`all_minus`, `row_sign`, `col_sign`, `checkerboard`, `single_pp`, `zero`).
+
+### 7.1 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 3,
+  "algebra": { ... },
+  "source_structure": "C_1_structure.json",
+  "source_gamma": "C_1_gamma.json",
+  "central_elements": { ... },
+  "gb_assignment": { ... },
+  "evaluated_structure": { ... },
+  "verification": { ... },
+  "metadata": { ... }
+}
+```
+
+### 7.2 `gb_assignment`
+
+```json
+{
+  "profile": "all_plus",
+  "description": "all 4n parameters = +1 (representative assignment)",
+  "values": {"gb_a1p_b1p": "1", "gb_a1p_b1m": "1", "gb_a1m_b1p": "1", "gb_a1m_b1m": "1"},
+  "matrix": [["1", "1"], ["1", "1"]]
+}
+```
+
+`values` maps every gb label to a rational string; `matrix` is the same data in the 2 × 2n layout of
+`gb_matrix` (Schema 2).
+
+### 7.3 `evaluated_structure`
+
+| Field | Content |
+|---|---|
+| `gamma_evaluated` | entries `{X, Y, Z, coeff}` = Schema 2 linear forms evaluated at `values`, zero entries dropped |
+| `deformed_structure_constants` | the **full deformed bracket** of basis pairs: entries `{X, Y, Z, kappa_power, coeff}` meaning $[X,Y\}_\gamma = \sum \text{coeff}\,\kappa^{\text{kappa\_power}} Z$; `kappa_power = 0` entries are exactly Schema 1, `kappa_power = 1` entries are exactly `gamma_evaluated` |
+| `summary` | counts (`gamma_nonzero_entries`, `gamma_nonzero_pairs`, `gamma_entries_with_Z_K`, `deformed_entries`) |
+
+### 7.4 `verification`
+
+Result of running the I04 verifier on $L = \tilde{\mathfrak g} \oplus \kappa\tilde{\mathfrak g}$
+(dimension $2(\dim\mathfrak g + 1)$ = 18 / 40 / 70) at the given gb values:
+`antisymmetry_failures`, `jacobi_triples_checked`, `jacobi_failures`, `pass`.
+
+### 7.5 Consistency rules (checked by `tests/test_C_evaluate.py`)
+
+1. `gamma_evaluated` equals the re-evaluation of the Schema 2 linear forms at `gb_assignment.values`.
+2. The `kappa_power = 0` part of `deformed_structure_constants` equals Schema 1; the `kappa_power = 1`
+   part equals `gamma_evaluated`.
+3. `verification.pass` is true and is reproduced by re-running the verifier.
+4. (n = 1, 2) the stored deformed brackets coincide with a direct oscillator computation with numeric gb.
 
 ## 8. Schema 4: coboundary structure (`C_{n}_coboundary.json`)
 
