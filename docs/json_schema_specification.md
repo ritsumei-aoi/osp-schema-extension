@@ -235,7 +235,10 @@ commutator, and sparse `gamma_coefficients` entries `{X,Y,Z,coeff}`. `X` and
 term occurs. The latter is permitted because `K` is explicitly the scalar
 identity in `central_elements`, while remaining excluded from the basis.
 Schema 3 retains the symbolic deformation and records the concrete
-`gb_assignment` and evaluated coefficients. Schema 4 records the odd map `f`
+`evaluated_deformation` object containing `input_file`, a complete
+`gb_assignment`, `assignment_profile`, and sparse `evaluated_coefficients`.
+The chosen initial profile sets each parameter to `+1`; other explicit
+sign profiles are also representable. Schema 4 records the odd map `f`
 as sparse basis-to-basis coefficients and its sparse
 `coboundary_coefficients`; it must identify the coboundary formula used.
 Each later layer also records its input Schema 1 file and rank so consistency
