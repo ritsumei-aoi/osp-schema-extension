@@ -261,7 +261,91 @@ A generic reader can therefore handle both families by branching on `algebra.fam
 
 ## Schema 2: Inhomogeneous deformation (`C_{n}_gamma.json`) — defined in I05
 
-*(filled in by Issue I05)*
+Mathematical input (`docs/math/C_inhomogeneous_definition.md`): the mixed oscillator relation
+is deformed to $[b_k^s, a_1^\sigma] = -\mathrm{gb}_{\sigma,k,s}\,\kappa$ with $\kappa$ odd, central,
+$\kappa^2 = 0$. For basis elements $X, Y$ the bracket computed in $U(A)$ splits uniquely as
+$[X,Y\}_\gamma = [X,Y\}_0 + \kappa\,\gamma(X,Y)$ (with $\kappa$ written leftmost), and
+$\gamma(X,Y) \in \mathfrak g \oplus \mathbb C K$.
+
+### Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 2,
+  "algebra": { "family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "dimension": {...} },
+  "schema1_file": "C_1_structure.json",
+  "deformation": { ... },
+  "gb_matrix": { ... },
+  "inhomogeneous_deformation": { ... },
+  "consistency": { ... },
+  "metadata": { ... }
+}
+```
+
+### `deformation`
+
+```json
+{
+  "type": "inhomogeneous",
+  "oscillator_relation": "[b_k^s, a_1^sigma] = -gb_{sigma,k,s} * kappa   (sigma, s in {+,-})",
+  "bracket": "[X, Y}_gamma = [X, Y}_0 + kappa * gamma(X, Y)",
+  "kappa": {"parity": 1, "relation": "kappa^2 = 0", "central": true},
+  "gb_parity": 1,
+  "gb_treatment": "gb parameters are treated as formal commuting scalars ...",
+  "gamma_target": "g + C K  (K = even central element, scalar 1)",
+  "gamma_parity_rule": "|gamma(X,Y)| = |X| + |Y| + 1 mod 2 (kappa carries parity 1)"
+}
+```
+
+### `gb_matrix`
+
+The $2 \times 2n$ matrix of deformation parameters:
+
+```json
+{
+  "shape": [2, 2],
+  "rows": ["a_1_p", "a_1_m"],
+  "columns": ["b_1_p", "b_1_m"],
+  "labels": [["gb_a1p_b1p", "gb_a1p_b1m"], ["gb_a1m_b1p", "gb_a1m_b1m"]],
+  "count": 4,
+  "index_convention": "gb_a1{sigma}_b{k}{s} = gb_{sigma,k,s}, rows: a_1_p (sigma=+), a_1_m (sigma=-)"
+}
+```
+
+### `inhomogeneous_deformation`
+
+```json
+{
+  "description": "gamma(X,Y) = sum_Z coeff * Z, coeff linear in gb; all ordered pairs with nonzero gamma",
+  "coefficient_format": {"coeff": "sympy expression string", "linear_form": "{gb_label: rational string}"},
+  "entries": [
+    {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "H_2",       "coeff": "-gb_a1p_b1p",  "linear_form": {"gb_a1p_b1p": "-1"}},
+    {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "E_2del1_p", "coeff": "gb_a1p_b1m",   "linear_form": {"gb_a1p_b1m": "1"}},
+    {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "K",         "coeff": "gb_a1p_b1p/2", "linear_form": {"gb_a1p_b1p": "1/2"}}
+  ]
+}
+```
+
+* `Z` ranges over the basis **and** `"K"`. Every coefficient is a homogeneous linear form in the
+  `gb_*` symbols; `linear_form` is the machine-readable version of `coeff`.
+* Both orders $(X,Y)$ and $(Y,X)$ are stored; $\gamma(X,Y) = -(-1)^{|X||Y|}\gamma(Y,X)$.
+* Parity rule: $|\gamma(X,Y)| = |X|+|Y|+1$, because $\kappa$ is odd.
+
+### `consistency`
+
+```json
+{
+  "zeroth_order_equals_schema1": true,
+  "gamma_graded_antisymmetric": true,
+  "entries_total": 112,
+  "entries_with_Z_K": 20,
+  "pairs_with_nonzero_gamma": 54
+}
+```
+
+The generator refuses to write the file unless the $\kappa$-free part of every deformed bracket
+equals the Schema 1 table and $\gamma$ is graded antisymmetric.
 
 ## Schema 3: Evaluated structure (`C_{n}_evaluated.json`) — defined in I06
 
