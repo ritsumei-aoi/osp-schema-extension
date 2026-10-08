@@ -425,4 +425,68 @@ Result of running the I04 verifier on $L = \tilde{\mathfrak g} \oplus \kappa\til
 
 ## 8. Schema 4: coboundary structure (`C_{n}_coboundary.json`)
 
-*(Specified in Issue I07.)*
+Produced by `src/C_coboundary.py` (Issue I07). Mathematical input: `docs/math/C_coboundary_definition.md`.
+
+### 8.1 Mathematical content
+
+A general **odd** linear map $f:\mathfrak g \to \tilde{\mathfrak g} = \mathfrak g \oplus \mathbb{C}K$,
+$f(Z_j) = \sum_i \phi_{ij} Z_i$ with $p(Z_i) = p(Z_j)+1$; $K$ is an allowed target for odd $Z_j$
+($f(K)=0$ implicitly). Its coboundary
+
+$$(\delta f)(X,Y) = (-1)^{p(X)}[X, f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y, f(X)] - f([X,Y])$$
+
+is computed with the Schema 1 brackets. Each component $(\delta f)_{XY}^Z$ is a linear form in the
+$\phi$'s. Parameter count: $\dim_{\bar0}\dim_{\bar1} + \dim_{\bar1}(\dim_{\bar0}+1)$ = 36 / 184 / 540 for n = 1 / 2 / 3.
+
+### 8.2 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 4,
+  "algebra": { ... },
+  "source_structure": "C_1_structure.json",
+  "central_elements": { ... },
+  "odd_linear_map": { ... },
+  "coboundary": { ... },
+  "metadata": { ... }
+}
+```
+
+### 8.3 `odd_linear_map`
+
+```json
+{
+  "parameter_label": "phi__{to}__{from}",
+  "parameter_count": 36,
+  "parameter_count_formula": "...",
+  "parameters": [{"label": "phi__H_1__E_eps1_del1_pp", "from": "E_eps1_del1_pp", "to": "H_1"}, ...]
+}
+```
+
+### 8.4 `coboundary`
+
+| Field | Content |
+|---|---|
+| `formula_source` | `docs/math/C_coboundary_definition.md` |
+| `parity` | `p(Z) = p(X) + p(Y) + 1` |
+| `pair_convention` | all ordered pairs with non-zero $\delta f$ |
+| `triviality_criterion` | γ trivial iff γ = δf for some φ (sign irrelevant: replace f by −f) |
+| `entries` | `{"X", "Y", "Z", "linear_form": {phi_label: rational}}` |
+| `summary` | `nonzero_entries`, `nonzero_pairs`, `entries_with_Z_K`, `total_phi_terms` |
+
+Example (n = 1, X = Y = `E_eps1_del1_pp`):
+```json
+{"X": "E_eps1_del1_pp", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp",
+ "linear_form": {"phi__H_1__E_eps1_del1_pp": "4", "phi__H_2__E_eps1_del1_pp": "-2"}}
+```
+
+### 8.5 Consistency rules (checked by `tests/test_C_coboundary.py`)
+
+1. Parameters are exactly the parity-reversing pairs (basis → basis ∪ {K}); labels unique.
+2. Entries refer to Layer 1 basis labels (or `K`), with `p(Z) = p(X)+p(Y)+1`.
+3. δf is graded antisymmetric and satisfies the cocycle condition (δδf = 0, verified as super Jacobi of
+   $\tilde{\mathfrak g}\oplus\kappa\tilde{\mathfrak g}$ deformed by γ := δf at random φ).
+4. Regeneration is deterministic (entries equal a fresh recomputation).
+
+Sizes: n=1: 232 entries / 414 φ-terms; n=2: 2832 / 4962; n=3: 14156 / 22526 (2.7 MB).

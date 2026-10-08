@@ -1,0 +1,2286 @@
+{
+ "schema_version": "5.0",
+ "schema_layer": 4,
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 1,
+  "cartan_type": "C(2)",
+  "alternative_notation": {
+   "osp": "osp(2|2)",
+   "dimension_formula": "osp(2m|2n) with m=1"
+  },
+  "dimension": {
+   "total": 8,
+   "even": 4,
+   "odd": 4
+  },
+  "dimension_formulas": {
+   "even": "2n^2 + n + 1",
+   "odd": "4n",
+   "total": "2n^2 + 5n + 1"
+  },
+  "rank": 2,
+  "even_subalgebra": "so(2) + sp(2)"
+ },
+ "source_structure": "C_1_structure.json",
+ "central_elements": {
+  "kappa": {
+   "label": "kappa",
+   "parity": 1,
+   "relation": "kappa^2 = 0, [kappa, X} = 0 for all X",
+   "description": "Odd nilpotent symbol of the inhomogeneous deformation; first in PBW order. Not a basis element of C(n+1)."
+  },
+  "K": {
+   "label": "K",
+   "parity": 0,
+   "relation": "K = 1 (central identity)",
+   "description": "Even central identity of the pre-oscillator extension A = V + CK + C kappa. Identified with the scalar 1; excluded from the basis and from PBW ordering."
+  }
+ },
+ "odd_linear_map": {
+  "description": "General odd linear map f: g -> g~ = g (+) C K, f(Z_j) = sum_i phi_{ij} Z_i with p(Z_i) = p(Z_j) + 1. K (even, central) is an allowed target for odd Z_j; f(K) = 0 is implicit (f is defined on g).",
+  "parameter_label": "phi__{to}__{from}",
+  "parameter_count": 36,
+  "parameter_count_formula": "dim_even*dim_odd (even->odd) + dim_odd*(dim_even+1) (odd->even or K) = 4*4 + 4*(4+1)",
+  "parameters": [
+   {
+    "label": "phi__H_1__E_eps1_del1_pp",
+    "from": "E_eps1_del1_pp",
+    "to": "H_1"
+   },
+   {
+    "label": "phi__H_2__E_eps1_del1_pp",
+    "from": "E_eps1_del1_pp",
+    "to": "H_2"
+   },
+   {
+    "label": "phi__E_2del1_p__E_eps1_del1_pp",
+    "from": "E_eps1_del1_pp",
+    "to": "E_2del1_p"
+   },
+   {
+    "label": "phi__E_2del1_m__E_eps1_del1_pp",
+    "from": "E_eps1_del1_pp",
+    "to": "E_2del1_m"
+   },
+   {
+    "label": "phi__K__E_eps1_del1_pp",
+    "from": "E_eps1_del1_pp",
+    "to": "K"
+   },
+   {
+    "label": "phi__H_1__E_eps1_del1_pm",
+    "from": "E_eps1_del1_pm",
+    "to": "H_1"
+   },
+   {
+    "label": "phi__H_2__E_eps1_del1_pm",
+    "from": "E_eps1_del1_pm",
+    "to": "H_2"
+   },
+   {
+    "label": "phi__E_2del1_p__E_eps1_del1_pm",
+    "from": "E_eps1_del1_pm",
+    "to": "E_2del1_p"
+   },
+   {
+    "label": "phi__E_2del1_m__E_eps1_del1_pm",
+    "from": "E_eps1_del1_pm",
+    "to": "E_2del1_m"
+   },
+   {
+    "label": "phi__K__E_eps1_del1_pm",
+    "from": "E_eps1_del1_pm",
+    "to": "K"
+   },
+   {
+    "label": "phi__H_1__E_eps1_del1_mp",
+    "from": "E_eps1_del1_mp",
+    "to": "H_1"
+   },
+   {
+    "label": "phi__H_2__E_eps1_del1_mp",
+    "from": "E_eps1_del1_mp",
+    "to": "H_2"
+   },
+   {
+    "label": "phi__E_2del1_p__E_eps1_del1_mp",
+    "from": "E_eps1_del1_mp",
+    "to": "E_2del1_p"
+   },
+   {
+    "label": "phi__E_2del1_m__E_eps1_del1_mp",
+    "from": "E_eps1_del1_mp",
+    "to": "E_2del1_m"
+   },
+   {
+    "label": "phi__K__E_eps1_del1_mp",
+    "from": "E_eps1_del1_mp",
+    "to": "K"
+   },
+   {
+    "label": "phi__H_1__E_eps1_del1_mm",
+    "from": "E_eps1_del1_mm",
+    "to": "H_1"
+   },
+   {
+    "label": "phi__H_2__E_eps1_del1_mm",
+    "from": "E_eps1_del1_mm",
+    "to": "H_2"
+   },
+   {
+    "label": "phi__E_2del1_p__E_eps1_del1_mm",
+    "from": "E_eps1_del1_mm",
+    "to": "E_2del1_p"
+   },
+   {
+    "label": "phi__E_2del1_m__E_eps1_del1_mm",
+    "from": "E_eps1_del1_mm",
+    "to": "E_2del1_m"
+   },
+   {
+    "label": "phi__K__E_eps1_del1_mm",
+    "from": "E_eps1_del1_mm",
+    "to": "K"
+   },
+   {
+    "label": "phi__E_eps1_del1_pp__H_1",
+    "from": "H_1",
+    "to": "E_eps1_del1_pp"
+   },
+   {
+    "label": "phi__E_eps1_del1_pm__H_1",
+    "from": "H_1",
+    "to": "E_eps1_del1_pm"
+   },
+   {
+    "label": "phi__E_eps1_del1_mp__H_1",
+    "from": "H_1",
+    "to": "E_eps1_del1_mp"
+   },
+   {
+    "label": "phi__E_eps1_del1_mm__H_1",
+    "from": "H_1",
+    "to": "E_eps1_del1_mm"
+   },
+   {
+    "label": "phi__E_eps1_del1_pp__H_2",
+    "from": "H_2",
+    "to": "E_eps1_del1_pp"
+   },
+   {
+    "label": "phi__E_eps1_del1_pm__H_2",
+    "from": "H_2",
+    "to": "E_eps1_del1_pm"
+   },
+   {
+    "label": "phi__E_eps1_del1_mp__H_2",
+    "from": "H_2",
+    "to": "E_eps1_del1_mp"
+   },
+   {
+    "label": "phi__E_eps1_del1_mm__H_2",
+    "from": "H_2",
+    "to": "E_eps1_del1_mm"
+   },
+   {
+    "label": "phi__E_eps1_del1_pp__E_2del1_p",
+    "from": "E_2del1_p",
+    "to": "E_eps1_del1_pp"
+   },
+   {
+    "label": "phi__E_eps1_del1_pm__E_2del1_p",
+    "from": "E_2del1_p",
+    "to": "E_eps1_del1_pm"
+   },
+   {
+    "label": "phi__E_eps1_del1_mp__E_2del1_p",
+    "from": "E_2del1_p",
+    "to": "E_eps1_del1_mp"
+   },
+   {
+    "label": "phi__E_eps1_del1_mm__E_2del1_p",
+    "from": "E_2del1_p",
+    "to": "E_eps1_del1_mm"
+   },
+   {
+    "label": "phi__E_eps1_del1_pp__E_2del1_m",
+    "from": "E_2del1_m",
+    "to": "E_eps1_del1_pp"
+   },
+   {
+    "label": "phi__E_eps1_del1_pm__E_2del1_m",
+    "from": "E_2del1_m",
+    "to": "E_eps1_del1_pm"
+   },
+   {
+    "label": "phi__E_eps1_del1_mp__E_2del1_m",
+    "from": "E_2del1_m",
+    "to": "E_eps1_del1_mp"
+   },
+   {
+    "label": "phi__E_eps1_del1_mm__E_2del1_m",
+    "from": "E_2del1_m",
+    "to": "E_eps1_del1_mm"
+   }
+  ]
+ },
+ "coboundary": {
+  "description": "Coboundary (delta f)(X,Y) = (-1)^{p(X)} [X,f(Y)] - (-1)^{(p(X)+1)p(Y)} [Y,f(X)] - f([X,Y]); entries give the Z-component as a linear form in the phi parameters.",
+  "formula_source": "docs/math/C_coboundary_definition.md",
+  "parity": "p(Z) = p(X) + p(Y) + 1 (mod 2)",
+  "pair_convention": "All ordered pairs (X, Y) with non-zero (delta f)(X, Y) are listed.",
+  "triviality_criterion": "gamma (Schema 2/3) is trivial iff gamma = delta f for some phi (equivalently gamma = -delta f, replacing f by -f).",
+  "entries": [
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__H_1__E_eps1_del1_pp": "4",
+     "phi__H_2__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-2",
+     "phi__H_1__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_mp": "2",
+     "phi__H_2__E_eps1_del1_mp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "2",
+     "phi__E_eps1_del1_pm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "-1",
+     "phi__H_2__E_eps1_del1_pp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "2",
+     "phi__E_eps1_del1_mm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "1",
+     "phi__E_eps1_del1_pp__H_2": "2",
+     "phi__H_1__E_eps1_del1_mm": "2",
+     "phi__H_2__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "2",
+     "phi__E_eps1_del1_pm__H_1": "1",
+     "phi__E_eps1_del1_pm__H_2": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "1",
+     "phi__E_eps1_del1_mm__H_2": "2",
+     "phi__H_1__E_eps1_del1_pp": "-2",
+     "phi__H_2__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-2",
+     "phi__E_eps1_del1_mp__H_1": "1",
+     "phi__E_eps1_del1_mp__H_2": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "1",
+     "phi__H_1__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "2",
+     "phi__H_2__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "1",
+     "phi__E_eps1_del1_mp__H_2": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "1",
+     "phi__H_1__E_eps1_del1_pp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "2",
+     "phi__H_2__E_eps1_del1_pp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "-3"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_pp": "2",
+     "phi__H_2__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_p",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_p",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "-4",
+     "phi__E_eps1_del1_mm__E_2del1_p": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "2",
+     "phi__E_eps1_del1_mp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_m",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "1",
+     "phi__H_1__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_m",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "4",
+     "phi__E_eps1_del1_mm__E_2del1_m": "2",
+     "phi__H_2__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__H_1__E_eps1_del1_pp": "-2",
+     "phi__H_2__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_m",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-2",
+     "phi__H_1__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-1",
+     "phi__H_2__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__E_eps1_del1_pp__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-1",
+     "phi__H_2__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__E_eps1_del1_mm__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-1",
+     "phi__H_2__E_eps1_del1_mm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-2",
+     "phi__E_eps1_del1_pp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_pm": "-2",
+     "phi__H_2__E_eps1_del1_pm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-2",
+     "phi__E_eps1_del1_mp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_1",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_1",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__E_eps1_del1_mm__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_1",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_2": "-1",
+     "phi__H_1__E_eps1_del1_pm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "-1",
+     "phi__E_eps1_del1_mm__H_2": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "3"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_pm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "-2",
+     "phi__E_eps1_del1_mm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-2",
+     "phi__H_1__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "-4",
+     "phi__H_2__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_m",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_pm": "-2",
+     "phi__H_2__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_m",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "-1",
+     "phi__H_2__E_eps1_del1_pp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "2",
+     "phi__E_eps1_del1_mm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_mp": "2",
+     "phi__H_2__E_eps1_del1_mp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "2",
+     "phi__E_eps1_del1_pm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-1",
+     "phi__H_2__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "2",
+     "phi__E_eps1_del1_mm__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-1",
+     "phi__H_2__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__E_eps1_del1_pp__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "2",
+     "phi__H_1__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_1",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__E_eps1_del1_pp__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_1",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_1",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_2",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "1",
+     "phi__E_eps1_del1_pp__H_2": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_2",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "-1",
+     "phi__H_1__E_eps1_del1_mp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_2",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "-3"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_2",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_mp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "H_2",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mp": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_mp": "2",
+     "phi__H_2__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_p",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_p",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "-4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "2",
+     "phi__E_eps1_del1_pp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_m",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "2",
+     "phi__H_1__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_m",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "4",
+     "phi__H_2__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_2del1_m",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "1",
+     "phi__E_eps1_del1_mm__H_2": "2",
+     "phi__H_1__E_eps1_del1_pp": "-2",
+     "phi__H_2__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-2",
+     "phi__E_eps1_del1_mp__H_1": "1",
+     "phi__E_eps1_del1_mp__H_2": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "1",
+     "phi__E_eps1_del1_pp__H_2": "2",
+     "phi__H_1__E_eps1_del1_mm": "2",
+     "phi__H_2__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "2",
+     "phi__E_eps1_del1_pm__H_1": "1",
+     "phi__E_eps1_del1_pm__H_2": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_pm": "-2",
+     "phi__H_2__E_eps1_del1_pm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-2",
+     "phi__E_eps1_del1_mp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-1",
+     "phi__H_2__E_eps1_del1_mm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-2",
+     "phi__E_eps1_del1_pp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "2",
+     "phi__H_1__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__H_1__E_eps1_del1_mm": "-4",
+     "phi__H_2__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_1",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "1",
+     "phi__H_1__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_1",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "2",
+     "phi__H_2__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_1",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_1",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-4"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_1",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_2",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_2": "1",
+     "phi__H_1__E_eps1_del1_mm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_2",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_2": "2",
+     "phi__H_2__E_eps1_del1_mm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_2",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "-1",
+     "phi__E_eps1_del1_pm__H_2": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_2",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "3"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "H_2",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_p",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "1",
+     "phi__H_1__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_p",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "-4",
+     "phi__E_eps1_del1_pp__E_2del1_p": "2",
+     "phi__H_2__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "-2",
+     "phi__E_eps1_del1_pm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-2",
+     "phi__H_1__E_eps1_del1_mm": "2",
+     "phi__H_2__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_p",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_m",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "1"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_m",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "4",
+     "phi__E_eps1_del1_pp__E_2del1_m": "2"
+    }
+   },
+   {
+    "X": "E_eps1_del1_mm",
+    "Y": "E_2del1_m",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_mm": "-2",
+     "phi__H_2__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "-4"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "-1",
+     "phi__H_1__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "-2",
+     "phi__H_2__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "-2",
+     "phi__E_eps1_del1_mm__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "2",
+     "phi__E_eps1_del1_pp__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "4"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "-1",
+     "phi__H_1__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "-2",
+     "phi__H_2__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_mm",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "1",
+     "phi__E_eps1_del1_pp__H_2": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "-1",
+     "phi__E_eps1_del1_mm__H_2": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "1"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "-4"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "2",
+     "phi__E_eps1_del1_mp__E_2del1_p": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "4"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "2",
+     "phi__E_eps1_del1_pp__H_1": "-2"
+    }
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "2"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-1",
+     "phi__E_eps1_del1_mp__H_2": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "-1",
+     "phi__H_1__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "-2",
+     "phi__H_2__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "1",
+     "phi__E_eps1_del1_mm__H_2": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_2": "1",
+     "phi__H_1__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-1",
+     "phi__E_eps1_del1_pp__H_2": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "1",
+     "phi__H_1__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__H_2__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mp",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mp": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "1",
+     "phi__E_eps1_del1_pm__H_2": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_2": "-1",
+     "phi__H_1__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_2": "-2",
+     "phi__H_2__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_mm",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__H_1": "-1",
+     "phi__E_eps1_del1_pp__H_2": "-2"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "-1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "1",
+     "phi__E_eps1_del1_mm__H_2": "2"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "2",
+     "phi__E_eps1_del1_pp__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "2",
+     "phi__E_eps1_del1_mp__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "-3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-1",
+     "phi__E_eps1_del1_pp__H_2": "-2"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "-3"
+    }
+   },
+   {
+    "X": "H_2",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-1",
+     "phi__E_eps1_del1_mp__H_2": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "1",
+     "phi__H_1__E_eps1_del1_pp": "-2",
+     "phi__H_2__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "4",
+     "phi__E_eps1_del1_mm__E_2del1_p": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "2",
+     "phi__H_1__E_eps1_del1_pm": "-2",
+     "phi__H_2__E_eps1_del1_pm": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "4",
+     "phi__H_2__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_p": "1",
+     "phi__H_1__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pp": "2",
+     "phi__E_eps1_del1_mm__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "1",
+     "phi__H_1__E_eps1_del1_mp": "-2",
+     "phi__H_2__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "4"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "2",
+     "phi__H_1__E_eps1_del1_mm": "-2",
+     "phi__H_2__E_eps1_del1_mm": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "4",
+     "phi__E_eps1_del1_pp__E_2del1_p": "-2",
+     "phi__H_2__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_p": "-1",
+     "phi__H_1__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mp": "2",
+     "phi__E_eps1_del1_pm__E_2del1_p": "1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_mm",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mp": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_1": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_1": "-2",
+     "phi__E_eps1_del1_mp__E_2del1_p": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "4"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "-2",
+     "phi__E_eps1_del1_pp__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "-2",
+     "phi__E_eps1_del1_mp__E_2del1_p": "-1"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_p": "-3"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_p": "-3"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-2",
+     "phi__E_eps1_del1_pp__H_2": "-4"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-2",
+     "phi__E_eps1_del1_mp__H_2": "-4"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "-4",
+     "phi__E_eps1_del1_pp__E_2del1_p": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_2del1_m",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "-4",
+     "phi__E_eps1_del1_mp__E_2del1_p": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_pm": "-2",
+     "phi__H_1__E_eps1_del1_pp": "2",
+     "phi__H_2__E_eps1_del1_pp": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pp": "-4",
+     "phi__E_eps1_del1_mm__E_2del1_m": "-2",
+     "phi__H_2__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-2",
+     "phi__E_eps1_del1_mp__E_2del1_m": "1"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "-1",
+     "phi__H_1__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pp",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "1",
+     "phi__H_1__E_eps1_del1_pm": "2",
+     "phi__H_2__E_eps1_del1_pm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_pm": "-4"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "1"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_2del1_m__E_eps1_del1_mm": "-2",
+     "phi__H_1__E_eps1_del1_mp": "2",
+     "phi__H_2__E_eps1_del1_mp": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mp": "-4",
+     "phi__H_2__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_2del1_p",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-2",
+     "phi__E_eps1_del1_pp__E_2del1_m": "1"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mp",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "1",
+     "phi__H_1__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mp",
+    "Z": "K",
+    "linear_form": {
+     "phi__K__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mm",
+    "Z": "E_2del1_m",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "1",
+     "phi__H_1__E_eps1_del1_mm": "2",
+     "phi__H_2__E_eps1_del1_mm": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_2",
+    "linear_form": {
+     "phi__E_2del1_p__E_eps1_del1_mm": "-4",
+     "phi__E_eps1_del1_pp__E_2del1_m": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_eps1_del1_mm",
+    "Z": "H_1",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "-1"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "-2",
+     "phi__E_eps1_del1_pp__H_1": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__H_1": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "-4"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "-2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "1",
+     "phi__E_eps1_del1_pp__H_2": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "1",
+     "phi__E_eps1_del1_mp__H_2": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pp__E_2del1_m": "3"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mp__E_2del1_m": "3"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pm",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__H_2": "4",
+     "phi__E_eps1_del1_pp__E_2del1_p": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mm",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__H_2": "4",
+     "phi__E_eps1_del1_mp__E_2del1_p": "2"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_pp",
+    "linear_form": {
+     "phi__E_eps1_del1_pm__E_2del1_m": "2",
+     "phi__E_eps1_del1_pp__H_2": "4"
+    }
+   },
+   {
+    "X": "E_2del1_m",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mp",
+    "linear_form": {
+     "phi__E_eps1_del1_mm__E_2del1_m": "2",
+     "phi__E_eps1_del1_mp__H_2": "4"
+    }
+   }
+  ],
+  "summary": {
+   "nonzero_entries": 232,
+   "nonzero_pairs": 60,
+   "entries_with_Z_K": 20,
+   "total_phi_terms": 414
+  }
+ },
+ "metadata": {
+  "generated_by": "src/C_coboundary.py",
+  "generation_date": "2026-10-08"
+ }
+}
