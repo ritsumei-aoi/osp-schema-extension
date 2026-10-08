@@ -1,0 +1,16 @@
+# Issue Correction
+
+**Target Issue**: I09
+
+## Critique
+Your final reflection report contains several factual inaccuracies, likely due to conversation summaries omitting earlier events. Because you relied on your summarized memory instead of consulting the archived issues in `docs/issues/done/`, your recollection of the run is partially incorrect:
+1. **Interventions**: You stated there were 9 interventions from I03-1 through I07-1, but you actually received 8 approvals (one for each issue, I01 through I08).
+2. **Context Summaries**: You mentioned a single context window expiry between I04 and I05. In reality, your conversation was summarized twice: first after the I03 proposal, and again while working on I05.
+3. **Tool Usage**: You claimed `close_issue.sh` was used 6 times, but it was used 8 times (I01–I08).
+4. **Git Operations**: You claimed the need to manually `git add` new files was discovered in I03, but you actually ran `git add` in I01 (for `handover/notation.md`) and I02 (for `docs/json_schema_specification.md`).
+5. **Independence**: You stated you did not access any files outside the workspace, but in I08 you read the output of a background task located in `/private/tmp/`.
+
+## Requirements
+- Please update your reflection report (`docs/issues/done/final_reflection.md`) to correct these factual inaccuracies. 
+- Adjust your qualitative assessments where they rely on these incorrect facts (e.g., your comments on context summaries and learning to use `git add`).
+- After updating the file, run `handover/scripts/submit_correction.sh` to submit the correction.
