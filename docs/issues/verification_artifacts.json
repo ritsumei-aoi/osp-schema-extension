@@ -1,0 +1,127 @@
+{
+  "artifact_version": 1,
+  "purpose": "Audit the supplied C(n+1) deformation data without inventing missing structure constants or gamma components.",
+  "source_files": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "verified_facts": {
+    "algebra": "C(n+1) = osp(2|2n)",
+    "basis_realization": {
+      "even_generators": [
+        "H_1,...,H_(n+1)",
+        "E_(±delta_i±delta_j)",
+        "E_(±2delta_i)"
+      ],
+      "odd_generators": [
+        "E_(±epsilon±delta_i)"
+      ],
+      "oscillator_generators": [
+        "a_1^+",
+        "a_1^-",
+        "b_j^+",
+        "b_j^-"
+      ]
+    },
+    "undeformed_oscillator_relations_stated": [
+      "{a_1^-,a_1^+}=1",
+      "[b_j^-,b_k^+]=delta_(jk)"
+    ],
+    "deformed_oscillator_relation_stated": "[b_j^s,a_1^sigma] = -gb_(sigma,j,s) * kappa",
+    "coboundary_formula": "delta_f(X,Y)=(-1)^p(X)[X,f(Y)]-(-1)^((p(X)+1)p(Y))[Y,f(X)]-f([X,Y]); f is odd",
+    "kappa_parity": 1,
+    "claimed_gb_parity": 1,
+    "mixed_bracket_parity": 1,
+    "rhs_parity_if_claimed_gb_parity_used": 0,
+    "parity_consistent_gb_parity_if_kappa_is_odd": 0
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "total_dimension": 8,
+      "gb_parameter_count": 4,
+      "gb_labels": [
+        "gb_(+,1,+)",
+        "gb_(+,1,-)",
+        "gb_(-,1,+)",
+        "gb_(-,1,-)"
+      ],
+      "complete_g_structure_constants": {
+        "tabulated_in_source": false,
+        "derivable_from_stated_oscillator_realization": true
+      },
+      "gamma_gb_components": null,
+      "triviality_classification": "underdetermined"
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "total_dimension": 19,
+      "gb_parameter_count": 8,
+      "gb_labels": [
+        "gb_(+,1,+)",
+        "gb_(+,1,-)",
+        "gb_(-,1,+)",
+        "gb_(-,1,-)",
+        "gb_(+,2,+)",
+        "gb_(+,2,-)",
+        "gb_(-,2,+)",
+        "gb_(-,2,-)"
+      ],
+      "complete_g_structure_constants": {
+        "tabulated_in_source": false,
+        "derivable_from_stated_oscillator_realization": true
+      },
+      "gamma_gb_components": null,
+      "triviality_classification": "underdetermined"
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "total_dimension": 34,
+      "gb_parameter_count": 12,
+      "gb_labels": [
+        "gb_(+,1,+)",
+        "gb_(+,1,-)",
+        "gb_(-,1,+)",
+        "gb_(-,1,-)",
+        "gb_(+,2,+)",
+        "gb_(+,2,-)",
+        "gb_(-,2,+)",
+        "gb_(-,2,-)",
+        "gb_(+,3,+)",
+        "gb_(+,3,-)",
+        "gb_(-,3,+)",
+        "gb_(-,3,-)"
+      ],
+      "complete_g_structure_constants": {
+        "tabulated_in_source": false,
+        "derivable_from_stated_oscillator_realization": true
+      },
+      "gamma_gb_components": null,
+      "triviality_classification": "underdetermined"
+    }
+  ],
+  "linear_algebraic_triviality_test": {
+    "parameter_space": "P_n with dimension 4n",
+    "required_maps": [
+      "G_n: P_n -> C^2_odd(g;g), gb |-> gamma_gb",
+      "D_n: C^1_odd(g;g) -> C^2_odd(g;g), f |-> delta_f"
+    ],
+    "necessary_and_sufficient_condition_when_maps_are_defined": "gb is trivial iff G_n(gb) belongs to image(D_n), equivalently D_n*f = G_n*gb is solvable",
+    "available_G_n": false,
+    "available_D_n_matrix": false,
+    "result": "Cannot decide whether any nonzero gb configuration is trivial from supplied files."
+  },
+  "interpretation_of_up_to_scalar": {
+    "coefficient_comparison": "In a direct sum extension, compare coefficients in kappa*g: kappa*gamma = kappa*delta_f iff gamma = delta_f.",
+    "nonzero_overall_scalar": "Does not change membership in the linear coboundary image.",
+    "zero_overall_scalar": "Would make the criterion vacuous and is not an admissible interpretation of triviality."
+  }
+}
