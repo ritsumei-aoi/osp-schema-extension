@@ -228,11 +228,15 @@ No B basis labels or B dimension formulas may be assumed for family C.
 ## Later-layer field contract
 
 Schema 2 retains the Schema 1 fields and adds
-`inhomogeneous_deformation`, containing `gb_matrix` (two fermion rows and
-`2n` boson columns), parameter parity, and sparse `gamma_coefficients`
-entries `{X,Y,Z,coeff}`. Schema 3 retains the symbolic deformation and records
-the concrete `gb_assignment` and evaluated coefficients. Schema 4 records the
-odd map `f` as sparse basis-to-basis coefficients and its sparse
+`inhomogeneous_deformation`, containing `generated_by`, `gb_matrix` (two
+fermion rows and `2n` boson columns), parameter parity, the defining
+commutator, and sparse `gamma_coefficients` entries `{X,Y,Z,coeff}`. `X` and
+`Y` are basis elements; `Z` is a basis element or `K` when a central scalar
+term occurs. The latter is permitted because `K` is explicitly the scalar
+identity in `central_elements`, while remaining excluded from the basis.
+Schema 3 retains the symbolic deformation and records the concrete
+`gb_assignment` and evaluated coefficients. Schema 4 records the odd map `f`
+as sparse basis-to-basis coefficients and its sparse
 `coboundary_coefficients`; it must identify the coboundary formula used.
 Each later layer also records its input Schema 1 file and rank so consistency
 can be checked without guessing.
