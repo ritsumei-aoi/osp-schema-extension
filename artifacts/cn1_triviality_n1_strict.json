@@ -1,0 +1,1001 @@
+{
+  "n": 1,
+  "mode": "strict",
+  "dim_g": 8,
+  "dim_even": 4,
+  "dim_odd": 4,
+  "num_gb_parameters": 4,
+  "num_odd_f_unknowns": 32,
+  "g_basis": [
+    {
+      "index": 0,
+      "monomial": "a+*a-",
+      "parity": 0
+    },
+    {
+      "index": 1,
+      "monomial": "a+*b1+",
+      "parity": 1
+    },
+    {
+      "index": 2,
+      "monomial": "a+*b1-",
+      "parity": 1
+    },
+    {
+      "index": 3,
+      "monomial": "a-*b1+",
+      "parity": 1
+    },
+    {
+      "index": 4,
+      "monomial": "a-*b1-",
+      "parity": 1
+    },
+    {
+      "index": 5,
+      "monomial": "b1+*b1+",
+      "parity": 0
+    },
+    {
+      "index": 6,
+      "monomial": "b1+*b1-",
+      "parity": 0
+    },
+    {
+      "index": 7,
+      "monomial": "b1-*b1-",
+      "parity": 0
+    }
+  ],
+  "gb_parameters": [
+    {
+      "index": 0,
+      "label": "gb[sigma=+,j=1,s=+]",
+      "fermion_osc": "a+",
+      "boson_osc": "b1+"
+    },
+    {
+      "index": 1,
+      "label": "gb[sigma=+,j=1,s=-]",
+      "fermion_osc": "a+",
+      "boson_osc": "b1-"
+    },
+    {
+      "index": 2,
+      "label": "gb[sigma=-,j=1,s=+]",
+      "fermion_osc": "a-",
+      "boson_osc": "b1+"
+    },
+    {
+      "index": 3,
+      "label": "gb[sigma=-,j=1,s=-]",
+      "fermion_osc": "a-",
+      "boson_osc": "b1-"
+    }
+  ],
+  "structure_constants_mu0": [
+    {
+      "a": "a+*a-",
+      "b": "a+*b1+",
+      "result": {
+        "a+*b1+": "1"
+      }
+    },
+    {
+      "a": "a+*a-",
+      "b": "a+*b1-",
+      "result": {
+        "a+*b1-": "1"
+      }
+    },
+    {
+      "a": "a+*a-",
+      "b": "a-*b1+",
+      "result": {
+        "a-*b1+": "-1"
+      }
+    },
+    {
+      "a": "a+*a-",
+      "b": "a-*b1-",
+      "result": {
+        "a-*b1-": "-1"
+      }
+    },
+    {
+      "a": "a+*b1+",
+      "b": "a+*a-",
+      "result": {
+        "a+*b1+": "-1"
+      }
+    },
+    {
+      "a": "a+*b1+",
+      "b": "a-*b1+",
+      "result": {
+        "b1+*b1+": "1"
+      }
+    },
+    {
+      "a": "a+*b1+",
+      "b": "a-*b1-",
+      "result": {
+        "a+*a-": "-1",
+        "b1+*b1-": "1"
+      }
+    },
+    {
+      "a": "a+*b1+",
+      "b": "b1+*b1-",
+      "result": {
+        "a+*b1+": "-1"
+      }
+    },
+    {
+      "a": "a+*b1+",
+      "b": "b1-*b1-",
+      "result": {
+        "a+*b1-": "-2"
+      }
+    },
+    {
+      "a": "a+*b1-",
+      "b": "a+*a-",
+      "result": {
+        "a+*b1-": "-1"
+      }
+    },
+    {
+      "a": "a+*b1-",
+      "b": "a-*b1+",
+      "result": {
+        "a+*a-": "1",
+        "b1+*b1-": "1"
+      }
+    },
+    {
+      "a": "a+*b1-",
+      "b": "a-*b1-",
+      "result": {
+        "b1-*b1-": "1"
+      }
+    },
+    {
+      "a": "a+*b1-",
+      "b": "b1+*b1+",
+      "result": {
+        "a+*b1+": "2"
+      }
+    },
+    {
+      "a": "a+*b1-",
+      "b": "b1+*b1-",
+      "result": {
+        "a+*b1-": "1"
+      }
+    },
+    {
+      "a": "a-*b1+",
+      "b": "a+*a-",
+      "result": {
+        "a-*b1+": "1"
+      }
+    },
+    {
+      "a": "a-*b1+",
+      "b": "a+*b1+",
+      "result": {
+        "b1+*b1+": "1"
+      }
+    },
+    {
+      "a": "a-*b1+",
+      "b": "a+*b1-",
+      "result": {
+        "a+*a-": "1",
+        "b1+*b1-": "1"
+      }
+    },
+    {
+      "a": "a-*b1+",
+      "b": "b1+*b1-",
+      "result": {
+        "a-*b1+": "-1"
+      }
+    },
+    {
+      "a": "a-*b1+",
+      "b": "b1-*b1-",
+      "result": {
+        "a-*b1-": "-2"
+      }
+    },
+    {
+      "a": "a-*b1-",
+      "b": "a+*a-",
+      "result": {
+        "a-*b1-": "1"
+      }
+    },
+    {
+      "a": "a-*b1-",
+      "b": "a+*b1+",
+      "result": {
+        "a+*a-": "-1",
+        "b1+*b1-": "1"
+      }
+    },
+    {
+      "a": "a-*b1-",
+      "b": "a+*b1-",
+      "result": {
+        "b1-*b1-": "1"
+      }
+    },
+    {
+      "a": "a-*b1-",
+      "b": "b1+*b1+",
+      "result": {
+        "a-*b1+": "2"
+      }
+    },
+    {
+      "a": "a-*b1-",
+      "b": "b1+*b1-",
+      "result": {
+        "a-*b1-": "1"
+      }
+    },
+    {
+      "a": "b1+*b1+",
+      "b": "a+*b1-",
+      "result": {
+        "a+*b1+": "-2"
+      }
+    },
+    {
+      "a": "b1+*b1+",
+      "b": "a-*b1-",
+      "result": {
+        "a-*b1+": "-2"
+      }
+    },
+    {
+      "a": "b1+*b1+",
+      "b": "b1+*b1-",
+      "result": {
+        "b1+*b1+": "-2"
+      }
+    },
+    {
+      "a": "b1+*b1+",
+      "b": "b1-*b1-",
+      "result": {
+        "b1+*b1-": "-4"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "a+*b1+",
+      "result": {
+        "a+*b1+": "1"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "a+*b1-",
+      "result": {
+        "a+*b1-": "-1"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "a-*b1+",
+      "result": {
+        "a-*b1+": "1"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "a-*b1-",
+      "result": {
+        "a-*b1-": "-1"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "b1+*b1+",
+      "result": {
+        "b1+*b1+": "2"
+      }
+    },
+    {
+      "a": "b1+*b1-",
+      "b": "b1-*b1-",
+      "result": {
+        "b1-*b1-": "-2"
+      }
+    },
+    {
+      "a": "b1-*b1-",
+      "b": "a+*b1+",
+      "result": {
+        "a+*b1-": "2"
+      }
+    },
+    {
+      "a": "b1-*b1-",
+      "b": "a-*b1+",
+      "result": {
+        "a-*b1-": "2"
+      }
+    },
+    {
+      "a": "b1-*b1-",
+      "b": "b1+*b1+",
+      "result": {
+        "b1+*b1-": "4"
+      }
+    },
+    {
+      "a": "b1-*b1-",
+      "b": "b1+*b1-",
+      "result": {
+        "b1-*b1-": "2"
+      }
+    }
+  ],
+  "gamma": {
+    "gb[sigma=+,j=1,s=+]": [
+      {
+        "a": "a+*a-",
+        "b": "a+*b1+",
+        "result": {
+          "a+*a-": "-1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1+",
+        "result": {
+          "a-*b1+": "2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1-",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a+*a-",
+        "result": {
+          "a+*a-": "1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a+*b1+",
+        "result": {
+          "a+*b1+": "2"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a+*b1-",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a-*b1+",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "b1+*b1+",
+        "result": {
+          "b1+*b1+": "2"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1-": "1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "b1+*b1+",
+        "result": {
+          "b1+*b1-": "2",
+          "Z (central, = identity)": "-1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "b1+*b1-",
+        "result": {
+          "b1-*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a+*b1+",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a+*b1-",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a+*a-",
+        "result": {
+          "a-*b1+": "-2"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a+*b1+",
+        "result": {
+          "b1+*b1+": "-2"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a+*b1-",
+        "result": {
+          "b1+*b1-": "-2",
+          "Z (central, = identity)": "1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a-*b1-": "-1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "b1+*b1-": "-1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "b1-*b1-": "-1"
+        }
+      }
+    ],
+    "gb[sigma=+,j=1,s=-]": [
+      {
+        "a": "a+*a-",
+        "b": "a+*b1-",
+        "result": {
+          "a+*a-": "-1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1-",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1-*b1-",
+        "result": {
+          "a-*b1-": "2"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a+*b1-",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a-*b1-",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "b1-*b1-",
+        "result": {
+          "b1+*b1-": "2",
+          "Z (central, = identity)": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a+*a-": "1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "a+*b1-": "2"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1-": "1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "b1-*b1-",
+        "result": {
+          "b1-*b1-": "2"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a-*b1+": "-1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "b1+*b1+": "-1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "b1+*b1-": "-1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a-*b1-": "-2"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "b1+*b1-": "-2",
+          "Z (central, = identity)": "-1"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "b1-*b1-": "-2"
+        }
+      }
+    ],
+    "gb[sigma=-,j=1,s=+]": [
+      {
+        "a": "a+*a-",
+        "b": "a-*b1+",
+        "result": {
+          "a+*a-": "-1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1+",
+        "result": {
+          "a+*b1+": "-2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1-",
+        "result": {
+          "a+*b1-": "-1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a-*b1+",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1+",
+        "b": "a-*b1-",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a+*a-",
+        "result": {
+          "a+*a-": "1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a+*b1+",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a-*b1+",
+        "result": {
+          "a-*b1+": "2"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a-*b1-",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "b1+*b1+",
+        "result": {
+          "b1+*b1+": "2"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1-": "1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a+*b1+",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "a-*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "b1+*b1+",
+        "result": {
+          "b1+*b1-": "2",
+          "Z (central, = identity)": "-1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "b1+*b1-",
+        "result": {
+          "b1-*b1-": "1"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a+*a-",
+        "result": {
+          "a+*b1+": "2"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a-*b1+",
+        "result": {
+          "b1+*b1+": "-2"
+        }
+      },
+      {
+        "a": "b1+*b1+",
+        "b": "a-*b1-",
+        "result": {
+          "b1+*b1-": "-2",
+          "Z (central, = identity)": "1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "b1+*b1-": "-1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "b1-*b1-": "-1"
+        }
+      }
+    ],
+    "gb[sigma=-,j=1,s=-]": [
+      {
+        "a": "a+*a-",
+        "b": "a-*b1-",
+        "result": {
+          "a+*a-": "-1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1+*b1-",
+        "result": {
+          "a+*b1+": "-1"
+        }
+      },
+      {
+        "a": "a+*a-",
+        "b": "b1-*b1-",
+        "result": {
+          "a+*b1-": "-2"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a+*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a+*b1-",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "a-*b1-",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1+",
+        "b": "b1-*b1-",
+        "result": {
+          "b1+*b1-": "2",
+          "Z (central, = identity)": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a+*a-": "1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a+*b1-",
+        "result": {
+          "a+*b1-": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "a-*b1+": "1"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "a-*b1-": "2"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "b1+*b1-",
+        "result": {
+          "b1+*b1-": "1",
+          "Z (central, = identity)": "-1/2"
+        }
+      },
+      {
+        "a": "a-*b1-",
+        "b": "b1-*b1-",
+        "result": {
+          "b1-*b1-": "2"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a+*b1+": "1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "b1+*b1+": "-1"
+        }
+      },
+      {
+        "a": "b1+*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "b1+*b1-": "-1",
+          "Z (central, = identity)": "1/2"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a+*a-",
+        "result": {
+          "a+*b1-": "2"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a-*b1+",
+        "result": {
+          "b1+*b1-": "-2",
+          "Z (central, = identity)": "-1"
+        }
+      },
+      {
+        "a": "b1-*b1-",
+        "b": "a-*b1-",
+        "result": {
+          "b1-*b1-": "-2"
+        }
+      }
+    ]
+  },
+  "checks": {
+    "central_component_present": true,
+    "jacobi_order0_violations (g_0)": 0,
+    "jacobi_order1_violations (random gamma)": 0,
+    "jacobi_order1_violations (random delta f; tests coboundary sign convention)": 0
+  },
+  "triviality_constraints_on_gb": [
+    "(1)*gb[sigma=+,j=1,s=+] = 0",
+    "(1)*gb[sigma=+,j=1,s=-] = 0",
+    "(1)*gb[sigma=-,j=1,s=+] = 0",
+    "(1)*gb[sigma=-,j=1,s=-] = 0"
+  ],
+  "trivial_subspace_dimension": 0,
+  "trivial_subspace_basis": [],
+  "single_parameter_triviality": {
+    "gb[sigma=+,j=1,s=+]": {
+      "trivial_alone": false
+    },
+    "gb[sigma=+,j=1,s=-]": {
+      "trivial_alone": false
+    },
+    "gb[sigma=-,j=1,s=+]": {
+      "trivial_alone": false
+    },
+    "gb[sigma=-,j=1,s=-]": {
+      "trivial_alone": false
+    }
+  },
+  "witnesses": [],
+  "conclusion": "only gb = 0 is trivial"
+}
