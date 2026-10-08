@@ -1,0 +1,402 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)",
+    "alternative_notation": {
+      "osp": "osp(2|4)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 19,
+      "even": 11,
+      "odd": 8
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "count": 2,
+      "m": 1,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "car_relation": "{a_1^-, a_1^+} = 1",
+      "parity": 1
+    },
+    "bosons": {
+      "count": 4,
+      "n": 2,
+      "labels": [
+        "b_1_p",
+        "b_1_m",
+        "b_2_p",
+        "b_2_m"
+      ]
+    }
+  },
+  "oscillator_relations": {
+    "standard_fermion_anticommutators": {
+      "description": "{a_1^-, a_1^+} = 1",
+      "relation": "{a_1_m, a_1_p} = 1"
+    },
+    "bosonic_commutators": {
+      "relations": {
+        "same_type": "[b_i^\u00b1, b_j^\u00b1] = 0",
+        "conjugate_pair": "[b_i^-, b_j^+] = \u03b4_{ij}"
+      }
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "label": "\u03ba",
+      "parity": 1,
+      "property": "\u03ba\u00b2 = 0"
+    },
+    "K": {
+      "label": "K",
+      "parity": 0,
+      "property": "identified with 1"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "H_3",
+      "E_2del1_p",
+      "E_2del2_p",
+      "E_del1_del2_pp",
+      "E_2del1_m",
+      "E_2del2_m",
+      "E_del1_del2_mm",
+      "E_del1_del2_pm",
+      "E_del1_del2_mp"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm",
+      "E_eps1_del2_pp",
+      "E_eps1_del2_pm",
+      "E_eps1_del2_mp",
+      "E_eps1_del2_mm"
+    ],
+    "ordering_convention": "PBW: \u03ba < [odd] < [even]"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "H_3": 0,
+    "E_2del1_p": 0,
+    "E_2del2_p": 0,
+    "E_del1_del2_pp": 0,
+    "E_2del1_m": 0,
+    "E_2del2_m": 0,
+    "E_del1_del2_mm": 0,
+    "E_del1_del2_pm": 0,
+    "E_del1_del2_mp": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1,
+    "E_eps1_del2_pp": 1,
+    "E_eps1_del2_pm": 1,
+    "E_eps1_del2_mp": 1,
+    "E_eps1_del2_mm": 1
+  },
+  "generator_realization": {
+    "description": "Oscillator realization",
+    "realizations": {
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "a_1_p"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "H_2": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_2_m",
+              "b_2_p"
+            ],
+            "coeff": "-1"
+          }
+        ],
+        "parity": 0
+      },
+      "H_3": {
+        "standard_form": [
+          {
+            "words": [],
+            "coeff": "-1/2"
+          },
+          {
+            "words": [
+              "b_2_m",
+              "b_2_p"
+            ],
+            "coeff": "-1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_2del2_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_del1_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_2del2_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_del1_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_del1_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_del1_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 0
+      },
+      "E_eps1_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      },
+      "E_eps1_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "parity": 1
+      }
+    }
+  },
+  "structure_constants": [],
+  "metadata": {
+    "generated_by": "C_generators.py",
+    "schema_version": "5.0"
+  },
+  "deformation_parameters": {
+    "description": "Inhomogeneous deformation parameters (gb matrix)",
+    "count": 8,
+    "parameters": [
+      "gb_a1p_b1p",
+      "gb_a1p_b1m",
+      "gb_a1m_b1p",
+      "gb_a1m_b1m",
+      "gb_a1p_b2p",
+      "gb_a1p_b2m",
+      "gb_a1m_b2p",
+      "gb_a1m_b2m"
+    ],
+    "exchange_relations": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa"
+  },
+  "inhomogeneous_deformation": {
+    "description": "Gamma coefficients gamma_{abc} in deformed bracket",
+    "note": "To be computed for specific representations"
+  },
+  "evaluation": {
+    "gb_assignment": {
+      "gb_a1p_b1p": 1,
+      "gb_a1p_b1m": 1,
+      "gb_a1m_b1p": 1,
+      "gb_a1m_b1m": 1,
+      "gb_a1p_b2p": 1,
+      "gb_a1p_b2m": 1,
+      "gb_a1m_b2p": 1,
+      "gb_a1m_b2m": 1
+    },
+    "signature": "all_positive"
+  },
+  "evaluated_structure_constants": {
+    "note": "Structure constants with evaluated deformation parameters"
+  }
+}
