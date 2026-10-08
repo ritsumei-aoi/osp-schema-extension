@@ -241,5 +241,8 @@ The chosen initial profile sets each parameter to `+1`; other explicit
 sign profiles are also representable. Schema 4 records the odd map `f`
 as sparse basis-to-basis coefficients and its sparse
 `coboundary_coefficients`; it must identify the coboundary formula used.
-Each later layer also records its input Schema 1 file and rank so consistency
-can be checked without guessing.
+Each later layer also records its input file and rank so consistency can be
+checked without guessing. The reference Schema 4 map is
+\(f(H_\varepsilon)=E_{\varepsilon+\delta_1}\),
+\(f(E_{\varepsilon+\delta_1})=H_\varepsilon\), and zero on other basis
+generators. It is odd and nonzero for every supported rank.
