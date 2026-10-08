@@ -257,3 +257,36 @@ bosonic index. The B(0,n)-specific `supplementary_fermion` and
 `supplementary_fermion_relation` keys are not used. Do not interpret the
 C family as B(m,n) with a changed display name: its dimensions, roots,
 and odd generators differ.
+
+## Schema 2: Inhomogeneous Deformation
+
+Schema 2 files are named `C_{n}_gamma.json` and refer to their
+corresponding Schema 1 file through `source_schema`. They retain
+`schema_version` and `algebra`, and contain:
+
+| Key | Contents |
+|---|---|
+| `source_schema` | Matching `C_{n}_structure.json` filename |
+| `consistency` | Source filename and count of verified undeformed basis pairs |
+| `gb_matrix` | 2-by-2n parameter indexing |
+| `inhomogeneous_deformation` | Exchange relations, parity, central element, and gamma terms |
+| `metadata` | Generator, date, and references |
+
+`gb_matrix.rows` is ordered `a_1_p`, `a_1_m`; `columns` is ordered
+`b_1_p`, `b_1_m`, through `b_n_p`, `b_n_m`. The row-major parameter list
+contains `gb_a1_{p|m}_b{k}_{p|m}` exactly once per matrix cell, each with
+parity 1. The exchange-relation list specifies
+`[b_k_s, a_1_sigma] = -gb_a1_sigma_bk_s * kappa` for every cell.
+
+Each `gamma_coefficients` entry has `X`, `Y`, `Z`, `parameter`, and exact
+rational `coeff` fields. It contributes `coeff * parameter * Z` to the
+gamma value for that canonical unordered pair `(X,Y)`; the full deformed
+bracket adds this contribution with the formal central `kappa`. Reversed
+pairs follow graded skew-symmetry. `Z` is a Schema 1 basis label or `K`
+when the oscillator calculation yields a scalar identity term; `K=1`
+remains excluded from the independent Lie-algebra basis. Each listed
+coefficient must have parity consistent with the odd parameter.
+
+Schema 2 generation checks every canonical basis pair against the
+undeformed structure constants in its source Schema 1 file and fails if
+the bases or brackets differ.
