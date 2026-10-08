@@ -6,7 +6,7 @@
 
 ## 1. Quantitative Performance (Self-Reported)
 - **Workflow Type**: One-Shot Challenge (single session, no intermediate stages)
-- **Total Human Interventions (Nudges/Approvals)**: 0 (no web access was needed, so no approval was requested)
+- **Total Human Interventions (Nudges/Approvals)**: 1 (the closing instruction to finalise and push the reflection files; no approvals were needed since no web access was requested)
 - **Major Blockers Encountered**: none. One self-inflicted sign error in the change of variables
   (`a~ = a + kappa C` vs `a - kappa C`) was caught immediately by the exact check `gamma == delta f` for n=1 and fixed.
 - **Total Wall Time**: approximately 25 minutes of session time (start 22:41, artifacts written 22:50, documents and commit afterwards); exact figure not exposed to me by the interface.
