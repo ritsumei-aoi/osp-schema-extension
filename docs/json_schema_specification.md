@@ -349,7 +349,48 @@ equals the Schema 1 table and $\gamma$ is graded antisymmetric.
 
 ## Schema 3: Evaluated structure (`C_{n}_evaluated.json`) — defined in I06
 
-*(filled in by Issue I06)*
+A Schema 3 file is Schema 2 with a concrete numeric assignment substituted for the
+$4n$ parameters. The representative assignment (`all_plus`, every $\mathrm{gb}=1$) is stored
+without suffix as `C_{n}_evaluated.json`; other sign profiles use `C_{n}_evaluated_<profile>.json`.
+
+Profiles provided by `src/C_evaluate.py`:
+
+| profile | assignment |
+|---|---|
+| `all_plus` (representative) | all $\mathrm{gb}_{\sigma,k,s} = 1$ |
+| `zero` | all $0$ (control: undeformed) |
+| `single` | $\mathrm{gb}_{+,1,+} = 1$, all others $0$ |
+| `alternating` | $+1$ if $\sigma = s$, $-1$ otherwise |
+| `random` | deterministic pseudo-random values in $\{-2,-1,1,2\}$ (seed `20261009+n`) |
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 3,
+  "algebra": { ... as Schema 2 ... },
+  "schema1_file": "C_1_structure.json",
+  "schema2_file": "C_1_gamma.json",
+  "profile": "all_plus",
+  "gb_assignment": {"gb_a1p_b1p": "1", "gb_a1p_b1m": "1", "gb_a1m_b1p": "1", "gb_a1m_b1m": "1"},
+  "gb_matrix": {"rows": ["a_1_p", "a_1_m"], "columns": ["b_1_p", "b_1_m"], "values": [["1","1"],["1","1"]]},
+  "evaluated_gamma": {
+    "description": "gamma(X,Y) = sum_Z coeff * Z with gb substituted; Z in basis or K",
+    "entries": [ {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": "1/2"}, ... ]
+  },
+  "deformed_structure_constants": {
+    "description": "[X,Y}_gamma = sum_Z (coeff_0 + kappa * coeff_kappa) * Z",
+    "entries": [ {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp", "coeff_0": "1", "coeff_kappa": "0"}, ... ]
+  },
+  "summary": {"gamma_entries": 112, "gamma_entries_with_Z_K": 20, "pairs_with_nonzero_gamma": 54},
+  "metadata": { ... }
+}
+```
+
+* `evaluated_gamma.entries` have rational-string `coeff`; terms that evaluate to 0 are dropped.
+* `deformed_structure_constants.entries` merge Schema 1 (`coeff_0`) and the evaluated $\gamma$
+  (`coeff_kappa`) per $(X,Y,Z)$, so a single list describes the full deformed bracket.
+* Consistency rule: re-substituting `gb_assignment` into the Schema 2 `coeff` strings must
+  reproduce `evaluated_gamma.entries` exactly, and `coeff_0` must equal Schema 1.
 
 ## Schema 4: Coboundary structure (`C_{n}_coboundary.json`) — defined in I07
 
