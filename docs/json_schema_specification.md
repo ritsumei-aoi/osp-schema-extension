@@ -418,4 +418,41 @@ recomputation** of γ by running the oscillator algebra with the numeric gb valu
 
 ## 4. Schema 4 — Coboundary structure (`C_{n}_coboundary*.json`)
 
-*(Specified in I07.)*
+Mathematical content (`docs/math/C_coboundary_definition.md`): an odd linear map
+$f:\mathfrak g\to\mathfrak g\oplus\mathbb{C}K$ with $f(Z_j)=\sum_i\phi_{ij}Z_i$ and its coboundary
+$(\delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])$
+(with $[\cdot,K]=0$, $f(K)=0$). `C_{n}_coboundary.json` is symbolic in gb; `C_{n}_coboundary_<profile>.json`
+is evaluated at the same profiles as Schema 3.
+
+### 4.1 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "structure_file": "...", "gamma_file": "..."},
+  "odd_linear_map": {
+    "description": "...", "definition": "...", "SIGN": -1,
+    "codomain_note": "Z = 'K' entries are constant components",
+    "entries": [ {"X": "E_2del1_p", "Z": "E_eps1_del1_pp", "coeff": "-2*gb_a1m_b1p", "coeff_terms": {"gb_a1m_b1p": "-2"}} ],
+    "statistics": {"generators_with_nonzero_image": 8, "entries": 24, "entries_with_K": 4}
+  },
+  "coboundary": {
+    "formula": "(delta f)(X,Y) = (-1)^{p(X)} [X, f(Y)] - (-1)^{(p(X)+1) p(Y)} [Y, f(X)] - f([X,Y])",
+    "pairs_stored": "all ordered pairs (X, Y) with (delta f)(X, Y) != 0",
+    "entries": [ {"X": "...", "Y": "...", "Z": "...", "coeff": "...", "coeff_terms": {...}} ],
+    "statistics": {"nonzero_pairs": 54, "entries": 112, "entries_with_K": 20},
+    "equals_gamma_symbolically": true
+  },
+  "gb_profile": { "name": "...", "values": {...}, "evaluated_file": "C_1_evaluated_<profile>.json" },
+  "metadata": { ... }
+}
+```
+
+* `odd_linear_map.entries`: the matrix $\phi$ of $f$: an entry `{X, Z, coeff}` means that
+  $f(X)$ contains `coeff`·`Z`. $f$ reverses parity; `Z = "K"` is allowed (constant component).
+* The canonical $f$ (the **shift map**): with $\psi(b_j^s) = b_j^s + \kappa(\mathrm{gb}_{-,j,s}a_1^+ + \mathrm{gb}_{+,j,s}a_1^-)$,
+  $\psi(a_1^\pm)=a_1^\pm$ one has $\psi(X) = X + \kappa f_0(X)$ and $f = \mathrm{SIGN}\cdot f_0$ with
+  $\mathrm{SIGN}=-1$ (so that $\gamma=\delta f$ with the sign convention of the math note).
+* `coboundary.entries` has exactly the shape of Schema 2 `gamma` (symbolic file) or Schema 3
+  `gamma_evaluated` (profile files), so Layers 3 and 4 can be compared entry by entry.
+* `gb_profile` is present only in the evaluated files.
