@@ -14,8 +14,8 @@ from src.C_generators import ROOT, _coefficient
 def evaluate_schema(n: int, assignment_value: int = 1) -> dict:
     if n < 1:
         raise ValueError("Bosonic rank n must be at least 1")
-    if assignment_value not in (-1, 1):
-        raise ValueError("The sign-profile assignment value must be +1 or -1")
+    if assignment_value not in (-1, 0, 1):
+        raise ValueError("The uniform gb assignment value must be -1, 0, or +1")
     structure_path = ROOT / "data" / f"C_{n}_structure.json"
     gamma_path = ROOT / "data" / f"C_{n}_gamma.json"
     try:
@@ -75,7 +75,11 @@ def evaluate_schema(n: int, assignment_value: int = 1) -> dict:
         "source_structure_schema": structure_path.name,
         "source_gamma_schema": gamma_path.name,
         "evaluation_profile": {
-            "name": "all_positive" if assignment_value == 1 else "all_negative",
+            "name": {
+                1: "all_positive",
+                0: "all_zero",
+                -1: "all_negative",
+            }[assignment_value],
             "description": f"Every odd gb parameter is assigned {assignment_value:+d}",
             "parameter_value": assignment_value,
         },
