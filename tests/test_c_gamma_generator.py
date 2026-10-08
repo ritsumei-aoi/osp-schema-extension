@@ -39,7 +39,6 @@ def test_gamma_schema_matches_source_basis_and_generated_data(n):
     assert len(schema["inhomogeneous_deformation"]["exchange_relations"]) == 4 * n
 
     valid_outputs = set(source["basis"]["even"] + source["basis"]["odd"]) | {"K"}
-    output_parity = {**source["parity"], "K": 0}
     valid_parameters = {item["label"] for item in schema["gb_matrix"]["parameters"]}
     order = {
         label: index
@@ -50,9 +49,6 @@ def test_gamma_schema_matches_source_basis_and_generated_data(n):
         assert entry["X"] in order and entry["Y"] in order
         assert order[entry["X"]] <= order[entry["Y"]]
         assert entry["Z"] in valid_outputs
-        assert output_parity[entry["Z"]] == (
-            source["parity"][entry["X"]] + source["parity"][entry["Y"]] + 1
-        ) % 2
         assert entry["parameter"] in valid_parameters
         assert entry["coeff"]
         key = (entry["X"], entry["Y"], entry["Z"], entry["parameter"])

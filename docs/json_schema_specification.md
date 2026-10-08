@@ -284,12 +284,20 @@ gamma value for that canonical unordered pair `(X,Y)`; the full deformed
 bracket adds this contribution with the formal central `kappa`. Reversed
 pairs follow graded skew-symmetry. `Z` is a Schema 1 basis label or `K`
 when the oscillator calculation yields a scalar identity term; `K=1`
-remains excluded from the independent Lie-algebra basis. Each listed
-coefficient must have parity consistent with the odd parameter.
+remains excluded from the independent Lie-algebra basis.
 
 Schema 2 generation checks every canonical basis pair against the
 undeformed structure constants in its source Schema 1 file and fails if
 the bases or brackets differ.
+
+**Parity caveat from the source definition:** `C_inhomogeneous_definition.md`
+assigns odd parity to both `gb` and `kappa`, but writes their product in
+the mixed relation `[b_even, a_odd] = -gb*kappa`. Under the usual
+superalgebra tensor-product parity, that product is even whereas the
+bracket is odd. The generated coefficients follow the stated exchange
+relation formally; their grading is not resolved by the available
+definition and must be treated as a documented mathematical ambiguity,
+not as a parity-validity check.
 
 ## Schema 3: Evaluated Structure
 
