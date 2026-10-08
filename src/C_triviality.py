@@ -105,7 +105,7 @@ def eliminate(num_phi, num_gb, D, G):
     Each equation is  Σ_m D φ_m - Σ_p G gb_p = 0.
     """
     rows = []
-    for key in set(D) | set(G):
+    for key in sorted(set(D) | set(G)):    # sorted: deterministic output order
         row = {}
         for m, v in D.get(key, {}).items():
             row[m] = row.get(m, 0) + v
