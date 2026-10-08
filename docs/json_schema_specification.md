@@ -16,7 +16,8 @@ Use `C_{n}_structure.json`, where `n` is the bosonic rank:
 | C(4) = osp(2\|6) | `C_3_structure.json` |
 
 The corresponding later-layer names are `C_{n}_gamma.json`,
-`C_{n}_evaluated_<gb>.json`, and `C_{n}_coboundary_<gb>.json`.
+`C_{n}_evaluated.json` (the representative all-positive assignment in this
+repository), and `C_{n}_coboundary_<gb>.json`.
 
 ## Top-level shape
 
@@ -265,3 +266,19 @@ the C(n+1) realization is corrected, Schema 2 files are formal expansions of
 the literal exchange relations and explicitly fail the grading/basis
 consistency checks; they must not be interpreted as verified Lie
 superalgebra deformations.
+
+## Schema 3: Evaluated structure
+
+The evaluated files are named `C_{n}_evaluated.json`. Each includes the
+Schema 1 `base_structure_constants`, an `evaluation` object containing the
+complete numeric `gb_assignment`, and `evaluated_gamma_coefficients`. Each
+evaluated gamma term has `X`, `Y`, `Z`, rational `kappa_coeff`, and
+`sign_rule`; equal `(X,Y,Z)` terms from different parameters are combined.
+The `bracket_formula` states how the base and kappa-dependent terms combine.
+`consistency` copies the Schema 2 closure, off-basis, and grading findings so
+that numerical substitution cannot hide them.
+
+The repository uses the all-positive assignment (every formal `gb` value is
+`+1`) as a reproducible representative. It is a formal coefficient
+substitution, not a parity-preserving specialization of odd variables; the
+Schema 2 caveats continue to apply.
