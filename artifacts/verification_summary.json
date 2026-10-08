@@ -1,0 +1,426 @@
+{
+ "theorem": "For C(n+1)=osp(2|2n) and every gb in C^{4n}, the inhomogeneous deformation gamma_gb is a coboundary gamma_gb = delta f_gb (odd f_gb).  No non-zero gb is obstructed: the triviality condition is vacuous.",
+ "explicit_f": {
+  "isometry": "f_A(xy) = (hx) y + (-1)^{p(x)} x (hy),  omega(hx,y) = theta(x,y)/2,  theta(b_j^s,a^sigma) = -gb[sigma,j,s]",
+  "cartan": "f_B(Y) = -gamma^{(+)}(N,Y) + gamma^{(-)}(N,Y),  N = a+a- - 1/2,  gamma^{(sigma)} = sum_{j,s} gb[sigma,j,s] gamma_{sigma,j,s}"
+ },
+ "cases": {
+  "n=1": {
+   "algebra": "C(2) = osp(2|2)",
+   "dim": [
+    4,
+    4
+   ],
+   "num_gb_parameters": 4,
+   "rank_gamma_family": 4,
+   "dim_odd_derivations": 4,
+   "dim_g_odd": 4,
+   "dim_weight0_odd_2_cochains": 0,
+   "dim_H2_odd": 0,
+   "all_checks_passed": true,
+   "per_parameter": {
+    "gb[a+,b1+]": {
+     "weight": [
+      -1,
+      -1
+     ],
+     "nonzero_entries": 23,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b1-]": {
+     "weight": [
+      -1,
+      1
+     ],
+     "nonzero_entries": 23,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1+]": {
+     "weight": [
+      1,
+      -1
+     ],
+     "nonzero_entries": 23,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1-]": {
+     "weight": [
+      1,
+      1
+     ],
+     "nonzero_entries": 23,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    }
+   }
+  },
+  "n=2": {
+   "algebra": "C(3) = osp(2|4)",
+   "dim": [
+    11,
+    8
+   ],
+   "num_gb_parameters": 8,
+   "rank_gamma_family": 8,
+   "dim_odd_derivations": 8,
+   "dim_g_odd": 8,
+   "dim_weight0_odd_2_cochains": 0,
+   "dim_H2_odd": 0,
+   "all_checks_passed": true,
+   "per_parameter": {
+    "gb[a+,b1+]": {
+     "weight": [
+      -1,
+      -1,
+      0
+     ],
+     "nonzero_entries": 63,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b1-]": {
+     "weight": [
+      -1,
+      1,
+      0
+     ],
+     "nonzero_entries": 63,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b2+]": {
+     "weight": [
+      -1,
+      0,
+      -1
+     ],
+     "nonzero_entries": 67,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b2-]": {
+     "weight": [
+      -1,
+      0,
+      1
+     ],
+     "nonzero_entries": 67,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1+]": {
+     "weight": [
+      1,
+      -1,
+      0
+     ],
+     "nonzero_entries": 63,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1-]": {
+     "weight": [
+      1,
+      1,
+      0
+     ],
+     "nonzero_entries": 63,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b2+]": {
+     "weight": [
+      1,
+      0,
+      -1
+     ],
+     "nonzero_entries": 67,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b2-]": {
+     "weight": [
+      1,
+      0,
+      1
+     ],
+     "nonzero_entries": 67,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    }
+   }
+  },
+  "n=3": {
+   "algebra": "C(4) = osp(2|6)",
+   "dim": [
+    22,
+    12
+   ],
+   "num_gb_parameters": 12,
+   "rank_gamma_family": 12,
+   "dim_odd_derivations": 12,
+   "dim_g_odd": 12,
+   "dim_weight0_odd_2_cochains": 0,
+   "dim_H2_odd": 0,
+   "all_checks_passed": true,
+   "per_parameter": {
+    "gb[a+,b1+]": {
+     "weight": [
+      -1,
+      -1,
+      0,
+      0
+     ],
+     "nonzero_entries": 119,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b1-]": {
+     "weight": [
+      -1,
+      1,
+      0,
+      0
+     ],
+     "nonzero_entries": 119,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b2+]": {
+     "weight": [
+      -1,
+      0,
+      -1,
+      0
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b2-]": {
+     "weight": [
+      -1,
+      0,
+      1,
+      0
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b3+]": {
+     "weight": [
+      -1,
+      0,
+      0,
+      -1
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a+,b3-]": {
+     "weight": [
+      -1,
+      0,
+      0,
+      1
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1+]": {
+     "weight": [
+      1,
+      -1,
+      0,
+      0
+     ],
+     "nonzero_entries": 119,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b1-]": {
+     "weight": [
+      1,
+      1,
+      0,
+      0
+     ],
+     "nonzero_entries": 119,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b2+]": {
+     "weight": [
+      1,
+      0,
+      -1,
+      0
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b2-]": {
+     "weight": [
+      1,
+      0,
+      1,
+      0
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b3+]": {
+     "weight": [
+      1,
+      0,
+      0,
+      -1
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    },
+    "gb[a-,b3-]": {
+     "weight": [
+      1,
+      0,
+      0,
+      1
+     ],
+     "nonzero_entries": 123,
+     "cocycle": true,
+     "super_skew": true,
+     "delta_fA_equals_gamma": true,
+     "delta_fB_equals_gamma": true,
+     "scalar_terms_matched_A": true,
+     "scalar_terms_matched_B": true,
+     "negative_controls_fail_as_expected": true
+    }
+   }
+  }
+ },
+ "all_cases_passed": true
+}
