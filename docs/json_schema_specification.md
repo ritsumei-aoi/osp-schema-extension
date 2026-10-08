@@ -236,3 +236,32 @@ key for B data and required key for C data.
 The C(n+1) basis excludes `kappa` and `K`; in particular, the parity recorded
 for `kappa` in the C schema is 1, as required by the C(n+1) deformation
 definition.
+
+## Schema 2: Inhomogeneous deformation
+
+Schema 2 uses `C_{n}_gamma.json` and retains `"schema_version": "5.0"`.
+It contains the C-family algebra identity, a `gb_matrix`, an
+`inhomogeneous_deformation` object, the corresponding Schema 1 filename, and
+metadata. `gb_matrix.rows` are `["a_1_p","a_1_m"]`; columns are the `2n`
+bosonic labels ordered by increasing index and `p`,`m` sign. Its entries are
+parameter labels and `parameter_parity` is 1, following
+`docs/math/C_inhomogeneous_definition.md`.
+
+`inhomogeneous_deformation` records the central parameter, bracket formula,
+all exchange relations, parameter metadata, and `gamma_coefficients`.
+Each coefficient record has `X`, `Y`, `Z`, `parameter`, rational `coeff`,
+and `sign_rule`; it contributes `coeff * parameter * Z` to `gamma(X,Y)` with
+`kappa` factored to the left. A `Z` of `"K"` denotes an identity contribution:
+it is reported explicitly, not treated as a member of the Schema 1 basis.
+The `consistency` object reports whether all outputs lie in the Schema 1
+basis, lists off-basis identity terms, and reports parity consistency.
+
+**Source-definition caveat:** the supplied exchange relation
+`[b_j^s,a_1^σ] = -gb_{σ,j,s} * kappa` assigns odd parity to both `gb` and
+`kappa`. Their product is even, but the bracket of an even boson and an odd
+fermion must be odd. Also, the generated first-order brackets have identity
+terms outside the stated Schema 1 basis. Until the deformation definition or
+the C(n+1) realization is corrected, Schema 2 files are formal expansions of
+the literal exchange relations and explicitly fail the grading/basis
+consistency checks; they must not be interpreted as verified Lie
+superalgebra deformations.
