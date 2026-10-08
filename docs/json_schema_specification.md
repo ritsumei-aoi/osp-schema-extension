@@ -204,7 +204,13 @@ coefficients. The oscillator ordering is
 
 Provide a realization for every basis generator. Use the oscillator
 realizations and Cartan conventions in `docs/math/Cn1_definition.md`; the
-displayed records illustrate the required data shape.
+displayed records illustrate the required data shape. To resolve the
+normalization discrepancy in that reference, use the explicitly given
+simple-root normalization \(E_{\pm2\delta_n}=\tfrac12(b_n^\pm)^2\) for the
+terminal long-root pair. Use the all-roots expressions without a scale factor
+for the other long-root pairs, and use the stated expressions for the
+remaining roots. The generated structure constants are relative to these
+realizations.
 
 ### `structure_constants`
 
@@ -225,7 +231,10 @@ generator labels, rational-string coefficient, and graded sign convention:
 
 Include all nonzero brackets for the selected rank, using the oscillator
 relations and generator normalizations. Deformed \(\kappa\)-terms are stored
-in the deformation schema, not here.
+in the deformation schema, not here. Store one entry for each nonzero
+unordered generator pair in basis order (`X` no later than `Y`); the reverse
+bracket follows from graded antisymmetry, including the symmetric bracket
+for two odd generators.
 
 ### `metadata`
 
