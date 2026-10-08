@@ -34,8 +34,7 @@
         "b_1_m",
         "b_2_p",
         "b_2_m"
-      ],
-      "description": "Bosonic oscillators b_i^\u00b1 with i=1,...,2"
+      ]
     }
   },
   "oscillator_relations": {
@@ -44,28 +43,22 @@
       "relation": "{a_1_m, a_1_p} = 1"
     },
     "bosonic_commutators": {
-      "description": "Canonical commutation relations",
       "relations": {
         "same_type": "[b_i^\u00b1, b_j^\u00b1] = 0",
         "conjugate_pair": "[b_i^-, b_j^+] = \u03b4_{ij}"
       }
-    },
-    "mixed_commutators": {
-      "fermion_boson": "[b_i^\u00b1, a_1^\u00b1] = 0"
     }
   },
   "central_elements": {
     "kappa": {
       "label": "\u03ba",
       "parity": 1,
-      "property": "\u03ba\u00b2 = 0",
-      "role": "Deformation parametrization"
+      "property": "\u03ba\u00b2 = 0"
     },
     "K": {
       "label": "K",
       "parity": 0,
-      "property": "identified with 1",
-      "role": "Even central element"
+      "property": "identified with 1"
     }
   },
   "basis": {
@@ -116,8 +109,7 @@
     "E_eps1_del2_mm": 1
   },
   "generator_realization": {
-    "description": "Oscillator realization for C(n+1) generators",
-    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m, b_2_p, b_2_m",
+    "description": "Oscillator realization",
     "realizations": {
       "H_1": {
         "standard_form": [
@@ -370,11 +362,6 @@
   "structure_constants": [],
   "metadata": {
     "generated_by": "C_generators.py",
-    "schema_version": "5.0",
-    "algebra_family": "C(3)",
-    "references": [
-      "Frappat, Sciarrino, Sorba (2000)",
-      "Bakalov and Sullivan (2017)"
-    ]
+    "schema_version": "5.0"
   }
 }
