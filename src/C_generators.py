@@ -116,8 +116,13 @@ class OscAlgebra:
                 out = {}
                 for w, c in self.normal(word[:pos] + (y, x) + word[pos + 2:]).items():
                     add_into(out, w, dscale(c, s))
+                # kappa is odd: moving the contraction (a kappa-valued scalar) to the
+                # front past the odd prefix word[:pos] costs (-1)^{#odd in prefix}.
+                bval = self.bracket(x, y)
+                if sum(self.par[w] for w in word[:pos]) % 2:
+                    bval = (bval[0], -bval[1])
                 for w, c in self.normal(word[:pos] + word[pos + 2:]).items():
-                    add_into(out, w, dmul(self.bracket(x, y), c))
+                    add_into(out, w, dmul(bval, c))
                 break
         if out is None:
             out = {word: ONE}

@@ -56,13 +56,16 @@ def to_frac(s):
 
 
 def build(n, gb=None):
+    # Basis symbols are the gb-free Weyl-symmetric words; only products use the
+    # deformed relations (decision recorded in notation.md, section "Deformation").
+    alg0 = OscAlgebra(n)
     alg = OscAlgebra(n, gb=gb)
-    pairs = alg.basis_pairs()
-    labels = [alg.pair_label(i, j) for (i, j) in pairs]
-    parity = [(alg.par[i] + alg.par[j]) % 2 for (i, j) in pairs]
-    ex = Expander(alg, pairs)
+    pairs = alg0.basis_pairs()
+    labels = [alg0.pair_label(i, j) for (i, j) in pairs]
+    parity = [(alg0.par[i] + alg0.par[j]) % 2 for (i, j) in pairs]
+    ex = Expander(alg0, pairs)
     N = len(pairs)
-    basis_ops = [alg.sym(i, j) for (i, j) in pairs]
+    basis_ops = [alg0.sym(i, j) for (i, j) in pairs]
     brackets = []
     constants = []
     for a in range(N):

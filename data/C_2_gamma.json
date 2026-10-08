@@ -1,0 +1,4354 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)"
+  },
+  "deformation_parameters": {
+    "names": [
+      "gb_a1p_b1p",
+      "gb_a1p_b1m",
+      "gb_a1p_b2p",
+      "gb_a1p_b2m",
+      "gb_a1m_b1p",
+      "gb_a1m_b1m",
+      "gb_a1m_b2p",
+      "gb_a1m_b2m"
+    ],
+    "parity": 1,
+    "count": 8
+  },
+  "gb_matrix": {
+    "rows": [
+      "a_1_p",
+      "a_1_m"
+    ],
+    "columns": [
+      "b_1_p",
+      "b_1_m",
+      "b_2_p",
+      "b_2_m"
+    ],
+    "entries": [
+      [
+        "gb_a1p_b1p",
+        "gb_a1p_b1m",
+        "gb_a1p_b2p",
+        "gb_a1p_b2m"
+      ],
+      [
+        "gb_a1m_b1p",
+        "gb_a1m_b1m",
+        "gb_a1m_b2p",
+        "gb_a1m_b2m"
+      ]
+    ]
+  },
+  "inhomogeneous_deformation": {
+    "definition": "[b_j^s, a_1^sigma] = -gb[sigma,j,s] kappa; [X,Y]_gamma = [X,Y]_0 + kappa gamma(X,Y)",
+    "parity_rule": "parity(gamma(X,Y)) = p(X)+p(Y)+1 (mod 2), since p(kappa)=1",
+    "gamma": [
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b1p)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1m,b2m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1m,b2p)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,a1m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b1p)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(a1p,b2m)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,a1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b1m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2p,b2m)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "1"
+        }
+      },
+      {
+        "X": "W(a1p,b2p)",
+        "Y": "W(b2p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-2"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1m,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1m": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b1p": "2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b1p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-2"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b1p)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b1p": "1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1p,b1m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b1p)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b1p": "1/2"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b1p,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b1p": "-1"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2m,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2m": "1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2m": "1/2"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2m,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "-1/2"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2m)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b2m": "-1"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1m,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1m,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1m_b2p": "1"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1m,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1m_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1m,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,a1m)",
+        "Z": "W(a1p,b2p)",
+        "terms": {
+          "gb_a1m_b2p": "2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,b1m)",
+        "Z": "W(b1m,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,b1p)",
+        "Z": "W(b1p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "K",
+        "terms": {
+          "gb_a1p_b2p": "1"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,b2m)",
+        "Z": "W(b2p,b2m)",
+        "terms": {
+          "gb_a1p_b2p": "-2"
+        }
+      },
+      {
+        "X": "W(b2p,b2p)",
+        "Y": "W(a1p,b2p)",
+        "Z": "W(b2p,b2p)",
+        "terms": {
+          "gb_a1p_b2p": "-2"
+        }
+      }
+    ]
+  },
+  "consistency": {
+    "kappa_free_part_matches_schema1": true,
+    "gamma_parity_ok": true,
+    "kappa_linear_jacobi_cocycle_ok": true
+  },
+  "metadata": {
+    "generated_by": "src/C_gamma.py",
+    "references": [
+      "docs/math/C_inhomogeneous_definition.md"
+    ]
+  }
+}

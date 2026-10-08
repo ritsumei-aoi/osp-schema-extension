@@ -65,3 +65,10 @@ Resulting lists:
 
 - Structure constants: $[X,Y] = \sum_Z c^Z_{XY}\, Z + \kappa\, \sum_Z c^{\kappa,Z}_{XY}\, Z$, with $X,Y,Z$ in the basis above.
 - $\gamma(X,Y)$ is the $\kappa$-part, matching `docs/math/C_inhomogeneous_definition.md`.
+
+## Deformation conventions (decisions for I05)
+
+- **Basis under deformation.** The basis symbols $W(x,y)$ are the gb-free Weyl-symmetric words. Only products and brackets are computed with the deformed relations $[b_j^s,a_1^\sigma] = -\mathrm{gb}[\sigma,j,s]\,\kappa$. Options considered: (a) deform the basis symbols too, so $W(a_1^\pm,b)$ acquires a $\kappa$-constant term that must be projected out. Rejected: it breaks the expansion onto the fixed basis. (b) gb-free symbols with deformed products (chosen). Consequence: $\gamma$ is the $\kappa$-coefficient of $[X,Y]$ in the basis.
+- **Sign of $\kappa$.** $\kappa$ is odd and graded-central: $\kappa x = (-1)^{p(x)}x\kappa$. When a contraction is moved to the front past an odd prefix, its $\kappa$-part takes the sign $(-1)^{\#\text{odd prefix}}$. Omitting this sign made the $\kappa$-linear Jacobi fail in the first run (fixed in `src/C_generators.py`, `OscAlgebra.normal`).
+- **Linearity.** Since $\kappa^2 = 0$, $\gamma$ is linear in gb. It is computed exactly from the $4n$ unit vectors of gb.
+- **Cocycle condition.** $\gamma$ is a 2-cocycle iff the $\kappa$-linear part of super Jacobi vanishes. Checked in `src/C_gamma.py` (`kappa_jacobi_ok`).
