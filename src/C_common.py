@@ -121,16 +121,21 @@ class SparseLinearSystem:
         if any(k != "" and c != 0 for k, c in lf.items()) or lf.get("", 0) != 0:
             self.rows.append(dict(lf))
 
-    def solve(self):
-        """Gaussian elimination.  Returns (status, pivots, reduced_rows, inconsistent_rows).
+    def solve(self, pivot_key=None):
+        """Gaussian elimination.  Returns (status, pivots, inconsistent_rows).
+
+        ``pivot_key`` orders the unknowns for pivot selection (smallest key is chosen);
+        unknowns sorting last are eliminated last, so that the rows whose pivot is one of
+        them express the constraints on those unknowns alone (projection of the solution
+        set).
 
         status in {"consistent", "inconsistent"}.  ``pivots`` maps unknown -> reduced row
         expressing that unknown in terms of free unknowns and constant:
         x_p = -(sum_{free} c_f x_f + const).
         """
         pivots: Dict[str, LinForm] = {}
-        inconsistent: List[LinForm] = []
-        for row in self.rows:
+        inconsistent: List[Tuple[int, LinForm]] = []  # (row index, original row)
+        for idx, row in enumerate(self.rows):
             r = dict(row)
             # reduce by existing pivots
             for p in [k for k in r if k in pivots]:
@@ -140,9 +145,9 @@ class SparseLinearSystem:
             vars_ = [k for k in r if k != ""]
             if not vars_:
                 if r.get("", 0) != 0:
-                    inconsistent.append(row)
+                    inconsistent.append((idx, row))
                 continue
-            p = min(vars_)
+            p = min(vars_, key=pivot_key) if pivot_key else min(vars_)
             r = {k: c / r[p] for k, c in r.items()}
             # eliminate p from existing pivot rows
             for q, prow in list(pivots.items()):
