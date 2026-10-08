@@ -6,7 +6,7 @@
 
 ## 1. Quantitative Performance (Self-Reported)
 - **Workflow Type**: One-Shot Challenge (single session, no intermediate stages)
-- **Total Human Interventions (Nudges/Approvals)**: 0 (no web access or external papers were requested; one sandbox refusal of a shell `for` loop, worked around by running the three commands explicitly)
+- **Total Human Interventions (Nudges/Approvals)**: 1 (the closing instruction to finalize the reflection and metrics files and push). No web access or external papers were requested. Three sandbox refusals of shell constructs (a `for` loop, a heredoc append, process substitution) were worked around with explicit commands or the file-editing tool.
 - **Major Blockers Encountered**: none
 - **Total Wall Time**: not available to me from inside the session (the harness does not expose session timing); the computational part runs in under 10 s total
 - **Total Thinking Time**: not available to me
