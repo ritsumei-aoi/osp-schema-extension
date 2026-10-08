@@ -1,0 +1,70 @@
+{
+ "schema_version": "5.0",
+ "schema_layer": 3,
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 1,
+  "cartan_type": "C(2)",
+  "alternative_notation": {
+   "osp": "osp(2|2)",
+   "dimension_formula": "osp(2m|2n) with m=1"
+  },
+  "dimension": {
+   "total": 8,
+   "even": 4,
+   "odd": 4,
+   "formulas": {
+    "even": "2n^2 + n + 1",
+    "odd": "4n",
+    "total": "2n^2 + 5n + 1"
+   }
+  },
+  "even_subalgebra": "so(2) + sp(2n)",
+  "rank": 2
+ },
+ "central_elements": {
+  "kappa": {
+   "label": "kappa",
+   "parity": 1,
+   "relation": "kappa^2 = 0; [kappa, X} = 0 for all X",
+   "role": "odd central element of the inhomogeneous extension A = V + C K + C kappa; carries the deformation (Schema 2). Not a basis element of g; first in PBW order.",
+   "in_basis": false
+  },
+  "K": {
+   "label": "K",
+   "parity": 0,
+   "relation": "[K, X} = 0 for all X; identified with the scalar 1",
+   "role": "even central element (constant term of oscillator words). Excluded from basis lists; appears as a bracket target label only in Schemas 2-4 when a constant term arises.",
+   "in_basis": false
+  }
+ },
+ "basis_ref": "C_1_structure.json",
+ "gamma_ref": "C_1_gamma.json",
+ "gb_assignment": {
+  "profile": "zero",
+  "values": {
+   "gb_a1p_b1p": "0",
+   "gb_a1p_b1m": "0",
+   "gb_a1m_b1p": "0",
+   "gb_a1m_b1m": "0"
+  },
+  "description": "undeformed (all gb = 0)"
+ },
+ "evaluated_deformation": {
+  "bracket": "[X,Y]_gamma = [X,Y]_0 + kappa * gamma(X,Y) with gb substituted",
+  "target": "g + C K (entries with Z = 'K' are constant terms)",
+  "gamma": [],
+  "count": 0,
+  "K_count": 0
+ },
+ "metadata": {
+  "generated_by": "src/C_evaluate.py",
+  "generation_date": "2026-10-09",
+  "notation": "handover/notation.md",
+  "references": [
+   "Frappat, Sciarrino, Sorba (2000), Dictionary on Lie Algebras and Superalgebras, arXiv:hep-th/9607161",
+   "Bakalov and Sullivan (2017), arXiv:1612.09400"
+  ]
+ }
+}
