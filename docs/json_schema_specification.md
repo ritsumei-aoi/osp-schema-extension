@@ -331,3 +331,28 @@ basis (and scalar `K`), not that this parity inconsistency is resolved. A
 mathematically homogeneous deformation requires reconciling the source
 parity convention before interpreting the output as a Lie-superalgebra
 deformation.
+
+## Schema 3: Evaluated structure
+
+Schema 3 files use `C_{n}_evaluated.json`. The current generator uses the
+representative **uniform `+1` assignment** for all `4*n` gb parameters (the
+script also accepts uniform `-1` for comparison). Each evaluated bracket
+keeps the undeformed and first-order pieces separate:
+
+```json
+{
+  "X": "H_1",
+  "Y": "E_eps1_del1_pp",
+  "Z": "E_eps1_del1_pp",
+  "base_coeff": "2",
+  "kappa_coeff": "0"
+}
+```
+
+The bracket represented is `base_coeff * Z + kappa_coeff * kappa * Z`.
+The record also contains the complete parameter assignment, source Schema 1
+and Schema 2 filenames, central-element metadata, and generation metadata.
+`K` may appear as `Z` for scalar identity terms. The assignment is explicitly
+marked as a **formal specialization**: assigning ordinary real signs to the
+parity-odd parameters is useful for comparing coefficients, but is not a
+parity-homogeneous specialization in a supercommutative base algebra.
