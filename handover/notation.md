@@ -48,7 +48,10 @@ H_{n+1} = -b_n^+b_n^- - \tfrac12 .
 $$
 Equivalently, with the symmetrized number operators $N_a = a_1^+a_1^- - \tfrac12$,
 $N_k = b_k^+b_k^- + \tfrac12$: $H_1 = N_a + N_1$, $H_k = N_{k-1} - N_k$, $H_{n+1} = -N_n$, and
-$N_a = \sum_{k=1}^{n+1} H_k$, $N_k = -\sum_{l=k+1}^{n+1} H_l$.
+conversely $N_k = \sum_{l=k+1}^{n} H_l - H_{n+1}$ ($1 \le k \le n$),
+$N_a = H_1 - \sum_{k=2}^{n} H_k + H_{n+1}$. Hence
+$a_1^+a_1^- = N_a + \tfrac12 K$ and $b_k^+b_k^- = N_k - \tfrac12 K$ (checked by
+`tests/test_C_generators.py::test_cartan_change_of_basis`).
 
 Normalization: $E_{\pm 2\delta_k} = (b_k^\pm)^2$ (no factor $\tfrac12$), as in the B(0,n) schema and
 the "all root generators" list of `Cn1_definition.md`.
