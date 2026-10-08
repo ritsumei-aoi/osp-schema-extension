@@ -12,7 +12,7 @@ import sympy
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from C_generators import OscAlgebra, ONE  # noqa: E402
 
-SCHEMA_VERSION = "1.0-C"
+SCHEMA_VERSION = "5.0"
 
 
 def frac_str(x):
@@ -112,10 +112,11 @@ def build(n, gb=None):
         },
         "parity": {l: p for l, p in zip(labels, parity)},
         "generator_realization": {
-            l: {"standard_form": [{"words": [alg.labels[i], alg.labels[j]], "coeff": "1/2"}],
-                "parity": p,
-                "note": "Weyl-symmetrized quadratic; see notation.md"}
-            for l, (i, j), p in zip(labels, pairs, parity)
+            l: {"standard_form": [
+                    {"words": [alg.labels[k] for k in w], "coeff": frac_str(c[0])}
+                    for w, c in sorted(basis_ops[idx].items(), key=lambda t: (-len(t[0]), t[0]))],
+                "parity": p}
+            for idx, (l, p) in enumerate(zip(labels, parity))
         },
         "structure_constants": {"brackets": brackets, "constant_terms": constants},
         "metadata": {"generated_by": "src/C_structure.py",
