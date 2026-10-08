@@ -1,0 +1,104 @@
+{
+  "artifact_version": 1,
+  "purpose": "Machine-readable audit of claims derivable from the in-scope C(n+1) definitions",
+  "source_files": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "scope": {
+    "external_sources_accessed": false,
+    "other_workspaces_accessed": false,
+    "classification_status": "underdetermined_from_supplied_definitions"
+  },
+  "algebra": {
+    "name": "C(n+1) = osp(2|2n), as named in supplied definition",
+    "basis_layout": {
+      "even_cartan_dimension": "n + 1",
+      "even_root_vector_count": "2*n^2",
+      "odd_root_vector_count": "4*n",
+      "even_dimension": "2*n^2 + n + 1",
+      "odd_dimension": "4*n",
+      "total_dimension": "2*n^2 + 5*n + 1"
+    },
+    "cases": [
+      {
+        "n": 1,
+        "even_dimension": 4,
+        "odd_dimension": 4,
+        "total_dimension": 8,
+        "even_root_vector_count": 2,
+        "odd_root_vector_count": 4,
+        "gb_parameter_count": 4,
+        "odd_endomorphism_dimension": 32
+      },
+      {
+        "n": 2,
+        "even_dimension": 11,
+        "odd_dimension": 8,
+        "total_dimension": 19,
+        "even_root_vector_count": 8,
+        "odd_root_vector_count": 8,
+        "gb_parameter_count": 8,
+        "odd_endomorphism_dimension": 176
+      },
+      {
+        "n": 3,
+        "even_dimension": 22,
+        "odd_dimension": 12,
+        "total_dimension": 34,
+        "even_root_vector_count": 18,
+        "odd_root_vector_count": 12,
+        "gb_parameter_count": 12,
+        "odd_endomorphism_dimension": 528
+      }
+    ]
+  },
+  "parameters": {
+    "indexing": {
+      "fermion_label": ["+", "-"],
+      "boson_index": "j = 1,...,n",
+      "boson_sign": ["+", "-"]
+    },
+    "symbol_template": "gb_{sigma,j,s}",
+    "count_formula": "2 * n * 2 = 4*n",
+    "oscillator_relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa",
+    "declared_parameter_parity": "odd",
+    "parity_compatibility_for_ordinary_scalar_coefficients": {
+      "bracket_input_parities": ["even", "odd"],
+      "required_output_parity": "odd",
+      "kappa_parity": "odd",
+      "required_gb_parity": "even",
+      "consistent_as_written": false
+    }
+  },
+  "coboundary": {
+    "map_parity": "odd",
+    "formula_source": "docs/math/C_coboundary_definition.md",
+    "odd_endomorphism_dimension_formula": "2 * dim(g_even) * dim(g_odd)",
+    "structure_constant_matrix_available": false,
+    "reason": "No full normalized bracket table in the supplied files."
+  },
+  "deformation_maps": {
+    "oscillator_output_target": "one-dimensional central direction C*kappa",
+    "asserted_cocycle_target": "g-valued adjoint module",
+    "bracket_correction_target_as_written": "kappa*g",
+    "parameter_to_adjoint_cocycle_matrix_G_available": false,
+    "gamma_coordinate_table_available": false,
+    "reason": "The supplied definitions give exchange relations but no rule extracting adjoint-valued gamma coordinates from them.",
+    "triviality_test_when_maps_are_specified": "gb is trivial iff G*gb is in image(D), equivalently Q*G*gb = 0 where ker(Q) = image(D)."
+  },
+  "conclusion": {
+    "necessary_and_sufficient_parameter_equations_available": false,
+    "nonzero_trivial_parameter_configuration_established": false,
+    "zero_only_classification_established": false,
+    "reason": "G and the structure-constant-dependent coboundary matrix D are not determined by the supplied data."
+  },
+  "verification_claims": [
+    "For each listed n, the supplied dimension formulas give the recorded even, odd, and total dimensions.",
+    "The supplied gb indexing gives 4*n parameters.",
+    "An odd endomorphism has two independent parity-reversing blocks and dimension 2*dim(g_even)*dim(g_odd).",
+    "A scalar central output and an adjoint-valued output require an explicit identification before their cochains can be equated."
+  ]
+}
