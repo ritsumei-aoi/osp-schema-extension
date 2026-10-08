@@ -290,3 +290,19 @@ coefficient must have parity consistent with the odd parameter.
 Schema 2 generation checks every canonical basis pair against the
 undeformed structure constants in its source Schema 1 file and fails if
 the bases or brackets differ.
+
+## Schema 3: Evaluated Structure
+
+Schema 3 files are named `C_{n}_evaluated.json`. The reference
+evaluation profile assigns every odd `gb` parameter the concrete value
+$+1$. The file identifies its Schema 1 and Schema 2 sources, records the
+complete parameter assignment, and stores evaluated brackets in
+`evaluated_structure_constants`.
+
+Each evaluated entry contains canonical `X`, `Y`, and `Z` labels,
+`sign_rule: "graded"`, and a `coefficients` object with exact rational
+`constant` and `kappa` parts. Thus the coefficient is
+$c_0+c_\kappa\kappa$ in $\mathbb{Q}[\kappa]/(\kappa^2)$: the `constant`
+part comes from Schema 1 and the `kappa` part is the sum of Schema 2
+coefficients after substituting the recorded assignment. Zero/zero
+entries are omitted.
