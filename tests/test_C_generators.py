@@ -10,6 +10,7 @@ from src.C_generators import (
     build_schema,
     generate_files,
 )
+from src.verify_C_structure import verify_schema
 
 
 @pytest.mark.parametrize(
@@ -99,3 +100,11 @@ def test_rank_three_structure_constants_satisfy_super_jacobi():
                                 + sign * inner_coeff * outer_coeff
                             )
                 assert not any(terms.values()), (x, y, z, terms)
+
+
+@pytest.mark.parametrize(("n", "dimension"), [(1, 8), (2, 19), (3, 34)])
+def test_verifier_checks_all_pairs_and_triples(n, dimension):
+    result = verify_schema(build_schema(n, generation_date="2026-10-08"))
+    assert result["generators"] == dimension
+    assert result["pair_checks"] == dimension**2
+    assert result["triple_checks"] == dimension**3
