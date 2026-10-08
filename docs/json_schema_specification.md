@@ -239,7 +239,7 @@ array:
     "X": "H_1",
     "Y": "E_eps1_del1_pp",
     "Z": "E_eps1_del1_pp",
-    "coeff": "1",
+    "coeff": "2",
     "sign_rule": "graded"
   }
 ]
