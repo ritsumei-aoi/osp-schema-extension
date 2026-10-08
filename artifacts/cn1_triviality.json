@@ -1,0 +1,461 @@
+{
+  "description": "Triviality of gb (fermion-boson mixed) form deformations of osp(2|2n) = C(n+1)",
+  "conventions": {
+    "gb_index": "gb[sigma][k]; sigma=0 <-> a_1^+, sigma=1 <-> a_1^-; k=j-1 <-> b_j^+, k=n+j-1 <-> b_j^-",
+    "form": "super-skew: B(x,y) = -(-1)^{p(x)p(y)} B(y,x); even block symplectic, odd block symmetric",
+    "osp_condition": "X^T B + D_{p(X)} B X = 0, D_q = diag((-1)^{q p_i})",
+    "coboundary": "F.B = F^T B + D_1 B F for odd F; G = F.B is the triviality condition",
+    "up_to_scalar": "B is even, so cB has no odd part; scalar rescaling cannot affect odd gb"
+  },
+  "results": {
+    "n=1": {
+      "n": 1,
+      "parity": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "undeformed_form_B": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "dimensions": {
+        "osp_even": 4,
+        "osp_odd": 4,
+        "osp_total": 8,
+        "expected_even": 4,
+        "expected_odd": 4,
+        "expected_total": 8
+      },
+      "nonmixed_part_of_F_dot_B_identically_zero": true,
+      "linear_system": {
+        "unknowns_odd_F": 8,
+        "rank_A": 4,
+        "free_parameters_in_F": 4,
+        "expected_free_parameters_4n": 4,
+        "obstruction_constraints_on_gb": [],
+        "obstruction_rank": 0
+      },
+      "triviality": {
+        "gb_space_dimension": 4,
+        "trivial_locus_dimension": 4,
+        "all_gb_trivial": true,
+        "particular_solution_verified_symbolically": true,
+        "particular_solution_nonzero_entries": {
+          "f_2_0": "gb_0_0",
+          "f_3_0": "gb_1_0",
+          "f_2_1": "gb_0_1",
+          "f_3_1": "gb_1_1"
+        },
+        "closed_form_F_b_k_to_sum_sigma_gb_a_sigma_verified": true
+      },
+      "first_order_invariance_check": {
+        "sign_plus_all_X_ok": false,
+        "sign_minus_all_X_ok": true,
+        "number_of_X_checked": 8
+      },
+      "random_numeric_checks": [
+        {
+          "gb": {
+            "gb_0_0": -5,
+            "gb_0_1": -2,
+            "gb_1_0": -4,
+            "gb_1_1": 3
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": 1,
+            "gb_0_1": -3,
+            "gb_1_0": 1,
+            "gb_1_1": 0
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": 4,
+            "gb_0_1": 5,
+            "gb_1_0": 1,
+            "gb_1_1": 4
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        }
+      ]
+    },
+    "n=2": {
+      "n": 2,
+      "parity": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "undeformed_form_B": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "dimensions": {
+        "osp_even": 11,
+        "osp_odd": 8,
+        "osp_total": 19,
+        "expected_even": 11,
+        "expected_odd": 8,
+        "expected_total": 19
+      },
+      "nonmixed_part_of_F_dot_B_identically_zero": true,
+      "linear_system": {
+        "unknowns_odd_F": 16,
+        "rank_A": 8,
+        "free_parameters_in_F": 8,
+        "expected_free_parameters_4n": 8,
+        "obstruction_constraints_on_gb": [],
+        "obstruction_rank": 0
+      },
+      "triviality": {
+        "gb_space_dimension": 8,
+        "trivial_locus_dimension": 8,
+        "all_gb_trivial": true,
+        "particular_solution_verified_symbolically": true,
+        "particular_solution_nonzero_entries": {
+          "f_4_0": "gb_0_0",
+          "f_5_0": "gb_1_0",
+          "f_4_1": "gb_0_1",
+          "f_5_1": "gb_1_1",
+          "f_4_2": "gb_0_2",
+          "f_5_2": "gb_1_2",
+          "f_4_3": "gb_0_3",
+          "f_5_3": "gb_1_3"
+        },
+        "closed_form_F_b_k_to_sum_sigma_gb_a_sigma_verified": true
+      },
+      "first_order_invariance_check": {
+        "sign_plus_all_X_ok": false,
+        "sign_minus_all_X_ok": true,
+        "number_of_X_checked": 19
+      },
+      "random_numeric_checks": [
+        {
+          "gb": {
+            "gb_0_0": 3,
+            "gb_0_1": 4,
+            "gb_0_2": 1,
+            "gb_0_3": -2,
+            "gb_1_0": -3,
+            "gb_1_1": -3,
+            "gb_1_2": -1,
+            "gb_1_3": 2
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": -3,
+            "gb_0_1": 5,
+            "gb_0_2": 4,
+            "gb_0_3": 4,
+            "gb_1_0": -4,
+            "gb_1_1": 1,
+            "gb_1_2": 3,
+            "gb_1_3": -5
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": -2,
+            "gb_0_1": -2,
+            "gb_0_2": -5,
+            "gb_0_3": 1,
+            "gb_1_0": -5,
+            "gb_1_1": 4,
+            "gb_1_2": 3,
+            "gb_1_3": 5
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        }
+      ]
+    },
+    "n=3": {
+      "n": 3,
+      "parity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "undeformed_form_B": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "dimensions": {
+        "osp_even": 22,
+        "osp_odd": 12,
+        "osp_total": 34,
+        "expected_even": 22,
+        "expected_odd": 12,
+        "expected_total": 34
+      },
+      "nonmixed_part_of_F_dot_B_identically_zero": true,
+      "linear_system": {
+        "unknowns_odd_F": 24,
+        "rank_A": 12,
+        "free_parameters_in_F": 12,
+        "expected_free_parameters_4n": 12,
+        "obstruction_constraints_on_gb": [],
+        "obstruction_rank": 0
+      },
+      "triviality": {
+        "gb_space_dimension": 12,
+        "trivial_locus_dimension": 12,
+        "all_gb_trivial": true,
+        "particular_solution_verified_symbolically": true,
+        "particular_solution_nonzero_entries": {
+          "f_6_0": "gb_0_0",
+          "f_7_0": "gb_1_0",
+          "f_6_1": "gb_0_1",
+          "f_7_1": "gb_1_1",
+          "f_6_2": "gb_0_2",
+          "f_7_2": "gb_1_2",
+          "f_6_3": "gb_0_3",
+          "f_7_3": "gb_1_3",
+          "f_6_4": "gb_0_4",
+          "f_7_4": "gb_1_4",
+          "f_6_5": "gb_0_5",
+          "f_7_5": "gb_1_5"
+        },
+        "closed_form_F_b_k_to_sum_sigma_gb_a_sigma_verified": true
+      },
+      "first_order_invariance_check": {
+        "sign_plus_all_X_ok": false,
+        "sign_minus_all_X_ok": true,
+        "number_of_X_checked": 34
+      },
+      "random_numeric_checks": [
+        {
+          "gb": {
+            "gb_0_0": 2,
+            "gb_0_1": 3,
+            "gb_0_2": 0,
+            "gb_0_3": -2,
+            "gb_0_4": 2,
+            "gb_0_5": 2,
+            "gb_1_0": 3,
+            "gb_1_1": 2,
+            "gb_1_2": 1,
+            "gb_1_3": -5,
+            "gb_1_4": 0,
+            "gb_1_5": -4
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": 2,
+            "gb_0_1": 3,
+            "gb_0_2": 2,
+            "gb_0_3": 3,
+            "gb_0_4": -4,
+            "gb_0_5": -1,
+            "gb_1_0": 0,
+            "gb_1_1": 4,
+            "gb_1_2": 3,
+            "gb_1_3": 5,
+            "gb_1_4": -5,
+            "gb_1_5": 5
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        },
+        {
+          "gb": {
+            "gb_0_0": -2,
+            "gb_0_1": 5,
+            "gb_0_2": 3,
+            "gb_0_3": 3,
+            "gb_0_4": -5,
+            "gb_0_5": 0,
+            "gb_1_0": -2,
+            "gb_1_1": 5,
+            "gb_1_2": 3,
+            "gb_1_3": 3,
+            "gb_1_4": -5,
+            "gb_1_5": -3
+          },
+          "F_dot_B_equals_G": true,
+          "first_order_sign_plus_ok": false,
+          "first_order_sign_minus_ok": true
+        }
+      ]
+    }
+  }
+}
