@@ -356,3 +356,32 @@ and Schema 2 filenames, central-element metadata, and generation metadata.
 marked as a **formal specialization**: assigning ordinary real signs to the
 parity-odd parameters is useful for comparing coefficients, but is not a
 parity-homogeneous specialization in a supercommutative base algebra.
+
+## Schema 4: Coboundary structure
+
+Schema 4 files use `C_{n}_coboundary.json` and reference their Schema 1
+source. `coboundary.linear_map` records the odd map $f$ as all independent
+parity-reversing matrix entries; its scalar `phi` coefficients are even. Each
+nonzero output coefficient is stored as one `(X,Y,Z)` record with a list of
+exact rational `phi` terms:
+
+```json
+{
+  "X": "H_1",
+  "Y": "H_2",
+  "Z": "E_eps1_del1_pp",
+  "coefficients": [
+    {"parameter": "phi_E_eps1_del1_pp_from_H_1", "coeff": "1"},
+    {"parameter": "phi_E_eps1_del1_pp_from_H_2", "coeff": "2"}
+  ]
+}
+```
+
+The records are for canonical PBW-ordered input pairs and are evaluated using
+the Issue I07 definition
+$$
+(\delta f)(X,Y)=(-1)^{p(X)}[X,f(Y)]
+-(-1)^{(p(X)+1)p(Y)}[Y,f(X)]-f([X,Y]).
+$$
+The output label `Z` must belong to the Schema 1 basis; `K` and `kappa` are
+not included in this undeformed coboundary calculation.
