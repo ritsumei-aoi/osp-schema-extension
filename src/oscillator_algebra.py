@@ -203,9 +203,11 @@ def el_is_zero(a: dict) -> bool:
 # The algebra
 # ---------------------------------------------------------------------------
 class OscillatorAlgebra:
-    def __init__(self, n: int, deformed: bool = False):
+    def __init__(self, n: int, deformed: bool = False, gb_values: dict | None = None):
+        """gb_values: optional {gb_label: rational} giving numeric deformation parameters
+        (implies deformed=True); otherwise symbolic gb if deformed, else gb = 0."""
         self.n = n
-        self.deformed = deformed
+        self.deformed = deformed or gb_values is not None
         self.gens = ["kappa", "a_1_p", "a_1_m"]
         for k in range(1, n + 1):
             self.gens += [f"b_{k}_p", f"b_{k}_m"]
@@ -217,7 +219,11 @@ class OscillatorAlgebra:
         for sigma in "pm":
             for j in range(1, n + 1):
                 for s in "pm":
-                    self.gb[(sigma, j, s)] = Poly.var(self.gb_label(sigma, j, s)) if deformed else Poly()
+                    lab = self.gb_label(sigma, j, s)
+                    if gb_values is not None:
+                        self.gb[(sigma, j, s)] = Poly.const(gb_values.get(lab, 0))
+                    else:
+                        self.gb[(sigma, j, s)] = Poly.var(lab) if deformed else Poly()
         self._cache: dict = {}
 
     @staticmethod

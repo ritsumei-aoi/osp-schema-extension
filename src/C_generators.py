@@ -89,9 +89,9 @@ def realization(label: str, n: int):
 class CBasis:
     """Basis of C(n+1) with decomposition of normal-ordered quadratic elements into basis + K."""
 
-    def __init__(self, n: int, deformed: bool = False):
+    def __init__(self, n: int, deformed: bool = False, gb_values: dict | None = None):
         self.n = n
-        self.alg = OscillatorAlgebra(n, deformed=deformed)
+        self.alg = OscillatorAlgebra(n, deformed=deformed, gb_values=gb_values)
         self.even = even_labels(n)
         self.odd = odd_labels(n)
         self.labels = self.odd + self.even          # PBW order: kappa < odd < even

@@ -361,7 +361,58 @@ List of the $4n$ relations `[b_j_s, a_1_σ] = -gb_a1σ_bjs * kappa`; all other r
 
 ## 3. Schema 3 — Evaluated structure (`C_{n}_evaluated*.json`)
 
-*(Specified in I06.)*
+Schema 2 with concrete values substituted for the $4n$ parameters gb. One file per **gb profile**;
+the representative profile `all_plus` (all gb $=+1$) is additionally written as `C_{n}_evaluated.json`.
+
+### 3.1 Profiles (`src/C_evaluate.py::profiles`)
+
+| name | values |
+|---|---|
+| `all_plus` (representative) | all gb = +1 |
+| `all_minus` | all gb = −1 |
+| `row_sign` | +1 on the `a_1_p` row, −1 on the `a_1_m` row |
+| `column_sign` | +1 for `b_j_p` columns, −1 for `b_j_m` columns |
+| `single_a1p_b1p` | only `gb_a1p_b1p` = 1 |
+| `generic` | distinct small rationals of mixed sign (generic point) |
+| `zero` | all gb = 0 (undeformed control) |
+
+### 3.2 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)",
+              "structure_file": "C_1_structure.json", "gamma_file": "C_1_gamma.json"},
+  "gb_profile": {
+    "name": "all_plus", "description": "all gb = +1",
+    "gb_matrix_rows": ["a_1_p", "a_1_m"], "gb_matrix_columns": ["b_1_p", "b_1_m"],
+    "values": {"gb_a1p_b1p": "1", "gb_a1p_b1m": "1", "gb_a1m_b1p": "1", "gb_a1m_b1m": "1"},
+    "matrix": [["1", "1"], ["1", "1"]]
+  },
+  "evaluated_structure": {
+    "description": "...",
+    "deformed_structure_constants": [
+      {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "E_eps1_del1_pp", "coeff_0": "-1", "coeff_kappa": "0"},
+      {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "H_2", "coeff_0": "0", "coeff_kappa": "-1"},
+      {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "K", "coeff_0": "0", "coeff_kappa": "1/2"}
+    ],
+    "gamma_evaluated": [ {"X": "...", "Y": "...", "Z": "...", "coeff": "rational"} ],
+    "statistics": {"nonzero_gamma_pairs": 54, "gamma_entries": 112, "gamma_entries_with_K": 20}
+  },
+  "metadata": { ... }
+}
+```
+
+* `deformed_structure_constants`: $[X,Y]_\gamma = \sum_Z (\texttt{coeff\_0} + \texttt{coeff\_kappa}\,\kappa)\,Z$,
+  all ordered pairs, `Z` ∈ basis ∪ {`K`} (`coeff_0` is always `0` for `Z = "K"`).
+* `gamma_evaluated`: the κ-part alone (non-zero entries), the object compared with Layer 4 in I08.
+* All numbers are exact rationals as strings.
+
+### 3.3 Consistency guarantees
+
+For every profile, the substitution of `coeff_terms` from Schema 2 equals an **independent
+recomputation** of γ by running the oscillator algebra with the numeric gb values
+(`C_evaluate.check_profile`). The `zero` profile reproduces Schema 1 exactly (empty γ).
 
 ---
 
