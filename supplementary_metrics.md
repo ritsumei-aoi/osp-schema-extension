@@ -8,6 +8,8 @@
 - **Total Thinking Time**: not available in this interface.
 - **Token Usage (if known)**: roughly 1.3 × 10⁵ tokens of context consumed by the end of the session
   (estimated from the context budget shown to the agent; exact figures are in the session logs).
-- **Any other session-level statistics available in your interface**: 0 human interventions on the
-  mathematics; 3 sandbox denials of shell output redirection (worked around with the editor tools);
-  1 background job (n=3) ran ≈85 s; all artifacts regenerated once at the end.
+- **Any other session-level statistics available in your interface**: 2 human messages in total
+  (initial task, closing instruction); 0 human interventions on the mathematics; 3 sandbox denials of
+  shell output redirection (worked around with the editor tools); 2 background jobs (n=3 alone ≈85 s,
+  then full regeneration of n=1,2,3 ≈95 s); 2 commits (`aa28f2c` results, plus the final
+  reflection/metrics commit); 0 external/web accesses.

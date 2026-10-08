@@ -6,9 +6,10 @@
 
 ## 1. Quantitative Performance (Self-Reported)
 - **Workflow Type**: One-Shot Challenge (single session, no intermediate human stages)
-- **Total Human Interventions (Nudges/Approvals)**: 0 mathematical interventions. The sandbox denied
-  three attempts to redirect shell output into the repository (`>`/`tee`); I used the Write/Edit tools
-  instead. No web/external access was requested or used.
+- **Total Human Interventions (Nudges/Approvals)**: 1 human message after the initial prompt (the
+  closing instruction to finalise the reflection/metrics files and push). 0 mathematical interventions.
+  The sandbox denied three attempts to redirect shell output into the repository (`>`/`tee`); I used
+  the Write/Edit tools instead. No web/external access was requested or used.
 - **Major Blockers Encountered**: none. One trivial code assertion (basis element `b_2^+ b_1^-` not in
   my internal normal order) was fixed by normalizing basis elements.
 - **Total Wall Time**: not exposed to me by the interface; the computations themselves took ≈0.2 s,
