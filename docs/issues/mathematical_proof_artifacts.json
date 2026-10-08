@@ -1,0 +1,73 @@
+{
+  "artifact_version": 1,
+  "purpose": "Connectivity data and reproducible dimension checks for docs/issues/mathematical_proof.md",
+  "provenance": {
+    "repository_inputs": [
+      "docs/math/Cn1_definition.md",
+      "docs/math/C_inhomogeneous_definition.md",
+      "docs/math/C_coboundary_definition.md",
+      "docs/issues/issue_open.md"
+    ],
+    "external_sources_used": false
+  },
+  "definitions": {
+    "algebra": "C(n+1) = osp(2|2n)",
+    "even_dimension": "e(n) = 2*n^2 + n + 1",
+    "odd_dimension": "o(n) = 4*n",
+    "gb_parameter_count": "4*n",
+    "odd_linear_map_coefficient_count": "2*e(n)*o(n)",
+    "odd_super_skew_2_cochain_dimension": "o(n)*binomial(e(n),2) + e(n)^2*o(n) + o(n)*binomial(o(n)+1,2)"
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "gb_parameter_count": 4,
+      "odd_linear_map_coefficient_count": 32,
+      "odd_super_skew_2_cochain_dimension": 128
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "gb_parameter_count": 8,
+      "odd_linear_map_coefficient_count": 176,
+      "odd_super_skew_2_cochain_dimension": 1696
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "gb_parameter_count": 12,
+      "odd_linear_map_coefficient_count": 528,
+      "odd_super_skew_2_cochain_dimension": 9516
+    }
+  ],
+  "verification_system": {
+    "cochain_coordinates": "ordered homogeneous basis of g and corresponding parity-odd super-skew bilinear-map coordinates",
+    "coboundary_matrix": "D_n: odd linear maps f -> delta f using docs/math/C_coboundary_definition.md",
+    "parameter_to_cochain_matrix": "G_n: gb vector -> vec(gamma_gb)",
+    "exact_triviality_condition": "rank(D_n) = rank([D_n | G_n*b])",
+    "equivalent_left_kernel_condition": "L_n*G_n*b = 0 where rows of L_n span the left nullspace of D_n",
+    "cocycle_requirement": "gamma_gb must additionally satisfy the adjoint-valued 2-cocycle equations"
+  },
+  "unavailable_inputs": [
+    {
+      "name": "G_n",
+      "reason": "The inhomogeneous definition gives cross-oscillator relations but no basis-level values of gamma_gb or complete identification of kappa terms with the adjoint module."
+    },
+    {
+      "name": "complete adjoint coefficient identification",
+      "reason": "A scalar/central kappa term and a value in the adjoint module g are not identified by a specified linear map."
+    },
+    {
+      "name": "basis-level cocycle verification",
+      "reason": "No complete gamma coefficient table or equivalent unambiguous derivation procedure is supplied."
+    }
+  ],
+  "deducible_parameter_result": {
+    "zero_parameter": "Trivial: gamma_0 = 0 and f = 0.",
+    "nonzero_parameter": "Undetermined from supplied definitions; do not infer either triviality or nontriviality."
+  }
+}
