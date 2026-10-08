@@ -306,3 +306,18 @@ $c_0+c_\kappa\kappa$ in $\mathbb{Q}[\kappa]/(\kappa^2)$: the `constant`
 part comes from Schema 1 and the `kappa` part is the sum of Schema 2
 coefficients after substituting the recorded assignment. Zero/zero
 entries are omitted.
+
+## Schema 4: Coboundary Structure
+
+Schema 4 files are named `C_{n}_coboundary.json` and reference the
+corresponding Schema 1 structure. `coboundary_operator` records the odd
+map formula, its fixed `basis_order`, and every allowed coefficient
+`phi_{i}_{j}` as an `input`/`output` pair. Only parity-reversing map
+coefficients are included, so `f_coefficients` has
+$2\,\dim(\mathfrak{g}_{\bar 0})\dim(\mathfrak{g}_{\bar 1})$ entries.
+
+`coboundary_coefficients` stores the exact linear expansion of
+$\delta f(X,Y)$ as canonical `X`, `Y`, output `Z`, `phi` symbol, and
+rational `coeff`. Output labels are restricted to the source Schema 1
+basis. The generator checks graded skew-symmetry for all ordered pairs
+before writing the canonical-pair representation.
