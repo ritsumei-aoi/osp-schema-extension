@@ -1,0 +1,57 @@
+{
+  "algebra": "C(n+1) = osp(2|2n)",
+  "deformation_type": "Inhomogeneous deformation (gb)",
+  "generators_even": [
+    "(b_k^+)^2",
+    "(b_k^-)^2",
+    "b_k^+ b_l^- + \\frac{1}{2}\\delta_{kl}",
+    "H_\\varepsilon = a_1^+ a_1^- - \\frac{1}{2}"
+  ],
+  "generators_odd": [
+    "a_1^\\sigma b_j^s"
+  ],
+  "gamma_structures": {
+    "gamma_even_even": {
+      "X": "B",
+      "Y": "B'",
+      "result": 0
+    },
+    "gamma_even_odd": {
+      "X": "(b_k^t)^2",
+      "Y": "a_1^\\sigma b_j^s",
+      "result": "-2 * gb_{\\sigma, k, t} * b_k^t b_j^s"
+    },
+    "gamma_H_eps_odd": {
+      "X": "H_\\varepsilon",
+      "Y": "a_1^\\sigma b_j^s",
+      "result": "- \\sigma * gb_{\\sigma, j, s} * H_\\varepsilon",
+      "note": "Modulo scalars"
+    },
+    "gamma_odd_odd": {
+      "X": "a_1^\\sigma b_j^s",
+      "Y": "a_1^{\\sigma'} b_l^t",
+      "result": "- gb_{\\sigma', j, s} a_1^\\sigma b_l^t - gb_{\\sigma, l, t} a_1^{\\sigma'} b_j^s"
+    }
+  },
+  "coboundary_f": {
+    "f_even": 0,
+    "f_odd": {
+      "input": "a_1^\\sigma b_j^s",
+      "result": "\\sigma * gb_{\\sigma, j, s} * H_\\varepsilon"
+    }
+  },
+  "triviality_constraint_equations": [
+    {
+      "equation": "gamma(B, F) == [B, f(F)] - f([B, F])",
+      "test_case": {
+        "B": "(b_k^+)^2",
+        "F": "a_1^\\sigma b_k^-"
+      },
+      "LHS": "-2 * gb_{\\sigma, k, +} * L_k",
+      "RHS": "2 * \\sigma * gb_{\\sigma, k, +} * H_\\varepsilon",
+      "LHS_subalgebra": "sp(2n)",
+      "RHS_subalgebra": "so(2)",
+      "resolution": "Since sp(2n) and so(2) are independent, gb_{sigma, k, +} must be 0."
+    }
+  ]
+}
