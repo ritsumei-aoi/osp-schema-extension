@@ -277,7 +277,92 @@ Selected brackets:
 
 ## 6. Schema 2: inhomogeneous deformation (`C_{n}_gamma.json`)
 
-*(Specified in Issue I05.)*
+Produced by `src/C_gamma.py` (Issue I05). Mathematical input: `docs/math/C_inhomogeneous_definition.md`.
+
+### 6.1 Mathematical content
+
+Deformed oscillator relation (all other relations unchanged):
+
+$$[b_j^s, a_1^\sigma] = -\,\mathrm{gb}_{\sigma,j,s}\,\kappa,\qquad \sigma, s \in \{+,-\},\ j = 1,\dots,n,$$
+
+with $\kappa$ odd, super-central, $\kappa^2 = 0$. The gb's are **commuting scalar parameters**
+(see the parity remark in I05). For basis elements $X, Y$ the graded commutator in the enveloping
+algebra of the deformed oscillators is
+
+$$[X, Y\}_\gamma = [X, Y\}_0 + \kappa\,\gamma(X, Y),\qquad \gamma(X,Y) = \sum_Z \gamma_{XY}^{Z}\, Z,$$
+
+where $Z$ runs over the basis of $\tilde{\mathfrak g} = \mathfrak g \oplus \mathbb{C}K$ (the label `"K"`
+denotes the central identity). $\gamma$ is an **odd** 2-cocycle: $p(Z) = p(X)+p(Y)+1$. Each
+$\gamma_{XY}^Z$ is a homogeneous linear form in the $4n$ gb parameters (κ² = 0 kills higher order).
+
+### 6.2 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 2,
+  "algebra": { ...same as Schema 1... },
+  "source_structure": "C_1_structure.json",
+  "central_elements": { ...same as Schema 1... },
+  "gb_matrix": { ... },
+  "deformed_oscillator_relations": { ... },
+  "inhomogeneous_deformation": { ... },
+  "metadata": { ... }
+}
+```
+
+### 6.3 `gb_matrix`
+
+```json
+{
+  "description": "Deformation parameters gb_{a_1^sigma, b_j^s}; label gb_a1{sigma}_b{j}{s}",
+  "shape": [2, 2],
+  "count": 4,
+  "rows": ["a_1_p", "a_1_m"],
+  "cols": ["b_1_p", "b_1_m"],
+  "labels": [["gb_a1p_b1p", "gb_a1p_b1m"], ["gb_a1m_b1p", "gb_a1m_b1m"]],
+  "parity": 1,
+  "parity_note": "..."
+}
+```
+
+`shape` is `[2, 2n]`, `count` is `4n`; `labels[r][c]` is the parameter for fermion `rows[r]` and boson `cols[c]`.
+
+### 6.4 `deformed_oscillator_relations`
+
+Strings documenting `[b_j^s, a_1^sigma] = - gb_a1{sigma}_b{j}{s} * kappa`, the unchanged CAR/CCR, and `kappa^2 = 0`.
+
+### 6.5 `inhomogeneous_deformation`
+
+| Field | Content |
+|---|---|
+| `bracket` | `"[X, Y}_gamma = [X, Y}_0 + kappa * sum_Z gamma_{XY}^Z Z"` |
+| `gamma_parity` | `"p(Z) = p(X) + p(Y) + 1 (mod 2)"` |
+| `pair_convention` | all ordered pairs with non-zero γ are listed |
+| `gamma` | list of entries (below) |
+| `summary` | `nonzero_entries`, `nonzero_pairs`, `entries_with_Z_K` |
+
+Entry format:
+
+```json
+{"X": "H_1", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": "-gb_a1p_b1p",
+ "linear_form": {"gb_a1p_b1p": "-1"}}
+```
+
+`coeff` is the printable sympy form; `linear_form` maps gb labels to rational strings and is the
+machine-readable source of truth (`coeff = sum_lab linear_form[lab] * lab`).
+
+### 6.6 Consistency rules (checked by `tests/test_C_gamma.py`)
+
+1. The κ⁰ part of the deformed bracket equals Schema 1 exactly (asserted at generation time).
+2. Parity rule `p(Z) = p(X)+p(Y)+1`; targets are basis labels or `"K"`.
+3. Graded antisymmetry `γ(X,Y) = -(-1)^{p(X)p(Y)} γ(Y,X)`.
+4. Cocycle condition: the algebra $L = \tilde{\mathfrak g} \oplus \kappa\tilde{\mathfrak g}$ with
+   $[X,Y] = [X,Y]_0 + \kappa\gamma(X,Y)$, $[X,\kappa Y] = (-1)^{p(X)}\kappa[X,Y]_0$, $[\kappa X, Y] = \kappa[X,Y]_0$,
+   $[\kappa X, \kappa Y] = 0$ (built by `C_gamma.extended_algebra`) satisfies the super Jacobi identity
+   for every unit gb vector (n = 1, 2) and random rational gb vectors (n = 1, 2, 3).
+
+Entry counts: n=1: 112 entries / 54 pairs (20 with `Z = "K"`); n=2: 652 / 260 (84); n=3: 1840 / 714 (180).
 
 ## 7. Schema 3: evaluated structure (`C_{n}_evaluated.json`)
 
