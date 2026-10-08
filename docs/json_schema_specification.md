@@ -336,7 +336,7 @@ deformation.
 
 Schema 3 files use `C_{n}_evaluated.json`. The current generator uses the
 representative **uniform `+1` assignment** for all `4*n` gb parameters (the
-script also accepts uniform `-1` for comparison). Each evaluated bracket
+script also accepts uniform `-1` and `0` for comparison). Each evaluated bracket
 keeps the undeformed and first-order pieces separate:
 
 ```json

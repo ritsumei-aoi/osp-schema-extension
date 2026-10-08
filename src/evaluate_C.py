@@ -11,8 +11,8 @@ from pathlib import Path
 
 
 def evaluate_schema1_gamma(structure, gamma_schema, sign=1):
-    if sign not in (-1, 1):
-        raise ValueError("sign must be either -1 or 1")
+    if sign not in (-1, 0, 1):
+        raise ValueError("sign must be -1, 0, or 1")
     n = structure["algebra"]["n"]
     if gamma_schema["algebra"]["n"] != n:
         raise ValueError("Schema 1 and Schema 2 ranks differ")
@@ -94,12 +94,22 @@ def evaluate_schema1_gamma(structure, gamma_schema, sign=1):
         "source_schema1": f"C_{n}_structure.json",
         "source_schema2": f"C_{n}_gamma.json",
         "evaluation": {
-            "label": "all_gb_plus_one" if sign == 1 else "all_gb_minus_one",
+            "label": {
+                1: "all_gb_plus_one",
+                0: "all_gb_zero",
+                -1: "all_gb_minus_one",
+            }[sign],
             "assignment": assignment,
-            "parameter_domain": "formal specialization",
+            "parameter_domain": (
+                "homogeneous zero specialization"
+                if sign == 0
+                else "formal specialization"
+            ),
             "note": (
-                "The assigned real signs are formal evaluation values; they "
-                "are not parity-homogeneous values for parity-odd parameters."
+                "Zero is a parity-homogeneous value for the odd parameters."
+                if sign == 0
+                else "The assigned nonzero real sign is formal; it is not a "
+                "parity-homogeneous value for a parity-odd parameter."
             ),
         },
         "central_elements": structure["central_elements"],
@@ -143,7 +153,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", default="data")
     parser.add_argument("--ranks", nargs="+", type=int, default=[1, 2, 3])
-    parser.add_argument("--sign", type=int, choices=(-1, 1), default=1)
+    parser.add_argument("--sign", type=int, choices=(-1, 0, 1), default=1)
     args = parser.parse_args()
     for path in generate_files(args.data_dir, args.ranks, sign=args.sign):
         print(path)

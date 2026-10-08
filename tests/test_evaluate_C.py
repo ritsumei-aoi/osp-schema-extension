@@ -18,6 +18,7 @@ def test_evaluation_preserves_base_and_substitutes_all_parameters(n):
     )
     positive = evaluate_schema1_gamma(structure, gamma, sign=1)
     negative = evaluate_schema1_gamma(structure, gamma, sign=-1)
+    zero = evaluate_schema1_gamma(structure, gamma, sign=0)
     base = {
         (entry["X"], entry["Y"], entry["Z"]): Fraction(entry["coeff"])
         for entry in structure["structure_constants"]
@@ -36,10 +37,16 @@ def test_evaluation_preserves_base_and_substitutes_all_parameters(n):
         )
         for entry in negative["evaluated_structure_constants"]
     }
+    zero_values = {
+        (entry["X"], entry["Y"], entry["Z"]): Fraction(entry["kappa_coeff"])
+        for entry in zero["evaluated_structure_constants"]
+    }
 
     assert len(positive["evaluation"]["assignment"]) == 4 * n
     assert set(positive["evaluation"]["assignment"].values()) == {"1"}
     assert set(negative["evaluation"]["assignment"].values()) == {"-1"}
+    assert set(zero["evaluation"]["assignment"].values()) == {"0"}
+    assert zero["evaluation"]["parameter_domain"] == "homogeneous zero specialization"
     assert all(plus[key][0] == value for key, value in base.items())
     assert all(minus[key][0] == value for key, value in base.items())
     for key in set(plus) | set(minus):
@@ -49,3 +56,4 @@ def test_evaluation_preserves_base_and_substitutes_all_parameters(n):
         assert plus.get(key, (Fraction(0), Fraction(0)))[1] == -minus.get(
             key, (Fraction(0), Fraction(0))
         )[1]
+    assert not any(zero_values.values())
