@@ -225,7 +225,11 @@ The array contains the complete nonzero brackets for the selected rank,
 computed from the listed oscillator realizations and undeformed CAR/CCR.
 Use exact coefficient strings and the bracket convention
 $[X,Y\}=XY-(-1)^{p(X)p(Y)}YX$. Do not insert zero brackets or infer
-unlisted nonzero brackets from a B(m,n) instance.
+unlisted nonzero brackets from a B(m,n) instance. Store one representative
+for each unordered basis pair, with `X` no later than `Y` in the
+`basis.odd`-then-`basis.even` PBW block order. The reverse orientation is
+determined by graded skew-symmetry:
+$[Y,X\}=-(-1)^{p(X)p(Y)}[X,Y\}$.
 
 ### `metadata`
 
