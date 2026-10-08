@@ -283,3 +283,51 @@ Schema 1 files use `C_{n}_structure.json`, where `n` is the bosonic rank:
 Other layers follow the same rank-based pattern, for example
 `C_{n}_gamma.json`, `C_{n}_evaluated_<gb>.json`, and
 `C_{n}_coboundary_<gb>.json`.
+
+## Schema 2: Inhomogeneous deformation
+
+Schema 2 files are named `C_{n}_gamma.json`. They preserve rank and dimension
+metadata, identify the Schema 1 source file, record the central symbols, and
+store the deformation in `inhomogeneous_deformation`.
+
+### `gb_matrix`
+
+The matrix has two fermion rows (`a_1_p`, `a_1_m`) and `2*n` boson columns
+(`b_1_p`, `b_1_m`, ..., `b_n_p`, `b_n_m`). Store all `4*n` parameter records
+with labels `gb_a1_{p|m}_b{i}_{p|m}`, the corresponding oscillator labels,
+and the parity annotation specified in
+`docs/math/C_inhomogeneous_definition.md`.
+
+### `gamma_coefficients`
+
+Store each nonzero ordered PBW pair/output triple once. Its `coefficients`
+array lists exact rational coefficients of the formal `gb` parameters:
+
+```json
+{
+  "X": "H_1",
+  "Y": "E_eps1_del1_pp",
+  "Z": "H_1",
+  "coefficients": [
+    {"parameter": "gb_a1_p_b1_p", "coeff": "1"}
+  ]
+}
+```
+
+`X` and `Y` use the C Schema 1 PBW order. `Z` is a Schema 1 basis label or
+`K` when normal ordering produces the scalar identity; `kappa` itself is
+factored outside the coefficient list. Omit zero terms. The associated
+oscillator convention is the literal relation
+`[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa`, expanded to first order using
+`kappa^2 = 0`.
+
+**Parity caveat in the supplied definition:** it assigns parity 1 to both
+`gb` and `kappa`, while the commutator of an even boson with an odd fermion
+has parity 1. Their product has parity 0, so the displayed oscillator
+relation is not homogeneous under those assignments. The Schema 2 generator
+retains the stated parities and records formal coefficients from the literal
+relation; its closure check verifies expansion into the Schema 1 oscillator
+basis (and scalar `K`), not that this parity inconsistency is resolved. A
+mathematically homogeneous deformation requires reconciling the source
+parity convention before interpreting the output as a Lie-superalgebra
+deformation.
