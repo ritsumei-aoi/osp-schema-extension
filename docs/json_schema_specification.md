@@ -17,7 +17,7 @@ Use `C_{n}_structure.json`, where `n` is the bosonic rank:
 
 The corresponding later-layer names are `C_{n}_gamma.json`,
 `C_{n}_evaluated.json` (the representative all-positive assignment in this
-repository), and `C_{n}_coboundary_<gb>.json`.
+repository), and `C_{n}_coboundary.json`.
 
 ## Top-level shape
 
@@ -282,3 +282,18 @@ The repository uses the all-positive assignment (every formal `gb` value is
 `+1`) as a reproducible representative. It is a formal coefficient
 substitution, not a parity-preserving specialization of odd variables; the
 Schema 2 caveats continue to apply.
+
+## Schema 4: Coboundary structure
+
+The generic coboundary files are named `C_{n}_coboundary.json`. They record
+the Schema 1 algebra identity and basis reference, `odd_linear_map`, and
+`coboundary`. The odd map lists one even coefficient parameter for every
+ordered input/output pair of opposite parity:
+
+`f(X) = sum_target phi_{X,target} * target`, with
+`p(target) = p(X)+1 mod 2`.
+
+Thus there are `2 * dim_even * dim_odd` map parameters. Each nonzero
+`coboundary.coefficients` record has `X`, `Y`, `Z`, `parameter`, rational
+`coeff`, and `sign_rule`; it contributes `coeff * parameter * Z` to the
+specified $\delta f(X,Y)$. Outputs must reference Schema 1 basis generators.
