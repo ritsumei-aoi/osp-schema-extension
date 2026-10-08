@@ -1,0 +1,84 @@
+{
+  "artifact_version": 1,
+  "purpose": "Record computable dimensions and unavailable inputs for the C(n+1) inhomogeneous triviality question.",
+  "sources": [
+    "docs/math/Cn1_definition.md",
+    "docs/math/C_inhomogeneous_definition.md",
+    "docs/math/C_coboundary_definition.md",
+    "docs/issues/issue_open.md"
+  ],
+  "conventions": {
+    "cochain_parity": "odd",
+    "coefficient_module_interpretation": "parity-shifted adjoint module Pi(g); this interpretation is required for parity consistency but is not fully specified by the source definitions",
+    "global_scalar": "A single scalar multiplying a coboundary is absorbed into the odd map f by linearity; componentwise rescaling is not interpreted.",
+    "parameter_order": "sigma in ['+', '-'], then j ascending from 1 to n, then s in ['+', '-']"
+  },
+  "cases": [
+    {
+      "n": 1,
+      "even_dimension": 4,
+      "odd_dimension": 4,
+      "gb_parameter_count": 4,
+      "gb_parameter_labels": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]"
+      ],
+      "odd_map_coefficient_count": 32,
+      "independent_odd_2_cochain_input_slots": 32,
+      "scalar_odd_2_cochain_equations": 128
+    },
+    {
+      "n": 2,
+      "even_dimension": 11,
+      "odd_dimension": 8,
+      "gb_parameter_count": 8,
+      "gb_parameter_labels": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[+,2,+]",
+        "gb[+,2,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]",
+        "gb[-,2,+]",
+        "gb[-,2,-]"
+      ],
+      "odd_map_coefficient_count": 176,
+      "independent_odd_2_cochain_input_slots": 179,
+      "scalar_odd_2_cochain_equations": 1696
+    },
+    {
+      "n": 3,
+      "even_dimension": 22,
+      "odd_dimension": 12,
+      "gb_parameter_count": 12,
+      "gb_parameter_labels": [
+        "gb[+,1,+]",
+        "gb[+,1,-]",
+        "gb[+,2,+]",
+        "gb[+,2,-]",
+        "gb[+,3,+]",
+        "gb[+,3,-]",
+        "gb[-,1,+]",
+        "gb[-,1,-]",
+        "gb[-,2,+]",
+        "gb[-,2,-]",
+        "gb[-,3,+]",
+        "gb[-,3,-]"
+      ],
+      "odd_map_coefficient_count": 528,
+      "independent_odd_2_cochain_input_slots": 573,
+      "scalar_odd_2_cochain_equations": 9516
+    }
+  ],
+  "linear_system": {
+    "parameter_to_cocycle_matrix_G_n": null,
+    "odd_coboundary_matrix_D_n": null,
+    "ordered_homogeneous_basis": null,
+    "structure_constants": null,
+    "reason_unavailable": "The supplied definitions do not list the coefficients of gamma_gb in a fixed basis, a complete fixed-basis structure-constant table, or a fully specified deformed oscillator presentation and coefficient-module action.",
+    "triviality_test_when_populated": "Solve G_n * g = D_n * phi for phi; equivalently project ker([G_n | -D_n]) onto the gb-parameter coordinates.",
+    "classification_computable_from_supplied_definitions": false
+  }
+}
