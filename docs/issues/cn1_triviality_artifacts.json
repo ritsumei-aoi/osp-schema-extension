@@ -1,0 +1,123 @@
+{
+  "artifact_version": 1,
+  "purpose": "Auditable machine-readable record of the data available for the C(n+1) inhomogeneous-triviality question.",
+  "scope": {
+    "repository_definitions": [
+      "docs/math/Cn1_definition.md",
+      "docs/math/C_inhomogeneous_definition.md",
+      "docs/math/C_coboundary_definition.md",
+      "docs/issues/issue_open.md"
+    ],
+    "external_sources_used": false,
+    "startup_check": {
+      "Cn1_definition_contains_json_schema_information": false,
+      "required_files_checked": [
+        "docs/math/Cn1_definition.md",
+        "docs/math/C_inhomogeneous_definition.md",
+        "docs/math/C_coboundary_definition.md",
+        "docs/issues/issue_open.md",
+        "final_reflection_template.md",
+        "supplementary_metrics_template.md"
+      ]
+    }
+  },
+  "algebra": {
+    "name": "C(n+1)",
+    "realization": "osp(2|2n)",
+    "dimension_data": [
+      {
+        "n": 1,
+        "even_dimension": 4,
+        "odd_dimension": 4,
+        "total_dimension": 8
+      },
+      {
+        "n": 2,
+        "even_dimension": 11,
+        "odd_dimension": 8,
+        "total_dimension": 19
+      },
+      {
+        "n": 3,
+        "even_dimension": 22,
+        "odd_dimension": 12,
+        "total_dimension": 34
+      }
+    ],
+    "full_homogeneous_basis": null,
+    "structure_constants": null,
+    "structure_constant_status": "Not specified as a complete normalized table in the supplied definitions; do not infer or fabricate coefficients."
+  },
+  "gb_parameters": {
+    "definition": "gb[sigma,j,s], with sigma in {+,-}, j in 1..n, s in {+,-}",
+    "count_by_n": [
+      {
+        "n": 1,
+        "count": 4
+      },
+      {
+        "n": 2,
+        "count": 8
+      },
+      {
+        "n": 3,
+        "count": 12
+      }
+    ],
+    "stated_exchange_relation": "[b_j^s,a_1^sigma] = -gb[sigma,j,s] * kappa",
+    "claimed_gb_parity": "odd",
+    "parity_check": {
+      "parity_b": 0,
+      "parity_a": 1,
+      "parity_superbracket": 1,
+      "parity_kappa": 1,
+      "parity_rhs_if_gb_is_odd": 0,
+      "consistent_as_written": false,
+      "comment": "An odd coefficient times odd kappa has even parity, unlike the stated bracket. Clarify parameter parity or the relation."
+    }
+  },
+  "gamma": {
+    "coefficient_map": null,
+    "coefficient_map_status": "The definitions say coefficients are derived from oscillator relations but give no formulas mapping gb parameters to cochain coefficients.",
+    "cochain_coefficients": null,
+    "coefficient_module_identification": "Ambiguous: the deformation term is described in kappa*g and gamma is also called g-valued, without a specified identification and parity convention.",
+    "cocycle_constraints": null,
+    "cocycle_constraint_status": "No explicit parameter constraints or coefficient-level cocycle/Jacobi equations supplied."
+  },
+  "coboundary": {
+    "map_parity": 1,
+    "formula": "delta_f(X,Y)=(-1)^p(X)[X,f(Y)]-(-1)^((p(X)+1)p(Y))[Y,f(X)]-f([X,Y])",
+    "basis_coefficient_formula": "D(phi)[i,j,k]=(-1)^p_i sum_r phi[r,j] c[i,r,k]-(-1)^((p_i+1)p_j) sum_r phi[r,i] c[j,r,k]-sum_l c[i,j,l] phi[k,l]",
+    "triviality_equation": "Gamma(gb)[i,j,k] = D(phi)[i,j,k] for every basis triple i,j,k, with phi[r,j]=0 unless p_r=p_j+1 mod 2.",
+    "odd_endomorphism_entry_count_by_n": [
+      {
+        "n": 1,
+        "count": 32
+      },
+      {
+        "n": 2,
+        "count": 176
+      },
+      {
+        "n": 3,
+        "count": 528
+      }
+    ]
+  },
+  "up_to_scalar_interpretation": {
+    "recommended_test": "Exact equality in C^2(g,g), after specifying the coefficient-module identification.",
+    "single_global_nonzero_scalar": "Equivalent to exact coboundarity because delta is linear and the scalar can be absorbed into f.",
+    "independent_scalar_per_pair_or_coefficient": "Not a well-defined cohomological equivalence; do not apply."
+  },
+  "finding": {
+    "status": "underdetermined_from_supplied_definitions",
+    "definitive_statement": "No necessary-and-sufficient condition on gb, and no conclusion about nonzero trivial configurations, is determined until the structure constants and the map gb -> Gamma(gb) are specified.",
+    "conditional_criterion": "Once supplied, gb is trivial exactly when Gamma(gb) lies in the image of the coboundary matrix D on odd 1-cochains."
+  },
+  "required_additional_inputs": [
+    "Complete homogeneous basis and normalized structure constants for each requested n.",
+    "Complete oscillator/pre-oscillator relations and explicit formulas for every gamma coefficient as a function of gb.",
+    "Consistent parity convention and identification of kappa*g with the adjoint coefficient module.",
+    "Explicit super-skew-symmetry and 2-cocycle/Jacobi constraints on admissible gb."
+  ]
+}
