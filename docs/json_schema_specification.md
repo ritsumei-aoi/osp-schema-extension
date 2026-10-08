@@ -490,3 +490,12 @@ Example (n = 1, X = Y = `E_eps1_del1_pp`):
 4. Regeneration is deterministic (entries equal a fresh recomputation).
 
 Sizes: n=1: 232 entries / 414 φ-terms; n=2: 2832 / 4962; n=3: 14156 / 22526 (2.7 MB).
+
+---
+
+## 9. Analysis output (`C_{n}_triviality.json`, not a schema layer)
+
+Produced by `src/C_triviality.py` (Issue I08). Keys: `variants` (for `K`, `strict`, `mod_K`: φ count,
+equation count, `rank_D`, `independent_gb_constraints`, `trivial_subspace_dim`), `profiles` (per Layer 3
+profile: solvability in the `K` and `strict` readings, the solved φ for `K`, inconsistent components for
+`strict`), `shift_map` (closed-form trivializing map, its symbolic form and verification counts).
