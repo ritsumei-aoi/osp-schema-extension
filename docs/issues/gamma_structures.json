@@ -1,0 +1,56 @@
+{
+  "Lie_superalgebra": "C(n+1)",
+  "generators": {
+    "even": {
+      "H_a": "a_1^+ a_1^- - 0.5",
+      "E_{++}": "b_k^+ b_k^+",
+      "E_{+-}": "b_k^+ b_k^- + 0.5",
+      "E_{--}": "b_k^- b_k^-"
+    },
+    "odd": {
+      "O_{sigma, s}": "a_1^sigma b_k^s"
+    }
+  },
+  "gamma_structure_constants": [
+    {
+      "X": "H_a",
+      "Y": "O_{+, s}",
+      "result": {
+        "H_a": "-gb_{+, k, s}",
+        "1": "-0.5 * gb_{+, k, s}"
+      },
+      "conclusion": "Since 1 is not in g, gb_{+, k, s} must be 0"
+    },
+    {
+      "X": "H_a",
+      "Y": "O_{-, s}",
+      "result": {
+        "H_a": "-gb_{-, k, s}",
+        "1": "0.5 * gb_{-, k, s}"
+      },
+      "conclusion": "Since 1 is not in g, gb_{-, k, s} must be 0"
+    },
+    {
+      "X": "E_{++}",
+      "Y": "O_{sigma, -}",
+      "result": {
+        "E_{+-}": "-2 * gb_{sigma, k, +}",
+        "1": "gb_{sigma, k, +}"
+      },
+      "conclusion": "Since 1 is not in g, gb_{sigma, k, +} must be 0"
+    },
+    {
+      "X": "E_{--}",
+      "Y": "O_{sigma, +}",
+      "result": {
+        "E_{+-}": "-2 * gb_{sigma, k, -}",
+        "1": "-gb_{sigma, k, -}"
+      },
+      "conclusion": "Since 1 is not in g, gb_{sigma, k, -} must be 0"
+    }
+  ],
+  "triviality_condition": {
+    "gb_parameters": "All gb_{sigma, k, s} = 0",
+    "coboundary_f": "0"
+  }
+}
