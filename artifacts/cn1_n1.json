@@ -1,0 +1,1425 @@
+{
+ "algebra": "C(2) = osp(2|2)",
+ "n": 1,
+ "dim": {
+  "even": 4,
+  "odd": 4,
+  "total": 8
+ },
+ "conventions": {
+  "oscillators": [
+   "a+",
+   "a-",
+   "b1+",
+   "b1-"
+  ],
+  "oscillator_parity": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "relations": "{a-,a+}=1, [b_k-,b_l+]=delta_kl, [b_j^s, a^sigma] = -gb[a sigma, b j s] * kappa, kappa odd central, kappa^2=0",
+  "basis": "super-symmetrised quadratics: N_a = a+a- - 1/2, N_k = b_k+ b_k- + 1/2, E[root] = normal-ordered monomial",
+  "weights": "coordinates (epsilon, delta_1, ..., delta_n)",
+  "deformed_bracket": "[Z_i, Z_j]_gb = sum_k c[i][j][k] Z_k + s0[i][j]*1 + kappa*( sum_k gamma[i][j][k] Z_k + s1[i][j]*1 ), kappa on the LEFT",
+  "coboundary": "(delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y]); f(Z_j) = sum_m phi[m][j] Z_m",
+  "gb_parameters": [
+   "gb[a+,b1+]",
+   "gb[a+,b1-]",
+   "gb[a-,b1+]",
+   "gb[a-,b1-]"
+  ]
+ },
+ "basis": [
+  {
+   "index": 0,
+   "name": "N_a",
+   "parity": 0,
+   "weight": [
+    0,
+    0
+   ],
+   "oscillator_expression": "(-1/2)*1 + (1)*a+*a-"
+  },
+  {
+   "index": 1,
+   "name": "E[e+d1]",
+   "parity": 1,
+   "weight": [
+    1,
+    1
+   ],
+   "oscillator_expression": "(1)*a+*b1+"
+  },
+  {
+   "index": 2,
+   "name": "E[e-d1]",
+   "parity": 1,
+   "weight": [
+    1,
+    -1
+   ],
+   "oscillator_expression": "(1)*a+*b1-"
+  },
+  {
+   "index": 3,
+   "name": "E[-e+d1]",
+   "parity": 1,
+   "weight": [
+    -1,
+    1
+   ],
+   "oscillator_expression": "(1)*a-*b1+"
+  },
+  {
+   "index": 4,
+   "name": "E[-e-d1]",
+   "parity": 1,
+   "weight": [
+    -1,
+    -1
+   ],
+   "oscillator_expression": "(1)*a-*b1-"
+  },
+  {
+   "index": 5,
+   "name": "E[2d1]",
+   "parity": 0,
+   "weight": [
+    0,
+    2
+   ],
+   "oscillator_expression": "(1)*b1+*b1+"
+  },
+  {
+   "index": 6,
+   "name": "N_1",
+   "parity": 0,
+   "weight": [
+    0,
+    0
+   ],
+   "oscillator_expression": "(1/2)*1 + (1)*b1+*b1-"
+  },
+  {
+   "index": 7,
+   "name": "E[-2d1]",
+   "parity": 0,
+   "weight": [
+    0,
+    -2
+   ],
+   "oscillator_expression": "(1)*b1-*b1-"
+  }
+ ],
+ "structure_constants": [
+  {
+   "i": 0,
+   "j": 1,
+   "k": 1,
+   "value": "1"
+  },
+  {
+   "i": 0,
+   "j": 2,
+   "k": 2,
+   "value": "1"
+  },
+  {
+   "i": 0,
+   "j": 3,
+   "k": 3,
+   "value": "-1"
+  },
+  {
+   "i": 0,
+   "j": 4,
+   "k": 4,
+   "value": "-1"
+  },
+  {
+   "i": 1,
+   "j": 0,
+   "k": 1,
+   "value": "-1"
+  },
+  {
+   "i": 1,
+   "j": 3,
+   "k": 5,
+   "value": "1"
+  },
+  {
+   "i": 1,
+   "j": 4,
+   "k": 0,
+   "value": "-1"
+  },
+  {
+   "i": 1,
+   "j": 4,
+   "k": 6,
+   "value": "1"
+  },
+  {
+   "i": 1,
+   "j": 6,
+   "k": 1,
+   "value": "-1"
+  },
+  {
+   "i": 1,
+   "j": 7,
+   "k": 2,
+   "value": "-2"
+  },
+  {
+   "i": 2,
+   "j": 0,
+   "k": 2,
+   "value": "-1"
+  },
+  {
+   "i": 2,
+   "j": 3,
+   "k": 0,
+   "value": "1"
+  },
+  {
+   "i": 2,
+   "j": 3,
+   "k": 6,
+   "value": "1"
+  },
+  {
+   "i": 2,
+   "j": 4,
+   "k": 7,
+   "value": "1"
+  },
+  {
+   "i": 2,
+   "j": 5,
+   "k": 1,
+   "value": "2"
+  },
+  {
+   "i": 2,
+   "j": 6,
+   "k": 2,
+   "value": "1"
+  },
+  {
+   "i": 3,
+   "j": 0,
+   "k": 3,
+   "value": "1"
+  },
+  {
+   "i": 3,
+   "j": 1,
+   "k": 5,
+   "value": "1"
+  },
+  {
+   "i": 3,
+   "j": 2,
+   "k": 0,
+   "value": "1"
+  },
+  {
+   "i": 3,
+   "j": 2,
+   "k": 6,
+   "value": "1"
+  },
+  {
+   "i": 3,
+   "j": 6,
+   "k": 3,
+   "value": "-1"
+  },
+  {
+   "i": 3,
+   "j": 7,
+   "k": 4,
+   "value": "-2"
+  },
+  {
+   "i": 4,
+   "j": 0,
+   "k": 4,
+   "value": "1"
+  },
+  {
+   "i": 4,
+   "j": 1,
+   "k": 0,
+   "value": "-1"
+  },
+  {
+   "i": 4,
+   "j": 1,
+   "k": 6,
+   "value": "1"
+  },
+  {
+   "i": 4,
+   "j": 2,
+   "k": 7,
+   "value": "1"
+  },
+  {
+   "i": 4,
+   "j": 5,
+   "k": 3,
+   "value": "2"
+  },
+  {
+   "i": 4,
+   "j": 6,
+   "k": 4,
+   "value": "1"
+  },
+  {
+   "i": 5,
+   "j": 2,
+   "k": 1,
+   "value": "-2"
+  },
+  {
+   "i": 5,
+   "j": 4,
+   "k": 3,
+   "value": "-2"
+  },
+  {
+   "i": 5,
+   "j": 6,
+   "k": 5,
+   "value": "-2"
+  },
+  {
+   "i": 5,
+   "j": 7,
+   "k": 6,
+   "value": "-4"
+  },
+  {
+   "i": 6,
+   "j": 1,
+   "k": 1,
+   "value": "1"
+  },
+  {
+   "i": 6,
+   "j": 2,
+   "k": 2,
+   "value": "-1"
+  },
+  {
+   "i": 6,
+   "j": 3,
+   "k": 3,
+   "value": "1"
+  },
+  {
+   "i": 6,
+   "j": 4,
+   "k": 4,
+   "value": "-1"
+  },
+  {
+   "i": 6,
+   "j": 5,
+   "k": 5,
+   "value": "2"
+  },
+  {
+   "i": 6,
+   "j": 7,
+   "k": 7,
+   "value": "-2"
+  },
+  {
+   "i": 7,
+   "j": 1,
+   "k": 2,
+   "value": "2"
+  },
+  {
+   "i": 7,
+   "j": 3,
+   "k": 4,
+   "value": "2"
+  },
+  {
+   "i": 7,
+   "j": 5,
+   "k": 6,
+   "value": "4"
+  },
+  {
+   "i": 7,
+   "j": 6,
+   "k": 7,
+   "value": "2"
+  }
+ ],
+ "gamma_gb": [
+  {
+   "i": 0,
+   "j": 1,
+   "k": 0,
+   "value": {
+    "gb[a+,b1+]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 2,
+   "k": 0,
+   "value": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 3,
+   "k": 0,
+   "value": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 4,
+   "k": 0,
+   "value": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 5,
+   "k": 1,
+   "value": {
+    "gb[a-,b1+]": "-2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 5,
+   "k": 3,
+   "value": {
+    "gb[a+,b1+]": "2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 6,
+   "k": 1,
+   "value": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 6,
+   "k": 2,
+   "value": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 6,
+   "k": 3,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 6,
+   "k": 4,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 0,
+   "j": 7,
+   "k": 2,
+   "value": {
+    "gb[a-,b1-]": "-2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 7,
+   "k": 4,
+   "value": {
+    "gb[a+,b1-]": "2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 0,
+   "k": 0,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 1,
+   "k": 1,
+   "value": {
+    "gb[a+,b1+]": "2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 2,
+   "k": 1,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 2,
+   "k": 2,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 3,
+   "k": 1,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 3,
+   "k": 3,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 4,
+   "k": 2,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 4,
+   "k": 3,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 5,
+   "k": 5,
+   "value": {
+    "gb[a+,b1+]": "2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 6,
+   "k": 5,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 6,
+   "k": 6,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 1,
+   "j": 7,
+   "k": 6,
+   "value": {
+    "gb[a+,b1-]": "2"
+   }
+  },
+  {
+   "i": 2,
+   "j": 0,
+   "k": 0,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 1,
+   "k": 1,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 1,
+   "k": 2,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 2,
+   "k": 2,
+   "value": {
+    "gb[a+,b1-]": "2"
+   }
+  },
+  {
+   "i": 2,
+   "j": 3,
+   "k": 1,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 3,
+   "k": 4,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 4,
+   "k": 2,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 4,
+   "k": 4,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 5,
+   "k": 6,
+   "value": {
+    "gb[a+,b1+]": "2"
+   }
+  },
+  {
+   "i": 2,
+   "j": 6,
+   "k": 6,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 6,
+   "k": 7,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 7,
+   "k": 7,
+   "value": {
+    "gb[a+,b1-]": "2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 0,
+   "k": 0,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 1,
+   "k": 1,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 1,
+   "k": 3,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 2,
+   "k": 1,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 2,
+   "k": 4,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 3,
+   "k": 3,
+   "value": {
+    "gb[a-,b1+]": "2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 4,
+   "k": 3,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 4,
+   "k": 4,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 5,
+   "k": 5,
+   "value": {
+    "gb[a-,b1+]": "2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 6,
+   "k": 5,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 6,
+   "k": 6,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 3,
+   "j": 7,
+   "k": 6,
+   "value": {
+    "gb[a-,b1-]": "2"
+   }
+  },
+  {
+   "i": 4,
+   "j": 0,
+   "k": 0,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 1,
+   "k": 2,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 1,
+   "k": 3,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 2,
+   "k": 2,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 2,
+   "k": 4,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 3,
+   "k": 3,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 3,
+   "k": 4,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 4,
+   "k": 4,
+   "value": {
+    "gb[a-,b1-]": "2"
+   }
+  },
+  {
+   "i": 4,
+   "j": 5,
+   "k": 6,
+   "value": {
+    "gb[a-,b1+]": "2"
+   }
+  },
+  {
+   "i": 4,
+   "j": 6,
+   "k": 6,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 6,
+   "k": 7,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 7,
+   "k": 7,
+   "value": {
+    "gb[a-,b1-]": "2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 0,
+   "k": 1,
+   "value": {
+    "gb[a-,b1+]": "2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 0,
+   "k": 3,
+   "value": {
+    "gb[a+,b1+]": "-2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 1,
+   "k": 5,
+   "value": {
+    "gb[a+,b1+]": "-2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 2,
+   "k": 6,
+   "value": {
+    "gb[a+,b1+]": "-2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 3,
+   "k": 5,
+   "value": {
+    "gb[a-,b1+]": "-2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 4,
+   "k": 6,
+   "value": {
+    "gb[a-,b1+]": "-2"
+   }
+  },
+  {
+   "i": 6,
+   "j": 0,
+   "k": 1,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 0,
+   "k": 2,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 0,
+   "k": 3,
+   "value": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 0,
+   "k": 4,
+   "value": {
+    "gb[a+,b1+]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 1,
+   "k": 5,
+   "value": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 1,
+   "k": 6,
+   "value": {
+    "gb[a+,b1+]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 2,
+   "k": 6,
+   "value": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 2,
+   "k": 7,
+   "value": {
+    "gb[a+,b1+]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 3,
+   "k": 5,
+   "value": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 3,
+   "k": 6,
+   "value": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 4,
+   "k": 6,
+   "value": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 4,
+   "k": 7,
+   "value": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "i": 7,
+   "j": 0,
+   "k": 2,
+   "value": {
+    "gb[a-,b1-]": "2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 0,
+   "k": 4,
+   "value": {
+    "gb[a+,b1-]": "-2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 1,
+   "k": 6,
+   "value": {
+    "gb[a+,b1-]": "-2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 2,
+   "k": 7,
+   "value": {
+    "gb[a+,b1-]": "-2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 3,
+   "k": 6,
+   "value": {
+    "gb[a-,b1-]": "-2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 4,
+   "k": 7,
+   "value": {
+    "gb[a-,b1-]": "-2"
+   }
+  }
+ ],
+ "scalar_part_s1": [
+  {
+   "i": 0,
+   "j": 1,
+   "value": {
+    "gb[a+,b1+]": "-1/2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 2,
+   "value": {
+    "gb[a+,b1-]": "-1/2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 3,
+   "value": {
+    "gb[a-,b1+]": "1/2"
+   }
+  },
+  {
+   "i": 0,
+   "j": 4,
+   "value": {
+    "gb[a-,b1-]": "1/2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 0,
+   "value": {
+    "gb[a+,b1+]": "1/2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 6,
+   "value": {
+    "gb[a+,b1+]": "1/2"
+   }
+  },
+  {
+   "i": 1,
+   "j": 7,
+   "value": {
+    "gb[a+,b1-]": "1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 0,
+   "value": {
+    "gb[a+,b1-]": "1/2"
+   }
+  },
+  {
+   "i": 2,
+   "j": 5,
+   "value": {
+    "gb[a+,b1+]": "-1"
+   }
+  },
+  {
+   "i": 2,
+   "j": 6,
+   "value": {
+    "gb[a+,b1-]": "-1/2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 0,
+   "value": {
+    "gb[a-,b1+]": "-1/2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 6,
+   "value": {
+    "gb[a-,b1+]": "1/2"
+   }
+  },
+  {
+   "i": 3,
+   "j": 7,
+   "value": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 0,
+   "value": {
+    "gb[a-,b1-]": "-1/2"
+   }
+  },
+  {
+   "i": 4,
+   "j": 5,
+   "value": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "i": 4,
+   "j": 6,
+   "value": {
+    "gb[a-,b1-]": "-1/2"
+   }
+  },
+  {
+   "i": 5,
+   "j": 2,
+   "value": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "i": 5,
+   "j": 4,
+   "value": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "i": 6,
+   "j": 1,
+   "value": {
+    "gb[a+,b1+]": "-1/2"
+   }
+  },
+  {
+   "i": 6,
+   "j": 2,
+   "value": {
+    "gb[a+,b1-]": "1/2"
+   }
+  },
+  {
+   "i": 6,
+   "j": 3,
+   "value": {
+    "gb[a-,b1+]": "-1/2"
+   }
+  },
+  {
+   "i": 6,
+   "j": 4,
+   "value": {
+    "gb[a-,b1-]": "1/2"
+   }
+  },
+  {
+   "i": 7,
+   "j": 1,
+   "value": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "i": 7,
+   "j": 3,
+   "value": {
+    "gb[a-,b1-]": "-1"
+   }
+  }
+ ],
+ "f_gb": [
+  {
+   "m": 1,
+   "j": 0,
+   "phi_mj": {
+    "gb[a-,b1-]": "1"
+   }
+  },
+  {
+   "m": 2,
+   "j": 0,
+   "phi_mj": {
+    "gb[a-,b1+]": "-1"
+   }
+  },
+  {
+   "m": 3,
+   "j": 0,
+   "phi_mj": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "m": 4,
+   "j": 0,
+   "phi_mj": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "m": 5,
+   "j": 1,
+   "phi_mj": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "m": 5,
+   "j": 3,
+   "phi_mj": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "m": 6,
+   "j": 1,
+   "phi_mj": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "m": 6,
+   "j": 2,
+   "phi_mj": {
+    "gb[a+,b1-]": "-1"
+   }
+  },
+  {
+   "m": 6,
+   "j": 3,
+   "phi_mj": {
+    "gb[a-,b1+]": "1"
+   }
+  },
+  {
+   "m": 6,
+   "j": 4,
+   "phi_mj": {
+    "gb[a-,b1-]": "-1"
+   }
+  },
+  {
+   "m": 7,
+   "j": 2,
+   "phi_mj": {
+    "gb[a+,b1+]": "1"
+   }
+  },
+  {
+   "m": 7,
+   "j": 4,
+   "phi_mj": {
+    "gb[a-,b1+]": "1"
+   }
+  }
+ ],
+ "lambda_gb": [
+  {
+   "j": 1,
+   "value": {
+    "gb[a+,b1+]": "1/2"
+   }
+  },
+  {
+   "j": 2,
+   "value": {
+    "gb[a+,b1-]": "1/2"
+   }
+  },
+  {
+   "j": 3,
+   "value": {
+    "gb[a-,b1+]": "1/2"
+   }
+  },
+  {
+   "j": 4,
+   "value": {
+    "gb[a-,b1-]": "1/2"
+   }
+  }
+ ],
+ "d_sigma": {
+  "+": "(gb_ap_b1m)*b1+ + (-gb_ap_b1p)*b1-",
+  "-": "(gb_am_b1m)*b1+ + (-gb_am_b1p)*b1-"
+ },
+ "verification": {
+  "algebra": {
+   "closed_no_scalar": true,
+   "structure_constants_gb_free": true,
+   "super_skew_symmetric": true,
+   "super_jacobi": true,
+   "weights_consistent": true,
+   "parity_equals_epsilon_weight_mod_2": true,
+   "epsilon_weights_present": [
+    -1,
+    0,
+    1
+   ],
+   "cartan_indices": [
+    0,
+    6
+   ],
+   "center_trivial": true
+  },
+  "gamma_is_cocycle": true,
+  "gamma_linear_in_gb": true,
+  "primed_oscillators_undeformed": true,
+  "f_is_odd": true,
+  "phi_is_homomorphism_on_g": true,
+  "gamma_equals_delta_f_in_g": true,
+  "scalar_parts_equal_delta_minusF_scalars": true,
+  "gamma_nonzero_for_generic_gb": true,
+  "rank_gb_to_gamma": 4,
+  "gb_to_gamma_injective": true,
+  "linear_solve": {
+   "n_unknowns_phi": 32,
+   "rank_delta1": 28,
+   "dim_ker_delta1_odd": 4,
+   "solvable_per_gb_direction": {
+    "gb[a+,b1+]": true,
+    "gb[a+,b1-]": true,
+    "gb[a-,b1+]": true,
+    "gb[a-,b1-]": true
+   },
+   "solution_verified_per_gb_direction": {
+    "gb[a+,b1+]": true,
+    "gb[a+,b1-]": true,
+    "gb[a-,b1+]": true,
+    "gb[a-,b1-]": true
+   },
+   "particular_solutions": {
+    "gb[a+,b1+]": {
+     "N_a<-E[e+d1]": "1",
+     "E[-e+d1]<-E[2d1]": "-2",
+     "E[-e-d1]<-N_1": "-1"
+    },
+    "gb[a+,b1-]": {
+     "N_a<-E[e-d1]": "1",
+     "E[-e+d1]<-N_1": "-1",
+     "E[-e-d1]<-E[-2d1]": "-2"
+    },
+    "gb[a-,b1+]": {
+     "N_a<-E[-e+d1]": "-1",
+     "E[e+d1]<-E[2d1]": "-2",
+     "E[e-d1]<-N_1": "-1"
+    },
+    "gb[a-,b1-]": {
+     "N_a<-E[-e-d1]": "-1",
+     "E[e+d1]<-N_1": "-1",
+     "E[e-d1]<-E[-2d1]": "-2"
+    }
+   }
+  },
+  "cohomology_weight_zero": {
+   "weight_zero_subcomplex": true,
+   "dim_C1_odd": 0,
+   "dim_C2_odd": 0,
+   "rank_d2": 0,
+   "dim_Z2_odd": 0,
+   "dim_B2_odd": 0,
+   "dim_H2_odd": 0,
+   "dim_Z1_odd": 0,
+   "dim_H1_odd": 0,
+   "d2_after_delta_is_zero": true
+  },
+  "cohomology_full_complex": {
+   "weight_zero_subcomplex": false,
+   "dim_C1_odd": 32,
+   "dim_C2_odd": 128,
+   "rank_d2": 100,
+   "dim_Z2_odd": 28,
+   "dim_B2_odd": 28,
+   "dim_H2_odd": 0,
+   "dim_Z1_odd": 4,
+   "dim_H1_odd": 0,
+   "d2_after_delta_is_zero": true
+  }
+ },
+ "conclusion": "Every inhomogeneous deformation gamma_gb of C(n+1) is trivial: gamma_gb = delta f_gb for the explicit odd map f_gb; no condition on gb is needed.  gamma_gb is a NONZERO coboundary whenever gb != 0.",
+ "runtime_seconds": 0.1
+}
