@@ -1,0 +1,996 @@
+{
+ "schema_version": "5.0",
+ "layer": 4,
+ "algebra": {
+  "family": "C",
+  "m": 1,
+  "n": 3,
+  "cartan_type": "C(4)",
+  "dimension": {
+   "total": 34,
+   "even": 22,
+   "odd": 12
+  }
+ },
+ "schema1_file": "C_3_structure.json",
+ "schema3_file": "C_3_evaluated_single.json",
+ "profile": "single",
+ "gb_assignment": {
+  "gb_a1p_b1p": "1",
+  "gb_a1p_b1m": "0",
+  "gb_a1p_b2p": "0",
+  "gb_a1p_b2m": "0",
+  "gb_a1p_b3p": "0",
+  "gb_a1p_b3m": "0",
+  "gb_a1m_b1p": "0",
+  "gb_a1m_b1m": "0",
+  "gb_a1m_b2p": "0",
+  "gb_a1m_b2m": "0",
+  "gb_a1m_b3p": "0",
+  "gb_a1m_b3m": "0"
+ },
+ "f_definition": {
+  "type": "odd linear map f: g -> g",
+  "origin": "oscillator shift b_k^s -> b_k^s + kappa*(gb_{+,k,s} a_1^- + gb_{-,k,s} a_1^+); phi(Z) = Z + kappa F(Z); f = -F",
+  "parity_rule": "|f(Z)| = |Z| + 1",
+  "formula_even": "f(Z) = -(sum over boson letters of Z) of the letter replaced by its shift (normal-ordered, kappa leftmost)",
+  "formula_odd": "f(E_{+eps,s delta_k}) = gb_{+,k,s} (a_1^+ a_1^-) = gb_{+,k,s} (N_a - 1/2) + gb_{+,k,s}/2 K ;  f(E_{-eps,s delta_k}) = gb_{-,k,s} (1 - a_1^+ a_1^-) = -gb_{-,k,s} (N_a - 1/2) + gb_{-,k,s}/2 K",
+  "K_component": "f(Z) has a K-component lambda(Z) for odd Z; it is NOT part of the g-valued map and is stored in f_K_component"
+ },
+ "coboundary_formula": "(delta f)(X,Y) = (-1)^{|X|}[X,f(Y)] - (-1)^{(|X|+1)|Y|}[Y,f(X)] - f([X,Y])",
+ "f_map": {
+  "description": "f(Z_j) = sum_i phi_ij Z_i ; stored as {Z_j: {Z_i: phi_ij}} (g-valued part)",
+  "entries": {
+   "H_1": {
+    "E_eps1_del1_mm": "-1"
+   },
+   "H_2": {
+    "E_eps1_del1_mm": "-1"
+   },
+   "H_3": {},
+   "H_4": {},
+   "E_2del1_p": {
+    "E_eps1_del1_mp": "-2"
+   },
+   "E_2del2_p": {},
+   "E_2del3_p": {},
+   "E_del1_del2_pp": {
+    "E_eps1_del2_mp": "-1"
+   },
+   "E_del1_del3_pp": {
+    "E_eps1_del3_mp": "-1"
+   },
+   "E_del2_del3_pp": {},
+   "E_2del1_m": {},
+   "E_2del2_m": {},
+   "E_2del3_m": {},
+   "E_del1_del2_mm": {},
+   "E_del1_del3_mm": {},
+   "E_del2_del3_mm": {},
+   "E_del1_del2_pm": {
+    "E_eps1_del2_mm": "-1"
+   },
+   "E_del1_del3_pm": {
+    "E_eps1_del3_mm": "-1"
+   },
+   "E_del2_del3_pm": {},
+   "E_del1_del2_mp": {},
+   "E_del1_del3_mp": {},
+   "E_del2_del3_mp": {},
+   "E_eps1_del1_pp": {
+    "H_1": "1",
+    "H_2": "-1",
+    "H_3": "-1",
+    "H_4": "1"
+   },
+   "E_eps1_del2_pp": {},
+   "E_eps1_del3_pp": {},
+   "E_eps1_del1_pm": {},
+   "E_eps1_del2_pm": {},
+   "E_eps1_del3_pm": {},
+   "E_eps1_del1_mp": {},
+   "E_eps1_del2_mp": {},
+   "E_eps1_del3_mp": {},
+   "E_eps1_del1_mm": {},
+   "E_eps1_del2_mm": {},
+   "E_eps1_del3_mm": {}
+  }
+ },
+ "f_K_component": {
+  "description": "lambda(Z) = K-coefficient of f(Z) (nonzero only for odd Z); not used in coboundary.entries",
+  "entries": {
+   "E_eps1_del1_pp": "1/2"
+  }
+ },
+ "coboundary": {
+  "description": "(delta f)(X,Y) = sum_Z coeff * Z for the g-valued f; all ordered pairs with nonzero value",
+  "entries": [
+   {
+    "X": "H_1",
+    "Y": "H_2",
+    "Z": "E_eps1_del1_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_2del1_p",
+    "Z": "E_eps1_del1_mp",
+    "coeff": "2"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_eps1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_eps1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_eps1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_eps1_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_1",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_del1_del2_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_del1_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_del1_del2_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_del1_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_2",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_3",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "H_4",
+    "coeff": "1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_del1_del2_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_del1_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_2del1_m",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_del1_del2_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_del1_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "H_1",
+    "Z": "E_eps1_del1_mp",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_2del1_p",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_del1_del2_pp",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_del1_del3_pp",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_2",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_3",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "H_4",
+    "coeff": "2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_del1_del2_pm",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_del1_del3_pm",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "H_1",
+    "Z": "E_eps1_del2_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_del1_del2_pp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_2del2_p",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_del2_del3_pp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_del1_del2_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "H_3",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "H_4",
+    "coeff": "1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_del2_del3_pm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "H_1",
+    "Z": "E_eps1_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_del1_del3_pp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_del2_del3_pp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_2del3_p",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_del1_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_del2_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del3_pm",
+    "Z": "H_4",
+    "coeff": "1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "H_1",
+    "Z": "E_eps1_del2_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_del1_del2_pm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del2_pp",
+    "Z": "H_3",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del2_pp",
+    "Z": "H_4",
+    "coeff": "1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_del2_del3_mp",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_del1_del2_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_2del2_m",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_del2_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "H_1",
+    "Z": "E_eps1_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_del1_del3_pm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_del2_del3_pm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del3_pp",
+    "Z": "H_4",
+    "coeff": "1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_del1_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_del2_del3_mm",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_2del3_m",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "H_1",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "H_2",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "H_3",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "H_4",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_2del1_p",
+    "Z": "E_2del1_p",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_del1_del2_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_del1_del3_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_del1_del2_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_del1_del3_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pp",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_eps1_del2_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_eps1_del3_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_eps1_del2_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_eps1_del3_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "H_1",
+    "Z": "E_del1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "H_2",
+    "Z": "E_del1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_2del1_p",
+    "Z": "E_del1_del2_pp",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_2del2_p",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_del2_del3_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del2_pm",
+    "Z": "H_3",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del2_pm",
+    "Z": "H_4",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_del2_del3_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del2_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "H_1",
+    "Z": "E_del1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "H_2",
+    "Z": "E_del1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_2del1_p",
+    "Z": "E_del1_del3_pp",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_del2_del3_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_2del3_p",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_del2_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_del1_del3_pm",
+    "Z": "H_4",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del3_pp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_1",
+    "Z": "E_2del1_m",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "H_2",
+    "Z": "E_2del1_m",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "H_2",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "H_3",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "H_4",
+    "coeff": "-2"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_del1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_del1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_del1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_del1_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del1_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "H_1",
+    "Z": "E_del1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "H_2",
+    "Z": "E_del1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_2del1_p",
+    "Z": "E_del1_del2_pm",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del2_pp",
+    "Z": "H_3",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del2_pp",
+    "Z": "H_4",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del3_pp",
+    "Z": "E_del2_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_2del2_m",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_del2_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del2_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "H_1",
+    "Z": "E_del1_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "H_2",
+    "Z": "E_del1_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_2del1_p",
+    "Z": "E_del1_del3_pm",
+    "coeff": "2"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_del1_del2_pp",
+    "Z": "E_del2_del3_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_del1_del3_pp",
+    "Z": "H_4",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_del1_del2_pm",
+    "Z": "E_del2_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_del1_del3_pm",
+    "Z": "E_2del3_m",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del3_pm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_eps1_del1_mp",
+    "Z": "E_eps1_del3_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pp",
+    "Z": "E_eps1_del1_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del2_pp",
+    "Z": "E_eps1_del2_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del3_pp",
+    "Z": "E_eps1_del3_mp",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del1_pm",
+    "Z": "E_eps1_del1_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "E_eps1_del2_mm",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_mp",
+    "Y": "E_eps1_del3_pm",
+    "Z": "E_eps1_del3_mm",
+    "coeff": "1"
+   }
+  ]
+ },
+ "K_extension": {
+  "description": "extra terms -lambda([X,Y]) K that delta(f + lambda K) would add; compare with the Z=K entries of Layer 3",
+  "entries": [
+   {
+    "X": "H_1",
+    "Y": "E_eps1_del1_pp",
+    "Z": "K",
+    "coeff": "-1"
+   },
+   {
+    "X": "H_2",
+    "Y": "E_eps1_del1_pp",
+    "Z": "K",
+    "coeff": "-1/2"
+   },
+   {
+    "X": "E_2del1_p",
+    "Y": "E_eps1_del1_pm",
+    "Z": "K",
+    "coeff": "1"
+   },
+   {
+    "X": "E_del1_del2_pp",
+    "Y": "E_eps1_del2_pm",
+    "Z": "K",
+    "coeff": "1/2"
+   },
+   {
+    "X": "E_del1_del3_pp",
+    "Y": "E_eps1_del3_pm",
+    "Z": "K",
+    "coeff": "1/2"
+   },
+   {
+    "X": "E_del1_del2_pm",
+    "Y": "E_eps1_del2_pp",
+    "Z": "K",
+    "coeff": "-1/2"
+   },
+   {
+    "X": "E_del1_del3_pm",
+    "Y": "E_eps1_del3_pp",
+    "Z": "K",
+    "coeff": "-1/2"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_1",
+    "Z": "K",
+    "coeff": "1"
+   },
+   {
+    "X": "E_eps1_del1_pp",
+    "Y": "H_2",
+    "Z": "K",
+    "coeff": "1/2"
+   },
+   {
+    "X": "E_eps1_del2_pp",
+    "Y": "E_del1_del2_pm",
+    "Z": "K",
+    "coeff": "1/2"
+   },
+   {
+    "X": "E_eps1_del3_pp",
+    "Y": "E_del1_del3_pm",
+    "Z": "K",
+    "coeff": "1/2"
+   },
+   {
+    "X": "E_eps1_del1_pm",
+    "Y": "E_2del1_p",
+    "Z": "K",
+    "coeff": "-1"
+   },
+   {
+    "X": "E_eps1_del2_pm",
+    "Y": "E_del1_del2_pp",
+    "Z": "K",
+    "coeff": "-1/2"
+   },
+   {
+    "X": "E_eps1_del3_pm",
+    "Y": "E_del1_del3_pp",
+    "Z": "K",
+    "coeff": "-1/2"
+   }
+  ]
+ },
+ "summary": {
+  "coboundary_entries": 131,
+  "K_extension_entries": 14,
+  "pairs_with_nonzero_coboundary": 119,
+  "f_even_to_odd_parity_ok": true
+ },
+ "metadata": {
+  "generated_by": "src/C_coboundary.py",
+  "generation_date": "2026-10-09",
+  "math": "docs/math/C_coboundary_definition.md"
+ }
+}

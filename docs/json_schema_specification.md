@@ -394,4 +394,53 @@ Profiles provided by `src/C_evaluate.py`:
 
 ## Schema 4: Coboundary structure (`C_{n}_coboundary.json`) — defined in I07
 
-*(filled in by Issue I07)*
+Mathematical input (`docs/math/C_coboundary_definition.md`): an odd linear map
+$f:\mathfrak g\to\mathfrak g$, $f(Z_j) = \sum_i \phi_{ij} Z_i$, and
+$(\delta f)(X,Y) = (-1)^{|X|}[X,f(Y)] - (-1)^{(|X|+1)|Y|}[Y,f(X)] - f([X,Y])$.
+
+The map stored here is the canonical candidate obtained from the oscillator shift
+$b_k^s \mapsto b_k^s + \kappa(\mathrm{gb}_{+,k,s}a_1^- + \mathrm{gb}_{-,k,s}a_1^+)$:
+$\phi(Z) = Z + \kappa F(Z)$, $f := -F$. $F(Z)\in\mathfrak g\oplus\mathbb C K$; the $K$-coefficient
+$\lambda(Z)$ of $f(Z)$ is stored separately and is **not** used in `coboundary.entries`.
+
+Files: `C_{n}_coboundary.json` (profile `all_plus`, also contains the symbolic data) and
+`C_{n}_coboundary_<profile>.json` for the other Schema 3 profiles.
+
+```json
+{
+  "schema_version": "5.0",
+  "layer": 4,
+  "algebra": { ... },
+  "schema1_file": "C_1_structure.json",
+  "schema3_file": "C_1_evaluated.json",
+  "profile": "all_plus",
+  "gb_assignment": { "gb_a1p_b1p": "1", ... },
+  "f_definition": { "type": "odd linear map f: g -> g", "origin": "...", "parity_rule": "|f(Z)| = |Z| + 1", ... },
+  "coboundary_formula": "(delta f)(X,Y) = (-1)^{|X|}[X,f(Y)] - (-1)^{(|X|+1)|Y|}[Y,f(X)] - f([X,Y])",
+  "f_map": {
+    "description": "f(Z_j) = sum_i phi_ij Z_i ; stored as {Z_j: {Z_i: phi_ij}} (g-valued part)",
+    "entries": { "E_2del1_p": {"E_eps1_del1_mp": "-2", "E_eps1_del1_pp": "-2"}, "E_eps1_del1_pp": {"H_1": "1", "H_2": "1"}, ... }
+  },
+  "f_K_component": {
+    "description": "lambda(Z) = K-coefficient of f(Z) (nonzero only for odd Z)",
+    "entries": { "E_eps1_del1_pp": "1/2", ... }
+  },
+  "coboundary": {
+    "description": "(delta f)(X,Y) = sum_Z coeff * Z for the g-valued f; all ordered pairs with nonzero value",
+    "entries": [ {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "H_2", "coeff": "-1"}, ... ]
+  },
+  "K_extension": {
+    "description": "extra terms -lambda([X,Y]) K that delta(f + lambda K) would add",
+    "entries": [ {"X": "H_2", "Y": "E_eps1_del1_pp", "Z": "K", "coeff": "1/2"}, ... ]
+  },
+  "summary": { "coboundary_entries": 92, "K_extension_entries": 20, "pairs_with_nonzero_coboundary": 46, "f_even_to_odd_parity_ok": true },
+  "symbolic": { "f_map": {...}, "f_K_component": {...}, "coboundary_entries": [...], "K_extension_entries": [...] },
+  "metadata": { ... }
+}
+```
+
+* `f_map.entries[Z_j][Z_i]` $= \phi_{ij}$ (rational string; symbolic linear form in `symbolic`).
+  Parity: every $Z_i$ has parity $1 - |Z_j|$.
+* `coboundary.entries` has the same `{X, Y, Z, coeff}` shape as Layer 3's `evaluated_gamma.entries`
+  with `Z` always a basis label, so the two layers can be compared entry by entry.
+* `K_extension.entries` has `Z = "K"` only; it is the counterpart of the `Z = "K"` entries of Layer 3.
