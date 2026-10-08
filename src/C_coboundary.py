@@ -39,14 +39,10 @@ def _bracket_map(
     return result
 
 
-def coboundary_coefficients(data: dict) -> tuple[dict, list[dict]]:
+def coefficients_for_map(
+    data: dict, odd_map: dict[str, LinearCombination]
+) -> list[dict]:
     table = StructureTable(data)
-    if "H_eps" not in data["basis"]["even"] or "E_eps1_del1_pp" not in data["basis"]["odd"]:
-        raise ValueError("The rank-one Cartan and odd root generators are required")
-    odd_map: dict[str, LinearCombination] = {
-        "H_eps": {"E_eps1_del1_pp": Fraction(1)},
-        "E_eps1_del1_pp": {"H_eps": Fraction(1)},
-    }
     coefficients = []
     for left_index, x in enumerate(table.names):
         for y in table.names[left_index:]:
@@ -77,7 +73,20 @@ def coboundary_coefficients(data: dict) -> tuple[dict, list[dict]]:
                         "coeff": str(coefficient),
                     }
                 )
-    return odd_map, coefficients
+    return coefficients
+
+
+def coboundary_coefficients(data: dict) -> tuple[dict, list[dict]]:
+    if (
+        "H_eps" not in data["basis"]["even"]
+        or "E_eps1_del1_pp" not in data["basis"]["odd"]
+    ):
+        raise ValueError("The rank-one Cartan and odd root generators are required")
+    odd_map: dict[str, LinearCombination] = {
+        "H_eps": {"E_eps1_del1_pp": Fraction(1)},
+        "E_eps1_del1_pp": {"H_eps": Fraction(1)},
+    }
+    return odd_map, coefficients_for_map(data, odd_map)
 
 
 def generate_coboundary(evaluated_data: dict) -> dict:
