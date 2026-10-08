@@ -280,7 +280,82 @@ supplementary-fermion keys, which have no meaning for C(n+1).
 
 ## 2. Schema 2 — Inhomogeneous deformation (`C_{n}_gamma.json`)
 
-*(Specified in I05.)*
+Mathematical content (`docs/math/C_inhomogeneous_definition.md`): the oscillator relations are
+deformed to $[b_j^s, a_1^\sigma] = -\mathrm{gb}_{\sigma,j,s}\,\kappa$ with $\kappa$ odd, $\kappa^2=0$,
+super-central. On $\mathfrak g$ this induces
+$[X,Y]_\gamma = [X,Y]_0 + \kappa\,\gamma(X,Y)$ with $\gamma(X,Y) \in \mathfrak g \oplus \mathbb{C}K$.
+$\gamma$ is computed exactly and symbolically in the $4n$ parameters gb.
+
+### 2.1 Top-level keys
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {"family": "C", "m": 1, "n": 1, "cartan_type": "C(2)", "structure_file": "C_1_structure.json", "dimension": {...}},
+  "gb_matrix": { ... },
+  "deformed_oscillator_relations": { ... },
+  "central_elements": { "kappa": {...}, "K": {...} },
+  "inhomogeneous_deformation": { ... },
+  "metadata": { ... }
+}
+```
+
+### 2.2 `gb_matrix` (size 2 × 2n)
+
+```json
+{
+  "shape": [2, 2],
+  "rows": ["a_1_p", "a_1_m"],
+  "columns": ["b_1_p", "b_1_m"],
+  "entries": [["gb_a1p_b1p", "gb_a1p_b1m"], ["gb_a1m_b1p", "gb_a1m_b1m"]],
+  "parameter_count": 4,
+  "parameters": ["gb_a1p_b1p", "gb_a1p_b1m", "gb_a1m_b1p", "gb_a1m_b1m"],
+  "parity_note": "..."
+}
+```
+
+Row = fermionic oscillator $a_1^\sigma$, column = bosonic oscillator $b_j^s$; entry label
+`gb_a1{σ}_b{j}{s}` $= \mathrm{gb}_{\sigma,j,s}$.
+
+### 2.3 `deformed_oscillator_relations`
+
+List of the $4n$ relations `[b_j_s, a_1_σ] = -gb_a1σ_bjs * kappa`; all other relations unchanged.
+
+### 2.4 `inhomogeneous_deformation`
+
+```json
+{
+  "description": "[X, Y]_gamma = [X, Y]_0 + kappa * gamma(X, Y); gamma(X,Y) = sum_Z coeff * Z",
+  "codomain": "g (+) C K : entries with Z = 'K' are the constant (central) components",
+  "parity_rule": "p(Z) = p(X) + p(Y) + 1 (mod 2), with p(K) = 0",
+  "coefficient_format": "coeff: polynomial in gb as a string; coeff_terms: {monomial: rational}",
+  "pairs_stored": "all ordered pairs (X, Y) with gamma(X, Y) != 0",
+  "gamma": [
+    {"X": "E_eps1_del1_pm", "Y": "E_eps1_del1_mp", "Z": "E_eps1_del1_pp",
+     "coeff": "gb_a1m_b1m", "coeff_terms": {"gb_a1m_b1m": "1"}}
+  ],
+  "statistics": {"nonzero_pairs": 54, "entries": 112, "entries_with_K": 20}
+}
+```
+
+* `gamma` entries have the same `X, Y, Z` shape as Schema 1 `structure_constants`; `coeff` is a
+  **linear homogeneous polynomial** in the gb parameters (string), and `coeff_terms` is its exact
+  machine-readable form (monomial string → rational string). Z = `"K"` is allowed and denotes the
+  constant term (the even central element $K=1$).
+* Parity rule: since $\kappa$ is odd, $p(Z)=p(X)+p(Y)+1$: odd–odd pairs deform into odd generators,
+  even–odd pairs into even generators or $K$, even–even pairs (Cartan × Cartan, Cartan × sp root)
+  into odd generators. Purely bosonic pairs are undeformed.
+* Statistics for the generated data: n=1: 54 pairs / 112 entries / 20 with K; n=2: 260 / 652 / 84;
+  n=3: 714 / 1840 / 180.
+
+### 2.5 Consistency guarantees (checked by `src/C_gamma.py`, `tests/test_C_gamma.py`)
+
+1. The gb-independent part of the deformed bracket equals Schema 1 `structure_constants` exactly.
+2. Every γ coefficient is linear and homogeneous in gb (no constant part, degree 1), and all $4n$
+   parameters occur.
+3. Parity rule above.
+4. **2-cocycle condition**: the deformed bracket on $L=\mathfrak g\oplus\kappa(\mathfrak g\oplus\mathbb{C}K)$
+   satisfies the super Jacobi identity at order κ for all basis triples (symbolically in gb).
 
 ---
 
