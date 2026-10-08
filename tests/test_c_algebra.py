@@ -132,6 +132,20 @@ def test_generator_writes_schema1(tmp_path):
     assert all(doc['parity'][x] == 1 for x in doc['basis']['odd'])
 
 
+def test_verifier_detects_corrupted_structure_constant():
+    # Negative control: the independent verifier must flag a perturbed structure constant.
+    from verify_C_structure import check_table, load_structure
+    doc, basis, parity, table = load_structure(1)
+    _pairs, _triples, clean = check_table(basis, parity, table)
+    assert not any(clean.values())
+    corrupted = {k: dict(v) for k, v in table.items()}
+    key = next(k for k, v in corrupted.items() if v and parity[k[0]] == parity[k[1]] == 1)
+    z = next(iter(corrupted[key]))
+    corrupted[key][z] = corrupted[key][z] + 1
+    _pairs, _triples, bad = check_table(basis, parity, corrupted)
+    assert bad['jacobi'] or bad['antisymmetry']
+
+
 def _weights(elem, n):
     """Eigenvalues of ad(F) (F = a^+a^-) and ad(N_k) (N_k = b_k^+b_k^-) on a homogeneous element.
 
