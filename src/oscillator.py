@@ -37,6 +37,8 @@ class LinPoly:
     def __init__(self, terms=None):
         if terms is None:
             self.terms: Dict[Tuple[str, ...], Fraction] = {}
+        elif isinstance(terms, LinPoly):
+            self.terms = dict(terms.terms)
         elif isinstance(terms, dict):
             self.terms = {k: Fraction(v) for k, v in terms.items() if v != 0}
         else:  # scalar
