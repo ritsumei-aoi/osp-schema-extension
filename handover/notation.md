@@ -21,8 +21,10 @@ File naming: $C_{n}$ with $n$ the bosonic rank (so $C(2)$ is `C_1_*`).
   $\{a^{-},a^{+}\}=1$, and $(a^{\pm})^2=0$ (the CAR includes $\{a^\pm,a^\pm\}=0$).
 - Bosons $b_k^{\pm}$, $k=1,\dots,n$, parity 0: $[b_k^{-},b_l^{+}]=\delta_{kl}$, $[b_k^\pm,b_l^\pm]=0$.
 - $a^{\pm}$ and $b_k^{\pm}$ commute.
-- Deformation (`C_inhomogeneous_definition.md`): $[b_j^{s},a^{\sigma}]=-\mathrm{gb}_{\sigma,j,s}\,\kappa$, with $\kappa$ central, $\kappa^2=0$.
+- Deformation (`C_inhomogeneous_definition.md`): $[b_j^{s},a^{\sigma}]=-\mathrm{gb}_{\sigma,j,s}\,\kappa$, with $\kappa$ odd, $\kappa^2=0$.
   Equivalently $b_j^{s}a^{\sigma}=a^{\sigma}b_j^{s}-\mathrm{gb}_{\sigma,j,s}\kappa$.
+  $\kappa$ is **super-central**: it commutes with bosons and anticommutes with $a^{\pm}$ (decision A5).
+  $\kappa$ is written at the right end of each monomial.
 
 **Normal ordering (PBW convention of oscillator words):** fermions to the left of bosons,
 $a^{+}$ before $a^{-}$, $b^{+}$ before $b^{-}$, bosons sorted by index.
@@ -122,3 +124,14 @@ as `gamma_K`. $K$ is not a basis element (as in the B(0,n) schema).
   differs from the original element by a multiple of $\kappa K$ (central), so only the $K$-component of
   $\gamma$ can change. The $\mathfrak g$-valued $\gamma$ and its triviality are unchanged.
 - **A4 (K-component).** Recorded separately, see §5.
+- **A5 (super-centrality of $\kappa$).** $\kappa$ is odd, so "central" must mean super-central: it anticommutes
+  with the odd oscillators $a^{\pm}$. A first version treated $\kappa$ as commuting with everything. The engine was then
+  non-associative (104 of 512 triple products failed for $n=1$). The Leibniz rule on $\{a^-,a^+\}=1$ requires
+  $[b,a^-a^+ + a^+a^-]=0$, which holds only if $\kappa a^\pm=-a^\pm\kappa$. This is the fix, verified by
+  associativity (0 failures) and by the super-Jacobi identity in the algebra (0 failures).
+- **A7 (side of $\kappa$ in $\gamma$).** The doc writes $[X,Y]_\gamma=[X,Y]_0+\kappa\,\gamma(X,Y)$, with $\kappa$ on the left.
+  Internally the engine writes $\kappa$ at the right end, which changes $\gamma$ by $(-1)^{p(X)+p(Y)+1}$. The exported $\gamma$ is the
+  left convention. Check: in that convention the cocycle condition holds with 0 failures. In the right convention it fails
+  (462 for $n=1$), which confirms the choice.
+- **A6 (cocycle check).** The sign rules for passing the odd $\kappa$ through elements are error-prone. The cocycle
+  condition is therefore checked directly as the super-Jacobi defect in the associative algebra, not from a hand formula.

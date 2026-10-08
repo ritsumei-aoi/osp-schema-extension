@@ -108,7 +108,7 @@ There is no `supplementary_fermion` key.
 
 ```json
 {
-  "kappa": {"parity": 1, "relation": "central, kappa^2 = 0", "role": "formal nilpotent parameter of the deformation"},
+  "kappa": {"parity": 1, "relation": "super-central (commutes with bosons, anticommutes with a_1^±), kappa^2 = 0", "role": "formal nilpotent parameter of the deformation"},
   "K": {"parity": 0, "relation": "central, identified with the scalar 1", "role": "not a basis element; its components are recorded in Schema 2/3"}
 }
 ```

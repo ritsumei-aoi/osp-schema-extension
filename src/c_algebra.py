@@ -7,13 +7,16 @@ Associative algebra used for all computations (exact, rational arithmetic):
   commutators zero
 * fermions and bosons commute (b is even)
 * deformation (C_inhomogeneous_definition.md):  [b_k^s, a^sigma] = -gb[sigma,k,s] * kappa,
-  kappa central, kappa^2 = 0.  Hence  b a = a b - gb*kappa.
+  kappa odd and super-central (it anticommutes with the fermion letters, commutes with bosons),
+  kappa^2 = 0.  Hence  b a = a b - gb*kappa.  The super-centrality is forced by consistency:
+  Leibniz on {a^-, a^+} = 1 gives [b, 1] = 0 only if kappa anticommutes with a^+ and a^-.
 
 An element is a dict  {(fermion_word, boson_word, tag): Fraction}.
   * fermion_word : normal-ordered tuple of ('F', '+'/'-'), at most a^+ a^-
   * boson_word   : normal-ordered tuple of ('B', '+'/'-', k), '+' letters first, sorted by k
   * tag          : None for the kappa-free part, or the gb label (sigma, k, s) meaning the
-                   term carries kappa * gb[sigma,k,s]  (kappa^2 = 0 means one tag at most)
+                   term carries kappa * gb[sigma,k,s], with kappa written at the right end
+                   of the monomial (kappa^2 = 0 means one tag at most)
 
 Normal ordering convention (also the PBW convention of the oscillator words):
 fermions to the left of bosons, a^+ before a^-, b^+ before b^-, bosons sorted by index.
@@ -53,10 +56,12 @@ def _normal(word, tag):
         swapped = word[:i] + (y, x) + word[i + 2:]
         rest = word[:i] + word[i + 2:]
         if x[0] == 'B' and y[0] == 'F':
-            # b a = a b + [b, a] = a b - gb * kappa   (kappa only once, so tag must be None)
+            # b a = a b + [b, a] = a b - gb * kappa   (kappa only once, so tag must be None).
+            # kappa is odd: moving it past the fermion letters R to its right gives (-1)^{#R}.
             out = _accumulate({}, _normal(swapped, tag), 1)
             if tag is None:
-                _accumulate(out, _normal(rest, (y[1], x[2], x[1])), -1)
+                sign = (-1) ** sum(1 for letter in word[i + 2:] if letter[0] == 'F')
+                _accumulate(out, _normal(rest, (y[1], x[2], x[1])), -sign)
             return _clean(out)
         if x[0] == 'F' and y[0] == 'F':
             if x[1] == y[1]:
@@ -93,20 +98,29 @@ def lin(*terms):
 
 
 def mul(X, Y):
-    """Associative product in the deformed algebra (kappa^2 = 0)."""
+    """Associative product in the deformed algebra (kappa^2 = 0).
+
+    kappa sits at the right end of each monomial.  If X carries kappa, moving it past the
+    fermion letters of Y gives the sign (-1)^{#fermions of Y}.
+    """
     out = {}
     for (f1, b1, t1), c1 in X.items():
         for (f2, b2, t2), c2 in Y.items():
             if t1 is not None and t2 is not None:
                 continue
-            tag = t1 if t1 is not None else t2
-            _accumulate(out, _normal(f1 + b1 + f2 + b2, tag), c1 * c2)
+            if t1 is not None:
+                tag, sign = t1, (-1) ** len(f2)
+            else:
+                tag, sign = t2, 1
+            _accumulate(out, _normal(f1 + b1 + f2 + b2, tag), sign * c1 * c2)
     return _clean(out)
 
 
 def parity(X):
-    """Parity of a homogeneous element: number of fermionic letters mod 2."""
-    parities = {len(key[0]) % 2 for key in X}
+    """Parity of a homogeneous element: fermionic letters plus kappa (odd) mod 2."""
+    if not X:
+        return 0  # the zero element is homogeneous of either parity
+    parities = {(len(key[0]) + (key[2] is not None)) % 2 for key in X}
     if len(parities) != 1:
         raise ValueError('element is not homogeneous')
     return parities.pop()
@@ -249,7 +263,8 @@ def structure(n):
 
     Returns (basis, sc, gamma, gamma_K) where
       sc[(a, b)]          = {c: Fraction}  with [X_a, X_b]_0 = sum_c sc c X_c
-      gamma[(a, b)][tag]  = {c: Fraction}  g-valued kappa*gb_tag part of [X_a, X_b]:
+      gamma[(a, b)][tag]  = {c: Fraction}  g-valued kappa*gb_tag part of [X_a, X_b], kappa on the
+                            left (doc convention):
                             [X_a, X_b]_gamma = [X_a, X_b]_0 + kappa * sum_tag gb_tag * gamma(X_a, X_b)
       gamma_K[(a, b)][tag] = Fraction      coefficient of kappa*gb_tag*K (K = identity, central)
     The K-components are split off because the framework of C_inhomogeneous_definition.md
@@ -276,13 +291,17 @@ def structure(n):
                     by_tag.setdefault(key[2], {})[(key[0], key[1], None)] = val
             gamma[(a, b)] = {}
             gamma_K[(a, b)] = {}
+            # kappa is written at the right end internally; the doc's convention is kappa * gamma
+            # (kappa on the left).  Moving kappa across a monomial of parity q gives (-1)^q, and the
+            # kappa-part of [X_a, X_b] has monomial parity p(a)+p(b)+1, hence the sign below.
+            flip = (-1) ** (A['parity'] + Bb['parity'] + 1)
             for tag, vec in by_tag.items():
                 res = span.decompose(vec)
                 if res is None:
                     raise ValueError('closure failure in kappa part %s %s tag %s' % (A['label'], Bb['label'], tag))
                 coeffs, k_part = res
                 if coeffs:
-                    gamma[(a, b)][tag] = coeffs
+                    gamma[(a, b)][tag] = {c: flip * v for c, v in coeffs.items()}
                 if k_part != 0:
-                    gamma_K[(a, b)][tag] = k_part
+                    gamma_K[(a, b)][tag] = flip * k_part
     return basis, sc, gamma, gamma_K

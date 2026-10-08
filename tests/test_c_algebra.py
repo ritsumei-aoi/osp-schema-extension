@@ -132,6 +132,34 @@ def test_generator_writes_schema1(tmp_path):
     assert all(doc['parity'][x] == 1 for x in doc['basis']['odd'])
 
 
+def test_kappa_is_super_central_leibniz_on_car():
+    # a^- a^+ + a^+ a^- = 1, so b a^- a^+ + b a^+ a^- must equal b, with kappa terms included.
+    # This holds only if kappa anticommutes with a^±.
+    b_then_aa = lin((1, mono(B('+', 1), F('-'), F('+'))), (1, mono(B('+', 1), F('+'), F('-'))))
+    assert b_then_aa == mono(B('+', 1))
+
+
+@pytest.mark.parametrize('n', (1, 2))
+def test_associativity_of_deformed_algebra(n):
+    els = [x['element'] for x in build_basis(n)]
+    for X in els:
+        for Y in els:
+            for Z in els:
+                assert mul(mul(X, Y), Z) == mul(X, mul(Y, Z))
+
+
+@pytest.mark.parametrize('n', (1, 2))
+def test_gamma_cocycle_and_antisymmetry(n):
+    # gamma satisfies the cocycle condition and graded anti-symmetry (kappa odd, super-central)
+    from C_gamma import gamma_checks
+    basis, sc, gamma, _gk = structure(n)
+    result = gamma_checks(basis, gamma, sc)
+    assert result['parity_failures'] == 0
+    assert result['antisymmetry_failures'] == 0
+    assert result['cocycle_failures'] == 0
+    assert result['algebra_jacobi_failures'] == 0
+
+
 def test_verifier_detects_corrupted_structure_constant():
     # Negative control: the independent verifier must flag a perturbed structure constant.
     from verify_C_structure import check_table, load_structure
