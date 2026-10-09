@@ -345,12 +345,12 @@ def build_schema1(n: int) -> dict:
         ]
         realizations[name] = {'standard_form': std_form, 'parity': par}
 
-    # structure constants: combined ordering = even then odd
+    # structure constants: all ordered pairs (X, Y), both (X,Y) and (Y,X)
+    # combined ordering = even then odd; self-pairs (X,X) included once
     combined = basis_even + basis_odd
     sc = []
-    for xi, Xname in enumerate(combined):
-        for yi in range(xi, len(combined)):
-            Yname = combined[yi]
+    for Xname in combined:
+        for Yname in combined:
             Xpoly, pX = gens[Xname]
             Ypoly, pY = gens[Yname]
             bracket = graded_bracket(Xpoly, Ypoly, pX, pY)

@@ -42,16 +42,15 @@ def schema(n):
 # Helper: build structure-constant lookup for a given n
 def _build_sc(n):
     """
-    Return sc[(X, Y)] = {Z: Fraction} for the upper-triangle of brackets,
-    combined ordering = even then odd.
+    Return sc[(X, Y)] = {Z: Fraction} for all ordered pairs (X, Y),
+    including both (X, Y) and (Y, X) when the bracket is non-zero.
     """
     gens = build_generators(n)
     basis_even, basis_odd = basis_lists(gens)
     combined = basis_even + basis_odd
     sc = {}
-    for xi, Xname in enumerate(combined):
-        for yi in range(xi, len(combined)):
-            Yname = combined[yi]
+    for Xname in combined:
+        for Yname in combined:
             Xpoly, pX = gens[Xname]
             Ypoly, pY = gens[Yname]
             bracket = graded_bracket(Xpoly, Ypoly, pX, pY)
@@ -61,8 +60,8 @@ def _build_sc(n):
 
 
 def _get(sc, X, Y):
-    """Retrieve bracket [X, Y} (tries both orderings)."""
-    return sc.get((X, Y), sc.get((Y, X), {}))
+    """Retrieve bracket [X, Y}. Both orderings are stored explicitly."""
+    return sc.get((X, Y), {})
 
 
 # ── 1. Dimension tests ────────────────────────────────────────────────────────
