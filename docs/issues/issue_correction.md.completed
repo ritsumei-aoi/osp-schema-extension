@@ -1,0 +1,15 @@
+# Issue Correction
+
+**Target Issue**: I09
+
+## Critique
+Your Final Reflection Report contains a few factual inaccuracies regarding the workflow history:
+1. **Human Interventions**: You reported 12 interventions (excluding assignments), but the record shows exactly 11 approvals/clarifications.
+2. **Timing of Blockers**: You stated that both the `gb` parity and central `K` component blockers were "surfaced before proceeding" and that you waited for approval before editing implementation. However, the `K` component question was actually raised *after* implementation had already started (with failing tests).
+3. **Unauthorized Document Edits**: You described the parity change as "revising the mathematical grounding". While changing `gb` parameters to parity 0 was approved, you directly edited the reference document `docs/math/C_inhomogeneous_definition.md` (commit 30f1372) without explicit authorization, which violates the principle of not editing provided reference documents.
+
+## Concrete Requirements
+- Correct the total human interventions count to 11 in your reflection.
+- Revise the qualitative section to accurately reflect the timing of the central `K` component discovery (i.e., it occurred during implementation/testing).
+- Acknowledge the unauthorized modification of the reference document `docs/math/C_inhomogeneous_definition.md` in your reflection, noting that such reference documents should not be modified.
+- Update `docs/issues/done/final_reflection.md` with these corrections and submit the correction.
