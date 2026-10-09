@@ -1,0 +1,469 @@
+{
+  "title": "Triviality conditions for C(n+1) inhomogeneous deformation",
+  "theorem": "For all n >= 1, the inhomogeneous deformation gamma_gb of C(n+1) = osp(2|2n) is trivial (i.e., gamma_gb = delta f for some odd linear map f) if and only if gb_{sigma,k,s} = 0 for all sigma in {+,-}, k in {1,...,n}, s in {+,-}.",
+  "proof_mechanism": {
+    "step1": "The diagonal pair (F_{sigma,k,s}, F_{sigma,k,s}) yields the constraint: sigma * phi_eps + s * phi_k = gb_{sigma,k,s}, where phi_eps, phi_k are the N_eps, N_k components of f(F_{sigma,k,s}).",
+    "step2": "The cross pair (F_{sigma,k,s}, F_{-sigma,k,-s}) yields the constraint: sigma * phi_eps + s * phi_k = 0. This arises because the bracket [F_{sigma,k,s}, F_{-sigma,k,-s}] = sigma*s*(N_k - sigma*s*N_eps) is a Cartan element whose eigenvalue on F_{-sigma,k,-s} is zero.",
+    "step3": "Combining steps 1 and 2: gb_{sigma,k,s} = 0."
+  },
+  "structure_constants_n1": {
+    "basis": [
+      "N_eps",
+      "N_1",
+      "E_+",
+      "E_-",
+      "f_1",
+      "f_2",
+      "f_3",
+      "f_4"
+    ],
+    "parity": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "nonzero_brackets": {
+      "[N_1, E_+]": "2 E_+",
+      "[N_1, E_-]": "-2 E_-",
+      "[E_+, E_-]": "-N_1",
+      "[N_eps, f_1]": "f_1",
+      "[N_eps, f_2]": "f_2",
+      "[N_eps, f_3]": "-f_3",
+      "[N_eps, f_4]": "-f_4",
+      "[N_1, f_1]": "f_1",
+      "[N_1, f_2]": "-f_2",
+      "[N_1, f_3]": "f_3",
+      "[N_1, f_4]": "-f_4",
+      "[E_+, f_2]": "-f_1",
+      "[E_+, f_4]": "-f_3",
+      "[E_-, f_1]": "f_2",
+      "[E_-, f_3]": "f_4",
+      "{f_1, f_3}": "2 E_+",
+      "{f_2, f_4}": "2 E_-",
+      "{f_1, f_4}": "N_1 - N_eps",
+      "{f_2, f_3}": "N_1 + N_eps"
+    }
+  },
+  "gamma_formulas": {
+    "odd_odd": "gamma(F_{sigma,k,s}, F_{tau,l,t}) = gb_{tau,k,s} F_{sigma,l,t} + gb_{sigma,l,t} F_{tau,k,s}",
+    "even_odd_N_eps": "gamma(N_eps, F_{sigma,k,t}) = -gb_{sigma,k,t} N_eps",
+    "even_odd_N_k": "gamma(N_k, F_{sigma,j,t}) = -gb_{sigma,k,-} b_k^+ b_j^t - gb_{sigma,k,+} b_j^t b_k^-"
+  },
+  "analytical_results": {
+    "n=1": {
+      "n": 1,
+      "algebra": "C(2) = osp(2|2)",
+      "dim_even": 4,
+      "dim_odd": 4,
+      "dim_total": 8,
+      "num_gb_params": 4,
+      "constraints": [
+        {
+          "parameter": "gb_+,1,+",
+          "diagonal": {
+            "source": "(F_+,1,+, F_+,1,+)",
+            "equation": "1 * phi_eps + 1 * phi_1 = gb_+,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,+, F_-,1,-)",
+            "equation": "1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,+, F_-,1,-] has eigenvalue 0 on F_-,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_+,1,+ = 0"
+        },
+        {
+          "parameter": "gb_+,1,-",
+          "diagonal": {
+            "source": "(F_+,1,-, F_+,1,-)",
+            "equation": "1 * phi_eps + -1 * phi_1 = gb_+,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,-, F_-,1,+)",
+            "equation": "1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,-, F_-,1,+] has eigenvalue 0 on F_-,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_+,1,- = 0"
+        },
+        {
+          "parameter": "gb_-,1,+",
+          "diagonal": {
+            "source": "(F_-,1,+, F_-,1,+)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = gb_-,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,+, F_+,1,-)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,+, F_+,1,-] has eigenvalue 0 on F_+,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_-,1,+ = 0"
+        },
+        {
+          "parameter": "gb_-,1,-",
+          "diagonal": {
+            "source": "(F_-,1,-, F_-,1,-)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = gb_-,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,-, F_+,1,+)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,-, F_+,1,+] has eigenvalue 0 on F_+,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_-,1,- = 0"
+        }
+      ],
+      "conclusion": "All 4 gb parameters must vanish. The inhomogeneous deformation of C(2) is trivial iff gb = 0."
+    },
+    "n=2": {
+      "n": 2,
+      "algebra": "C(3) = osp(2|4)",
+      "dim_even": 11,
+      "dim_odd": 8,
+      "dim_total": 19,
+      "num_gb_params": 8,
+      "constraints": [
+        {
+          "parameter": "gb_+,1,+",
+          "diagonal": {
+            "source": "(F_+,1,+, F_+,1,+)",
+            "equation": "1 * phi_eps + 1 * phi_1 = gb_+,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,+, F_-,1,-)",
+            "equation": "1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,+, F_-,1,-] has eigenvalue 0 on F_-,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_+,1,+ = 0"
+        },
+        {
+          "parameter": "gb_+,1,-",
+          "diagonal": {
+            "source": "(F_+,1,-, F_+,1,-)",
+            "equation": "1 * phi_eps + -1 * phi_1 = gb_+,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,-, F_-,1,+)",
+            "equation": "1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,-, F_-,1,+] has eigenvalue 0 on F_-,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_+,1,- = 0"
+        },
+        {
+          "parameter": "gb_+,2,+",
+          "diagonal": {
+            "source": "(F_+,2,+, F_+,2,+)",
+            "equation": "1 * phi_eps + 1 * phi_2 = gb_+,2,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,2,+, F_-,2,-)",
+            "equation": "1 * phi_eps + 1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,2,+, F_-,2,-] has eigenvalue 0 on F_-,2,- under the Cartan element N_2 - N_eps"
+          },
+          "implication": "gb_+,2,+ = 0"
+        },
+        {
+          "parameter": "gb_+,2,-",
+          "diagonal": {
+            "source": "(F_+,2,-, F_+,2,-)",
+            "equation": "1 * phi_eps + -1 * phi_2 = gb_+,2,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,2,-, F_-,2,+)",
+            "equation": "1 * phi_eps + -1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,2,-, F_-,2,+] has eigenvalue 0 on F_-,2,+ under the Cartan element N_2 + N_eps"
+          },
+          "implication": "gb_+,2,- = 0"
+        },
+        {
+          "parameter": "gb_-,1,+",
+          "diagonal": {
+            "source": "(F_-,1,+, F_-,1,+)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = gb_-,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,+, F_+,1,-)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,+, F_+,1,-] has eigenvalue 0 on F_+,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_-,1,+ = 0"
+        },
+        {
+          "parameter": "gb_-,1,-",
+          "diagonal": {
+            "source": "(F_-,1,-, F_-,1,-)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = gb_-,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,-, F_+,1,+)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,-, F_+,1,+] has eigenvalue 0 on F_+,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_-,1,- = 0"
+        },
+        {
+          "parameter": "gb_-,2,+",
+          "diagonal": {
+            "source": "(F_-,2,+, F_-,2,+)",
+            "equation": "-1 * phi_eps + 1 * phi_2 = gb_-,2,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,2,+, F_+,2,-)",
+            "equation": "-1 * phi_eps + 1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,2,+, F_+,2,-] has eigenvalue 0 on F_+,2,- under the Cartan element N_2 - N_eps"
+          },
+          "implication": "gb_-,2,+ = 0"
+        },
+        {
+          "parameter": "gb_-,2,-",
+          "diagonal": {
+            "source": "(F_-,2,-, F_-,2,-)",
+            "equation": "-1 * phi_eps + -1 * phi_2 = gb_-,2,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,2,-, F_+,2,+)",
+            "equation": "-1 * phi_eps + -1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,2,-, F_+,2,+] has eigenvalue 0 on F_+,2,+ under the Cartan element N_2 + N_eps"
+          },
+          "implication": "gb_-,2,- = 0"
+        }
+      ],
+      "conclusion": "All 8 gb parameters must vanish. The inhomogeneous deformation of C(3) is trivial iff gb = 0."
+    },
+    "n=3": {
+      "n": 3,
+      "algebra": "C(4) = osp(2|6)",
+      "dim_even": 22,
+      "dim_odd": 12,
+      "dim_total": 34,
+      "num_gb_params": 12,
+      "constraints": [
+        {
+          "parameter": "gb_+,1,+",
+          "diagonal": {
+            "source": "(F_+,1,+, F_+,1,+)",
+            "equation": "1 * phi_eps + 1 * phi_1 = gb_+,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,+, F_-,1,-)",
+            "equation": "1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,+, F_-,1,-] has eigenvalue 0 on F_-,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_+,1,+ = 0"
+        },
+        {
+          "parameter": "gb_+,1,-",
+          "diagonal": {
+            "source": "(F_+,1,-, F_+,1,-)",
+            "equation": "1 * phi_eps + -1 * phi_1 = gb_+,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,1,-, F_-,1,+)",
+            "equation": "1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,1,-, F_-,1,+] has eigenvalue 0 on F_-,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_+,1,- = 0"
+        },
+        {
+          "parameter": "gb_+,2,+",
+          "diagonal": {
+            "source": "(F_+,2,+, F_+,2,+)",
+            "equation": "1 * phi_eps + 1 * phi_2 = gb_+,2,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,2,+, F_-,2,-)",
+            "equation": "1 * phi_eps + 1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,2,+, F_-,2,-] has eigenvalue 0 on F_-,2,- under the Cartan element N_2 - N_eps"
+          },
+          "implication": "gb_+,2,+ = 0"
+        },
+        {
+          "parameter": "gb_+,2,-",
+          "diagonal": {
+            "source": "(F_+,2,-, F_+,2,-)",
+            "equation": "1 * phi_eps + -1 * phi_2 = gb_+,2,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,2,-, F_-,2,+)",
+            "equation": "1 * phi_eps + -1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,2,-, F_-,2,+] has eigenvalue 0 on F_-,2,+ under the Cartan element N_2 + N_eps"
+          },
+          "implication": "gb_+,2,- = 0"
+        },
+        {
+          "parameter": "gb_+,3,+",
+          "diagonal": {
+            "source": "(F_+,3,+, F_+,3,+)",
+            "equation": "1 * phi_eps + 1 * phi_3 = gb_+,3,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,3,+, F_-,3,-)",
+            "equation": "1 * phi_eps + 1 * phi_3 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,3,+, F_-,3,-] has eigenvalue 0 on F_-,3,- under the Cartan element N_3 - N_eps"
+          },
+          "implication": "gb_+,3,+ = 0"
+        },
+        {
+          "parameter": "gb_+,3,-",
+          "diagonal": {
+            "source": "(F_+,3,-, F_+,3,-)",
+            "equation": "1 * phi_eps + -1 * phi_3 = gb_+,3,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_+,3,-, F_-,3,+)",
+            "equation": "1 * phi_eps + -1 * phi_3 = 0",
+            "type": "cross",
+            "mechanism": "[F_+,3,-, F_-,3,+] has eigenvalue 0 on F_-,3,+ under the Cartan element N_3 + N_eps"
+          },
+          "implication": "gb_+,3,- = 0"
+        },
+        {
+          "parameter": "gb_-,1,+",
+          "diagonal": {
+            "source": "(F_-,1,+, F_-,1,+)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = gb_-,1,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,+, F_+,1,-)",
+            "equation": "-1 * phi_eps + 1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,+, F_+,1,-] has eigenvalue 0 on F_+,1,- under the Cartan element N_1 - N_eps"
+          },
+          "implication": "gb_-,1,+ = 0"
+        },
+        {
+          "parameter": "gb_-,1,-",
+          "diagonal": {
+            "source": "(F_-,1,-, F_-,1,-)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = gb_-,1,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,1,-, F_+,1,+)",
+            "equation": "-1 * phi_eps + -1 * phi_1 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,1,-, F_+,1,+] has eigenvalue 0 on F_+,1,+ under the Cartan element N_1 + N_eps"
+          },
+          "implication": "gb_-,1,- = 0"
+        },
+        {
+          "parameter": "gb_-,2,+",
+          "diagonal": {
+            "source": "(F_-,2,+, F_-,2,+)",
+            "equation": "-1 * phi_eps + 1 * phi_2 = gb_-,2,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,2,+, F_+,2,-)",
+            "equation": "-1 * phi_eps + 1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,2,+, F_+,2,-] has eigenvalue 0 on F_+,2,- under the Cartan element N_2 - N_eps"
+          },
+          "implication": "gb_-,2,+ = 0"
+        },
+        {
+          "parameter": "gb_-,2,-",
+          "diagonal": {
+            "source": "(F_-,2,-, F_-,2,-)",
+            "equation": "-1 * phi_eps + -1 * phi_2 = gb_-,2,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,2,-, F_+,2,+)",
+            "equation": "-1 * phi_eps + -1 * phi_2 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,2,-, F_+,2,+] has eigenvalue 0 on F_+,2,+ under the Cartan element N_2 + N_eps"
+          },
+          "implication": "gb_-,2,- = 0"
+        },
+        {
+          "parameter": "gb_-,3,+",
+          "diagonal": {
+            "source": "(F_-,3,+, F_-,3,+)",
+            "equation": "-1 * phi_eps + 1 * phi_3 = gb_-,3,+",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,3,+, F_+,3,-)",
+            "equation": "-1 * phi_eps + 1 * phi_3 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,3,+, F_+,3,-] has eigenvalue 0 on F_+,3,- under the Cartan element N_3 - N_eps"
+          },
+          "implication": "gb_-,3,+ = 0"
+        },
+        {
+          "parameter": "gb_-,3,-",
+          "diagonal": {
+            "source": "(F_-,3,-, F_-,3,-)",
+            "equation": "-1 * phi_eps + -1 * phi_3 = gb_-,3,-",
+            "type": "diagonal"
+          },
+          "cross": {
+            "source": "(F_-,3,-, F_+,3,+)",
+            "equation": "-1 * phi_eps + -1 * phi_3 = 0",
+            "type": "cross",
+            "mechanism": "[F_-,3,-, F_+,3,+] has eigenvalue 0 on F_+,3,+ under the Cartan element N_3 + N_eps"
+          },
+          "implication": "gb_-,3,- = 0"
+        }
+      ],
+      "conclusion": "All 12 gb parameters must vanish. The inhomogeneous deformation of C(4) is trivial iff gb = 0."
+    }
+  },
+  "numerical_verification_n1": {
+    "n": 1,
+    "dim_total": 8,
+    "num_f_params": 32,
+    "num_equations": 288,
+    "rank_A": 28,
+    "rank_constraint": 4,
+    "feasible_gb_dimension": 0,
+    "jacobi_verified": true,
+    "conclusion": "TRIVIAL iff gb = 0",
+    "M_constraint_singular_values": [
+      1.2024271647212974,
+      1.2024271647212974,
+      1.2024271647212974,
+      1.2024271647212972
+    ]
+  }
+}
