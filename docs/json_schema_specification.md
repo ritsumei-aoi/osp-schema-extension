@@ -355,3 +355,28 @@ identity output. The resulting deformed bracket is interpreted as
 `[X,Y] = [X,Y]_0 + κ γ(X,Y)`, where `[X,Y]_0` is stored in Schema 1
 `structure_constants` and `γ` is stored in
 `evaluated_gamma_coefficients`.
+
+## Schema 4: Coboundary structure
+
+Schema 4 files are named `C_{n}_coboundary.json`. They retain the complete
+Schema 1 data and add a `coboundary` object containing the most general
+parity-reversing linear map on the basis, its coboundary, and the central
+components of the evaluated Schema 3 target that cannot be represented by
+`δf` for `f: g -> g`.
+
+The map has one independent symbolic coefficient for every input/output
+generator pair of opposite parity and zero coefficients for same-parity
+pairs. Its normalization uses no separate global multiplier. Store map terms
+as `{input, output, parameter}` entries, with
+`parameter = "phi_<output>_from_<input>"`. For the supported ranks, the map
+has 32, 176, and 528 independent coefficients for `n=1,2,3`.
+
+Compute coefficients from the exact formula
+`(δf)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])`.
+The `delta_f_coefficients` list uses the standard `{X,Y,Z,coeff,sign_rule}`
+record shape. `coeff` is an exact symbolic linear polynomial in the `phi`
+parameters, and every `Z` is a Schema 1 basis generator. The Schema 4
+`comparison` object references the corresponding Schema 3 file and preserves
+its `Z: "K"` gamma records in `unmatched_central_components`; these central
+identity outputs are not members of the Schema 1 basis and cannot occur in
+`δf` for this map.
