@@ -336,6 +336,8 @@ def compute_structure_constants(n: int) -> list:
             ev = cartan_eigenvalue(h_idx, g)
             if ev != 0:
                 add(h_label, g, g, ev)
+                # Also add reverse: [g, H_k] = -[H_k, g] (since p(H_k)=0, graded antisymmetry)
+                add(g, h_label, g, -ev)
 
     # ── Root × root generator ─────────────────────────────────────────────
     # For non-Cartan generators X_α and X_β:
@@ -367,46 +369,101 @@ def compute_structure_constants(n: int) -> list:
 
             # Check if sum is zero (α + β = 0)
             if e_sum == 0 and all(d == 0 for d in d_sum):
-                # [X_α, X_{-α}] = H_α (with appropriate graded sign)
-                # Graded bracket: X_α X_{-α} - (-1)^{p(α)p(-α)} X_{-α} X_α
-                # For this to be non-zero, we need this to give a Cartan combination.
-                # Using oscillator algebra:
-                # - Even pair (α even): [E_α, E_{-α}] = H_α
-                # - Odd pair (α odd): {E_α, E_{-α}} = H_α (anticommutator)
-                # Convention: we record [X, Y] = Z with coeff, where the graded
-                # bracket for odd generators gives anticommutator.
-                # We only record the pair (X, Y) with X coming before Y in basis.
-                # Build H_α as combination of simple Cartans.
-                # H_α = sum_k α(H_k^*) H_k where H_k^* is the coroot
-                # For us: record which Cartan combination results.
+                # Compute [X_α, X_{-α}] directly from oscillator algebra.
+                # The result is a linear combination of Cartan generators H_1,...,H_{n+1}.
                 #
-                # For osp(2|2n), [E_α, E_{-α}] = H_α:
-                # We compute α(H_k) for each k to get the coroot expansion.
-                # But we need to record the actual Cartan generator.
-                # Since Cartan generators are not necessarily a simple root basis,
-                # we express H_α in terms of H_1,...,H_{n+1}.
+                # Using: N_k := b_k^+ b_k^- = sum_{j=k+1}^n H_j - H_{n+1} - 1/2
+                # (for k=1,...,n; N_n = -H_{n+1} - 1/2 since the sum is empty)
+                # a_1^+a_1^- = H_1 - N_1 = H_1 - sum_{j=2}^n H_j + H_{n+1} + 1/2
                 #
-                # From the oscillator:
-                # [a_1^+ b_k^+, a_1^- b_k^-] = {a_1^+, a_1^-}{b_k^+ b_k^-} graded
-                # Using oscillator algebra and graded bracket:
-                # {E_{ε+δ_k}, E_{-ε-δ_k}} = (a_1^+ a_1^- + a_1^- a_1^+)(b_k^+ b_k^-)
-                #   ... this is computed carefully below
+                # Root types and their direct oscillator brackets:
+                # Type A (2δ_k):     [(b_k^+)^2, (b_k^-)^2] = -4N_k - 2
+                #   = 4H_{n+1} - 4 sum_{j=k+1}^n H_j
+                # Type B (δ_i+δ_j): [b_i^+b_j^+, b_i^-b_j^-] = -N_i-N_j-1
+                #   = -sum_{j'=i+1}^j H_{j'} - 2 sum_{j'=j+1}^n H_{j'} + 2H_{n+1}
+                # Type C (δ_i-δ_j): [b_i^+b_j^-, b_i^-b_j^+] = N_i - N_j
+                #   = sum_{j'=i+1}^j H_{j'}
+                # Type D (ε+δ_k):   {a_1^+b_k^+, a_1^-b_k^-} = N_k+1-a_1^+a_1^-
+                #   = -H_1 + sum_{j=2}^k H_j + 2 sum_{j=k+1}^n H_j - 2H_{n+1}
+                # Type E (ε-δ_k):   {a_1^+b_k^-, a_1^-b_k^+} = a_1^+a_1^- + N_k
+                #   = H_1 - sum_{j=2}^k H_j
                 #
-                # We use the known result: for C(n+1), the result of
-                # [E_α, E_{-α}] is determined by which simple roots it corresponds to.
-                # We record this as structure constants for each Cartan.
-                cartan_coeffs = {}
-                for k in range(1, n + 2):
-                    ev = cartan_eigenvalue(k, X)
-                    if ev != 0:
-                        cartan_coeffs[f"H_{k}"] = ev
-                # The bracket [E_α, E_{-α}] = H_α = sum_k c_k H_k
-                # where c_k = α(H_k) / (H_k, H_k) ... but for the oscillator
-                # realization, we need the actual numeric coefficients.
-                # For the standard normalization used in Frappat:
-                # Use the eigenvalues directly (they encode the coroot).
-                for h_label, coeff in cartan_coeffs.items():
-                    add(X, Y, h_label, coeff)
+                # For negative roots, use graded antisymmetry (odd-odd symmetric, even-even antisymmetric).
+                cartan_result = {}  # H_k label → rational coefficient
+
+                # Identify root type from X's root (ex, dx)
+                # ex = eps component, dx = delta components
+                if ex != 0:
+                    # Odd root: ε+δ_k (ex=1) or ε-δ_k (ex=1, negative δ_k)
+                    # Find k and sign of δ component
+                    k = None
+                    for idx in range(n):
+                        if dx[idx] != 0:
+                            k = idx + 1
+                            dk_sign = dx[idx]
+                            break
+                    if k is None:
+                        continue  # shouldn't happen
+                    abs_ex = ex  # ±1
+                    abs_dk = dk_sign  # ±1
+                    # Normalize: consider root type based on absolute value
+                    # Both (ex=1, dk=1) and (ex=-1, dk=-1) are ±(ε+δ_k)
+                    # Both (ex=1, dk=-1) and (ex=-1, dk=1) are ±(ε-δ_k)
+                    eps_delta_same_sign = (abs_ex * abs_dk > 0)
+
+                    if eps_delta_same_sign:
+                        # Type D: ε+δ_k pair
+                        # {E_{ε+δ_k}, E_{-(ε+δ_k)}} = -H_1 + sum_{j=2}^k H_j + 2 sum_{j=k+1}^n H_j - 2H_{n+1}
+                        cartan_result[f"H_1"] = cartan_result.get("H_1", Fraction(0)) - 1
+                        for j in range(2, k + 1):
+                            cartan_result[f"H_{j}"] = cartan_result.get(f"H_{j}", Fraction(0)) + 1
+                        for j in range(k + 1, n + 1):
+                            cartan_result[f"H_{j}"] = cartan_result.get(f"H_{j}", Fraction(0)) + 2
+                        cartan_result[f"H_{n+1}"] = cartan_result.get(f"H_{n+1}", Fraction(0)) - 2
+                    else:
+                        # Type E: ε-δ_k pair
+                        # {E_{ε-δ_k}, E_{-(ε-δ_k)}} = H_1 - sum_{j=2}^k H_j
+                        cartan_result["H_1"] = cartan_result.get("H_1", Fraction(0)) + 1
+                        for j in range(2, k + 1):
+                            cartan_result[f"H_{j}"] = cartan_result.get(f"H_{j}", Fraction(0)) - 1
+                else:
+                    # Even root
+                    nonzero_deltas = [(idx + 1, dx[idx]) for idx in range(n) if dx[idx] != 0]
+                    if len(nonzero_deltas) == 1:
+                        k, dk = nonzero_deltas[0]
+                        # Type A: ±2δ_k
+                        # [E_{2δ_k}, E_{-2δ_k}] = 4H_{n+1} - 4 sum_{j=k+1}^n H_j
+                        # [E_{-2δ_k}, E_{2δ_k}] = -4H_{n+1} + 4 sum_{j=k+1}^n H_j
+                        sign = 1 if dk > 0 else -1  # +1 for 2δ_k, -1 for -2δ_k
+                        cartan_result[f"H_{n+1}"] = cartan_result.get(f"H_{n+1}", Fraction(0)) + sign * 4
+                        for j in range(k + 1, n + 1):
+                            cartan_result[f"H_{j}"] = cartan_result.get(f"H_{j}", Fraction(0)) - sign * 4
+                    elif len(nonzero_deltas) == 2:
+                        (i_idx, di), (j_idx, dj) = sorted(nonzero_deltas)
+                        i, j = i_idx, j_idx  # i < j by sorted
+                        if di * dj > 0:
+                            # Type B: δ_i + δ_j or -(δ_i+δ_j)
+                            # [E_{δ_i+δ_j}, E_{-(δ_i+δ_j)}] = -N_i - N_j - 1
+                            # = -sum_{j'=i+1}^j H_{j'} - 2 sum_{j'=j+1}^n H_{j'} + 2H_{n+1}
+                            # [E_{-(δ_i+δ_j)}, E_{δ_i+δ_j}] = N_i + N_j + 1
+                            sign = 1 if di > 0 else -1  # +1 for δ_i+δ_j, -1 for -(δ_i+δ_j)
+                            for jp in range(i + 1, j + 1):
+                                cartan_result[f"H_{jp}"] = cartan_result.get(f"H_{jp}", Fraction(0)) - sign * 1
+                            for jp in range(j + 1, n + 1):
+                                cartan_result[f"H_{jp}"] = cartan_result.get(f"H_{jp}", Fraction(0)) - sign * 2
+                            cartan_result[f"H_{n+1}"] = cartan_result.get(f"H_{n+1}", Fraction(0)) + sign * 2
+                        else:
+                            # Type C: δ_i - δ_j (di=+1, dj=-1) or -(δ_i-δ_j)
+                            # For i<j: E_{δ_i-δ_j} = b_i^+ b_j^- (di=+1, dj=-1)
+                            # [E_{δ_i-δ_j}, E_{-(δ_i-δ_j)}] = N_i - N_j = sum_{j'=i+1}^j H_{j'}
+                            # sign: +1 if di>0 (X has root δ_i-δ_j), -1 if di<0 (X has root -(δ_i-δ_j))
+                            sign = 1 if di > 0 else -1
+                            for jp in range(i + 1, j + 1):
+                                cartan_result[f"H_{jp}"] = cartan_result.get(f"H_{jp}", Fraction(0)) + sign * 1
+
+                for h_label, coeff in cartan_result.items():
+                    if coeff != 0:
+                        add(X, Y, h_label, coeff)
                 continue
 
             # Check if sum is a root
