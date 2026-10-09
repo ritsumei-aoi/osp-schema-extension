@@ -312,3 +312,46 @@ uses those shared conventions, adds the top-level `central_elements` field,
 and defines its own `family`, fermion/boson groups, basis, and realizations.
 Consumers of B(m,n) data need not change; consumers that support C(n+1) must
 read the additional field and the C-specific generator groups.
+
+## Schema 3: Evaluated deformation
+
+Schema 3 files are named `C_{n}_evaluated.json`. They retain the complete
+Schema 1 data, including its undeformed `structure_constants`, `basis`, and
+`parity`, and add an `inhomogeneous_deformation` object. This separates the
+ordinary bracket from its evaluated first-order correction:
+
+```json
+{
+  "inhomogeneous_deformation": {
+    "output_space": "Schema 1 basis plus central identity K.",
+    "gb_matrix": {},
+    "deformed_oscillator_relations": {},
+    "evaluation_profile": {
+      "name": "all_positive",
+      "parameter_values": {
+        "gb_a1p_b1p": 1
+      }
+    },
+    "evaluated_gamma_coefficients": [
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "coeff": "1",
+        "sign_rule": "graded"
+      }
+    ]
+  }
+}
+```
+
+For this C(n+1) evaluated profile, set every entry of the `2 x 2n`
+`gb_matrix` to the integer `1`; list every named parameter in
+`evaluation_profile.parameter_values`. Substitute exactly into each Schema 2
+gamma coefficient, combine records with identical `(X,Y,Z)` labels, and omit
+zero results. Evaluated `coeff` values are exact rational strings, never
+floating-point numbers. The `Z` label `K` remains valid for the central
+identity output. The resulting deformed bracket is interpreted as
+`[X,Y] = [X,Y]_0 + κ γ(X,Y)`, where `[X,Y]_0` is stored in Schema 1
+`structure_constants` and `γ` is stored in
+`evaluated_gamma_coefficients`.
