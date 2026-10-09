@@ -12,8 +12,8 @@
 - **Major Blockers Encountered**: none. One self-inflicted bug (the decomposition routine did not
   account for the $\kappa\cdot$scalar term inside super-symmetrised basis elements) was caught by an
   assertion on the first $n=1$ run and fixed in one edit.
-- **Total Wall Time**: approximately 25 minutes (base commit 09:45, final commit ≈ 10:10 JST; measured
-  from git timestamps, not from an interface counter).
+- **Total Wall Time**: approximately 22 minutes (base commit 09:45:02 JST, final push ≈ 10:07 JST;
+  measured from git timestamps, not from an interface counter).
 - **Total Thinking Time**: not exposed by the interface; a rough estimate is that about half the wall
   time was reasoning and the rest was writing/running code and documents.
 

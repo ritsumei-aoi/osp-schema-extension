@@ -5,8 +5,8 @@
 
 The interface used was Claude Code (not gemini-cli); the statistics below are the ones available.
 
-- **Total Execution Time (Wall clock)**: ≈ 25 minutes (base commit 2026-10-09 09:45:02 JST to final
-  commit; derived from git timestamps).
+- **Total Execution Time (Wall clock)**: ≈ 22 minutes (base commit 2026-10-09 09:45:02 JST to final
+  push ≈ 10:07 JST; derived from git timestamps).
 - **Total Thinking Time**: not exposed by the interface; estimated ≈ 10–12 minutes of reasoning.
 - **Token Usage (if known)**: approximately 150k tokens consumed out of a 15M budget at the time of
   writing (interface counter), i.e. ≈ 1% of the available budget.
