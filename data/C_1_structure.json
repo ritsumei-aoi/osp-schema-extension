@@ -1,0 +1,453 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4,
+      "formula_even": "2*n^2 + n + 1",
+      "formula_odd": "4*n"
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "m": 1,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "parity": 1,
+      "description": "Standard fermionic pair a_1^+, a_1^- with CAR: {a_1^-, a_1^+} = 1"
+    },
+    "bosons": {
+      "count": 2,
+      "n": 1,
+      "labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "description": "Bosonic oscillators b_k^\u00b1 for k=1,...,n with CCR: [b_k^-, b_l^+] = delta_kl"
+    }
+  },
+  "central_elements": {
+    "K": {
+      "parity": 0,
+      "description": "Even central element; identified with scalar 1 in all current applications.",
+      "nilpotent": false
+    },
+    "kappa": {
+      "parity": 1,
+      "description": "Odd central element; kappa^2 = 0.",
+      "nilpotent": true
+    }
+  },
+  "oscillator_relations": {
+    "standard_fermion_anticommutators": {
+      "description": "CAR for standard fermionic pair",
+      "relations": {
+        "creation_annihilation": "{a_1^-, a_1^+} = 1",
+        "same_type_p": "{a_1^+, a_1^+} = 0",
+        "same_type_m": "{a_1^-, a_1^-} = 0"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "CCR for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_i^pm, b_j^pm] = 0 for all i,j",
+        "conjugate_pair": "[b_i^-, b_j^+] = delta_ij"
+      }
+    },
+    "mixed_commutators": {
+      "boson_fermion": "[b_k^pm, a_1^pm] = 0 (undeformed)"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm"
+    ],
+    "ordering_convention": "PBW: kappa < [odd: E_eps1_del{k}_pp/pm/mp/mm] < [even: H_k, E_2del{k}_p/m, E_del{i}_del{j}_pp/mm/pm/mp]"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1
+  },
+  "generator_realization": {
+    "description": "Oscillator word representation in PBW order",
+    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m",
+    "realizations": {
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "a_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^-",
+        "parity": 0
+      },
+      "H_2": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "-1"
+          },
+          {
+            "words": [],
+            "coeff": "-1/2"
+          }
+        ],
+        "frappat_form": "-b_1^+ b_1^- - 1/2",
+        "parity": 0,
+        "note": "Terminal Cartan"
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^+)^2",
+        "parity": 0
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^-)^2",
+        "parity": 0
+      },
+      "E_eps1_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^+",
+        "parity": 1
+      },
+      "E_eps1_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^-",
+        "parity": 1
+      },
+      "E_eps1_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^+",
+        "parity": 1
+      },
+      "E_eps1_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^-",
+        "parity": 1
+      }
+    }
+  },
+  "structure_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_generators.py",
+    "generation_date": "2026-10-09",
+    "references": [
+      "Frappat, Sciarrino, Sorba (2000), Dictionary on Lie Algebras and Superalgebras",
+      "arXiv:hep-th/9607161"
+    ]
+  }
+}
