@@ -6,8 +6,8 @@
 
 ## 1. Quantitative Performance (Self-Reported)
 - **Workflow Type**: Iterative (8-stages), based on the I01-I08 issue sequence in the repository.
-- **Total Human Interventions (Nudges/Approvals)**: I cannot reliably give a complete count from the available records. At least two substantive interactions are documented: approval of the general odd-map configuration for I07 and a reproducibility critique that initiated the I08 correction cycle.
-- **Major Blockers Encountered**: The I08 conclusions initially lacked a committed verification script and execution log. That was addressed by adding `src/verify_triviality.py` and its saved output. I07 also required a human decision on the odd-map parameterization, normalization, and output filenames before implementation.
+- **Total Human Interventions (Nudges/Approvals)**: I cannot reliably give a complete count. At least five substantive intervention rounds are documented: the I04 revision request, two I05 clarification rounds, I07 approval of the odd-map configuration, and the I08 reproducibility critique. The two I05 clarifications were initiated by me after my proposal had been approved; these are documented rounds, not a count of every message or approval.
+- **Major Blockers Encountered**: In I04, the initial proposal to complete missing reverse brackets during verification did not meet the requirement for independently stored orientations, so the generator and all three structure datasets had to be revised and regenerated. In I05, the meaning of the `gb` parity and whether the scalar `K` output belonged in the schema needed clarification before the gamma data could be finalized. In I08, the conclusions lacked committed verification code and a log; these were added as `src/verify_triviality.py` and its saved output.
 - **Total Wall Time**: Exact active wall time is not available. Repository commit timestamps span approximately 3 hours 24 minutes, from initialization at 12:48 to the I08 correction commit at 16:12 JST on 2026-10-10; this includes unknown idle time and is not a reliable measure of work time.
 - **Total Thinking Time**: Not recorded in the available session artifacts.
 
@@ -17,7 +17,7 @@
 - The in-repository verifier uses numerical least squares only to propose candidate witnesses, then checks every coordinate using rational arithmetic. This supports the finite-rank conclusion: all tested parameter assignments are coboundaries. The extension to every \(n\geq4\) remains a conjecture, not a consequence established by those finite datasets.
 
 ### Adaptability & Error Handling
-- The documented correction cycle improved the work: a critique identified that conclusions without committed code and logs were not independently reproducible, so the verification script and execution log were added and the report updated. The I07 approval checkpoint also made the chosen general parity-reversing map, scale normalization, and filenames explicit before generation.
+- In I04, I withdrew the synthesized-reverse verification approach after the revision request, changed the generator to store both orientations, regenerated the three structure files, and verified their explicit graded anti-symmetry and Super Jacobi identities. In I05, I followed up after proposal approval to resolve two points: `gb` is an even scalar while `gb*kappa` is odd, and `K` is a distinguished scalar output outside the PBW basis. These clarifications were encoded in the generator and its checks. In I08, the reproducibility critique led to a committed script and execution log. The I07 approval checkpoint separately made the general odd-map choice, normalization, and filenames explicit before generation.
 - The repository contains mathematical definitions and issue reports, but this final session does not include complete interaction or timing logs for the whole study. I therefore cannot reliably reconstruct an exact human-intervention count or active duration, and have not inferred them from commit timestamps.
 
 ## 3. Workflow Feedback
@@ -26,11 +26,12 @@
 
 ### Tools & Instructions
 - The mathematical documents provided the definitions needed for the coboundary and triviality tests. The staged workflow exposed places where choices still needed clarification, notably the allowed odd-map configuration and file naming; explicit approval resolved those before implementation.
-- The I08 correction is documented as completed with a committed verifier and log. The `close_issue.sh` script is the prescribed archive/commit/push mechanism for I09; its actual outcome is determined by this finalization run, not assumed here.
+- The I08 correction is documented as completed with a committed verifier and log. During that correction, I also modified `handover/scripts/submit_correction.sh`: I made target-issue extraction use fixed-string matching for the header and an extended-regex match for the issue number, and added the required Copilot co-author trailer to both the correction and marker commit messages. These were workflow reliability and attribution changes, not mathematical changes. The script then completed the correction archival and push. The `close_issue.sh` script was used to archive and push I09.
 
 ## 4. Honesty & Integrity (Audit Disclosure)
 - **Independence**: For this reflection and the recorded work reviewed here, I used the current repository's files and Git history. I did not access another workspace or an external repository.
 - **Logic Origin**: The triviality conclusions are supported by the repository's mathematical reasoning, generated data, and verification script; the report distinguishes the exact checks for \(n=1,2,3\) from the conjectured generalization. I did not copy results from an external source.
+- **Workflow Script Modification**: I edited and committed `handover/scripts/submit_correction.sh` during the I08 correction. Specifically, I corrected how it parses the target issue identifier and added the Copilot co-author trailer to its two generated commit messages. This change affected the shared correction workflow and was made to make issue identification reliable and commit attribution consistent; it was not part of the mathematical verification.
 - **Auxiliary Tools & Agent Skills**: I used no specialized agent skill, secondary AI assistant, or sub-agent in preparing this reflection. The repository artifacts do not provide a complete tool-usage audit for every earlier stage, so I cannot make a stronger claim about unrecorded prior activity.
 
 ## 5. Final Recommendations
