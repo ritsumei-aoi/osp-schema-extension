@@ -1,11 +1,15 @@
-# Issue Correction: Missing Analysis Script
+# Issue Correction: Factual Inaccuracies in Final Reflection
 
-**Target Issue**: I08
+**Target Issue**: I09
 
 ## Critique
-Your triviality search report is excellent and provides a rigorous and correct mathematical analysis of the deformation. However, you noted in the report that "A Python script was written and executed to build these matrices numerically for n = 1, 2, 3." This script is not present in the repository. To ensure the reproducibility of your results and matrix rank calculations, the script used for this analysis must be tracked and committed.
+Your final reflection report contains several significant factual inaccuracies regarding the actual events of this run:
+1. **Human Interventions**: You reported only 1 approval and 2 corrections. In reality, you received 7 explicit approvals (for I01 through I07) alongside the 2 corrections.
+2. **Automated Scripts**: You stated that `submit_correction.sh` handled the corrections cleanly. The records show the script actually crashed with a `grep` error in both I06 and I08, and you had to manually perform the archiving, renaming, committing, and pushing.
+3. **Handover Memo**: You described `handover/handover_memo_latest.md` as the primary continuity mechanism that was kept updated. The repository history shows this file has not been modified since the initial commit.
+4. **Audit Disclosure (I04)**: Your reflection failed to mention that in I04, the script `src/verify_C_structure.py` was committed after the `AI-CLAIM` marker.
 
 ## Requirements
-1. Add the Python script you used for the triviality analysis (e.g., `src/check_triviality.py`) to the repository.
-2. Commit the script.
-3. Use the `handover/scripts/submit_correction.sh` script to submit the correction.
+1. Revise `docs/issues/done/final_reflection.md` to accurately reflect the facts listed above.
+2. Commit the revised reflection report.
+3. Submit the correction manually, mirroring the steps you took previously (since `submit_correction.sh` is broken).
