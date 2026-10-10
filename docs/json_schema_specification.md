@@ -324,6 +324,54 @@ existing interpretation. The C-specific changes are:
 - The odd-root labels, basis, parities, realizations, and structure constants
   are those of C(n+1).
 
-Other C-family data layers, when present, use the corresponding rank-based
-names: `C_{n}_gamma.json`, `C_{n}_evaluated_<gb>.json`, and
-`C_{n}_coboundary_<gb>.json`.
+Other C-family data layers, when present, use rank-based names. Schema 2 uses
+`C_{n}_gamma.json`; Schema 3 uses `C_{n}_evaluated.json` for the approved
+uniform-positive profile (other profiles may add a profile suffix); and Schema
+4 uses `C_{n}_coboundary_<gb>.json`.
+
+## Schema 3: Evaluated Structure
+
+For the approved uniform-positive profile, use `C_{n}_evaluated.json` for
+each rank. The file records the complete assignment explicitly, so the profile
+remains unambiguous if additional evaluation profiles are added later.
+
+Schema 3 has `schema_version: "5.0"`, `schema_layer: 3`, and
+`schema_type: "evaluated_structure"`. It preserves `algebra`, `basis`,
+`parity`, `central_elements`, and `scalar_output` from Schema 2, and adds:
+
+```json
+{
+  "gb_assignment": {
+    "profile": "uniform_positive",
+    "description": "All scalar gb parameters are set to +1.",
+    "parameters": {
+      "gb_a1_p_b1_p": "1",
+      "gb_a1_p_b1_m": "1",
+      "gb_a1_m_b1_p": "1",
+      "gb_a1_m_b1_m": "1"
+    }
+  },
+  "evaluated_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "C_evaluate.py",
+    "generation_date": "YYYY-MM-DD",
+    "source_schema": "C_1_gamma.json",
+    "gb_profile": "uniform_positive",
+    "references": []
+  }
+}
+```
+
+The `parameters` object contains all `4n` Schema 2 parameter labels, each
+mapped to the exact scalar string `"1"`. `evaluated_constants` contains the
+exact sum of each Schema 2 `coeff` term after substitution; coefficients are
+rational strings, `sign_rule` is `"graded"`, and zero terms are omitted.
+The distinguished scalar output `K` is retained like any other output label.
