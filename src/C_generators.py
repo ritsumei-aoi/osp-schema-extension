@@ -341,7 +341,7 @@ def _build_structure_constants(
     reducer_data = _sympy_matrix(generators, ordered_labels)
     constants: list[dict] = []
     for left_index, left_label in enumerate(ordered_labels):
-        for right_label in ordered_labels[left_index:]:
+        for right_label in ordered_labels:
             bracket = _bracket(
                 generators[left_label],
                 generators[right_label],

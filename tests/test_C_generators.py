@@ -88,6 +88,20 @@ def test_structure_constants_are_nonzero_and_reference_basis(n):
     assert all(item["sign_rule"] == "graded" for item in schema["structure_constants"])
 
 
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_structure_constants_include_both_bracket_orderings(n):
+    schema = build_schema(n)
+    parity = schema["parity"]
+    coefficients = {
+        (item["X"], item["Y"], item["Z"]): Fraction(item["coeff"])
+        for item in schema["structure_constants"]
+    }
+
+    for (left, right, result), coefficient in coefficients.items():
+        sign = -1 if parity[left] * parity[right] % 2 else 1
+        assert coefficients[(right, left, result)] == -sign * coefficient
+
+
 def test_superbracket_sign_and_closure_for_rank_one():
     labels, parity, generators = _make_basis(1)
     odd = "E_eps1_del1_pp"
@@ -121,13 +135,7 @@ def test_super_jacobi_identity_for_all_basis_triples(n):
         bracket_table.setdefault(key, {})[indices[item["Z"]]] = Fraction(item["coeff"])
 
     def basis_bracket(left, right):
-        if left <= right:
-            return bracket_table.get((left, right), {})
-        sign = 1 if parity[labels[left]] * parity[labels[right]] % 2 else -1
-        return {
-            index: sign * coefficient
-            for index, coefficient in basis_bracket(right, left).items()
-        }
+        return bracket_table.get((left, right), {})
 
     def vector_bracket(left, right):
         result = {}
