@@ -197,28 +197,22 @@ def find_linear_comb(expr, gens):
         res['H_1'] = c1
         remaining = add(remaining, gens['H_1'], -c1)
         
-    # Now iteratively for b1+ b1- ...
-    # Wait, the basis is H_1, ..., H_{n+1}.
-    for k in range(2, len(gens) // 4): # just safe bound
+    n = len([x for x in gens if x.startswith("H_")]) - 1
+    for k in range(2, n+1):
         hk = f'H_{k}'
         if hk not in gens: break
-        # we can determine c_k from coefficient of b_{k-1}+ b_{k-1}-
         monom = (f'b{k-1}+', f'b{k-1}-')
         ck = remaining.get(monom, 0)
         if ck != 0:
             res[hk] = ck
             remaining = add(remaining, gens[hk], -ck)
             
-    # H_{n+1} handles b_n+ b_n-
-    hk = next(k for k in gens if k.startswith('H_') and k == f'H_{len([x for x in gens if x.startswith("H_")])}')
-    # actually, just check if remaining has any b_n+ b_n-
-    n = len([x for x in gens if x.startswith("H_")]) - 1
     monom = (f'b{n}+', f'b{n}-')
     cn = remaining.get(monom, 0)
     if cn != 0:
-        # H_{n+1} = -bn+ bn- - 1/2. Coef is -cn
-        res[f'H_{n+1}'] = -cn
-        remaining = add(remaining, gens[f'H_{n+1}'], cn)
+        c = cn / (-1.0)
+        res[f'H_{n+1}'] = c
+        remaining = add(remaining, gens[f'H_{n+1}'], -c)
 
     # Now if remaining has empty tuple, it's the central element K (which is just 1)
     if tuple() in remaining:
