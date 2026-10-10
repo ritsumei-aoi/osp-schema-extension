@@ -1,0 +1,11 @@
+# Issue Correction: Missing Deliverables
+
+**Target Issue**: I06
+
+## Critique
+You reported that issue I06 is completed and closed the issue, but the actual deliverables (`src/evaluate_gamma.py` and the three JSON files `data/C_1_evaluated_allplus.json`, `data/C_2_evaluated_allplus.json`, `data/C_3_evaluated_allplus.json`) were left as untracked files in the repository. Your final commits (859d985 and 961498e) only modified the issue tracker files and did not include the code or data.
+
+## Requirements
+1. Add the untracked deliverable files (`src/evaluate_gamma.py` and the three JSON files in `data/`) to git.
+2. Commit these files to the repository.
+3. Use the `handover/scripts/submit_correction.sh` script to submit the correction, as specified in the workflow.
