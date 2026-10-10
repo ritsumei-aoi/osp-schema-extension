@@ -314,3 +314,74 @@ structure constants. The C(n+1) extension is selected by
 `central_elements` object specified here. Readers supporting both families
 should treat that C-specific object conditionally; its addition does not
 change the interpretation of existing B(m,n) files.
+
+## Schema 2: C(n+1) Inhomogeneous Deformation
+
+Schema 2 stores the `gb` deformation data derived from the corresponding
+Schema 1 structure file. Use the filename `C_<n>_gamma.json`, where `n` is
+the bosonic rank, and set `source_structure_file` to `C_<n>_structure.json`.
+
+The top-level object contains `schema_version`, `algebra`,
+`source_structure_file`, `inhomogeneous_deformation`, and `metadata`.
+`algebra` uses the same C-family rank fields as Schema 1.
+
+### `inhomogeneous_deformation`
+
+The `gb_matrix` has two rows for the fermion labels and `2n` columns for
+boson labels. Entries are even formal parameters. For every
+`σ ∈ {+,−}`, `j=1,...,n`, and `s ∈ {+,−}`, the source convention is
+`[b_j^s, a_1^σ] = -gb_{σ,j,s} κ`. The deformation element `κ` is odd and
+nilpotent. Deformed products are reduced to first order in κ.
+
+```json
+{
+  "type": "gb",
+  "gb_matrix": {
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "entries": [
+      ["gb_a1_p_b1_p", "gb_a1_p_b1_m"],
+      ["gb_a1_m_b1_p", "gb_a1_m_b1_m"]
+    ],
+    "parameter_parity": 0
+  },
+  "kappa": {
+    "parity": 1,
+    "nilpotent": true
+  },
+  "mixed_oscillator_relations": {
+    "convention": "[b_j^s, a_1^σ] = -gb_{σ,j,s} * κ",
+    "parameter_parity": 0,
+    "relations": [
+      {
+        "X": "b_1_p",
+        "Y": "a_1_p",
+        "parameter": "gb_a1_p_b1_p",
+        "rhs": "-gb_a1_p_b1_p * κ"
+      }
+    ]
+  },
+  "gamma_coefficients": [
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "gb_a1_m_b1_m",
+      "sign_rule": "graded"
+    }
+  ]
+}
+```
+
+`gamma_coefficients` stores nonzero coefficients in
+`[X,Y]_gb = [X,Y]_0 + κ γ(X,Y)`. Each record means that `coeff` multiplies
+`Z` in `γ(X,Y)`; coefficients are exact symbolic expressions in the `gb`
+matrix entries. Emit both ordered pairs when their coefficients are
+nonzero, using the same graded sign convention as Schema 1. The undeformed
+bracket component must agree with the referenced Schema 1 file.
+
+The generator may emit `Z: "K"` for a scalar identity component in γ.
+`K` remains excluded from the Schema 1 basis and is represented as the
+identity central element defined there; it is allowed here as an output of
+the deformation map.
