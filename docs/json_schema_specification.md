@@ -296,7 +296,7 @@ references.
 
 ```json
 {
-  "generated_by": "build_C_structure_constants.py",
+  "generated_by": "src/C_generators.py",
   "generation_date": "YYYY-MM-DD",
   "references": [
     "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
