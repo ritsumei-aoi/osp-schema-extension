@@ -1,0 +1,1100 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 2,
+    "cartan_type": "C(3)",
+    "alternative_notation": {
+      "osp": "osp(2|4)",
+      "dimension_formula": "osp(2m|2n), m=1"
+    },
+    "dimension": {
+      "total": 19,
+      "even": 11,
+      "odd": 8
+    },
+    "dimension_formula": {
+      "even": "2n^2 + n + 1",
+      "odd": "4n",
+      "total": "2n^2 + 5n + 1"
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "m": 1,
+      "count": 2,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "parity": 1,
+      "description": "Standard fermionic pair a_1^+, a_1^-"
+    },
+    "bosons": {
+      "count": 4,
+      "n": 2,
+      "labels": [
+        "b_1_p",
+        "b_1_m",
+        "b_2_p",
+        "b_2_m"
+      ],
+      "parity": 0,
+      "description": "Bosonic oscillators b_k^± for k=1,...,n"
+    }
+  },
+  "oscillator_relations": {
+    "standard_fermion_anticommutators": {
+      "description": "Canonical anticommutation relations for the fermion pair",
+      "relations": {
+        "conjugate_pair": "{a_1_m, a_1_p} = 1",
+        "same_type": "{a_1_p, a_1_p} = {a_1_m, a_1_m} = 0"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "Canonical commutation relations for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_i^±, b_j^±] = 0 for all i,j",
+        "conjugate_pair": "[b_i_m, b_j_p] = δ_ij"
+      }
+    },
+    "mixed_commutators": {
+      "boson_fermion": "[b_i^±, a_1^±] = 0"
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "parity": 1,
+      "central": true,
+      "nilpotency": "kappa^2 = 0"
+    },
+    "K": {
+      "parity": 0,
+      "central": true,
+      "value": "1"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "H_3",
+      "E_2del1_p",
+      "E_2del1_m",
+      "E_2del2_p",
+      "E_2del2_m",
+      "E_del1_del2_pp",
+      "E_del1_del2_pm",
+      "E_del1_del2_mp",
+      "E_del1_del2_mm"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm",
+      "E_eps1_del2_pp",
+      "E_eps1_del2_pm",
+      "E_eps1_del2_mp",
+      "E_eps1_del2_mm"
+    ],
+    "ordering_convention": "PBW: κ (if represented) < [odd positive] < [odd negative] < [Cartan] < [positive even] < [negative even]; K = 1 is excluded"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "H_3": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_2del2_p": 0,
+    "E_2del2_m": 0,
+    "E_del1_del2_pp": 0,
+    "E_del1_del2_pm": 0,
+    "E_del1_del2_mp": 0,
+    "E_del1_del2_mm": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1,
+    "E_eps1_del2_pp": 1,
+    "E_eps1_del2_pm": 1,
+    "E_eps1_del2_mp": 1,
+    "E_eps1_del2_mm": 1
+  },
+  "generator_realization": {
+    "description": "Standard form with PBW ordering",
+    "ordering": "a_1_p, a_1_m, b_1_p, b_1_m, b_2_p, b_2_m",
+    "realizations": {
+      "H_1": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "a_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^-",
+        "parity": 0
+      },
+      "H_2": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          },
+          {
+            "words": [
+              "b_2_p",
+              "b_2_m"
+            ],
+            "coeff": "-1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_1^- - b_2^+ b_2^-",
+        "parity": 0
+      },
+      "H_3": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_p",
+              "b_2_m"
+            ],
+            "coeff": "-1"
+          },
+          {
+            "words": [],
+            "coeff": "-1/2"
+          }
+        ],
+        "frappat_form": "-b_2^+ b_2^- - 1/2",
+        "parity": 0,
+        "note": "Terminal Cartan generator"
+      },
+      "E_2del1_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^+)^2",
+        "parity": 0
+      },
+      "E_2del1_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_1^-)^2",
+        "parity": 0
+      },
+      "E_2del2_p": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_2^+)^2",
+        "parity": 0
+      },
+      "E_2del2_m": {
+        "standard_form": [
+          {
+            "words": [
+              "b_2_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "(b_2^-)^2",
+        "parity": 0
+      },
+      "E_del1_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_2^+",
+        "parity": 0
+      },
+      "E_del1_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^+ b_2^-",
+        "parity": 0
+      },
+      "E_del1_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^- b_2^+",
+        "parity": 0
+      },
+      "E_del1_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "b_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "b_1^- b_2^-",
+        "parity": 0
+      },
+      "E_eps1_del1_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^+",
+        "parity": 1
+      },
+      "E_eps1_del1_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_1^-",
+        "parity": 1
+      },
+      "E_eps1_del1_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^+",
+        "parity": 1
+      },
+      "E_eps1_del1_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_1_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_1^-",
+        "parity": 1
+      },
+      "E_eps1_del2_pp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_2^+",
+        "parity": 1
+      },
+      "E_eps1_del2_pm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_p",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^+ b_2^-",
+        "parity": 1
+      },
+      "E_eps1_del2_mp": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_p"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_2^+",
+        "parity": 1
+      },
+      "E_eps1_del2_mm": {
+        "standard_form": [
+          {
+            "words": [
+              "a_1_m",
+              "b_2_m"
+            ],
+            "coeff": "1"
+          }
+        ],
+        "frappat_form": "a_1^- b_2^-",
+        "parity": 1
+      }
+    }
+  },
+  "structure_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_3",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del2_mp",
+      "Z": "E_del1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del2_mm",
+      "Z": "E_del1_del2_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del2_mp",
+      "Z": "E_del1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del2_mm",
+      "Z": "E_del1_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_del1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_del1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del2_mp",
+      "Z": "E_2del2_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del2_mm",
+      "Z": "H_1",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del2_mm",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_eps1_del2_mm",
+      "Z": "H_3",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "H_1",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "H_2",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "H_3",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_2del2_m",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pp",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_del1_del2_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_del1_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_eps1_del2_mp",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_eps1_del2_mp",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_eps1_del2_mm",
+      "Z": "E_2del2_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "H_1",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "H_2",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "H_3",
+      "Z": "E_eps1_del2_pm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_2del2_p",
+      "Z": "E_eps1_del2_pp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_pm",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "H_1",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "H_2",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "H_3",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "E_2del2_m",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mp",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "H_1",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "H_2",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "H_3",
+      "Z": "E_eps1_del2_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "E_2del2_p",
+      "Z": "E_eps1_del2_mp",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del2_mm",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_del1_del2_pp",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_del1_del2_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_del1_del2_mm",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_del1_del2_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del2_p",
+      "Z": "E_2del2_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_del1_del2_pm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del2_m",
+      "Z": "E_2del2_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_del1_del2_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_2del2_p",
+      "Z": "E_2del2_p",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_del1_del2_pp",
+      "Z": "E_del1_del2_pp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_del1_del2_pm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_2del2_m",
+      "Z": "E_2del2_m",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_del1_del2_mm",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_3",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_del1_del2_mp",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": "-4",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "H_3",
+      "coeff": "4",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_del1_del2_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_del1_del2_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_p",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_del1_del2_pp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_p",
+      "Y": "E_2del2_m",
+      "Z": "H_3",
+      "coeff": "4",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_p",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_del1_del2_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_del1_del2_pm",
+      "Z": "E_2del1_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_del1_del2_mp",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_2del2_m",
+      "Z": "E_del1_del2_pm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_del1_del2_mm",
+      "Z": "H_2",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_del1_del2_mm",
+      "Z": "H_3",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pp",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_2del2_p",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_del1_del2_mm",
+      "coeff": "-2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pm",
+      "Y": "E_del1_del2_mm",
+      "Z": "E_2del2_m",
+      "coeff": "-1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_pm",
+      "Y": "E_del1_del2_mp",
+      "Z": "H_2",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del2_m",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_del1_del2_mm",
+      "coeff": "2",
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_del1_del2_mm",
+      "Y": "E_del1_del2_mp",
+      "Z": "E_2del1_m",
+      "coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "C_generators.py",
+    "generation_date": "2026-10-10",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "C(n+1) = osp(2|2n) mathematical definition"
+    ]
+  }
+}
