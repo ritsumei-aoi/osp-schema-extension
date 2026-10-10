@@ -35,7 +35,11 @@ fi
 
 # 2. Extract Target Issue Number
 # Expected format in issue_correction.md: **Target Issue**: I{NN}-{n}
-TARGET_ISSUE=$(grep -i "**Target Issue**:" "$CORRECTION_FILE" | grep -o "I[0-9]\{2\}" | sed 's/I//') || ""
+TARGET_ISSUE=$(
+  grep -F -i '**Target Issue**:' "$CORRECTION_FILE" |
+    grep -oE 'I[0-9]{2}' |
+    sed 's/^I//'
+) || TARGET_ISSUE=""
 if [ -z "$TARGET_ISSUE" ]; then
   warn "Could not determine target issue number from $CORRECTION_FILE. Archiving may be incomplete."
 fi
@@ -65,7 +69,9 @@ mv "$CORRECTION_FILE" "${CORRECTION_FILE}.completed"
 git add "${CORRECTION_FILE}.completed"
 
 # 5. Commit and Push
-COMMIT_MSG="fix: execute corrections for Issue I${TARGET_ISSUE:-XX}"
+COMMIT_MSG="fix: execute corrections for Issue I${TARGET_ISSUE:-XX}
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 if ! git diff --staged --quiet; then
   info "Committing changes"
   git commit -m "$COMMIT_MSG"
@@ -76,7 +82,9 @@ git push origin "$CURRENT_BRANCH"
 
 # 6. Create AI-CLAIM marker
 info "Creating [AI-CLAIM] marker commit"
-git commit --allow-empty -m "MARKER: [AI-CLAIM] Correction I${TARGET_ISSUE:-XX} completed"
+git commit --allow-empty -m "MARKER: [AI-CLAIM] Correction I${TARGET_ISSUE:-XX} completed
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 git push origin "$CURRENT_BRANCH"
 
 echo ""
