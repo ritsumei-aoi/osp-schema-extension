@@ -385,3 +385,81 @@ The generator may emit `Z: "K"` for a scalar identity component in γ.
 `K` remains excluded from the Schema 1 basis and is represented as the
 identity central element defined there; it is allowed here as an output of
 the deformation map.
+
+## Schema 3: C(n+1) Evaluated Structure
+
+Schema 3 substitutes a concrete scalar assignment into the Schema 2 `gb`
+parameters. The approved representative profile is the checkerboard
+assignment
+`gb[r,c] = (-1)^(r+c)`, using zero-based row and column indices. Rows are
+`a_1_p, a_1_m`; columns are `b_1_p, b_1_m, ..., b_n_p, b_n_m`.
+Consequently, the `gb` values are even integers `+1` or `-1`, and `κ`
+remains a formal odd nilpotent element.
+
+Use the filename `C_<n>_evaluated.json`. Store both source references, the
+fully expanded assignment, the evaluated γ coefficients, and the complete
+evaluated bracket table. In `evaluated_structure_constants`, `coeff` is the
+Schema 1 (undeformed) coefficient and `kappa_coeff` is the evaluated
+coefficient multiplying `κ` in the deformed bracket.
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)"
+  },
+  "source_files": {
+    "structure": "C_1_structure.json",
+    "gamma": "C_1_gamma.json"
+  },
+  "gb_assignment": {
+    "profile": "checkerboard",
+    "rule": "gb[r,c] = (-1)^(r+c), with zero-based row and column indices",
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "values": [[1, -1], [-1, 1]],
+    "parameter_values": {
+      "gb_a1_p_b1_p": 1,
+      "gb_a1_p_b1_m": -1,
+      "gb_a1_m_b1_p": -1,
+      "gb_a1_m_b1_m": 1
+    }
+  },
+  "evaluated_gamma_coefficients": [
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "evaluated_structure_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": "2",
+      "kappa_coeff": "0",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_evaluated_generator.py",
+    "generation_date": "YYYY-MM-DD",
+    "references": [
+      "Schema 1: C(n+1) oscillator structure",
+      "Schema 2: C(n+1) inhomogeneous gamma structure"
+    ]
+  }
+}
+```
+
+`evaluated_gamma_coefficients` contains only nonzero numeric γ coefficients.
+`evaluated_structure_constants` contains the union of nonzero undeformed and
+evaluated γ terms for every ordered generator pair. A `Z: "K"` identity
+component is permitted as in Schema 2.
