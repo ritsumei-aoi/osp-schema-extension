@@ -1,0 +1,3506 @@
+{
+  "schema_version": "5.0",
+  "schema_layer": 4,
+  "schema_type": "coboundary_structure",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n), m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    },
+    "dimension_formula": {
+      "even": "2n^2 + n + 1",
+      "odd": "4n",
+      "total": "2n^2 + 5n + 1"
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_p",
+      "E_2del1_m"
+    ],
+    "odd": [
+      "E_eps1_del1_pp",
+      "E_eps1_del1_pm",
+      "E_eps1_del1_mp",
+      "E_eps1_del1_mm"
+    ],
+    "ordering_convention": "PBW: κ (if represented) < [odd positive] < [odd negative] < [Cartan] < [positive even] < [negative even]; K = 1 is excluded"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps1_del1_pp": 1,
+    "E_eps1_del1_pm": 1,
+    "E_eps1_del1_mp": 1,
+    "E_eps1_del1_mm": 1
+  },
+  "odd_linear_map": {
+    "parity": 1,
+    "global_scale": "1",
+    "parameter_count": 32,
+    "parameterization": "f(e_a) = sum_mu phi__o_mu__from__e_a * o_mu; f(o_mu) = sum_a psi__e_a__from__o_mu * e_a",
+    "coefficients": [
+      {
+        "parameter": "phi__E_eps1_del1_pp__from__H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pm__from__H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mp__from__H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mm__from__H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pp__from__H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pm__from__H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mp__from__H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mm__from__H_2",
+        "source": "H_2",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+        "source": "E_2del1_p",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_pm"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mp"
+      },
+      {
+        "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+        "source": "E_2del1_m",
+        "target": "E_eps1_del1_mm"
+      },
+      {
+        "parameter": "psi__H_1__from__E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_1"
+      },
+      {
+        "parameter": "psi__H_2__from__E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "H_2"
+      },
+      {
+        "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+        "source": "E_eps1_del1_pp",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "psi__H_1__from__E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_1"
+      },
+      {
+        "parameter": "psi__H_2__from__E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "H_2"
+      },
+      {
+        "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+        "source": "E_eps1_del1_pm",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "psi__H_1__from__E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_1"
+      },
+      {
+        "parameter": "psi__H_2__from__E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "H_2"
+      },
+      {
+        "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+        "source": "E_eps1_del1_mp",
+        "target": "E_2del1_m"
+      },
+      {
+        "parameter": "psi__H_1__from__E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_1"
+      },
+      {
+        "parameter": "psi__H_2__from__E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "H_2"
+      },
+      {
+        "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_p"
+      },
+      {
+        "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+        "source": "E_eps1_del1_mm",
+        "target": "E_2del1_m"
+      }
+    ],
+    "dimensions": {
+      "even_basis_count": 4,
+      "odd_basis_count": 4
+    }
+  },
+  "coboundary_definition": "(delta f)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])",
+  "coboundary_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "1"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "H_2",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mp",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_1",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_p",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_p",
+          "scalar": "-3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_2del1_m",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pp",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_pm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_pm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_pm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mp",
+          "scalar": "-4"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_p",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mp",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mp",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_m__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-2"
+        },
+        {
+          "parameter": "psi__E_2del1_p__from__E_eps1_del1_mm",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mm",
+      "Z": "E_2del1_m",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "1"
+        },
+        {
+          "parameter": "psi__H_1__from__E_eps1_del1_mm",
+          "scalar": "2"
+        },
+        {
+          "parameter": "psi__H_2__from__E_eps1_del1_mm",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "-4"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_1",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "-2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_1",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_1",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_m",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_m",
+          "scalar": "3"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "H_2",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "2"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "1"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__H_2",
+          "scalar": "4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__E_2del1_m",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_pm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_pm__from__H_2",
+          "scalar": "4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_pp__from__E_2del1_p",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mp",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__H_2",
+          "scalar": "4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__E_2del1_m",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_2del1_p",
+      "Z": "E_eps1_del1_mm",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_2",
+          "scalar": "4"
+        },
+        {
+          "parameter": "phi__E_eps1_del1_mp__from__E_2del1_p",
+          "scalar": "2"
+        }
+      ],
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "C_coboundary.py",
+    "generation_date": "2026-10-10",
+    "source_schema": "C_1_structure.json",
+    "references": [
+      "C(n+1) = osp(2|2n) mathematical definition",
+      "Coboundary operator definition (odd linear map)"
+    ]
+  }
+}

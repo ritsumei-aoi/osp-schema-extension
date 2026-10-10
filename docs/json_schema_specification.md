@@ -327,7 +327,8 @@ existing interpretation. The C-specific changes are:
 Other C-family data layers, when present, use rank-based names. Schema 2 uses
 `C_{n}_gamma.json`; Schema 3 uses `C_{n}_evaluated.json` for the approved
 uniform-positive profile (other profiles may add a profile suffix); and Schema
-4 uses `C_{n}_coboundary_<gb>.json`.
+4 uses `C_{n}_coboundary.json`. Schema 4 depends on the Layer 1 bracket and
+general odd-map parameters, not the deformation parameter `gb`.
 
 ## Schema 3: Evaluated Structure
 
@@ -375,3 +376,86 @@ mapped to the exact scalar string `"1"`. `evaluated_constants` contains the
 exact sum of each Schema 2 `coeff` term after substitution; coefficients are
 rational strings, `sign_rule` is `"graded"`, and zero terms are omitted.
 The distinguished scalar output `K` is retained like any other output label.
+
+## Schema 4: Coboundary Structure
+
+Use `C_{n}_coboundary.json` for each bosonic rank. Schema 4 records the
+symbolic coboundary of a general odd linear map and is independent of the
+inhomogeneous-deformation parameters `gb`.
+
+The map reverses parity. With even basis \(e_1,\ldots,e_E\) and odd basis
+\(o_1,\ldots,o_O\), its independent coefficients are
+
+\[
+f(e_a)=\sum_{\mu=1}^{O}\phi_{\mu a}o_\mu,\qquad
+f(o_\mu)=\sum_{a=1}^{E}\psi_{a\mu}e_a.
+\]
+
+The global scale is normalized to `1`; the \(\phi\) and \(\psi\) coefficients
+remain independent formal parameters. There are \(2EO\) map parameters, with
+\(E=2n^2+n+1\) and \(O=4n\).
+
+Schema 4 has `schema_version: "5.0"`, `schema_layer: 4`, and
+`schema_type: "coboundary_structure"`. It preserves the `algebra`, `basis`,
+and `parity` context from Schema 1 and records the map and its resulting
+ordered coefficients:
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 4,
+  "schema_type": "coboundary_structure",
+  "algebra": {},
+  "basis": {},
+  "parity": {},
+  "odd_linear_map": {
+    "parity": 1,
+    "global_scale": "1",
+    "parameter_count": 32,
+    "parameterization": "f(e_a) = sum_mu phi__o_mu__from__e_a * o_mu; f(o_mu) = sum_a psi__e_a__from__o_mu * e_a",
+    "coefficients": [
+      {
+        "parameter": "phi__E_eps1_del1_pp__from__H_1",
+        "source": "H_1",
+        "target": "E_eps1_del1_pp"
+      }
+    ],
+    "dimensions": {
+      "even_basis_count": 4,
+      "odd_basis_count": 4
+    }
+  },
+  "coboundary_definition": "(delta f)(X,Y) = (-1)^p(X)[X,f(Y)] - (-1)^((p(X)+1)p(Y))[Y,f(X)] - f([X,Y])",
+  "coboundary_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": [
+        {
+          "parameter": "phi__E_eps1_del1_mm__from__H_1",
+          "scalar": "-1"
+        }
+      ],
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "C_coboundary.py",
+    "generation_date": "YYYY-MM-DD",
+    "source_schema": "C_1_structure.json",
+    "references": [
+      "C(n+1) = osp(2|2n) mathematical definition",
+      "Coboundary operator definition (odd linear map)"
+    ]
+  }
+}
+```
+
+The `coefficients` array enumerates every parity-reversing source/target pair
+once. In each `coboundary_constants` record, `coeff` is a list of exact
+parameter/scalar terms; rational scalars are strings, zero terms are omitted,
+and outputs are Schema 1 basis labels. Store both ordered orientations with
+coefficients satisfying graded skew-symmetry. Each output has parity
+\((p(X)+p(Y)+1)\bmod 2\), and the records are computed from the Schema 1
+brackets using the defining coboundary formula above.
