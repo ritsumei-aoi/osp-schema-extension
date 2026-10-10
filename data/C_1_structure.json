@@ -1,0 +1,223 @@
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "oscillator_generators": {
+    "fermions": {
+      "m": 1,
+      "count": 2,
+      "labels": [
+        "a_1_p",
+        "a_1_m"
+      ],
+      "description": "Fermionic oscillators a_i^\u00b1 with i=1,...,m"
+    },
+    "bosons": {
+      "n": 1,
+      "count": 2,
+      "labels": [
+        "b_1_p",
+        "b_1_m"
+      ],
+      "description": "Bosonic oscillators b_j^\u00b1 with j=1,...,n"
+    }
+  },
+  "oscillator_relations": {
+    "fermionic_anticommutators": {
+      "description": "Canonical anticommutation relations (CAR) for fermionic oscillators",
+      "relations": {
+        "same_type": "{a_i^\u00b1, a_j^\u00b1} = 0 for all i, j",
+        "conjugate_pair": "{a_i^-, a_j^+} = \\delta_{ij}"
+      }
+    },
+    "bosonic_commutators": {
+      "description": "Canonical commutation relations (CCR) for bosonic oscillators",
+      "relations": {
+        "same_type": "[b_i^\u00b1, b_j^\u00b1] = 0 for all i, j",
+        "conjugate_pair": "[b_i^-, b_j^+] = \\delta_{ij}"
+      }
+    },
+    "mixed_commutators": {
+      "boson_fermion": "[b_i^\u00b1, a_j^\u00b1] = 0"
+    }
+  },
+  "central_elements": {
+    "kappa": {
+      "parity": 1,
+      "description": "Odd central element (nilpotent: kappa^2 = 0) used for the inhomogeneous deformation."
+    },
+    "K": {
+      "parity": 0,
+      "description": "Even central element, identified with scalar 1 in applications."
+    }
+  },
+  "basis": {
+    "even": [
+      "H_1",
+      "H_2",
+      "E_2del1_m",
+      "E_2del1_p"
+    ],
+    "odd": [
+      "E_eps_del1_mm",
+      "E_eps_del1_mp",
+      "E_eps_del1_pm",
+      "E_eps_del1_pp"
+    ],
+    "ordering_convention": "PBW: \u03ba < [odd] < [even]"
+  },
+  "parity": {
+    "H_1": 0,
+    "H_2": 0,
+    "E_2del1_p": 0,
+    "E_2del1_m": 0,
+    "E_eps_del1_pp": 1,
+    "E_eps_del1_pm": 1,
+    "E_eps_del1_mp": 1,
+    "E_eps_del1_mm": 1
+  },
+  "generator_realization": {
+    "H_1": "a+ a- + b1+ b1-",
+    "H_2": "- b1+ b1- - 0.5",
+    "E_2del1_p": "b1+ b1+",
+    "E_2del1_m": "b1- b1-",
+    "E_eps_del1_pp": "a+ b1+",
+    "E_eps_del1_pm": "a+ b1-",
+    "E_eps_del1_mp": "a- b1+",
+    "E_eps_del1_mm": "a- b1-"
+  },
+  "structure_constants": {
+    "E_eps_del1_mm,E_eps_del1_pm": {
+      "E_2del1_m": 1.0
+    },
+    "E_eps_del1_mm,E_eps_del1_pp": {
+      "H_1": -1,
+      "H_2": -2
+    },
+    "E_eps_del1_mm,H_1": {
+      "E_eps_del1_mm": 2.0
+    },
+    "E_eps_del1_mm,H_2": {
+      "E_eps_del1_mm": -1.0
+    },
+    "E_eps_del1_mm,E_2del1_p": {
+      "E_eps_del1_mp": 2.0
+    },
+    "E_eps_del1_mp,E_eps_del1_pm": {
+      "H_1": 1
+    },
+    "E_eps_del1_mp,E_eps_del1_pp": {
+      "E_2del1_p": 1.0
+    },
+    "E_eps_del1_mp,H_2": {
+      "E_eps_del1_mp": 1.0
+    },
+    "E_eps_del1_mp,E_2del1_m": {
+      "E_eps_del1_mm": -2.0
+    },
+    "E_eps_del1_pm,E_eps_del1_mm": {
+      "E_2del1_m": 1.0
+    },
+    "E_eps_del1_pm,E_eps_del1_mp": {
+      "H_1": 1
+    },
+    "E_eps_del1_pm,H_2": {
+      "E_eps_del1_pm": -1.0
+    },
+    "E_eps_del1_pm,E_2del1_p": {
+      "E_eps_del1_pp": 2.0
+    },
+    "E_eps_del1_pp,E_eps_del1_mm": {
+      "H_1": -1,
+      "H_2": -2
+    },
+    "E_eps_del1_pp,E_eps_del1_mp": {
+      "E_2del1_p": 1.0
+    },
+    "E_eps_del1_pp,H_1": {
+      "E_eps_del1_pp": -2.0
+    },
+    "E_eps_del1_pp,H_2": {
+      "E_eps_del1_pp": 1.0
+    },
+    "E_eps_del1_pp,E_2del1_m": {
+      "E_eps_del1_pm": -2.0
+    },
+    "H_1,E_eps_del1_mm": {
+      "E_eps_del1_mm": -2.0
+    },
+    "H_1,E_eps_del1_pp": {
+      "E_eps_del1_pp": 2.0
+    },
+    "H_1,E_2del1_m": {
+      "E_2del1_m": -2.0
+    },
+    "H_1,E_2del1_p": {
+      "E_2del1_p": 2.0
+    },
+    "H_2,E_eps_del1_mm": {
+      "E_eps_del1_mm": 1.0
+    },
+    "H_2,E_eps_del1_mp": {
+      "E_eps_del1_mp": -1.0
+    },
+    "H_2,E_eps_del1_pm": {
+      "E_eps_del1_pm": 1.0
+    },
+    "H_2,E_eps_del1_pp": {
+      "E_eps_del1_pp": -1.0
+    },
+    "H_2,E_2del1_m": {
+      "E_2del1_m": 2.0
+    },
+    "H_2,E_2del1_p": {
+      "E_2del1_p": -2.0
+    },
+    "E_2del1_m,E_eps_del1_mp": {
+      "E_eps_del1_mm": 2.0
+    },
+    "E_2del1_m,E_eps_del1_pp": {
+      "E_eps_del1_pm": 2.0
+    },
+    "E_2del1_m,H_1": {
+      "E_2del1_m": 2.0
+    },
+    "E_2del1_m,H_2": {
+      "E_2del1_m": -2.0
+    },
+    "E_2del1_m,E_2del1_p": {
+      "H_2": -4
+    },
+    "E_2del1_p,E_eps_del1_mm": {
+      "E_eps_del1_mp": -2.0
+    },
+    "E_2del1_p,E_eps_del1_pm": {
+      "E_eps_del1_pp": -2.0
+    },
+    "E_2del1_p,H_1": {
+      "E_2del1_p": -2.0
+    },
+    "E_2del1_p,H_2": {
+      "E_2del1_p": 2.0
+    },
+    "E_2del1_p,E_2del1_m": {
+      "H_2": 4
+    }
+  },
+  "metadata": {
+    "description": "Schema 1 for C(2) = osp(2|2)"
+  }
+}
