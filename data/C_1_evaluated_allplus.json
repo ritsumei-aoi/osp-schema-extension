@@ -1,0 +1,399 @@
+{
+  "schema_version": "5.0",
+  "schema_layer": 3,
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)",
+    "alternative_notation": {
+      "osp": "osp(2|2)",
+      "dimension_formula": "osp(2m|2n) with m=1"
+    },
+    "dimension": {
+      "total": 8,
+      "even": 4,
+      "odd": 4
+    }
+  },
+  "sign_convention": {
+    "label": "A",
+    "description": "gb_{sigma,j,s} = (a_1^sigma | b_j^s) from the skew-supersymmetric bilinear form. Deformed exchange relation: [b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa. Equivalently: b_j^s * a_1^sigma = a_1^sigma * b_j^s - gb_{sigma,j,s} * kappa under PBW normalization.",
+    "deformed_relation": "[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa"
+  },
+  "gb_profile": {
+    "name": "allplus",
+    "description": "All 4n gb parameters set to +1 (maximal deformation).",
+    "fermionic_labels": [
+      "a_1_p",
+      "a_1_m"
+    ],
+    "bosonic_labels": [
+      "b_1_p",
+      "b_1_m"
+    ],
+    "values": {
+      "gb_a_1_m_b_1_m": 1,
+      "gb_a_1_m_b_1_p": 1,
+      "gb_a_1_p_b_1_m": 1,
+      "gb_a_1_p_b_1_p": 1
+    },
+    "value_matrix": {
+      "a_1_p": {
+        "b_1_p": 1,
+        "b_1_m": 1
+      },
+      "a_1_m": {
+        "b_1_p": 1,
+        "b_1_m": 1
+      }
+    }
+  },
+  "evaluated_gamma": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_pm",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_pm",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mp",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mm",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pm",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mp",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "2"
+        },
+        {
+          "Z": "H_1",
+          "coeff": "-1"
+        },
+        {
+          "Z": "H_2",
+          "coeff": "-2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_2",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "-2"
+        },
+        {
+          "Z": "H_2",
+          "coeff": "1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_p",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_2del1_m",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mp",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mm",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_eps1_del1_mm",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pm",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mm",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_1",
+      "gamma_terms": [
+        {
+          "Z": "H_1",
+          "coeff": "-1"
+        },
+        {
+          "Z": "H_2",
+          "coeff": "-2"
+        },
+        {
+          "Z": "E_2del1_m",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "H_2",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "1"
+        },
+        {
+          "Z": "E_2del1_m",
+          "coeff": "-2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_p",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_pm",
+      "Y": "E_2del1_m",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_m",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_eps1_del1_mm",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_mp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mm",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_1",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "2"
+        },
+        {
+          "Z": "H_1",
+          "coeff": "1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "H_2",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "-2"
+        },
+        {
+          "Z": "H_2",
+          "coeff": "1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_p",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_p",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mp",
+      "Y": "E_2del1_m",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_1",
+      "gamma_terms": [
+        {
+          "Z": "H_1",
+          "coeff": "1"
+        },
+        {
+          "Z": "E_2del1_m",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "H_2",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "1"
+        },
+        {
+          "Z": "E_2del1_m",
+          "coeff": "-2"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_p",
+      "gamma_terms": [
+        {
+          "Z": "H_2",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "E_eps1_del1_mm",
+      "Y": "E_2del1_m",
+      "gamma_terms": [
+        {
+          "Z": "E_2del1_m",
+          "coeff": "2"
+        }
+      ]
+    },
+    {
+      "X": "H_1",
+      "Y": "H_2",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_pm",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mp",
+          "coeff": "-1"
+        },
+        {
+          "Z": "E_eps1_del1_mm",
+          "coeff": "-1"
+        }
+      ]
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_p",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pp",
+          "coeff": "1"
+        },
+        {
+          "Z": "E_eps1_del1_mp",
+          "coeff": "1"
+        }
+      ]
+    },
+    {
+      "X": "H_1",
+      "Y": "E_2del1_m",
+      "gamma_terms": [
+        {
+          "Z": "E_eps1_del1_pm",
+          "coeff": "1"
+        },
+        {
+          "Z": "E_eps1_del1_mm",
+          "coeff": "1"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_by": "evaluate_gamma.py",
+    "generation_date": "2026-10-10",
+    "source_schema2": "C_1_gamma.json",
+    "source_schema1": "C_1_structure.json",
+    "notes": "Each entry encodes the evaluated gamma coefficient: [X, Y]_deformed = [X, Y]_0 + kappa * gamma(X, Y). gamma(X, Y) = sum_Z coeff * Z, where coeff is a rational number obtained by substituting the gb profile values into the Schema 2 symbolic expression. Only non-zero pairs are listed.",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "docs/math/C_inhomogeneous_definition.md"
+    ]
+  }
+}
