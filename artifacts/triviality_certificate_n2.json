@@ -1,0 +1,197 @@
+{
+ "algebra": "C(3) = osp(2|4)",
+ "n": 2,
+ "dim_even": 11,
+ "dim_odd": 8,
+ "conventions": {
+  "basis": "N=a+a-, P_kl=bk+bl+ (k<=l), Q_kl=bk+bl-, M_kl=bk-bl- (k<=l), F_{sigma}_{j}_{s}=a^sigma bj^s; p/m encode +/-",
+  "deformed_relation": "b_j^s a^sigma = a^sigma b_j^s - ghat_{sigma,j,s}, ghat = gb*kappa (odd central nilpotent tag; gb even scalar, kappa odd central, kappa^2=0)",
+  "gamma": "[X,Y]_def = [X,Y]_0 + sum_alpha ghat_alpha C_alpha(X,Y) + central scalars; doc gamma_gb = sum_alpha gb_alpha C_alpha",
+  "delta_f": "(delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])",
+  "scalars": "structure constants and cocycles are reported modulo C*1 (adjoint representation / up-to-scalar prescription); the central parts are reported separately"
+ },
+ "theorem": "For EVERY value of the parameters gb the inhomogeneous deformation gamma_gb of C(n+1) is TRIVIAL: gamma_gb = delta f_gb with f_gb = sum_alpha gb_alpha f_alpha, f_alpha below (f_alpha = -(1/sigma) C_alpha(N, .)). The triviality condition on gb is vacuous.",
+ "certificates": [
+  {
+   "param": "gb(+,1,+)",
+   "homotopy_ratio_r": "-1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "P_1_1": {
+     "F_m_1_p": "-2"
+    },
+    "P_1_2": {
+     "F_m_2_p": "-1"
+    },
+    "Q_1_1": {
+     "F_m_1_m": "-1"
+    },
+    "Q_1_2": {
+     "F_m_2_m": "-1"
+    },
+    "F_p_1_p": {
+     "N": "1"
+    }
+   }
+  },
+  {
+   "param": "gb(+,1,-)",
+   "homotopy_ratio_r": "-1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "Q_1_1": {
+     "F_m_1_p": "-1"
+    },
+    "Q_2_1": {
+     "F_m_2_p": "-1"
+    },
+    "M_1_1": {
+     "F_m_1_m": "-2"
+    },
+    "M_1_2": {
+     "F_m_2_m": "-1"
+    },
+    "F_p_1_m": {
+     "N": "1"
+    }
+   }
+  },
+  {
+   "param": "gb(+,2,+)",
+   "homotopy_ratio_r": "-1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "P_1_2": {
+     "F_m_1_p": "-1"
+    },
+    "P_2_2": {
+     "F_m_2_p": "-2"
+    },
+    "Q_2_1": {
+     "F_m_1_m": "-1"
+    },
+    "Q_2_2": {
+     "F_m_2_m": "-1"
+    },
+    "F_p_2_p": {
+     "N": "1"
+    }
+   }
+  },
+  {
+   "param": "gb(+,2,-)",
+   "homotopy_ratio_r": "-1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "Q_1_2": {
+     "F_m_1_p": "-1"
+    },
+    "Q_2_2": {
+     "F_m_2_p": "-1"
+    },
+    "M_1_2": {
+     "F_m_1_m": "-1"
+    },
+    "M_2_2": {
+     "F_m_2_m": "-2"
+    },
+    "F_p_2_m": {
+     "N": "1"
+    }
+   }
+  },
+  {
+   "param": "gb(-,1,+)",
+   "homotopy_ratio_r": "1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "P_1_1": {
+     "F_p_1_p": "-2"
+    },
+    "P_1_2": {
+     "F_p_2_p": "-1"
+    },
+    "Q_1_1": {
+     "F_p_1_m": "-1"
+    },
+    "Q_1_2": {
+     "F_p_2_m": "-1"
+    },
+    "F_m_1_p": {
+     "N": "-1"
+    }
+   }
+  },
+  {
+   "param": "gb(-,1,-)",
+   "homotopy_ratio_r": "1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "Q_1_1": {
+     "F_p_1_p": "-1"
+    },
+    "Q_2_1": {
+     "F_p_2_p": "-1"
+    },
+    "M_1_1": {
+     "F_p_1_m": "-2"
+    },
+    "M_1_2": {
+     "F_p_2_m": "-1"
+    },
+    "F_m_1_m": {
+     "N": "-1"
+    }
+   }
+  },
+  {
+   "param": "gb(-,2,+)",
+   "homotopy_ratio_r": "1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "P_1_2": {
+     "F_p_1_p": "-1"
+    },
+    "P_2_2": {
+     "F_p_2_p": "-2"
+    },
+    "Q_2_1": {
+     "F_p_1_m": "-1"
+    },
+    "Q_2_2": {
+     "F_p_2_m": "-1"
+    },
+    "F_m_2_p": {
+     "N": "-1"
+    }
+   }
+  },
+  {
+   "param": "gb(-,2,-)",
+   "homotopy_ratio_r": "1",
+   "f_alpha (delta f_alpha = C_alpha, values mod scalars)": {
+    "Q_1_2": {
+     "F_p_1_p": "-1"
+    },
+    "Q_2_2": {
+     "F_p_2_p": "-1"
+    },
+    "M_1_2": {
+     "F_p_1_m": "-1"
+    },
+    "M_2_2": {
+     "F_p_2_m": "-2"
+    },
+    "F_m_2_m": {
+     "N": "-1"
+    }
+   }
+  }
+ ],
+ "central_extension_check": {
+  "question": "is delta f = gamma solvable INCLUDING scalar parts (i.e. without the up-to-scalar quotient), allowing f a scalar component on odd elements?",
+  "answer_per_param": {
+   "gb(+,1,+)": true,
+   "gb(+,1,-)": true,
+   "gb(+,2,+)": true,
+   "gb(+,2,-)": true,
+   "gb(-,1,+)": true,
+   "gb(-,1,-)": true,
+   "gb(-,2,+)": true,
+   "gb(-,2,-)": true
+  }
+ }
+}
