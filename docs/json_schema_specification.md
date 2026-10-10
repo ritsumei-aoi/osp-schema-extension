@@ -463,3 +463,70 @@ coefficient multiplying `κ` in the deformed bracket.
 `evaluated_structure_constants` contains the union of nonzero undeformed and
 evaluated γ terms for every ordered generator pair. A `Z: "K"` identity
 component is permitted as in Schema 2.
+
+## Schema 4: C(n+1) Coboundary Structure
+
+Schema 4 stores the coboundary of a general odd linear map on the
+Schema 1 basis. Use `C_<n>_coboundary.json` and reference
+`C_<n>_structure.json`.
+
+Let `Z_1,...,Z_N` be the Schema 1 basis in the approved PBW order. Define
+`f(Z_j) = Σ_{i: p(Z_i) != p(Z_j)} φ_ij Z_i`, with independent even symbolic
+coefficients `φ_ij`. Same-parity entries are zero. No separate overall scale
+is stored; it is absorbed into the free coefficients. There are
+`2 * dim_even * dim_odd` map parameters.
+
+Compute all ordered coboundary coefficients from
+
+```text
+(δf)(X,Y) = (-1)^p(X) [X,f(Y)]
+             - (-1)^((p(X)+1)p(Y)) [Y,f(X)]
+             - f([X,Y])
+```
+
+using the Schema 1 graded brackets. Store the map parameters and every
+nonzero symbolic coefficient in `coboundary_coefficients`.
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {
+    "family": "C",
+    "m": 1,
+    "n": 1,
+    "cartan_type": "C(2)"
+  },
+  "source_structure_file": "C_1_structure.json",
+  "odd_linear_map": {
+    "definition": "f(Z_j) = sum_{i: parity(Z_i) != parity(Z_j)} phi_ij Z_i",
+    "coefficient_parity": 0,
+    "global_scale": "absorbed_into_phi_ij",
+    "parameters": [
+      {
+        "input": "H_1",
+        "output": "E_eps1_del1_pp",
+        "symbol": "phi__E_eps1_del1_pp__from__H_1",
+        "input_parity": 0,
+        "output_parity": 1
+      }
+    ]
+  },
+  "coboundary_coefficients": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_m",
+      "coeff": "-4*phi__E_2del1_m__from__E_eps1_del1_pp",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_coboundary_generator.py",
+    "generation_date": "YYYY-MM-DD",
+    "references": [
+      "docs/math/C_coboundary_definition.md",
+      "docs/json_schema_specification.md"
+    ]
+  }
+}
+```
