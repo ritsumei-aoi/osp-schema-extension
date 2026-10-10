@@ -392,10 +392,10 @@ def _format_fraction(value: Fraction) -> str:
 
 
 def generate_structure_constants(basis: AlgebraBasis) -> list[dict[str, str]]:
-    """Compute all nonzero graded brackets, storing each PBW-ordered pair once."""
+    """Compute all nonzero graded brackets for every ordered generator pair."""
     records: list[dict[str, str]] = []
-    for index, left_label in enumerate(basis.pbw):
-        for right_label in basis.pbw[index:]:
+    for left_label in basis.pbw:
+        for right_label in basis.pbw:
             bracket = _bracket(
                 basis.realizations[left_label],
                 basis.realizations[right_label],

@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from C_generators import (  # noqa: E402
     _add,
     _bracket,
+    _express_in_basis,
     _scale,
     build_basis,
     build_schema,
@@ -31,28 +32,21 @@ class CGeneratorTests(unittest.TestCase):
         }
 
     def _structure_map(self, basis, records):
-        positions = {label: index for index, label in enumerate(basis.pbw)}
         result = {}
         for record in records:
             key = (record["X"], record["Y"])
             result.setdefault(key, {})[record["Z"]] = _parse_coefficient(
                 record["coeff"]
             )
-        return positions, result
+        return result
 
-    def _bracket_coordinates(self, basis, positions, structure, left, right):
-        if positions[left] <= positions[right]:
-            return structure.get((left, right), {})
-        canonical = structure.get((right, left), {})
-        factor = -1 if basis.parity[left] * basis.parity[right] == 0 else 1
-        return {label: factor * value for label, value in canonical.items()}
+    def _bracket_coordinates(self, structure, left, right):
+        return structure.get((left, right), {})
 
-    def _nested_bracket(self, basis, positions, structure, left, inner):
+    def _nested_bracket(self, structure, left, inner):
         result = {}
         for inner_label, coefficient in inner.items():
-            bracket = self._bracket_coordinates(
-                basis, positions, structure, left, inner_label
-            )
+            bracket = self._bracket_coordinates(structure, left, inner_label)
             result = _add(result, _scale(bracket, coefficient))
         return result
 
@@ -87,23 +81,41 @@ class CGeneratorTests(unittest.TestCase):
                     factor = -1 if basis.parity[left] * basis.parity[right] == 0 else 1
                     self.assertEqual(forward, _scale(reverse, Fraction(factor)))
 
+    def test_generated_constants_include_every_ordered_bracket(self):
+        for rank, basis in self.bases.items():
+            structure = self._structure_map(basis, self.constants[rank])
+            with self.subTest(rank=rank):
+                for left, right in itertools.product(basis.pbw, repeat=2):
+                    oscillator_bracket = _bracket(
+                        basis.realizations[left],
+                        basis.realizations[right],
+                        basis.parity[left],
+                        basis.parity[right],
+                    )
+                    expected = _express_in_basis(oscillator_bracket, basis)
+                    self.assertEqual(
+                        structure.get((left, right), {}),
+                        expected,
+                        (rank, left, right),
+                    )
+
     def test_super_jacobi_identity(self):
         for rank, basis in self.bases.items():
-            positions, structure = self._structure_map(basis, self.constants[rank])
+            structure = self._structure_map(basis, self.constants[rank])
             with self.subTest(rank=rank):
                 for x, y, z in itertools.product(basis.pbw, repeat=3):
                     yz = self._bracket_coordinates(
-                        basis, positions, structure, y, z
+                        structure, y, z
                     )
                     zx = self._bracket_coordinates(
-                        basis, positions, structure, z, x
+                        structure, z, x
                     )
                     xy = self._bracket_coordinates(
-                        basis, positions, structure, x, y
+                        structure, x, y
                     )
-                    first = self._nested_bracket(basis, positions, structure, x, yz)
-                    second = self._nested_bracket(basis, positions, structure, y, zx)
-                    third = self._nested_bracket(basis, positions, structure, z, xy)
+                    first = self._nested_bracket(structure, x, yz)
+                    second = self._nested_bracket(structure, y, zx)
+                    third = self._nested_bracket(structure, z, xy)
 
                     first_sign = -1 if basis.parity[x] * basis.parity[z] else 1
                     second_sign = -1 if basis.parity[y] * basis.parity[x] else 1
