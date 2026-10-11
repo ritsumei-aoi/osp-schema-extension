@@ -304,6 +304,61 @@ generation date for generated instances:
 }
 ```
 
+## Schema 2: Inhomogeneous gamma structure
+
+Schema 2 files are named `C_{n}_gamma.json` and reference the corresponding
+Schema 1 file `C_{n}_structure.json`. They reuse its `algebra` object and
+store the deformation parameters and nonzero gamma coefficients:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {},
+  "gb_matrix": {
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "parameters": [
+      ["gb_a1_p_b1_p", "gb_a1_p_b1_m"],
+      ["gb_a1_m_b1_p", "gb_a1_m_b1_m"]
+    ],
+    "parity": 0
+  },
+  "inhomogeneous_deformation": {
+    "exchange_relation": "[b_j^s, a_1^σ] = -gb_{σ,j,s} * κ",
+    "sign_convention": "Literal source relation; gb is an ordinary scalar.",
+    "kappa_parity": 1,
+    "deformation_term_parity": 1,
+    "gamma_structure": [
+      {
+        "X": "E_eps1_del1_pp",
+        "Y": "H_1",
+        "Z": "K",
+        "coeff": "gb_a1_p_b1_p",
+        "sign_rule": "graded"
+      }
+    ]
+  },
+  "metadata": {}
+}
+```
+
+`gb_matrix.shape` is `[2, 2n]`. Its rows correspond to `a_1_p` and
+`a_1_m`; its columns list each `b_k_p`, `b_k_m` in ascending `k`. Every
+matrix entry is a distinct ordinary scalar parameter (`parity: 0`). The
+product of a parameter with the odd central symbol `κ` has parity 1.
+
+`gamma_structure` contains one record for every nonzero ordered pair and
+output component. `coeff` is an exact linear expression in the `gb`
+parameters; `X` and `Y` are Schema 1 basis labels. `Z` may be a Schema 1
+basis label or `"K"`, the even central identity (`K=1`) recorded in the
+Schema 1 `central_elements` object. Although `K` is excluded from the
+Schema 1 basis, scalar components in gamma are intentional and must be
+represented with `Z: "K"`. Coefficients use the same graded sign convention
+as Schema 1. The undeformed bracket component is checked against the
+corresponding Schema 1 structure constants. `metadata.schema1_file` names
+the Schema 1 input used to generate the gamma data.
+
 ## Compatibility with B(m,n)
 
 The C(n+1) schema retains `schema_version: "5.0"` and the existing v5.0
