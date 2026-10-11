@@ -359,6 +359,62 @@ as Schema 1. The undeformed bracket component is checked against the
 corresponding Schema 1 structure constants. `metadata.schema1_file` names
 the Schema 1 input used to generate the gamma data.
 
+## Schema 3: Evaluated deformed structure
+
+Schema 3 files are named `C_{n}_evaluated.json`. They substitute a concrete
+sign assignment into Schema 2 and combine the undeformed bracket with the
+evaluated coefficient of the odd central symbol `κ`:
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": {},
+  "gb_matrix": {
+    "shape": [2, 2],
+    "row_labels": ["a_1_p", "a_1_m"],
+    "column_labels": ["b_1_p", "b_1_m"],
+    "parameters": [
+      ["gb_a1_p_b1_p", "gb_a1_p_b1_m"],
+      ["gb_a1_m_b1_p", "gb_a1_m_b1_m"]
+    ],
+    "values": [[1, -1], [-1, 1]],
+    "parity": 0
+  },
+  "parameter_profile": {
+    "name": "alternating_checkerboard",
+    "formula": "..."
+  },
+  "evaluated_structure_constants": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "H_1",
+      "Z": "K",
+      "base_coeff": "0",
+      "kappa_coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "source_schema1_file": "C_1_structure.json",
+    "source_schema2_file": "C_1_gamma.json"
+  }
+}
+```
+
+`gb_matrix.values` is a numeric matrix aligned with `parameters`. The
+approved alternating checkerboard profile sets, for each `j=1,...,n`,
+`gb_a1_p_b{j}_p=(-1)^(j-1)`,
+`gb_a1_p_b{j}_m=(-1)^j`,
+`gb_a1_m_b{j}_p=(-1)^j`, and
+`gb_a1_m_b{j}_m=(-1)^(j-1)`.
+
+Each `evaluated_structure_constants` record represents
+`[X,Y]_0 + κ * kappa_coeff`. `base_coeff` and `kappa_coeff` are exact rational
+strings, and records are emitted for every nonzero ordered `(X,Y,Z)`
+component in either part. `Z` may be a Schema 1 basis label or `"K"` for the
+scalar gamma component. The `metadata` source fields identify the Schema 1
+and Schema 2 inputs used for the evaluation.
+
 ## Compatibility with B(m,n)
 
 The C(n+1) schema retains `schema_version: "5.0"` and the existing v5.0
