@@ -41,7 +41,9 @@ The staged progression helped. It placed human decisions at consequential points
 
 The mathematical references were strong on oscillator realizations and the coboundary formula, but the original parity statement for `gb` needed human clarification, and the schema references did not define full Schema 2-4 layouts. Future studies would benefit from machine-readable schemas and explicit conventions for scalar central outputs and "up to scalar" comparisons.
 
-`close_issue.sh` successfully archived issues, reset the queue, committed, pushed, and created marker commits. In practice, it did not stage the implementation, test, documentation, or data files despite the workflow text suggesting that all changes would be staged. I explicitly staged the approved deliverables before invoking it. A preflight check of the staged set—or a documented explicit-file input—would make the script safer and less surprising. `submit_correction.sh` was not needed in this study.
+`close_issue.sh` successfully archived issues, reset the queue, committed, pushed, and created marker commits. In practice, it did not stage the implementation, test, documentation, or data files despite the workflow text suggesting that all changes would be staged. I explicitly staged the approved deliverables before invoking it. A preflight check of the staged set—or a documented explicit-file input—would make the script safer and less surprising.
+
+I used `submit_correction.sh` for the I09 correction cycle. Its first run failed on macOS because basic `grep` treated the `**` in the header pattern as an invalid repetition operator; the fallback `|| ""` then attempted to execute an empty command. I corrected line 38 to use fixed-string matching (`grep -iF`) and an explicit empty-value assignment (`|| TARGET_ISSUE=""`), then reran the script successfully. For portability, scripts should use fixed-string matching for literal headers, avoid empty-command fallbacks, and be tested against the platform's default BSD utilities as well as GNU tools.
 
 ## 4. Honesty & Integrity (Audit Disclosure)
 

@@ -43,7 +43,7 @@ fi
 # 3. Integrated Archiving
 if [ -n "$TARGET_ISSUE" ]; then
   # Find the most recent done file for this issue number
-  ARCHIVE_FILE=$(ls -t "${DONE_DIR}/issue_"*"_${TARGET_ISSUE}.md" 2>/dev/null | head -n 1) || ""
+  ARCHIVE_FILE=$(ls -t "${DONE_DIR}/issue_"*"_${TARGET_ISSUE}.md" 2>/dev/null | head -n 1) || ARCHIVE_FILE=""
   
   if [ -n "$ARCHIVE_FILE" ] && [ -f "$ARCHIVE_FILE" ]; then
     info "Appending correction to archive: $ARCHIVE_FILE"
