@@ -1,0 +1,452 @@
+#!/usr/bin/env python3
+"""
+C_generators.py
+
+Build C(n+1) = osp(2|2n) basis and compute structure constants.
+Outputs data/C_{n}_structure.json for n = 1, 2, 3.
+
+Usage:
+    python C_generators.py [--dry-run]
+    python C_generators.py            # writes to data/
+"""
+
+import sys
+import json
+import datetime
+from fractions import Fraction
+from collections import defaultdict
+from itertools import combinations
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Types
+# ---------------------------------------------------------------------------
+Word = tuple   # tuple of oscillator label strings in PBW order
+Poly = dict    # Dict[Word, Fraction]
+
+
+# ---------------------------------------------------------------------------
+# Oscillator algebra
+# ---------------------------------------------------------------------------
+
+def osc_labels(n: int) -> list:
+    """Oscillator labels in PBW order: a_1_p, a_1_m, b_1_p, b_1_m, ..."""
+    labels = ['a_1_p', 'a_1_m']
+    for k in range(1, n + 1):
+        labels += [f'b_{k}_p', f'b_{k}_m']
+    return labels
+
+
+def is_fermionic(osc: str) -> bool:
+    return osc.startswith('a_')
+
+
+def _comm_value(oi: str, oj: str) -> Fraction:
+    """
+    (Anti)commutator value when oi (higher PBW index) is moved past oj.
+    Fermionic pair → anticommutator {oi, oj}.
+    Bosonic pair   → commutator [oi, oj].
+    Mixed          → 0.
+    """
+    fi, fj = is_fermionic(oi), is_fermionic(oj)
+    if fi and fj:
+        # {a_1_m, a_1_p} = 1  (the only nontrivial fermionic anticommutator)
+        if oi == 'a_1_m' and oj == 'a_1_p':
+            return Fraction(1)
+    elif not fi and not fj:
+        # [b_k_m, b_k_p] = 1  (bosonic CCR)
+        if oi.endswith('_m') and oj.endswith('_p') and oi[:-2] == oj[:-2]:
+            return Fraction(1)
+    return Fraction(0)
+
+
+def _swap_sign(oi: str, oj: str) -> int:
+    """Sign when swapping two operators: -1 if both fermionic, else +1."""
+    return -1 if (is_fermionic(oi) and is_fermionic(oj)) else 1
+
+
+def normalize(word: tuple, order: list) -> Poly:
+    """
+    Reduce a word to PBW normal form by bubble sort with commutator insertion.
+    Returns a Poly (dict word -> Fraction).
+    """
+    idx = {lbl: i for i, lbl in enumerate(order)}
+    worklist = [(list(word), Fraction(1))]
+    result: Poly = defaultdict(Fraction)
+
+    while worklist:
+        w, c = worklist.pop()
+        if c == 0:
+            continue
+        # Fermionic repeat → word vanishes
+        if any(w[i] == w[i + 1] and is_fermionic(w[i]) for i in range(len(w) - 1)):
+            continue
+        # Find leftmost out-of-order adjacent pair
+        swapped = False
+        for i in range(len(w) - 1):
+            if idx[w[i]] > idx[w[i + 1]]:
+                oi, oj = w[i], w[i + 1]
+                sign = _swap_sign(oi, oj)
+                comm = _comm_value(oi, oj)
+                worklist.append((w[:i] + [oj, oi] + w[i + 2:], c * sign))
+                if comm:
+                    worklist.append((w[:i] + w[i + 2:], c * comm))
+                swapped = True
+                break
+        if not swapped:
+            result[tuple(w)] += c
+
+    return {k: v for k, v in result.items() if v != 0}
+
+
+def poly_add(p1: Poly, p2: Poly, scale: Fraction = Fraction(1)) -> Poly:
+    res = defaultdict(Fraction, p1)
+    for w, c in p2.items():
+        res[w] += scale * c
+    return {k: v for k, v in res.items() if v != 0}
+
+
+def poly_mul(p1: Poly, p2: Poly, order: list) -> Poly:
+    """Multiply two polynomials in the oscillator algebra."""
+    res: Poly = defaultdict(Fraction)
+    for w1, c1 in p1.items():
+        for w2, c2 in p2.items():
+            for w, c in normalize(w1 + w2, order).items():
+                res[w] += c1 * c2 * c
+    return {k: v for k, v in res.items() if v != 0}
+
+
+def graded_bracket(X: Poly, Y: Poly, pX: int, pY: int, order: list) -> Poly:
+    """[X, Y} = X*Y - (-1)^(pX*pY) * Y*X"""
+    XY = poly_mul(X, Y, order)
+    YX = poly_mul(Y, X, order)
+    sign = Fraction((-1) ** (pX * pY))
+    return poly_add(XY, YX, -sign)
+
+
+# ---------------------------------------------------------------------------
+# Generator construction for C(n+1)
+# ---------------------------------------------------------------------------
+
+def build_generators(n: int):
+    """
+    Build all basis generators for C(n+1) = osp(2|2n).
+    Returns (even_labels, odd_labels, gens) where
+        gens: dict label -> (Poly, parity)
+    Labels follow PBW Option A ordering from handover/notation.md.
+    """
+    gens = {}
+
+    # --- Cartan generators ---
+    # H_1 = a_1_p a_1_m + b_1_p b_1_m
+    gens['H_1'] = ({
+        ('a_1_p', 'a_1_m'): Fraction(1),
+        ('b_1_p', 'b_1_m'): Fraction(1),
+    }, 0)
+
+    # H_k for 2 <= k <= n: b_{k-1}_p b_{k-1}_m - b_k_p b_k_m
+    for k in range(2, n + 1):
+        gens[f'H_{k}'] = ({
+            (f'b_{k-1}_p', f'b_{k-1}_m'): Fraction(1),
+            (f'b_{k}_p', f'b_{k}_m'): Fraction(-1),
+        }, 0)
+
+    # H_{n+1} = -b_n_p b_n_m - 1/2
+    gens[f'H_{n+1}'] = ({
+        (f'b_{n}_p', f'b_{n}_m'): Fraction(-1),
+        (): Fraction(-1, 2),
+    }, 0)
+
+    # --- Even root generators: positive type ---
+    for k in range(1, n + 1):
+        gens[f'E_2del{k}_p'] = ({(f'b_{k}_p', f'b_{k}_p'): Fraction(1, 2)}, 0)
+    for i, j in combinations(range(1, n + 1), 2):
+        gens[f'E_del{i}_del{j}_pp'] = ({(f'b_{i}_p', f'b_{j}_p'): Fraction(1)}, 0)
+
+    # --- Even root generators: negative type ---
+    for k in range(1, n + 1):
+        gens[f'E_2del{k}_m'] = ({(f'b_{k}_m', f'b_{k}_m'): Fraction(1, 2)}, 0)
+    for i, j in combinations(range(1, n + 1), 2):
+        gens[f'E_del{i}_del{j}_mm'] = ({(f'b_{i}_m', f'b_{j}_m'): Fraction(1)}, 0)
+
+    # --- Even root generators: mixed type ---
+    for i, j in combinations(range(1, n + 1), 2):
+        gens[f'E_del{i}_del{j}_pm'] = ({(f'b_{i}_p', f'b_{j}_m'): Fraction(1)}, 0)
+    for i, j in combinations(range(1, n + 1), 2):
+        gens[f'E_del{i}_del{j}_mp'] = ({(f'b_{i}_m', f'b_{j}_p'): Fraction(1)}, 0)
+
+    # --- Odd generators (PBW Option A: pp, pm, mp, mm groups) ---
+    for k in range(1, n + 1):
+        gens[f'E_eps1_del{k}_pp'] = ({('a_1_p', f'b_{k}_p'): Fraction(1)}, 1)
+    for k in range(1, n + 1):
+        gens[f'E_eps1_del{k}_pm'] = ({('a_1_p', f'b_{k}_m'): Fraction(1)}, 1)
+    for k in range(1, n + 1):
+        gens[f'E_eps1_del{k}_mp'] = ({('a_1_m', f'b_{k}_p'): Fraction(1)}, 1)
+    for k in range(1, n + 1):
+        gens[f'E_eps1_del{k}_mm'] = ({('a_1_m', f'b_{k}_m'): Fraction(1)}, 1)
+
+    # --- Ordered label lists ---
+    even_labels = []
+    even_labels += [f'H_{k}' for k in range(1, n + 2)]
+    even_labels += [f'E_2del{k}_p' for k in range(1, n + 1)]
+    even_labels += [f'E_del{i}_del{j}_pp' for i, j in combinations(range(1, n + 1), 2)]
+    even_labels += [f'E_2del{k}_m' for k in range(1, n + 1)]
+    even_labels += [f'E_del{i}_del{j}_mm' for i, j in combinations(range(1, n + 1), 2)]
+    even_labels += [f'E_del{i}_del{j}_pm' for i, j in combinations(range(1, n + 1), 2)]
+    even_labels += [f'E_del{i}_del{j}_mp' for i, j in combinations(range(1, n + 1), 2)]
+
+    odd_labels = []
+    odd_labels += [f'E_eps1_del{k}_pp' for k in range(1, n + 1)]
+    odd_labels += [f'E_eps1_del{k}_pm' for k in range(1, n + 1)]
+    odd_labels += [f'E_eps1_del{k}_mp' for k in range(1, n + 1)]
+    odd_labels += [f'E_eps1_del{k}_mm' for k in range(1, n + 1)]
+
+    return even_labels, odd_labels, gens
+
+
+# ---------------------------------------------------------------------------
+# Decomposition: express a result poly in terms of basis generators
+# ---------------------------------------------------------------------------
+
+def decompose(result: Poly, all_labels: list, gens: dict) -> dict:
+    """
+    Express result as a linear combination of basis generators.
+    Uses Gaussian elimination over Q.
+    Returns dict label -> Fraction.
+    Raises ValueError if result contains words not spanned by generators.
+    """
+    # Collect all words
+    all_words = set(result.keys())
+    for label in all_labels:
+        poly, _ = gens[label]
+        all_words.update(poly.keys())
+    all_words = sorted(all_words, key=lambda w: (len(w), w))
+
+    m = len(all_words)
+    nb = len(all_labels)
+    wi = {w: i for i, w in enumerate(all_words)}
+
+    # Augmented matrix [M | r]
+    aug = [[Fraction(0)] * (nb + 1) for _ in range(m)]
+    for j, label in enumerate(all_labels):
+        poly, _ = gens[label]
+        for w, c in poly.items():
+            aug[wi[w]][j] = c
+    for w, c in result.items():
+        aug[wi[w]][nb] = c
+
+    # Gaussian elimination (reduced row echelon)
+    pivot_row = 0
+    col_pivot = {}  # col -> pivot_row
+    for col in range(nb):
+        found = next((r for r in range(pivot_row, m) if aug[r][col] != 0), -1)
+        if found == -1:
+            continue
+        aug[pivot_row], aug[found] = aug[found], aug[pivot_row]
+        pv = aug[pivot_row][col]
+        aug[pivot_row] = [x / pv for x in aug[pivot_row]]
+        for row in range(m):
+            if row != pivot_row and aug[row][col] != 0:
+                f = aug[row][col]
+                aug[row] = [aug[row][k] - f * aug[pivot_row][k] for k in range(nb + 1)]
+        col_pivot[col] = pivot_row
+        pivot_row += 1
+
+    # Check consistency: any row with all-zero M entries but nonzero r is inconsistent
+    for row in range(pivot_row, m):
+        if aug[row][nb] != 0:
+            raise ValueError(
+                f"Bracket result not in span of generators: residual at word row {row}, "
+                f"result={result}"
+            )
+
+    coeffs = {label: Fraction(0) for label in all_labels}
+    for col, row in col_pivot.items():
+        coeffs[all_labels[col]] = aug[row][nb]
+    return coeffs
+
+
+# ---------------------------------------------------------------------------
+# Structure constant computation
+# ---------------------------------------------------------------------------
+
+def compute_structure_constants(n: int, even_labels: list, odd_labels: list, gens: dict) -> list:
+    """
+    Compute all non-zero graded brackets [X, Y} for pairs with index_X <= index_Y.
+    Returns list of dicts {X, Y, Z, coeff, sign_rule}.
+    """
+    all_labels = even_labels + odd_labels
+    order = osc_labels(n)
+    sc_list = []
+
+    for idx_i, lbl_i in enumerate(all_labels):
+        poly_i, par_i = gens[lbl_i]
+        for lbl_j in all_labels[idx_i:]:
+            poly_j, par_j = gens[lbl_j]
+            bracket = graded_bracket(poly_i, poly_j, par_i, par_j, order)
+            if not bracket:
+                continue
+            coeffs = decompose(bracket, all_labels, gens)
+            for lbl_z, c in coeffs.items():
+                if c != 0:
+                    sc_list.append({
+                        'X': lbl_i,
+                        'Y': lbl_j,
+                        'Z': lbl_z,
+                        'coeff': str(c),
+                        'sign_rule': 'graded',
+                    })
+
+    return sc_list
+
+
+# ---------------------------------------------------------------------------
+# Schema 1 builder
+# ---------------------------------------------------------------------------
+
+def build_schema(n: int) -> dict:
+    even_labels, odd_labels, gens = build_generators(n)
+    all_labels = even_labels + odd_labels
+    order = osc_labels(n)
+
+    even_dim = 2 * n * n + n + 1
+    odd_dim = 4 * n
+    total_dim = even_dim + odd_dim
+
+    parity = {lbl: p for lbl in all_labels for _, p in [gens[lbl]]}
+
+    def poly_to_json(poly: Poly) -> list:
+        return [
+            {'words': list(w), 'coeff': str(c)}
+            for w, c in sorted(poly.items(), key=lambda x: (len(x[0]), x[0]))
+            if c != 0
+        ]
+
+    realizations = {
+        lbl: {'standard_form': poly_to_json(poly), 'parity': par}
+        for lbl in all_labels
+        for poly, par in [gens[lbl]]
+    }
+
+    sc_list = compute_structure_constants(n, even_labels, odd_labels, gens)
+
+    boson_labels = [f'b_{k}_{s}' for k in range(1, n + 1) for s in ('p', 'm')]
+
+    return {
+        'schema_version': '5.0',
+        'algebra': {
+            'family': 'C',
+            'm': 1,
+            'n': n,
+            'cartan_type': f'C({n + 1})',
+            'alternative_notation': {
+                'osp': f'osp(2|{2 * n})',
+                'dimension_formula': 'osp(2m|2n) with m=1',
+            },
+            'dimension': {
+                'even_formula': '2*n^2 + n + 1',
+                'odd_formula': '4*n',
+                'total_formula': '2*n^2 + 5*n + 1',
+                'even': even_dim,
+                'odd': odd_dim,
+                'total': total_dim,
+            },
+        },
+        'oscillator_generators': {
+            'fermions': {
+                'm': 1,
+                'labels': ['a_1_p', 'a_1_m'],
+                'parity': 1,
+                'description': 'Standard fermionic pair a_1^+, a_1^- with CAR: {a_1^-, a_1^+} = 1',
+            },
+            'bosons': {
+                'count': 2 * n,
+                'n': n,
+                'labels': boson_labels,
+                'description': f'Bosonic oscillators b_k^+, b_k^- for k=1,...,{n}',
+            },
+        },
+        'oscillator_relations': {
+            'standard_fermion_anticommutators': {
+                'description': 'CAR for the standard fermionic pair',
+                'relations': {
+                    'self_anticommutators': '{a_1^+, a_1^+} = 0, {a_1^-, a_1^-} = 0',
+                    'conjugate_pair': '{a_1^-, a_1^+} = 1',
+                },
+            },
+            'bosonic_commutators': {
+                'description': 'CCR for bosonic oscillators',
+                'relations': {
+                    'same_type': '[b_i^pm, b_j^pm] = 0 for all i, j',
+                    'conjugate_pair': '[b_i^-, b_j^+] = delta_{ij}',
+                },
+            },
+            'mixed_commutators': {'boson_fermion': '[b_i^pm, a_1^pm] = 0'},
+        },
+        'central_elements': {
+            'K': {
+                'label': 'K', 'parity': 0,
+                'description': 'Even central identity; identified with scalar 1. Excluded from PBW basis.',
+            },
+            'kappa': {
+                'label': 'kappa', 'parity': 1,
+                'nilpotency': 'kappa^2 = 0',
+                'pbw_position': 'smallest (precedes all basis elements)',
+                'description': 'Odd nilpotent central extension element.',
+            },
+        },
+        'basis': {
+            'even': even_labels,
+            'odd': odd_labels,
+            'ordering_convention': (
+                'PBW Option A: kappa < [odd: pp then pm then mp then mm by k] '
+                '< [even: Cartans, pos, neg, mixed]'
+            ),
+        },
+        'parity': parity,
+        'generator_realization': {
+            'description': 'Oscillator-word form under PBW ordering',
+            'ordering': ', '.join(order),
+            'realizations': realizations,
+        },
+        'structure_constants': sc_list,
+        'metadata': {
+            'generated_by': 'src/C_generators.py',
+            'generation_date': datetime.date.today().isoformat(),
+            'n': n,
+            'references': [
+                'Frappat, Sciarrino, Sorba (2000), Dictionary on Lie Algebras and Superalgebras',
+                'Bakalov and Sullivan (2017), arXiv:1612.09400',
+            ],
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    dry_run = '--dry-run' in sys.argv
+    data_dir = Path(__file__).parent.parent / 'data'
+    if not dry_run:
+        data_dir.mkdir(exist_ok=True)
+
+    for n in [1, 2, 3]:
+        print(f'\nBuilding C({n + 1}) = osp(2|{2 * n}), n={n} ...', flush=True)
+        schema = build_schema(n)
+        sc_count = len(schema['structure_constants'])
+        dim = schema['algebra']['dimension']
+        print(f'  dim: {dim["even"]} even + {dim["odd"]} odd = {dim["total"]} total')
+        print(f'  structure constant entries: {sc_count}')
+        if dry_run:
+            print(f'  [dry-run] would write data/C_{n}_structure.json')
+        else:
+            out = data_dir / f'C_{n}_structure.json'
+            with open(out, 'w') as f:
+                json.dump(schema, f, indent=2)
+            print(f'  written: {out}')
+
+
+if __name__ == '__main__':
+    main()
