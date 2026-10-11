@@ -12,6 +12,7 @@ from src.C_generators import (
     normal_order_word,
     write_schema,
 )
+from src.verify_C_structure import VerificationError, verify_schema
 
 
 EXPECTED_DIMENSIONS = {
@@ -102,10 +103,7 @@ def test_realizations_cover_basis_and_match_parity(n):
 
 
 def _ordered_bracket(i, j, basis, table):
-    if i <= j:
-        return table[(i, j)]
-    sign = -1 if basis.parity[basis.pbw_order[i]] * basis.parity[basis.pbw_order[j]] == 0 else 1
-    return {label: sign * coefficient for label, coefficient in table[(j, i)].items()}
+    return table[(i, j)]
 
 
 def _bracket_with_element(i, element, basis, table):
@@ -122,7 +120,7 @@ def _bracket_with_element(i, element, basis, table):
 def test_every_bracket_closes_and_is_graded_skew(computed_algebras, n):
     basis, constants, table = computed_algebras[n]
     labels = basis.pbw_order
-    assert len(table) == len(labels) * (len(labels) + 1) // 2
+    assert len(table) == len(labels) ** 2
     assert constants
 
     for i in range(len(labels)):
@@ -206,7 +204,6 @@ def test_schema_fields_constants_and_deterministic_serialization(
         record["X"] in labels
         and record["Y"] in labels
         and record["Z"] in labels
-        and order_index[record["X"]] <= order_index[record["Y"]]
         and record["sign_rule"] == "graded"
         and Fraction(record["coeff"]) != 0
         for record in constants
@@ -244,3 +241,41 @@ def test_checked_in_data_matches_generator(n):
         generation_date=generated["metadata"]["generation_date"],
     )
     assert generated == regenerated
+
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_strict_verifier_accepts_checked_in_data(n):
+    data_path = Path(__file__).resolve().parents[1] / "data" / f"C_{n}_structure.json"
+    schema = json.loads(data_path.read_text(encoding="utf-8"))
+    report = verify_schema(schema, source=str(data_path))
+    assert report.ordered_pairs == EXPECTED_DIMENSIONS[n][2] ** 2
+    assert report.ordered_triples == EXPECTED_DIMENSIONS[n][2] ** 3
+
+
+def _rank_one_schema_with_reverse_pair():
+    schema = generate_schema(1, generation_date="2026-10-11")
+    for record in schema["structure_constants"]:
+        if record["X"] != record["Y"]:
+            reverse = next(
+                candidate
+                for candidate in schema["structure_constants"]
+                if candidate["X"] == record["Y"]
+                and candidate["Y"] == record["X"]
+                and candidate["Z"] == record["Z"]
+            )
+            return schema, record, reverse
+    raise AssertionError("rank-one schema has no distinct nonzero pair")
+
+
+def test_strict_verifier_rejects_missing_reverse_order_record():
+    schema, _, reverse = _rank_one_schema_with_reverse_pair()
+    schema["structure_constants"].remove(reverse)
+    with pytest.raises(VerificationError, match="Missing explicit reverse-order record"):
+        verify_schema(schema)
+
+
+def test_strict_verifier_rejects_wrong_reverse_coefficient():
+    schema, _, reverse = _rank_one_schema_with_reverse_pair()
+    reverse["coeff"] = "999"
+    with pytest.raises(VerificationError, match="Wrong reverse-order coefficient"):
+        verify_schema(schema)

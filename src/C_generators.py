@@ -356,10 +356,9 @@ class _BasisDecomposer:
 def compute_bracket_table(
     basis: Basis,
 ) -> tuple[list[dict[str, str]], dict[tuple[int, int], dict[int, Fraction]]]:
-    """Compute nonzero structure constants and the ordered-pair bracket table."""
+    """Compute structure constants for every ordered basis pair."""
     labels = basis.pbw_order
     decomposer = _BasisDecomposer(labels, basis.polynomials)
-    constants: list[dict[str, str]] = []
     table: dict[tuple[int, int], dict[int, Fraction]] = {}
 
     for left_index, left_label in enumerate(labels):
@@ -373,11 +372,27 @@ def compute_bracket_table(
             )
             coefficients = decomposer.decompose(bracket)
             table[(left_index, right_index)] = {
-                labels.index(label): coefficient
-                for label, coefficient in coefficients.items()
+                labels.index(label): coefficient for label, coefficient in coefficients.items()
             }
-            for output_label in labels:
-                coefficient = coefficients.get(output_label, Fraction())
+            if left_index != right_index:
+                reverse_factor = (
+                    -1
+                    if basis.parity[left_label] * basis.parity[right_label] == 0
+                    else 1
+                )
+                table[(right_index, left_index)] = {
+                    output_index: reverse_factor * coefficient
+                    for output_index, coefficient in table[
+                        (left_index, right_index)
+                    ].items()
+                }
+
+    constants: list[dict[str, str]] = []
+    for left_index, left_label in enumerate(labels):
+        for right_index, right_label in enumerate(labels):
+            coefficients = table[(left_index, right_index)]
+            for output_index, output_label in enumerate(labels):
+                coefficient = coefficients.get(output_index, Fraction())
                 if coefficient:
                     constants.append({
                         "X": left_label,
