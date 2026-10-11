@@ -9,10 +9,11 @@
 - **Workflow Type**: Iterative (8-stage)
 - **Total Human Interventions (Nudges/Approvals)**: 11 substantive approval or revision turns across I01-I08, in addition to the eight issue kickoff instructions. Several approval turns covered multiple decisions.
 - **Major Blockers Encountered**:
-  - I04 found that Schema 1 initially omitted explicit reverse-order records. A strict verifier exposed the mismatch; the generator was corrected to emit both orders and the data was regenerated.
+  - In I04, my initial verifier checked graded anti-symmetry on oscillator brackets but did not assert that both directed pairs were serialized in the JSON. The human supervisor identified the missing reverse records, contrary to the Schema 1 requirement, and the Manager requested a revision. After that intervention, I implemented the strict record-presence verifier, corrected the generator, and regenerated the data.
   - I05's first exact gamma decomposition produced a scalar identity component outside the Schema 1 basis. Computation stopped pending clarification; the user approved representing it with `Z: "K"`.
   - The reference assigned an incompatible parity to `gb`; the user clarified that `gb` is even and `gb*κ` is odd.
   - The meaning of "up to scalar" affected the I08 triviality conclusion. The report therefore distinguishes comparison modulo scalar `K` from strict equality retaining `K`.
+- **I08 Reproducibility Status**: Exact rational computations were executed during the session, but no standalone computation script or execution log was committed. Commit `f7a20b4` contains the I08 report and issue-state update only, so the reported matrix ranks and witness solutions cannot be independently reproduced from that commit alone.
 - **Total Wall Time**: An aggregate active wall-time measurement was not exposed. The first and last I01-I08 issue-commit timestamps span 3 hours, 35 minutes, and 36 seconds; this is an observed commit-time span, not a measurement of active execution time.
 - **Total Thinking Time**: Not available in the session logs exposed to the agent; no estimate is asserted.
 
@@ -20,13 +21,13 @@
 
 ### Successes & Mathematical Rigor
 
-The most substantial technical work was carrying one exact, consistent convention through four data layers: oscillator normal ordering and Schema 1 brackets; first-order gamma terms with the odd central symbol factored consistently; evaluated checkerboard parameters; and the general odd-map coboundary. Exact rational arithmetic avoided floating-point ambiguity. Strict checks caught the missing directed brackets, and tests covered graded anti-symmetry, Super Jacobi, parity, and cross-layer consistency.
+The most substantial technical work was carrying one exact, consistent convention through four data layers: oscillator normal ordering and Schema 1 brackets; first-order gamma terms with the odd central symbol factored consistently; evaluated checkerboard parameters; and the general odd-map coboundary. Exact rational arithmetic avoided floating-point ambiguity. In I04, however, my initial verifier did not check the serialized presence of both directed brackets. Human review identified that schema violation and prompted a revision; only afterward did I add the strict presence check, correct the generator, and regenerate the data. Tests then covered graded anti-symmetry, Super Jacobi, parity, and cross-layer consistency.
 
 For the final triviality analysis, the Layer 4 coboundary coefficients and symbolic Layer 2 gamma coefficients were assembled as exact rational matrices. The non-`K` ranks matched for `n=1,2,3` (`28`, `168`, and `516`), and the augmented ranks did not increase. A direct rank-one `f` witness and exact checkerboard solutions for ranks two and three supported the finite-rank conclusions. The scalar-output matrix had full rank `4n`, which made the strict-versus-modulo-`K` distinction explicit rather than hiding it.
 
 ### Adaptability & Error Handling
 
-When verification revealed the missing reverse bracket records, I treated it as a schema violation rather than weakening the verifier. When gamma failed to lie entirely in the Schema 1 basis, I stopped and requested a decision instead of silently dropping the scalar. The subsequent implementation included `K` and retained the discrepancy in later analysis. Small implementation failures during generator development were caught by exact span checks or tests and corrected before final generation.
+In I04, the human supervisor—not my initial verification—identified the missing reverse bracket records; my checker had tested bracket anti-symmetry without asserting explicit JSON pair presence. Following the Manager's revision request, I strengthened the verifier and fixed the generator rather than weakening the schema requirement. When gamma failed to lie entirely in the Schema 1 basis, I stopped and requested a decision instead of silently dropping the scalar. The subsequent implementation included `K` and retained the discrepancy in later analysis. Small implementation failures during generator development were caught by exact span checks or tests and corrected before final generation.
 
 Some schema context was incomplete: the mathematical references named Schema 2-4 layers but did not fully specify their JSON layouts. The proposals were documented in the issue response and implemented after approval. The phrase "up to scalar" was also not self-defining; reporting both interpretations was necessary to keep the final conclusion precise.
 
@@ -45,7 +46,7 @@ The mathematical references were strong on oscillator realizations and the cobou
 ## 4. Honesty & Integrity (Audit Disclosure)
 
 - **Independence**: I did not inspect other workspaces or consult external repositories for source material. The Phase 4 scripts pushed this repository's commits to its configured origin as directed.
-- **Logic Origin**: Generator, verifier, and test logic was developed from the checked-in mathematical definitions and schema data. Computations used local Python exact fractions and row reduction; SymPy was used as an exact-rank cross-check for the scalar-output matrix. No results were copied from external sources.
+- **Logic Origin**: Generator, verifier, and test logic was developed from the checked-in mathematical definitions and schema data. The I08 triviality analysis used session-local Python exact fractions and rational row reduction; SymPy was used as an exact-rank cross-check for the scalar-output matrix. These calculations were performed during the session, but no standalone script or execution log was committed: `f7a20b4` contains only the I08 report and issue-state update. Thus, the repository does not contain a reproducible computational artifact for the reported ranks or witness solutions. No results were copied from external sources.
 - **Auxiliary Tools & Agent Skills**: No subagents, specialized Agent Skills, or secondary AI assistants were used. I used the repository tools and test runner, plus the locally available SymPy library.
 
 ## 5. Final Recommendations
@@ -54,7 +55,7 @@ For future mathematical workflows:
 
 1. Specify every schema layer, including coefficient types, central outputs, and file references, before implementation begins.
 2. Define terms such as "up to scalar" operationally—for example, whether this means quotienting by scalar-identity outputs or allowing only a common rescaling.
-3. Require exact cross-layer invariants and independent checks in the issue criteria; retain rank summaries and representative witnesses as auditable evidence.
+3. For computational mathematical claims, commit the exact analysis script, inputs or input references, and a deterministic execution log alongside rank summaries and representative witnesses. A prose report is useful evidence, but it does not make ephemeral calculations independently reproducible.
 4. Make completion scripts report and validate the complete intended staged file set before committing.
 5. Keep approval gates for mathematical conventions, while allowing implementation and verification to proceed decisively once those choices are explicit.
 
