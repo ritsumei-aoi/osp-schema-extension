@@ -211,11 +211,14 @@ def solve_for_n(n):
     # Check if all variables must be zero
     sol = sp.solve(cond_exprs, gb_vars)
     
+    rk = A.rank()
+    
     return {
         "n": n,
         "dim_g": dim,
         "equations_count": len(equations),
         "f_vars_count": len(f_vars),
+        "matrix_rank": int(rk),
         "nullspace_dim": len(left_null),
         "conditions": conditions,
         "solution": {str(k): str(v) for k, v in sol.items()} if isinstance(sol, dict) else str(sol)

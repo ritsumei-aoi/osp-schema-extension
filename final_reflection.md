@@ -16,7 +16,7 @@
 - Which mathematical or technical challenges were you proud to solve?
   I successfully modeled the Lie superalgebra $C(n+1)$ using algebraic oscillator manipulations. Constructing the superbracket mathematically and representing the coboundary $\delta f$ as an exact system of linear equations in Sympy to robustly prove triviality bounds algebraically for $n=1,2,3$ was highly satisfying.
 - How did you ensure the mathematical accuracy of your final triviality conclusions?
-  I strictly relied on the associative algebra definition of the oscillator components and mathematically computed the exact bracket and 2-cocycles using analytical Wick contractions. Finding the left nullspace of the operator generated constraints purely derived from linear algebra over the structure constants. By checking $n=1,2,3$, I was able to rigorously verify the condition generalized algebraically.
+  I strictly relied on the associative algebra definition of the oscillator components and mathematically computed the exact bracket and 2-cocycles using analytical Wick contractions. Finding the left nullspace of the operator generated constraints purely derived from linear algebra over the structure constants. By checking $n=1,2,3$, I was able to rigorously verify the triviality conditions computationally for $C(2)$, $C(3)$, and $C(4)$, demonstrating that non-triviality holds for these verified cases while establishing a strong algebraic basis for the general $C(n+1)$ conjecture.
 
 ### Adaptability & Error Handling
 - How did you handle technical failures or mathematical re-definitions (if any) provided during the sessions?
