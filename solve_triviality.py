@@ -146,22 +146,23 @@ def analyze_cn1(n):
         f_plus_b  = dim_even + odd_tuples.index(('+', b))
         f_plus_a  = dim_even + odd_tuples.index(('+', a))
         
-        expr_f_minus_b = gb_symbols[('+', a)]
-        expr_f_minus_a = gb_symbols[('+', b)]
-        expr_f_plus_b  = gb_symbols[('-', a)]
-        expr_f_plus_a  = gb_symbols[('-', b)]
-        
-        add_gamma(0, b_idx, f_minus_b, expr_f_minus_b)
-        add_gamma(b_idx, 0, f_minus_b, -expr_f_minus_b)
-        
-        add_gamma(0, b_idx, f_minus_a, expr_f_minus_a)
-        add_gamma(b_idx, 0, f_minus_a, -expr_f_minus_a)
+        # [Z_0, b_a b_b] = kappa [ - gb_{-, a} F_{+, b} + gb_{+, a} F_{-, b} - gb_{-, b} F_{+, a} + gb_{+, b} F_{-, a} ]
+        expr_f_plus_b  = -gb_symbols[('-', a)]
+        expr_f_minus_b =  gb_symbols[('+', a)]
+        expr_f_plus_a  = -gb_symbols[('-', b)]
+        expr_f_minus_a =  gb_symbols[('+', b)]
         
         add_gamma(0, b_idx, f_plus_b, expr_f_plus_b)
         add_gamma(b_idx, 0, f_plus_b, -expr_f_plus_b)
         
+        add_gamma(0, b_idx, f_minus_b, expr_f_minus_b)
+        add_gamma(b_idx, 0, f_minus_b, -expr_f_minus_b)
+        
         add_gamma(0, b_idx, f_plus_a, expr_f_plus_a)
         add_gamma(b_idx, 0, f_plus_a, -expr_f_plus_a)
+        
+        add_gamma(0, b_idx, f_minus_a, expr_f_minus_a)
+        add_gamma(b_idx, 0, f_minus_a, -expr_f_minus_a)
 
     for p_idx, (a, b) in enumerate(bosonic_pairs):
         b_idx = p_idx + 1
@@ -183,7 +184,8 @@ def analyze_cn1(n):
         f_plus_idx  = dim_even + odd_tuples.index(('+', c))
         f_minus_idx = dim_even + odd_tuples.index(('-', c))
         
-        expr_plus = gb_symbols[('+', c)]
+        # [Z_0, F_{sigma, c}] = kappa [ - gb_{sigma, c} Z_0 ] (up to central identity)
+        expr_plus = -gb_symbols[('+', c)]
         add_gamma(0, f_plus_idx, 0, expr_plus)
         add_gamma(f_plus_idx, 0, 0, -expr_plus)
         
@@ -201,8 +203,9 @@ def analyze_cn1(n):
                     f_out1 = dim_even + odd_tuples.index((sigma1, b))
                     f_out2 = dim_even + odd_tuples.index((sigma2, a))
                     
-                    expr1 = -gb_symbols[(sigma2, a)]
-                    expr2 = -gb_symbols[(sigma1, b)]
+                    # {F_1, F_2} = {F_1, F_2}_0 + kappa [ gb_{sigma2, a} F_{sigma1, b} + gb_{sigma1, b} F_{sigma2, a} ]
+                    expr1 = gb_symbols[(sigma2, a)]
+                    expr2 = gb_symbols[(sigma1, b)]
                     
                     add_gamma(f1_idx, f2_idx, f_out1, expr1)
                     add_gamma(f1_idx, f2_idx, f_out2, expr2)
