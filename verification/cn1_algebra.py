@@ -6,6 +6,10 @@ import sympy as sp
 from collections import defaultdict
 
 def create_algebra(n=1):
+    # gb deformation parameters are even scalars (parity 0 coefficients)
+    # multiplying the odd central generator kappa (parity 1) in the relation:
+    # [b_j^s, a_1^sigma] = - gb_{sigma, j, s} * kappa.
+    # Total RHS parity: p(gb) + p(kappa) = 0 + 1 = 1, matching p(b_j^s) + p(a_1^sigma) = 0 + 1 = 1.
     gb = {}
     for sigma in ['+', '-']:
         for j in range(1, n + 1):
@@ -74,6 +78,8 @@ def create_algebra(n=1):
                         param = gb[(sigma, j_b, s_b_sign)]
                         
                         # b_j^s a_1^sigma = a_1^sigma b_j^s - gb * kappa
+                        # Parity check: p(b_j^s a_1^sigma) = 0 + 1 = 1.
+                        # On RHS: p(a_1^sigma b_j^s) = 1, p(gb * kappa) = p(gb) + p(kappa) = 0 + 1 = 1.
                         w_swap = w[:i] + [o2, o1] + w[i+2:]
                         queue.append((w_swap, c0, ck))
                         

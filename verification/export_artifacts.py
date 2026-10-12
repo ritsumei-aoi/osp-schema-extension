@@ -117,6 +117,11 @@ def generate_artifacts(n):
     # Convert constraints to strings
     constraints_serialized = [str(c) + " = 0" for c in gb_constraints]
     
+    if rank_C == len(gb_list):
+        triviality_conclusion = "Trivial if and only if gb = 0 (unconditionally non-trivial for any non-zero gb)"
+    else:
+        triviality_conclusion = f"Trivial on non-zero subspace of dimension {len(gb_list) - rank_C}"
+        
     data = {
         "algebra": f"C({n+1}) = osp(2|{2*n})",
         "n": n,
@@ -145,7 +150,7 @@ def generate_artifacts(n):
             "left_nullspace_dim": len(nullspace_left),
             "constraints_on_gb_count": len(gb_constraints),
             "constraint_matrix_rank": int(rank_C),
-            "triviality_conclusion": "Trivial if and only if gb = 0 (unconditionally non-trivial for any non-zero gb)"
+            "triviality_conclusion": triviality_conclusion
         },
         "sample_structure_constants": dict(list(c0_serialized.items())[:50]),
         "total_nonzero_structure_constants": len(c0_serialized),

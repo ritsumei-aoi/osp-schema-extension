@@ -29,10 +29,10 @@ def get_generators(n=1):
     # E_{-eps + delta_j} = a- bj+
     # E_{-eps - delta_j} = a- bj-
     for j in range(1, n+1):
-        gens[f"F_p_{j}_p"] = [('a+', ('b+', j), sp.Integer(1))]
-        gens[f"F_p_{j}_m"] = [('a+', ('b-', j), sp.Integer(1))]
-        gens[f"F_m_{j}_p"] = [('a-', ('b+', j), sp.Integer(1))]
-        gens[f"F_m_{j}_m"] = [('a-', ('b-', j), sp.Integer(1))]
+        gens[f"F_p_{j}_p"] = [(('a+', ('b+', j)), sp.Integer(1))]
+        gens[f"F_p_{j}_m"] = [(('a+', ('b-', j)), sp.Integer(1))]
+        gens[f"F_m_{j}_p"] = [(('a-', ('b+', j)), sp.Integer(1))]
+        gens[f"F_m_{j}_m"] = [(('a-', ('b-', j)), sp.Integer(1))]
         for s1 in ['p', 'm']:
             for s2 in ['p', 'm']:
                 parities[f"F_{s1}_{j}_{s2}"] = 1

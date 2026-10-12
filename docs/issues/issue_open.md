@@ -39,7 +39,7 @@ Thus, **every non-zero configuration of deformation parameters defines a non-tri
 
 ### 2. Full Analytical Proof & Documentation
 A comprehensive mathematical proof and derivation report has been written and documented in:
-- [`docs/issues/mathematical_proof.md`](file:///Users/aoi/notebook/git/thm01-R-batch/thm01-R-gemini38f-b01-C/docs/issues/mathematical_proof.md)
+- [`docs/issues/mathematical_proof.md`](mathematical_proof.md)
 
 Key theoretical elements covered:
 - Rigorous handling of the "adjoint representation / up to scalar" condition: identification of elements in $\mathfrak{g}$ modulo central scalars $\mathbb{C} \oplus \mathbb{C}\kappa$ that act trivially in the adjoint representation.
