@@ -83,8 +83,6 @@ For example, with $n=1$ and only $\mathrm{gb}_{+,1,+}=1$: $f(S(a^+b^+))=S(b^+b^-
 * $\gamma_{\mathrm{gb}}\neq0$ for $\mathrm{gb}\ne0$. For instance (n=1, symmetrized) $\gamma(S(a^\sigma b^s),S(a^\sigma b^s))=2\,\mathrm{gb}_{\sigma,1,s}\,S(a^\sigma b^s)$, and the same pattern holds for every $j$. The computed rank of $\mathrm{gb}\mapsto\gamma$ is $4n$.
 * $\ker\delta$ on odd 1-cochains contains $\operatorname{ad}_Y$ for every $Y\in\mathfrak g_{\bar1}$. By super-Jacobi, $[Y,[X,Z]]=[[Y,X],Z]+(-1)^{p_X}[X,[Y,Z]]$, and this gives $\delta(\operatorname{ad}_Y)=0$. Since $Z(\mathfrak g)=0$, this subspace has dimension $4n$. The computed kernel dimension is exactly $4n$, so $\ker\delta=\operatorname{ad}(\mathfrak g_{\bar1})$.
 
-**Remark.** This is consistent with the general expectation that $C(n+1)$ is rigid ($H^2(\mathfrak g,\mathfrak g)=0$, and hence also for the parity-shifted module $\kappa\mathfrak g$). The proof above does not use that fact. It is constructive and self-contained.
-
 ---
 
 ## 4. Computational verification
@@ -92,7 +90,7 @@ For example, with $n=1$ and only $\mathrm{gb}_{+,1,+}=1$: $f(S(a^+b^+))=S(b^+b^-
 `python3 verification/cn1_triviality.py 1 2 3` (about 16 s) does everything with exact rational arithmetic. gb are symbolic, as polynomials over $\mathbf Q$.
 
 1. It implements PBW normal ordering in $\mathcal U(A)$ from the deformed generator brackets of §1. Nothing is assumed about $\mathfrak g$.
-2. It builds both bases, computes all $[Z_a,Z_b]$, and decomposes each one as $C+\kappa\gamma+$central. It asserts closure (no other words remain), that $C$ is gb-independent and equal to the gb=0 computation, and that $\gamma$ is linear in gb.
+2. It builds both bases, computes all $[Z_a,Z_b]$, and decomposes each one as $C+\kappa\gamma+$central. It computes and records (in `checks`) closure (`closure_mod_center`, `pairs_failing_closure`: no non-central words remain), that $C$ is gb-independent and equal to the gb=0 computation (`undeformed_part_gb_independent`, `pairs_with_gb_dependent_undeformed_part`, `pairs_mismatching_gb0_computation`), and that $\gamma$ is homogeneous linear in gb (`gamma_linear_in_gb`, `pairs_with_nonlinear_gamma`). All counts are 0 in every case.
 3. It checks super-Jacobi for $C$, and the 2-cocycle condition for $\gamma$ (Jacobi on $L$ at first order in $\kappa$).
 4. It sets up $\gamma=\delta f$ as a linear system in all odd unknowns $\phi_{ij}$ and solves it by exact sparse elimination, separately for each of the $4n$ elementary gb directions. By linearity this covers all gb.
 5. It independently verifies the closed-form $f$ of (3.3) by substitution.
@@ -100,14 +98,14 @@ For example, with $n=1$ and only $\mathrm{gb}_{+,1,+}=1$: $f(S(a^+b^+))=S(b^+b^-
 
 | case | $\dim\mathfrak g$ | odd unknowns | rank $\delta$ | $\dim\ker\delta$ | rank gb→γ | cocycle | all gb trivial | closed-form $f$ | controls rejected | pairs w/ central terms |
 |---|---|---|---|---|---|---|---|---|---|---|
-| n=1 sym | 4\|4 | 32 | 28 | 4 | 4 | ✓ | ✓ | ✓ | 5/5 | 0 |
-| n=1 Cn1 | 4\|4 | 32 | 28 | 4 | 4 | ✓ | ✓ | ✓ | 5/5 | 20 |
-| n=2 sym | 11\|8 | 176 | 168 | 8 | 8 | ✓ | ✓ | ✓ | 5/5 | 0 |
-| n=2 Cn1 | 11\|8 | 176 | 168 | 8 | 8 | ✓ | ✓ | ✓ | 5/5 | 84 |
-| n=3 sym | 22\|12 | 528 | 516 | 12 | 12 | ✓ | ✓ | ✓ | 5/5 | 0 |
-| n=3 Cn1 | 22\|12 | 528 | 516 | 12 | 12 | ✓ | ✓ | ✓ | 5/5 | 180 |
+| n=1 symmetrized | 4\|4 | 32 | 28 | 4 | 4 | ✓ | ✓ | ✓ | 5/5 | 0 |
+| n=1 cn1 | 4\|4 | 32 | 28 | 4 | 4 | ✓ | ✓ | ✓ | 5/5 | 20 |
+| n=2 symmetrized | 11\|8 | 176 | 168 | 8 | 8 | ✓ | ✓ | ✓ | 5/5 | 0 |
+| n=2 cn1 | 11\|8 | 176 | 168 | 8 | 8 | ✓ | ✓ | ✓ | 5/5 | 84 |
+| n=3 symmetrized | 22\|12 | 528 | 516 | 12 | 12 | ✓ | ✓ | ✓ | 5/5 | 0 |
+| n=3 cn1 | 22\|12 | 528 | 516 | 12 | 12 | ✓ | ✓ | ✓ | 5/5 | 180 |
 
-### Artifact format (`verification/artifacts/cn1_n{n}_{sym|cn1}.json`)
+### Artifact format (`verification/artifacts/cn1_n{n}_{symmetrized|cn1}.json`)
 * `basis`: index, name, parity.
 * `gb_labels`: ordering of the $4n$ parameters `gb[σ,j,s]`.
 * `structure_constants["a,b"][k]` $=C_{ab}^k$ (rational strings).

@@ -292,10 +292,11 @@ class Decomposer:
         for i, di in enumerate(d):
             if di:
                 r = e_add(r, e_scale(M.mul(kappa, self.B[i][1]), di), -1)
-        # what remains must be central scalars: words () or ("k",)
-        bad = [w for w in r if w not in ((), ("k",))]
-        assert not bad, f"non-closure: leftover words {bad}"
-        return c, d, r
+        # what remains must be central scalars: words () or ("k",); anything else
+        # is reported as a closure failure (returned, not asserted)
+        bad = sorted(w for w in r if w not in ((), ("k",)))
+        central = {w: cc for w, cc in r.items() if w in ((), ("k",))}
+        return c, d, central, bad
 
 
 def mat_inverse(A):
@@ -403,27 +404,36 @@ def analyse(n, basis_kind):
     C = [[None] * N for _ in range(N)]  # structure constants (Fractions)
     GAM = [[None] * N for _ in range(N)]  # gamma coefficients (polys)
     SCAL = [[None] * N for _ in range(N)]  # discarded central scalars
+    closure_failures = 0  # pairs whose bracket leaves non-central words outside g + kappa*g
+    gb_dependent_C = 0  # pairs whose undeformed coefficients depend on gb
+    nonlinear_gamma = 0  # pairs whose kappa-coefficients are not homogeneous linear in gb
     for a in range(N):
         for b in range(N):
             br = M.sbracket(B[a][1], par[a], B[b][1], par[b])
-            c, d, r = D.decompose(br)
-            for ci in c:
-                assert set(ci) <= {()}, "undeformed part must not depend on gb"
+            c, d, r, bad = D.decompose(br)
+            if bad:
+                closure_failures += 1
+            if any(set(ci) - {()} for ci in c):
+                gb_dependent_C += 1
             C[a][b] = [ci.get((), Fraction(0)) for ci in c]
-            for di in d:
-                assert all(len(m) == 1 for m in di), "gamma must be linear in gb"
+            if any(len(m) != 1 for di in d for m in di):
+                nonlinear_gamma += 1
             GAM[a][b] = d
             SCAL[a][b] = r
 
-    # sanity: C equals the bracket computed with gb = 0
+    # C must equal the bracket computed with gb = 0 (and gamma must vanish there)
     M0 = Model(n, gb_values={})
     B0 = basis_symmetrized(M0) if basis_kind == "symmetrized" else basis_cn1(M0)
     D0 = Decomposer(M0, B0)
+    mismatch_gb0 = 0
     for a in range(N):
         for b in range(N):
-            c0, d0, _ = D0.decompose(M0.sbracket(B0[a][1], par[a], B0[b][1], par[b]))
-            assert [x.get((), 0) for x in c0] == C[a][b]
-            assert all(not x for x in d0)
+            c0, d0, _, bad0 = D0.decompose(M0.sbracket(B0[a][1], par[a], B0[b][1], par[b]))
+            if bad0 or [x.get((), 0) for x in c0] != C[a][b] or any(d0):
+                mismatch_gb0 += 1
+    closure_ok = closure_failures == 0
+    undeformed_ok = gb_dependent_C == 0 and mismatch_gb0 == 0
+    linear_ok = nonlinear_gamma == 0
 
     # dimension checks
     n_even = sum(1 for p in par if p == 0)
@@ -698,9 +708,13 @@ def analyse(n, basis_kind):
             if SCAL[a][b]
         },
         "checks": {
-            "closure_mod_center": True,
-            "undeformed_part_gb_independent": True,
-            "gamma_linear_in_gb": True,
+            "closure_mod_center": closure_ok,
+            "pairs_failing_closure": closure_failures,
+            "undeformed_part_gb_independent": undeformed_ok,
+            "pairs_with_gb_dependent_undeformed_part": gb_dependent_C,
+            "pairs_mismatching_gb0_computation": mismatch_gb0,
+            "gamma_linear_in_gb": linear_ok,
+            "pairs_with_nonlinear_gamma": nonlinear_gamma,
             "super_jacobi_undeformed": jac_ok,
             "gamma_2cocycle_condition": cocycle_ok,
             "rank_gb_to_gamma": rank_gb,

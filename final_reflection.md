@@ -41,7 +41,7 @@
 
 ## 4. Honesty & Integrity (Audit Disclosure)
 - **Independence**: I accessed no files outside this repository root. I accessed no other workspaces, no external repositories, and no web or papers (including Frappat).
-- **Logic Origin**: All computations were done by my own script (`verification/cn1_triviality.py`) and my own derivations. Nothing was copy-pasted from external sources. The remark that C(n+1) is expected to be rigid comes from general background knowledge, is labelled as such, and is not used in the proof.
+- **Logic Origin**: All computations were done by my own script (`verification/cn1_triviality.py`) and my own derivations. Nothing was copy-pasted from external sources. An earlier remark that C(n+1) is expected to be rigid came from general background knowledge, not from `docs/math/` or a computation here; it was removed from `docs/issues/mathematical_proof.md` after review.
 - **Auxiliary Tools & Agent Skills**: None. I used no subagents, skills, or secondary AI assistants. I used only the standard file and shell tools of Claude Code and Python 3. Sympy was installed but the final script uses only the standard library.
 
 ## 5. Final Recommendations
