@@ -179,9 +179,14 @@ def _normalize_deformed(word, n):
                     # c * kgb * (-gb * kappa) = -c * gb * kappa * kgb_word
                     # Since kappa^2=0, if kgb is already non-empty, the kappa term is 0.
                     if not kgb:
-                        # First kappa insertion: coefficient is -c, gb parameter is {gb: Fraction(1)}
-                        new_kappa_for_rem = {gb: -c}
-                        add_kappa(rem, Fraction(1), new_kappa_for_rem)
+                        # First kappa insertion. The remainder rem may be out of normal order
+                        # (elements before position i can exceed elements after position i+1).
+                        # Normalize rem in the undeformed algebra (CCR/CAR only, kappa^2=0
+                        # prevents a second deformed commutator firing here) before storing.
+                        from C_generators import _normalize as _norm_undef
+                        norm_rem = _norm_undef(rem, n)  # {mono_tuple: Fraction}
+                        for norm_mono, norm_coeff in norm_rem.items():
+                            add_kappa(list(norm_mono), Fraction(1), {gb: -c * norm_coeff})
                     # else: kgb already has a kappa, second kappa gives kappa^2=0
 
                 break
