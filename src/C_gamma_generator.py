@@ -83,7 +83,10 @@ class CnGammaGenerator:
         Compute γ(X, Y) for a specific pair.
 
         The gamma coefficients encode how the boson-fermion relations are deformed
-        by the gb parameters. For Schema 2 at this stage, return symbolic structure.
+        by the gb parameters. Generates symbolic parameters matching gb_matrix labels.
+
+        Returns a dict mapping output generator Z to its γ coefficient as a string,
+        with parameter names in the form "gb_a1_σ_bj_s" to match the gb_matrix.
         """
         result = {}
 
@@ -94,11 +97,17 @@ class CnGammaGenerator:
             if X_is_odd and not Y_is_odd:
                 k_X = int(X.split("del")[1].split("_")[0])
                 sign_X = X.split("_")[-1]
-                result[X] = f"gb_{k_X}_{sign_X}"
+                sigma = "p" if sign_X[0] == "p" else "m"
+                j = k_X
+                s = "p" if sign_X[1] == "p" else "m"
+                result[X] = f"gb_a1_{sigma}_b{j}_{s}"
             elif not X_is_odd and Y_is_odd:
                 k_Y = int(Y.split("del")[1].split("_")[0])
                 sign_Y = Y.split("_")[-1]
-                result[Y] = f"-gb_{k_Y}_{sign_Y}"
+                sigma = "p" if sign_Y[0] == "p" else "m"
+                j = k_Y
+                s = "p" if sign_Y[1] == "p" else "m"
+                result[Y] = f"-gb_a1_{sigma}_b{j}_{s}"
 
         return result
 

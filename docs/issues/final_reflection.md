@@ -42,10 +42,10 @@
    - Schema 3: Evaluated structure at gb=+1 point
    - Schema 4: Coboundary framework with triviality analysis
 
-6. **Triviality Analysis (I08)**: Rigorous comparative study:
-   - Confirmed non-triviality with f=0 for all three algebras
-   - Identified specific discrepancy patterns
-   - Formulated linear constraint conjecture
+6. **Triviality Analysis (I08)**: Preliminary comparative study:
+   - Tested f=0 for all three algebras and found γ ≠ (δ0)
+   - Identified that f=0 is insufficient but did not determine full triviality
+   - Formulated computational framework for future analysis
 
 **Mathematical Accuracy**:
 - All dimension formulas verified and correct
@@ -214,8 +214,9 @@
 **7. Triviality Analysis is Inherently Non-Local**
 - Cannot determine triviality from single points in parameter space
 - Requires solving constraint systems (linear algebra + symbolic)
-- Current analysis (I08) correctly identified this limitation
-- Future work: leverage linear algebra solvers on constraint systems
+- Current analysis (I08) tests only f=0, which is insufficient for determining full triviality
+- The test shows f=0 cannot account for the deformation, but does NOT establish non-triviality
+- Future work: solve the full linear system γ = δf for all f coefficients
 
 ### On No-Gate Workflow
 
