@@ -22,7 +22,7 @@
 Both bugs were detected via the Super Jacobi identity check (I04), which provided a rigorous correctness criterion. After fixing, all 39,304 + 6,859 + 512 triples passed.
 
 **Mathematical accuracy of triviality conclusions**: The final conjecture — that the inhomogeneous deformation of C(n+1) is trivial if and only if ALL gb parameters are zero — is supported by:
-- Full linear algebraic verification for n=1 (row-reduction of the 213-equation system).
+- Full linear algebraic verification for n=1,2,3 via individual gb tests in `src/C_triviality.py` (pre-built coboundary system with recorded row operations; O(n_eq) per test).
 - Individual gb tests for n=1,2,3 showing each parameter independently forces non-triviality.
 - Structural argument about the scalar-part obstruction in H_{n+1}.
 
