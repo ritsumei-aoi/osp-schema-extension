@@ -32,11 +32,35 @@
     },
     {
       "X": "E_2del1_p",
+      "Y": "E_eps1_del1_pm",
+      "Z": "H_2",
+      "coeff_expr": "2*gb_a1p_b1p",
+      "gb_param": "gb_a1p_b1p",
+      "numeric_coeff": "2"
+    },
+    {
+      "X": "E_2del1_p",
       "Y": "E_eps1_del1_mp",
       "Z": "E_2del1_p",
       "coeff_expr": "-2*gb_a1m_b1p",
       "gb_param": "gb_a1m_b1p",
       "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_2del1_p",
+      "Y": "E_eps1_del1_mm",
+      "Z": "H_2",
+      "coeff_expr": "2*gb_a1m_b1p",
+      "gb_param": "gb_a1m_b1p",
+      "numeric_coeff": "2"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_2",
+      "coeff_expr": "2*gb_a1p_b1m",
+      "gb_param": "gb_a1p_b1m",
+      "numeric_coeff": "2"
     },
     {
       "X": "E_2del1_m",
@@ -45,6 +69,14 @@
       "coeff_expr": "-2*gb_a1p_b1m",
       "gb_param": "gb_a1p_b1m",
       "numeric_coeff": "-2"
+    },
+    {
+      "X": "E_2del1_m",
+      "Y": "E_eps1_del1_mp",
+      "Z": "H_2",
+      "coeff_expr": "2*gb_a1m_b1m",
+      "gb_param": "gb_a1m_b1m",
+      "numeric_coeff": "2"
     },
     {
       "X": "E_2del1_m",
@@ -157,7 +189,7 @@
   },
   "metadata": {
     "generated_by": "src/C_gamma.py",
-    "generation_date": "2026-10-04",
+    "generation_date": "2026-10-12",
     "references": [
       "docs/math/C_inhomogeneous_definition.md",
       "Frappat, Sciarrino, Sorba (2000)"

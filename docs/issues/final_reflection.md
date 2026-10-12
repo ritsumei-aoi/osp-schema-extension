@@ -8,7 +8,7 @@
 - **Workflow Type**: Iterative (8-stages)
 - **Total Human Interventions (Nudges/Approvals)**: 1 (user interrupted output-limit cutoff; no content-level approval)
 - **Major Blockers Encountered**: 2 (recursion error in first bracket implementation; sign error in Wick contraction formula; incorrect Jacobi checker formula — all self-diagnosed and fixed)
-- **Total Wall Time**: Single session, approximately 45-60 minutes of compute time
+- **Total Wall Time**: Single session, approximately 40 minutes (git timestamps: first commit 13:44:16, final reflection commit 14:24:32; issue work I01–I08 approximately 24 minutes of that span)
 - **Total Thinking Time**: Not separately tracked
 
 ## 2. Qualitative Self-Assessment
@@ -75,6 +75,6 @@ The dimension formula table in Cn1_definition.md was a useful sanity check throu
 
 **For multi-stage AI workflows**: The file-based handover system worked well. Explicit JSON artifacts at each stage enabled precise error localization. However, the absence of a "progress" file between issues means that context loss (e.g., from output limits) requires re-reading all prior issues. A brief running summary file (updated after each issue) would improve resilience.
 
-**For future C(n+1) work**: The triviality result (gb=0 is the only trivial deformation) suggests investigating whether the non-trivial deformations admit geometric or representation-theoretic interpretations. The linear independence of the 4n deformation directions (each individually constrained) points to a clean dimensional count: H^1_odd = 4n.
+**For future C(n+1) work**: The triviality result (gb=0 is the only trivial deformation) suggests investigating whether the non-trivial deformations admit geometric or representation-theoretic interpretations. The linear independence of the 4n deformation directions (each individually constrained) points to a clean dimensional count: dim H^2_odd ≥ 4n (where H^2_odd is the correct cohomology group classifying inhomogeneous deformations, since gamma is a 2-cocycle and coboundaries are images of odd 1-cochains under delta).
 
 **On AI mathematical reasoning**: The main bottleneck was not mathematical knowledge but implementation correctness — specifically, tracking sign conventions across graded brackets. A future improvement would be to have the AI verify sign formulas against multiple explicit examples before implementing the general case.

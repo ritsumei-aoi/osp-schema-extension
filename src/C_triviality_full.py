@@ -76,17 +76,31 @@ def full_triviality_analysis(n):
         if any(c != 0 for c in m_row):
             constraints_on_gb.append(m_row)
 
-    unique_constraints = []
-    seen = set()
-    for c in constraints_on_gb:
-        key = tuple(c)
-        neg_key = tuple(-x for x in c)
-        if key not in seen and neg_key not in seen:
-            seen.add(key)
-            unique_constraints.append(c)
+    # Compute true rank via Gaussian elimination on the constraint rows
+    gb_mat = [list(row) for row in constraints_on_gb]
+    gb_rows = len(gb_mat)
+    pivot_col = 0
+    independent = []
+    for col in range(n_gb):
+        pivot = None
+        for row in range(pivot_col, gb_rows):
+            if gb_mat[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            continue
+        gb_mat[pivot_col], gb_mat[pivot] = gb_mat[pivot], gb_mat[pivot_col]
+        pv = gb_mat[pivot_col][col]
+        for row in range(gb_rows):
+            if row != pivot_col and gb_mat[row][col] != 0:
+                fac = gb_mat[row][col] / pv
+                for j in range(n_gb):
+                    gb_mat[row][j] -= fac * gb_mat[pivot_col][j]
+        independent.append(gb_mat[pivot_col])
+        pivot_col += 1
 
-    print(f"  Independent triviality constraints on gb: {len(unique_constraints)}")
-    for c in unique_constraints:
+    print(f"  Independent triviality constraints on gb: {len(independent)}")
+    for c in independent:
         terms = []
         for j, val in enumerate(c):
             if val != 0:

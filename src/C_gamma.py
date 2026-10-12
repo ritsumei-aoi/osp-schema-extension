@@ -197,7 +197,7 @@ def compute_gamma(n):
                 if gb_lbl is None:
                     continue
 
-                rem_gens = _osc_pair_to_gens_simple(rem_a, rem_b)
+                rem_gens = _osc_pair_to_gens_simple(rem_a, rem_b, n)
                 for Z, z_coeff in rem_gens.items():
                     if Z not in basis_set:
                         continue
@@ -222,28 +222,30 @@ def compute_gamma(n):
     return gamma_list
 
 
-def _osc_pair_to_gens_simple(o_a, o_b):
+def _osc_pair_to_gens_simple(o_a, o_b, n):
     """
-    Express o_a * o_b as a dict {gen_label: coeff} for the Lie algebra.
-    For gamma computation, we only need non-Cartan elements (Cartan contributions
-    from number operators are also included for completeness).
-    Simplified: just return root generators, skip number operators for now.
+    Express o_a * o_b as a dict {gen_label: coeff} of Lie algebra generators.
+    Includes Cartan contributions from bosonic number operators n_k.
+    The central element K is discarded (K ∉ g).
     """
+    from C_generators import number_op_to_cartans
     result = {}
 
     if is_boson(o_a) and is_boson(o_b):
         ka, sa = parse_boson(o_a)
         kb, sb = parse_boson(o_b)
         if ka == kb and sa == sb:
-            # (b_k^+)^2 or (b_k^-)^2
             result[f"E_2del{ka}_{sa}"] = Fraction(1)
         elif ka < kb:
             result[f"E_del{ka}_del{kb}_{sa}{sb}"] = Fraction(1)
         elif ka > kb:
             result[f"E_del{kb}_del{ka}_{sb}{sa}"] = Fraction(1)
         else:
-            # ka == kb, sa != sb: number operator. Skip for now (contributes to Cartan)
-            pass
+            # ka == kb, sa != sb: bosonic number operator n_ka → Cartan generators
+            # b_k^+ b_k^- = n_k;  b_k^- b_k^+ = K + n_k (K discarded)
+            cart, _ = number_op_to_cartans(ka, n, False)
+            for g, c in cart.items():
+                result[g] = result.get(g, Fraction(0)) + c
     elif is_fermion(o_a) and is_boson(o_b):
         sf = "p" if o_a == "a_1_p" else "m"
         kb, sb = parse_boson(o_b)
@@ -253,8 +255,15 @@ def _osc_pair_to_gens_simple(o_a, o_b):
         sf = "p" if o_b == "a_1_p" else "m"
         result[f"E_eps1_del{ka}_{sf}{sa}"] = Fraction(1)
     elif is_fermion(o_a) and is_fermion(o_b):
-        # a^+a^- = n_a or a^-a^+ or 0
-        pass
+        # a^+a^- = n_a → Cartan; a^-a^+ = K - n_a (K discarded); same^2 = 0
+        if o_a != o_b:
+            cart, _ = number_op_to_cartans(None, n, True)
+            if o_a == "a_1_p" and o_b == "a_1_m":
+                for g, c in cart.items():
+                    result[g] = result.get(g, Fraction(0)) + c
+            else:
+                for g, c in cart.items():
+                    result[g] = result.get(g, Fraction(0)) - c
 
     return result
 
