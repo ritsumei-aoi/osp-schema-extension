@@ -7,13 +7,12 @@
 <!-- Run scripts/extract_latest_session.sh at session start to move
      existing content to handover_memo_archived.md before updating. -->
 
-## Session 261012-01: Issue I01-1 Completion
+## Session 261012-02: Issue I02-1 Completion
 
-- **Task**: Issue I01-1: C(n+1) basis and root system design.
+- **Task**: Issue I02-1: Schema 1 v5.0 extension for C(n+1).
 - **Accomplishments**:
-  - Defined even and odd basis lists for $C(n+1) = \mathfrak{osp}(2|2n)$ for $n=1, 2, 3$ ($C(2), C(3), C(4)$).
-  - Designed generator labels consistent with Frappat et al. and the schema convention.
-  - Formulated PBW ordering options (Option A: Parity-first graded vs Option B: Triangular root decomposition).
-  - Obtained human approval selecting **Option A** ($\kappa < \text{odd} < \text{even}$).
-  - Documented all finalized conventions in `handover/notation.md`.
-- **Next Step**: Proceed to Issue I02-1 according to project roadmap.
+  - Designed Schema 1 fields for $C(n+1) = \mathfrak{osp}(2|2n)$: `algebra` (m=1, dimension formulas), `central_elements` (top-level key with kappa and K), `oscillator_generators` (fermions and bosons), `oscillator_relations` (CAR, CCR, mixed), and `basis`/`parity`.
+  - Confirmed file naming conventions: `C_{n}_structure.json` where $n$ is bosonic rank ($n=1, 2, 3$).
+  - Proposed all fields and obtained human approval.
+  - Authored `docs/json_schema_specification.md` providing the complete v5.0 Schema 1 specification for $C(n+1)$.
+- **Next Step**: Proceed to Issue I03 according to project roadmap.
