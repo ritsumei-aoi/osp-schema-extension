@@ -300,25 +300,27 @@ def analyze_cn1(n):
     print(f"Matrix shapes: M_f {M_f_mat.shape}, M_gb {M_gb_mat.shape}")
     
     rank_M_f = M_f_mat.rank()
-    aug_mat = M_f_mat.hstack(M_gb_mat)
-    rank_aug = aug_mat.rank()
-    
-    print(f"Rank(M_f) = {rank_M_f}")
-    print(f"Rank([M_f | M_gb]) = {rank_aug}")
     
     left_null = M_f_mat.T.nullspace()
     print(f"Left nullspace dim: {len(left_null)}")
     
     if len(left_null) == 0:
         dim_trivial_gb = num_gb
+        rank_gb_constraints = 0
     else:
         left_null_mat = sp.Matrix([v.T for v in left_null])
         gb_constraints = left_null_mat * M_gb_mat
-        gb_constraints_rank = gb_constraints.rank()
+        rank_gb_constraints = gb_constraints.rank()
         gb_nullspace = gb_constraints.nullspace()
         dim_trivial_gb = len(gb_nullspace)
-        print(f"GB Constraint Matrix Rank: {gb_constraints_rank}")
+        print(f"GB Constraint Matrix Rank: {rank_gb_constraints}")
         print(f"Dimension of trivial gb parameter space: {dim_trivial_gb} / {num_gb}")
+
+    aug_mat = sp.Matrix.hstack(M_f_mat, M_gb_mat)
+    rank_aug = aug_mat.rank()
+    
+    print(f"Rank(M_f) = {rank_M_f}")
+    print(f"Rank([M_f | M_gb]) = {rank_aug}")
         
     print(f"Total time for n={n}: {time.time()-t0:.2f}s")
     
@@ -330,6 +332,7 @@ def analyze_cn1(n):
         "num_eqs": len(equations),
         "rank_M_f": int(rank_M_f),
         "rank_aug": int(rank_aug),
+        "rank_gb_constraints": int(rank_gb_constraints),
         "dim_trivial_gb": int(dim_trivial_gb)
     }
 
