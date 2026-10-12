@@ -77,7 +77,7 @@ def verify_minimal_obstructions(n=1):
         print(f"    => {g1} = 0  ==>  gb_+_{j}_- = 0")
         assert df1 == 0 and g1 == -2 * gb[('+', j, '-')]
 
-    # For n=1, all 4 minimal obstructions project onto the canonical basis elements H_2 and F:
+    # Canonical Obstructions for n=1 and n=2:
     if n == 1:
         print("\n--- Canonical Obstructions for n=1 (C(2)) ---")
         print("  [Obstruction 2: gb_+_1_+]")
@@ -115,6 +115,82 @@ def verify_minimal_obstructions(n=1):
         print("    gamma comb =", comb_g4)
         print("    =>", comb_g4, "= 0  ==>  gb_-_1_+ = 0")
         assert comb_df4 == 0 and comb_g4 == 2 * gb[('-', 1, '+')]
+
+    elif n == 2:
+        print("\n--- Canonical Obstructions for n=2 (C(3)) ---")
+        # Mode 1:
+        print("  [Obstruction 2 (j=1): gb_+_1_+]")
+        df2a_1 = compute_delta_f("F_p_1_p", "F_p_1_m", "F_p_1_m")
+        g2a_1 = gamma[("F_p_1_p", "F_p_1_m")]["F_p_1_m"]
+        df2b_1 = compute_delta_f("F_p_1_m", "E_2d_1", "H_2")
+        g2b_1 = gamma[("F_p_1_m", "E_2d_1")]["H_2"]
+        c_df2_1 = sp.simplify(df2a_1 - df2b_1)
+        c_g2_1 = sp.simplify(g2a_1 - g2b_1)
+        print("    delta_f comb =", c_df2_1)
+        print("    gamma comb =", c_g2_1)
+        print("    =>", c_g2_1, "= 0  ==>  gb_+_1_+ = 0")
+        assert c_df2_1 == 0 and c_g2_1 == -2 * gb[('+', 1, '+')]
+
+        print("  [Obstruction 3 (j=1): gb_-_1_-]")
+        df3a_1 = compute_delta_f("F_m_1_p", "F_m_1_m", "F_m_1_p")
+        g3a_1 = gamma[("F_m_1_p", "F_m_1_m")]["F_m_1_p"]
+        df3b_1 = compute_delta_f("F_m_1_p", "E_-2d_1", "H_2")
+        g3b_1 = gamma[("F_m_1_p", "E_-2d_1")]["H_2"]
+        c_df3_1 = sp.simplify(df3a_1 - df3b_1)
+        c_g3_1 = sp.simplify(g3a_1 - g3b_1)
+        print("    delta_f comb =", c_df3_1)
+        print("    gamma comb =", c_g3_1)
+        print("    =>", c_g3_1, "= 0  ==>  gb_-_1_- = 0")
+        assert c_df3_1 == 0 and c_g3_1 == -2 * gb[('-', 1, '-')]
+
+        print("  [Obstruction 4 (j=1): gb_-_1_+]")
+        df4a_1 = compute_delta_f("F_m_1_p", "F_m_1_p", "F_m_1_p")
+        g4a_1 = gamma[("F_m_1_p", "F_m_1_p")]["F_m_1_p"]
+        df4b_1 = compute_delta_f("F_m_1_p", "H_2", "H_2")
+        g4b_1 = gamma[("F_m_1_p", "H_2")]["H_2"]
+        c_df4_1 = sp.simplify(sp.Rational(-1, 2) * df4a_1 + df4b_1)
+        c_g4_1 = sp.simplify(sp.Rational(-1, 2) * g4a_1 + g4b_1)
+        print("    delta_f comb =", c_df4_1)
+        print("    gamma comb =", c_g4_1)
+        print("    =>", c_g4_1, "= 0  ==>  gb_-_1_+ = 0")
+        assert c_df4_1 == 0 and c_g4_1 == 2 * gb[('-', 1, '+')]
+
+        # Mode 2:
+        print("  [Obstruction 2 (j=2): gb_+_2_+]")
+        df2a_2 = compute_delta_f("F_p_2_p", "F_p_2_m", "F_p_2_m")
+        g2a_2 = gamma[("F_p_2_p", "F_p_2_m")]["F_p_2_m"]
+        df2b_2_sum = sum(compute_delta_f("F_p_2_m", "E_2d_2", f"H_{k}") for k in range(1, 4))
+        g2b_2_sum = sum(gamma[("F_p_2_m", "E_2d_2")][f"H_{k}"] for k in range(1, 4))
+        c_df2_2 = sp.simplify(df2a_2 + df2b_2_sum)
+        c_g2_2 = sp.simplify(g2a_2 + g2b_2_sum)
+        print("    delta_f comb =", c_df2_2)
+        print("    gamma comb =", c_g2_2)
+        print("    =>", c_g2_2, "= 0  ==>  gb_+_2_+ = 0")
+        assert c_df2_2 == 0 and c_g2_2 == -2 * gb[('+', 2, '+')]
+
+        print("  [Obstruction 3 (j=2): gb_-_2_-]")
+        df3a_2 = compute_delta_f("F_m_2_p", "F_m_2_m", "F_m_2_p")
+        g3a_2 = gamma[("F_m_2_p", "F_m_2_m")]["F_m_2_p"]
+        df3b_2_sum = sum(compute_delta_f("F_m_2_p", "E_-2d_2", f"H_{k}") for k in range(1, 4))
+        g3b_2_sum = sum(gamma[("F_m_2_p", "E_-2d_2")][f"H_{k}"] for k in range(1, 4))
+        c_df3_2 = sp.simplify(df3a_2 + df3b_2_sum)
+        c_g3_2 = sp.simplify(g3a_2 + g3b_2_sum)
+        print("    delta_f comb =", c_df3_2)
+        print("    gamma comb =", c_g3_2)
+        print("    =>", c_g3_2, "= 0  ==>  gb_-_2_- = 0")
+        assert c_df3_2 == 0 and c_g3_2 == -2 * gb[('-', 2, '-')]
+
+        print("  [Obstruction 4 (j=2): gb_-_2_+]")
+        df_A = compute_delta_f("F_m_1_p", "F_p_2_p", "F_p_1_p")
+        g_A = gamma[("F_m_1_p", "F_p_2_p")]["F_p_1_p"]
+        df_B = compute_delta_f("F_m_1_p", "E_dp_d_1_2", "E_2d_1")
+        g_B = gamma[("F_m_1_p", "E_dp_d_1_2")]["E_2d_1"]
+        c_df4_2 = sp.simplify(-2 * df_A + df_B)
+        c_g4_2 = sp.simplify(-2 * g_A + g_B)
+        print("    delta_f comb =", c_df4_2)
+        print("    gamma comb =", c_g4_2)
+        print("    =>", c_g4_2, "= 0  ==>  gb_-_2_+ = 0")
+        assert c_df4_2 == 0 and c_g4_2 == 4 * gb[('-', 2, '+')]
 
 if __name__ == '__main__':
     verify_minimal_obstructions(1)
