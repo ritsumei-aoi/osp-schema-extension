@@ -10,25 +10,27 @@ As established in `docs/math/C_inhomogeneous_definition.md` and `docs/math/C_cob
 - Consider the central extension $A = V \oplus \mathbf{C}K \oplus \mathbf{C}\kappa$, where $K$ is an even central element ($p(K) = 0$) and $\kappa$ is an odd central element ($p(\kappa) = 1$).
 - The Lie superalgebra $\mathfrak{g} = C(n+1)$ is realized as a subalgebra of quadratic expressions in the universal enveloping algebra $\mathcal{U}(A)$ acting via the adjoint representation.
 
-### 1.2 Mathematical Conventions and Parity Assignments
-To ensure full algebraic consistency across computations:
-1. **Parity of deformation parameters $\text{gb}$:**
-   - The deformed commutator between fermionic and bosonic oscillators is:
+### 1.2 Computational and Algebraic Conventions
+1. **Handling of Parity and Deformation Parameters $\text{gb}$:**
+   - The inhomogeneous deformation alters the cross-commutation relations between bosonic and fermionic oscillators:
      $$ [b_j^s, a_1^\sigma] = - \text{gb}_{\sigma, j, s} \cdot \kappa, \quad \sigma \in \{+, -\},\ s \in \{+, -\}. $$
-   - The left-hand side has parity $p([b_j^s, a_1^\sigma]) = (p(b_j^s) + p(a_1^\sigma)) \pmod 2 = 0 + 1 = 1$.
-   - Since $\kappa$ is an odd central generator ($p(\kappa) = 1$), preserving total parity in $\mathcal{U}(A)$ requires the deformation parameters $\text{gb}_{\sigma, j, s}$ to carry **parity 1** ($p(\text{gb}) = 1$), acting as odd Grassmann-type deformation parameters (or $\kappa \cdot \text{gb}$ acting as an even central product).
-2. **Commutation relations involving $\kappa$ and sign rules:**
-   - $\kappa$ is central in $A$ and acts trivially on the adjoint representation: $[X, \kappa] = 0$ for all $X \in \mathfrak{g}$.
-   - In the associative universal enveloping algebra $\mathcal{U}(A)$, for homogeneous elements $u, v$, the superbracket satisfies $[u, v] = uv - (-1)^{p(u)p(v)} vu$. When commuting past odd elements, standard graded sign rules apply: $\kappa u = (-1)^{p(u)} u \kappa$.
-   - The undeformed non-zero oscillator commutation relations are:
-     $$ [b_j^-, b_k^+] = \delta_{jk} K, \quad [b_j^+, b_k^-] = -\delta_{jk} K, \quad [a_1^-, a_1^+] = K. $$
-3. **Treatment of "Adjoint Representation" and "Up to Scalar":**
-   - **Adjoint representation condition:** The deformed Lie superalgebra bracket on $\mathfrak{g}$ is:
-     $$ [X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma_{gb}(X, Y), $$
-     which defines an abelian extension $L = \mathfrak{g} \oplus \kappa \mathfrak{g}$ where $\mathfrak{g}$ acts on $\kappa \mathfrak{g} \cong \mathfrak{g}$ via the **adjoint representation**. Thus, the 2-cocycle $\gamma_{gb}$ takes values in $\mathfrak{g}$ (specifically, the $\mathfrak{g}$-module defined by the adjoint action $\text{ad}_\mathfrak{g}$).
-   - **Up to scalar condition:** A deformation $\gamma_{gb}$ is trivial in $H^2(\mathfrak{g}, \mathfrak{g})$ if there exists an odd linear map $f: \mathfrak{g} \to \mathfrak{g}$ and a non-zero scalar $c \in \mathbf{C}^\times$ such that:
-     $$ \gamma_{gb}(X, Y) = c \cdot (\delta f)(X, Y) \quad \text{for all } X, Y \in \mathfrak{g}. $$
-     Because the coboundary operator $\delta$ is linear, absorbing the non-zero scalar $c$ into $f$ (redefining $\tilde{f} = c f$) yields the equivalent linear coboundary condition $\gamma_{gb} = \delta \tilde{f}$. Therefore, proving that no non-zero $\vec{\text{gb}}$ lies in the image of $\delta$ automatically rules out triviality up to any non-zero scalar multiple.
+   - Mathematically, because $\kappa$ has odd parity ($p(\kappa) = 1$) and the bracket preserves parity, the product $\text{gb} \cdot \kappa$ has odd parity in the oscillator algebra $A$. In the computational implementation (`solve_triviality.py`), each parameter $\text{gb}_{\sigma, j, s}$ is instantiated as an independent commuting indeterminate scalar (SymPy `Symbol`).
+   - This convention is mathematically exact for setting up the linear deformation system: because we evaluate the first-order deformation (equations linear in $\text{gb}$), treating $\text{gb}$ as scalar coefficients parameterizing the linear space of deformation cocycles does not affect the linear system $A \vec{\phi} = B \vec{\text{gb}}$ or the resulting rank and nullspace conditions.
+2. **Central Element $\kappa$ and Graded Commutation:**
+   - In the associative algebra $\mathcal{U}(A)$, $\kappa$ is central with respect to $A$ and acts trivially on the adjoint representation: $[X, \kappa] = 0$ for all $X \in \mathfrak{g}$.
+   - In evaluating superbrackets $[X, Y]$ of quadratic generators $X, Y \in \mathfrak{g}$ via Wick contractions, single contractions between one boson and one fermion produce terms proportional to $\kappa \cdot Z$ (where $Z \in \mathfrak{g}$ is a quadratic generator). In the programmatic implementation, $\kappa$ is treated as a central formal label factorizing out of each quadratic generator without internal phase ambiguities.
+3. **Handling of Scalar-Valued Central Terms (`kappa_scalar`) vs. Adjoint Representation:**
+   - In `docs/math/C_inhomogeneous_definition.md` (Section 2), the deformed bracket on $\mathfrak{g}$ is defined as an abelian extension $L := \mathfrak{g} \oplus \kappa \mathfrak{g}$ by the adjoint representation:
+     $$ [X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma(X, Y), $$
+     where $\gamma: \mathfrak{g} \otimes \mathfrak{g} \to \mathfrak{g}$ is a 2-cocycle taking values in the adjoint representation $\mathfrak{g}$.
+   - During algebraic Wick contractions of quadratic generators in $\mathcal{U}(A)$, two types of $\kappa$-dependent terms appear:
+     1. **Adjoint-valued terms** $\kappa \cdot Z$ where $Z \in \mathfrak{g}$ is quadratic (stored as `('kappa', Z)` in `solve_triviality.py`). These define the adjoint-valued 2-cocycle $\gamma(X, Y) \in \mathfrak{g}$.
+     2. **Scalar-valued central terms** $\kappa \cdot c$ where $c \in \mathbf{C}$ is a scalar (stored as `'kappa_scalar'` in `solve_triviality.py`). These arise when both pairs of oscillators in $X$ and $Y$ contract simultaneously.
+   - In accordance with `docs/math/C_coboundary_definition.md` (which defines the coboundary operator on maps $f: \mathfrak{g} \to \mathfrak{g}$ taking values in $\mathfrak{g}$), the triviality condition $\gamma = \delta f$ is formulated strictly for the adjoint-valued part $\gamma(X, Y) \in \mathfrak{g}$. The scalar-valued central terms lie in the 1-dimensional central ideal $\mathbf{C}\kappa$ (which is disjoint from $\mathfrak{g}$) and represent central extensions rather than deformations of the adjoint bracket. Thus, only the adjoint-valued components $\gamma(X, Y) \in \mathfrak{g}$ enter the coboundary equation system $A \vec{\phi} = B \vec{\text{gb}}$.
+4. **Treatment of the "Up to Scalar" Condition:**
+   - In `docs/math/C_coboundary_definition.md`, triviality is defined as $\gamma = \delta f$ holding up to scalar, i.e., $\gamma = c \cdot \delta f$ for some $c \in \mathbf{C}^\times$.
+   - Because the coboundary operator $\delta$ is strictly linear in $f$, any non-zero scalar $c$ can be absorbed by rescaling the linear map: $\tilde{f} = c f$.
+   - Hence, $\gamma$ is a coboundary up to scalar if and only if $\vec{\text{gb}}$ lies in the column space $\text{im}(A)$ of the coboundary matrix. Consequently, left-nullspace constraints $\vec{v}^T B \vec{\text{gb}} = 0$ rigorously rule out triviality for any non-zero scalar $c$.
 
 ---
 
@@ -68,7 +70,7 @@ where $A$ has size $M \times N$ ($N = \dim \text{Hom}_{\bar{1}}(\mathfrak{g}, \m
 
 ## 3. Cross-Checking the Coboundary System and Matrix Rank
 
-The system $A \vec{\phi} = B \vec{\text{gb}}$ was rigorously set up and evaluated using exact symbolic computation in SymPy (`solve_triviality.py`). The rank of $A$, the dimension of the left nullspace $\ker(A^T)$, and the dimension of the right nullspace $\ker(A)$ were computed directly:
+The system $A \vec{\phi} = B \vec{\text{gb}}$ was rigorously evaluated in SymPy (`solve_triviality.py`). The rank of $A$, the dimension of the left nullspace $\ker(A^T)$, and the dimension of the right nullspace $\ker(A)$ are summarized below:
 
 | Case | $\dim \mathfrak{g}$ ($\bar{0} \mid \bar{1}$) | Equations ($M$) | Unknowns $\vec{\phi}$ ($N$) | **Matrix Rank** $\text{rank}(A)$ | Left Nullspace $\dim \ker(A^T)$ | Right Nullspace $\dim \ker(A)$ | Deformation Parameters $\dim \vec{\text{gb}}$ |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -77,13 +79,18 @@ The system $A \vec{\phi} = B \vec{\text{gb}}$ was rigorously set up and evaluate
 | **$n = 3$** ($C(4)$) | $34$ ($22 \mid 12$) | $6516$ | $528$ | **$528$** | $5988$ ($= 6516 - 528$) | $0$ ($= 528 - 528$) | $12$ |
 
 ### 3.1 Structural and Rank Verification
-1. **Consistency with Rank-Nullity Theorem:**
-   - For all cases, $\dim \ker(A^T) = M - \text{rank}(A)$ holds identically ($112 - 28 = 84$; $1356 - 176 = 1180$; $6516 - 528 = 5988$).
-   - The right nullspace $\ker(A)$ represents the space of odd 1-cocycles (odd derivations of $\mathfrak{g}$ into itself, $Z^1_{\bar{1}}(\mathfrak{g}, \mathfrak{g})$).
-   - For $n = 1$ ($C(2) \cong \mathfrak{osp}(2|2)$), $\ker(A)$ has dimension 4, corresponding to the outer odd derivations known for $\mathfrak{osp}(2|2)$.
-   - For $n \ge 2$, $A$ has **full column rank** ($\text{rank}(A) = N = 176$ for $n=2$, $528$ for $n=3$), confirming $\ker(A) = 0$ (all odd derivations of $C(n+1)$ are inner for $n \ge 2$).
+1. **Consistency with the Rank-Nullity Theorem:**
+   - By the Rank-Nullity theorem, for an $M \times N$ matrix $A$:
+     $$ \dim \ker(A^T) = M - \text{rank}(A), \quad \dim \ker(A) = N - \text{rank}(A). $$
+   - In `solve_triviality.py`, `A.rank()` and `A.T.nullspace()` are computed directly, yielding $\text{rank}(A) = 28, 176, 528$ and $\dim \ker(A^T) = 84, 1180, 5988$, in exact agreement with $M - \text{rank}(A)$.
+   - The right nullspace dimension $\dim \ker(A) = N - \text{rank}(A)$ is $4$ for $n = 1$, and $0$ for $n = 2$ and $n = 3$. For $n = 1$, direct nullspace computation `A.nullspace()` verifies 4 linearly independent vectors in $\ker(A)$.
 
-2. **Solvability and Left Nullspace Constraints:**
+2. **Kernel Interpretation and the Coboundary Operator:**
+   - Any element in $\ker(A)$ represents an odd linear map $f: \mathfrak{g} \to \mathfrak{g}$ satisfying $\delta f = 0$ on all quadratic basis elements.
+   - For $n = 1$, the 4-dimensional kernel $\ker(A)$ corresponds to the 4 inner derivations $\text{ad}_Z$ associated with the 4 odd basis generators $Z \in \mathfrak{g}_{\bar{1}}$ (as verified by explicit evaluation: $\delta(\text{ad}_Z) = 0$ identically for all 4 odd generators of $C(2)$).
+   - For $n \ge 2$, the coboundary matrix $A$ has **full column rank** ($\text{rank}(A) = N$, so $\ker(A) = 0$). In the standard oscillator representation of $C(n+1)$, brackets of certain odd generators with even generators produce bilinear terms whose oscillator ordering differs from the fixed basis ordering, and normal-ordering contractions produce central terms outside $\mathfrak{g}$. When projected onto the chosen basis $\mathfrak{g}$, this overdetermines the linear map components $\phi_{ij}$, leaving no non-trivial solution to $\delta f = 0$.
+
+3. **Solvability and Left Nullspace Constraints:**
    - Any vector $\vec{v} \in \ker(A^T)$ yields an algebraic compatibility condition $\vec{v}^T B \vec{\text{gb}} = 0$.
    - For each $n \in \{1, 2, 3\}$, evaluating these constraints yields an overdetermined linear system on the parameters $\text{gb}_{\sigma, j, s}$ whose unique solution is:
      $$ \text{gb}_{\sigma, j, s} = 0 \quad \text{for all } \sigma, j, s. $$
