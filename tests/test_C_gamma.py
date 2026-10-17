@@ -94,3 +94,63 @@ def test_gamma_entries_validity_and_skew_symmetry(n):
             f"Graded skew-symmetry failed for ({X}, {Y}) vs ({Y}, {X}) on Z={Z}, param={param}: "
             f"c(X,Y)={c_XY}, c(Y,X)={actual_c_YX}, expected={expected_c_YX}"
         )
+
+@pytest.mark.parametrize("n", [1, 2])
+def test_gamma_2cocycle_jacobi(n):
+    structure_file = os.path.join(DATA_DIR, f"C_{n}_structure.json")
+    gamma_file = os.path.join(DATA_DIR, f"C_{n}_gamma.json")
+
+    with open(structure_file, "r", encoding="utf-8") as f:
+        s1 = json.load(f)
+    with open(gamma_file, "r", encoding="utf-8") as f:
+        s2 = json.load(f)
+
+    all_basis = s1["basis"]["even"] + s1["basis"]["odd"]
+    parity = s1["parity"]
+
+    c_base = defaultdict(Fraction)
+    for e in s1["structure_constants"]:
+        c_base[(e["X"], e["Y"], e["Z"])] = Fraction(e["coeff"])
+
+    gamma = defaultdict(lambda: defaultdict(Fraction))
+    for e in s2["inhomogeneous_deformation"]:
+        gamma[(e["X"], e["Y"], e["Z"])][e["param"]] += Fraction(e["coeff"])
+
+    for idx_X, X in enumerate(all_basis):
+        pX = parity[X]
+        for idx_Y, Y in enumerate(all_basis):
+            if idx_X > idx_Y: continue
+            pY = parity[Y]
+            for idx_Z, Z in enumerate(all_basis):
+                if idx_Y > idx_Z: continue
+                pZ = parity[Z]
+
+                triples = [
+                    (X, pX, Y, pY, Z, pZ, (-1)**(pX * pZ)),
+                    (Y, pY, Z, pZ, X, pX, (-1)**(pY * pX)),
+                    (Z, pZ, X, pX, Y, pY, (-1)**(pZ * pY)),
+                ]
+
+                res = defaultdict(lambda: defaultdict(Fraction))
+                for A, pA, B, pB, C, pC, s_cyc in triples:
+                    s_kappa = -1 if pA == 1 else 1
+                    for W in all_basis:
+                        pdict = gamma.get((B, C, W), {})
+                        for param, coeff in pdict.items():
+                            for target in all_basis:
+                                c = c_base.get((A, W, target), 0)
+                                if c != 0:
+                                    res[target][param] += s_cyc * s_kappa * coeff * c
+
+                    for W in all_basis:
+                        c_BC_W = c_base.get((B, C, W), 0)
+                        if c_BC_W != 0:
+                            for target in all_basis:
+                                pdict = gamma.get((A, W, target), {})
+                                for param, coeff in pdict.items():
+                                    res[target][param] += s_cyc * c_BC_W * coeff
+
+                for target, pdict in res.items():
+                    for param, val in pdict.items():
+                        assert val == 0, f"Jacobi violation on ({X}, {Y}, {Z}) -> {target}, {param}: {val}"
+

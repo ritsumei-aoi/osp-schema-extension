@@ -140,13 +140,13 @@ def solve_parametric_triviality(n: int) -> Dict[str, Any]:
                     if c != 0 and (Z, k) in phi_idx:
                         row[phi_idx[(Z, k)]] -= c
 
-                # Target gamma:
-                g = gamma_sym.get((X, Y, Z), 0)
-                if g != 0:
-                    poly_g = sp.Poly(g, gb_syms)
-                    for monom, coeff in poly_g.as_dict().items():
-                        g_pos = [idx for idx, pow_v in enumerate(monom) if pow_v > 0][0]
-                        row[n_phi + g_pos] += Fraction(str(coeff))
+                # gamma term
+                g_expr = gamma_sym.get((X, Y, Z), sp.Integer(0))
+                if g_expr != 0:
+                    for p_sym in gb_syms:
+                        coeff_p = g_expr.coeff(p_sym)
+                        if coeff_p != 0:
+                            row[n_phi + gb_idx[p_sym]] = -Fraction(coeff_p)
 
                 if any(r != 0 for r in row):
                     rows.append([sp.Rational(r.numerator, r.denominator) for r in row])
@@ -162,12 +162,12 @@ def solve_parametric_triviality(n: int) -> Dict[str, Any]:
             if expr != 0:
                 gb_constraints.append(expr)
 
-    sol_gb = sp.solve(gb_constraints, gb_syms)
-
     # Coboundary operator matrix M_phi alone
     M_phi = M[:, :n_phi]
     rank_M_phi = M_phi.rank()
     dim_ker_delta = n_phi - rank_M_phi
+
+    is_unconditionally_trivial = (len(gb_constraints) == 0)
 
     return {
         "n": n,
@@ -176,8 +176,8 @@ def solve_parametric_triviality(n: int) -> Dict[str, Any]:
         "rank_M_phi": rank_M_phi,
         "dim_ker_delta": dim_ker_delta,
         "independent_gb_constraints": len(gb_constraints),
-        "sol_gb": sol_gb,
-        "is_trivial_only_at_zero": (sol_gb == {s: 0 for s in gb_syms})
+        "gb_constraints": gb_constraints,
+        "is_unconditionally_trivial": is_unconditionally_trivial
     }
 
 def main():
@@ -202,8 +202,7 @@ def main():
         print(f"   - Rank of coboundary operator delta: {param_res['rank_M_phi']}")
         print(f"   - Dimension of 1-cocycle kernel ker(delta): {param_res['dim_ker_delta']} (matches dim g_1 = {comp['odd_dim']})")
         print(f"   - Independent linear constraints on gb for delta f = gamma: {param_res['independent_gb_constraints']}")
-        print(f"   - Triviality condition on gb: {param_res['sol_gb']}")
-        print(f"   - Rigorous Conclusion: Trivial IF AND ONLY IF all gb parameters are ZERO: {param_res['is_trivial_only_at_zero']}")
+        print(f"   - Rigorous Conclusion: Deformation is UNCONDITIONALLY TRIVIAL (coboundary for ALL gb): {param_res['is_unconditionally_trivial']}")
 
 if __name__ == "__main__":
     main()
