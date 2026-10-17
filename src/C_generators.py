@@ -458,3 +458,25 @@ def generate_schema_1_dict(n):
         }
     }
     return schema1
+
+
+def generate_all_structure_files(output_dir="data"):
+    import json
+    import os
+
+    os.makedirs(output_dir, exist_ok=True)
+    generated_files = []
+    for n in [1, 2, 3]:
+        filepath = os.path.join(output_dir, f"C_{n}_structure.json")
+        print(f"Generating {filepath} for C({n+1})...")
+        schema_dict = generate_schema_1_dict(n)
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(schema_dict, f, indent=2, ensure_ascii=False)
+        print(f"Saved {filepath} ({len(schema_dict['structure_constants'])} structure constants).")
+        generated_files.append(filepath)
+    return generated_files
+
+
+if __name__ == "__main__":
+    generate_all_structure_files()
+

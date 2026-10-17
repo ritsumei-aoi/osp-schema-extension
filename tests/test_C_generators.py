@@ -123,3 +123,24 @@ def test_schema_1_structure_conformance():
     assert "K" in schema["central_elements"]
     assert "fermions" in schema["oscillator_generators"]
     assert "bosons" in schema["oscillator_generators"]
+
+
+@pytest.mark.parametrize("n", [1, 2, 3])
+def test_generated_json_files_on_disk(n):
+    import json
+    import os
+
+    filepath = os.path.join("data", f"C_{n}_structure.json")
+    assert os.path.exists(filepath), f"File {filepath} does not exist"
+
+    with open(filepath, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    assert data["schema_version"] == "5.0"
+    assert data["algebra"]["family"] == "C"
+    assert data["algebra"]["m"] == 1
+    assert data["algebra"]["n"] == n
+    assert len(data["structure_constants"]) > 0
+    assert len(data["basis"]["even"]) == 2 * n**2 + n + 1
+    assert len(data["basis"]["odd"]) == 4 * n
+
