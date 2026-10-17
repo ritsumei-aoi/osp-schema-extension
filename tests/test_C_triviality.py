@@ -1,7 +1,7 @@
 """
 Unit tests for triviality analysis of C(n+1).
-Verifies cohomology ranks, linear independence of gamma from coboundaries,
-and non-triviality for C(2), C(3), C(4).
+Verifies cohomology ranks and triviality: gamma(gb) is a coboundary
+for all parameter values across C(2), C(3), C(4).
 """
 
 import pytest
@@ -18,6 +18,6 @@ def test_triviality_cohomology_ranks(n, expected_params, expected_rank_cob):
     assert res["num_params"] == expected_params
     assert res["rank_cob"] == expected_rank_cob
     assert res["dim_der"] == 4 * n
-    assert res["rank_aug"] == expected_rank_cob + expected_params
-    assert res["diff"] == expected_params
-    assert res["is_trivial_only_at_zero"] is True
+    assert res["rank_aug"] == expected_rank_cob  # Augmented rank equals coboundary rank
+    assert res["diff"] == 0                     # No obstruction: diff = 0
+    assert res["is_trivial_for_all"] is True    # Trivial for all parameter values

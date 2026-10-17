@@ -103,7 +103,10 @@ def normal_order_word_ua(word, n, sign_choice=1):
                             px = x.split("_")
                             j, s = px[1], px[2]
                             gb_param = f"gb_a1{sigma}_b{j}{s}"
-                            next_terms.append((pre + suf, -coeff * sign_choice, True, gb_param))
+                            # Koszul sign: move kappa (p=1) past all odd fermionic operators in pre
+                            num_fermions_pre = sum(1 for osc in pre if osc.startswith("a_"))
+                            koszul_sign = (-1) ** (num_fermions_pre % 2)
+                            next_terms.append((pre + suf, -coeff * sign_choice * koszul_sign, True, gb_param))
                     else:
                         next_terms.append((pre + (y, x) + suf, coeff, is_kap, par))
                     break
