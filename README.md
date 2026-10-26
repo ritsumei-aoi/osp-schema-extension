@@ -6,6 +6,12 @@ For a detailed explanation of the mathematical background and the 8-stage task d
 
 This repository also serves as the public data source for the empirical case study presented in our paper on the **Issue-Driven Research Workflow**.
 
+## Revised paper (October 2026)
+
+The records of the revised paper (JIP 27-J002e, revision 1) are on the branch [`ipsj-r1-artifacts`](https://github.com/ritsumei-aoi/osp-schema-extension/tree/ipsj-r1-artifacts) (tag `ipsj-artifact-2026-10`); start with its `README.md` and `inventory.csv`. The Study 2 Worker repositories are on the branches `study/thm01-R-*`.
+
+The descriptions of the Study 1 branches below are from the May 2026 release (tag `ipsj-artifact-2026-05`). The revised paper re-audited these runs and changed the verdicts of `thm01-02`, `thm01-03`, `thm01-X-02`, `thm01-X-03`, and `thm01-X-06` (see Table 1 of the revised paper and `judging/` on `ipsj-r1-artifacts`).
+
 ## Repository Structure and Branch Guide
 
 To observe how different Large Language Models (LLMs) navigated this mathematical research task under various workflow constraints, please explore the specific branches listed below.
