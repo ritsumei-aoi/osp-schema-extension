@@ -32,6 +32,10 @@ Many records written by the scribe and the author are in Japanese; texts sent to
 - Harness home directories (login data) and internal working notes are not included.
 - The Worker branches are published as they are (contents and commit metadata, including home paths written by the models), so that commit hashes match the paper and the records.
 
+## Corrections
+
+- 2026-10-26: `judging/README.md` pointed to `judging/release/inventory_public.csv`, an earlier copy of the inventory that lacked seven corrections made before publication (the `-shadow` branch names and run notes of the five F− runs, no branch for the run that was not run, and the run note of sonnet46-b12-G). The pointer now goes to `inventory.csv`, and `judging/release/inventory_public.csv` is replaced by a copy of it. The tag `ipsj-artifact-2026-10` still points to the earlier commit; its `inventory.csv` is the same.
+
 ## License
 
 The repository is under the MIT License (see `main`). Model outputs are included as research records.

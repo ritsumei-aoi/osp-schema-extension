@@ -2,7 +2,7 @@
 
 This directory holds the material behind the verdicts reported in the paper (Sections 6.4–6.6): the facts the author judged from, the script checks, the frozen rule-based prediction, the author's verdicts, and the tables made from them. Every value here is either produced by a script in this directory or extracted by an AI subagent with a file:line quote; the verdicts themselves are the author's.
 
-Start with `release/inventory_public.csv` (one row per run: branch, final commit, counted or excluded, the author's verdict, and the verdict before the prediction was revealed).
+Start with `../inventory.csv` at the top of this release (one row per run: branch, final commit, counted or excluded, the author's verdict, and the verdict before the prediction was revealed).
 
 ## Judging in three layers (paper 6.4)
 
