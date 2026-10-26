@@ -1,0 +1,230 @@
+### Proposal: Schema 1 v5.0 Specification for $C(n+1) = \mathfrak{osp}(2|2n)$
+
+We propose the complete field definitions for Schema 1 (`C_{n}_structure.json`), incorporating all mandatory unified rules and the Step 1 decisions.
+
+---
+
+### 1. Top-Level Schema Architecture
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": { ... },
+  "central_elements": { ... },
+  "oscillator_generators": { ... },
+  "oscillator_relations": { ... },
+  "basis": { ... },
+  "parity": { ... },
+  "generator_realization": { ... },
+  "structure_constants": [ ... ],
+  "metadata": { ... }
+}
+```
+
+---
+
+### 2. Field-by-Field Design
+
+#### 2.1 `algebra`
+Explicitly specifies `family = "C"`, $m = 1$, bosonic rank $n$, and the exact dimension formulas:
+```json
+{
+  "family": "C",
+  "m": 1,
+  "n": 2,
+  "cartan_type": "C(3)",
+  "alternative_notation": {
+    "osp": "osp(2|4)",
+    "dimension_formula": "osp(2m|2n) with m=1"
+  },
+  "dimension": {
+    "total": 19,
+    "even": 11,
+    "odd": 8,
+    "formulas": {
+      "even": "2*n^2 + n + 1",
+      "odd": "4*n",
+      "total": "2*n^2 + 5*n + 1"
+    }
+  }
+}
+```
+
+#### 2.2 `central_elements` (Top-level Key)
+Explicitly accounts for the central extension $\kappa$ ($p=1$) and central identity $K$ ($p=0$):
+```json
+{
+  "kappa": {
+    "label": "kappa",
+    "parity": 1,
+    "nilpotent": true,
+    "relation": "kappa^2 = 0",
+    "description": "Odd central extension parameter for inhomogeneous deformation; acts trivially on g"
+  },
+  "K": {
+    "label": "K",
+    "parity": 0,
+    "scalar_value": 1,
+    "description": "Central identity element; identified with scalar 1 and excluded from PBW basis"
+  }
+}
+```
+
+#### 2.3 `oscillator_generators`
+Replaces the single `supplementary_fermion` with standard CAR `fermions` ($m=1$) and CCR `bosons` ($n$):
+```json
+{
+  "fermions": {
+    "count": 2,
+    "m": 1,
+    "labels": ["a_1_p", "a_1_m"],
+    "description": "Standard CAR fermionic pair a_1^± with parity 1"
+  },
+  "bosons": {
+    "count": 4,
+    "n": 2,
+    "labels": ["b_1_p", "b_1_m", "b_2_p", "b_2_m"],
+    "description": "Bosonic CCR oscillators b_i^± with i=1,...,n and parity 0"
+  }
+}
+```
+
+#### 2.4 `oscillator_relations`
+Defines canonical relations (CAR for fermions, CCR for bosons, undeformed commutators):
+```json
+{
+  "standard_fermion_anticommutators": {
+    "description": "Canonical anticommutation relations (CAR) for fermionic oscillators",
+    "relations": {
+      "conjugate_pair": "{a_1^-, a_1^+} = 1",
+      "nilpotency": "(a_1^+)^2 = 0, (a_1^-)^2 = 0"
+    }
+  },
+  "bosonic_commutators": {
+    "description": "Canonical commutation relations (CCR) for bosonic oscillators",
+    "relations": {
+      "same_type": "[b_i^±, b_j^±] = 0 for all i, j",
+      "conjugate_pair": "[b_i^-, b_j^+] = δ_{ij}"
+    }
+  },
+  "mixed_commutators": {
+    "boson_fermion": "[b_i^±, a_1^±] = 0 (undeformed)"
+  }
+}
+```
+
+#### 2.5 `basis`
+Incorporates Step 1 Option A (Bosonic Mode Block Ordering for odd basis, $\kappa < \text{odd} < \text{even}$):
+```json
+{
+  "even": [
+    "H_1", "H_2", "H_3",
+    "E_2del1_p", "E_2del2_p",
+    "E_2del1_m", "E_2del2_m",
+    "E_del1_del2_pp", "E_del1_del2_mm",
+    "E_del1_del2_pm", "E_del1_del2_mp"
+  ],
+  "odd": [
+    "E_eps1_del1_pp", "E_eps1_del1_pm", "E_eps1_del1_mp", "E_eps1_del1_mm",
+    "E_eps1_del2_pp", "E_eps1_del2_pm", "E_eps1_del2_mp", "E_eps1_del2_mm"
+  ],
+  "ordering_convention": "PBW: kappa < [odd: Mode Block (eps1_del{k}_pp/pm/mp/mm)] < [even: Cartan, Long roots, Short roots] (K = 1 is excluded)"
+}
+```
+
+#### 2.6 `parity`
+Mapping of each basis generator to its $\mathbb{Z}_2$-degree:
+```json
+{
+  "H_1": 0, "H_2": 0, "H_3": 0,
+  "E_2del1_p": 0, "E_2del2_p": 0,
+  "E_2del1_m": 0, "E_2del2_m": 0,
+  "E_del1_del2_pp": 0, "E_del1_del2_mm": 0,
+  "E_del1_del2_pm": 0, "E_del1_del2_mp": 0,
+  "E_eps1_del1_pp": 1, "E_eps1_del1_pm": 1, "E_eps1_del1_mp": 1, "E_eps1_del1_mm": 1,
+  "E_eps1_del2_pp": 1, "E_eps1_del2_pm": 1, "E_eps1_del2_mp": 1, "E_eps1_del2_mm": 1
+}
+```
+
+#### 2.7 `generator_realization`
+Includes the explicit internal oscillator ordering requested (`a_1_p, a_1_m, b_1_p, b_1_m, ...`):
+```json
+{
+  "description": "Standard form with PBW ordering",
+  "ordering": "a_1_p, a_1_m, b_1_p, b_1_m, b_2_p, b_2_m",
+  "realizations": {
+    "H_1": {
+      "standard_form": [
+        {"words": ["a_1_p", "a_1_m"], "coeff": "1"},
+        {"words": ["b_1_p", "b_1_m"], "coeff": "1"}
+      ],
+      "frappat_form": "a_1^+ a_1^- + b_1^+ b_1^-",
+      "parity": 0
+    },
+    "H_2": {
+      "standard_form": [
+        {"words": ["b_1_p", "b_1_m"], "coeff": "1"},
+        {"words": ["b_2_p", "b_2_m"], "coeff": "-1"}
+      ],
+      "frappat_form": "b_1^+ b_1^- - b_2^+ b_2^-",
+      "parity": 0
+    },
+    "H_3": {
+      "standard_form": [
+        {"words": ["b_2_p", "b_2_m"], "coeff": "-1"},
+        {"words": [], "coeff": "-1/2"}
+      ],
+      "frappat_form": "-b_2^+ b_2^- - 1/2",
+      "parity": 0
+    },
+    "E_eps1_del1_pp": {
+      "standard_form": [
+        {"words": ["a_1_p", "b_1_p"], "coeff": "1"}
+      ],
+      "frappat_form": "a_1^+ b_1^+",
+      "parity": 1
+    }
+  }
+}
+```
+
+#### 2.8 `structure_constants` and `metadata`
+- `structure_constants`: Array of non-zero graded Lie brackets:
+  `{"X": "...", "Y": "...", "Z": "...", "coeff": "...", "sign_rule": "graded"}`.
+- `metadata`:
+  ```json
+  {
+    "generated_by": "build_C_structure_constants.py",
+    "generation_date": "YYYY-MM-DD",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "Bakalov and Sullivan (2017)"
+    ]
+  }
+  ```
+
+---
+
+### 3. Compatibility Comparison: $B(0,n)$ vs $C(n+1)$
+
+| Feature / Key | $B(0,n) = \mathfrak{osp}(1|2n)$ | $C(n+1) = \mathfrak{osp}(2|2n)$ | Compatibility Note |
+|---|---|---|---|
+| `algebra.family` | `"B"` | `"C"` | Tag distinguishes algebra family |
+| `algebra.m` | `0` | `1` | Unified $m$ parameter |
+| Dimension | even: $2n^2+n$, odd: $2n$ | even: $2n^2+n+1$, odd: $4n$ | Dimension formula key present in both |
+| Fermions | `supplementary_fermion` (`a_0`, $a_0^2=\frac{1}{2}$) | `fermions` (`a_1_p`, `a_1_m`, CAR) | Distinguishes single auxiliary vs CAR pair |
+| `central_elements` | Inside text note or key | Dedicated top-level key (`kappa`, `K`) | Formalizes $\kappa$ and $K$ parameters |
+| Odd generators | `E_del{k}_p`, `E_del{k}_m` | `E_eps1_del{k}_pp/pm/mp/mm` | Suffix encodes both fermionic & bosonic polarities |
+
+---
+
+### 4. File Naming Conventions
+Files for $C(n+1)$ will follow the rank pattern (where $n$ is the bosonic rank):
+- $C(2) = \mathfrak{osp}(2|2)$ ($n=1$): `C_1_structure.json`
+- $C(3) = \mathfrak{osp}(2|4)$ ($n=2$): `C_2_structure.json`
+- $C(4) = \mathfrak{osp}(2|6)$ ($n=3$): `C_3_structure.json`
+
+---
+
+### Human Approval Required
+Please confirm whether this Schema 1 proposal is approved. Upon approval, `docs/json_schema_specification.md` will be created with the complete specification.

@@ -1,0 +1,254 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The session implements a file-based issue workflow for mathematical research on C(n+1) = osp(2|2n) Lie superalgebras. The current task is **Issue I05-1: Schema 2 (gamma structure) for C(n+1)**.
+
+**CRITICAL WORKFLOW RULES (must be preserved)**:
+- When an issue states "Human Approval Required", MUST ONLY append proposals to `issue_open.md`. STRICTLY FORBIDDEN from modifying any other files. MUST NOT create any commits until the human explicitly approves.
+- Do NOT use `git reset --hard` or `git push --force`
+- Do NOT modify `.env`, `.git`, or system configuration files
+- Do NOT access external network resources unless explicitly instructed
+- Mathematical ambiguity → create `docs/issues/issue_needs_clarification.md`
+
+The user approved **Rev.2** of the proposal and has explicitly asked to proceed: "You may now proceed to implement `src/C_gamma.py`, run the tests, generate the JSON files, confirm all criteria, and execute the `close_issue.sh` script to close the issue."
+
+2. Key Technical Concepts:
+
+- **C(n+1) = osp(2|2n)**: Lie superalgebra with fermionic pair a_1^+, a_1^- (CAR: {a_1^-, a_1^+}=1) and bosonic oscillators b_k^±  (CCR: [b_k^-, b_l^+]=δ_kl)
+- **PBW ordering**: a_1_p(0) < a_1_m(1) < b_1_p(2) < b_1_m(3) < ... < b_n_p < b_n_m
+- **Schema 1 v5.0**: 10 top-level keys, files `data/C_n_structure.json` (already generated for n=1,2,3)
+- **Schema 2 (gamma structure)**: `data/C_n_gamma.json` — inhomogeneous deformation data; file to be created
+- **Deformed bracket**: `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` where γ is a 2-cocycle, κ is odd central nilpotent (κ²=0)
+- **Inhomogeneous deformation**: `[b_j^s, a_1^σ]_γ = -gb_{σ,j,s}·κ`, giving 4n parameters
+- **gb_matrix**: 2×2n array indexed (σ, j, s) where σ∈{+,-}, j=1..n, s∈{+,-}
+- **γ^c_{ab}** (upper-index convention, Option A): coefficient of e_c in γ(e_a, e_b), computed directly from oscillator algebra — NO Gram matrix required
+- **K-terms**: Central element K=1 can appear in γ output from CCR reordering (b_j^- b_j^+ = K + b_j^+ b_j^-)
+- **κ-coefficient formula**: κ-coeff(P) = Σ_{i<j: x_i=b_k^r, x_j=a_1^σ} (-gb_{σ,k,r}) · N_0(P without x_i, x_j)
+- **graded antisymmetry**: γ(X,Y) = -(-1)^{p(X)p(Y)} γ(Y,X)
+- **Super Jacobi**: verified in I04-1 — ALL PASS for n=1,2,3
+
+**Non-zero γ sectors** (key mathematical finding of this session):
+| Pair | Non-zero? | γ parity |
+|---|---|---|
+| (odd, odd) | yes | odd |
+| (H_1, G_even_no_a1) | yes | odd |
+| (H_1, G_odd) | yes | even |
+| (G_even_no_a1, G_odd) | yes | even |
+| (G_even_no_a1, G_even_no_a1) | ZERO | — |
+| (H_1, H_1) | ZERO (antisymmetry) | — |
+
+Key: H_1 is the ONLY even generator containing a_1 terms (= a_1^+ a_1^- + b_1^+ b_1^-), confirmed for n=1,2,3.
+
+3. Files and Code Sections:
+
+- **`docs/issues/issue_open.md`** (modified this session):
+  - Contains I05-1 issue + Rev.1 and Rev.2 proposals (both appended)
+  - Rev.1: Initially wrong claim γ(even,even)=0 + sign convention discussion
+  - Rev.2 (APPROVED): Corrected derivation, sign convention = Option A, corrected tests T2-T5
+  - The Rev.2 header was prepended to the file, then full Rev.2 content was appended after Rev.1
+
+- **`src/C_generators.py`** (read, not modified — key infrastructure):
+  - 548 lines; provides oscillator algebra simulation
+  - Key functions for reuse in C_gamma.py:
+    ```python
+    def _pbw_index(n: int) -> dict[str, int]:
+        oscs = ['a_1_p', 'a_1_m']
+        for k in range(1, n + 1):
+            oscs += [f'b_{k}_p', f'b_{k}_m']
+        return {o: i for i, o in enumerate(oscs)}
+    
+    def _osc_parity(label: str) -> int:
+        return 1 if label.startswith('a_') else 0
+    
+    def _is_conj_boson(oi: str, oj: str) -> bool:
+        """True iff oi = b_k_m, oj = b_k_p for the same k."""
+        ...
+    
+    def _one_swap(word: Word, pbw: dict[str, int]) -> tuple[Elem, bool]:
+        """Apply one PBW swap step. Handles CAR {a_1^-,a_1^+}=1 and CCR [b^-,b^+]=1."""
+        ...
+    
+    def _reduce(word: Word, pbw: dict[str, int]) -> Elem:
+        """Reduce a word to PBW normal form. Returns {word: Fraction}."""
+        ...
+    
+    def _mul(e1: Elem, e2: Elem, pbw: dict[str, int]) -> Elem:
+        """Multiply two algebra elements."""
+        ...
+    
+    def _graded_bracket(e1, p1, e2, p2, pbw) -> Elem:
+        """[e1, e2} = e1*e2 - (-1)^{p1*p2} e2*e1."""
+        ...
+    
+    def identify(word_poly: Elem, gens: dict, n: int) -> dict[str, Fraction]:
+        """Express word_poly as linear combination of basis generators.
+        Step 1: identify non-Cartan (root) generators by monomial lookup.
+        Step 2: identify Cartans from remaining words.
+          - (a_1_p, a_1_m) word → alpha[1] = c_n1
+          - () constant word → alpha[n+1] = -2*c_const
+          - For n>=2: alpha[2] = c_N[1] - alpha[1], etc.
+        """
+        ...
+    
+    def make_generators(n: int) -> dict[str, GenEntry]:
+        """Build all basis generators. Returns {label: (Elem, parity)}."""
+        # H_1 = a_1_p a_1_m + b_1_p b_1_m
+        # H_k (2<=k<=n) = b_{k-1}_p b_{k-1}_m - b_k_p b_k_m
+        # H_{n+1} = -b_n_p b_n_m - 1/2
+        # E_eps1_delk_ss = a_1_sigma * b_k_s (odd generators)
+        # E_2delk_p = b_k_p b_k_p, E_2delk_m = b_k_m b_k_m
+        # E_deli_delj_ss = b_i_s b_j_s' (i<j)
+        ...
+    ```
+
+- **`data/C_1_structure.json`** (read, not modified — key reference):
+  - Generator realizations confirm:
+    - H_1: `[a_1_p, a_1_m]` (coeff 1) + `[b_1_p, b_1_m]` (coeff 1) — HAS a_1 terms
+    - H_2: `[b_1_p, b_1_m]` (coeff -1) + `[]` (coeff -1/2) — NO a_1 terms
+    - E_2del1_p: `[b_1_p, b_1_p]` only
+    - All odd generators E_eps1_delk_ss: `[a_1_sigma, b_k_s]` — single (a_1, b) bilinear
+  - Structure constants include: [H_2, E_eps1_del1_pp] = -1·E_eps1_del1_pp
+
+- **`docs/math/C_inhomogeneous_definition.md`** (read):
+  - Deformation: `[b_j^s, a_1^σ]_γ = -gb_{σ,j,s}·κ`
+  - 4n parameters: `{gb_{a_1^+,b_j^+}, gb_{a_1^+,b_j^-}, gb_{a_1^-,b_j^+}, gb_{a_1^-,b_j^-} | j=1,...,n}`
+  - Extended algebra L = g ⊕ κg where κ is central odd nilpotent
+
+- **`docs/math/B0n_schema_v5.md`** (read):
+  - 4-layer schema: Schema 1 (structure), Schema 2 (gamma), Schema 3 (evaluated), Schema 4 (coboundary)
+  - Schema 2 file: `C_n_gamma.json`
+
+- **`src/C_gamma.py`** (NOT YET CREATED — next task):
+  - Planned to use C_generators.py infrastructure
+  - Algorithm: κ-coeff(m_α m_β) = Σ over (b at i, a_1 at j, i<j) of (-gb) · N_0(remaining)
+  - `identify()` handles K-terms: K absorbed into H_{n+1} via `-2*c_const` rule
+
+- **`tests/test_C_gamma.py`** (NOT YET CREATED — next task)
+
+- **`data/C_{1,2,3}_gamma.json`** (NOT YET GENERATED — next task)
+
+4. Errors and Fixes:
+
+- **Rev.1 error — γ(even,even) claimed to be zero**: 
+  - Initial claim: "even generators contain only b-bilinears, no a_1"
+  - Human feedback: "As defined in `C_1_structure.json`, `H_1` contains the term `a_1_p a_1_m`. Commuting `a_1_p a_1_m` with b-bilinears produces κ-terms proportional to a_1 b, which are odd generators. Therefore, γ(even, even) is non-zero."
+  - Fix in Rev.2: H_1 is the unique even generator with a_1 terms. Corrected non-zero sectors table. Test T2 changed to "pairs with no a_1 in EITHER factor give γ=0."
+
+- **Rev.1 Test T2 incorrect**: "even-even pairs all give γ=0"
+  - Human: "Test T2 ('even-even pairs all give γ=0') is incorrect and must be updated."
+  - Fix: Changed to "pairs where NEITHER generator has a_1 in its realization give γ=0" (e.g., (H_2, H_2), (E_2del1_p, E_2del1_m) etc.)
+
+- **Rev.1 Completion Criteria incorrect**: "even-even γ entries all zero"
+  - Human: "Remove the 'even-even γ entries all zero' criterion."
+  - Fix: Criterion replaced with "Pairs with no a_1 in either factor: γ=0 (verified)"
+
+5. Problem Solving:
+
+**Solved**:
+- Derived closed-form formula for γ(odd, odd) pairs: `γ(E_a, E_b) = -gb_{σ',j,s}·E_eps1_delj'_σs' - gb_{σ,j',s'·E_eps1_delj_σ's`
+- Derived formula for γ(G_even_no_a1, G_odd): `γ(b_k^r b_l^t, a_1^σ b_{j'}^{s'}) = -gb_{σ,k,r}·(b_l^t b_{j'}^{s'}) - gb_{σ,l,t}·(b_k^r b_{j'}^{s'})`
+- Derived formula for γ(H_1's a-part, G_even_no_a1) using κ-coefficient counting
+- Identified that K-terms arise from CCR: b_j^- b_j^+ = K + b_j^+ b_j^+ when reordering remaining oscillators
+- Confirmed identify() handles K-terms by absorbing () constant into H_{n+1}: `alpha[n+1] = -2*c_const`
+- Found test output confirming: `identify({(b1p,b1m):1, ():1}) = {'H_2': -2}` (K absorbed)
+
+**Open (in progress)**:
+- Implementation of `src/C_gamma.py` — approved to start
+- The κ-coefficient algorithm needs careful implementation using existing `_reduce()` from C_generators.py
+- Need to handle K-terms via the `identify` function's c_const mechanism
+
+6. All User Messages:
+
+**Message 1** (session continuation): Instruction to continue from previous session — process issue_open.md, read math docs, create proposal for I05-1.
+
+**Message 2** (Rev.1 feedback):
+"1. Overview: Approved. 2. gb_matrix Definition: Approved. 3. Derivation of γ_{abc}: Revision required. Your parity constraint correctly notes that γ(even, even) belongs to the odd subspace, but your claim that 'even generators contain only b-bilinears, no a_1' is incorrect. As defined in `C_1_structure.json`, `H_1` contains the term `a_1_p a_1_m`. Commuting `a_1_p a_1_m` with b-bilinears produces κ-terms proportional to a_1 b, which are odd generators. Therefore, γ(even, even) is non-zero and produces odd generators. Please correct the derivation for (even, even) pairs. 4. Sign Convention Question: We select Option A (Upper-index convention). 5. Proposed Schema 2 JSON Structure: Approved. 6. Implementation Plan: Revision required. Test T2 ('even-even pairs all give γ=0') is incorrect and must be updated. 7. Completion Criteria: Revision required. Remove the 'even-even γ entries all zero' criterion. Please correct your derivation and assumptions, update your proposal in the Response section accordingly, and stop again for approval. Do not proceed to implementation yet."
+
+**Message 3** (Rev.2 approval):
+"1. Corrected Derivation of γ_{abc}: Approved. The interactions involving the a_1 part of H_1 and the resultant odd generators, as well as the interactions yielding even generators (including the central element K), are perfectly formulated. The hand calculations match the algebraic structure. 2. Sign Convention: Approved. We proceed with Option A (Upper-index convention). 3. Schema 2 JSON Structure: Approved. 4. Corrected Implementation Plan: Approved. The updated test cases (T2-T5) correctly target the non-trivial dynamics that were missing in Rev.1. 5. Corrected Completion Criteria: Approved. You may now proceed to implement `src/C_gamma.py`, run the tests, generate the JSON files, confirm all criteria, and execute the `close_issue.sh` script to close the issue."
+
+**Message 4** (summary request): "CRITICAL: Respond with TEXT ONLY. Do NOT call any tools." [Summary request — not a task instruction]
+
+7. Pending Tasks:
+
+- **I05-1 Phase 4 (APPROVED — implement now)**:
+  1. Create `src/C_gamma.py` — gamma cocycle computation script using C_generators.py infrastructure
+  2. Create `tests/test_C_gamma.py` — with tests T1-T5 as approved
+  3. Run tests to verify all pass
+  4. Generate `data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`
+  5. Verify all completion criteria from Rev.2:
+     - [ ] n=1 odd-odd γ entries match §3′ hand computation (6 pairs)
+     - [ ] n=1 even-odd entries for H_1 and G_even_no_a1 cases match §3′ examples
+     - [ ] Pairs with no a_1 in either factor: γ=0 verified
+     - [ ] Graded antisymmetry of γ passes
+     - [ ] Schema 2 JSON validated
+  6. Execute `handover/scripts/close_issue.sh` to close I05-1
+
+8. Current Work:
+
+The implementation phase of I05-1 has just begun. After reading `src/C_generators.py` fully and running key tests, I established:
+
+**Algorithm for `src/C_gamma.py`**:
+
+```python
+# Core formula: κ-coefficient of product P = (x_1,...,x_m)
+# = Σ_{i<j: x_i=b_k^r (bosonic), x_j=a_1^σ (fermionic)} 
+#     (-gb_{σ,k,r}) · N_0(P without x_i and x_j)
+#
+# where N_0 is computed using _reduce() from C_generators.py
+# (handles CAR {a_1^-,a_1^+}=1 and CCR [b_j^-,b_j^+]=1, producing K-terms as ())
+
+# For each pair (G_a, G_b):
+# γ(G_a, G_b) = κ-coeff([G_a, G_b]_γ) expressed in g-basis via identify()
+
+# gb label convention: gb_{sigma}_{j}_{s}
+# e.g., gb_{+,1,+} → "gb_p_1_p" (a_1^+ oscillator, b_1^+ oscillator)
+```
+
+**Key test results confirming identify() handles K-terms correctly**:
+```
+N_0((b_1_m, b_1_p)) = {(b_1_p, b_1_m): 1, (): 1}   # CCR produces K=1 as ()
+identify({(b1p,b1m):1, ():1}) = {'H_2': -2}            # K absorbed into H_{n+1}
+[H_2, E_pp]_0 identified: {'E_eps1_del1_pp': -1}       # undeformed bracket works
+```
+
+The `identify` function absorbs the constant () term into H_{n+1} via: `alpha[n+1] = -2 * c_const`. This means K-terms that arise from CCR reordering are automatically handled.
+
+The `data/C_n_gamma.json` files will use this JSON structure (approved):
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 2,
+  "algebra": {"family": "C", "n": <n>, ...},
+  "deformation_parameters": {
+    "gb_matrix": {
+      "rows": ["a_1_p", "a_1_m"],
+      "cols": ["b_1_p", "b_1_m", ...],
+      "entries": {"a_1_p": {"b_1_p": "gb_p_1_p", ...}, ...}
+    }
+  },
+  "index_convention": "upper_c",
+  "gamma_cocycle": [
+    {"a": "<gen>", "b": "<gen>", "c": "<gen or K>", 
+     "coeff_gb": {"<gb_label>": "<rational>"}}
+  ],
+  "gram_matrix": null,
+  "metadata": {"generated_by": "C_gamma.py", ...}
+}
+```
+
+9. Optional Next Step:
+
+Directly in line with the user's most recent approval: "You may now proceed to implement `src/C_gamma.py`, run the tests, generate the JSON files, confirm all criteria, and execute the `close_issue.sh` script to close the issue."
+
+The immediate next step is to **create `src/C_gamma.py`** implementing the gamma cocycle computation:
+- Import `_pbw_index`, `_reduce`, `_osc_parity`, `make_generators`, `basis_list`, `identify` from `C_generators.py`
+- Implement `kappa_coeff_product(concatenated_mono, pbw, osc_parity)` that finds all (b at i, a_1 at j) pairs and returns `{gb_label: {remaining_word: Fraction}}`
+- Implement `compute_gamma(n)` that iterates all (G_a, G_b) pairs, computes κ-coeff of the graded commutator, and identifies the result
+- Implement `generate_schema2(n)` that outputs the approved JSON structure
+- The gb parameters are stored symbolically; `coeff_gb` contains rational coefficients per gb label
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-A1/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-A1/83a3f902-4b00-4011-9884-dfe4b62872e9.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

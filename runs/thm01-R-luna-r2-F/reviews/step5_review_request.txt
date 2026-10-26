@@ -1,0 +1,13 @@
+The Worker has stopped in step 5 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 08" to memos/thm01-R-luna-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+**Proposed method:** Arrange `gb_matrix` with rows `a_1_p, a_1_m` and columns `b_1_p, b_1_m, …, b_n_p, b_n_m`. Expand each generator using its Schema 1 oscillator realization, apply CAR, CCR, and the approved mixed relations, subtract the undeformed bracket, and reduce the κ-linear terms to the Schema 1 basis. Store the resulting `gamma_coefficients` with `X`, `Y`, `Z`, coefficient, and graded sign rule inside `inhomogeneous_deformation`.
+
+**Sign options:**  
+A. Source convention: `[b_j^s, a_1^σ] = -gb_{σ,j,s} κ` (**recommended**).  
+B. Reversed convention: `[b_j^s, a_1^σ] = +gb_{σ,j,s} κ`.
+
+**Parity issue needing resolution:** The reference assigns parity 1 to both `gb` and `κ`. Their product is even, but the bracket of an even boson with an odd fermion must be odd. Consistent choices include making `gb` even while keeping `κ` odd, or specifying a corrected mixed relation or parameter interpretation with odd total parity. Keeping both odd in the stated product does not preserve parity.
+
+No Schema 2 code or JSON has been created. The sign convention and parity interpretation remain undecided.
+----- END OF WORKER REPLY -----

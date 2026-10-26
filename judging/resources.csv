@@ -1,0 +1,236 @@
+run,group,model,condition,exclude,human_memos,note,worker_input,worker_cache_write,worker_cache_read,worker_output,worker_total,worker_sessions,worker_premium_requests,worker_model_calls,manager_input,manager_cache_write,manager_cache_read,manager_output,manager_total,manager_cost_usd,manager_sessions,worker_cost_usd,worker_seconds
+thm01-01,may,Gemini 3.1 Pro,May-Iterative,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-02,may,Gemini 3 Flash,May-Iterative,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-03,may,Gemini 3.1 Flash-lite,May-Iterative,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-04,may,Claude Sonnet 4.6,May-Iterative,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-05,may,GPT-5.4,May-Iterative,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-01,may,Gemini 3.1 Pro,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-02,may,Gemini 3 Flash,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-03,may,Gemini 3.1 Flash-lite,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-04,may,Claude Sonnet 4.6,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-05,may,GPT-5.4,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-X-06,may,Claude Opus 4.6,May-OneShot,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-gemini38f-A1,interactive,Gemini 3.8 Flash,A1,"decision: contamination by the scribe's git fetch in the workspace; not counted, record kept (author 2026-10-12, runs/thm01-R-gemini38f-A1/run_log.md; rerun as gemini38f-r2-A1)",4,agy interactive Worker (run-specific HOME),1016156,0,27172273,95769,28333664,1,,,639110,0,1506673,18444,2185610,2.06,5,3.34,
+thm01-R-gemini38f-F,interactive,Gemini 3.8 Flash,F,"not run: Manager Gemini 3.1 Pro retired, could not be run (author 2026-10-13, design 9.54); run instead as gemini38f-r2-F with the successor Manager Gemini 4 Argon (Low) (design 9.56, 2026-10-16)",0,not run,,,,,,,,,,,,,,,,,
+thm01-R-gemini38f-r2-A1,interactive,Gemini 3.8 Flash,A1,,10,agy interactive Worker (run-specific HOME),3015408,0,52774247,160990,55950645,1,,,1313209,0,5117041,46927,6534873,4.91,9,6.82,
+thm01-R-gemini38f-r2-F,interactive,Gemini 3.8 Flash,F,,9,agy interactive Worker (run-specific HOME),1006706,0,17746072,97678,18917429,1,,,798854,0,3721704,64643,4585201,0.0,8,2.7,
+thm01-R-gemini38f-r3-A1,interactive,Gemini 3.8 Flash,A1,,12,agy interactive Worker (run-specific HOME),2569230,0,65104967,263766,68106994,1,,,1323965,0,6574505,107463,8005933,0.0,9,8.43,
+thm01-R-luna-A,interactive,GPT-6 Luna,A1,,17,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-A2,interactive,GPT-6 Luna,A2,,15,Copilot run-specific home: AIU 31.48; Copilot inputTokens include cache (split here),891,597105,13749442,205199,14552637,10,22,,1201981,0,2822591,28018,4124996,4.17,9,,
+thm01-R-luna-C,interactive,GPT-6 Luna,C,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-F,interactive,GPT-6 Luna,F,,13,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-G,interactive,GPT-6 Luna,G,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-r2-A1,interactive,GPT-6 Luna,A1,,14,Copilot run-specific home: AIU 45.19; Copilot inputTokens include cache (split here),162,143704,6987883,44044,7175793,1,22,,1114976,0,2214052,27751,3420759,3.77,9,,
+thm01-R-luna-r2-A2,interactive,GPT-6 Luna,A2,,17,Copilot run-specific home: AIU 32.52; Copilot inputTokens include cache (split here),915,675365,13443708,212497,14332485,9,26,,1245539,0,3268860,35281,4620809,4.42,10,,
+thm01-R-luna-r2-C,interactive,GPT-6 Luna,C,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-r2-F,interactive,GPT-6 Luna,F,,13,Copilot run-specific home: AIU 24.02; Copilot inputTokens include cache (split here),1540,363770,12659662,136026,13160998,1,24,,1191436,0,2581328,27686,3857555,3.92,9,,
+thm01-R-luna-r2-G,interactive,GPT-6 Luna,G,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-r3-A1,interactive,GPT-6 Luna,A1,,20,Copilot run-specific home: AIU 48.54; Copilot inputTokens include cache (split here),846,634157,29148277,229108,30012388,1,23,,1572331,0,5397098,44973,7097176,5.76,9,,
+thm01-R-luna-r3-C,interactive,GPT-6 Luna,C,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-luna-r3-G,interactive,GPT-6 Luna,G,,,usage not separable (May run or shared Copilot/agy home),,,,,,,,,,,,,,,,,
+thm01-R-sonnet46-A,interactive,Claude Sonnet 4.6,A2,,11,,308,1047070,17427434,518907,18993719,9,,,1226169,0,1923138,25363,3244188,3.98,9,19.28,
+thm01-R-sonnet46-A1,interactive,Claude Sonnet 4.6,A1,,16,,266,960426,20416267,467841,21844800,1,,,1620897,0,3047207,31446,4781971,5.22,9,18.9,
+thm01-R-sonnet46-C,interactive,Claude Sonnet 4.6,C,,,incl. sonnet46-C-retry,43,111486,1837440,312858,2261827,2,,,,,,,,,,5.91,
+thm01-R-sonnet46-F,interactive,Claude Sonnet 4.6,F,,14,,148,298729,8852856,312271,9464004,1,,,1324459,0,2264367,27533,3667051,4.04,8,9.13,
+thm01-R-sonnet46-G,interactive,Claude Sonnet 4.6,G,,,,75,149819,6724035,117726,6991655,1,,,,,,,,,,4.68,
+thm01-R-sonnet46-r2-A1,interactive,Claude Sonnet 4.6,A1,,12,,199,450814,14636298,242926,15330237,1,,,989651,0,1845980,23319,2910865,3.25,10,10.74,
+thm01-R-sonnet46-r2-A2,interactive,Claude Sonnet 4.6,A2,,11,,280,622208,15330815,343644,16296947,9,,,952652,0,1874056,23106,2894819,3.1,9,13.49,
+thm01-R-sonnet46-r2-C,interactive,Claude Sonnet 4.6,C,,,,24,89367,914965,97997,1102353,1,,,,,,,,,,2.28,
+thm01-R-sonnet46-r2-F,interactive,Claude Sonnet 4.6,F,,12,,139,511669,8095603,343774,8951185,1,,,1295854,0,2553285,27217,3938798,4.18,8,10.66,
+thm01-R-sonnet46-r2-G,interactive,Claude Sonnet 4.6,G,,,,81,168637,6839321,125931,7133970,1,,,,,,,,,,4.95,
+thm01-R-sonnet46-r3-A1,interactive,Claude Sonnet 4.6,A1,,11,,229,490423,18467829,258973,19217454,1,,,1754141,0,6136486,51920,8023996,6.34,9,12.37,
+thm01-R-sonnet46-r3-C,interactive,Claude Sonnet 4.6,C,,,incl. sonnet46-r3-C-retry,38,73298,1530756,242058,1846150,2,,,,,,,,,,4.53,
+thm01-R-sonnet46-r3-G,interactive,Claude Sonnet 4.6,G,,,,57,134293,5672119,94789,5901258,1,,,,,,,,,,3.93,
+thm01-R-fable5-b01-C,batch,claude-fable-5,C,,,,78,158831,4518773,115160,4792842,,,,,,,,,,,26.33,1479
+thm01-R-fable5-b02-G,batch,claude-fable-5,G,,,,124,119494,5659296,80143,5859057,,,,,,,,,,,12.06,948
+thm01-R-fable51-b01-C,batch,claude-fable-5-1,C,,,,1064,168813,4512980,114562,4797419,,,,,,,,,,,29.38,1513
+thm01-R-fable51-b02-G,batch,claude-fable-5-1,G,,,,1794,210751,7697691,150443,8060679,,,,,,,,,,,13.68,1799
+thm01-R-fable51-b03-C,batch,claude-fable-5-1,C,,,,804,123866,2211886,79349,2415905,,,,,,,,,,,13.76,922
+thm01-R-fable51-b04-G,batch,claude-fable-5-1,G,,,,1282,186650,4993657,132769,5314358,,,,,,,,,,,11.63,1572
+thm01-R-fable51-b05-C,batch,claude-fable-5-1,C,,,,1188,166434,4752388,131678,5051688,,,,,,,,,,,21.9,1657
+thm01-R-fable51-b06-G,batch,claude-fable-5-1,G,,,,1826,197427,7326795,139399,7665447,,,,,,,,,,,12.77,1636
+thm01-R-fable51-b07-C,batch,claude-fable-5-1,C,,,,968,137311,3431771,93350,3663400,,,,,,,,,,,16.26,1127
+thm01-R-fable51-b08-G,batch,claude-fable-5-1,G,,,,1794,180951,7528580,127428,7838753,,,,,,,,,,,11.89,1586
+thm01-R-fable51-b09-C,batch,claude-fable-5-1,C,,,,612,106866,1820116,82569,2010163,,,,,,,,,,,13.09,964
+thm01-R-fable51-b10-G,batch,claude-fable-5-1,G,,,,1794,181257,6813972,131189,7128212,,,,,,,,,,,11.91,1598
+thm01-R-fable51-high-b01-C,batch,claude-fable-5-1,C,,,,964,161827,3566576,113469,3842836,,,,,,,,,,,19.31,1288
+thm01-R-fable51-high-b02-G,batch,claude-fable-5-1,G,,,,1890,207656,8061488,154586,8425620,,,,,,,,,,,13.92,1769
+thm01-R-fable51-high-b03-C,batch,claude-fable-5-1,C,,,,708,138856,2256811,101518,2497893,,,,,,,,,,,16.49,1160
+thm01-R-fable51-high-b04-G,batch,claude-fable-5-1,G,,,,1730,185849,7133782,135744,7457105,,,,,,,,,,,12.3,1661
+thm01-R-gemini31p-b01-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),214513,0,1341991,72216,1628720,,,,,,,,,,,,339
+thm01-R-gemini31p-b02-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),1393069,0,8830207,204975,10428251,,,,,,,,,,,,501
+thm01-R-gemini31p-b03-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),233976,0,922948,140935,1297859,,,,,,,,,,,,316
+thm01-R-gemini31p-b04-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),1077590,0,17233702,188272,18499564,,,,,,,,,,,,7384
+thm01-R-gemini31p-b05-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),487814,0,3719389,270847,4478050,,,,,,,,,,,,408
+thm01-R-gemini31p-b06-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),433893,0,3648651,63576,4146120,,,,,,,,,,,,453
+thm01-R-gemini31p-b07-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),448785,0,2762859,298982,3510626,,,,,,,,,,,,434
+thm01-R-gemini31p-b08-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),393538,0,3741107,76019,4210664,,,,,,,,,,,,562
+thm01-R-gemini31p-b09-C,batch,gemini-3.1-pro-low,C,"decision: rerun as gemini31p-b11-C (reflection turn denied, author 2026-10-05)",,agy totals from run.json (thinking counted as output),113560,0,256005,105913,475478,,,,,,,,,,,,215
+thm01-R-gemini31p-b10-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),965128,0,7970479,144772,9080379,,,,,,,,,,,,474
+thm01-R-gemini31p-b11-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),382897,0,1740264,110199,2233360,,,,,,,,,,,,288
+thm01-R-gemini31p-b12-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),455106,0,4812750,64076,5331932,,,,,,,,,,,,572
+thm01-R-gemini31p-b13-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),169962,0,708281,170720,1048963,,,,,,,,,,,,352
+thm01-R-gemini31p-b14-G,batch,gemini-3.1-pro-low,G,status=stopped,,agy totals from run.json (thinking counted as output),2058461,0,25480760,465099,28004320,,,,,,,,,,,,632
+thm01-R-gemini31p-b15-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),283981,0,943152,174894,1402027,,,,,,,,,,,,357
+thm01-R-gemini31p-b16-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),840556,0,8393427,392872,9626855,,,,,,,,,,,,596
+thm01-R-gemini31p-b17-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),224733,0,2107086,115178,2446997,,,,,,,,,,,,905
+thm01-R-gemini31p-b18-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),380277,0,2844813,55514,3280604,,,,,,,,,,,,341
+thm01-R-gemini31p-b19-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),340389,0,1295484,98695,1734568,,,,,,,,,,,,248
+thm01-R-gemini31p-b20-G,batch,gemini-3.1-pro-low,G,status=stopped,,agy totals from run.json (thinking counted as output),2877029,0,35714265,750400,39341694,,,,,,,,,,,,731
+thm01-R-gemini31p-b21-C,batch,gemini-3.1-pro-low,C,status=stopped,,agy totals from run.json (thinking counted as output),409902,0,2029273,363481,2802656,,,,,,,,,,,,333
+thm01-R-gemini31p-b22-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),1531569,0,12713684,242899,14488152,,,,,,,,,,,,15014
+thm01-R-gemini31p-b23-C,batch,gemini-3.1-pro-low,C,,,agy totals from run.json (thinking counted as output),293913,0,2513889,108862,2916664,,,,,,,,,,,,364
+thm01-R-gemini31p-b24-G,batch,gemini-3.1-pro-low,G,,,agy totals from run.json (thinking counted as output),2353185,0,25046008,401756,27800949,,,,,,,,,,,,784
+thm01-R-gemini31p-high-b01-C,batch,gemini-3.1-pro-high,C,,,agy totals from run.json (thinking counted as output),159519,0,1405312,96154,1660985,,,,,,,,,,,,307
+thm01-R-gemini31p-high-b02-G,batch,gemini-3.1-pro-high,G,,,agy totals from run.json (thinking counted as output),833329,0,8169829,203268,9206426,,,,,,,,,,,,806
+thm01-R-gemini36f-b01-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),417495,0,2399245,129874,2946614,,,,,,,,,,,,238
+thm01-R-gemini36f-b02-G,batch,gemini-3.6-flash-medium,G,,,agy totals from run.json (thinking counted as output),1580297,0,7866233,131048,9577578,,,,,,,,,,,,1146
+thm01-R-gemini36f-b03-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),1629785,0,3262587,154506,5046878,,,,,,,,,,,,718
+thm01-R-gemini36f-b04-G,batch,gemini-3.6-flash-medium,G,status=aborted,,agy totals from run.json (thinking counted as output),433604,0,1399153,52339,1885096,,,,,,,,,,,,445
+thm01-R-gemini36f-b05-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),471239,0,2892930,142551,3506720,,,,,,,,,,,,297
+thm01-R-gemini36f-b06-G,batch,gemini-3.6-flash-medium,G,,,agy totals from run.json (thinking counted as output),895210,0,11067857,207178,12170245,,,,,,,,,,,,572
+thm01-R-gemini36f-b07-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),966818,0,1972867,133095,3072780,,,,,,,,,,,,463
+thm01-R-gemini36f-b08-G,batch,gemini-3.6-flash-medium,G,,,agy totals from run.json (thinking counted as output),741799,0,11555344,235393,12532536,,,,,,,,,,,,290
+thm01-R-gemini36f-b09-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),1009617,0,14165960,211742,15387319,,,,,,,,,,,,413
+thm01-R-gemini36f-b10-G,batch,gemini-3.6-flash-medium,G,,,agy totals from run.json (thinking counted as output),649752,0,7759670,180507,8589929,,,,,,,,,,,,267
+thm01-R-gemini36f-b11-G,batch,gemini-3.6-flash-medium,G,,,agy totals from run.json (thinking counted as output),2885057,0,8369215,244495,11498767,,,,,,,,,,,,932
+thm01-R-gemini36f-b12-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),1140200,0,2979206,183997,4303403,,,,,,,,,,,,711
+thm01-R-gemini36f-b13-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),933825,0,2305641,132716,3372182,,,,,,,,,,,,651
+thm01-R-gemini36f-b14-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),1145427,0,1851193,154534,3151154,,,,,,,,,,,,531
+thm01-R-gemini36f-b15-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),1103049,0,2716078,141849,3960976,,,,,,,,,,,,603
+thm01-R-gemini36f-b16-C,batch,gemini-3.6-flash-medium,C,,,agy totals from run.json (thinking counted as output),336156,0,2375759,146315,2858230,,,,,,,,,,,,242
+thm01-R-gemini37f-b01-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),1878150,0,22630335,219864,24728349,,,,,,,,,,,,496
+thm01-R-gemini37f-b02-G,batch,gemini-3.7-flash-medium,G,,,agy totals from run.json (thinking counted as output),676277,0,7407419,107088,8190784,,,,,,,,,,,,675
+thm01-R-gemini37f-b03-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),476460,0,3010352,124007,3610819,,,,,,,,,,,,338
+thm01-R-gemini37f-b04-G,batch,gemini-3.7-flash-medium,G,,,agy totals from run.json (thinking counted as output),961019,0,13564842,219407,14745268,,,,,,,,,,,,617
+thm01-R-gemini37f-b05-G,batch,gemini-3.7-flash-medium,G,,,agy totals from run.json (thinking counted as output),814181,0,12354530,158902,13327613,,,,,,,,,,,,733
+thm01-R-gemini37f-b06-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),489657,0,3634542,119179,4243378,,,,,,,,,,,,296
+thm01-R-gemini37f-b07-G,batch,gemini-3.7-flash-medium,G,,,agy totals from run.json (thinking counted as output),621885,0,11507554,149975,12279414,,,,,,,,,,,,607
+thm01-R-gemini37f-b08-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),426183,0,3448130,134339,4008652,,,,,,,,,,,,259
+thm01-R-gemini37f-b09-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),562069,0,4609133,175802,5347004,,,,,,,,,,,,480
+thm01-R-gemini37f-b10-G,batch,gemini-3.7-flash-medium,G,,,agy totals from run.json (thinking counted as output),491576,0,6278954,121607,6892137,,,,,,,,,,,,463
+thm01-R-gemini37f-b11-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),878566,0,6810817,202426,7891809,,,,,,,,,,,,908
+thm01-R-gemini37f-b12-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),476649,0,4441103,124152,5041904,,,,,,,,,,,,332
+thm01-R-gemini37f-b13-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),676231,0,5941033,118217,6735481,,,,,,,,,,,,424
+thm01-R-gemini37f-b14-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),396482,0,3490407,145773,4032662,,,,,,,,,,,,274
+thm01-R-gemini37f-b15-C,batch,gemini-3.7-flash-medium,C,,,agy totals from run.json (thinking counted as output),426939,0,4407058,120229,4954226,,,,,,,,,,,,306
+thm01-R-gemini38f-b01-C,batch,gemini-3.8-flash-medium,C,,,agy totals from run.json (thinking counted as output),2114416,0,16631825,410623,19156864,,,,,,,,,,,,774
+thm01-R-gemini38f-b02-G,batch,gemini-3.8-flash-medium,G,,,agy totals from run.json (thinking counted as output),4110349,0,31790197,702862,36603408,,,,,,,,,,,,994
+thm01-R-gemini38f-b03-C,batch,gemini-3.8-flash-medium,C,status=stopped,,agy totals from run.json (thinking counted as output),2797356,0,20874099,695758,24367213,,,,,,,,,,,,527
+thm01-R-gemini38f-b04-C,batch,gemini-3.8-flash-medium,C,,,agy totals from run.json (thinking counted as output),1828192,0,15959722,407377,18195291,,,,,,,,,,,,619
+thm01-R-gemini38f-b05-C,batch,gemini-3.8-flash-medium,C,,,agy totals from run.json (thinking counted as output),1226176,0,6095639,273789,7595604,,,,,,,,,,,,397
+thm01-R-gemini38f-b06-G,batch,gemini-3.8-flash-medium,G,,,agy totals from run.json (thinking counted as output),6599691,0,53495245,957664,61052600,,,,,,,,,,,,1232
+thm01-R-gemini38f-b07-C,batch,gemini-3.8-flash-medium,C,,,agy totals from run.json (thinking counted as output),1451240,0,10522539,450127,12423906,,,,,,,,,,,,383
+thm01-R-gemini38f-b08-G,batch,gemini-3.8-flash-medium,G,,,agy totals from run.json (thinking counted as output),1349991,0,12624584,279533,14254108,,,,,,,,,,,,655
+thm01-R-gemini38f-b09-C,batch,gemini-3.8-flash-medium,C,status=stopped,,agy totals from run.json (thinking counted as output),2858110,0,18149825,795375,21803310,,,,,,,,,,,,375
+thm01-R-gemini38f-b10-G,batch,gemini-3.8-flash-medium,G,,,agy totals from run.json (thinking counted as output),2257399,0,17578813,264467,20100679,,,,,,,,,,,,860
+thm01-R-gemini38f-b11-G,batch,gemini-3.8-flash-medium,G,,,agy totals from run.json (thinking counted as output),1575751,0,16129888,217229,17922868,,,,,,,,,,,,854
+thm01-R-gemini38f-b12-C,batch,gemini-3.8-flash-medium,C,,,agy totals from run.json (thinking counted as output),2309518,0,19985625,504681,22799824,,,,,,,,,,,,549
+thm01-R-haiku45-b01-C,batch,claude-haiku-4-5-20251001,C,,,,164,58539,862787,30363,951853,,,,,,,,,,,0.6,268
+thm01-R-haiku45-b02-G,batch,claude-haiku-4-5-20251001,G,,,,682,116768,6942295,78698,7138443,,,,,,,,,,,1.32,640
+thm01-R-haiku45-b03-C,batch,claude-haiku-4-5-20251001,C,,,,196,48710,1058110,30749,1137765,,,,,,,,,,,0.63,258
+thm01-R-haiku45-b04-G,batch,claude-haiku-4-5-20251001,G,,,,434,86387,3592244,58237,3737302,,,,,,,,,,,0.82,522
+thm01-R-haiku45-b05-C,batch,claude-haiku-4-5-20251001,C,,,,204,47830,1190296,30410,1268740,,,,,,,,,,,0.63,258
+thm01-R-haiku45-b06-G,batch,claude-haiku-4-5-20251001,G,,,,626,115788,6142912,76400,6335726,,,,,,,,,,,1.23,658
+thm01-R-haiku45-b07-C,batch,claude-haiku-4-5-20251001,C,,,,228,44420,1200781,26238,1271667,,,,,,,,,,,0.55,236
+thm01-R-haiku45-b08-G,batch,claude-haiku-4-5-20251001,G,,,,666,116336,6978099,71563,7166664,,,,,,,,,,,1.29,567
+thm01-R-haiku45-b09-C,batch,claude-haiku-4-5-20251001,C,"decision: rerun as haiku45-b11-C (API 400 in reflection turn, author 2026-10-05)",,,148,40523,735364,29803,805838,,,,,,,,,,,0.55,295
+thm01-R-haiku45-b10-G,batch,claude-haiku-4-5-20251001,G,,,,594,102155,5425346,65717,5593812,,,,,,,,,,,1.08,510
+thm01-R-haiku45-b11-C,batch,claude-haiku-4-5-20251001,C,,,,124,30372,557422,20273,608191,,,,,,,,,,,0.35,177
+thm01-R-haiku45-v293-b01-C,batch,claude-haiku-4-5-20251001,C,,,,164,47302,750767,19593,817826,,,,,,,,,,,0.44,193
+thm01-R-haiku45-v293-b02-G,batch,claude-haiku-4-5-20251001,G,,,,610,83020,4582486,52698,4718814,,,,,,,,,,,0.89,501
+thm01-R-haiku55-b01-C,batch,claude-haiku-5-5,C,,,,56,155670,2959342,116968,3232036,,,,,,,,,,,0.55,517
+thm01-R-haiku55-b02-G,batch,claude-haiku-5-5,G,,,,144,183307,8050224,185836,8419511,,,,,,,,,,,0.68,1033
+thm01-R-haiku55-b03-C,batch,claude-haiku-5-5,C,,,,82,149622,4879711,119059,5148474,,,,,,,,,,,0.86,655
+thm01-R-haiku55-b04-G,batch,claude-haiku-5-5,G,,,,172,227876,12399918,180692,12808658,,,,,,,,,,,1.07,842
+thm01-R-haiku55-b05-C,batch,claude-haiku-5-5,C,,,,64,144207,3498585,112227,3755083,,,,,,,,,,,0.71,580
+thm01-R-haiku55-b06-G,batch,claude-haiku-5-5,G,,,,4,543,185773,96,186416,,,,,,,,,,,0.65,1042
+thm01-R-haiku55-b07-C,batch,claude-haiku-5-5,C,,,,40,102948,1474624,68567,1646179,,,,,,,,,,,0.15,315
+thm01-R-haiku55-b08-G,batch,claude-haiku-5-5,G,,,,148,201119,8391817,213271,8806355,,,,,,,,,,,0.78,1107
+thm01-R-haiku55-b09-C,batch,claude-haiku-5-5,C,,,,56,127284,2677173,102286,2906799,,,,,,,,,,,0.54,706
+thm01-R-haiku55-b10-G,batch,claude-haiku-5-5,G,,,,166,323776,16415236,268544,17007722,,,,,,,,,,,1.61,1313
+thm01-R-luna-b01-C,batch,gpt-6-luna,C,,,,,,,,,,3,13,,,,,,,,,99
+thm01-R-luna-b02-G,batch,gpt-6-luna,G,,,,,,,,,,1,116,,,,,,,,,805
+thm01-R-luna-b03-C,batch,gpt-6-luna,C,,,,,,,,,,3,13,,,,,,,,,90
+thm01-R-luna-b04-G,batch,gpt-6-luna,G,,,,,,,,,,1,122,,,,,,,,,970
+thm01-R-luna-b05-C,batch,gpt-6-luna,C,,,,,,,,,,3,13,,,,,,,,,106
+thm01-R-luna-b06-G,batch,gpt-6-luna,G,,,,,,,,,,1,88,,,,,,,,,694
+thm01-R-luna-b07-C,batch,gpt-6-luna,C,,,,,,,,,,3,13,,,,,,,,,102
+thm01-R-luna-b08-G,batch,gpt-6-luna,G,,,,,,,,,,1,105,,,,,,,,,753
+thm01-R-luna-b09-C,batch,gpt-6-luna,C,,,,,,,,,,3,31,,,,,,,,,240
+thm01-R-luna-b10-G,batch,gpt-6-luna,G,,,,,,,,,,1,103,,,,,,,,,754
+thm01-R-luna-b11-C,batch,gpt-6-luna,C,,,,,,,,,,3,22,,,,,,,,,327
+thm01-R-luna-b12-G,batch,gpt-6-luna,G,,,,,,,,,,1,89,,,,,,,,,1362
+thm01-R-luna-b13-C,batch,gpt-6-luna,C,,,,,,,,,,3,15,,,,,,,,,176
+thm01-R-luna-b14-G,batch,gpt-6-luna,G,,,,,,,,,,1,105,,,,,,,,,852
+thm01-R-luna-b15-C,batch,gpt-6-luna,C,,,,,,,,,,3,11,,,,,,,,,113
+thm01-R-luna-b16-G,batch,gpt-6-luna,G,,,,,,,,,,1,119,,,,,,,,,997
+thm01-R-luna-b17-C,batch,gpt-6-luna,C,,,,,,,,,,3,14,,,,,,,,,119
+thm01-R-luna-b18-G,batch,gpt-6-luna,G,,,,,,,,,,1,81,,,,,,,,,559
+thm01-R-luna-b19-C,batch,gpt-6-luna,C,,,,,,,,,,3,18,,,,,,,,,141
+thm01-R-luna-b20-G,batch,gpt-6-luna,G,,,,,,,,,,1,88,,,,,,,,,777
+thm01-R-opus46-b01-C,batch,claude-opus-4-6,C,,,,26,139141,2180434,103000,2422601,,,,,,,,,,,9.59,1586
+thm01-R-opus46-b03-C,batch,claude-opus-4-6,C,status=aborted,,,9,59489,161839,136707,358044,,,,,,,,,,,4.09,1982
+thm01-R-opus46-b04-C,batch,claude-opus-4-6,C,status=aborted,,,24,196989,1277634,244395,1719042,,,,,,,,,,,8.9,3628
+thm01-R-opus46-b05-C,batch,claude-opus-4-6,C,,,,21,116822,1736446,91437,1944726,,,,,,,,,,,8.14,1507
+thm01-R-opus46-b06-G,batch,claude-opus-4-6,G,,,,81,105573,6213920,67943,6387517,,,,,,,,,,,5.86,1130
+thm01-R-opus46-b07-C,batch,claude-opus-4-6,C,,,,32,150210,3667221,124397,3941860,,,,,,,,,,,12.29,2214
+thm01-R-opus46-b08-G,batch,claude-opus-4-6,G,,,,76,111893,5861250,71842,6045061,,,,,,,,,,,5.85,1758
+thm01-R-opus46-b09-C,batch,claude-opus-4-6,C,,,,77,375410,6823350,282695,7481532,,,,,,,,,,,28.88,4835
+thm01-R-opus46-b10-G,batch,claude-opus-4-6,G,,,,73,140769,7688107,106238,7935187,,,,,,,,,,,7.91,1666
+thm01-R-opus46-b11-C,batch,claude-opus-4-6,C,,,,35,172881,2292005,144040,2608961,,,,,,,,,,,13.12,2536
+thm01-R-opus46-b12-G,batch,claude-opus-4-6,G,,,,75,122163,6318799,84714,6525751,,,,,,,,,,,6.5,1404
+thm01-R-opus46-b13-G,batch,claude-opus-4-6,G,,,,72,94060,4990599,122181,5206912,,,,,,,,,,,6.49,1883
+thm01-R-opus46-high-b01-C,batch,claude-opus-4-6,C,,,,21,123585,1640176,95507,1859289,,,,,,,,,,,8.33,1326
+thm01-R-opus46-high-b02-G,batch,claude-opus-4-6,G,,,,80,140096,7917431,102192,8159799,,,,,,,,,,,7.91,1570
+thm01-R-opus46-high-b03-C,batch,claude-opus-4-6,C,,,,83,411605,7530846,454574,8397108,,,,,,,,,,,38.8,7079
+thm01-R-opus46-high-b04-G,batch,claude-opus-4-6,G,,,,79,115153,5536429,58878,5710539,,,,,,,,,,,5.39,921
+thm01-R-opus47-b01-C,batch,claude-opus-4-7,C,,,,36,81149,1491940,40509,1613634,,,,,,,,,,,4.76,622
+thm01-R-opus47-b02-G,batch,claude-opus-4-7,G,,,,82,147048,6567776,106066,6820972,,,,,,,,,,,7.41,1461
+thm01-R-opus48-b01-C,batch,claude-opus-4-8,C,,,,118,160251,6240362,120158,6520889,,,,,,,,,,,15.08,1748
+thm01-R-opus48-b02-G,batch,claude-opus-4-8,G,,,,228,169805,12655544,122080,12947657,,,,,,,,,,,11.08,1606
+thm01-R-opus5-b01-C,batch,claude-opus-5,C,,,,102,139499,5203542,99928,5443071,,,,,,,,,,,12.55,1223
+thm01-R-opus5-b02-G,batch,claude-opus-5,G,,,,186,200597,11791081,148059,12139923,,,,,,,,,,,11.6,1809
+thm01-R-opus55-b01-C,batch,claude-opus-5-5,C,,,,38,71901,993067,47597,1112603,,,,,,,,,,,3.28,442
+thm01-R-opus55-b02-G,batch,claude-opus-5-5,G,,,,86,137614,3577802,94801,3810303,,,,,,,,,,,3.71,928
+thm01-R-opus55-b03-C,batch,claude-opus-5-5,C,,,,40,64558,1038860,44175,1147633,,,,,,,,,,,3.11,428
+thm01-R-opus55-b04-G,batch,claude-opus-5-5,G,,,,100,153846,4774964,105132,5034042,,,,,,,,,,,4.29,953
+thm01-R-opus55-b05-C,batch,claude-opus-5-5,C,,,,34,72882,925971,53411,1052298,,,,,,,,,,,3.49,505
+thm01-R-opus55-b06-G,batch,claude-opus-5-5,G,,,,94,155660,4720529,111700,4987983,,,,,,,,,,,4.42,1009
+thm01-R-opus55-b07-C,batch,claude-opus-5-5,C,,,,32,71556,841155,48891,961634,,,,,,,,,,,3.27,456
+thm01-R-opus55-b08-G,batch,claude-opus-5-5,G,,,,76,145120,3460081,96520,3701797,,,,,,,,,,,3.78,898
+thm01-R-opus55-b09-C,batch,claude-opus-5-5,C,,,,42,77527,1317435,54670,1449674,,,,,,,,,,,3.79,537
+thm01-R-opus55-b10-G,batch,claude-opus-5-5,G,,,,88,175708,4979324,131764,5286884,,,,,,,,,,,5.04,1208
+thm01-R-sonnet46-b01-G,batch,claude-sonnet-4-6,G,,,,0,0,0,0,0,,,,,,,,,,,,2151
+thm01-R-sonnet46-b02-G,batch,claude-sonnet-4-6,G,,,,78,239450,6372579,175300,6787407,,,,,,,,,,,6.13,2630
+thm01-R-sonnet46-b03-C,batch,claude-sonnet-4-6,C,,,,25,43497,471055,209641,724218,,,,,,,,,,,6.98,2921
+thm01-R-sonnet46-b04-G,batch,claude-sonnet-4-6,G,,,,73,144126,6645848,167411,6957458,,,,,,,,,,,5.37,2433
+thm01-R-sonnet46-b05-C,batch,claude-sonnet-4-6,C,,,,19,25544,413016,79607,518186,,,,,,,,,,,2.83,1079
+thm01-R-sonnet46-b06-C,batch,claude-sonnet-4-6,C,,,,18,33501,438002,87782,559303,,,,,,,,,,,3.17,1231
+thm01-R-sonnet46-b07-G,batch,claude-sonnet-4-6,G,,,,86,189797,6235259,236615,6661757,,,,,,,,,,,6.73,3623
+thm01-R-sonnet46-b08-C,batch,claude-sonnet-4-6,C,status=aborted,,,14,25745,116048,251428,393235,,,,,,,,,,,3.96,3322
+thm01-R-sonnet46-b09-C,batch,claude-sonnet-4-6,C,,,,19,104663,1159314,77993,1341989,,,,,,,,,,,4.03,1081
+thm01-R-sonnet46-b10-C,batch,claude-sonnet-4-6,C,,,,16,69481,731488,59536,860521,,,,,,,,,,,2.87,892
+thm01-R-sonnet46-b11-G,batch,claude-sonnet-4-6,G,,,,95,145133,8924070,100701,9169999,,,,,,,,,,,5.06,2348
+thm01-R-sonnet46-b12-G,batch,claude-sonnet-4-6,G,,,,121,315434,10317663,334968,10968186,,,,,,,,,,,41.8,5316
+thm01-R-sonnet46-b13-C,batch,claude-sonnet-4-6,C,"decision: rerun as sonnet46-b22-C (API 400 in reflection turn, author 2026-10-09, design 9.33)",,,26,100322,738020,208418,1046786,,,,,,,,,,,7.74,3674
+thm01-R-sonnet46-b14-G,batch,claude-sonnet-4-6,G,,,,121,278153,9865643,375611,10519528,,,,,,,,,,,10.52,5564
+thm01-R-sonnet46-b15-C,batch,claude-sonnet-4-6,C,,,,19,99868,1019907,72528,1192322,,,,,,,,,,,3.77,1070
+thm01-R-sonnet46-b16-G,batch,claude-sonnet-4-6,G,,,,91,184638,6762087,190988,7137804,,,,,,,,,,,6.16,3798
+thm01-R-sonnet46-b17-C,batch,claude-sonnet-4-6,C,,,,17,35353,399293,89637,524300,,,,,,,,,,,3.24,1262
+thm01-R-sonnet46-b18-G,batch,claude-sonnet-4-6,G,,,,71,176172,6872175,126411,7174829,,,,,,,,,,,5.17,2303
+thm01-R-sonnet46-b19-C,batch,claude-sonnet-4-6,C,,,,17,19381,308578,73775,401751,,,,,,,,,,,2.53,1063
+thm01-R-sonnet46-b20-G,batch,claude-sonnet-4-6,G,,,,104,197146,8680393,171661,9049304,,,,,,,,,,,6.53,2690
+thm01-R-sonnet46-b21-C,batch,claude-sonnet-4-6,C,,,,20,33505,522503,87373,643401,,,,,,,,,,,3.2,1247
+thm01-R-sonnet46-b22-C,batch,claude-sonnet-4-6,C,,,,22,84011,896823,201981,1182837,,,,,,,,,,,7.39,2741
+thm01-R-sonnet46-high-b01-C,batch,claude-sonnet-4-6,C,status=aborted,,,14,31125,112870,256600,400609,,,,,,,,,,,4.07,3502
+thm01-R-sonnet55-b01-C,batch,claude-sonnet-5-5,C,,,,50,72316,1250398,37938,1360702,,,,,,,,,,,1.76,383
+thm01-R-sonnet55-b02-G,batch,claude-sonnet-5-5,G,,,,78,139576,3603803,100314,3843771,,,,,,,,,,,2.28,748
+thm01-R-sonnet55-b03-C,batch,claude-sonnet-5-5,C,,,,46,62629,1225132,42588,1330395,,,,,,,,,,,1.76,336
+thm01-R-sonnet55-b04-G,batch,claude-sonnet-5-5,G,,,,116,157356,5697382,113619,5968473,,,,,,,,,,,2.91,857
+thm01-R-sonnet55-b05-C,batch,claude-sonnet-5-5,C,,,,22,44123,411398,27956,483499,,,,,,,,,,,1.01,212
+thm01-R-sonnet55-b06-G,batch,claude-sonnet-5-5,G,,,,132,142501,6172408,98108,6413149,,,,,,,,,,,2.79,783
+thm01-R-sonnet55-b07-C,batch,claude-sonnet-5-5,C,,,,30,41574,575807,24058,641469,,,,,,,,,,,0.96,396
+thm01-R-sonnet55-b08-G,batch,claude-sonnet-5-5,G,,,,92,161367,4615715,114544,4891718,,,,,,,,,,,2.71,901
+thm01-R-sonnet55-b09-C,batch,claude-sonnet-5-5,C,,,,30,45906,632054,27267,705257,,,,,,,,,,,1.1,214
+thm01-R-sonnet55-b10-G,batch,claude-sonnet-5-5,G,,,,84,150459,4317109,111491,4579143,,,,,,,,,,,2.58,826

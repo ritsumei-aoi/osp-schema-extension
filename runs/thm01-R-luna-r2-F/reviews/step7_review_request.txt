@@ -1,0 +1,17 @@
+The Worker has stopped in step 7 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 13" to memos/thm01-R-luna-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+**Proposed Schema 4 map:** Using the approved PBW-ordered basis `Z_1,…,Z_N`, define the general odd linear map as
+\[
+f(Z_j)=\sum_{i:\,p(Z_i)\ne p(Z_j)}\phi_{ij}Z_i.
+\]
+Same-parity matrix entries are zero; the independent `φ_ij` are even symbolic coefficients. This includes both even-to-odd and odd-to-even maps, with 32 coefficients for `n=1`, 176 for `n=2`, and 528 for `n=3`.
+
+Compute `δf` using the reference formula and Schema 1 brackets. Schema 4 will store the map parameters and nonzero `(X,Y,Z,coeff)` coboundary records.
+
+**Scaling options:**
+- **A — Recommended:** No separate global scale; absorb it into the independent `φ_ij` (equivalent to `λ=1`).
+- **B:** Retain an explicit symbolic `λ` multiplying the entire map and its coboundary.
+
+No Step 7 code or JSON has been created. The map and scaling choice are pending your approval.
+----- END OF WORKER REPLY -----

@@ -1,0 +1,16 @@
+1. Q1: Sign Convention:
+Approved with Option A selected. Option A (`[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa`) strictly conforms to the foundational mathematical definition in `docs/math/C_inhomogeneous_definition.md` (Section 1).
+
+2. Q2: K-Term Handling:
+Approved with Option K-include selected. Central element K is already defined in Schema 1 under `central_elements` as the scalar identity element, and its appearance in gamma(X, Y) represents the central kappa-direction in L = g + kappa*g. Option K-exclude is rejected as modifying the basis or generator realizations would invalidate the finalized and verified Schema 1 datasets from Issues I01-I04.
+
+3. gb_matrix Definition:
+Approved. The 4n parameters `gb_a1{p/m}_b{k}{p/m}` for k=1,...,n (size 2 x 2n) correctly follow `docs/math/C_inhomogeneous_definition.md` and satisfy Requirement 1.
+
+4. Implementation and Next Steps:
+Approved. You may proceed to:
+  (1) Implement `src/compute_gamma.py`;
+  (2) Ensure the `inhomogeneous_deformation` field in Schema 2 JSON stores non-zero gamma coefficients with their generator pair (X, Y), deformation parameter, target generator Z (including K where applicable), and exact rational coefficients;
+  (3) Generate `data/C_{n}_gamma.json` for n=1, 2, 3;
+  (4) Verify consistency with Schema 1;
+  (5) Complete Issue I05 according to Phase 4 of `handover/workflow.md`.

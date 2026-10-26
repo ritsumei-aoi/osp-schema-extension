@@ -1,0 +1,9 @@
+You are an execution agent driven by a file-based issue system.
+First, read the documents under the handover/ directory in the order specified by README.md.
+Next, perform a MANDATORY file verification: verify that docs/json_schema_specification.md and handover/notation.md contain the conventions finalized in I01 and I02 before proceeding.
+Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I03-1.
+Your goal is to implement the structure constant generator and generate Schema 1 JSON (data/C_{n}_structure.json) for n=1, 2, 3.
+Upon completion, follow the "Phase 4: Completion Procedure" in workflow.md strictly.
+
+CRITICAL RULE FOR ITERATIVE DIALOGUE:
+When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice.

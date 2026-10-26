@@ -1,0 +1,191 @@
+# compact 2 at 2026-10-08T08:08:14.217Z metadata {"trigger": "auto", "preTokens": 168441, "postTokens": 12253, "cumulativeDroppedTokens": 312889, "durationMs": 146572, "preservedSegment": {"headUuid": "5809b031-2456-4b02-a3d5-03edb820f17c", "anchorUuid": "a6dbff32-5284-48d8-bbb1-6cbb6da544f9", "tailUuid": "a464ea7b-edb6-4e05-8177-90e5839b4b42"}, "preservedMessages": {"anchorUuid": "a6dbff32-5284-48d8-bbb1-6cbb6da544f9", "uuids": ["5809b031-2456-4b02-a3d5-03edb820f17c", "d737d615-3033-490a-843f-2fc4c8f60573", "4ed0487f-6a31-4d02-acd4-740baa3c822e", "c2bda0f7-d20d-4596-be18-baaedb6daff2", "a464ea7b-edb6-4e05-8177-90e5839b4b42"], "allUuids": ["5809b031-2456-4b02-a3d5-03edb820f17c", "d737d615-3033-490a-843f-2fc4c8f60573", "4ed0487f-6a31-4d02-acd4-740baa3c822e", "c2bda0f7-d20d-4596-be18-baaedb6daff2", "a464ea7b-edb6-4e05-8177-90e5839b4b42"]}}
+
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The user is running a file-based issue system for a mathematical research project: extending B(0,n) = osp(1|2n) Lie superalgebra JSON schema to C(n+1) = osp(2|2n). The session processed issues I03-1 through I05-1 (currently in progress).
+
+**CRITICAL RULE (verbatim, must be preserved)**: "When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+**I03-1** (human-approved and committed): Implement Python generator (`src/C_structure_generator.py`) and tests (`tests/test_C_structure.py`), generate Schema 1 JSON (`data/C_{1,2,3}_structure.json`).
+
+**I04-1** (human-approved and committed): Implement JSON-based verification script (`src/verify_C_structure.py`) checking graded anti-symmetry and Super Jacobi identity from stored JSON.
+
+**I05-1** (in progress, Human Approval Required): Compute gamma structure for C(n+1) inhomogeneous deformation, propose sign conventions for human approval, then generate Schema 2 JSON. Must NOT write JSON files or commit until explicitly approved.
+
+2. Key Technical Concepts:
+- C(n+1) = osp(2|2n) Lie superalgebra, root system (Frappat et al.)
+- Oscillator realization: standard fermionic pair a_1^± (CAR) + bosonic oscillators b_k^± (CCR)
+- PBW (Poincaré-Birkhoff-Witt) normal form, ε-first Option A ordering
+- Graded Lie bracket: [X,Y} = XY - (-1)^{p(X)p(Y)} YX
+- Graded anti-symmetry: [X,Y} = -(-1)^{pX·pY} [Y,X}
+- Super Jacobi identity: [X,[Y,Z}} + (-1)^{pX(pY+pZ)} [Y,[Z,X}} + (-1)^{pZ(pX+pY)} [Z,[X,Y}} = 0
+- Schema 1 v5.0 JSON: structure constants layer
+- Schema 2: inhomogeneous deformation (gamma structure)
+- Inhomogeneous deformation: `[b_j^s, a_1^σ] = -gb_{σ,j,s} · κ` (4n parameters)
+- Deformed bracket: `[X,Y]_γ = [X,Y]_0 + κ · γ(X,Y)` where κ is odd central, κ²=0
+- Pre-oscillator bilinear form: (a_1^σ | b_j^s) = gb_{σ,j,s}
+- Central elements κ (parity 1, κ²=0) and K (parity 0, identified with scalar 1)
+- K (central identity) component in γ-polynomials (newly discovered issue)
+- 4-layer JSON schema architecture (Structure, Gamma, Evaluated, Coboundary)
+- File-based issue workflow with Phase 4 completion scripts
+
+3. Files and Code Sections:
+
+- **`handover/workflow.md`**: Core execution cycle. Phase 4 runs `./handover/scripts/close_issue.sh <YYMMDD> <NN> "<LABEL>" <NEXT>`.
+
+- **`handover/notation.md`**: PBW ordering conventions, generator labels, Cartan elements. H_1=a_1^+a_1^-+b_1^+b_1^-, H_k=b_{k-1}^+b_{k-1}^--b_k^+b_k^-, H_{n+1}=-b_n^+b_n^--1/2.
+
+- **`docs/math/C_inhomogeneous_definition.md`**: Deformed exchange relation `[b_j^s, a_1^σ] = -gb_{σ,j,s} · κ`. 4n parameters: gb_{σ,j,s} for σ∈{+,-}, j=1..n, s∈{+,-}. Deformed bracket: [X,Y]_γ = [X,Y]_0 + κ·γ(X,Y).
+
+- **`docs/math/C_coboundary_definition.md`**: Coboundary operator (δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y]).
+
+- **`docs/math/B0n_schema_v5.md`**: 4-layer schema: Schema 1=structure, Schema 2=gamma, Schema 3=evaluated, Schema 4=coboundary. File naming: `C_n_structure.json`, `C_n_gamma.json`, etc.
+
+- **`src/C_structure_generator.py`** (complete, committed): 
+  - `OscAlgebra(n)`: PBW reduction, `_swap()`, `reduce()`, `mul()`, `bracket()`
+  - `build_generators(alg)`: returns (gens, par) dicts with oscillator polynomial realizations
+  - `basis_order(n)`: PBW basis (ε-first Option A)
+  - `poly_to_basis(poly, alg)`: decomposes PBW polynomial into basis generators. **For n=1**: f1=c0, f2=f1-c_{1,1}, checks -f2/2=c_const and RAISES ValueError if fails. **For n≥2**: f[1]=c0, f[2]=c_{1,1}-f[1], f[k+1]=c_{k,k}+f[k] for k=2..n-1, f[n+1]=-c_{n,n}-f[n], checks -f[n+1]/2=c_const.
+  - `compute_structure_constants(n)`: all [X,Y} pairs
+  - `build_schema1_json(n)`: full Schema 1 dict
+
+- **`tests/test_C_structure.py`** (committed): 31 tests, all pass. Covers: generator counts, parity, anti-symmetry, known brackets, Jacobi (all n=1,2; sampled n=3), schema conformance.
+
+- **`data/C_1_structure.json`**, **`data/C_2_structure.json`**, **`data/C_3_structure.json`** (committed): Schema 1 JSON. Counts: C(2)=20, C(3)=99, C(4)=264 non-zero entries.
+
+- **`src/verify_C_structure.py`** (committed): JSON-based independent verification.
+  ```python
+  def load_schema(path): # Returns (parity, basis, basis_idx, sc)
+  def br(sc, parity, basis_idx, X, Y): # Reconstruct [X,Y} from stored sc
+  def br_poly(sc, parity, basis_idx, X, poly): # [X, linear combination}
+  def check_antisymmetry(sc, parity, basis_idx): # all stored pairs
+  def check_jacobi(sc, parity, basis, basis_idx): # all ordered triples i<j<k
+  def verify(path): # Run both checks, print report
+  ```
+  Results: C(2) 56 triples PASS, C(3) 969 PASS, C(4) 5984 PASS — ALL PASS.
+
+- **`src/C_gamma_generator.py`** (written but has a bug, NOT committed):
+  ```python
+  def gb_label(sigma: int, j: int, s: int) -> str:
+      # sigma: 0=a_1^+ → 'p', 1=a_1^− → 'm'
+      # s: 0=b_j^+ → 'p', 1=b_j^− → 'm'
+      # Returns "gb_{σs}_{j}" e.g. "gb_pp_1", "gb_mm_2"
+      σs = 'p' if sigma == 0 else 'm'
+      ss = 'p' if s == 0 else 'm'
+      return f'gb_{σs}{ss}_{j}'
+  
+  class DeformedOscAlgebra(OscAlgebra):
+      def _reduce_kappa(self, word, coeff=Fraction(1)):
+          # Bubble-sort with κ-tracking
+          # Queue: (word_list, coeff, is_kappa, gb_key)
+          # When boson (a≥2) before fermion (b<2) and not is_kappa:
+          #   sigma=b, j=a//2, s=a%2 → gk_new=gb_label(sigma,j,s)
+          #   kappa_w = w[:i] + w[i+2:]
+          #   Add (kappa_w, c*Fraction(-1), True, gk_new) to queue
+          # Returns (poly0, polyk)
+          
+      def _mul_kappa(self, A, B):
+          # A=(A0,Ak), B=(B0,Bk) → (C0, Ck) first order in gb
+          # A0*B0: use _reduce_kappa → contributes to C0 and Ck
+          # A0*Bk: standard mul → adds to Ck
+          # Ak*B0: standard mul → adds to Ck
+          
+      def bracket_gamma(self, X0, pX, Y0, pY):
+          # Returns (br0, brk) where brk = γ(X,Y) per gb_key
+          # X=(X0,{}), Y=(Y0,{}), compute XY-(-1)^{pX*pY}*YX
+  
+  def compute_gamma_structure(n):
+      # For all pairs i<j in basis_order(n):
+      #   _,brk = bracket_gamma(...)
+      #   for each gb_key in brk:
+      #     decomp = poly_to_basis(brk[gk], alg)  ← THIS FAILS
+      #     append entries with X,Y,Z,gb,coeff
+  
+  def build_schema2_json(n):
+      # Assembles Schema 2 JSON with gb_matrix and gamma_structure
+  
+  def dry_run_report(n):
+      # Print summary without writing files
+  ```
+
+- **`docs/issues/issue_open.md`** (current I05-1): Has empty `### Response` section — proposals NOT yet appended because the bug was discovered before completing the proposal.
+
+- **`docs/issues/done/issue_261008_03.md`**, **`docs/issues/done/issue_261008_04.md`**: Archived completed issues.
+
+4. Errors and Fixes:
+
+- **`poly_to_basis` Cartan consistency failure for γ-polynomials**:
+  - Error: `ValueError: Cartan consistency fail (n=1): -f2/2=-1/2, c_const=-1`
+  - Cause: γ(X,Y) polynomials can have a K (central identity element) component. K={(): 1} appears when bosons pass fermions in computations involving Cartan generators (which contain fermion pairs like a_1^+a_1^-). The standard `poly_to_basis` assumes c_const = -f[n+1]/2, but K gives an independent constant contribution. 
+  - Example failure pairs: γ(E_eps_del1_pp, H_2)[gb_pp_1] = {(): -1, (2,3): -1} = H_2 - (1/2)K
+  - Root cause confirmed by debug: `gamma(E_eps_del1_pp,H_2)[gb_pp_1] = {(): Fraction(-1, 1), (2, 3): Fraction(-1, 1)}`
+  - Fix needed (NOT yet applied): Create `poly_to_basis_gamma` function that computes `K_coeff = c_const + f[n+1]/2` (or `c_const + f2/2` for n=1) and returns `'K': K_coeff` in the result instead of raising ValueError. This makes K an additional basis element for γ decomposition.
+
+5. Problem Solving:
+
+- **I03-1 close_issue.sh missing source files**: Script auto-stages only done file and issue_open.md. Must manually `git add src/C_structure_generator.py tests/test_C_structure.py data/C_*.json` before running close_issue.sh. Successfully done.
+- **I04-1 same pattern**: Manually `git add src/verify_C_structure.py` before close_issue.sh.
+- **Cartan consistency fail in γ computation** (current blocking issue): γ-polynomials contain K (identity) components. The `poly_to_basis` function from Schema 1 computation requires the constant term to satisfy `-f[n+1]/2 = c_const` exactly. For γ-polynomials, this is violated because K contributes an independent constant. The fix is a new `poly_to_basis_gamma` function that extracts K as an additional component.
+
+6. All User Messages:
+
+- Message 1 (session start continuation from summary): Attribution system-reminder for git commits: `Co-Authored-By: Claude Sonnet 4.6 <<redacted-email>>`.
+
+- Message 2 (I03-1 approval): "1. Implementation and test results: Approved. The algebraic rules, PBW reduction logic, Cartan system resolution, and sample structure constants all align correctly with the mathematical definitions. You correctly halted before writing the data files. You may now proceed to run the generator script to write the JSON files to `data/` and then follow Phase 4 to commit the issue."
+
+- Message 3 (I04-1 start): "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: verify the existence of your Schema 1 files (data/C_{n}_structure.json, n=1, 2, 3) before proceeding. Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I04-1. Your goal is to mathematically verify the structure constants you generated in I03 using graded anti-symmetry and the Super Jacobi identity. Upon completion, follow the 'Phase 4: Completion Procedure' in workflow.md strictly. CRITICAL RULE FOR ITERATIVE DIALOGUE: When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+- Message 4 (I04-1 approval): "1. Verification script implementation: Approved. The script correctly implements the graded anti-symmetry check and the Super Jacobi identity using exact rational arithmetic. 2. Verification results: Approved. The results successfully validate that the structure constants for C(2), C(3), and C(4) define valid Lie superalgebras. You may now mark the completion criteria as checked and proceed to Phase 4 to commit and close the issue."
+
+- Message 5 (I05-1 start): "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: read ALL documents in docs/math/ (especially docs/math/C_inhomogeneous_definition.md, which contains the mandatory mathematical grounding for this task) before proceeding. Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I05-1. Your goal is to compute the gamma structure for the C(n+1) inhomogeneous deformation and generate Schema 2 JSON for n=1, 2, 3. Upon completion, follow the 'Phase 4: Completion Procedure' in workflow.md strictly. CRITICAL RULE FOR ITERATIVE DIALOGUE: When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+- Message 6 (summary request): "CRITICAL: Respond with TEXT ONLY. Do NOT call any tools..." [summary request message]
+
+7. Pending Tasks:
+
+- **I05-1 (active, Human Approval Required)**:
+  1. Fix `C_gamma_generator.py`: add `poly_to_basis_gamma` function that handles K (central identity) component in γ-polynomials:
+     - For n=1: K_coeff = c_const + f2/2 (instead of asserting equality to 0)
+     - For n≥2: K_coeff = c_const + f[n+1]/2
+     - Return `'K': K_coeff` in result dict when K_coeff ≠ 0
+  2. Run dry-run to produce γ sample values
+  3. Present proposal (computation method, sign convention choices, Schema 2 structure) in `docs/issues/issue_open.md` **ONLY**
+  4. HALT awaiting human approval (must NOT write `data/C_*_gamma.json` or commit)
+
+8. Current Work:
+
+Working on Issue I05-1: Schema 2 (gamma structure) for C(n+1).
+
+`src/C_gamma_generator.py` has been written implementing `DeformedOscAlgebra` with `_reduce_kappa`, `_mul_kappa`, and `bracket_gamma`. The dry-run execution failed with:
+```
+ValueError: Cartan consistency fail (n=1): -f2/2=-1/2, c_const=-1
+```
+
+Debug output showed 10 failing pairs, e.g.:
+```
+FAIL: gamma(E_eps_del1_pp,H_2)[gb_pp_1] = {(): Fraction(-1, 1), (2, 3): Fraction(-1, 1)}
+FAIL: gamma(E_eps_del1_pm,H_2)[gb_pm_1] = {(2, 3): Fraction(-1, 1)}
+FAIL: gamma(E_eps_del1_pm,H_1)[gb_pm_1] = {(0, 1): Fraction(-1, 1), (2, 3): Fraction(1, 1)}
+```
+
+These polynomials contain K (central identity = scalar 1) components independent of the Cartan generator extraction. The `poly_to_basis` function checks `c_const = -f[n+1]/2` which fails when K ≠ 0. The fix is K_coeff = c_const + f[n+1]/2 (excess after Cartan extraction), to be recorded as 'K' in the result.
+
+No proposals have been appended to `docs/issues/issue_open.md` yet for I05-1. No commits have been made. No JSON files written.
+
+9. Optional Next Step:
+
+The immediate next step is to fix `src/C_gamma_generator.py` by adding a `poly_to_basis_gamma` function (or modifying the call site in `compute_gamma_structure`) to handle K components. Then run the dry-run again, collect the γ results, and append the proposal to `docs/issues/issue_open.md`.
+
+The issue states: "**Human Approval Required**: Gram matrix sign conventions require human approval. **Iterative Dialogue Expected**: Propose the gamma computation method and sign convention options. **CRITICAL RULE**: Do NOT write Schema 2 JSON or commit until the human approves."
+
+The sign convention proposal to present:
+- **Convention A (recommended)**: `[b_j^s, a_1^σ] = -gb_{σ,j,s} · κ` (document-faithful, negative sign)
+- **Convention B**: `[b_j^s, a_1^σ] = +gb_{σ,j,s} · κ` (positive sign, equivalent to redefining gb → -gb)
+- Gram matrix: 2×2n, rows=σ∈{+,-}, columns=(j,s) ordered (1,+),(1,-),(2,+),...
+- gb_label format: "gb_{σs}_{j}" where first letter=σ (a_1 sign), second=s (boson sign)
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-r2-A1/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-r2-A1/a8b123d1-872c-4131-9d17-c76e30401072.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

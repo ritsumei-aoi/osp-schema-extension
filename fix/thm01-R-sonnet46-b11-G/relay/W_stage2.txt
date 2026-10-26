@@ -1,0 +1,22 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+Please address the following remaining issues in the repository:
+
+1. Triviality evidence re-derivation and reproducibility in committed code:
+In `docs/issues/I08.md`:
+- Section 3, Evidence item 1 (line 89) asserts that row reduction of [Cob | Gam] for n=1 confirms all 4 gb parameters must vanish, and Evidence item 2 (line 90) asserts that individual gb tests (one gb=1, rest=0) were performed for n=2, 3.
+- Section 4 (line 104) states that the triviality analysis was performed by running `src/C_triviality.py` with individual gb assignments (one gb=1, rest=0).
+However, `main()` in `src/C_triviality.py` (lines 188–208) only tests all gb=1 and the undeformed check gb=0; no committed code performs the row reduction for n=1 or runs the individual gb tests for n=1, 2, 3. Furthermore, following the gamma normalization fix in commit 0724afa (which changed data/C_{1,2,3}_gamma.json), these evidence statements were not re-derived with the updated gamma data.
+Please:
+- Implement the individual gb test execution (and/or the row reduction check) directly in committed code (e.g., updating `main()` in `src/C_triviality.py` or adding a dedicated test script in `src/`).
+- Re-derive the evidence and results using the updated gamma dataset from commit 0724afa.
+- Update `docs/issues/I08.md` so that the descriptions in Section 3 and Section 4 strictly agree with the outputs produced by the committed scripts.
+
+2. Untracked file in working tree:
+The file `src/_check_rem_order.py` remains untracked in the working tree. Either track and commit it (if it is intended as part of the repository's verification tools) or remove it so that the working tree is clean.
+
+Please commit your changes with an appropriate commit message.
+----- END CORRECTION -----

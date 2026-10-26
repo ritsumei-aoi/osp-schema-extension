@@ -1,0 +1,339 @@
+From 46774ac6d3d1e56b574f2cc5f890b9e86208cdff Mon Sep 17 00:00:00 2001
+From: ritsumei-<user> <<redacted-email>>
+Date: Mon, 12 Oct 2026 13:06:45 +0900
+Subject: [PATCH 1/2] fix: correct analytical proof scope, rank metrics, and
+ algebraic conventions
+
+---
+ docs/issues/mathematical_proof.md | 171 ++++++++++++++++--------------
+ solve_triviality.py               |  17 +--
+ verification_results.json         |   9 +-
+ 3 files changed, 110 insertions(+), 87 deletions(-)
+
+diff --git a/docs/issues/mathematical_proof.md b/docs/issues/mathematical_proof.md
+index cc9b41e..ec4ef02 100644
+--- a/docs/issues/mathematical_proof.md
++++ b/docs/issues/mathematical_proof.md
+@@ -1,27 +1,30 @@
+ # Mathematical Proof: Triviality Conditions for the Inhomogeneous Deformation of $C(n+1) = \mathfrak{osp}(2|2n)$
+ 
+ **Author**: Independent Mathematics & Mathematical Physics Researcher  
+-**Date**: October 5, 2026  
++**Date**: October 5, 2026 (Revised October 12, 2026)  
+ **Target Algebra**: $\mathfrak{g} = C(n+1) \cong \mathfrak{osp}(2|2n)$  
+-**Status**: Resolved (Definitive Mathematical Proof & Verification Artifacts)
++**Status**: Resolved (Rigorous Analysis, Verified for $n=1, 2, 3$, Conjectured for General $n$)
+ 
+ ---
+ 
+ ## 1. Abstract & Main Theorem
+ 
+-We analyze the triviality condition for the $4n$-parameter inhomogeneous deformation $\gamma_{gb}$ of the Lie superalgebra $\mathfrak{g} = C(n+1) = \mathfrak{osp}(2|2n)$. Using both formal Lie superalgebra cohomology theory and exact computer-algebraic rank computations for $n=1, 2, 3$, we establish the following fundamental theorem:
++We analyze the triviality condition for the $4n$-parameter inhomogeneous deformation $\gamma_{gb}$ of the Lie superalgebra $\mathfrak{g} = C(n+1) = \mathfrak{osp}(2|2n)$. Using exact computer-algebraic rank computations for $n=1, 2, 3$ along with Lie superalgebra cohomology analysis, we establish the following theorem:
+ 
+-> **Theorem 1 (Triviality Criterion)**:  
+-> *The inhomogeneous deformation $\gamma_{gb}$ of $C(n+1) = \mathfrak{osp}(2|2n)$ defined by parameters $\mathrm{gb}_{\sigma, j, s}$ ($\sigma \in \{+,-\}$, $j \in \{1,\ldots,n\}$, $s \in \{+,-\}$) is trivial (i.e. equivalent to a coboundary $\delta f$ under the adjoint representation) **if and only if** all deformation parameters vanish:*
++> **Theorem 1 (Triviality Criterion for $n \in \{1, 2, 3\}$)**:  
++> *For $n \in \{1, 2, 3\}$, the inhomogeneous deformation $\gamma_{gb}$ of $C(n+1) = \mathfrak{osp}(2|2n)$ defined by parameters $\mathrm{gb}_{\sigma, j, s}$ ($\sigma \in \{+,-\}$, $j \in \{1,\ldots,n\}$, $s \in \{+,-\}$) is trivial (i.e. equivalent to a coboundary $\delta f$ under the adjoint representation) **if and only if** all deformation parameters vanish:*
+ > $$ \mathrm{gb}_{\sigma, j, s} = 0 \quad \forall \sigma \in \{+,-\},\ j \in \{1,\ldots,n\},\ s \in \{+,-\}. $$
+-> *Consequently, every non-zero parameter choice yields a non-trivial deformation representing a non-vanishing cohomology class in $H^2(\mathfrak{g}, \mathfrak{g})$.*
++> *Consequently, every non-zero parameter configuration yields a non-trivial deformation representing a non-vanishing cohomology class in $H^2(\mathfrak{g}, \mathfrak{g})$.*
++
++> **Conjecture 1 (General $n \ge 1$)**:  
++> *For all $n \ge 1$, the inhomogeneous deformation $\gamma_{gb}$ of $C(n+1)$ is trivial if and only if $\mathrm{gb} = 0$.*
+ 
+ ---
+ 
+-## 2. Mathematical Setup & Definitions
++## 2. Mathematical Setup & Conventions
+ 
+ ### 2.1 Structure of $C(n+1) = \mathfrak{osp}(2|2n)$
+-Following `docs/math/Cn1_definition.md`, $\mathfrak{g} = C(n+1)$ is realized via CAR fermionic operators $a_1^\pm$ ($\{a_1^-, a_1^+\} = 1$) and CCR bosonic operators $b_k^\pm$ ($[b_k^-, b_l^+] = \delta_{kl}$, $1 \leq k, l \leq n$).
++Following [Cn1_definition.md](../math/Cn1_definition.md), $\mathfrak{g} = C(n+1)$ is realized via CAR fermionic operators $a_1^\pm$ ($\{a_1^-, a_1^+\} = 1$) and CCR bosonic operators $b_k^\pm$ ($[b_k^-, b_l^+] = \delta_{kl}$, $1 \leq k, l \leq n$).
+ 
+ The superdimension is $\dim(\mathfrak{g}) = (2n^2 + n + 1) \mid 4n$, total $2n^2 + 5n + 1$:
+ - **Even Subalgebra $\mathfrak{g}_{\bar{0}} = \mathfrak{so}(2) \oplus \mathfrak{sp}(2n)$** (dim $2n^2 + n + 1$):
+@@ -30,12 +33,20 @@ The superdimension is $\dim(\mathfrak{g}) = (2n^2 + n + 1) \mid 4n$, total $2n^2
+ - **Odd Subspace $\mathfrak{g}_{\bar{1}}$** (dim $4n$):
+   - Generators: $F_{\sigma, k, s} = a_1^\sigma b_k^s$ ($\sigma \in \{+,-\}$, $k \in \{1,\ldots,n\}$, $s \in \{+,-\}$).
+ 
+-### 2.2 Inhomogeneous Deformation $\gamma_{gb}$
+-Following `docs/math/C_inhomogeneous_definition.md`, the deformation is defined by the deformed exchange relation:
+-$$ [b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa, $$
+-where $\kappa$ is an odd central element ($p(\kappa)=1$).
+-
+-Evaluating the supercommutator $[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma_{gb}(X, Y)$ yields the 2-cocycle $\gamma_{gb}: \mathfrak{g} \otimes \mathfrak{g} \to \mathfrak{g}$:
++### 2.2 Algebraic Conventions: Deformation Parameters and Odd Central Element $\kappa$
++To make the linear algebraic formulation and derivations fully reproducible, we specify the algebraic conventions:
++1. **Odd Central Generator $\kappa$**: The central extension generator $\kappa$ has parity $p(\kappa) = 1$. It supercommutes with all generators in the extended associative envelope $\mathcal{U}(A)$ according to the supercommutation rule:
++   $$ X \kappa = (-1)^{p(X) p(\kappa)} \kappa X = (-1)^{p(X)} \kappa X. $$
++   In particular, when pulling $\kappa$ out of brackets or expressions to the left:
++   - For an even element $X \in \mathfrak{g}_{\bar{0}}$: $X \kappa = \kappa X$.
++   - For an odd element $X \in \mathfrak{g}_{\bar{1}}$: $X \kappa = -\kappa X$.
++2. **Deformation Parameters $\mathrm{gb}_{\sigma, j, s}$**: In the underlying pre-oscillator relation $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$, the parameters $\mathrm{gb}$ are formally assigned parity 1 in [C_inhomogeneous_definition.md](../math/C_inhomogeneous_definition.md) so that the formal product $\mathrm{gb} \cdot \kappa$ is even. In the linear algebraic triviality analysis $\gamma_{gb} = \delta f$, the deformation 2-cocycle $\gamma_{gb}$ is decomposed with $\kappa$ factored out:
++   $$ [X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma_{gb}(X, Y). $$
++   The parameters $\mathrm{gb}_{\sigma, j, s}$ are treated as **commuting scalar coefficients (c-numbers)** in $\mathbb{C}$.
++3. **Odd Linear Map $f$**: An odd 1-cochain $f: \mathfrak{g} \to \mathfrak{g}$ maps $\mathfrak{g}_{\bar{0}} \to \mathfrak{g}_{\bar{1}}$ and $\mathfrak{g}_{\bar{1}} \to \mathfrak{g}_{\bar{0}}$. Its matrix entries are treated as commuting complex scalars (c-numbers) in the linear system $M_f f = -M_{gb} gb$.
++
++### 2.3 Explicit Inhomogeneous 2-Cocycle $\gamma_{gb}$
++Evaluating the supercommutator $[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma_{gb}(X, Y)$ using the deformed oscillator relations yields $\gamma_{gb}: \mathfrak{g} \otimes \mathfrak{g} \to \mathfrak{g}$:
+ 
+ 1. **Even-Even Sector** ($p(X)=0, p(Y)=0 \implies \gamma_{gb}(X,Y) \in \mathfrak{g}_{\bar{1}}$):
+    - $\gamma_{gb}(B_1, B_2) = 0$ for $B_1, B_2 \in \mathfrak{sp}(2n)$.
+@@ -43,21 +54,16 @@ Evaluating the supercommutator $[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma_{
+ 
+ 2. **Even-Odd Sector** ($p(X)=0, p(Y)=1 \implies \gamma_{gb}(X,Y) \in \mathfrak{g}_{\bar{0}}$):
+    - $\gamma_{gb}(b_i^{s_1} b_j^{s_2}, F_{\sigma, k, s}) = -\mathrm{gb}_{\sigma, i, s_1} b_j^{s_2} b_k^s - \mathrm{gb}_{\sigma, j, s_2} b_i^{s_1} b_k^s$.
+-   - $\gamma_{gb}(Z_0, F_{\sigma, k, s}) = \sigma \mathrm{gb}_{\sigma, k, s} Z_0 \pmod{\text{scalars}}$.
++   - $\gamma_{gb}(Z_0, F_{\sigma, k, s}) = \sigma \mathrm{gb}_{\sigma, k, s} Z_0$ (evaluated up to central scalars under the adjoint representation, as the identity acts trivially).
+ 
+ 3. **Odd-Odd Sector** ($p(X)=1, p(Y)=1 \implies \gamma_{gb}(X,Y) \in \mathfrak{g}_{\bar{1}}$):
+    - $\gamma_{gb}(F_{\sigma_1, i, s_1}, F_{\sigma_2, j, s_2}) = -\mathrm{gb}_{\sigma_2, i, s_1} F_{\sigma_1, j, s_2} - \mathrm{gb}_{\sigma_1, j, s_2} F_{\sigma_2, i, s_1}$.
+ 
+-### 2.3 Theoretical Handling of the Adjoint Representation / Up to Scalar Condition
+-In Lie superalgebra deformation theory, $\mathfrak{g}$ acts on itself via the adjoint representation. As specified in Section 2 of `C_inhomogeneous_definition.md` and Section 3 of `C_coboundary_definition.md`, the extended space is $L = \mathfrak{g} \oplus \mathbb{C}\kappa$ where $\kappa$ acts trivially in the adjoint action. 
+-
+-When projecting elements to $\mathfrak{g}$, central scalar matrices (such as the identity $I$) act as zero in the adjoint representation. Specifically, the commutator $[Z_0, F_{\sigma, k, s}]_\gamma$ contains a scalar term $\pm \frac{1}{2} \mathrm{gb}_{\sigma, k, s} \kappa \cdot I$. Under the adjoint representation on $\mathfrak{g}$, identity terms vanish, giving the precise map value $\gamma_{gb}(Z_0, F_{\sigma, k, s}) = \sigma \mathrm{gb}_{\sigma, k, s} Z_0$.
+-
+ ---
+ 
+ ## 3. Coboundary Operator $\delta f$
+ 
+-Following `docs/math/C_coboundary_definition.md`, a deformation is trivial if $\gamma_{gb} = \delta f$ for an **odd linear map** $f: \mathfrak{g} \to \mathfrak{g}$ ($p(f(X)) = p(X) + 1 \pmod 2$).
++Following [C_coboundary_definition.md](../math/C_coboundary_definition.md), a deformation is trivial if $\gamma_{gb} = \delta f$ for an **odd linear map** $f: \mathfrak{g} \to \mathfrak{g}$ ($p(f(X)) = p(X) + 1 \pmod 2$).
+ 
+ The coboundary operator is:
+ $$ (\delta f)(X, Y) = (-1)^{p(X)} [X, f(Y)] - (-1)^{(p(X)+1)p(Y)} [Y, f(X)] - f([X, Y]). $$
+@@ -68,80 +74,91 @@ The linear map $f$ decomposes into two blocks:
+ 
+ ---
+ 
+-## 4. Analytical Proof of Theorem 1
+-
+-We provide a direct, closed-form algebraic proof demonstrating why no odd map $f$ can absorb non-zero $\mathrm{gb}$ parameters.
+-
+-### Step 1: Constraint from $(\delta f)(Z_0, Z_0)$
+-Consider $X = Y = Z_0 \in \mathfrak{g}_{\bar{0}}$. Since $p(Z_0) = 0$:
+-$$ (\delta f)(Z_0, Z_0) = [Z_0, f(Z_0)] - [Z_0, f(Z_0)] - f([Z_0, Z_0]) = 0. $$
+-However, for distinct even generators or by evaluating $f(Z_0) \in \mathfrak{g}_{\bar{1}}$:
+-$$ f(Z_0) = \sum_{\sigma, k, s} c_{\sigma, k, s} F_{\sigma, k, s}. $$
+-We know $[Z_0, F_{\sigma, k, s}] = \sigma F_{\sigma, k, s}$. Thus $[Z_0, f(Z_0)] = \sum_{\sigma, k, s} \sigma c_{\sigma, k, s} F_{\sigma, k, s}$.
+-
+-### Step 2: Constraint from $(\delta f)(Z_0, F_{\sigma, k, s})$
+-Evaluate $(\delta f)(Z_0, F_{\sigma, k, s})$ for $Z_0 \in \mathfrak{g}_{\bar{0}}$ and $F_{\sigma, k, s} \in \mathfrak{g}_{\bar{1}}$:
+-$$ (\delta f)(Z_0, F_{\sigma, k, s}) = [Z_0, f(F_{\sigma, k, s})] - [F_{\sigma, k, s}, f(Z_0)] - f([Z_0, F_{\sigma, k, s}]). $$
+-Using $[Z_0, F_{\sigma, k, s}] = \sigma F_{\sigma, k, s}$ and $f(Z_0) = 0$ (from $Z_0$-invariance of $f$):
+-$$ (\delta f)(Z_0, F_{\sigma, k, s}) = [Z_0, f(F_{\sigma, k, s})] - \sigma f(F_{\sigma, k, s}). $$
+-
+-Since $f(F_{\sigma, k, s}) \in \mathfrak{g}_{\bar{0}}$, write $f(F_{\sigma, k, s}) = c_0 Z_0 + M_{\mathfrak{sp}(2n)}$.
+-Recall $[Z_0, Z_0] = 0$ and $[Z_0, \mathfrak{sp}(2n)] = 0$. Hence $[Z_0, f(F_{\sigma, k, s})] = 0$.
+-
+-Therefore:
+-$$ (\delta f)(Z_0, F_{\sigma, k, s}) = - \sigma f(F_{\sigma, k, s}) = - \sigma (c_0 Z_0 + M_{\mathfrak{sp}(2n)}). $$
+-
+-Comparing this with $\gamma_{gb}(Z_0, F_{\sigma, k, s}) = \sigma \mathrm{gb}_{\sigma, k, s} Z_0$, we obtain the mandatory condition:
+-$$ f(F_{\sigma, k, s}) = - \mathrm{gb}_{\sigma, k, s} Z_0. $$
+-
+-### Step 3: Impossibility in the Odd-Odd Sector
+-Now substitute $f(F_{\sigma, k, s}) = - \mathrm{gb}_{\sigma, k, s} Z_0$ into $(\delta f)(F_{\sigma_1, i, s_1}, F_{\sigma_2, j, s_2})$:
+-$$ (\delta f)(F_1, F_2) = - [F_1, f(F_2)] - [F_2, f(F_1)] - f([F_1, F_2]_0). $$
+-Using $f(F_1) = - \mathrm{gb}_{\sigma_1, i, s_1} Z_0$ and $[F_{\sigma, k, s}, Z_0] = -\sigma F_{\sigma, k, s}$:
+-$$ (\delta f)(F_1, F_2) = - \sigma_1 \mathrm{gb}_{\sigma_2, j, s_2} F_{\sigma_1, i, s_1} - \sigma_2 \mathrm{gb}_{\sigma_1, i, s_1} F_{\sigma_2, j, s_2} - f([F_1, F_2]_0). $$
+-
+-Compare this expression with the actual deformed bracket $\gamma_{gb}(F_1, F_2)$:
+-$$ \gamma_{gb}(F_1, F_2) = - \mathrm{gb}_{\sigma_2, i, s_1} F_{\sigma_1, j, s_2} - \mathrm{gb}_{\sigma_1, j, s_2} F_{\sigma_2, i, s_1}. $$
+-
+-Notice the structural index discrepancy:
+-- In $\gamma_{gb}$, the parameter $\mathrm{gb}_{\sigma_2, i, s_1}$ pairs the oscillator index $i$ of $F_1$ with the state index $j$ of $F_2$ ($F_{\sigma_1, j, s_2}$).
+-- In $(\delta f)$, the parameter $\mathrm{gb}_{\sigma_1, i, s_1}$ is attached to $F_{\sigma_2, j, s_2}$.
+-
+-These two tensor representations in $\mathfrak{g}_{\bar{1}}$ are linearly independent for all $i \neq j$ or $s_1 \neq s_2$. Thus:
+-$$ \gamma_{gb}(F_1, F_2) = (\delta f)(F_1, F_2) \iff \mathrm{gb}_{\sigma, j, s} = 0 \quad \forall \sigma, j, s. $$
+-This completes the analytical proof. $\blacksquare$
++## 4. Analysis of the Triviality System $\gamma_{gb} = \delta f$
++
++### 4.1 Evaluation of Coboundary Relations and Examination of General Proof Gaps
++
++Let us carefully analyze the conditions required for $\gamma_{gb} = \delta f$:
++
++1. **Action on $(Z_0, Z_0)$**:
++   $$ (\delta f)(Z_0, Z_0) = [Z_0, f(Z_0)] - [Z_0, f(Z_0)] - f([Z_0, Z_0]) = 0. $$
++   Since $\gamma_{gb}(Z_0, Z_0) = 0$, this yields $0 = 0$, imposing **no condition** on $f(Z_0)$.
++   In particular, $f(Z_0) \in \mathfrak{g}_{\bar{1}}$ is not generally zero. Indeed, in the kernel of the coboundary operator (corresponding to inner derivations $\mathrm{ad}_u$ for odd elements $u \in \mathfrak{g}_{\bar{1}}$), $f(Z_0) = [Z_0, u] \neq 0$ whenever $u \neq 0$. Therefore, assuming $f(Z_0) = 0$ *a priori* is unjustified.
++
++2. **Action on $(Z_0, F_{\sigma, k, s})$**:
++   For $X = Z_0 \in \mathfrak{g}_{\bar{0}}$ and $Y = F_{\sigma, k, s} \in \mathfrak{g}_{\bar{1}}$:
++   $$ (\delta f)(Z_0, F_{\sigma, k, s}) = [Z_0, f(F_{\sigma, k, s})] - [F_{\sigma, k, s}, f(Z_0)] - f([Z_0, F_{\sigma, k, s}]). $$
++   Since $f(F_{\sigma, k, s}) \in \mathfrak{g}_{\bar{0}} = \mathbb{C}Z_0 \oplus \mathfrak{sp}(2n)$ and $[Z_0, \mathfrak{g}_{\bar{0}}] = 0$, the first term vanishes: $[Z_0, f(F_{\sigma, k, s})] = 0$.
++   Using $[Z_0, F_{\sigma, k, s}] = \sigma F_{\sigma, k, s}$, the equation becomes:
++   $$ (\delta f)(Z_0, F_{\sigma, k, s}) = - [F_{\sigma, k, s}, f(Z_0)] - \sigma f(F_{\sigma, k, s}). $$
++   Comparing this with $\gamma_{gb}(Z_0, F_{\sigma, k, s}) = \sigma \mathrm{gb}_{\sigma, k, s} Z_0$, we see that $f(F_{\sigma, k, s})$ is coupled to $[F_{\sigma, k, s}, f(Z_0)]$, which produces elements in both $\mathbb{C}Z_0$ and $\mathfrak{sp}(2n)$.
++
++3. **Evaluation of the Odd-Odd Sector and the $-f([F_1, F_2]_0)$ Term**:
++   For two odd generators $F_1, F_2 \in \mathfrak{g}_{\bar{1}}$:
++   $$ (\delta f)(F_1, F_2) = - [F_1, f(F_2)] - [F_2, f(F_1)] - f([F_1, F_2]_0). $$
++   The bracket $[F_1, F_2]_0 = \{F_1, F_2\}$ is the undeformed anticommutator in $\mathfrak{g}$:
++   - If $F_1 = F_{+, i, s_1}$ and $F_2 = F_{-, j, s_2}$, then $[F_1, F_2]_0 = \omega_{s_1 s_2} \delta_{ij} Z_0 + B_{i, j}^{s_1 s_2} \in \mathfrak{g}_{\bar{0}}$, so $-f([F_1, F_2]_0) = - \omega_{s_1 s_2} \delta_{ij} f(Z_0) - f(B_{i, j}^{s_1 s_2}) \in \mathfrak{g}_{\bar{1}}$.
++   - If $F_1, F_2$ have the same fermionic sign $\sigma_1 = \sigma_2 = +$ (or both $-$), the undeformed bracket $[F_1, F_2]_0$ is strictly **zero**:
++     $$ [F_{+, i, s_1}, F_{+, j, s_2}]_0 = 0. $$
++   In that specific sector ($\sigma_1 = \sigma_2 = \sigma$), the bracket term vanishes identically:
++   $$ -f([F_1, F_2]_0) = 0. $$
++   Then:
++   $$ (\delta f)(F_{\sigma, i, s_1}, F_{\sigma, j, s_2}) = - [F_{\sigma, i, s_1}, f(F_{\sigma, j, s_2})] - [F_{\sigma, j, s_2}, f(F_{\sigma, i, s_1})]. $$
++
++### 4.2 Structural Mechanism for Triviality Obstruction
++While $f(Z_0)$ does not vanish in general, the linear equations for the coboundary system form an overdetermined linear system $M_f f = -M_{gb} gb$. 
++For each deformation parameter $\mathrm{gb}_{\sigma, j, s}$, one can isolate specific linear combinations of coboundary conditions that eliminate the components of $f$.
++
++For example, consider the following triple of commutator conditions for $j \in \{1,\ldots,n\}$:
++1. $(Z_0, B_{j+, j+}) \to F_{-, j, +}$:  
++   $(\delta f)(Z_0, B_{j+, j+}) = [Z_0, f(B_{j+, j+})] - f([Z_0, B_{j+, j+}]) = [Z_0, f(B_{j+, j+})]$ since $[Z_0, B] = 0$.
++2. $(Z_0, F_{+, j, +}) \to Z_0$:  
++   $(\delta f)(Z_0, F_{+, j, +}) = -[F_{+, j, +}, f(Z_0)] - f(F_{+, j, +})$.
++3. $(B_{j+, j+}, F_{+, j, -}) \to Z_0$:  
++   $(\delta f)(B_{j+, j+}, F_{+, j, -}) = [B_{j+, j+}, f(F_{+, j, -})] - f([B_{j+, j+}, F_{+, j, -}])$.
++
++In the quotient space modulo the image of $\delta$ (the cokernel $P_{\mathrm{cokernel}} = \mathrm{Nullspace}(M_f^T)$), these relations constrain $\mathrm{gb}_{\sigma, j, s}$. 
++For $n=1, 2, 3$, exact symbolic computation proves that every parameter $\mathrm{gb}_{\sigma, j, s}$ is independently obstructed by full-rank constraint equations. For general $n$, the uniformity of the root system and $\mathfrak{sp}(2n)$ representation theory strongly supports Conjecture 1.
+ 
+ ---
+ 
+ ## 5. Computational Verification & Data Artifacts
+ 
+-To verify Theorem 1 with complete empirical rigor, we constructed a symbolic algebra engine in Python (`solve_triviality.py`) that computes the exact structure matrices $M_f$ and $M_{gb}$ for $n=1, 2, 3$.
++To verify Theorem 1 with complete mathematical and computational rigor, we constructed a symbolic algebra engine in Python ([`solve_triviality.py`](../../solve_triviality.py)) that computes the exact structure matrices $M_f$ and $M_{gb}$ for $n=1, 2, 3$.
+ 
+ The linear system $\gamma_{gb} - \delta f = 0$ is expressed as:
+ $$ M_f \cdot f = - M_{gb} \cdot gb. $$
+-Triviality holds if and only if $M_{gb} \cdot gb \in \mathrm{Range}(M_f)$, which requires $P_{\text{cokernel}} \cdot M_{gb} \cdot gb = 0$, where $P_{\text{cokernel}} = \mathrm{Nullspace}(M_f^T)$.
++Triviality holds if and only if $M_{gb} \cdot gb \in \mathrm{Range}(M_f)$, which requires:
++$$ P_{\text{cokernel}} \cdot M_{gb} \cdot gb = 0, \quad \text{where } P_{\text{cokernel}} = \mathrm{Nullspace}(M_f^T). $$
+ 
+ ### Summary of Computational Results
+ 
+-| $n$ | Algebra | Superdimension | $\dim(gb)$ | $\dim(f)$ | Num Equations | $\mathrm{Rank}(M_f)$ | $\mathrm{Rank}(P_K M_{gb})$ | Triviality Subspace Dim |
+-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+-| **1** | $C(2) = \mathfrak{osp}(2\|2)$ | $(4 \mid 4)$ | 4 | 32 | 112 | 28 | **4** | **0** |
+-| **2** | $C(3) = \mathfrak{osp}(2\|4)$ | $(11 \mid 8)$ | 8 | 176 | 1400 | 168 | **8** | **0** |
+-| **3** | $C(4) = \mathfrak{osp}(2\|6)$ | $(22 \mid 12)$ | 12 | 528 | 6960 | 516 | **12** | **0** |
++| $n$ | Algebra | Superdimension | $\dim(gb)$ | $\dim(f)$ | Num Equations | $\mathrm{Rank}(M_f)$ | $\mathrm{Rank}([M_f \mid M_{gb}])$ | $\mathrm{Rank}(P_{\text{cokernel}} M_{gb})$ | Triviality Subspace Dim |
++|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
++| **1** | $C(2) = \mathfrak{osp}(2\|2)$ | $(4 \mid 4)$ | 4 | 32 | 112 | 28 | **32** | **4** | **0** |
++| **2** | $C(3) = \mathfrak{osp}(2\|4)$ | $(11 \mid 8)$ | 8 | 176 | 1400 | 168 | **176** | **8** | **0** |
++| **3** | $C(4) = \mathfrak{osp}(2\|6)$ | $(22 \mid 12)$ | 12 | 528 | 6960 | 516 | **528** | **12** | **0** |
+ 
+-### Key Takeaway from Data
+-For every $n \in \{1, 2, 3\}$, $\mathrm{Rank}(P_{\text{cokernel}} M_{gb}) = 4n = \dim(gb)$.  
+-This demonstrates that $P_{\text{cokernel}} M_{gb}$ has **full column rank**, proving computationally that the space of trivial $gb$ parameters is **strictly $\{0\}$**.
++### Mathematical Consistency of Ranks
++For each $n \in \{1, 2, 3\}$:
++- The augmented matrix $[M_f \mid M_{gb}]$ satisfies:
++  $$ \mathrm{Rank}([M_f \mid M_{gb}]) = \mathrm{Rank}(M_f) + \mathrm{Rank}(P_{\text{cokernel}} M_{gb}) = \mathrm{Rank}(M_f) + 4n. $$
++- Specifically:
++  - For $n=1$: $\mathrm{Rank}(M_f) = 28$, $\mathrm{Rank}([M_f \mid M_{gb}]) = 32 = 28 + 4$.
++  - For $n=2$: $\mathrm{Rank}(M_f) = 168$, $\mathrm{Rank}([M_f \mid M_{gb}]) = 176 = 168 + 8$.
++  - For $n=3$: $\mathrm{Rank}(M_f) = 516$, $\mathrm{Rank}([M_f \mid M_{gb}]) = 528 = 516 + 12$.
++- The constraint matrix $P_{\text{cokernel}} M_{gb}$ has **full column rank** $\dim(gb) = 4n$, proving rigorously that the kernel of $P_{\text{cokernel}} M_{gb}$ is strictly $\{0\}$. Thus, no non-zero deformation parameter $\mathrm{gb}$ is coboundary-equivalent to zero.
+ 
+-The exact output artifact is committed in [`verification_results.json`](file://<home>/notebook/git/thm01-R-batch/thm01-R-gemini36f-b13-C/verification_results.json).
++The exact JSON artifact is recorded in [`verification_results.json`](../../verification_results.json).
+ 
+ ---
+ 
+ ## 6. Deliverables & Repository State
+ 
+-1. **Analytical Proof File**: `docs/issues/mathematical_proof.md` (this file).
+-2. **Computational Verification Script**: [`solve_triviality.py`](file://<home>/notebook/git/thm01-R-batch/thm01-R-gemini36f-b13-C/solve_triviality.py).
+-3. **Structured Verification Data**: [`verification_results.json`](file://<home>/notebook/git/thm01-R-batch/thm01-R-gemini36f-b13-C/verification_results.json).
++1. **Analytical Proof & Scope Document**: `docs/issues/mathematical_proof.md` (this file).
++2. **Computational Verification Script**: [`solve_triviality.py`](../../solve_triviality.py).
++3. **Structured Verification Data**: [`verification_results.json`](../../verification_results.json).
+ 
+ ---
+ *End of Report.*
++
+diff --git a/solve_triviality.py b/solve_triviality.py
+index 8e4d890..768796d 100644
+--- a/solve_triviality.py
++++ b/solve_triviality.py
+@@ -300,25 +300,27 @@ def analyze_cn1(n):
+     print(f"Matrix shapes: M_f {M_f_mat.shape}, M_gb {M_gb_mat.shape}")
+     
+     rank_M_f = M_f_mat.rank()
+-    aug_mat = M_f_mat.hstack(M_gb_mat)
+-    rank_aug = aug_mat.rank()
+-    
+-    print(f"Rank(M_f) = {rank_M_f}")
+-    print(f"Rank([M_f | M_gb]) = {rank_aug}")
+     
+     left_null = M_f_mat.T.nullspace()
+     print(f"Left nullspace dim: {len(left_null)}")
+     
+     if len(left_null) == 0:
+         dim_trivial_gb = num_gb
++        rank_gb_constraints = 0
+     else:
+         left_null_mat = sp.Matrix([v.T for v in left_null])
+         gb_constraints = left_null_mat * M_gb_mat
+-        gb_constraints_rank = gb_constraints.rank()
++        rank_gb_constraints = gb_constraints.rank()
+         gb_nullspace = gb_constraints.nullspace()
+         dim_trivial_gb = len(gb_nullspace)
+-        print(f"GB Constraint Matrix Rank: {gb_constraints_rank}")
++        print(f"GB Constraint Matrix Rank: {rank_gb_constraints}")
+         print(f"Dimension of trivial gb parameter space: {dim_trivial_gb} / {num_gb}")
++
++    aug_mat = sp.Matrix.hstack(M_f_mat, M_gb_mat)
++    rank_aug = aug_mat.rank()
++    
++    print(f"Rank(M_f) = {rank_M_f}")
++    print(f"Rank([M_f | M_gb]) = {rank_aug}")
+         
+     print(f"Total time for n={n}: {time.time()-t0:.2f}s")
+     
+@@ -330,6 +332,7 @@ def analyze_cn1(n):
+         "num_eqs": len(equations),
+         "rank_M_f": int(rank_M_f),
+         "rank_aug": int(rank_aug),
++        "rank_gb_constraints": int(rank_gb_constraints),
+         "dim_trivial_gb": int(dim_trivial_gb)
+     }
+ 
+diff --git a/verification_results.json b/verification_results.json
+index be09da4..4523353 100644
+--- a/verification_results.json
++++ b/verification_results.json
+@@ -6,7 +6,8 @@
+     "num_f": 32,
+     "num_eqs": 112,
+     "rank_M_f": 28,
+-    "rank_aug": 4,
++    "rank_aug": 32,
++    "rank_gb_constraints": 4,
+     "dim_trivial_gb": 0
+   },
+   {
+@@ -16,7 +17,8 @@
+     "num_f": 176,
+     "num_eqs": 1400,
+     "rank_M_f": 168,
+-    "rank_aug": 8,
++    "rank_aug": 176,
++    "rank_gb_constraints": 8,
+     "dim_trivial_gb": 0
+   },
+   {
+@@ -26,7 +28,8 @@
+     "num_f": 528,
+     "num_eqs": 6960,
+     "rank_M_f": 516,
+-    "rank_aug": 12,
++    "rank_aug": 528,
++    "rank_gb_constraints": 12,
+     "dim_trivial_gb": 0
+   }
+ ]
+\ No newline at end of file
+-- 
+2.54.0 (Apple Git-157)
+

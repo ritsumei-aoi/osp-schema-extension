@@ -1,0 +1,12 @@
+Regarding your proposals for Issue I05-1:
+
+1. gb_matrix Parameter Definitions and Labels:
+   - Approved. The 2 x 2n parameter matrix with 4n odd parameters (gb_a1p_bjp, gb_a1p_bjm, gb_a1m_bjp, gb_a1m_bjm for j=1,...,n) is mathematically sound and strictly conforms to Frappat et al. oscillator realizations and `docs/math/C_inhomogeneous_definition.md`.
+
+2. Sign Convention Selection:
+   - Option A (Direct Inhomogeneous Commutator Convention) is selected. Applying $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$ directly adheres to Eq. (22) of `docs/math/C_inhomogeneous_definition.md` and maintains exact consistency with the defined normal-ordering derivation.
+
+3. Schema 2 inhomogeneous_deformation Field Structure:
+   - Approved. Extending Schema 1 with the top-level `inhomogeneous_deformation` field containing `parameters`, `exchange_relations`, and `gamma_constants` seamlessly integrates with the 4-layer schema architecture.
+
+You may now proceed to implement the gamma computation module, generate the Schema 2 JSON files (`data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`), verify consistency with Schema 1, and complete Issue I05 following the Phase 4 completion procedure in `handover/workflow.md`.

@@ -1,0 +1,12 @@
+Regarding your proposals for Issue I06-1:
+
+1. Representative Sign Profile Selection:
+   - Option 1 (`all_plus_one`) is selected. Setting all 4n parameters to +1 provides the canonical, maximally symmetric benchmark choice directly adhering to Requirement 1 of Issue I06-1.
+
+2. File Naming Convention:
+   - Approved. Generating `data/C_{n}_evaluated.json` for n=1, 2, 3 strictly complies with Requirement 2.
+
+3. Schema 3 Field Structure:
+   - Approved. Extending Schema 1 with the `evaluated_deformation` field containing `profile_name`, `parameters_assignment`, `evaluated_gamma_constants`, and `statistics` is mathematically clear and conforms to the 4-layer schema architecture.
+
+You may now proceed to implement the evaluation/substitution script, generate `data/C_1_evaluated.json`, `data/C_2_evaluated.json`, and `data/C_3_evaluated.json`, verify consistency with Schema 2, and complete Issue I06 following the Phase 4 completion procedure in `handover/workflow.md`.

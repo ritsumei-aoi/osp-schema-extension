@@ -1,0 +1,189 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The session is a structured 8-step research task in `<home>/notebook/git/thm01-R/thm01-R-sonnet46-F` extending the B(0,n) JSON schema system to C(n+1) = osp(2|2n). The user is running the steps one at a time, each with explicit "Human Approval Required" gates. The overall goal is to produce a complete Schema 1–4 pipeline for C(n+1).
+
+Completed steps:
+- **Step 1 (I01-1)**: Basis, PBW ordering (Option A: ε-sign-first), generator labels — approved; wrote `handover/notation.md`
+- **Step 2 (I02-1)**: Schema 1 field definitions — all approved; wrote `docs/json_schema_specification.md`
+- **Step 3 (I03-1)**: Structure constant generator — implemented and tested; JSON files generated after approval
+- **Step 4 (I04-1)**: Super Jacobi verification — all pass; approved
+
+Active step:
+- **Step 5 (I05-1)**: Schema 2 (gamma structure) — sign convention approved (Option A); assistant must now write `src/C_gamma.py` and generate `data/C_{1,2,3}_gamma.json`, then **stop for approval**.
+
+Global constraints (verbatim):
+- "Do NOT access files outside this directory"
+- "do not use external web access"
+- Each step's CRITICAL RULE: Do NOT generate final outputs until human explicitly approves
+
+2. Key Technical Concepts:
+- C(n+1) = osp(2|2n) Lie superalgebra structure constants
+- Oscillator realization: standard fermionic pair (a_1^±, CAR) + bosonic oscillators (b_k^±, CCR)
+- PBW normal-ordering via recursive CAR/CCR reduction
+- Graded bracket [X,Y} = XY − (−1)^{p(X)p(Y)} YX
+- Graded antisymmetry: [Y,X} = −(−1)^{p(X)p(Y)} [X,Y}
+- Super Jacobi identity: (−1)^{px·pz}[X,[Y,Z]] + (−1)^{py·px}[Y,[Z,X]] + (−1)^{pz·py}[Z,[X,Y]] = 0
+- Inhomogeneous deformation (gb matrix): [b_j^s, a_1^σ]_γ = −gb_{σ,j,s}·κ
+- Gamma 2-cocycle: [X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)
+- Schema v5.0 4-layer architecture (structure, gamma, evaluated, coboundary)
+
+3. Files and Code Sections:
+
+**`docs/math/README.md`** (read-only reference):
+Lists 5 math reference documents for C(n+1).
+
+**`docs/math/Cn1_definition.md`** (read-only reference):
+- Root system: Δ_0̄ = {±2δ_k} ∪ {±(δ_i±δ_j)}, Δ_1̄ = {±ε±δ_k}
+- Oscillator realization: H_1 = a_1^+a_1^- + b_1^+b_1^-, H_k (2≤k≤n) = b_{k-1}^+b_{k-1}^- − b_k^+b_k^-, H_{n+1} = −b_n^+b_n^- − 1/2
+- Superdimension: (2n²+n+1)|4n
+
+**`docs/math/C_inhomogeneous_definition.md`** (read-only reference):
+- gb matrix with 4n parameters: {gb_{a_1^+,b_j^+}, gb_{a_1^+,b_j^-}, gb_{a_1^-,b_j^+}, gb_{a_1^-,b_j^-} | j=1,...,n}
+- Deformed bracket: [b_j^s, a_1^σ] = −gb_{σ,j,s}·κ
+- κ is odd (parity 1), gb parameters have parity 1
+
+**`docs/math/B0n_schema_v5.md`** (read-only reference):
+Base schema structure; defines 4-layer architecture and field conventions.
+
+**`handover/notation.md`** (created in Step 1):
+Approved conventions for C(n+1): generator labels, PBW ordering, basis lists for C(2), C(3), C(4).
+
+**`docs/json_schema_specification.md`** (created in Step 2):
+Full Schema 1 specification including all field definitions, dimension formulas, generator realization, compatibility table vs B(0,n).
+
+**`src/C_generators.py`** (created in Step 3):
+
+Key functions:
+```python
+def _sort_mono(mono: tuple) -> dict:
+    """Normal-order using CAR/CCR. Returns {sorted_tuple: Fraction}."""
+    # Fermionic (idx<2): {a_1_m, a_1_p}=1 → swap_sign=-1, extra_val=1
+    # Bosonic conjugate (a==b+1, a odd, b even): [b_k_m,b_k_p]=1 → swap_sign=1, extra_val=1
+    # Mixed: swap_sign=1, extra_val=0
+    # Fermionic self-product → return {}
+
+def bracket(X: dict, Y: dict, px: int, py: int) -> dict:
+    """[X,Y} = XY - (-1)^{px*py} YX"""
+
+def express(poly: dict, n: int, gens: dict) -> dict:
+    """Decompose oscillator polynomial into Lie algebra basis."""
+    # Non-Cartan: single monomial lookup
+    # Cartan: solve triangular system via _solve_cartan
+
+def _solve_cartan(b: list, n: int) -> list:
+    """Solve for H_1,...,H_{n+1} coefficients.
+    c[0]=b[0]; c[N-1]=-2*b[N]; c[1]=b[1]-c[0]; c[k]=b[k]+c[k-1] for k=2..N-2"""
+
+def build_generators(n: int):
+    """Returns (gens, parity, basis) for C(n+1).
+    Oscillator encoding: a_1_p→0, a_1_m→1, b_k_p→2k, b_k_m→2k+1"""
+
+def build_schema(n: int) -> dict:
+    """Builds full Schema 1 JSON. Emits both (X,Y) and (Y,X) pairs
+    using [Y,X} = -(-1)^{px*py} [X,Y}"""
+```
+
+**`tests/test_C_generators.py`** (created in Step 3):
+51 tests covering: dimensions, parity, Cartan brackets=0, specific eigenvalues ([H_1,E_eps1_del1_pp]=2E, [H_{n+1},E_2del{n}_p]=-2E), graded antisymmetry, Jacobi identity, both-ordering presence, reverse-pair sign rule.
+
+**`data/C_1_structure.json`** (generated after approval):
+C(2)=osp(2|2), 40 structure constant entries.
+
+**`data/C_2_structure.json`** (generated after approval):
+C(3)=osp(2|4), 198 entries.
+
+**`data/C_3_structure.json`** (generated after approval):
+C(4)=osp(2|6), 528 entries.
+
+**`src/verify_C_structure.py`** (created in Step 4):
+```python
+def check_antisymmetry(basis, parity, sc):
+    # c_XY^Z + (-1)^{px*py} * c_YX^Z == 0 for all X,Y,Z
+
+def jacobi_sum(x, y, z, parity, sc):
+    # (-1)^{px*pz}[X,[Y,Z]] + (-1)^{py*px}[Y,[Z,X]] + (-1)^{pz*py}[Z,[X,Y]]
+    # Uses nested bracket computation from stored SC table
+
+def check_jacobi(basis, parity, sc):
+    # All unordered triples {i<=j<=k}
+```
+
+4. Errors and Fixes:
+
+**Rule violation (Step 3)**: Generated JSON files before human approval by running `main()` during testing.
+- Fix: Deleted all three JSON files, explained cause, limited subsequent execution to test suite only, halted for approval.
+- Human feedback: "acknowledged... limiting your execution to the test suite"
+
+**Missing reverse pairs bug (Step 3)**: Only (X,Y) pairs stored, not (Y,X).
+- Fix: Modified `build_schema` loop to emit reverse pair using sign = −(−1)^{px·py}:
+```python
+if i != j:
+    sign = Fraction((-1) ** (par[xi] * par[xj]))
+    for z, c in sorted(coeffs.items()):
+        rev_c = -sign * c
+        if rev_c:
+            sc.append({"X": xj, "Y": xi, "Z": z, "coeff": _frac_str(rev_c), "sign_rule": "graded"})
+```
+- Added tests: `test_both_orderings_present` and `test_reverse_pair_sign`
+
+5. Problem Solving:
+
+**Normal-ordering correctness**: Verified by computing [H_1,E_eps1_del1_pm]=0 (isotropic root), [H_1,E_eps1_del1_pp]=2E (confirmed algebraically), [E_{ε+δ_1},E_{-ε-δ_1}]=-H_1-2H_2 (consistent with isotropic root theory).
+
+**Cartan decomposition**: The Cartan subalgebra has n+1 generators acting on n+2 monomials (n+1 number operators + constant), giving a triangular over-determined system solved analytically.
+
+**Verification**: All 7140 Jacobi triples and 1156 antisymmetry pairs pass for n=3 using exact Fraction arithmetic.
+
+**Gamma computation (Step 5, not yet implemented)**: Identified that gamma coefficients are linear in gb parameters. Example: γ(H_1, E_{ε+δ_1}) = −gb_{+,1,-}·E_{2δ_1}.
+
+6. All User Messages:
+
+- Initial setup: "I will give you a sequence of eight tasks in this chat, one at a time... Reply 'Ready' after you have read docs/math/README.md and the documents it lists."
+- Step 1: "[Step 1 of 8] Issue I01-1... **CRITICAL RULE**: Do NOT modify any files until the human explicitly selects an option."
+- Step 1 approval: "1. Generator Label Conventions: Approved... 3. PBW Ordering: We select Option A... You may now proceed to update `handover/notation.md`..."
+- Step 2: "[Step 2 of 8] Issue I02-1... **CRITICAL RULE**: Do NOT modify `json_schema_specification.md` until the human explicitly approves."
+- Step 2 approval: "1. Top-level key order: Approved... 10. Compatibility Summary: Approved. You may now proceed to update `docs/json_schema_specification.md`..."
+- Step 3: "[Step 3 of 8] Issue I03-1... **CRITICAL RULE**: Do NOT finalize the code or generate the final JSON files until the human explicitly approves the implementation and test results."
+- Step 3 feedback (rule violation): "1. Rule Violation: You generated the final JSON files in `data/` before receiving explicit human approval... Please delete the generated JSON files... 2. Structure Constants Bug: Your implementation only records structure constants for pairs (X, Y) where X appears before or equal to Y... The B(0,n) schema format requires both (X, Y) and (Y, X) pairs to be explicitly recorded."
+- Step 3 re-approval: "1. Rule Violation Fix: Acknowledged... 2. Structure Constants Bug Fix: Approved... You may now run `main()` to generate the JSON files and proceed to Step 4."
+- Step 4: "[Step 4 of 8] Issue I04-1... **CRITICAL RULE**: Do NOT proceed until the human explicitly approves the verification results."
+- Step 4 approval: "1. Verification Report: Approved... You may now proceed to Step 5."
+- Step 5: "[Step 5 of 8] Issue I05-1... **CRITICAL RULE**: Do NOT write Schema 2 JSON until the human approves."
+- Step 5 approval: "1. gb matrix layout: Approved... 2. Sign convention: Please proceed with Option A... You may now write the gamma computation script, generate the Schema 2 JSON files for n=1, 2, 3, and stop again for approval of the implementation. CRITICAL: Respond with TEXT ONLY. Do NOT call any tools."
+
+7. Pending Tasks:
+
+- **Step 5 (active)**: Write `src/C_gamma.py` implementing gamma coefficient computation using Option A sign convention ([b_j^s, a_1^σ] = −gb_{σ,j,s}·κ), generate `data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`, then STOP for human approval of implementation.
+- **Steps 6, 7, 8**: Not yet described by user.
+
+8. Current Work:
+
+The assistant was about to implement `src/C_gamma.py` for Step 5, immediately after receiving approval for:
+- gb matrix layout: 2×2n, rows = [a_1_p, a_1_m], cols = [b_1_p, b_1_m, ..., b_n_p, b_n_m]
+- Sign convention Option A: [b_j^s, a_1^σ]_γ = −gb_{σ,j,s}·κ
+- Gamma entry format: {"X":..., "Y":..., "Z":..., "gb_terms": [{"gb": "gb_a1p_b1m", "scalar": "-1"}]}
+- Schema 2 structure with `inhomogeneous_deformation` top-level key
+- File naming: `C_{n}_gamma.json`
+
+The gamma computation involves modified normal-ordering: whenever a boson b_j^s (index 2j or 2j+1) is commuted past a fermion a_1^σ (index 0 or 1) during `_sort_mono`, in the deformed theory this yields an extra term −gb_{σ,j,s}·κ. The gamma coefficient for each generator pair (X_a, X_b) is the κ-coefficient expressed as a linear combination of gb parameters times generator coefficients.
+
+However, the current turn is a summarization request with the instruction to respond TEXT ONLY and call NO tools.
+
+9. Optional Next Step:
+
+The next step is to implement the gamma computation script and generate Schema 2 JSON files, then stop for approval. This is directly from the user's most recent approval:
+
+"You may now write the gamma computation script, generate the Schema 2 JSON files for n=1, 2, 3, and stop again for approval of the implementation."
+
+The script `src/C_gamma.py` should:
+1. Import `build_generators` from `src/C_generators.py`
+2. Implement a deformation-aware normal-ordering that tracks the κ-coefficient as a dict mapping gb-label to Fraction
+3. For each generator pair (X_a, X_b), compute the κ-coefficient of [X_a, X_b]_γ and express it as a linear combination of generators
+4. Output `data/C_{n}_gamma.json` for n=1,2,3
+5. Stop (do NOT run verification) until human approves
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-F/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-F/84e42fc6-71ea-45e0-84f9-58d489a5c11b.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

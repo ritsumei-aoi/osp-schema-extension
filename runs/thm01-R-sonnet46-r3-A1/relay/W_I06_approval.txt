@@ -1,0 +1,12 @@
+1. Q1: gb sign profile:
+Approved with Profile A (All-Ones) selected. Setting all 4n parameters gb_{a1sigma, b_k, s} = 1 activates all deformation directions with equal weight, avoids artificial cancellations, produces exact rational (integer) coefficients, and serves as the standard reference benchmark across n=1, 2, 3 (file suffix: all1).
+
+2. Q2: Schema 3 JSON format:
+Approved. The proposed schema format—featuring top-level metadata, gb_profile with explicit assignments, evaluated_brackets with separated g_part and kappa_part lists (including central element K where applicable), and exact string rational coefficients—strictly adheres to the Layer 3 design and the v5.0 specification. The file naming convention `data/C_{n}_evaluated_all1.json` is appropriate.
+
+3. Next Steps:
+Approved. You may proceed to:
+  (1) Implement `src/evaluate_gamma.py`;
+  (2) Generate `data/C_{n}_evaluated_all1.json` for n=1, 2, 3;
+  (3) Verify data consistency with Schema 1 and Schema 2;
+  (4) Complete Phase 4 of `handover/workflow.md`.

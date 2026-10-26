@@ -1,0 +1,199 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The user is running a file-based issue system with an AI execution agent on branch `study/thm01-R-sonnet46-r3-A1` in `<home>/notebook/git/thm01-R/thm01-R-sonnet46-r3-A1`. The project extends the B(0,n) = osp(1|2n) JSON schema to C(n+1) = osp(2|2n).
+
+**CRITICAL RULE (system-prompt level, must be preserved verbatim)**: "When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+**AI Trust Policy (from ai_trust_policy.md)**:
+- Do NOT use `git reset --hard` or `git push --force`
+- Do NOT modify or delete `.env`, `.git`, or system config files
+- Do NOT access external network resources unless explicitly instructed
+- Halt and use `docs/issues/issue_needs_clarification.md` for unresolvable mathematical ambiguity
+
+Three completed/in-progress issues:
+- **I01-1** (completed): Define even/odd bases, PBW ordering, generator labels for C(n+1), n=1,2,3. Human selected Option A PBW ordering.
+- **I02-1** (completed): Specify Schema 1 fields for C(n+1) in `docs/json_schema_specification.md`. Human approved all 12 fields.
+- **I03-1** (in progress, awaiting human approval): Implement Python structure constant generator; output `data/C_{n}_structure.json` for n=1,2,3. Issue mandates: "Do NOT commit the code or generate the final JSON files, and do NOT proceed to Phase 4 until the human explicitly approves the implementation and test results."
+
+2. Key Technical Concepts:
+
+- **C(n+1) = osp(2|2n)**: Lie superalgebra with fermionic direction ε and bosonic directions δ₁,…,δₙ
+- **Root system**: Even Δ₀ = {±2δ_k, ±(δᵢ±δⱼ)}, Odd Δ₁ = {±ε±δ_k}; dim = (2n²+n+1)|4n
+- **Oscillator realization**: Standard fermionic pair a₁⁺, a₁⁻ (CAR: {a₁⁻, a₁⁺}=1) + bosonic b_k⁺, b_k⁻ (CCR: [b_k⁻, b_l⁺]=δ_{kl})
+- **PBW ordering (Option A, approved)**: `κ < [odd: pp→pm→mp→mm by k] < [even: Cartans, pos, neg, mixed]`
+- **Oscillator word PBW order**: a_1_p < a_1_m < b_1_p < b_1_m < b_2_p < b_2_m < ...
+- **Graded bracket**: [X, Y} = XY − (−1)^{p(X)p(Y)} YX
+- **B(0,n) Schema v5.0**: 4-layer architecture (structure, gamma, evaluated, coboundary)
+- **File naming**: C_{n}_{layer}.json where n is bosonic rank (C(2) → C_1, C(3) → C_2, C(4) → C_3)
+- **Gaussian elimination over Q**: Used in `decompose()` to express bracket results as linear combinations of basis generators
+- **Bubble sort normalization**: Algorithm to reduce oscillator words to PBW normal form
+
+3. Files and Code Sections:
+
+- **`handover/README.md`**: Specifies reading order: workflow.md → ai_trust_policy.md → notation.md → docs/math/README.md → docs/issues/issue_open.md
+
+- **`handover/workflow.md`**: Core execution cycle. Phase 4 completion script: `./handover/scripts/close_issue.sh <YYMMDD> <NN> "<LABEL>" <NEXT>`
+
+- **`handover/notation.md`** (written in I01-1, finalized):
+  - Generator label anatomy: `E_eps1_del{k}_{s_ε}{s_δ}` where `eps1`=ε-direction fermionic index 1, `del{k}`=δ_k, `{s_ε}{s_δ}`=sign pair (p=+, m=−)
+  - Odd generator table for C(n+1): E_eps1_del{k}_pp (a₁⁺ b_k⁺), _pm (a₁⁺ b_k⁻), _mp (a₁⁻ b_k⁺), _mm (a₁⁻ b_k⁻)
+  - PBW Option A documented
+  - Explicit basis lists for C(2)/C(3)/C(4)
+  - Dimension formulas: even=2n²+n+1, odd=4n, total=2n²+5n+1
+
+- **`docs/json_schema_specification.md`** (written in I02-1):
+  Complete Schema 1 v5.0 spec including all 10 fields with concrete JSON examples for n=1,2,3. Key changes from B(0,n): `family="C"`, `m=1`, `fermions` key (not `supplementary_fermion`), CAR relations, `central_elements` as top-level key with K (parity 0) and kappa (parity 1, κ²=0).
+
+- **`docs/issues/issue_open.md`** (currently reset to I03-1 template, with response section pending):
+  Issue I03-1 requires: Python generator in `src/C_generators.py`, tests in `tests/`, JSON output to `data/C_{n}_structure.json`.
+
+- **`/private/tmp/.../scratchpad/C_generators.py`** (prototype, NOT in project):
+  Full implementation with key functions:
+
+```python
+def osc_labels(n: int) -> list:
+    labels = ['a_1_p', 'a_1_m']
+    for k in range(1, n + 1):
+        labels += [f'b_{k}_p', f'b_{k}_m']
+    return labels
+
+def _comm_value(oi: str, oj: str) -> Fraction:
+    fi, fj = is_fermionic(oi), is_fermionic(oj)
+    if fi and fj:
+        if oi == 'a_1_m' and oj == 'a_1_p':
+            return Fraction(1)   # {a_1_m, a_1_p} = 1
+    elif not fi and not fj:
+        if oi.endswith('_m') and oj.endswith('_p') and oi[:-2] == oj[:-2]:
+            return Fraction(1)   # [b_k_m, b_k_p] = 1
+    return Fraction(0)
+
+def normalize(word: tuple, order: list) -> Poly:
+    idx = {lbl: i for i, lbl in enumerate(order)}
+    worklist = [(list(word), Fraction(1))]
+    result: Poly = defaultdict(Fraction)
+    while worklist:
+        w, c = worklist.pop()
+        if c == 0: continue
+        if any(w[i] == w[i+1] and is_fermionic(w[i]) for i in range(len(w)-1)):
+            continue  # fermionic repeat → 0
+        swapped = False
+        for i in range(len(w) - 1):
+            if idx[w[i]] > idx[w[i+1]]:
+                oi, oj = w[i], w[i+1]
+                sign = _swap_sign(oi, oj)
+                comm = _comm_value(oi, oj)
+                worklist.append((w[:i] + [oj, oi] + w[i+2:], c * sign))
+                if comm:
+                    worklist.append((w[:i] + w[i+2:], c * comm))
+                swapped = True
+                break
+        if not swapped:
+            result[tuple(w)] += c
+    return {k: v for k, v in result.items() if v != 0}
+
+def graded_bracket(X, Y, pX, pY, order):
+    XY = poly_mul(X, Y, order)
+    YX = poly_mul(Y, X, order)
+    sign = Fraction((-1) ** (pX * pY))
+    return poly_add(XY, YX, -sign)
+
+def decompose(result, all_labels, gens):
+    # Collects all words, builds augmented matrix M|r, solves via RREF over Q
+    # Returns dict label -> Fraction
+    ...
+
+def build_generators(n):
+    # H_1 = {('a_1_p','a_1_m'): 1, ('b_1_p','b_1_m'): 1}
+    # H_k (2≤k≤n) = {('b_{k-1}_p','b_{k-1}_m'): 1, ('b_k_p','b_k_m'): -1}
+    # H_{n+1} = {('b_n_p','b_n_m'): -1, (): Fraction(-1,2)}
+    # E_2del{k}_p = {('b_k_p','b_k_p'): Fraction(1,2)}
+    # E_eps1_del{k}_pp = {('a_1_p','b_k_p'): 1}, etc.
+    ...
+```
+
+- **`/private/tmp/.../scratchpad/test_C_generators.py`** (prototype, NOT in project):
+  75 tests across 6 classes: TestNormalize, TestGeneratorCounts, TestKnownBracketsN1, TestGradedAntisymmetry, TestJacobi, TestSchemaStructure.
+
+- **`docs/issues/done/issue_261011_01.md`**: Archived I01-1 (even/odd basis, PBW Option A)
+- **`docs/issues/done/issue_261011_02.md`**: Archived I02-1 (Schema 1 specification)
+- **`handover/scripts/close_issue.sh`**: Phase 4 automation: archives issue, resets template, commits (specific files only, not `git add -A`), pushes, creates AI-CLAIM marker commit.
+
+4. Errors and fixes:
+
+- **SyntaxError in test file (f-string `}`)**:
+  - Test line: `f'[{lbl},{lbl}} should be 0'` — the `}}` was supposed to escape `}` in f-string but produced a syntax error
+  - Fix: Changed to `f'[{lbl},{lbl}] should be 0'`
+  - Second occurrence: `f'Antisymmetry failed for [{xi},{xj}}'` → `f'Antisymmetry failed for [{xi},{xj}]'`
+
+- **5 Jacobi test failures (TestJacobi class)**:
+  - Symptoms: Residuals like `{(): Fraction(4,1), ('b_1_p','b_1_m'): Fraction(4,1), ('a_1_p','a_1_m'): Fraction(-4,1)}`
+  - Root cause: The Jacobi test used the WRONG cyclic formula `[[X,Y},Z} + sign2*[[Y,Z},X} + sign3*[[Z,X},Y}`. This form does NOT equal zero in general; it only reduces to zero via further algebraic manipulation.
+  - Correct formula: `[X,[Y,Z}} + (−1)^{pX(pY+pZ)} [Y,[Z,X}} + (−1)^{pZ(pX+pY)} [Z,[X,Y}} = 0` (the direct cyclic form that holds for any associative algebra)
+  - The 70 other tests (normalization, counts, parity, specific brackets, antisymmetry, schema structure) ALL PASS, confirming the structure constants and brackets are correct.
+  - Fix needed (not yet applied): Change `_jacobi_check` to use `[X,[Y,Z}}` form with `graded_bracket(X, YZ, px, p_yz, order)` instead of `graded_bracket(XY, Z, p_xy, pz, order)`.
+
+5. Problem Solving:
+
+- **I01-1** ✅: Root system analysis, generator labels (E_eps1_del{k}_pp/pm/mp/mm), dimension verification, PBW Option A selected.
+- **I02-1** ✅: Complete Schema 1 specification written to `docs/json_schema_specification.md`, all 12 approval points covered.
+- **I03-1** (in progress): Python implementation prototyped in scratchpad. Core oscillator algebra (normalize, poly_mul, graded_bracket, decompose via Gaussian elimination) verified correct via 70 passing tests. One class of tests (Jacobi) has wrong formula—needs fix before reporting to human.
+
+6. All user messages:
+
+- **User message 1**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Once you understand the workflow, read the contents of docs/issues/issue_open.md and begin processing Issue I01-1. Your goal is to define the even and odd bases, the PBW ordering, and the generator labels for C(n+1), n=1, 2, 3. Upon completion, follow the 'Phase 4: Completion Procedure' in workflow.md strictly. CRITICAL RULE FOR ITERATIVE DIALOGUE: When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+- **User message 2 (I01-1 approval)**: "[Pasted content] 1. Generator Labels: Approved. [...] 2. Explicit Basis Lists for n=1, 2, 3: Approved. [...] 3. PBW Ordering Proposal: Approved with Option A selected. Option A (grouping odd generators by epsilon-sign / fermionic sector first, i.e., pp, then pm, then mp, then mm across bosonic indices k) maintains strong structural analogy with the B(0,n) convention [...] You may now proceed to update `handover/notation.md` with these finalized conventions and complete Issue I01 according to the Phase 4 completion procedure in `handover/workflow.md`."
+
+- **User message 3**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Once you understand the workflow, read the contents of docs/issues/issue_open.md and begin processing Issue I02-1. Your goal is to specify the Schema 1 (algebra structure) fields for C(n+1) in docs/json_schema_specification.md. Upon completion, follow the 'Phase 4: Completion Procedure' in workflow.md strictly. CRITICAL RULE FOR ITERATIVE DIALOGUE: [same rule as above]"
+
+- **User message 4 (I02-1 approval)**: "[Pasted content] 1. Field 1 (schema_version): Approved. [...] 12. Compatibility Summary: Approved. [...] You may now proceed to update `docs/json_schema_specification.md` with these finalized field definitions and complete Issue I02 according to the Phase 4 completion procedure in `handover/workflow.md`."
+
+- **User message 5**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: verify that docs/json_schema_specification.md and handover/notation.md contain the conventions finalized in I01 and I02 before proceeding. Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I03-1. Your goal is to implement the structure constant generator and generate Schema 1 JSON (data/C_{n}_structure.json) for n=1, 2, 3. Upon completion, follow the 'Phase 4: Completion Procedure' in workflow.md strictly. CRITICAL RULE FOR ITERATIVE DIALOGUE: [same rule as above]"
+
+- **User message 6 (current)**: "CRITICAL: Respond with TEXT ONLY. Do NOT call any tools. [... summarization request ...]"
+
+7. Pending Tasks:
+
+- **I03-1 (active)**: Fix the Jacobi test formula in the test file (change from `[[X,Y},Z}` cyclic form to `[X,[Y,Z}}` cyclic form), re-run all 75 tests to confirm 75/75 pass, then append the complete implementation + test results to `issue_open.md` and halt for human approval. Must NOT commit, must NOT write to `src/` or `data/` project directories until human approves.
+
+8. Current Work:
+
+Working on Issue I03-1. Wrote `C_generators.py` and `test_C_generators.py` to the scratchpad directory. Ran pytest and got 70 passed, 5 failed. The 5 failures are all in `TestJacobi` and are caused by a bug in the Jacobi test itself (wrong cyclic form), not in the structure constant computation. The correct Jacobi formula is:
+
+`[X,[Y,Z}} + (−1)^{pX(pY+pZ)} [Y,[Z,X}} + (−1)^{pZ(pX+pY)} [Z,[X,Y}} = 0`
+
+The current wrong formula computes `[[X,Y},Z} + sign2*[[Y,Z},X} + sign3*[[Z,X},Y}` which is not the zero cyclic form.
+
+Verified by hand: for (X=H₁, Y=E_{ε+δ₁}, Z=E_{-ε-δ₁}):
+- Correct form: [H₁,[E_pp, E_mm}] + 1·[E_pp,[E_mm,H₁}] + (−1)·[E_mm,[H₁,E_pp}] = 0 + 2(−H₁−2H₂) + (−1)·(−2)(−H₁−2H₂) = 0 ✓
+- Wrong form (used in test): 2{E_pp,E_mm} − 0 + 2{E_mm,E_pp} = 4(−H₁−2H₂) ≠ 0
+
+9. Optional Next Step:
+
+Directly continuing I03-1 as last worked on. The next steps are:
+
+1. Fix the `_jacobi_check` method in the scratchpad test file to use the correct [X,[Y,Z}} cyclic form:
+```python
+XY = graded_bracket(X, Y, px, py, order)
+YZ = graded_bracket(Y, Z, py, pz, order)
+ZX = graded_bracket(Z, X, pz, px, order)
+p_yz = py ^ pz; p_zx = pz ^ px
+X_YZ = graded_bracket(X, YZ, px, p_yz, order)    # [X,[Y,Z}}
+Y_ZX = graded_bracket(Y, ZX, py, p_zx, order)    # [Y,[Z,X}}
+Z_XY = graded_bracket(Z, XY, pz, px^py, order)   # [Z,[X,Y}}
+sign2 = (-1)**(px*(py+pz))
+sign3 = (-1)**(pz*(px+py))
+total = X_YZ + sign2*Y_ZX + sign3*Z_XY
+```
+2. Re-run tests expecting 75/75 pass
+3. Run `python C_generators.py --dry-run` to confirm schema output and structure constant counts for n=1,2,3
+4. Append complete implementation code + test results + dry-run output to `issue_open.md` in the project (the ONLY file allowed to modify)
+5. HALT for human approval per I03-1 trust boundary
+
+The issue states: "Propose the script implementation and initial test results. CRITICAL RULE: Do NOT commit the code or generate the final JSON files, and do NOT proceed to Phase 4 until the human explicitly approves the implementation and test results."
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-r3-A1/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-r3-A1/6093a629-1e97-40f9-9ed3-aef48afa5c5a.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

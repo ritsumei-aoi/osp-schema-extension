@@ -1,0 +1,202 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The user is running a file-based issue system with an AI execution agent on branch `study/thm01-R-sonnet46-r3-A1` in `<home>/notebook/git/thm01-R/thm01-R-sonnet46-r3-A1`. The project extends the B(0,n) = osp(1|2n) JSON schema to C(n+1) = osp(2|2n). Six issues have been processed in this session:
+
+- **I03-1** (completed): Implement Python structure constant generator; output `data/C_{n}_structure.json` for n=1,2,3.
+- **I04-1** (completed): Verify structure constants via graded antisymmetry and Super Jacobi identity.
+- **I05-1** (completed): Compute gamma structure (Schema 2) for C(n+1) inhomogeneous deformation; output `data/C_{n}_gamma.json` for n=1,2,3.
+- **I06-1** (current, in progress): Layer 3 evaluated structure — substitute concrete gb sign profiles into gamma, generate Schema 3 JSON. Issue mandates: "Propose your assignment plan and halt. CRITICAL RULE: Do NOT generate JSON or commit until the human approves the sign profile."
+
+**CRITICAL RULE (system-prompt level, must be preserved verbatim)**: "When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+**AI Trust Policy**:
+- Do NOT use `git reset --hard` or `git push --force`
+- Do NOT modify or delete `.env`, `.git`, or system configuration files
+- Do NOT access external network resources unless explicitly instructed
+- Halt and use `docs/issues/issue_needs_clarification.md` for unresolvable mathematical ambiguity
+
+**Phase 4 completion script**: `./handover/scripts/close_issue.sh <YYMMDD> <NN> "<LABEL>" <NEXT>`
+
+---
+
+2. Key Technical Concepts:
+
+- **C(n+1) = osp(2|2n)**: Lie superalgebra; fermionic direction ε, bosonic δ₁,…,δₙ; dim = (2n²+n+1)|4n
+- **Oscillator realization**: Standard fermionic pair a₁⁺, a₁⁻ (CAR: {a₁⁻, a₁⁺}=1) + bosonic b_k⁺, b_k⁻ (CCR: [b_k⁻, b_l⁺]=δ_{kl})
+- **PBW ordering (Option A)**: `a_1_p < a_1_m < b_1_p < b_1_m < b_2_p < b_2_m < ...`; generators: `κ < [odd: pp→pm→mp→mm by k] < [even: Cartans, pos, neg, mixed]`
+- **Graded bracket**: [X, Y} = XY − (−1)^{p(X)p(Y)} YX
+- **Graded Jacobi identity** (correct cyclic form): `(−1)^{p(x)p(z)} [[x,y},z} + (−1)^{p(y)p(x)} [[y,z},x} + (−1)^{p(z)p(y)} [[z,x},y} = 0`
+- **Bubble sort normalization**: PBW normalization by swapping adjacent pairs with commutator insertion
+- **Gaussian elimination over Q** (`Fraction`): used in `decompose()` to express bracket results in the basis
+- **4-layer schema**: Schema 1 (structure), Schema 2 (gamma), Schema 3 (evaluated), Schema 4 (coboundary)
+- **gb_matrix**: 4n deformation parameters `gb_a1{σ}_b{k}{s}` (σ,k,s indexing)
+- **Convention A (approved)**: `[b_j^s, a_1^σ] = −gb_{σ,j,s}·κ` (fermionic-first, minus sign, from definition doc)
+- **K-include (approved)**: γ(X,Y) can include central element K (= scalar identity 1); κ·K = κ in L = g ⊕ κg
+- **Deformed algebra**: κ is central and nilpotent (κ²=0); κ¹ corrections tracked separately in PBW normalization
+- **Schema 3**: Evaluated structure — substitute concrete gb values into Schema 2 gamma to get numerical deformed brackets
+
+---
+
+3. Files and Code Sections:
+
+- **`handover/workflow.md`**: Core execution cycle. Phase 4: `./handover/scripts/close_issue.sh <YYMMDD> <NN> "<LABEL>" <NEXT>`
+- **`handover/ai_trust_policy.md`**: Forbidden actions (no reset --hard, no force push, no network access, halt for ambiguity)
+- **`handover/notation.md`**: PBW Option A, generator label anatomy, Cartan realizations, dimension formulas
+- **`docs/math/C_inhomogeneous_definition.md`**: Defines deformation: `[b_j^s, a_1^σ] = −gb_{σ,j,s}·κ`; gb is indexed fermionic-first; 4n params for C(n+1)
+- **`docs/math/C_coboundary_definition.md`**: Coboundary operator δf formula for Schema 4
+- **`docs/json_schema_specification.md`**: Schema 1 v5.0 spec (written in I02-1)
+- **`docs/issues/issue_open.md`**: Currently holds I06-1 (awaiting proposal)
+- **`docs/issues/done/`**: Archived issues I01–I05
+
+**`src/C_generators.py`** (written in I03-1):
+Key functions:
+```python
+def osc_labels(n): return ['a_1_p','a_1_m'] + [f'b_{k}_{s}' for k in range(1,n+1) for s in ('p','m')]
+def is_fermionic(osc): return osc.startswith('a_')
+def _comm_value(oi, oj):  # {a_1_m, a_1_p}=1, [b_k_m, b_k_p]=1, else 0
+def _swap_sign(oi, oj): return -1 if (is_fermionic(oi) and is_fermionic(oj)) else 1
+def normalize(word, order) -> Poly:  # bubble-sort PBW reduction
+def graded_bracket(X, Y, pX, pY, order): return poly_add(XY, YX, -(-1)**(pX*pY))
+def decompose(result, all_labels, gens):  # RREF Gaussian elimination over Q
+def build_generators(n):  # returns (even_labels, odd_labels, gens dict)
+  # H_1 = {('a_1_p','a_1_m'):1, ('b_1_p','b_1_m'):1}
+  # H_k (2≤k≤n) = {('b_{k-1}_p','b_{k-1}_m'):1, ('b_k_p','b_k_m'):-1}
+  # H_{n+1} = {('b_n_p','b_n_m'):-1, ():Fraction(-1,2)}
+  # E_2del{k}_p = {('b_k_p','b_k_p'): Fraction(1,2)}
+  # E_eps1_del{k}_pp = {('a_1_p',f'b_{k}_p'): 1}, etc.
+def build_schema(n): # generates full Schema 1 dict with structure_constants list
+```
+Structure constant entries stored as: `{'X':lbl_i, 'Y':lbl_j, 'Z':lbl_z, 'coeff':str(c), 'sign_rule':'graded'}` for index_i ≤ index_j.
+
+**`src/verify_C_structure.py`** (written in I04-1):
+```python
+def build_bracket_table(schema):  # returns labels, parity, label_idx, sc_raw dict
+def bracket_sc(i, j, labels, parity, label_idx, sc_raw):
+    # If i<=j: return stored; if i>j: apply antisymmetry sc[j][i]*(-(-1)^{px*py})
+def check_antisymmetry(labels, parity, label_idx, sc_raw):  # storage + self-bracket checks
+def bracket_composed(i,j,k,...):  # [[X,Y},Z} = sum_V sc[i][j][V]*sc[V][k]
+def jacobi_residual(i,j,k,...):
+    # (-1)^{px*pz}*[[X,Y},Z} + (-1)^{py*px}*[[Y,Z},X} + (-1)^{pz*py}*[[Z,X},Y}
+def check_jacobi(labels, parity, label_idx, sc_raw):  # all triples i<=j<=k
+```
+Results: n=1 → 120 triples, n=2 → 1330, n=3 → 7140; ALL PASS.
+
+**`src/compute_gamma.py`** (written in I05-1):
+```python
+def _parse_boson(lbl): # 'b_{k}_{s}' -> (k: int, s: str)
+def normalize_deformed(word, order, sign_convention=-1):
+    # Like normalize() but tracks κ¹ corrections:
+    # When b_j^s (higher PBW) swaps past a_1^σ (lower PBW):
+    #   correction = sign_convention * gb_{σ,j,s} * normalize_undeformed(corr_word)
+    # Returns (main_poly, gamma_dict {gb_label: Poly})
+def poly_mul_deformed(p1, p2, order, sign_convention):
+    # Returns (main_poly, gamma_dict)
+def graded_bracket_deformed(X, Y, pX, pY, order, sign_convention):
+    # Returns (main_poly, gamma_dict): κ^0 = undeformed, κ^1 = gamma
+def gb_labels(n): # 4n labels: gb_a1{p/m}_b{k}{p/m} for k=1..n
+def compute_gamma_entries(n, sign_convention=-1):
+    # Includes K = {():1} in decomposition basis (gens_ext with 'K':({():1},0))
+    # Returns list of {'X','Y','gb_label','Z','coeff'}
+def build_gamma_schema(n, sign_convention=-1):
+    # Builds full Schema 2 dict including gb_matrix, sign_convention, gamma list
+```
+K-term fix: decompose uses `all_labels_ext = all_labels + ['K']` with `gens_ext['K'] = ({(): Fraction(1)}, 0)`.
+
+**`tests/test_C_generators.py`** (written in I03-1):
+75 tests across 6 classes. Key fix: `sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))`. Jacobi test class uses correct cyclic formula with `s1=(-1)^{px*pz}`, `s2=(-1)^{py*px}`, `s3=(-1)^{pz*py}`.
+
+**`data/C_{1,2,3}_structure.json`**: Schema 1; SC counts: 20, 99, 264.
+**`data/C_{1,2,3}_gamma.json`**: Schema 2; gamma entry counts: 60, 334, 932; gb counts: 4, 8, 12.
+**`handover/scripts/close_issue.sh`**: Archives issue, resets template, stages specific files only (no git add -A), commits, pushes, creates AI-CLAIM marker.
+
+---
+
+4. Errors and Fixes:
+
+- **SyntaxError: f-string `}` in test file**: `f'[{lbl},{lbl}} should be 0'` → Fixed to `f'[{lbl},{lbl}] should be 0'` (two occurrences)
+
+- **Jacobi test failures (5/75)**: Initial formula was `[[X,Y},Z} + sign2*[[Y,Z},X} + sign3*[[Z,X},Y}` with wrong signs `sign2 = (-1)^{pZ(pX+pY)}`, `sign3 = (-1)^{pX(pY+pZ)}`. Correct Jacobi formula: `s1=(-1)^{px*pz}`, `s2=(-1)^{py*px}`, `s3=(-1)^{pz*py}`. After fix: 75/75 pass.
+
+- **`decompose()` ValueError in gamma computation**: γ correction polynomial `{(b_1_p,b_1_m):-1, (a_1_p,a_1_m):1}` not in span of g-generators alone. Fix: add K = {():1} to decomposition basis → `gens_ext['K'] = ({(): Fraction(1)}, 0)`, `all_labels_ext = all_labels + ['K']`.
+
+- **SyntaxError in `verify_C_structure.py`**: `f"[{lbl},{lbl}} = ..."` → Fixed to `f"[{lbl},{lbl}] = ..."`.
+
+- **Consistency check script TypeError**: Boolean in set comprehension (wrong expression). Fixed by separating the dimension checks.
+
+- **Test file import path**: Initially `sys.path.insert(0, os.path.dirname(__file__))` looked in `tests/` for C_generators. Fixed to `os.path.join(os.path.dirname(__file__), '..', 'src')`.
+
+---
+
+5. Problem Solving:
+
+- **I03-1**: Prototyped in scratchpad `/private/tmp/claude-501/.../scratchpad/`. Fixed Jacobi sign formula; 75 tests pass. Copied to `src/` and `tests/` on approval. Fixed import path for project layout. Generated JSON data.
+- **I04-1**: Implemented algebraic Jacobi check working purely from SC table (no oscillator algebra). Handled antisymmetry-derived lower-triangular entries. 8590 triples verified.
+- **I05-1**: Implemented deformed PBW normalization tracking κ¹ corrections linearly in gb parameters. Discovered K-term necessity; included K in decomposition basis. Verified by hand: `γ(H_1,H_2)[gb_a1p_b1m] = −E_eps1_del1_mp` traces correctly through PBW normalization of −b_1_p b_1_m a_1_p a_1_m.
+- **I06-1 (in progress)**: Verified all 6 data files exist. Inspected Schema 2 structure. Previewed all-ones profile evaluation: 29 pairs with non-zero kappa part; K-terms appear in evaluated output. Must write proposal to issue_open.md and halt.
+
+---
+
+6. All User Messages:
+
+- **Message 1**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Once you understand the workflow, read the contents of docs/issues/issue_open.md and begin processing Issue I03-1. Your goal is to define [structure constant generator]... CRITICAL RULE FOR ITERATIVE DIALOGUE: When an issue states that human approval is required or iterative dialogue is expected, you MUST ONLY append your proposals to issue_open.md. You are STRICTLY FORBIDDEN from modifying any other files and you MUST NOT create any commits until the human explicitly provides their choice."
+
+- **Message 2 (I03-1 approval)**: "1. Item A (Oscillator Algebra Implementation): Approved. The PBW normal form reduction in `normalize()` with fermionic CAR ({a_1^-, a_1^+} = 1, (a_1^pm)^2 = 0) and bosonic CCR ([b_k^-, b_k^+] = 1), the graded bracket definition, and the exact rational Gaussian elimination in `decompose()` are mathematically rigorous and correct. 2. Item B (Generator Realizations): Approved. All realizations for Cartan generators (including the -1/2 constant term in H_{n+1}), even root generators (including the 1/2 factor for E_2del{k}_p/m), and odd root generators strictly conform to Frappat, Cn1_definition.md, and the approved PBW Option A convention from Issue I01. 3. Item C (Structure Constant Convention): Approved...4. Item D (Schema 1 Output Format): Approved...You may now proceed to write `src/C_generators.py` and `tests/test_C_generators.py`, generate `data/C_{n}_structure.json` for n=1, 2, 3, verify that all tests pass, and complete Issue I03 according to the Phase 4 completion procedure in `handover/workflow.md`."
+
+- **Message 3**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: verify the existence of your Schema 1 files...Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I04-1. Your goal is to mathematically verify the structure constants...CRITICAL RULE FOR ITERATIVE DIALOGUE: [same rule]"
+
+- **Message 4 (I04-1 approval)**: "1. Verification Methodology and Results: Approved. The graded anti-symmetry verification...and the Super Jacobi identity check across all 8,590 ordered triples...using exact rational arithmetic are mathematically sound and completely satisfy the requirements. 2. Verification Script Implementation (`src/verify_C_structure.py`): Approved...3. Approval to Proceed to Phase 4: Approved. You may proceed with the Phase 4 completion procedure: (1) Write `src/verify_C_structure.py` to the repository; (2) Update the completion checkboxes in `docs/issues/issue_open.md`; (3) Run `./handover/scripts/close_issue.sh 261011 04 'I04-1: Verify structure constants via Jacobi identity' 05`..."
+
+- **Message 5**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: read ALL documents in docs/math/...begin processing Issue I05-1. Your goal is to compute the gamma structure for the C(n+1) inhomogeneous deformation and generate Schema 2 JSON for n=1, 2, 3...CRITICAL RULE FOR ITERATIVE DIALOGUE: [same rule]"
+
+- **Message 6 (I05-1 approval)**: "1. Q1: Sign Convention: Approved with Option A selected. Option A (`[b_j^s, a_1^sigma] = -gb_{sigma,j,s} * kappa`) strictly conforms to the foundational mathematical definition in `docs/math/C_inhomogeneous_definition.md` (Section 1). 2. Q2: K-Term Handling: Approved with Option K-include selected. Central element K is already defined in Schema 1 under `central_elements` as the scalar identity element, and its appearance in gamma(X, Y) represents the central kappa-direction in L = g + kappa*g. Option K-exclude is rejected as modifying the basis or generator realizations would invalidate the finalized and verified Schema 1 datasets from Issues I01-I04. 3. gb_matrix Definition: Approved...4. Implementation and Next Steps: Approved. You may proceed to: (1) Implement `src/compute_gamma.py`; (2) Ensure the `inhomogeneous_deformation` field in Schema 2 JSON stores non-zero gamma coefficients...; (3) Generate `data/C_{n}_gamma.json` for n=1, 2, 3; (4) Verify consistency with Schema 1; (5) Complete Issue I05 according to Phase 4..."
+
+- **Message 7**: "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory...MANDATORY file verification: verify the existence of your Schema 1 and Schema 2 files in data/ before proceeding...begin processing Issue I06-1. Your goal is to evaluate the deformed structure for a representative gb sign profile and generate Schema 3 JSON for n=1, 2, 3...CRITICAL RULE FOR ITERATIVE DIALOGUE: [same rule]"
+
+- **Message 8 (current)**: "CRITICAL: Respond with TEXT ONLY. Do NOT call any tools...[summarization request]"
+
+---
+
+7. Pending Tasks:
+
+- **I06-1 (active)**: Write a proposal to `docs/issues/issue_open.md` presenting gb sign profile options for the evaluated structure (Schema 3), then HALT for human approval. Must NOT generate JSON or commit until approved.
+  - Present at minimum: Profile A (all-ones), Profile B (fermionic-sign), Profile C (product-sign)
+  - Design Schema 3 JSON format
+  - After approval: implement evaluation script, generate `data/C_{n}_evaluated_{profile}.json` n=1,2,3, verify consistency, Phase 4
+
+---
+
+8. Current Work:
+
+Working on I06-1: Schema 3 (evaluated structure) for C(n+1). The last tool calls verified the existence of all 6 data files and inspected the Schema 2 structure and previewed what the evaluated brackets look like for the all-ones profile. The issue requires halting for human approval of the gb sign profile before generating any JSON.
+
+Key findings from inspection:
+- Schema 2 gamma entry format: `{'X': 'H_1', 'Y': 'H_2', 'gb_label': 'gb_a1p_b1m', 'Z': 'E_eps1_del1_mp', 'coeff': '-1'}`
+- For n=1: 4 gb params (`gb_a1p_b1p`, `gb_a1p_b1m`, `gb_a1m_b1p`, `gb_a1m_b1m`), 29 pairs with non-zero gamma, 10 K-entries
+- Sample evaluated kappa-brackets (all-ones, n=1):
+  - `kappa*gamma(H_1,H_2) = {E_eps1_del1_mp: -1, E_eps1_del1_mm: -1, E_eps1_del1_pp: -1, E_eps1_del1_pm: -1}`
+  - `kappa*gamma(H_1,E_eps1_del1_pm) = {H_1: 1, H_2: 2, K: 1, E_2del1_m: -2}`
+- Total pairs with non-zero g-bracket (Schema 1): 19; with non-zero kappa-bracket (evaluated): 29
+
+The NEXT step is to append the proposal (with profile options and Schema 3 format design) to `docs/issues/issue_open.md` and HALT.
+
+---
+
+9. Optional Next Step:
+
+The immediate next step is to append the gb sign profile proposal to `docs/issues/issue_open.md` and halt for human approval, as mandated by the I06-1 trust boundary.
+
+The issue states: "Propose your assignment plan and halt. CRITICAL RULE: Do NOT generate JSON or commit until the human approves the sign profile."
+
+The proposal should include:
+1. Three profile options with concrete gb assignments for n=1 shown explicitly
+2. Proposed Schema 3 JSON format (keys: schema_version, algebra, gb_profile with name+assignments, evaluated_brackets combining g-part and κ-part, metadata)
+3. Proposed filename convention: `C_{n}_evaluated_{profile_name}.json`
+4. A request for human approval of which profile to use and confirmation of Schema 3 format
+
+No commits, no JSON generation, no script writing until approval is received.
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-r3-A1/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-r3-A1/6093a629-1e97-40f9-9ed3-aef48afa5c5a.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

@@ -1,0 +1,129 @@
+diff --git a/docs/issues/issue_open.md b/docs/issues/issue_open.md
+index 6c0430f..07cfa1d 100644
+--- a/docs/issues/issue_open.md
++++ b/docs/issues/issue_open.md
+@@ -1,6 +1,6 @@
+ # Issue I01-1: C(n+1) basis and root system design
+ 
+-**Date**: 
++**Date**: 2026-10-17
+ **Status**: open
+ **Model**: Gemini 3.8 Flash
+ **Category**: proposal
+@@ -38,4 +38,115 @@ Frappat et al., "Dictionary on Lie Algebras and Superalgebras", arXiv:hep-th/960
+ ---
+ ### Response
+ 
+-*(AI Agent: Please append your proposals, analysis, and execution logs here.)*
++#### 1. Mathematical Analysis & Generator Design
++
++For $C(n+1) = \mathfrak{osp}(2|2n)$:
++- **Oscillator pairs**:
++  - Bosons: $b_k^+, b_k^-$ ($k = 1, \ldots, n$) with $[b_j^-, b_k^+] = \delta_{jk}$.
++  - Fermions: standard pair $a_1^+, a_1^-$ with $\{a_1^-, a_1^+\} = 1$ (replacing $B(0,n)$'s supplementary fermion $a_0$).
++  - Central element: $\kappa$ ($p(\kappa) = 1, \kappa^2 = 0$).
++- **Root System & Dimensions**:
++  - Even roots: $\Delta_{\bar{0}} = \{\pm 2\delta_k \mid 1 \le k \le n\} \cup \{\pm \delta_i \pm \delta_j \mid 1 \le i < j \le n\}$.
++  - Odd roots: $\Delta_{\bar{1}} = \{\pm \varepsilon \pm \delta_k \mid 1 \le k \le n\}$.
++  - Dimension formula: $\dim \mathfrak{g}_{\bar{0}} = 2n^2 + n + 1$, $\dim \mathfrak{g}_{\bar{1}} = 4n$, total $= 2n^2 + 5n + 1$.
++    - $n=1$ ($C(2) = \mathfrak{osp}(2|2)$): even = 4, odd = 4, total = 8.
++    - $n=2$ ($C(3) = \mathfrak{osp}(2|4)$): even = 11, odd = 8, total = 19.
++    - $n=3$ ($C(4) = \mathfrak{osp}(2|6)$): even = 22, odd = 12, total = 34.
++
++#### 2. Generator Label Conventions
++
++##### (a) Cartan Generators (dimension $n+1$)
++Following Frappat et al. and `Cn1_definition.md`, the simple coroots correspond to the $n+1$ simple roots:
++- $H_1 = a_1^+ a_1^- + b_1^+ b_1^-$ (for $\alpha_1 = \varepsilon - \delta_1$)
++- $H_k = b_{k-1}^+ b_{k-1}^- - b_k^+ b_k^-$ for $2 \le k \le n$ (for $\alpha_k = \delta_{k-1} - \delta_k$)
++- $H_{n+1} = -b_n^+ b_n^- - \tfrac{1}{2}$ (for $\alpha_{n+1} = 2\delta_n$)
++
++Labels: `H_1, H_2, ..., H_{n+1}`.
++
++##### (b) Even Root Generators ($\mathfrak{sp}(2n)$ sector, dimension $2n^2$)
++Directly preserving the $B(0,n)$ schema convention:
++- Long roots $\pm 2\delta_k$:
++  - $+2\delta_k$: `E_2del{k}_p` $\to (b_k^+)^2$
++  - $-2\delta_k$: `E_2del{k}_m` $\to (b_k^-)^2$
++- Short roots $\pm \delta_i \pm \delta_j$ ($1 \le i < j \le n$):
++  - $\delta_i + \delta_j$: `E_del{i}_del{j}_pp` $\to b_i^+ b_j^+$
++  - $\delta_i - \delta_j$: `E_del{i}_del{j}_pm` $\to b_i^+ b_j^-$
++  - $-\delta_i + \delta_j$: `E_del{i}_del{j}_mp` $\to b_i^- b_j^+$
++  - $-\delta_i - \delta_j$: `E_del{i}_del{j}_mm` $\to b_i^- b_j^-$
++
++##### (c) Odd Root Generators (dimension $4n$)
++Each odd root has the form $s_1 \varepsilon + s_2 \delta_k$ where $s_1, s_2 \in \{+, -\}$, realized by $a_1^{s_1} b_k^{s_2}$.
++Consistent with the two-sign suffix notation of `E_del{i}_del{j}_{s1}{s2}`:
++- $+\varepsilon + \delta_k$: `E_eps_del{k}_pp` $\to a_1^+ b_k^+$
++- $+\varepsilon - \delta_k$: `E_eps_del{k}_pm` $\to a_1^+ b_k^-$
++- $-\varepsilon + \delta_k$: `E_eps_del{k}_mp` $\to a_1^- b_k^+$
++- $-\varepsilon - \delta_k$: `E_eps_del{k}_mm` $\to a_1^- b_k^-$
++
++---
++
++#### 3. Concrete Basis Lists ($n=1, 2, 3$)
++
++##### Even Basis Lists:
++- **$n=1$ ($C(2)$, dim 4)**:
++  `["H_1", "H_2", "E_2del1_p", "E_2del1_m"]`
++- **$n=2$ ($C(3)$, dim 11)**:
++  `["H_1", "H_2", "H_3", "E_2del1_p", "E_2del2_p", "E_del1_del2_pp", "E_2del1_m", "E_2del2_m", "E_del1_del2_mm", "E_del1_del2_pm", "E_del1_del2_mp"]`
++- **$n=3$ ($C(4)$, dim 22)**:
++  `["H_1", "H_2", "H_3", "H_4", "E_2del1_p", "E_2del2_p", "E_2del3_p", "E_del1_del2_pp", "E_del1_del3_pp", "E_del2_del3_pp", "E_2del1_m", "E_2del2_m", "E_2del3_m", "E_del1_del2_mm", "E_del1_del3_mm", "E_del2_del3_mm", "E_del1_del2_pm", "E_del1_del2_mp", "E_del1_del3_pm", "E_del1_del3_mp", "E_del2_del3_pm", "E_del2_del3_mp"]`
++
++---
++
++#### 4. Proposed Concrete PBW Ordering Options for Human Selection
++
++All options adhere to the outer schema stratification:
++$$\kappa < [\text{odd}] < [\text{even}]$$
++(with identity $K=1$ omitted from PBW basis monomials, exactly as in $B(0,n)$).
++
++##### Option 1: Charge-Stratified PBW Ordering (Direct B(0,n) Generalization) [Recommended]
++In this option, odd roots are stratified first by fermionic charge / $\varepsilon$-parity (all positive roots $+\varepsilon$ first, then all negative roots $-\varepsilon$), and second by bosonic sign ($\delta^+$ before $\delta^-$):
++- **Odd ordering rule**:
++  `[E_eps_del{k}_pp (k=1..n)] < [E_eps_del{k}_pm (k=1..n)] < [E_eps_del{k}_mp (k=1..n)] < [E_eps_del{k}_mm (k=1..n)]`
++- **Concrete Odd Basis Lists**:
++  - **$n=1$**:
++    `["E_eps_del1_pp", "E_eps_del1_pm", "E_eps_del1_mp", "E_eps_del1_mm"]`
++  - **$n=2$**:
++    `["E_eps_del1_pp", "E_eps_del2_pp", "E_eps_del1_pm", "E_eps_del2_pm", "E_eps_del1_mp", "E_eps_del2_mp", "E_eps_del1_mm", "E_eps_del2_mm"]`
++  - **$n=3$**:
++    `["E_eps_del1_pp", "E_eps_del2_pp", "E_eps_del3_pp", "E_eps_del1_pm", "E_eps_del2_pm", "E_eps_del3_pm", "E_eps_del1_mp", "E_eps_del2_mp", "E_eps_del3_mp", "E_eps_del1_mm", "E_eps_del2_mm", "E_eps_del3_mm"]`
++- **Rationale**:
++  - Directly matches $B(0,n)$'s odd ordering `[E_del{k}_p] < [E_del{k}_m]`.
++  - Distinguishes creation ($a_1^+$) from annihilation ($a_1^-$) fermionic sectors cleanly.
++  - Minimizes downstream logic changes in algebra valuation scripts.
++
++##### Option 2: Bosonic Mode-Grouped PBW Ordering (Oscillator-Subsystem Local)
++In this option, odd roots are grouped by the bosonic oscillator index $k$ first:
++- **Odd ordering rule**:
++  For $k = 1, \dots, n$:
++  `E_eps_del{k}_pp < E_eps_del{k}_pm < E_eps_del{k}_mp < E_eps_del{k}_mm`
++- **Concrete Odd Basis Lists**:
++  - **$n=1$**:
++    `["E_eps_del1_pp", "E_eps_del1_pm", "E_eps_del1_mp", "E_eps_del1_mm"]`
++  - **$n=2$**:
++    `["E_eps_del1_pp", "E_eps_del1_pm", "E_eps_del1_mp", "E_eps_del1_mm", "E_eps_del2_pp", "E_eps_del2_pm", "E_eps_del2_mp", "E_eps_del2_mm"]`
++  - **$n=3$**:
++    `["E_eps_del1_pp", "E_eps_del1_pm", "E_eps_del1_mp", "E_eps_del1_mm", "E_eps_del2_pp", "E_eps_del2_pm", "E_eps_del2_mp", "E_eps_del2_mm", "E_eps_del3_pp", "E_eps_del3_pm", "E_eps_del3_mp", "E_eps_del3_mm"]`
++- **Rationale**:
++  - Groups all 4 fermionic-bosonic interactions of subsystem $(a_1, b_k)$ contiguously.
++  - Convenient when decomposing matrices into $k$-th mode blocks.
++
++##### Option 3: Strictly Parity-Inverted PBW Ordering ($\kappa < [\text{even}] < [\text{odd}]$)
++- Places the even universal enveloping subalgebra $\mathcal{U}(\mathfrak{g}_{\bar{0}})$ before the Grassmannian odd sector $\bigwedge(\mathfrak{g}_{\bar{1}})$.
++- Internally uses Option 1 or Option 2 ordering within each stratum.
++- **Rationale**: Standard in mathematical literature where $\mathcal{U}(\mathfrak{g})$ is viewed as a module over $\mathcal{U}(\mathfrak{g}_{\bar{0}})$.
++
++---
++
++#### 5. Request for Human Selection
++
++Please select the preferred PBW ordering option:
++- **Option 1**: Charge-Stratified ($\kappa < [\text{odd: } ++, +-, -+, --] < [\text{even}]$) [Recommended]
++- **Option 2**: Mode-Grouped ($\kappa < [\text{odd grouped by mode } k] < [\text{even}]$)
++- **Option 3**: Even-First ($\kappa < [\text{even}] < [\text{odd}]$)
++
++Once you confirm your choice, I will immediately update `handover/notation.md`, check off the completion criteria, and proceed with the closing procedure.
++

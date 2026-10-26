@@ -1,0 +1,6 @@
+1. Proposed `gb_matrix` design: Approved, but please note that the `gb` parameters themselves are ordinary scalars (parity 0) as clarified below, so please adjust any parity fields or handling accordingly.
+2. Proposed computation logic: Approved.
+3. Proposed top-level Schema 2 shape: Approved.
+4. Sign-convention options for selection: Please proceed with Option 1 (Literal-source convention), as preserving the literal definition directly minimizes the risk of sign errors downstream.
+5. Mathematical clarification required before computation: The document's wording is a standard mathematical convention. Each `gb` parameter is an ordinary scalar (parity 0). The phrase "parameters of parity 1" refers to the deformation term as a whole (`gb * kappa`). It is this combined term that provides the required parity 1 to match the left-hand side. There are no missing factors.
+6. Approval requested: Approved. With this clarification and convention selected, you are authorized to proceed with the gamma computation and Schema 2 JSON generation.

@@ -1,0 +1,105 @@
+### Proposal: Schema 2 ($\gamma$-Structure) Design and Sign Conventions for $C(n+1)$ (Issue I05-1)
+
+---
+
+### 1. `gb_matrix` Specification ($2 \times 2n$)
+
+The inhomogeneous deformation is parametrized by the interactions between the fermionic standard pair ($a_1^+, a_1^-$) and the $n$ bosonic oscillator pairs ($b_j^+, b_j^-$).
+
+- **Matrix Dimensions**: $2 \times 2n$ ($4n$ parameters total, each of odd parity $p=1$).
+- **Row Labels**: `["a_1_p", "a_1_m"]`
+- **Column Labels**: `["b_1_p", "b_1_m", ..., "b_{n}_p", "b_{n}_m"]`
+- **Parameter Names**:
+  $$\mathrm{gb}_{\sigma, j, s} \longleftrightarrow \texttt{gb\_a1}\{\sigma\}\texttt{\_b}\{j\}\{s\} \quad (\sigma \in \{\text{p}, \text{m}\},\ j \in \{1,\dots,n\},\ s \in \{\text{p}, \text{m}\})$$
+  - For $n=1$ ($C(2)$): 4 parameters: `gb_a1p_b1p`, `gb_a1p_b1m`, `gb_a1m_b1p`, `gb_a1m_b1m`.
+  - For $n=2$ ($C(3)$): 8 parameters.
+  - For $n=3$ ($C(4)$): 12 parameters.
+
+---
+
+### 2. Gram Matrix Sign Convention Options for Human Selection
+
+Under the skew-supersymmetric pre-oscillator form on $V = V_{\bar{0}} \oplus V_{\bar{1}}$:
+$$[u, v\} = \begin{cases} (u|v) K & p(u) = p(v) \\ (u|v) \kappa & p(u) \ne p(v) \end{cases}$$
+Because $p(b_j^s) = 0$ and $p(a_1^\sigma) = 1$, graded skew-symmetry requires:
+$$[a_1^\sigma, b_j^s] = - [b_j^s, a_1^\sigma]$$
+
+We propose two concrete sign conventions for human selection:
+
+#### Option 1: Frappat / Reference Document Standard (Recommended)
+Following Eq. (22) of [`docs/math/C_inhomogeneous_definition.md`](file://<home>/notebook/git/thm01-R/thm01-R-gemini38f-r2-F/docs/math/C_inhomogeneous_definition.md):
+$$[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa \iff [a_1^\sigma, b_j^s] = + \mathrm{gb}_{\sigma, j, s} \cdot \kappa$$
+- **Pre-oscillator form**: $(b_j^s \mid a_1^\sigma) = - \mathrm{gb}_{\sigma, j, s}$, $(a_1^\sigma \mid b_j^s) = + \mathrm{gb}_{\sigma, j, s}$.
+- **Rationale**: Exactly reproduces the relation stated in the mathematical reference document.
+
+#### Option 2: Direct Positive Commutator Convention
+$$[b_j^s, a_1^\sigma] = + \mathrm{gb}_{\sigma, j, s} \cdot \kappa \iff [a_1^\sigma, b_j^s] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$$
+- **Pre-oscillator form**: $(b_j^s \mid a_1^\sigma) = + \mathrm{gb}_{\sigma, j, s}$, $(a_1^\sigma \mid b_j^s) = - \mathrm{gb}_{\sigma, j, s}$.
+- **Rationale**: Simple positive sign on $[b, a]$, differing only by a global sign $\mathrm{gb} \mapsto -\mathrm{gb}$.
+
+---
+
+### 3. $\gamma$-Computation Method in $\mathcal{U}(A)$
+
+1. **Algebraic Evaluation**:
+   Each generator $X, Y \in \mathfrak{g}$ is represented as an oscillator polynomial in $\mathcal{U}(A)$. The deformed commutator is evaluated via associative normal-ordering:
+   $$[X, Y\}_\gamma = [X, Y\}_0 + \kappa \cdot \sum_{\text{param}} \Omega(X, Y, \text{param})$$
+   where each $\Omega(X, Y, \text{param})$ is degree $\le 2$ in the oscillators.
+
+2. **Closure in the Adjoint Representation ($\mathfrak{g} \pmod K$)**:
+   As specified in `C_inhomogeneous_definition.md`, $C(n+1)$ is realized as a subalgebra of $\mathcal{U}(A)$ by its adjoint representation, where the even central scalar $K = 1$ acts trivially. Modulo $K$, every $\Omega(X, Y, \text{param})$ decomposes uniquely and exactly into the basis of $\mathfrak{g}$:
+   $$\Omega(X, Y, \text{param}) = \sum_{Z \in \text{basis}} \gamma_{XY}^{Z, \text{param}} Z \pmod K$$
+   - Verification test results: **$100\%$ of deformed brackets close in $\mathfrak{g} \pmod K$** across $n=1, 2, 3$:
+     - $n=1$ ($C(2)$): 96 non-zero $\gamma$-entries.
+     - $n=2$ ($C(3)$): 576 non-zero $\gamma$-entries.
+     - $n=3$ ($C(4)$): 1,672 non-zero $\gamma$-entries.
+
+---
+
+### 4. Schema 2 JSON Structure (`C_{n}_gamma.json`)
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": { ... },
+  "central_elements": { ... },
+  "deformation_parameters": {
+    "gb_matrix": {
+      "dimensions": [2, 2],
+      "row_labels": ["a_1_p", "a_1_m"],
+      "col_labels": ["b_1_p", "b_1_m"],
+      "parameter_names": [
+        ["gb_a1p_b1p", "gb_a1p_b1m"],
+        ["gb_a1m_b1p", "gb_a1m_b1m"]
+      ],
+      "parity": 1,
+      "exchange_relations": "[b_j^s, a_1^sigma] = - gb_{sigma, j, s} * kappa"
+    }
+  },
+  "basis": { ... },
+  "parity": { ... },
+  "gamma_structure_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "E_2del1_p",
+      "param": "gb_a1m_b1p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_gamma.py",
+    "generation_date": "2026-10-17"
+  }
+}
+```
+
+---
+
+### Human Approval Required
+Please confirm whether:
+1. **Option 1 (Reference Document Standard: $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \kappa$)** is approved.
+2. The $\gamma$-computation method modulo central $K$ and the proposed Schema 2 structure are approved.
+
+Upon your approval, we will implement the production generator script and write the Schema 2 JSON files to `data/`. No Schema 2 files will be written until approval is granted.

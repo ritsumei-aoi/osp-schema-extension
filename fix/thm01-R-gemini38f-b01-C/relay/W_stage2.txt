@@ -1,0 +1,23 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+Thank you for your updates in commit 4e5a43c resolving the derivation claims, artifact generation logic, and relative links. Please address the following remaining issues in your report and verification code:
+
+1. Scope of the Analytical Proof and Code Verification for General $n \ge 1$:
+- In `docs/issues/mathematical_proof.md`, the Final Conclusion (Line 253) and Theorem 1 assert that triviality requires $\mathrm{gb} \equiv 0$ for all $n \ge 1$.
+- However, in Section 4.2:
+  - While Obstruction 1 is formulated for general mode $j$ and checked in `verification/verify_minimal.py` for both $n=1$ and $n=2$, Obstructions 2, 3, and 4 (Lines 158–198) are explicitly written out and computed only for $n=1$ (projecting onto $H_2$). For general $n$, the text merely asserts that the corresponding left null vector "similarly" yields the result (Line 174) without presenting the actual computation or general-form expressions.
+  - In `verification/verify_minimal.py` (Line 81), the checks for Obstructions 2, 3, and 4 are enclosed in `if n == 1:` and are never executed for $n > 1$, while full rank verification via `export_artifacts.py` covers $n=1, 2, 3$.
+- Please either:
+  (a) Fully write out the explicit expressions and derivations for Obstructions 2, 3, and 4 for general mode $j$ in the canonical basis of $C(n+1)$, and generalize `verification/verify_minimal.py` so that it checks Obstructions 2–4 for $n \ge 2$; or
+  (b) Explicitly qualify the scope of the analytical obstruction proof in Section 4 and state clearly how general $n \ge 1$ is justified (e.g. distinguishing the closed-form minimal obstruction derivation from the symbolic rank verification across $n=1, 2, 3$).
+
+2. Explanation of Parity and Central Oscillator Commutation Conventions:
+- In `docs/issues/mathematical_proof.md` (Sections 1 and 2.3), you declare the deformation parameters $\mathrm{gb}$ to be even ($p(\mathrm{gb}) = 0$). However, `docs/math/C_inhomogeneous_definition.md` (Line 36) states: "Since $\kappa$ is odd ($p(\kappa)=1$) and the bracket preserves total parity, the deformation parameters $\mathrm{gb}$ must have parity 1." The report does not explain or justify this departure from the provided document.
+- In addition, while the report states that the central element $\kappa$ is odd ($p(\kappa)=1$), it does not explicitly specify the commutation rule applied when $\kappa$ is commuted past odd elements (such as the odd oscillator $a_1^\sigma$). In the code (`verification/cn1_algebra.py` lines 76–82), $\kappa$ is treated as a strictly central variable without applying sign factors when reordering past fermions.
+- Please explicitly explain in `docs/issues/mathematical_proof.md` why $p(\mathrm{gb})=0$ is adopted (contrasting it with `C_inhomogeneous_definition.md:36`), and explicitly state the commutation rule for the odd central element $\kappa$ with respect to odd oscillators $a_1^\sigma$, ensuring that the theoretical description, the algebraic definitions, and the code implementation in `verification/cn1_algebra.py` are completely aligned and transparent.
+
+Please update the report and code accordingly and commit your changes to the repository.
+----- END CORRECTION -----

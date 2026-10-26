@@ -1,0 +1,23 @@
+The Worker has stopped in step 5 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 08" to memos/thm01-R-sonnet46-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+The K-extended decomposition works. Key entries confirmed against hand-computed formulas:
+
+- `γ(H_1, E_eps1_del1_pp)`: Z=H_1, gb=gb_p_1_p, coeff=−1 **✓**
+- `γ(H_1, E_eps1_del1_pp)`: Z=K, gb=gb_p_1_p, coeff=−1 **✓** (i.e. −H_1 − K)
+- `γ(H_1, E_eps1_del1_pp)`: Z=E_2del1_p, gb=gb_p_1_m, coeff=−1 **✓**
+
+**Step 5 results summary** for human approval:
+
+| n | algebra | entries | gb params | consistency |
+|---|---------|---------|-----------|-------------|
+| 1 | C(2)=osp(2\|2) | 116 | 4 | PASS |
+| 2 | C(3)=osp(2\|4) | 660 | 8 | PASS |
+| 3 | C(4)=osp(2\|6) | 1852 | 12 | PASS |
+
+**Fix applied**: replaced the call to the imported `decompose()` with a custom `_decompose_with_K()` that adds K as an explicit column variable in the Cartan Gaussian elimination system. Without K, the augmented matrix (H_1…H_{n+1}) has more equations than unknowns when the () word (from CCR constants) appears, giving an inconsistent system. With K as column nc+1, the system is square and consistent.
+
+**Files written**: `data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`
+
+The consistency checks (parity, graded anti-symmetry of the γ bracket, gb label well-formedness) all pass for n=1,2,3. Please approve to proceed to Step 6.
+----- END OF WORKER REPLY -----

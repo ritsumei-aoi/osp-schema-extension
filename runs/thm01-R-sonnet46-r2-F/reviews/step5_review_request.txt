@@ -1,0 +1,147 @@
+The Worker has stopped in step 5 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 07" to memos/thm01-R-sonnet46-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+After reading the math documents, here is the proposal for Step 5 — awaiting human approval before writing any code or JSON.
+
+---
+
+## Proposal: Schema 2 (γ-structure) for C(n+1)
+
+### 1. Mathematical summary
+
+The deformation is governed by the formula (from `C_inhomogeneous_definition.md`):
+
+```
+[b_j^s, a_1^σ]_γ = [b_j^s, a_1^σ]_0 − gb_{σ,j,s} · κ
+                  = 0 − gb_{σ,j,s} · κ
+```
+
+i.e., the 4n parameters `gb_{σ,j,s}` (σ∈{+,−}, j=1..n, s∈{+,−}) record how much bosonic–fermionic commutation leaks into the κ-sector.
+
+The deformed bracket is:
+```
+[X, Y]_γ = [X, Y]_0 + κ · γ(X, Y)
+```
+
+The γ coefficients are computed by: write X, Y as oscillator words, multiply in the deformed algebra (using the modified rule above at every b·a_1 crossing), collect the κ-coefficient, and decompose it in the PBW basis.
+
+Since each b·a_1 crossing contributes exactly one `gb` factor, **γ is linear in the gb parameters** (verified for all pairs below).
+
+---
+
+### 2. Which pairs (X, Y) have γ(X, Y) ≠ 0
+
+| X type | Y type | Non-zero γ? | Reason |
+|---|---|---|---|
+| Odd (a_1^σ b_j^s) | Odd (a_1^τ b_k^t) | Yes | b in X crosses a_1 in Y and vice versa |
+| Even bosonic (no a_1) | Odd (a_1^σ b_k^s) | Yes | bosons in X cross a_1 in Y |
+| Odd (a_1^σ b_j^s) | Even bosonic | Yes | a_1 in X crosses bosons in Y |
+| Even bosonic | Even bosonic | No | no a_1 involved anywhere |
+| H_1 (has a_1^+ a_1^−) | Odd | Yes | boson part of H_1 crosses a_1 in Y |
+| H_k (k≥2, pure bosonic) | Odd | Yes | Cartan bosons cross a_1 in Y |
+| Any | Even bosonic | depends | symmetric to above |
+
+**Worked example (odd × odd):**
+
+Let X = `E_eps1_del{j}_{σ1,s1}` = a_1^{σ1} b_j^{s1} and Y = `E_eps1_del{k}_{σ2,s2}` = a_1^{σ2} b_k^{s2}.
+
+In XY: b_j^{s1} must cross a_1^{σ2} → contributes `−gb_{σ2,j,s1}·κ`, and rearranging κ past a_1^{σ1} (odd) flips sign, giving `+gb_{σ2,j,s1} · κ · E_eps1_del{k}_{σ1,s2}`.
+
+In YX: b_k^{s2} crosses a_1^{σ1} → gives `+gb_{σ1,k,s2} · κ · E_eps1_del{j}_{σ2,s1}`.
+
+Since both X,Y are odd: [X,Y]_γ = XY + YX, so:
+```
+γ(E_eps1_del{j}_{σ1,s1}, E_eps1_del{k}_{σ2,s2})
+    = gb_{σ2,j,s1} · E_eps1_del{k}_{σ1,s2}
+    + gb_{σ1,k,s2} · E_eps1_del{j}_{σ2,s1}
+```
+
+---
+
+### 3. Sign convention options for the gb_matrix
+
+The gb parameters are `gb_{σ, j, s}` with σ ∈ {+,−}, j = 1..n, s ∈ {+,−}.  
+The gb_matrix has **2 rows** (σ) × **2n columns** ((j,s) pairs).
+
+**Two column-ordering options:**
+
+| | Option A: interleaved | Option B: sign-grouped |
+|---|---|---|
+| Column order | b_1^+, b_1^−, b_2^+, b_2^−, …, b_n^+, b_n^− | b_1^+, …, b_n^+, b_1^−, …, b_n^− |
+| Indexing | col = (j−1)·2 + s_idx | col = j−1 (+ block) or n+(j−1) (− block) |
+| Natural for | per-oscillator-pair analysis | positive/negative polarization analysis |
+
+**GB parameter label format** (used as JSON keys and in gamma entries):
+
+- `gb_p_j_p` = gb_{+, j, +} (a_1^+ vs b_j^+)
+- `gb_p_j_m` = gb_{+, j, −} (a_1^+ vs b_j^−)
+- `gb_m_j_p` = gb_{−, j, +} (a_1^− vs b_j^+)
+- `gb_m_j_m` = gb_{−, j, −} (a_1^− vs b_j^−)
+
+For n=1: four parameters: `gb_p_1_p`, `gb_p_1_m`, `gb_m_1_p`, `gb_m_1_m`.
+
+---
+
+### 4. JSON format for `C_n_gamma.json`
+
+Proposed top-level structure:
+
+```json
+{
+  "schema_version": "5.0",
+  "schema_layer": 2,
+  "algebra": { ... },          // same as Schema 1
+  "basis": { ... },            // same as Schema 1
+  "parity": { ... },           // same as Schema 1
+  "central_elements": { ... }, // same as Schema 1
+  "gb_parameters": {
+    "count": 4,                // = 4n
+    "labels": ["gb_p_1_p", "gb_p_1_m", "gb_m_1_p", "gb_m_1_m"],
+    "deformed_relation": "[b_j^s, a_1^σ] = -gb_{σ,j,s} · κ",
+    "gb_matrix": {
+      "rows": ["a_1_p", "a_1_m"],
+      "cols": ["b_1_p", "b_1_m"],   // Option A shown; or Option B
+      "shape": [2, 2]                // = 2 × 2n
+    }
+  },
+  "deformation_coefficients": [
+    {
+      "X": "E_eps1_del1_pp",
+      "Y": "E_eps1_del1_mp",
+      "Z": "E_eps1_del1_pm",
+      "gb": "gb_m_1_p",
+      "coeff": "1",
+      "sign_rule": "graded"
+    },
+    ...
+  ],
+  "metadata": { ... }
+}
+```
+
+Each entry in `deformation_coefficients` represents:
+`γ(X, Y) has a term coeff · Z with gb factor gb`, i.e., contributes `gb × coeff` to the coefficient of Z in γ(X,Y).
+
+Multiple entries with the same (X, Y, Z) but different gb labels sum together (same pattern as Schema 1's structure_constants).
+
+---
+
+### 5. Consistency verification plan
+
+The consistency check will confirm:
+1. Setting all gb = 0: all `deformation_coefficients` vanish → Schema 2 reduces to Schema 1.
+2. Parity preservation: γ(X, Y) has parity p(X) + p(Y) + p(κ) = p(X) + p(Y) + 1 mod 2. Since κ is odd and [X,Y]_γ has parity p(X)+p(Y), γ(X,Y) must have parity p(X)+p(Y)+1. The script will verify all Z entries in each γ(X,Y) entry satisfy this.
+3. Antisymmetry: γ(X,Y) = −(−1)^{p(X)p(Y)} γ(Y,X) (inherited from the 2-cocycle condition). The script will verify this.
+
+---
+
+**Questions requiring approval before proceeding:**
+
+1. **Column ordering of gb_matrix**: Option A (interleaved: b_1^+, b_1^−, b_2^+, …) or Option B (sign-grouped: b_1^+, …, b_n^+, b_1^−, …, b_n^−)?
+
+2. **Gamma coefficient sign convention**: Is the deformation written as `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` (+ sign, as in the document), confirming that γ is stored as the **positive** κ-coefficient?
+
+3. **Storage format for `deformation_coefficients`**: Flat list of `{X, Y, Z, gb, coeff}` entries as shown above — approved?
+
+CRITICAL RULE compliance: No Schema 2 JSON will be generated until explicit approval of all three questions.
+----- END OF WORKER REPLY -----

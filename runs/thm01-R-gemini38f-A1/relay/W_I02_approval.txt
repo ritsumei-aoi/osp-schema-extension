@@ -1,0 +1,10 @@
+Regarding your Schema 1 v5.0 specification proposals in issue_open.md:
+
+1. algebra Field: Approved. Specifying family="C", m=1, rank n, and dimension formulas ("even": "2n^2 + n + 1", "odd": "4n", "total": "2n^2 + 5n + 1") complies with the mandatory requirements and correctly matches C(n+1).
+2. oscillator_generators Field: Approved. The two-key structure with "fermions" (m=1, labels a_1_p, a_1_m) and "bosons" (rank n, labels b_k_p, b_k_m) satisfies the mandatory rules and eliminates the supplementary fermion.
+3. oscillator_relations Field: Approved. The canonical anticommutation relations (CAR) for the fermionic pair, commutation relations (CCR) for bosons, and trivial mixed commutators are mathematically exact.
+4. central_elements Field: Approved. Defining central_elements as a dedicated top-level key containing kappa (parity 1) and K (parity 0) fulfills the mandatory rule and properly supports the inhomogeneous deformation framework.
+5. File Naming Conventions: Approved. Using C_{n}_structure.json (and corresponding C_{n}_*.json files across schema layers) indexed by the bosonic rank n conforms to the mandatory specification.
+6. Backward Compatibility Analysis & Remaining Fields: Approved. The comparative mapping with B(m,n) and the field specifications for basis (Option 1 polarity ordering), parity, generator_realization, structure_constants, and metadata are fully consistent with I01 carry-over decisions.
+
+You may now proceed to update docs/json_schema_specification.md with these finalized field definitions and complete Phase 4 in accordance with workflow.md.

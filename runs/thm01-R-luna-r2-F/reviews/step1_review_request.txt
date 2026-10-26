@@ -1,0 +1,21 @@
+The Worker has stopped in step 1 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 01" to memos/thm01-R-luna-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+## Basis and generator-label conventions
+
+For C(n+1), use `H_1` through `H_{n+1}` for the Cartan generators. For each `k`, label the roots `±2δ_k` as `E_2del{k}_p/m`. For each `i<j`, label `+δ_i+δ_j`, `+δ_i−δ_j`, `−δ_i+δ_j`, and `−δ_i−δ_j` as `E_del{i}_del{j}_pp/pm/mp/mm`, respectively.
+
+For the odd roots, the first sign in the suffix denotes the sign of ε, and the second denotes the sign of δ_k: `E_eps1_del{k}_pp/pm/mp/mm` correspond to `+ε+δ_k`, `+ε−δ_k`, `−ε+δ_k`, and `−ε−δ_k`. Their oscillator realizations are `a_1_p b_k_p`, `a_1_p b_k_m`, `a_1_m b_k_p`, and `a_1_m b_k_m`, respectively. The central identity `K` is excluded from the basis; κ belongs to the deformation extension, not the base algebra basis.
+
+- **C(2), n=1:** Even: `[H_1,H_2,E_2del1_p,E_2del1_m]`. Odd: `[E_eps1_del1_pp,E_eps1_del1_pm,E_eps1_del1_mp,E_eps1_del1_mm]`. Dimension: 4|4.
+- **C(3), n=2:** Even: `[H_1,H_2,H_3,E_2del1_p,E_2del1_m,E_2del2_p,E_2del2_m,E_del1_del2_pp,E_del1_del2_pm,E_del1_del2_mp,E_del1_del2_mm]`. Odd: for each `k=1,2`, `[E_eps1_del{k}_pp,E_eps1_del{k}_pm,E_eps1_del{k}_mp,E_eps1_del{k}_mm]`, in increasing `k` order. Dimension: 11|8.
+- **C(4), n=3:** Even: `[H_1,H_2,H_3,H_4,E_2del1_p,E_2del1_m,E_2del2_p,E_2del2_m,E_2del3_p,E_2del3_m]`, followed by the four pair-root labels `E_del{i}_del{j}_pp/pm/mp/mm` for `(i,j)=(1,2),(1,3),(2,3)`. Odd: for each `k=1,2,3`, `[E_eps1_del{k}_pp,E_eps1_del{k}_pm,E_eps1_del{k}_mp,E_eps1_del{k}_mm]`, in increasing `k` order. Dimension: 22|12.
+
+## PBW ordering options
+
+**A — Odd-first parity blocks:** All odd generators first, ordered by increasing `k` and then `pp,pm,mp,mm`; then `H_1,…,H_{n+1}`; then positive even roots in the order `2δ_k`, `δ_i+δ_j`, `δ_i−δ_j` with indices ascending; then the corresponding negative even roots in the same order.
+
+**B — Root-triangular:** Negative root vectors, then `H_1,…,H_{n+1}`, then positive root vectors. Choose positive roots `2δ_k`, `δ_i+δ_j`, `δ_i−δ_j`, `ε+δ_k`, `ε−δ_k` for `i<j`. Within the negative block, order odd roots (`mm,mp`), pair-even roots (`mm,mp`), then long-even roots. Within the positive block, order pair-even roots (`pp,pm`), long-even roots, then odd roots (`pp,pm`); use ascending indices.
+
+The basis lists and labels are specified above. **The PBW choice remains pending human approval; neither option is finalized, and no files have been modified.**
+----- END OF WORKER REPLY -----

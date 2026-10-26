@@ -1,0 +1,28 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+Please address the following discrepancies between your report and implementation, as well as unverified theoretical interpretations:
+
+1. Consistency of Algebraic Conventions in Code vs. Report
+- In `docs/issues/mathematical_proof.md` Section 1.2, you declare that the parameters `gb` have parity 1 (odd / Grassmann-type) and that `kappa` satisfies the graded commutation rule $\kappa u = (-1)^{p(u)} u \kappa$.
+- In the code (`solve_triviality.py:28`), `gb` is instantiated as a standard commuting SymPy `Symbol`. Furthermore, in `solve_triviality.py:85-91`, the `kappa` coefficients are accumulated without any sign factors corresponding to commuting $\kappa$ past graded basis elements.
+- Action required: Ensure the code and report are fully consistent. Either implement the declared Grassmann/graded commutation sign rules in the computation or adjust the report to accurately state the actual computational conventions and explain why the linear system is unaffected.
+
+2. Explanation of the "Up to Scalar" / Scalar-Valued Part
+- In `docs/issues/mathematical_proof.md` Section 1.2 (item 3), the condition "up to scalar" is described as absorbing an overall non-zero scalar multiple $c$ into $f$ ($\tilde{f} = c f$).
+- In the code, however, scalar-valued terms generated during bracket evaluation are stored under `'scalar'` and `'kappa_scalar'` (`solve_triviality.py:59-61, 88-91`) and are omitted when extracting the 2-cocycle $\gamma(X, Y)$ (lines 153–154, where only `('kappa', Z)` components for $Z \in \mathfrak{g}$ are read).
+- Action required: Explicitly document in `docs/issues/mathematical_proof.md` how the scalar-valued central components (`kappa_scalar`) are handled, why they are discarded or separated from the adjoint-valued cocycle equations, and how this relates to the definition in `docs/math/C_coboundary_definition.md`.
+
+3. Verification of Matrix Rank and Kernel Interpretation
+- In `docs/issues/mathematical_proof.md` Section 3.1, you assert that $\ker(A) = 0$ for $n \ge 2$ implies "all odd derivations of $C(n+1)$ are inner", and that the 4-dimensional kernel for $n=1$ corresponds to "outer odd derivations". Neither statement is derived from `docs/math/` or the code.
+- If $\ker(A) = 0$, there are no non-zero odd maps $f$ satisfying $\delta f = 0$. For an inner derivation $f = \text{ad}_Z$ with odd $Z \in \mathfrak{g}_{\bar{1}}$ ($\dim \mathfrak{g}_{\bar{1}} = 8$ for $n=2$, $12$ for $n=3$), check whether the coboundary formula in `docs/math/C_coboundary_definition.md` yields $\delta(\text{ad}_Z) = 0$. If it does, $\ker(A) = 0$ would contradict the existence of non-zero inner derivations; if it does not, $f$ in the kernel cannot be interpreted as derivations.
+- Action required: Check and explain whether $\ker(A) = 0$ is consistent with the coboundary operator definition in `docs/math/C_coboundary_definition.md`. Remove or rigorously justify external claims about inner/outer derivations that are not derived from the provided definitions.
+
+4. Right Nullspace Computation Method
+- In `docs/issues/mathematical_proof.md` Section 3, you state that the right nullspace $\ker(A)$ "was computed directly". However, `solve_triviality.py` only computes `A.rank()` and `A.T.nullspace()`, obtaining $\dim \ker(A)$ via the Rank-Nullity theorem ($N - \text{rank}(A)$).
+- Action required: Correct the description in `docs/issues/mathematical_proof.md` to accurately state how the right nullspace dimension was obtained, or compute $\ker(A)$ directly in the script if that is what you intend to report.
+
+Please update `docs/issues/mathematical_proof.md` and any associated code/data so that all statements and implementations are mutually consistent and mathematically verified. Commit your changes to the repository.
+----- END CORRECTION -----

@@ -1,0 +1,47 @@
+The Worker has stopped in step 7 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 11" to memos/thm01-R-sonnet46-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+Now I have the basis structure. Let me present the proposal.
+
+---
+
+## Step 7 — Proposal: Map f for Schema 4 coboundary
+
+The coboundary formula from `docs/math/C_coboundary_definition.md`:
+
+$$(\delta f)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])$$
+
+### Basis dimensions
+
+| n | dim even | dim odd |
+|---|----------|---------|
+| 1 | 4 | 4 |
+| 2 | 11 | 8 |
+| 3 | 22 | 12 |
+
+### Structure of f
+
+f must satisfy p(f(Z)) = 1 − p(Z). I propose restricting to the **natural index-paired subspace**, with one free scalar φ:
+
+**Even → Odd part** (for each j = 1..n, s ∈ {+,−}):
+- f(E_{2δ_j}^s) = φ · (E_{ε_1+δ_j}^s + E_{ε_1-δ_j}^s)  ← bosonic root maps to paired odd generators with same s
+- f(H_k) = 0  ← Cartan maps to zero
+- f(E_{δ_j±δ_k}^{··}) = 0  ← mixed even roots map to zero
+
+**Odd → Even part** (for each j = 1..n, σ ∈ {+,−}, s ∈ {+,−}):
+- f(E_{ε_1+σδ_j}^s) = φ · E_{2δ_j}^s  ← all σ variants of odd root map to the same bosonic root
+
+This is a **2n–parameter** map reduced to **one global scale φ**, set to φ = 1 for Schema 4.
+
+Rationale: The deformation couples b_j^± (bosonic) with a_1^σ (fermionic), producing odd generators E_{ε_1+σδ_j}^s in γ. The most natural f to "undo" this mixing pairs E_{ε_1+σδ_j}^s back to E_{2δ_j}^s.
+
+---
+
+### Alternative: full parameterization
+
+If the human prefers generality, f can be fully parameterized with independent φ_{ij} for each parity-violating pair. This gives (3n+1)·4n + 4n·(3n+1) = 2·(3n+1)·4n free parameters. For n=1 that is 32. All set to 1 gives a "democratic" unit assignment.
+
+---
+
+**My recommendation is the index-paired map with φ = 1** (first option). It is minimal, interpretable, and directly motivated by the gb-deformation structure. Please approve this map or specify an alternative to proceed.
+----- END OF WORKER REPLY -----

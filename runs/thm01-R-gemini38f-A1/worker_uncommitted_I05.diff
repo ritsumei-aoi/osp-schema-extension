@@ -1,0 +1,187 @@
+diff --git a/docs/issues/issue_open.md b/docs/issues/issue_open.md
+index c6ec8bd..cf71641 100644
+--- a/docs/issues/issue_open.md
++++ b/docs/issues/issue_open.md
+@@ -1,19 +1,171 @@
+-Created:
+-Category:
++# Issue I05-1: Schema 2 (gamma structure) for C(n+1)
+ 
+-## I05-1. {Title}
++**Date**: 2026-10-12
++**Status**: open
++**Model**: Gemini 3.8 Flash
++**Category**: implementation
++**Theme Working Branch**: study/thm01-R-gemini38f-A1
+ 
+-### Background
++## Context & Background
++With the structure constants verified (I04), extend the schema to include
++the inhomogeneous deformation (gamma structure, Schema 2).
+ 
+-### Requirements
++For C(n+1), the inhomogeneous deformation is defined by the interaction between
++the standard fermionic pair (a1+, a1-) and the bosonic oscillators. Refer to
++`docs/math/C_inhomogeneous_definition.md` for the formal mathematical grounding.
+ 
+-### Supplementary Information
+-#### Deliverable Format
++## Requirements
++1. Define the `gb_matrix` for C(n+1) (size 2 x 2n) based on the oscillator pairs.
++2. Compute gamma coefficients $\gamma_{abc}$ for C(n+1) inhomogeneous deformation.
++3. Design the `inhomogeneous_deformation` field in accordance with Schema 2 standards.
++4. Generate Schema 2 JSON for n=1, 2, 3.
++5. Verify consistency with Schema 1.
+ 
+-#### Related Folders/Files
++## Deliverables
++- Code: gamma computation script.
++- Data: Schema 2 JSON files.
+ 
+-#### Related Issues
++## Completion Criteria
++- [ ] Gamma computation implemented.
++- [ ] Schema 2 JSON generated for n=1, 2, 3.
++- [ ] Consistency check passes.
+ 
+-### Completion Criteria
++## Trust Boundary & Workflow Note
++- **Human Approval Required**: Gram matrix sign conventions require human approval.
++- **Iterative Dialogue Expected**: Propose the gamma computation method and sign convention options. **CRITICAL RULE**: Do NOT write Schema 2 JSON or commit until the human approves.
++
++---
++### Response
++
++#### 1. Mandatory File Verification Confirmation
++In accordance with the mandatory workflow instructions for Issue I05-1, all documents in `docs/math/` have been thoroughly inspected and verified:
++- `docs/math/C_inhomogeneous_definition.md`: Verified the mathematical definitions of the inhomogeneous deformation for $C(n+1) = \mathfrak{osp}(2|2n)$, the fundamental deformed exchange relation $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$, the resulting deformed Lie bracket $[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma(X, Y)$, and the odd parity of $\kappa$ and deformation parameters $\mathrm{gb}$.
++- `docs/math/Cn1_definition.md`: Verified the Lie superalgebra structure, root systems, oscillator realization, and basis specifications for $C(n+1)$.
++- `docs/math/C_coboundary_definition.md`: Verified the mathematical grounding for subsequent 1-coboundary deformations and coboundary matrices.
++- `docs/math/B0n_definition.md` & `docs/math/B0n_schema_v5.md`: Verified the reference deformation schemas and parity conventions in $B(0,n)$.
++- `docs/math/README.md`: Verified the documentation index and mathematical relationship across schemas.
++- In addition, the persistence and validity of Schema 1 JSON files (`data/C_1_structure.json`, `data/C_2_structure.json`, `data/C_3_structure.json`) have been confirmed.
++
++---
++
++#### 2. `gb_matrix` Indexing & Structure Definition
++For $C(n+1)$, there is exactly $m=1$ fermionic oscillator pair $(a_1^+, a_1^-)$ and $n$ bosonic oscillator pairs $(b_k^+, b_k^-)_{k=1}^n$.
++The deformation parameters represent the non-trivial commutators between fermionic and bosonic creation/annihilation operators:
++- Total number of deformation parameters: $2 \times 2n = 4n$.
++- Parity of parameters: $\deg(\mathrm{gb}_{\sigma, j, s}) = 1$ (odd, Grassmann-odd), matching $\deg(\kappa) = 1$ to maintain the even parity of the commutator.
++
++**Row and Column Specification**:
++- **Rows** ($2$ entries, ordered by fermion polarity):
++  1. Row 0: `a_1_p` ($a_1^+$)
++  2. Row 1: `a_1_m` ($a_1^-$)
++- **Columns** ($2n$ entries, ordered by boson index $j=1,\ldots,n$ and polarity $+,-$):
++  - For $n=1$: `["b_1_p", "b_1_m"]` ($2 \times 2$ matrix)
++  - For $n=2$: `["b_1_p", "b_1_m", "b_2_p", "b_2_m"]` ($2 \times 4$ matrix)
++  - For $n=3$: `["b_1_p", "b_1_m", "b_2_p", "b_2_m", "b_3_p", "b_3_m"]` ($2 \times 6$ matrix)
++
++**Parameter Naming Convention**:
++Each entry $(\sigma, j, s)$ is named uniquely as `gb_{row}_{col}`:
++`gb_a1p_b1p`, `gb_a1p_b1m`, `gb_a1m_b1p`, `gb_a1m_b1m`, etc.
++In general: `gb_{a_1^\sigma}_{b_j^s}` where $\sigma \in \{p, m\}$ and $s \in \{p, m\}$.
++
++---
++
++#### 3. Sign Convention Proposals for Deformed Exchange Relations
++
++We present two clear sign convention options for the deformed exchange relation:
++
++##### Option A: Literal Definition Convention (Recommended)
++Directly follows the exact formula in `docs/math/C_inhomogeneous_definition.md` (Definition 2.1):
++$$[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$$
++Equivalently, taking the commutator in standard fermion-first order:
++$$[a_1^\sigma, b_j^s] = + \mathrm{gb}_{\sigma, j, s} \cdot \kappa$$
++- **Pros**: 100% faithful to `docs/math/C_inhomogeneous_definition.md`. Mathematical papers and documentation need no sign adjustments.
++- **Form of deformation in bracket**:
++  When expanding composite bilinear generators $X = a_1^\sigma b_j^s$, the exchange of adjacent $b$ and $a$ operators picks up $-\mathrm{gb}_{\sigma, j, s}\kappa$.
++
++##### Option B: Positive Boson-First Convention
++Defines the commutator $[b_j^s, a_1^\sigma]$ with a positive sign:
++$$[b_j^s, a_1^\sigma] = + \mathrm{gb}_{\sigma, j, s} \cdot \kappa \iff [a_1^\sigma, b_j^s] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa$$
++- **Pros**: Matches some standard conventions where $[B, F] = + \mathrm{param}$.
++- **Cons**: Differs by an overall minus sign from `docs/math/C_inhomogeneous_definition.md`.
++
++> **Recommendation**: We recommend **Option A**, preserving strict consistency with `docs/math/C_inhomogeneous_definition.md`.
++
++---
++
++#### 4. Mathematical Computation of $\gamma_{abc}$ Coefficients
++The deformed Lie superalgebra bracket on composite bilinear generators is:
++$$[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma(X, Y)$$
++where $[X, Y]_0$ is the undeformed graded commutator (Schema 1) and $\gamma(X, Y) = \sum_{c} \gamma_{abc} e_c$ is linear in the deformation parameters $\mathrm{gb}_{\sigma, j, s}$.
++
++Because all basis generators of $C(n+1)$ are bilinears of oscillators:
++1. **Odd generators**: $a_1^\sigma b_j^s$ ($4n$ generators).
++2. **Even generators**:
++   - $\mathfrak{sp}(2n)$ generators: $b_i^s b_j^{s'}$ ($2n^2 + n$ generators).
++   - $H_1 = a_1^+ a_1^- + b_1^+ b_1^-$ (contains the fermionic element $a_1^+ a_1^-$).
++
++**Non-zero $\gamma$ sectors**:
++- **Odd $\times$ Even**: When an odd generator $X = a_1^\sigma b_j^s$ is commuted with an even $\mathfrak{sp}(2n)$ generator $Y = b_k^t b_l^{t'}$, or with $H_1$, the reordering of operators yields $\kappa$ terms via $[b, a] = -\mathrm{gb} \cdot \kappa$. The resulting term is an odd generator multiplied by $\mathrm{gb} \cdot \kappa$.
++- **Odd $\times$ Odd**: When an odd generator $X = a_1^\sigma b_j^s$ is anticommuted with another odd generator $Y = a_1^{\sigma'} b_k^t$:
++  $$\{a_1^\sigma b_j^s, a_1^{\sigma'} b_k^t\} = a_1^\sigma b_j^s a_1^{\sigma'} b_k^t + a_1^{\sigma'} b_k^t a_1^\sigma b_j^s$$
++  Commuting $b_j^s$ past $a_1^{\sigma'}$ produces $-\mathrm{gb}_{\sigma', j, s} \kappa \cdot a_1^\sigma b_k^t$, which is an odd $\times$ odd correction yielding an even generator multiplied by $\mathrm{gb} \cdot \kappa$.
++- **Even $\times$ Even**: Purely bosonic $\mathfrak{sp}(2n)$ generators commute with each other with $\gamma = 0$. $H_1$ with $\mathfrak{sp}(2n)$ also has $\gamma = 0$.
++
++All computations will be performed symbolically using exact rational arithmetic via an extended `OscillatorPoly` engine that incorporates the inhomogeneous relation $b_j^s a_1^\sigma = a_1^\sigma b_j^s - \mathrm{gb}_{\sigma, j, s} \kappa$.
++
++---
++
++#### 5. Schema 2 JSON Structure Design (`inhomogeneous_deformation`)
++The Schema 2 JSON files (`data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`) will contain all Schema 1 fields plus the dedicated `inhomogeneous_deformation` field:
++
++```json
++{
++  "algebra": { ... },
++  "central_elements": {
++    "kappa": { "parity": 1, "description": "Odd central parameter for inhomogeneous deformation" },
++    "K": { "parity": 0, "description": "Even central element / central charge" }
++  },
++  "oscillator_generators": { ... },
++  "basis": [ ... ],
++  "parity": [ ... ],
++  "structure_constants": [ ... ],
++  "inhomogeneous_deformation": {
++    "gb_parameter_parity": 1,
++    "exchange_relation": "[b_j^s, a_1^sigma] = - gb_{sigma, j, s} * kappa",
++    "gb_matrix": {
++      "rows": ["a_1_p", "a_1_m"],
++      "cols": ["b_1_p", "b_1_m", ...],
++      "shape": [2, 2n],
++      "elements": [
++        ["gb_a1p_b1p", "gb_a1p_b1m", ...],
++        ["gb_a1m_b1p", "gb_a1m_b1m", ...]
++      ]
++    },
++    "gamma_bracket": [
++      {
++        "i": 0,
++        "j": 4,
++        "gamma": [
++          { "k": 1, "param": "gb_a1p_b1p", "coeff": "1" }
++        ]
++      }
++    ]
++  },
++  "metadata": {
++    "schema_version": "5.0",
++    "schema_layer": "Schema 2 (gamma structure)"
++  }
++}
++```
++
++---
++
++#### 6. Request for Human Approval
++
++We respectfully request human approval on the following decisions before writing any Schema 2 JSON files or creating any commits:
++1. **Approval of `gb_matrix` Specification**: $2 \times 2n$ matrix with rows `["a_1_p", "a_1_m"]` and columns `["b_1_p", "b_1_m", ...]`.
++2. **Selection of Sign Convention**: **Option A** ($[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \kappa$, Recommended) vs **Option B** ($[b_j^s, a_1^\sigma] = + \mathrm{gb}_{\sigma, j, s} \kappa$).
++3. **Approval of Schema 2 JSON Field Layout**: Inclusion of `inhomogeneous_deformation` with `gb_matrix` and `gamma_bracket`.
++
++Upon receipt of your choice and approval, we will immediately implement the calculation script, run tests, generate the Schema 2 JSON files, and complete the issue following Phase 4 in `handover/workflow.md`.
+ 
+-- [ ] {Criterion 1}

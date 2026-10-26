@@ -1,0 +1,10 @@
+1. `gb_matrix` Specification ($2 \times 2n$): Approved. The $2 \times 2n$ matrix with row labels `["a_1_p", "a_1_m"]`, column labels `["b_1_p", "b_1_m", ..., "b_{n}_p", "b_{n}_m"]`, parity 1, and parameter names `gb_a1{sigma}_b{j}{s}` ($4n$ parameters total: 4 for $n=1$, 8 for $n=2$, 12 for $n=3$) matches `docs/math/C_inhomogeneous_definition.md`.
+2. Gram Matrix Sign Convention Options for Human Selection: Choose Option 1 (Frappat / Reference Document Standard: $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \cdot \kappa \iff [a_1^\sigma, b_j^s] = + \mathrm{gb}_{\sigma, j, s} \cdot \kappa$). This directly follows Eq. (22) of `docs/math/C_inhomogeneous_definition.md`.
+3. $\gamma$-Computation Method in $\mathcal{U}(A)$: Approved. Computing $[X, Y\}_\gamma = [X, Y\}_0 + \kappa \cdot \gamma(X, Y)$ via associative normal-ordering in $\mathcal{U}(A)$ and decomposing $\Omega(X, Y, \text{param})$ into the basis of $\mathfrak{g}$ modulo the central scalar $K=1$ is consistent with the adjoint representation realization in `docs/math/C_inhomogeneous_definition.md`.
+4. Schema 2 JSON Structure (`C_{n}_gamma.json`): Approved, with one structural note for Requirement 3 ("Design the `inhomogeneous_deformation` field in accordance with Schema 2 standards"): please include the `inhomogeneous_deformation` key in the Schema 2 JSON (either as the top-level container wrapping `gb_matrix` and `gamma_structure_constants`, or alongside `deformation_parameters` / `gamma_structure_constants`) so that Requirement 3 is explicitly satisfied.
+
+Regarding your two confirmation items under "Human Approval Required":
+1. Option 1 (Reference Document Standard: $[b_j^s, a_1^\sigma] = - \mathrm{gb}_{\sigma, j, s} \kappa$) is approved.
+2. The $\gamma$-computation method modulo central $K$ and the proposed Schema 2 structure (with the `inhomogeneous_deformation` key included per Requirement 3) are approved.
+
+You may now proceed to implement the gamma computation script, generate the Schema 2 JSON files (`data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`), and verify consistency with Schema 1.

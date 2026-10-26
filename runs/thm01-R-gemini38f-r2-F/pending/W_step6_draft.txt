@@ -1,0 +1,11 @@
+1. Proposed Representative `gb` Parameter Sign Profiles:
+   - Choose Profile A: All-Ones Baseline (`all_plus_one`, $\mathrm{gb}_{\sigma, j, s} = +1$ for all $\sigma \in \{+,-\}, j \in \{1,\dots,n\}, s \in \{+,-\}$). This directly satisfies Requirement 1 ("e.g., all set to +1 or representative sign profiles") and activates all $4n$ deformation channels uniformly. (Note: When implementing the evaluation script, keeping a general helper function that can evaluate any parameter dictionary `val(param)` will also be useful for testing and for Step 8's triviality analysis.)
+   - Profile B (`alternating_signs`) and Profile C (`unit_channel_1`): Not selected as the primary profile for `data/C_{n}_evaluated.json`, though your evaluation function may support arbitrary parameter dicts for unit tests.
+2. Proposed Schema 3 Architecture (`C_{n}_evaluated.json`): Approved. Retaining the Schema 1/2 foundation (`schema_version`, `algebra`, `central_elements`, `basis`, `parity`) and adding `evaluated_parameters` (`profile_name` and `parameter_values`), `evaluated_gamma_structure_constants` ($c_{XY}^Z(\text{eval}) = \sum_{\text{param}} c_{XY}^{Z,\text{param}} \cdot \mathrm{val}(\text{param})$ with exact rational strings and zero entries omitted), `total_evaluated_bracket`, and `metadata` is clean and self-consistent with Schema 2.
+3. File Naming: Approved. Use `data/C_1_evaluated.json`, `data/C_2_evaluated.json`, and `data/C_3_evaluated.json` as specified in Requirement 2.
+
+Regarding your two confirmation items under "Human Approval Required":
+1. Profile A (`all_plus_one`) is approved as the representative sign profile.
+2. The proposed Schema 3 architecture and file naming (`data/C_{1,2,3}_evaluated.json`) are approved.
+
+You may now proceed to implement the substitution/evaluation script, generate `data/C_1_evaluated.json`, `data/C_2_evaluated.json`, and `data/C_3_evaluated.json`, and verify data consistency with Schema 2.

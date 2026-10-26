@@ -1,0 +1,256 @@
+run,branch,final_commit,status,verdict,verdict_at_reveal,condition,model,harness,manager,manager_harness,run_note,group
+thm01-01,study/thm01-01,281a02a,counted,pass,pass,May-Iterative,Gemini 3.1 Pro,gemini-cli (May),gemini-3.1-pro-preview,Antigravity CLI (May),,may
+thm01-02,study/thm01-02,c0aece5,counted,insufficient,insufficient,May-Iterative,Gemini 3 Flash,gemini-cli (May),gemini-3.1-pro-preview,Antigravity CLI (May),,may
+thm01-03,study/thm01-03,ab7d55f,counted,fail,fail,May-Iterative,Gemini 3.1 Flash-lite,gemini-cli (May),gemini-3.1-pro-preview,Antigravity CLI (May),,may
+thm01-04,study/thm01-04,34ecaaf,counted,pass,pass,May-Iterative,Claude Sonnet 4.6,Copilot CLI (May),gemini-3.1-pro-preview,Antigravity CLI (May),,may
+thm01-05,study/thm01-05,2864d32,counted,pass,pass,May-Iterative,GPT-5.4,Copilot CLI (May),gemini-3.1-pro-preview,Antigravity CLI (May),,may
+thm01-X-01,study/thm01-X-01,4b6f613,counted,pass,pass,May-OneShot,Gemini 3.1 Pro,gemini-cli (May),,,,may
+thm01-X-02,study/thm01-X-02,cfe4bd8,counted,insufficient,insufficient,May-OneShot,Gemini 3 Flash,gemini-cli (May),,,,may
+thm01-X-03,study/thm01-X-03,ce0e21d,counted,fail,fail,May-OneShot,Gemini 3.1 Flash-lite,gemini-cli (May),,,,may
+thm01-X-04,study/thm01-X-04,e9749a2,counted,fail,fail,May-OneShot,Claude Sonnet 4.6,Copilot CLI (May),,,,may
+thm01-X-05,study/thm01-X-05,e5b47be,counted,fail,fail,May-OneShot,GPT-5.4,Copilot CLI (May),,,,may
+thm01-X-06,study/thm01-X-06,47eff63,counted,insufficient,insufficient,May-OneShot,Claude Opus 4.6,"Antigravity (May; ""Custom CLI"" in the memo)",,,,may
+thm01-R-gemini38f-A1,study/thm01-R-gemini38f-A1,bcaadf3,"excluded: contamination by the scribe's git fetch in the workspace; not counted, record kept (author 2026-10-12, runs/thm01-R-gemini38f-A1/run_log.md; rerun as gemini38f-r2-A1)",,,A1,Gemini 3.8 Flash,agy 1.3.3,Gemini 3.1 Pro (Low),agy 1.3.3,,interactive
+thm01-R-gemini38f-F,study/thm01-R-gemini38f-F,,"not run: Manager Gemini 3.1 Pro retired, could not be run (author 2026-10-13, design 9.54); run instead as gemini38f-r2-F with the successor Manager Gemini 4 Argon (Low) (design 9.56, 2026-10-16)",,,F,Gemini 3.8 Flash,agy 1.3.3,Gemini 3.1 Pro (Low),agy 1.3.3,,interactive
+thm01-R-gemini38f-r2-A1,study/thm01-R-gemini38f-r2-A1,b87a64d,counted,pass,pass,A1,Gemini 3.8 Flash,agy 1.3.3,Gemini 3.1 Pro (Low),agy 1.3.3,isolation breach (counted): at I05 the Worker listed <home>/notebook/git/ and a directory there; the next read was denied by the author; resumed with a fixed reply (runs/thm01-R-gemini38f-r2-A1/run_log.md:47-49),interactive
+thm01-R-gemini38f-r2-F,study/thm01-R-gemini38f-r2-F,12313a5,counted,insufficient,insufficient,F,Gemini 3.8 Flash,agy 1.3.6,Gemini 4 Argon (Low),agy 1.4.0,,interactive
+thm01-R-gemini38f-r3-A1,study/thm01-R-gemini38f-r3-A1,a420a13,counted,insufficient,insufficient,A1,Gemini 3.8 Flash,agy 1.4.0,Gemini 4 Argon (Low),agy 1.4.0,"isolation breach (counted; author before results, design 9.56): at I03 the Worker ran `ls -la ..` (31 names: 30 other run workspaces and its own; the 33 in run_log is the link count) and listed ../thm01-R-gemini38f-r2-A1/src/ and tests/ (names and sizes); the read of r2-A1 src/C_generators.py was denied by the author; resumed with ""Continue."" (runs/thm01-R-gemini38f-r3-A1/run_log.md:42); and at I09 (06:28:20Z) the Worker itself ran `git fetch origin` (remote branches incl. origin/study/thm01-R-gemini38f-r2-A1 entered its repository), after its last content commit d43243b and before the marker commit a420a13; no content of other branches was read (Worker transcript #923; author: counted, design 9.56)",interactive
+thm01-R-luna-A,study/thm01-R-luna-A,877a1c5,counted,pass,pass,A1,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-luna-A2,study/thm01-R-luna-A2,2bd4c12,counted,pass,pass,A2,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy 1.3.1,,interactive
+thm01-R-luna-C,study/thm01-R-luna-C,83f2090,counted,fail,fail,C,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-luna-F,study/thm01-R-luna-F,32e91c8,counted,pass,pass,F,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-luna-G,study/thm01-R-luna-G,004a063,counted,fail,fail,G,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-luna-r2-A1,study/thm01-R-luna-r2-A1,2c59090,counted,fail,insufficient,A1,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy 1.3.2,,interactive
+thm01-R-luna-r2-A2,study/thm01-R-luna-r2-A2,507945c,counted,pass,pass,A2,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-luna-r2-C,study/thm01-R-luna-r2-C,3ae4af3,counted,fail,fail,C,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-luna-r2-F,study/thm01-R-luna-r2-F,68ac8b4,counted,fail,fail,F,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-luna-r2-G,study/thm01-R-luna-r2-G,6c5ed08,counted,fail,fail,G,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-luna-r3-A1,study/thm01-R-luna-r3-A1,018b66a,counted,pass,pass,A1,GPT-6 Luna,Copilot CLI,Gemini 3.1 Pro (Low),agy 1.3.3,,interactive
+thm01-R-luna-r3-C,study/thm01-R-luna-r3-C,e890c66,counted,fail,fail,C,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-luna-r3-G,study/thm01-R-luna-r3-G,6a6273e,counted,fail,fail,G,GPT-6 Luna,Copilot CLI,,,,interactive
+thm01-R-sonnet46-A,study/thm01-R-sonnet46-A,339aa4a,counted,insufficient,insufficient,A2,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-sonnet46-A1,study/thm01-R-sonnet46-A1,d0c44a4,counted,insufficient,insufficient,A1,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-sonnet46-C,study/thm01-R-sonnet46-C,49db534,counted,fail,fail,C,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-sonnet46-F,study/thm01-R-sonnet46-F,e3b8d11,counted,insufficient,fail,F,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy 1.3.1,,interactive
+thm01-R-sonnet46-G,study/thm01-R-sonnet46-G,4c82fc5,counted,insufficient,insufficient,G,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-sonnet46-r2-A1,study/thm01-R-sonnet46-r2-A1,055e9fc,counted,insufficient,insufficient,A1,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-sonnet46-r2-A2,study/thm01-R-sonnet46-r2-A2,cbda287,counted,insufficient,insufficient,A2,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy (version not recorded),,interactive
+thm01-R-sonnet46-r2-C,study/thm01-R-sonnet46-r2-C,079dd8e,counted,fail,fail,C,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-sonnet46-r2-F,study/thm01-R-sonnet46-r2-F,6449489,counted,fail,fail,F,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy 1.3.2,,interactive
+thm01-R-sonnet46-r2-G,study/thm01-R-sonnet46-r2-G,289e034,counted,insufficient,insufficient,G,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-sonnet46-r3-A1,study/thm01-R-sonnet46-r3-A1,d0b9ca5,counted,insufficient,insufficient,A1,Claude Sonnet 4.6,Claude Code 2.1.288,Gemini 3.1 Pro (Low),agy 1.3.3,,interactive
+thm01-R-sonnet46-r3-C,study/thm01-R-sonnet46-r3-C,3ed5f21,counted,insufficient,insufficient,C,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-sonnet46-r3-G,study/thm01-R-sonnet46-r3-G,ddcc3e5,counted,insufficient,insufficient,G,Claude Sonnet 4.6,Claude Code 2.1.288,,,,interactive
+thm01-R-fable5-b01-C,study/thm01-R-fable5-b01-C,d24a634,counted,insufficient,insufficient,C,claude-fable-5,2.1.288 (Claude Code),,,,batch
+thm01-R-fable5-b02-G,study/thm01-R-fable5-b02-G,80b4910,counted,insufficient,insufficient,G,claude-fable-5,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b01-C,study/thm01-R-fable51-b01-C,036cdf4,counted,insufficient,insufficient,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b02-G,study/thm01-R-fable51-b02-G,6b877f1,counted,insufficient,insufficient,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b03-C,study/thm01-R-fable51-b03-C,9a00c3e,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b04-G,study/thm01-R-fable51-b04-G,a0ffc43,counted,pass,pass,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b05-C,study/thm01-R-fable51-b05-C,9688796,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b06-G,study/thm01-R-fable51-b06-G,1920fa5,counted,pass,pass,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b07-C,study/thm01-R-fable51-b07-C,a92f895,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b08-G,study/thm01-R-fable51-b08-G,416363f,counted,pass,pass,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b09-C,study/thm01-R-fable51-b09-C,1367efc,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-b10-G,study/thm01-R-fable51-b10-G,50882bc,counted,insufficient,insufficient,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-high-b01-C,study/thm01-R-fable51-high-b01-C,fe2404a,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-high-b02-G,study/thm01-R-fable51-high-b02-G,1af3413,counted,pass,pass,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-high-b03-C,study/thm01-R-fable51-high-b03-C,70d1e58,counted,pass,pass,C,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-fable51-high-b04-G,study/thm01-R-fable51-high-b04-G,b747d61,counted,pass,pass,G,claude-fable-5-1,2.1.288 (Claude Code),,,,batch
+thm01-R-gemini31p-b01-C,study/thm01-R-gemini31p-b01-C,4335d47,counted,insufficient,insufficient,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b02-G,study/thm01-R-gemini31p-b02-G,eb0cec7,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b03-C,study/thm01-R-gemini31p-b03-C,4b6cbbd,counted,fail,fail,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b04-G,study/thm01-R-gemini31p-b04-G,780b574,counted,fail,fail,G,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b05-C,study/thm01-R-gemini31p-b05-C,8d26668,counted,pass,pass,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b06-G,study/thm01-R-gemini31p-b06-G,16d9df5,counted,fail,fail,G,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b07-C,study/thm01-R-gemini31p-b07-C,6b7d62c,counted,insufficient,insufficient,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b08-G,study/thm01-R-gemini31p-b08-G,5f90b7e,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b09-C,study/thm01-R-gemini31p-b09-C,a90f9c7,"excluded: rerun as gemini31p-b11-C (reflection turn denied, author 2026-10-05)",,,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b10-G,study/thm01-R-gemini31p-b10-G,ca75fe1,counted,fail,fail,G,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b11-C,study/thm01-R-gemini31p-b11-C,beb9e42,counted,pass,pass,C,gemini-3.1-pro-low,agy 1.2.16,,,,batch
+thm01-R-gemini31p-b12-G,study/thm01-R-gemini31p-b12-G,cf5c974,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b13-C,study/thm01-R-gemini31p-b13-C,27df606,counted,fail,fail,C,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b14-G,study/thm01-R-gemini31p-b14-G,8ec0667,excluded: stopped,,,G,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b15-C,study/thm01-R-gemini31p-b15-C,d25ab07,counted,fail,fail,C,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b16-G,study/thm01-R-gemini31p-b16-G,b3cc792,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b17-C,study/thm01-R-gemini31p-b17-C,a728082,counted,insufficient,insufficient,C,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b18-G,study/thm01-R-gemini31p-b18-G,a8ef7c1,counted,fail,fail,G,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b19-C,study/thm01-R-gemini31p-b19-C,eea8ad0,counted,pass,pass,C,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b20-G,study/thm01-R-gemini31p-b20-G,9f5f805,excluded: stopped,,,G,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b21-C,study/thm01-R-gemini31p-b21-C,02370f7,excluded: stopped,,,C,gemini-3.1-pro-low,agy 1.3.1,,,,batch
+thm01-R-gemini31p-b22-G,study/thm01-R-gemini31p-b22-G,b05988e,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.3.2,,,,batch
+thm01-R-gemini31p-b23-C,study/thm01-R-gemini31p-b23-C,7f03b93,counted,fail,fail,C,gemini-3.1-pro-low,agy 1.3.2,,,,batch
+thm01-R-gemini31p-b24-G,study/thm01-R-gemini31p-b24-G,cf902c8,counted,insufficient,insufficient,G,gemini-3.1-pro-low,agy 1.3.3,,,,batch
+thm01-R-gemini31p-high-b01-C,study/thm01-R-gemini31p-high-b01-C,ce424a9,counted,pass,pass,C,gemini-3.1-pro-high,agy 1.3.3,,,,batch
+thm01-R-gemini31p-high-b02-G,study/thm01-R-gemini31p-high-b02-G,240a8e5,counted,fail,insufficient,G,gemini-3.1-pro-high,agy 1.3.3,,,,batch
+thm01-R-gemini36f-b01-C,study/thm01-R-gemini36f-b01-C,0f5d736,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b02-G,study/thm01-R-gemini36f-b02-G,5b3583d,counted,insufficient,insufficient,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b03-C,study/thm01-R-gemini36f-b03-C,beecf2e,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b04-G,study/thm01-R-gemini36f-b04-G,e22f740,excluded: aborted,,,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b05-C,study/thm01-R-gemini36f-b05-C,f540864,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b06-G,study/thm01-R-gemini36f-b06-G,e055a87,counted,insufficient,insufficient,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b07-C,study/thm01-R-gemini36f-b07-C,8e3d088,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b08-G,study/thm01-R-gemini36f-b08-G,7a7b791,counted,insufficient,insufficient,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b09-C,study/thm01-R-gemini36f-b09-C,58059b1,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b10-G,study/thm01-R-gemini36f-b10-G,2f0bba8,counted,insufficient,insufficient,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b11-G,study/thm01-R-gemini36f-b11-G,01b1c15,counted,insufficient,insufficient,G,gemini-3.6-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini36f-b12-C,study/thm01-R-gemini36f-b12-C,2c13e6d,counted,pass,pass,C,gemini-3.6-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini36f-b13-C,study/thm01-R-gemini36f-b13-C,920d772,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini36f-b14-C,study/thm01-R-gemini36f-b14-C,ba44071,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini36f-b15-C,study/thm01-R-gemini36f-b15-C,2d5406c,counted,insufficient,insufficient,C,gemini-3.6-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini36f-b16-C,study/thm01-R-gemini36f-b16-C,b5ca074,counted,pass,pass,C,gemini-3.6-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini37f-b01-C,study/thm01-R-gemini37f-b01-C,cd2f820,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b02-G,study/thm01-R-gemini37f-b02-G,01ed966,counted,insufficient,insufficient,G,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b03-C,study/thm01-R-gemini37f-b03-C,7b0af12,counted,insufficient,insufficient,C,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b04-G,study/thm01-R-gemini37f-b04-G,d870ad3,counted,insufficient,insufficient,G,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b05-G,study/thm01-R-gemini37f-b05-G,2a5474a,counted,insufficient,insufficient,G,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b06-C,study/thm01-R-gemini37f-b06-C,05d8afa,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b07-G,study/thm01-R-gemini37f-b07-G,88749de,counted,pass,pass,G,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b08-C,study/thm01-R-gemini37f-b08-C,32a5080,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b09-C,study/thm01-R-gemini37f-b09-C,f3b2219,counted,insufficient,insufficient,C,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b10-G,study/thm01-R-gemini37f-b10-G,5cc70c4,counted,insufficient,insufficient,G,gemini-3.7-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini37f-b11-C,study/thm01-R-gemini37f-b11-C,898f974,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini37f-b12-C,study/thm01-R-gemini37f-b12-C,5e9bbb9,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini37f-b13-C,study/thm01-R-gemini37f-b13-C,5345d7a,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini37f-b14-C,study/thm01-R-gemini37f-b14-C,540ff32,counted,insufficient,insufficient,C,gemini-3.7-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini37f-b15-C,study/thm01-R-gemini37f-b15-C,a9e4373,counted,pass,pass,C,gemini-3.7-flash-medium,agy 1.2.17,,,,batch
+thm01-R-gemini38f-b01-C,study/thm01-R-gemini38f-b01-C,b8029d0,counted,insufficient,insufficient,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b02-G,study/thm01-R-gemini38f-b02-G,0895580,counted,insufficient,insufficient,G,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b03-C,study/thm01-R-gemini38f-b03-C,d94541e,excluded: stopped,,,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b04-C,study/thm01-R-gemini38f-b04-C,49deba5,counted,insufficient,insufficient,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b05-C,study/thm01-R-gemini38f-b05-C,2949295,counted,insufficient,insufficient,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b06-G,study/thm01-R-gemini38f-b06-G,7ff397d,counted,insufficient,insufficient,G,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b07-C,study/thm01-R-gemini38f-b07-C,596d75f,counted,insufficient,insufficient,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b08-G,study/thm01-R-gemini38f-b08-G,31f256e,counted,insufficient,insufficient,G,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b09-C,study/thm01-R-gemini38f-b09-C,ad1d668,excluded: stopped,,,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b10-G,study/thm01-R-gemini38f-b10-G,43383e4,counted,insufficient,insufficient,G,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b11-G,study/thm01-R-gemini38f-b11-G,d803451,counted,insufficient,insufficient,G,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-gemini38f-b12-C,study/thm01-R-gemini38f-b12-C,2302bc1,counted,insufficient,insufficient,C,gemini-3.8-flash-medium,agy 1.2.16,,,,batch
+thm01-R-haiku45-b01-C,study/thm01-R-haiku45-b01-C,b309224,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b02-G,study/thm01-R-haiku45-b02-G,e308abf,counted,fail,fail,G,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b03-C,study/thm01-R-haiku45-b03-C,4523963,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b04-G,study/thm01-R-haiku45-b04-G,3873a04,counted,fail,fail,G,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b05-C,study/thm01-R-haiku45-b05-C,fcf3025,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b06-G,study/thm01-R-haiku45-b06-G,bcfa0cb,counted,insufficient,fail,G,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b07-C,study/thm01-R-haiku45-b07-C,18b0594,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b08-G,study/thm01-R-haiku45-b08-G,84e1c9d,counted,fail,fail,G,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b09-C,study/thm01-R-haiku45-b09-C,e35e937,"excluded: rerun as haiku45-b11-C (API 400 in reflection turn, author 2026-10-05)",,,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b10-G,study/thm01-R-haiku45-b10-G,221dd48,counted,fail,fail,G,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-b11-C,study/thm01-R-haiku45-b11-C,6e3a985,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.288 (Claude Code),,,,batch
+thm01-R-haiku45-v293-b01-C,study/thm01-R-haiku45-v293-b01-C,5939e81,counted,fail,fail,C,claude-haiku-4-5-20251001,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku45-v293-b02-G,study/thm01-R-haiku45-v293-b02-G,e46ed61,counted,fail,fail,G,claude-haiku-4-5-20251001,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b01-C,study/thm01-R-haiku55-b01-C,8d5fe89,counted,insufficient,fail,C,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b02-G,study/thm01-R-haiku55-b02-G,642b4cf,counted,fail,insufficient,G,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b03-C,study/thm01-R-haiku55-b03-C,6848d4d,counted,insufficient,insufficient,C,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b04-G,study/thm01-R-haiku55-b04-G,f7bbe62,counted,fail,insufficient,G,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b05-C,study/thm01-R-haiku55-b05-C,9cb03bd,counted,insufficient,insufficient,C,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b06-G,study/thm01-R-haiku55-b06-G,bed8e19,counted,fail,fail,G,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b07-C,study/thm01-R-haiku55-b07-C,f6bf544,counted,fail,fail,C,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b08-G,study/thm01-R-haiku55-b08-G,7c66bf9,counted,insufficient,insufficient,G,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b09-C,study/thm01-R-haiku55-b09-C,523503c,counted,insufficient,fail,C,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-haiku55-b10-G,study/thm01-R-haiku55-b10-G,1f0aef3,counted,insufficient,insufficient,G,claude-haiku-5-5,2.1.293 (Claude Code),,,,batch
+thm01-R-luna-b01-C,study/thm01-R-luna-b01-C,006e2b9,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b02-G,study/thm01-R-luna-b02-G,348783a,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b03-C,study/thm01-R-luna-b03-C,c1178b5,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b04-G,study/thm01-R-luna-b04-G,025003a,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b05-C,study/thm01-R-luna-b05-C,3a5cfe9,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b06-G,study/thm01-R-luna-b06-G,395aed4,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b07-C,study/thm01-R-luna-b07-C,a5ec4cc,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b08-G,study/thm01-R-luna-b08-G,2568709,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b09-C,study/thm01-R-luna-b09-C,f8a865a,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b10-G,study/thm01-R-luna-b10-G,beafab3,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.91.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b11-C,study/thm01-R-luna-b11-C,6219c4c,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.92.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b12-G,study/thm01-R-luna-b12-G,580fab2,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b13-C,study/thm01-R-luna-b13-C,94a07e9,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b14-G,study/thm01-R-luna-b14-G,6a92f05,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b15-C,study/thm01-R-luna-b15-C,414f810,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b16-G,study/thm01-R-luna-b16-G,adeca62,counted,insufficient,insufficient,G,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b17-C,study/thm01-R-luna-b17-C,77a7b92,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b18-G,study/thm01-R-luna-b18-G,0107565,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b19-C,study/thm01-R-luna-b19-C,b89aa75,counted,fail,fail,C,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-luna-b20-G,study/thm01-R-luna-b20-G,d6b53a7,counted,fail,fail,G,gpt-6-luna,"GitHub Copilot CLI 1.0.93.
+Run 'copilot update' to check for updates.",,,,batch
+thm01-R-opus46-b01-C,study/thm01-R-opus46-b01-C,31dc3b9,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b03-C,study/thm01-R-opus46-b03-C,1858626,excluded: aborted,,,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b04-C,study/thm01-R-opus46-b04-C,535381b,excluded: aborted,,,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b05-C,study/thm01-R-opus46-b05-C,bf9e368,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b06-G,study/thm01-R-opus46-b06-G,792eb3c,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b07-C,study/thm01-R-opus46-b07-C,5de75f6,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b08-G,study/thm01-R-opus46-b08-G,de7187f,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b09-C,study/thm01-R-opus46-b09-C,f0630c4,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b10-G,study/thm01-R-opus46-b10-G,b37adaf,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b11-C,study/thm01-R-opus46-b11-C,2610d1d,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b12-G,study/thm01-R-opus46-b12-G,5f4f44d,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-b13-G,study/thm01-R-opus46-b13-G,2d1915d,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-high-b01-C,study/thm01-R-opus46-high-b01-C,bee1812,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-high-b02-G,study/thm01-R-opus46-high-b02-G,fb33b6b,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-high-b03-C,study/thm01-R-opus46-high-b03-C,a2dfec2,counted,insufficient,insufficient,C,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus46-high-b04-G,study/thm01-R-opus46-high-b04-G,d34a045,counted,insufficient,insufficient,G,claude-opus-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-opus47-b01-C,study/thm01-R-opus47-b01-C,404b019,counted,insufficient,insufficient,C,claude-opus-4-7,2.1.288 (Claude Code),,,,batch
+thm01-R-opus47-b02-G,study/thm01-R-opus47-b02-G,1d7827f,counted,insufficient,insufficient,G,claude-opus-4-7,2.1.288 (Claude Code),,,,batch
+thm01-R-opus48-b01-C,study/thm01-R-opus48-b01-C,06e61fb,counted,pass,pass,C,claude-opus-4-8,2.1.288 (Claude Code),,,,batch
+thm01-R-opus48-b02-G,study/thm01-R-opus48-b02-G,6d69359,counted,insufficient,pass,G,claude-opus-4-8,2.1.288 (Claude Code),,,,batch
+thm01-R-opus5-b01-C,study/thm01-R-opus5-b01-C,8ac8fbf,counted,pass,pass,C,claude-opus-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus5-b02-G,study/thm01-R-opus5-b02-G,fbbf80b,counted,insufficient,insufficient,G,claude-opus-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b01-C,study/thm01-R-opus55-b01-C,cd762e0,counted,pass,pass,C,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b02-G,study/thm01-R-opus55-b02-G,37c45f9,counted,pass,pass,G,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b03-C,study/thm01-R-opus55-b03-C,d48450c,counted,pass,pass,C,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b04-G,study/thm01-R-opus55-b04-G,a058b60,counted,pass,pass,G,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b05-C,study/thm01-R-opus55-b05-C,e3b2226,counted,pass,pass,C,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b06-G,study/thm01-R-opus55-b06-G,d0587f3,counted,pass,pass,G,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b07-C,study/thm01-R-opus55-b07-C,c1635e3,counted,pass,pass,C,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b08-G,study/thm01-R-opus55-b08-G,0873384,counted,pass,pass,G,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b09-C,study/thm01-R-opus55-b09-C,3ac0691,counted,pass,pass,C,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-opus55-b10-G,study/thm01-R-opus55-b10-G,6c1ff83,counted,pass,pass,G,claude-opus-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b01-G,study/thm01-R-sonnet46-b01-G,187c16d,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b02-G,study/thm01-R-sonnet46-b02-G,ff386ea,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b03-C,study/thm01-R-sonnet46-b03-C,8af2c6c,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b04-G,study/thm01-R-sonnet46-b04-G,d0c6346,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b05-C,study/thm01-R-sonnet46-b05-C,156900a,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b06-C,study/thm01-R-sonnet46-b06-C,301597f,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b07-G,study/thm01-R-sonnet46-b07-G,8e7dba4,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b08-C,study/thm01-R-sonnet46-b08-C,e09166b,excluded: aborted,,,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b09-C,study/thm01-R-sonnet46-b09-C,1ccffd8,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b10-C,study/thm01-R-sonnet46-b10-C,b1b3783,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b11-G,study/thm01-R-sonnet46-b11-G,51a7261,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b12-G,study/thm01-R-sonnet46-b12-G,09ee3be,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b13-C,study/thm01-R-sonnet46-b13-C,b44472b,"excluded: rerun as sonnet46-b22-C (API 400 in reflection turn, author 2026-10-09, design 9.33)",,,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b14-G,study/thm01-R-sonnet46-b14-G,431306d,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b15-C,study/thm01-R-sonnet46-b15-C,de2f167,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b16-G,study/thm01-R-sonnet46-b16-G,82a7386,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b17-C,study/thm01-R-sonnet46-b17-C,f6152e4,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b18-G,study/thm01-R-sonnet46-b18-G,26cfa79,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b19-C,study/thm01-R-sonnet46-b19-C,c4fc8bd,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b20-G,study/thm01-R-sonnet46-b20-G,1b2ac87,counted,insufficient,insufficient,G,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b21-C,study/thm01-R-sonnet46-b21-C,c36df79,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-b22-C,study/thm01-R-sonnet46-b22-C,2c7aef8,counted,fail,fail,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet46-high-b01-C,study/thm01-R-sonnet46-high-b01-C,6493a7a,excluded: aborted,,,C,claude-sonnet-4-6,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b01-C,study/thm01-R-sonnet55-b01-C,3cf8bcb,counted,insufficient,insufficient,C,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b02-G,study/thm01-R-sonnet55-b02-G,4db0c7f,counted,insufficient,insufficient,G,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b03-C,study/thm01-R-sonnet55-b03-C,401a6ad,counted,pass,pass,C,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b04-G,study/thm01-R-sonnet55-b04-G,2df0575,counted,insufficient,insufficient,G,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b05-C,study/thm01-R-sonnet55-b05-C,8d6dde2,counted,pass,pass,C,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b06-G,study/thm01-R-sonnet55-b06-G,a87bfb8,counted,insufficient,insufficient,G,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b07-C,study/thm01-R-sonnet55-b07-C,163e30b,counted,insufficient,insufficient,C,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b08-G,study/thm01-R-sonnet55-b08-G,97d6135,counted,insufficient,insufficient,G,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b09-C,study/thm01-R-sonnet55-b09-C,a773ba2,counted,insufficient,insufficient,C,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch
+thm01-R-sonnet55-b10-G,study/thm01-R-sonnet55-b10-G,92cb95d,counted,insufficient,insufficient,G,claude-sonnet-5-5,2.1.288 (Claude Code),,,,batch

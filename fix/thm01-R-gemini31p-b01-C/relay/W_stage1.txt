@@ -1,0 +1,23 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+Please review and resolve the following discrepancies and omissions in the repository:
+
+1. Theoretical Handling of Conditions and Computational Conventions
+- In `docs/issues/mathematical_proof.md`, there is no explanation of the theoretical handling of the "adjoint representation / up to scalar" condition specified in the problem background (`docs/math/C_inhomogeneous_definition.md` and `docs/math/C_coboundary_definition.md`).
+- Furthermore, the report omits the explicit conventions used during computation, such as the parity assignment of the deformation parameters `gb` (parity 1) and the exact sign rules / commutation relations with the central element `kappa`.
+- Action required: Update `docs/issues/mathematical_proof.md` to clearly define and justify your mathematical conventions (parity of `gb`, commutator relations involving `kappa`) and provide a thorough theoretical explanation of how the "adjoint representation" and "up to scalar" aspects are treated in your algebraic system.
+
+2. Cross-Checking the Coboundary System and Matrix Rank
+- In `docs/issues/mathematical_proof.md` (lines 28–31) and `verification_artifacts.json`, equation counts and nullspace dimensions are reported for $A$, but the rank of the coboundary matrix $A$ is not stated.
+- In addition, the dimensions and counts recorded in `verification_artifacts.json` have not been cross-checked against the algebraic definitions and dimensional properties described in `docs/math/`.
+- Action required: Re-evaluate and cross-check the linear system $A \vec{\phi} = B \vec{\mathrm{gb}}$. Explicitly compute, verify, and document the matrix rank of $A$ for each case ($n=1, 2, 3$). Verify that the system dimensions, ranks, and constraints are consistent with the definitions in `docs/math/`, and update both `docs/issues/mathematical_proof.md` and `verification_artifacts.json` accordingly.
+
+3. Scope of Claims and Generalization to $C(n+1)$
+- In `docs/issues/mathematical_proof.md` (lines 33–36), the conclusion asserts that no non-zero configuration of $\mathrm{gb}$ can satisfy triviality for $C(n+1)$ universally for all $n$, and `final_reflection.md` (line 19) claims this was "rigorously" verified "generalized algebraically". However, computational evidence is only provided for $n=1, 2, 3$, and no proof or inductive argument is provided for general $n$.
+- Action required: Clearly demarcate what has been proven computationally (for $n=1, 2, 3$) versus general $n$. Either provide a rigorous theoretical proof/derivation valid for general $n$, or adjust the claims and conclusions in `docs/issues/mathematical_proof.md` (and clarify in reflection files) to accurately reflect the verified scope without unjustified overgeneralization.
+
+Please update the report, code, and verification artifacts so that they are mutually consistent, rigorously supported, and fully committed to the repository.
+----- END CORRECTION -----

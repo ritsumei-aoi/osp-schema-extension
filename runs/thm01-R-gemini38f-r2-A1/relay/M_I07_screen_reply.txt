@@ -1,0 +1,44 @@
+### Part 1 — Review for the human (in Japanese)
+
+- Active Manager Model: Gemini 3.1 Pro
+- Run / Issue / Stop: thm01-R-gemini38f-r2-A1 / I07 / proposal before implementation
+
+1. Worker が挙げた項目の一覧
+   Worker は `docs/issues/issue_open.md` の Response セクションにて以下の項目を提示し、承認を求めています：
+   - **4.1 Map $f$ Configuration (線形写像 $f$ の構成選択)**:
+     - Option 1: Complete Parameterized Coboundary Operator (Symbolic Basis) [推奨] — パリティ反転する基本写像基底 $e_{ij}: Z_j \mapsto Z_i$ ($p(Z_i) = 1 - p(Z_j)$) の係数 $\phi_{ij}$（$n=1$ で 32個、$n=2$ で 176個、$n=3$ で 528個）を用いて一般の奇線形写像 $f$ をパラメータ表示し、コバウンダリ空間 $B^1(\mathfrak{g}, \mathfrak{g})$ を網羅的に計算・表現する。
+     - Option 2: Canonical Representative Odd Map (`canonical_pairing`) — 単一の代表的な奇写像 $f_0$（カルタン／単純ルート間のペアリングなど）を選定し数値評価する。
+     - Option 3: Hybrid Specification (Symbolic Elementary Basis + Triviality Analysis) — Option 1 の完全な基底展開に加えて、変形 $\gamma_{\text{eval}}$ の非自明性解析結果（階数やコホモロジー類情報）をメタデータとして含める。
+     - ※ Worker は 5.1 で「Option 1 に自明性解析メタデータを組み合わせた構成（事実上 Option 3）」を推奨。
+   - **4.2 Mathematical Verification of Deformation Triviality (変形の非自明性の予備的検証結果報告)**:
+     - $B^1(\mathfrak{g}, \mathfrak{g})$ の階数：$n=1 \to 28$（核次元 4）、$n=2 \to 168$（核次元 8）、$n=3 \to 516$（核次元 12）。
+     - 非自明性判定：評価された非斉次変形 $\gamma_{\text{eval}}$ は $B^1$ に属さず（$\operatorname{rank}(M \mid \gamma_{\text{eval}}) = \operatorname{rank}(M) + 1$）、すべての $n=1, 2, 3$ で $H^1(\mathfrak{g}, \mathfrak{g})$ において非自明な類を張る
+<truncated 2440 bytes>
+、JSON 生成時の計算時間およびファイルサイズがやや大きくなる可能性がありますが、厳密な有理数計算により整合的に実行可能です。特に問題となる欠陥や懸念事項はありません。
+
+5. 推奨する対応
+   - **承認（APPROVAL）** を推奨します。Worker の提案は Issue I07-1 の要件および `docs/math/C_coboundary_definition.md` の数学的定義に厳密に沿っており、ワークフロールールも順守されています。
+
+---
+
+### Part 2 — Draft to the Worker (in English, in one code block)
+
+```
+TYPE: APPROVAL
+
+Regarding your proposals for Issue I07-1:
+
+1. Map f Configuration:
+   - Option 1 (Complete Parameterized Coboundary Operator with symbolic phi_{ij} basis entries and triviality analysis metadata) is selected and approved. Parameterizing the full odd linear map space B^1(g, g) strictly adheres to `docs/math/C_coboundary_definition.md` and provides the necessary linear-algebraic foundation to evaluate 1-cohomology and deformation triviality.
+
+2. Mathematical Verification of Deformation Triviality:
+   - Approved. The preliminary rank computations confirming rank(B^1) = 28, 168, 516 and establishing that gamma_eval is strictly non-trivial (gamma notin B^1) across n=1, 2, 3 are mathematically clear and consistent.
+
+3. Schema 4 JSON Design:
+   - Approved. The proposed `coboundary_structure` layout containing `linear_map`, `operator_definition`, `coboundary_constants`, `triviality_analysis`, and `statistics` integrates seamlessly into the 4-layer schema architecture.
+
+4. File Naming Convention:
+   - Approved. Generating `data/C_{n}_coboundary.json` for n=1, 2, 3 strictly complies with Requirement 3.
+
+You may now proceed to implement the coboundary computation script, generate `data/C_1_coboundary.json`, `data/C_2_coboundary.json`, and `data/C_3_coboundary.json`, verify consistency with the Layer 1 basis, add automated tests, and complete Issue I07 following the Phase 4 completion procedure in `handover/workflow.md`.
+```

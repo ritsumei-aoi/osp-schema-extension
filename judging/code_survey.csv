@@ -1,0 +1,235 @@
+run,model,condition,exclude,rerun_excerpt,py_files,py_tests,loc,functions,functions_doc,classes,main_guard,cli_args,n_param,test_funcs,abs_path_files,syntax_error,md_python_blocks,json_files,readme_beyond_kit,libs,code_dirs
+thm01-01,Gemini 3.1 Pro,May-Iterative,,,6,1,919,32,0,3,6,0,7,2,0,0,2,12,0,fractions sympy,src tests
+thm01-02,Gemini 3 Flash,May-Iterative,,,12,1,1070,52,1,9,12,0,12,4,0,0,0,12,0,fractions numpy,src tests
+thm01-03,Gemini 3.1 Flash-lite,May-Iterative,,,1,0,61,2,0,0,1,0,1,0,0,0,0,0,0,,src
+thm01-04,Claude Sonnet 4.6,May-Iterative,,,6,1,1981,64,38,7,7,0,7,51,0,0,0,15,0,fractions,src tests
+thm01-05,GPT-5.4,May-Iterative,,,5,5,1904,126,0,6,10,5,9,23,0,0,0,15,0,fractions,src tests
+thm01-X-01,Gemini 3.1 Pro,May-OneShot,,"{""command"": ""cd <scratch copy>; python3 nullspace_n1.py, nullspace_n2.py, solve_n1.py, constraint_trace.py, constraint_t",8,0,653,23,0,0,0,0,0,0,0,0,0,1,0,sympy,.
+thm01-X-02,Gemini 3 Flash,May-OneShot,,"{""command"": ""cd <scratch copy>; python3 research/analysis.py (timeout 600)"", ""exit_codes"": ""0 (34.5 s)"", ""identical"": ""n",1,0,260,13,0,1,1,0,1,0,0,0,0,0,0,numpy,research
+thm01-X-03,Gemini 3.1 Flash-lite,May-OneShot,,"{""command"": ""cd <scratch copy>; python3 analysis_check.py; python3 proof_non_triviality.py; python3 sympy_proof.py"", ""ex",3,0,32,3,0,0,3,0,2,0,0,0,0,0,0,numpy sympy,.
+thm01-X-04,Claude Sonnet 4.6,May-OneShot,,"{""command"": ""cd docs/issues (scratch copy); python3 verification_artifacts.py (timeout 600)"", ""exit_codes"": ""0"", ""identi",1,0,443,6,6,0,1,0,1,0,0,0,0,0,0,,docs
+thm01-X-05,GPT-5.4,May-OneShot,,"{""command"": ""none (no code)"", ""exit_codes"": ""n/a"", ""identical"": ""n/a (verification_artifacts.json is static)"", ""versions",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-X-06,Claude Opus 4.6,May-OneShot,,"{""command"": ""cd <scratch copy root>; python3 verification/osp_algebra.py (timeout 600)"", ""exit_codes"": ""0 (about 20 s)"",",1,0,511,33,11,2,1,0,1,0,0,0,1,1,0,fractions,verification
+thm01-R-gemini38f-A1,Gemini 3.8 Flash,A1,"decision: contamination by the scribe's git fetch in the workspace; not counted, record kept (author 2026-10-12, runs/thm01-R-gemini38f-A1/run_log.md; rerun as gemini38f-r2-A1)",,2,1,747,20,4,1,2,0,3,6,0,0,0,3,0,fractions sympy,src tests
+thm01-R-gemini38f-r2-A1,Gemini 3.8 Flash,A1,,"{""commands"": ""cp -R $JROOT/final/thm01-R-gemini38f-r2-A1 <home>/notebook/git/thm01-R-judging-work/2026-10-13/work_fa",6,5,1448,29,24,0,6,0,11,18,0,0,0,12,0,fractions sympy,src tests
+thm01-R-gemini38f-r2-F,Gemini 3.8 Flash,F,,"{""commands"": ""cp -R $JROOT/final/thm01-R-gemini38f-r2-F <home>/notebook/git/thm01-R-judging-work/2026-10-17/work_fac",7,6,1621,41,16,2,6,0,12,16,0,0,0,12,0,fractions sympy,src tests
+thm01-R-gemini38f-r3-A1,Gemini 3.8 Flash,A1,,"{""commands"": ""cp -R $JROOT/final/thm01-R-gemini38f-r3-A1 <home>/notebook/git/thm01-R-judging-work/2026-10-17/r3A1/wo",6,5,1576,27,3,0,6,2,11,22,0,0,6,18,0,fractions sympy,src tests
+thm01-R-luna-A,GPT-6 Luna,A1,,,5,3,2213,78,16,6,5,5,7,9,0,0,0,12,0,fractions sympy,src tests
+thm01-R-luna-A2,GPT-6 Luna,A2,,not done (not requested in the task).,6,4,2070,69,7,3,5,5,9,15,0,0,0,12,0,fractions,src tests
+thm01-R-luna-C,GPT-6 Luna,C,,"{""command"": ""no Worker computation code; cd <scratch copy>/docs/issues && python3 -I -c \""json.load(open('cn1_triviality",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-F,GPT-6 Luna,F,,,5,4,1693,68,2,0,5,5,9,6,0,0,0,12,0,fractions,src tests
+thm01-R-luna-G,GPT-6 Luna,G,,,7,5,1296,42,0,0,6,6,11,11,0,0,0,12,0,fractions,src tests
+thm01-R-luna-r2-A1,GPT-6 Luna,A1,,"{""env"": ""Python 3.14.8, sympy 1.14.0, pytest 9.0.3 (no installs)"", ""copy"": ""<home>/notebook/git/thm01-R-judging-work",5,5,2337,85,9,3,5,5,9,21,0,0,0,12,0,fractions sympy,src tests
+thm01-R-luna-r2-A2,GPT-6 Luna,A2,,"{""env"": ""Python 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (ModuleNotFoundError); pytest 9.0.3. Copy: /Users",6,3,2313,76,5,5,9,5,6,10,0,0,0,12,0,fractions numpy scipy,src tests
+thm01-R-luna-r2-C,GPT-6 Luna,C,,"{""command"": ""no Worker computation code; python3 -I json.load of docs/issues/cn1_triviality_verification.json"", ""exit_co",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-r2-F,GPT-6 Luna,F,,"{""commands"": ""bash $JROOT/../work_interactive2_luna/r2-F/rerun.sh (copy of $JROOT/final/thm01-R-luna-r2-F in $JROOT/../w",5,4,1727,55,5,0,5,5,9,18,0,0,0,12,0,fractions sympy,src tests
+thm01-R-luna-r2-G,GPT-6 Luna,G,,,6,6,1275,45,0,0,6,1,11,12,0,0,0,12,0,fractions,src tests
+thm01-R-luna-r3-A1,GPT-6 Luna,A1,,"{""commands"": ""cp -R $JROOT/final/thm01-R-luna-r3-A1 $JROOT/../work_interactive2_luna/r3-A1/rerun; then (script $JROOT/..",5,4,2300,71,22,5,5,5,9,26,0,0,0,12,0,fractions,src tests
+thm01-R-luna-r3-C,GPT-6 Luna,C,,"{""command"": ""cd <scratch copy>/docs/issues && timeout 600 python3 verify_cn1_artifacts.py"", ""exit_code"": 0, ""result"": ""p",1,0,45,1,0,0,1,0,0,0,0,0,0,1,0,,docs
+thm01-R-luna-r3-G,GPT-6 Luna,G,,,6,5,1710,74,0,0,6,6,10,8,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-A,Claude Sonnet 4.6,A2,,,5,1,1531,54,32,0,6,0,6,7,0,0,1,12,0,fractions,src tests
+thm01-R-sonnet46-A1,Claude Sonnet 4.6,A1,,not done (not requested in the task).,6,4,2197,70,43,0,10,0,10,30,0,0,0,18,0,fractions,src tests
+thm01-R-sonnet46-C,Claude Sonnet 4.6,C,,"{""command"": ""cp -R run copy to scratch; cd copy; timeout 600 python3 scripts/verify_triviality.py"", ""exit_code"": 0, ""res",1,0,128,1,1,0,1,0,1,0,0,0,0,0,0,,scripts
+thm01-R-sonnet46-F,Claude Sonnet 4.6,F,,,9,1,1903,68,24,0,9,0,10,18,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-G,Claude Sonnet 4.6,G,,,6,1,1223,53,31,0,6,0,7,8,0,0,0,13,0,fractions,src tests
+thm01-R-sonnet46-r2-A1,Claude Sonnet 4.6,A1,,"{""command"": ""in a copy (<home>/notebook/git/thm01-R-judging-work/2026-10-11/work_interactive2_sonnet46/r2-A1/copy): ",5,1,1444,48,36,2,5,5,6,12,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-r2-A2,Claude Sonnet 4.6,A2,,"{""command"": ""cd <home>/notebook/git/thm01-R-judging-work/2026-10-11/work_interactive2_sonnet46/r2-A2/copy && timeout",6,1,1660,53,41,0,6,6,7,10,0,0,1,12,0,fractions numpy,src tests
+thm01-R-sonnet46-r2-C,Claude Sonnet 4.6,C,,"{""command"": ""cp -R run copy to scratch; cd copy; timeout 600 python3 docs/issues/verification_artifacts.py"", ""exit_code""",1,0,172,3,3,0,1,0,0,0,0,0,0,0,0,,docs
+thm01-R-sonnet46-r2-F,Claude Sonnet 4.6,F,,"{""command"": ""in a copy (<home>/notebook/git/thm01-R-judging-work/2026-10-11/work_interactive2_sonnet46/r2-F/copy, __",6,1,1850,81,31,6,6,0,7,39,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-r2-G,Claude Sonnet 4.6,G,,,6,1,1567,61,40,0,6,0,7,14,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-r3-A1,Claude Sonnet 4.6,A1,,"{""command"": ""in a copy (<home>/notebook/git/thm01-R-judging-work/2026-10-11/work_interactive2_sonnet46/r3-A1/copy): ",6,1,1765,55,34,6,6,6,7,42,0,0,3,12,0,fractions,src tests
+thm01-R-sonnet46-r3-C,Claude Sonnet 4.6,C,,"{""command"": ""cp -R run copy to scratch; cd copy; timeout 600 python3 verify_triviality.py"", ""exit_code"": 0, ""result"": ""s",1,0,130,5,4,0,0,0,0,0,0,0,1,0,0,numpy,.
+thm01-R-sonnet46-r3-G,Claude Sonnet 4.6,G,,,5,1,1563,49,31,0,5,0,6,4,0,0,0,13,0,fractions,src tests
+thm01-R-fable5-b01-C,claude-fable-5,C,,cp -R of final copy to work_bC2_fable/thm01-R-fable5-b01-C; no absolute paths in scripts; command 'timeout 600 python3 s,1,0,633,21,10,0,1,0,1,0,0,0,0,9,0,fractions,scripts
+thm01-R-fable5-b02-G,claude-fable-5,G,,not done,7,5,1144,53,14,1,6,0,11,19,0,0,0,12,0,fractions,src tests
+thm01-R-fable51-b01-C,claude-fable-5-1,C,,cp -R of final copy to work_bC2_fable/thm01-R-fable51-b01-C; no absolute paths in scripts; command 'timeout 600 python3 ,2,0,1123,60,27,5,2,2,2,0,0,0,0,4,1,fractions sympy,scripts
+thm01-R-fable51-b02-G,claude-fable-5-1,G,,not done,8,7,1902,98,35,5,7,7,14,41,0,0,0,33,0,fractions sympy,src tests
+thm01-R-fable51-b03-C,claude-fable-5-1,C,,In a copy (work_bC2_fable/thm01-R-fable51-b03-C): 'timeout 600 python3 verification/run_verification.py' exit 0; artifac,4,1,807,42,14,2,3,1,5,0,0,0,0,4,1,fractions numpy sympy,verification
+thm01-R-fable51-b04-G,claude-fable-5-1,G,,not done,7,7,1708,104,23,4,6,6,13,32,0,0,0,54,0,fractions,src tests
+thm01-R-fable51-b05-C,claude-fable-5-1,C,,In a copy (work_bC2_fable/thm01-R-fable51-b05-C): 'timeout 600 python3 scripts/cn1_deformation.py 1 2 3' exit 0 ('all ex,4,0,977,60,14,3,2,2,2,0,0,0,0,6,1,fractions,scripts
+thm01-R-fable51-b06-G,claude-fable-5-1,G,,not done,7,6,2038,117,22,6,6,6,13,37,0,0,0,55,0,fractions,src tests
+thm01-R-fable51-b07-C,claude-fable-5-1,C,,cp -R final copy to work_bC2_fable/thm01-R-fable51-b07-C; 'timeout 600 python3 verification/run_verification.py 1 2 3': ,2,0,772,50,14,1,1,1,2,0,0,0,0,4,1,fractions numpy,verification
+thm01-R-fable51-b08-G,claude-fable-5-1,G,,not done,8,6,1780,97,30,5,6,6,14,29,0,0,0,27,0,fractions,src tests
+thm01-R-fable51-b09-C,claude-fable-5-1,C,,cp -R final copy to work_bC2_fable/thm01-R-fable51-b09-C; 'timeout 600 python3 scripts/osp_deform.py --n N --cohomology',2,0,684,42,11,2,1,1,2,0,0,0,0,4,1,fractions,scripts
+thm01-R-fable51-b10-G,claude-fable-5-1,G,,not done,7,6,1550,76,26,2,6,6,13,29,0,0,0,36,0,fractions numpy sympy,src tests
+thm01-R-fable51-high-b01-C,claude-fable-5-1,C,,In copy work_bC2_fable/thm01-R-fable51-high-b01-C (no absolute paths in scripts): 'timeout 600 python3 scripts/verify_tr,5,0,1167,63,18,5,2,3,3,0,0,0,0,4,1,fractions,scripts
+thm01-R-fable51-high-b02-G,claude-fable-5-1,G,,not done,7,6,2035,127,21,6,6,6,13,37,0,0,0,18,0,fractions,src tests
+thm01-R-fable51-high-b03-C,claude-fable-5-1,C,,In copy work_bC2_fable/thm01-R-fable51-high-b03-C (no absolute paths in scripts; copied __pycache__ removed first): 'tim,3,1,998,65,19,2,2,0,3,0,0,0,0,4,1,fractions numpy,scripts
+thm01-R-fable51-high-b04-G,claude-fable-5-1,G,,not done,6,6,1617,75,23,3,6,6,12,25,0,0,0,31,0,fractions,src tests
+thm01-R-gemini31p-b01-C,gemini-3.1-pro-low,C,,"{""command"": ""python3 solve_triviality.py (in a copy under work_bC_gemini38f_31p/rr/thm01-R-gemini31p-b01-C)"", ""exit_code",3,0,328,24,0,0,3,0,3,0,0,0,0,1,0,sympy,.
+thm01-R-gemini31p-b02-G,gemini-3.1-pro-low,G,,not done,8,1,683,29,0,2,9,0,9,2,0,0,0,12,0,fractions sympy,src tests
+thm01-R-gemini31p-b03-C,gemini-3.1-pro-low,C,,"{""command"": ""python3 scratch/solve.py (copy)"", ""exit_code"": 0, ""versions"": ""python3 3.14.8, sympy 1.14.0"", ""result"": ""no",1,0,8,2,0,0,0,0,0,0,0,0,0,1,0,numpy,scratch
+thm01-R-gemini31p-b04-G,gemini-3.1-pro-low,G,,not done,6,4,770,21,0,4,10,0,10,6,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini31p-b05-C,gemini-3.1-pro-low,C,,"{""command"": ""python3 algebra.py (copy)"", ""exit_code"": 0, ""versions"": ""python3 3.14.8, sympy 1.14.0"", ""result"": ""printed ",9,0,424,26,0,0,6,0,5,0,0,0,0,0,0,numpy sympy,.
+thm01-R-gemini31p-b06-G,gemini-3.1-pro-low,G,,not done,6,1,777,34,0,4,7,0,7,3,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini31p-b07-C,gemini-3.1-pro-low,C,,"{""command"": ""python3 solve.py (copy)"", ""exit_code"": 0, ""versions"": ""python3 3.14.8, sympy 1.14.0"", ""result"": ""results.js",1,0,204,10,0,0,1,0,0,0,0,0,0,1,0,sympy,.
+thm01-R-gemini31p-b08-G,gemini-3.1-pro-low,G,,not done,6,1,824,35,1,1,7,0,7,3,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini31p-b09-C,gemini-3.1-pro-low,C,"decision: rerun as gemini31p-b11-C (reflection turn denied, author 2026-10-05)","{""command"": ""not applicable (no code in the commit)"", ""exit_code"": null, ""versions"": ""python3 3.14.8, sympy 1.14.0"", ""re",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-gemini31p-b10-G,gemini-3.1-pro-low,G,,not done,7,2,556,28,1,2,6,0,8,2,0,0,0,12,0,numpy,src tests
+thm01-R-gemini31p-b11-C,gemini-3.1-pro-low,C,,"{""command"": ""python3 solve_cohomology.py (n=1, committed main); n=2 and n=3 via agent wrapper work_bC_gemini38f_31p/run_",3,0,283,16,0,1,3,0,2,0,0,0,0,0,0,sympy,.
+thm01-R-gemini31p-b12-G,gemini-3.1-pro-low,G,,not done,6,1,790,29,0,0,6,0,7,1,0,0,0,12,0,sympy,src tests
+thm01-R-gemini31p-b13-C,gemini-3.1-pro-low,C,,"{""command"": ""cp -R $JROOT/final/thm01-R-gemini31p-b13-C work_bC2_gemini31p/rerun_b13; cd rerun_b13; timeout 600 python3 ",2,0,134,9,0,0,0,0,0,0,0,0,0,1,0,sympy,.
+thm01-R-gemini31p-b14-G,gemini-3.1-pro-low,G,status=stopped,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-gemini31p-b15-C,gemini-3.1-pro-low,C,,"{""command"": ""cp -R $JROOT/final/thm01-R-gemini31p-b15-C work_bC2_gemini31p/rerun_b15; cd rerun_b15; timeout 600 python3 ",1,0,6,1,0,0,1,0,0,0,0,0,0,1,0,sympy,.
+thm01-R-gemini31p-b16-G,gemini-3.1-pro-low,G,,not done,6,3,722,33,0,1,8,0,8,1,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini31p-b17-C,gemini-3.1-pro-low,C,,"{""command"": ""cp -R $JROOT/final/thm01-R-gemini31p-b17-C work_bC2_gemini31p/rerun_b17; cd rerun_b17; timeout 600 python3 ",5,0,263,21,0,0,3,1,1,0,0,0,0,1,0,numpy sympy,scratch
+thm01-R-gemini31p-b18-G,gemini-3.1-pro-low,G,,not done,6,4,304,6,0,4,10,0,10,5,0,0,0,12,0,,src tests
+thm01-R-gemini31p-b19-C,gemini-3.1-pro-low,C,,"{""command"": ""cp -R $JROOT/final/thm01-R-gemini31p-b19-C work_bC2_gemini31p/rerun_b19; cd rerun_b19; timeout 600 python3 ",1,0,164,11,0,0,0,0,1,0,0,0,0,1,0,sympy,scratch
+thm01-R-gemini31p-b20-G,gemini-3.1-pro-low,G,status=stopped,,1,1,288,9,1,0,1,0,2,3,0,0,0,3,0,numpy,src tests
+thm01-R-gemini31p-b21-C,gemini-3.1-pro-low,C,status=stopped,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-gemini31p-b22-G,gemini-3.1-pro-low,G,,not done,6,1,798,22,2,1,7,0,7,3,0,0,0,12,0,sympy,src tests
+thm01-R-gemini31p-b23-C,gemini-3.1-pro-low,C,,"{""command"": ""at the commits: nothing to run (no code committed). Supplementary (outside the commit): extracted poly.py, ",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-gemini31p-b24-G,gemini-3.1-pro-low,G,,not done,7,2,1014,27,0,0,7,0,8,4,0,0,0,12,0,sympy,src tests
+thm01-R-gemini31p-high-b01-C,gemini-3.1-pro-high,C,,"{""command"": ""cp -R $JROOT/final/thm01-R-gemini31p-high-b01-C work_bC2_gemini31p/rerun_high-b01; cd rerun_high-b01; timeo",1,2,349,17,0,0,3,0,2,0,0,0,0,2,0,sympy,.
+thm01-R-gemini31p-high-b02-G,gemini-3.1-pro-high,G,,not done,6,1,780,31,0,3,7,0,7,2,0,0,0,12,0,numpy sympy,src tests
+thm01-R-gemini36f-b01-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 scratch/run_full_solver.py"", ""timeout 600 python3 scratch/export_artifacts.py"", ""time",4,1,458,13,4,1,2,0,5,0,0,0,0,1,0,sympy,scratch
+thm01-R-gemini36f-b02-G,gemini-3.6-flash-medium,G,,not done,8,6,1165,32,15,0,6,0,10,14,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini36f-b03-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 scratch/solve_full.py"", ""timeout 600 python3 scratch/export_artifacts.py"", ""scratch/t",5,1,615,19,8,3,4,0,5,0,0,0,0,4,0,numpy sympy,scratch
+thm01-R-gemini36f-b04-G,gemini-3.6-flash-medium,G,status=aborted,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-gemini36f-b05-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 scratch/solve_triviality.py"", ""timeout 600 python3 scratch/gen_artifacts_json.py"", ""s",3,1,352,12,0,1,1,0,3,0,0,0,0,2,0,sympy,scratch
+thm01-R-gemini36f-b06-G,gemini-3.6-flash-medium,G,,not done,7,6,988,37,10,4,6,0,12,8,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini36f-b07-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 solver.py"", ""timeout 600 python3 export_artifacts.py"", ""timeout 600 python3 test_scal",2,3,911,39,1,0,3,0,5,0,0,0,0,1,0,numpy sympy,.
+thm01-R-gemini36f-b08-G,gemini-3.6-flash-medium,G,,not done,7,6,1081,26,0,1,6,0,12,10,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini36f-b09-C,gemini-3.6-flash-medium,C,,"{""commands"": [""python3 full_nullspace_analysis.py"", ""python3 solve_triviality.py"", ""python3 verify_gb_forced_zero.py"", """,5,0,921,30,0,0,3,0,3,0,0,0,0,2,0,sympy,.
+thm01-R-gemini36f-b10-G,gemini-3.6-flash-medium,G,,not done,7,6,1131,33,4,2,6,0,11,12,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini36f-b11-G,gemini-3.6-flash-medium,G,,not done,7,4,1211,32,6,2,6,0,10,14,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini36f-b12-C,gemini-3.6-flash-medium,C,,"{""commands"": [""python3 scripts/symbolic_proof.py"", ""python3 scripts/verify_cn1.py"", ""python3 scripts/generate_artifact.p",3,0,469,7,0,0,3,0,2,0,1,0,0,1,0,numpy sympy,scripts
+thm01-R-gemini36f-b13-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 solve_triviality.py""], ""exit_codes"": [0], ""result"": ""Equations 112/1400/6960, Rank(M_",1,0,279,8,0,0,1,0,1,0,0,0,0,1,0,sympy,.
+thm01-R-gemini36f-b14-C,gemini-3.6-flash-medium,C,,"{""commands"": [""timeout 600 python3 scripts/verify_cn_triviality.py""], ""exit_codes"": [0], ""result"": ""artifacts/verificati",1,0,285,9,0,1,1,0,1,0,0,0,0,1,0,numpy,scripts
+thm01-R-gemini36f-b15-C,gemini-3.6-flash-medium,C,,"{""commands"": [""python3 scratch/full_solver.py"", ""python3 scratch/copy_json.py"", ""python3 scratch/solve_triviality.py; sc",4,1,395,12,0,1,4,0,3,0,0,0,0,2,0,numpy sympy,scratch
+thm01-R-gemini36f-b16-C,gemini-3.6-flash-medium,C,,"{""commands"": [""python3 scratch/verify_cn1_deformation.py"", ""PYTHONPATH=. python3 scripts/export_artifacts.py"", ""python3 ",2,1,400,10,1,0,2,0,3,0,0,0,0,1,0,numpy sympy,scratch scripts
+thm01-R-gemini37f-b01-C,gemini-3.7-flash-medium,C,,"{""command"": ""cd <scratch copy>; timeout 600 python3 run_full_verification.py"", ""exit_code"": 0, ""versions"": ""python3 --ve",7,2,1058,29,0,3,6,0,3,2,0,0,0,3,0,sympy,.
+thm01-R-gemini37f-b02-G,gemini-3.7-flash-medium,G,,not done,7,6,1077,37,8,1,6,0,12,14,0,0,0,12,0,fractions sympy,src tests
+thm01-R-gemini37f-b03-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 verify_all.py ; timeout 600 python3 analyze_triviality.py (separate copies)"", ""exit_cod",7,1,610,11,0,0,5,0,8,1,0,0,0,2,0,sympy,.
+thm01-R-gemini37f-b04-G,gemini-3.7-flash-medium,G,,not done,7,7,1279,30,22,0,6,0,11,14,0,0,0,12,0,fractions,src tests
+thm01-R-gemini37f-b05-G,gemini-3.7-flash-medium,G,,not done,7,6,1512,55,12,2,6,0,10,16,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini37f-b06-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 scripts/verify_osp.py"", ""exit_code"": 0, ""versions"": ""python3 --version = Python 3.14.8;",2,0,362,7,3,0,2,0,1,0,0,0,0,1,0,fractions numpy sympy,scripts
+thm01-R-gemini37f-b07-G,gemini-3.7-flash-medium,G,,not done,7,7,1352,44,8,3,6,0,12,12,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini37f-b08-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 verification/verify_c_algebra.py"", ""exit_code"": 0, ""versions"": ""python3 --version = Pyt",4,0,365,12,1,0,4,0,3,0,0,0,0,1,0,sympy,verification
+thm01-R-gemini37f-b09-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 generate_artifacts.py"", ""exit_code"": 0, ""versions"": ""python3 --version = Python 3.14.8;",7,1,725,9,3,0,1,0,6,1,0,0,0,6,0,sympy,.
+thm01-R-gemini37f-b10-G,gemini-3.7-flash-medium,G,,not done,7,5,1389,45,9,2,6,0,10,8,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini37f-b11-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 run_full_analysis.py (also verify_all_n.py, verify_rigorous.py, verify_triviality.py, t",10,2,1401,22,0,0,0,0,5,1,0,0,0,1,0,numpy sympy,.
+thm01-R-gemini37f-b12-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 fast_verify.py ; timeout 600 python3 export_artifacts.py (separate copies)"", ""exit_code",4,2,1187,31,1,0,1,0,6,0,0,0,0,2,0,numpy sympy,.
+thm01-R-gemini37f-b13-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 fast_verify.py ; timeout 600 python3 generate_artifacts.py (separate copies)"", ""exit_co",4,0,667,9,2,0,4,0,4,0,0,0,0,1,0,numpy sympy,.
+thm01-R-gemini37f-b14-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 scripts/solve_triviality.py ; timeout 600 python3 scripts/export_data.py (separate copi",5,1,1240,26,5,0,3,0,6,1,0,0,0,4,0,numpy sympy,scripts
+thm01-R-gemini37f-b15-C,gemini-3.7-flash-medium,C,,"{""command"": ""timeout 600 python3 solve_triviality.py ; timeout 600 python3 generate_artifacts.py (separate copies)"", ""ex",8,1,755,22,7,0,2,0,9,1,0,0,0,4,0,sympy,.
+thm01-R-gemini38f-b01-C,gemini-3.8-flash-medium,C,,"{""command"": ""python3 -m verification.export_artifacts (copy root); python3 -m verification.verify_minimal (copy)"", ""exit",14,8,1343,29,2,0,20,0,13,2,0,0,0,3,0,sympy,verification
+thm01-R-gemini38f-b02-G,gemini-3.8-flash-medium,G,,not done,7,4,1326,35,12,1,6,0,10,9,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini38f-b03-C,gemini-3.8-flash-medium,C,status=stopped,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-gemini38f-b04-C,gemini-3.8-flash-medium,C,,"{""command"": ""python3 scripts/verify_all_n.py; python3 scripts/export_detailed_data.py (copy)"", ""exit_code"": ""0 and 0"", """,4,2,842,28,0,1,2,0,2,0,0,0,0,2,0,sympy,scripts
+thm01-R-gemini38f-b05-C,gemini-3.8-flash-medium,C,,"{""command"": ""python3 scripts/export_artifacts.py; python3 scripts/verify_shift.py; python3 scripts/test_jacobi.py; pytho",5,2,1493,39,0,0,1,0,6,0,0,0,0,1,0,sympy,scripts
+thm01-R-gemini38f-b06-G,gemini-3.8-flash-medium,G,,not done,6,6,1445,30,9,0,6,0,12,12,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini38f-b07-C,gemini-3.8-flash-medium,C,,"{""command"": ""python3 scripts/general_solver.py; python3 scripts/verify_analytic.py; python3 scripts/export_artifacts.py ",8,2,874,28,0,0,3,0,4,0,0,0,0,3,0,sympy,scripts
+thm01-R-gemini38f-b08-G,gemini-3.8-flash-medium,G,,not done,6,6,1425,35,23,0,6,0,11,17,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini38f-b09-C,gemini-3.8-flash-medium,C,status=stopped,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-gemini38f-b10-G,gemini-3.8-flash-medium,G,,not done,7,1,1250,37,27,0,6,0,7,12,0,0,0,12,0,fractions numpy,src tests
+thm01-R-gemini38f-b11-G,gemini-3.8-flash-medium,G,,not done,6,6,1479,41,22,0,6,0,12,18,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-gemini38f-b12-C,gemini-3.8-flash-medium,C,,"{""command"": ""python3 scripts/solve_all_n.py; python3 scripts/test_quad_iso.py; python3 scripts/export_structure_tensors.",9,5,897,32,0,0,5,0,7,4,0,0,0,4,0,numpy sympy,scripts
+thm01-R-haiku45-b01-C,claude-haiku-4-5-20251001,C,,"{""command"": ""analysis_c_deformation.py (run in scratch copy with python3 -I)"", ""exit_code"": 0, ""env"": ""python3 --version",1,0,265,12,10,2,1,0,0,0,0,0,0,1,0,numpy sympy,.
+thm01-R-haiku45-b02-G,claude-haiku-4-5-20251001,G,,not done,9,1,1415,50,45,12,10,0,10,26,0,0,0,12,0,fractions,src tests
+thm01-R-haiku45-b03-C,claude-haiku-4-5-20251001,C,,"{""command"": ""analysis_triviality.py, detailed_analysis.py, parity_analysis.py (each run in scratch copy with python3 -I)",3,0,505,18,11,2,3,0,2,0,0,0,0,2,0,,.
+thm01-R-haiku45-b04-G,claude-haiku-4-5-20251001,G,,not done,7,1,1213,50,49,8,8,0,7,5,0,0,0,12,0,fractions,src tests
+thm01-R-haiku45-b05-C,claude-haiku-4-5-20251001,C,,"{""command"": ""analysis_triviality.py (scratch copy, python3 -I)"", ""exit_code"": 0, ""env"": ""python3 --version: Python 3.14.",1,0,282,14,14,3,1,0,1,0,0,0,1,1,0,,.
+thm01-R-haiku45-b06-G,claude-haiku-4-5-20251001,G,,not done,9,1,1630,52,47,8,10,4,10,14,0,0,0,12,0,fractions,src tests
+thm01-R-haiku45-b07-C,claude-haiku-4-5-20251001,C,,"{""command"": ""verify_triviality.py (scratch copy, python3 -I)"", ""exit_code"": 0, ""env"": ""python3 --version: Python 3.14.8;",1,0,222,12,7,3,1,0,1,0,0,0,0,1,0,,.
+thm01-R-haiku45-b08-G,claude-haiku-4-5-20251001,G,,not done,6,1,1190,38,38,10,7,0,7,20,0,0,0,12,0,fractions,src tests
+thm01-R-haiku45-b09-C,claude-haiku-4-5-20251001,C,"decision: rerun as haiku45-b11-C (API 400 in reflection turn, author 2026-10-05)","{""command"": ""analysis_triviality.py (scratch copy, python3 -I)"", ""exit_code"": 0, ""env"": ""python3 --version: Python 3.14.",1,0,281,16,11,4,1,0,1,0,0,0,0,1,0,,.
+thm01-R-haiku45-b10-G,claude-haiku-4-5-20251001,G,,not done,9,1,1455,50,46,12,10,9,10,21,0,0,0,12,0,fractions,src tests
+thm01-R-haiku45-b11-C,claude-haiku-4-5-20251001,C,,"{""command"": ""verification_artifacts.py (scratch copy, python3 -I)"", ""exit_code"": 0, ""env"": ""python3 --version: Python 3.",1,0,249,0,0,0,1,0,0,0,0,0,3,0,0,,.
+thm01-R-haiku45-v293-b01-C,claude-haiku-4-5-20251001,C,,"{""command"": ""timeout 600 python3 -I verification_artifacts.py"", ""exit_code"": 0, ""env"": ""python3 --version: Python 3.14.8",1,0,307,2,2,0,1,0,1,0,0,0,1,0,0,,.
+thm01-R-haiku45-v293-b02-G,claude-haiku-4-5-20251001,G,,not done,4,1,745,27,15,8,5,0,5,17,0,0,0,15,0,fractions,src tests
+thm01-R-haiku55-b01-C,claude-haiku-5-5,C,,"{""command"": ""timeout 600 python3 -I scripts/verify_triviality.py --n 1 2 3 4 (the command given at docs/issues/mathemati",1,0,454,33,15,2,1,1,1,0,0,0,0,5,0,fractions,scripts
+thm01-R-haiku55-b02-G,claude-haiku-5-5,G,,not done,7,1,896,54,17,2,6,6,8,6,0,0,0,18,0,fractions sympy,src tests
+thm01-R-haiku55-b03-C,claude-haiku-5-5,C,,"{""command"": ""timeout 600 python3 -I scripts/verify_c_triviality.py 1 2 3 (command at docs/issues/mathematical_proof.md:6",1,0,364,15,8,0,1,1,1,0,0,0,0,3,0,numpy,scripts
+thm01-R-haiku55-b04-G,claude-haiku-5-5,G,,not done,7,2,1231,66,34,1,6,0,8,6,0,0,0,13,0,fractions,src tests
+thm01-R-haiku55-b05-C,claude-haiku-5-5,C,,"{""command"": ""timeout 600 python3 -I analysis/cn1_triviality.py --n 1 2 3 (command at docs/issues/mathematical_proof.md:1",1,0,479,27,11,1,1,1,1,0,0,0,0,10,0,fractions,analysis
+thm01-R-haiku55-b06-G,claude-haiku-5-5,G,,not done,6,3,1048,62,34,0,6,2,8,13,0,0,0,15,0,fractions numpy sympy,src tests
+thm01-R-haiku55-b07-C,claude-haiku-5-5,C,,"{""command"": ""timeout 600 python3 -I scripts/verify_cn1_triviality.py (command at docs/issues/mathematical_proof.md:122)""",1,0,204,11,2,0,1,0,1,0,0,0,0,1,0,sympy,scripts
+thm01-R-haiku55-b08-G,claude-haiku-5-5,G,,not done,6,6,1160,62,21,4,6,2,12,26,0,0,0,15,0,fractions sympy,src tests
+thm01-R-haiku55-b09-C,claude-haiku-5-5,C,,"{""command"": ""timeout 600 python3 -I scripts/c_n1_triviality.py 1 2 3 (command at docs/issues/mathematical_proof.md:207)""",1,0,330,14,4,0,1,1,1,0,0,0,0,4,0,fractions numpy sympy,scripts
+thm01-R-haiku55-b10-G,claude-haiku-5-5,G,,not done,7,3,1503,77,42,1,6,0,10,20,0,0,0,14,0,fractions sympy,src tests
+thm01-R-luna-b01-C,gpt-6-luna,C,,"{""command"": ""none (no .py files in the run copy at either commit)"", ""exit_code"": ""n/a"", ""env"": ""python3 --version: Pytho",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b02-G,gpt-6-luna,G,,not done,6,5,1555,53,1,0,6,5,5,13,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b03-C,gpt-6-luna,C,,"{""command"": ""none (no .py files in the run copy at either commit)"", ""exit_code"": ""n/a"", ""env"": ""python3 --version: Pytho",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b04-G,gpt-6-luna,G,,not done,6,6,1774,56,0,0,6,6,12,16,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b05-C,gpt-6-luna,C,,"{""command"": ""none (no .py files in the run copy at either commit)"", ""exit_code"": ""n/a"", ""env"": ""python3 --version: Pytho",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b06-G,gpt-6-luna,G,,not done,6,6,1356,43,1,0,6,5,12,10,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b07-C,gpt-6-luna,C,,"{""command"": ""none (no .py files in the run copy at either commit)"", ""exit_code"": ""n/a"", ""env"": ""python3 --version: Pytho",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b08-G,gpt-6-luna,G,,not done,6,5,1446,47,0,0,6,6,8,11,0,0,0,15,0,fractions,src tests
+thm01-R-luna-b09-C,gpt-6-luna,C,,"{""command"": ""python3 -I docs/issues/verify_coboundary.py --self-test (the Worker's own command; tool result in turn1.jso",1,0,207,8,0,0,1,1,0,0,0,0,0,1,0,fractions,docs
+thm01-R-luna-b10-G,gpt-6-luna,G,,not done,6,5,1353,37,4,0,6,6,10,17,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b11-C,gpt-6-luna,C,,"command taken verbatim from turn1.jsonl line 6709 (`python3 -c 'import json; d=json.load(open(""docs/issues/verification_",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b12-G,gpt-6-luna,G,,not done,6,5,1130,41,0,0,6,6,11,10,0,0,0,12,0,fractions sympy,src tests
+thm01-R-luna-b13-C,gpt-6-luna,C,,no code to run; reran the Worker's check `python3 -m json.tool docs/issues/cn1_triviality_artifacts.json` in a scratch c,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b14-G,gpt-6-luna,G,,not done,6,5,1403,45,4,0,6,6,11,9,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b15-C,gpt-6-luna,C,,"command verbatim from turn1.jsonl line 3931 (`python3 -m json.tool ... && python3 -c '... assert all(c[""even_dimension""]",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b16-G,gpt-6-luna,G,,not done,6,5,1475,49,0,1,6,6,11,7,0,0,0,12,0,fractions,src tests
+thm01-R-luna-b17-C,gpt-6-luna,C,,inline script verbatim from turn1.jsonl line 3362 (`python3 -m json.tool docs/issues/mathematical_proof_artifacts.json >,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,,
+thm01-R-luna-b18-G,gpt-6-luna,G,,not done,6,5,1246,47,0,1,6,0,2,6,0,0,0,12,0,fractions sympy,src tests
+thm01-R-luna-b19-C,gpt-6-luna,C,,`python3 docs/issues/verify_cn1_triviality_artifact.py && python3 -m json.tool docs/issues/cn1_triviality_verification.j,1,0,40,2,0,0,1,0,1,0,0,0,0,1,0,,docs
+thm01-R-luna-b20-G,gpt-6-luna,G,,not done,6,6,1452,50,0,7,12,6,12,13,0,0,0,12,0,fractions,src tests
+thm01-R-opus46-b01-C,claude-opus-4-6,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy; python3 scr",4,0,877,22,19,0,4,0,2,0,0,0,0,1,0,sympy,scripts
+thm01-R-opus46-b03-C,claude-opus-4-6,C,status=aborted,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-opus46-b04-C,claude-opus-4-6,C,status=aborted,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-opus46-b05-C,claude-opus-4-6,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy; python3 scr",2,0,767,10,3,0,2,0,2,0,0,0,3,2,0,fractions numpy,scripts
+thm01-R-opus46-b06-G,claude-opus-4-6,G,,not done,7,1,1508,53,26,0,7,0,8,10,0,0,0,12,0,fractions,src tests
+thm01-R-opus46-b07-C,claude-opus-4-6,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy; python3 com",1,0,435,17,11,0,1,0,1,0,1,0,1,1,0,fractions numpy,.
+thm01-R-opus46-b08-G,claude-opus-4-6,G,,not done,7,1,1641,67,47,0,7,0,8,6,0,0,0,12,0,fractions numpy,src tests
+thm01-R-opus46-b09-C,claude-opus-4-6,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy; python3 ver",3,0,886,26,16,1,2,0,1,0,0,0,0,1,0,numpy,.
+thm01-R-opus46-b10-G,claude-opus-4-6,G,,not done,10,1,1324,50,20,2,6,0,11,11,0,0,0,12,0,fractions numpy,src tests
+thm01-R-opus46-b11-C,claude-opus-4-6,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy; python3 ver",4,0,1000,31,13,0,3,0,2,0,0,0,1,2,0,numpy,verification
+thm01-R-opus46-b12-G,claude-opus-4-6,G,,not done,8,2,1433,49,30,0,7,0,8,8,0,0,0,12,0,fractions numpy sympy,src tests
+thm01-R-opus46-b13-G,claude-opus-4-6,G,,not done,6,1,1178,49,24,2,6,0,7,7,0,0,0,12,0,fractions numpy,src tests
+thm01-R-opus46-high-b01-C,claude-opus-4-6,C,,`cd <copy>; timeout 600 python3 verify_triviality.py` (rerun.py): exit 0; verification_artifact.json regenerated byte-id,1,0,673,13,8,0,1,0,1,0,0,0,0,1,0,numpy,.
+thm01-R-opus46-high-b02-G,claude-opus-4-6,G,,not done,6,1,1626,67,39,6,6,0,7,19,0,0,0,12,0,fractions numpy,src tests
+thm01-R-opus46-high-b03-C,claude-opus-4-6,C,,`cd <copy>; timeout 600 python3 verification/verify_triviality.py` (rerun.py): exit 0; verification/artifacts.json regen,5,0,1052,38,13,3,2,0,1,0,0,0,0,1,0,fractions,verification
+thm01-R-opus46-high-b04-G,claude-opus-4-6,G,,not done,8,1,1634,60,29,5,7,0,8,15,0,0,0,12,0,fractions numpy,src tests
+thm01-R-opus47-b01-C,claude-opus-4-7,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy/artifacts; p",1,0,377,15,8,0,1,0,1,0,0,0,0,1,0,sympy,artifacts
+thm01-R-opus47-b02-G,claude-opus-4-7,G,,not done,8,2,1160,55,15,0,6,0,7,6,0,0,0,12,0,fractions sympy,src tests
+thm01-R-opus48-b01-C,claude-opus-4-8,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy/code; python",4,3,707,35,9,0,4,2,6,0,0,0,0,7,0,sympy,code
+thm01-R-opus48-b02-G,claude-opus-4-8,G,,not done,8,3,1313,81,26,2,7,0,10,16,0,0,0,13,0,fractions sympy,src tests
+thm01-R-opus5-b01-C,claude-opus-5,C,,"{""env"": ""python3 3.14.8; sympy 1.14.0; numpy 2.4.4; scipy not installed (not needed)"", ""commands"": ""cd copy/scripts; pyt",8,0,945,39,12,3,0,4,7,0,0,0,0,5,0,fractions numpy sympy,scripts
+thm01-R-opus5-b02-G,claude-opus-5,G,,not done,7,6,2232,95,26,5,6,6,13,52,0,0,0,34,0,fractions sympy,src tests
+thm01-R-opus55-b01-C,claude-opus-5-5,C,,python3 verification/cn1_deformation.py 1 2 3: exit 0 (~5 s). cn1_n1/n2/n3.json and summary.json byte-identical (cmp). p,1,0,448,35,14,1,1,1,1,0,0,0,0,4,0,fractions numpy,verification
+thm01-R-opus55-b02-G,claude-opus-5-5,G,,not done,7,7,1354,90,24,4,6,0,13,16,0,0,0,13,0,fractions sympy,src tests
+thm01-R-opus55-b03-C,claude-opus-5-5,C,,python3 verification/cn1_triviality.py: exit 0 (~10 s). cn1_n1/n2/n3.json and summary.json byte-identical. python3 3.14.,1,0,417,19,5,1,1,0,1,0,0,0,0,4,0,fractions numpy,verification
+thm01-R-opus55-b04-G,claude-opus-5-5,G,,not done,7,7,1370,82,24,3,6,2,13,19,0,0,0,13,0,fractions,src tests
+thm01-R-opus55-b05-C,claude-opus-5-5,C,,python3 verification/cn1_deformation.py: exit 0 (~3 s). cn1_n1/n2/n3.json and summary.json byte-identical. python3 3.14.,1,0,455,40,8,2,1,0,1,0,0,0,0,4,0,fractions numpy sympy,verification
+thm01-R-opus55-b06-G,claude-opus-5-5,G,,not done,7,6,1487,85,35,2,6,6,13,27,0,0,0,28,0,fractions,src tests
+thm01-R-opus55-b07-C,claude-opus-5-5,C,,"python3 verification/osp_deformation.py: exit 0 (~3 s). C2_n1.json, C3_n2.json, C4_n3.json, summary.json byte-identical.",1,0,371,28,9,1,1,1,1,0,0,0,0,4,0,fractions numpy,verification
+thm01-R-opus55-b08-G,claude-opus-5-5,G,,not done,7,7,1247,70,20,4,6,6,13,20,0,0,0,13,0,fractions numpy,src tests
+thm01-R-opus55-b09-C,claude-opus-5-5,C,,"python3 verification/cn1_triviality.py 1 2 3: exit 0 (~17.6 s). All 7 JSON files (cn1_n{1,2,3}_{symmetrized,cn1}.json, s",1,0,663,33,7,2,1,1,1,0,0,0,0,7,1,fractions,verification
+thm01-R-opus55-b10-G,claude-opus-5-5,G,,not done,11,7,1524,85,28,3,10,4,17,21,0,0,0,15,0,fractions,src tests
+thm01-R-sonnet46-b01-G,claude-sonnet-4-6,G,,not done,7,1,1334,42,28,2,7,0,8,12,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b02-G,claude-sonnet-4-6,G,,not done (no triviality code in the copy),5,1,1228,45,26,6,5,2,6,21,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b03-C,claude-sonnet-4-6,C,,extracted the python block docs/issues/mathematical_proof.md:141-246 to extracted_block_L141.py in a scratch copy of the,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b04-G,claude-sonnet-4-6,G,,not done,8,1,1568,51,33,0,8,0,9,12,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b05-C,claude-sonnet-4-6,C,,"extracted docs/issues/mathematical_proof.md:133-208 to extracted_block_L133.py in a scratch copy, `timeout 600 python3 -",0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b06-C,claude-sonnet-4-6,C,,"extracted docs/issues/mathematical_proof.md:153-213 to extracted_block_L153.py in a scratch copy, `timeout 600 python3 -",0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b07-G,claude-sonnet-4-6,G,,not done,6,1,1475,60,40,1,6,0,7,7,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b08-C,claude-sonnet-4-6,C,status=aborted,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-sonnet46-b09-C,claude-sonnet-4-6,C,,"extracted the three python blocks to extracted_block_L252.py, _L291.py, _L374.py in a scratch copy, `timeout 600 python3",0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,,
+thm01-R-sonnet46-b10-C,claude-sonnet-4-6,C,,"extracted the three python blocks to extracted_block_L356.py, _L389.py, _L432.py in a scratch copy, `timeout 600 python3",0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,,
+thm01-R-sonnet46-b11-G,claude-sonnet-4-6,G,,not done,7,1,1395,51,34,5,7,1,8,16,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b12-G,claude-sonnet-4-6,G,,not done,7,1,1332,57,29,0,6,0,8,6,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b13-C,claude-sonnet-4-6,C,"decision: rerun as sonnet46-b22-C (API 400 in reflection turn, author 2026-10-09, design 9.33)",,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b14-G,claude-sonnet-4-6,G,,not done,11,1,1522,65,25,0,7,0,8,10,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b15-C,claude-sonnet-4-6,C,,cp -R of the run copy to work_bC2_sonnet46/rerun/<first|final>/b15; `cd <copy>; timeout 600 python3 verification_artifac,1,0,220,8,5,0,1,0,1,0,0,0,0,0,0,,.
+thm01-R-sonnet46-b16-G,claude-sonnet-4-6,G,,not done,7,1,1592,62,44,0,7,0,8,11,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b17-C,claude-sonnet-4-6,C,,extracted the python block docs/issues/mathematical_proof.md:169-228 to extracted_block_L169.py in a copy (work_bC2_sonn,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b18-G,claude-sonnet-4-6,G,,not done,6,1,1274,48,34,6,6,0,7,19,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b19-C,claude-sonnet-4-6,C,,extracted python block docs/issues/mathematical_proof.md:168-242 to extracted_block_L168.py in a copy (work_bC2_sonnet46,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b20-G,claude-sonnet-4-6,G,,not done,11,1,1977,68,34,0,8,0,12,10,0,0,0,12,0,fractions,src tests
+thm01-R-sonnet46-b21-C,claude-sonnet-4-6,C,,extracted python block docs/issues/mathematical_proof.md:188-255 to extracted_block_L188.py in a copy (work_bC2_sonnet46,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-b22-C,claude-sonnet-4-6,C,,extracted python block docs/issues/mathematical_proof.md:327-362 to extracted_block_L327.py in a copy (work_bC2_sonnet46,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,,
+thm01-R-sonnet46-high-b01-C,claude-sonnet-4-6,C,status=aborted,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,
+thm01-R-sonnet55-b01-C,claude-sonnet-5-5,C,,python3 code/cn1_triviality.py 1 2 3 (from run root): exit 0 (~2 s); C2_n1/C3_n2/C4_n3_verification.json and summary.jso,2,0,329,19,7,1,2,2,1,0,0,0,0,4,0,fractions numpy,code
+thm01-R-sonnet55-b02-G,claude-sonnet-5-5,G,,not done,7,6,1237,74,23,2,6,0,13,27,0,0,0,42,0,fractions numpy,src tests
+thm01-R-sonnet55-b03-C,claude-sonnet-5-5,C,,cd verification; python3 run_verification.py 1 2 3: exit 0 (<1 s). artifacts_n1/2/3.json and summary.json byte-identical,2,0,338,20,7,1,2,2,2,0,0,0,0,4,0,fractions,verification
+thm01-R-sonnet55-b04-G,claude-sonnet-5-5,G,,not done,9,6,1383,71,26,2,8,2,15,27,0,0,0,27,0,fractions numpy,src tests
+thm01-R-sonnet55-b05-C,claude-sonnet-5-5,C,,"python3 artifacts/cn1_triviality.py: exit 0 (~1.5 s). artifacts/results.json byte-identical. python3 3.14.8, sympy 1.14.",1,0,274,18,6,1,1,0,1,0,0,0,0,1,0,fractions numpy,artifacts
+thm01-R-sonnet55-b06-G,claude-sonnet-5-5,G,,not done,11,7,1176,71,25,4,7,1,16,22,0,0,0,12,0,fractions,scripts src tests
+thm01-R-sonnet55-b07-C,claude-sonnet-5-5,C,,"python3 artifacts/verify_triviality.py: exit 0 (4 min 17 s, sympy rank). artifacts/verification_data.json byte-identical",1,0,140,6,1,0,1,0,1,0,0,0,0,1,0,numpy sympy,artifacts
+thm01-R-sonnet55-b08-G,claude-sonnet-5-5,G,,not done,7,6,1251,72,31,2,7,1,13,32,0,0,0,51,0,fractions numpy sympy,src tests
+thm01-R-sonnet55-b09-C,claude-sonnet-5-5,C,,python3 verify_triviality.py 1 2 3: exit 0 (~9 s); all artifacts/*.json byte-identical. python3 check_conventions.py: ex,2,0,289,18,7,1,1,1,2,0,0,0,0,4,0,fractions numpy sympy,.
+thm01-R-sonnet55-b10-G,claude-sonnet-5-5,G,,not done,8,6,1274,79,16,1,7,2,12,22,0,0,0,36,0,fractions numpy sympy,scripts src tests

@@ -1,0 +1,99 @@
+The Worker has stopped in step 1 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 01" to memos/thm01-R-gemini38f-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+### C(n+1) Basis, Root System, and PBW Ordering Design (Issue I01-1)
+
+---
+
+### 1. Notation Conventions for Generators & Oscillators
+
+#### Oscillators
+- **Fermionic standard pair** ($p=1$):
+  - $a_1^+$ (`a_1_p`), $a_1^-$ (`a_1_m`) with CAR: $\{a_1^-, a_1^+\} = 1$, $(a_1^\pm)^2 = 0$.
+- **Bosonic oscillators** ($p=0$):
+  - $b_k^+$ (`b_k_p`), $b_k^-$ (`b_k_m`) for $k = 1, \dots, n$ with CCR: $[b_j^-, b_k^+] = \delta_{jk}$.
+- **Central elements**:
+  - $K$: Central scalar ($K = 1$).
+  - $\kappa$: Odd central nilpotent parameter ($p(\kappa) = 1$, $\kappa^2 = 0$).
+
+#### Generator Labels and Realizations
+| Category | Generator Label | Root | Realization in Oscillators | Parity |
+|---|---|---|---|:---:|
+| **Cartan** | `H_1` | — | $a_1^+ a_1^- + b_1^+ b_1^-$ | 0 |
+| | `H_k` ($2 \leq k \leq n$) | — | $b_{k-1}^+ b_{k-1}^- - b_k^+ b_k^-$ | 0 |
+| | `H_{n+1}` | — | $-b_n^+ b_n^- - \tfrac{1}{2}$ | 0 |
+| **Long Even Roots** | `E_2del{k}_p` | $+2\delta_k$ | $(b_k^+)^2$ | 0 |
+| | `E_2del{k}_m` | $-2\delta_k$ | $(b_k^-)^2$ | 0 |
+| **Short Even Roots** ($i < j$) | `E_del{i}_del{j}_pp` | $+\delta_i + \delta_j$ | $b_i^+ b_j^+$ | 0 |
+| | `E_del{i}_del{j}_pm` | $+\delta_i - \delta_j$ | $b_i^+ b_j^-$ | 0 |
+| | `E_del{i}_del{j}_mp` | $-\delta_i + \delta_j$ | $b_i^- b_j^+$ | 0 |
+| | `E_del{i}_del{j}_mm` | $-\delta_i - \delta_j$ | $b_i^- b_j^-$ | 0 |
+| **Odd Roots** ($1 \leq k \leq n$) | `E_eps1_del{k}_pp` | $+\varepsilon + \delta_k$ | $a_1^+ b_k^+$ | 1 |
+| | `E_eps1_del{k}_pm` | $+\varepsilon - \delta_k$ | $a_1^+ b_k^-$ | 1 |
+| | `E_eps1_del{k}_mp` | $-\varepsilon + \delta_k$ | $a_1^- b_k^+$ | 1 |
+| | `E_eps1_del{k}_mm` | $-\varepsilon - \delta_k$ | $a_1^- b_k^-$ | 1 |
+
+---
+
+### 2. Basis Lists for $C(2)$, $C(3)$, and $C(4)$
+
+Dimension formula: $\dim(C(n+1)) = (2n^2 + n + 1) \mid 4n$.
+
+#### $C(2) = \mathfrak{osp}(2|2)$ ($n=1$): $\dim = 4 \mid 4$, Total = 8
+- **Even Basis** (4):
+  `["H_1", "H_2", "E_2del1_p", "E_2del1_m"]`
+- **Odd Basis** (4):
+  `["E_eps1_del1_pp", "E_eps1_del1_pm", "E_eps1_del1_mp", "E_eps1_del1_mm"]`
+
+#### $C(3) = \mathfrak{osp}(2|4)$ ($n=2$): $\dim = 11 \mid 8$, Total = 19
+- **Even Basis** (11):
+  - Cartan (3): `["H_1", "H_2", "H_3"]`
+  - Long roots (4): `["E_2del1_p", "E_2del2_p", "E_2del1_m", "E_2del2_m"]`
+  - Short roots (4): `["E_del1_del2_pp", "E_del1_del2_mm", "E_del1_del2_pm", "E_del1_del2_mp"]`
+- **Odd Basis** (8):
+  - $k=1$: `["E_eps1_del1_pp", "E_eps1_del1_pm", "E_eps1_del1_mp", "E_eps1_del1_mm"]`
+  - $k=2$: `["E_eps1_del2_pp", "E_eps1_del2_pm", "E_eps1_del2_mp", "E_eps1_del2_mm"]`
+
+#### $C(4) = \mathfrak{osp}(2|6)$ ($n=3$): $\dim = 22 \mid 12$, Total = 34
+- **Even Basis** (22):
+  - Cartan (4): `["H_1", "H_2", "H_3", "H_4"]`
+  - Long roots (6): `["E_2del1_p", "E_2del2_p", "E_2del3_p", "E_2del1_m", "E_2del2_m", "E_2del3_m"]`
+  - Short roots (12):
+    - pair (1,2): `["E_del1_del2_pp", "E_del1_del2_mm", "E_del1_del2_pm", "E_del1_del2_mp"]`
+    - pair (1,3): `["E_del1_del3_pp", "E_del1_del3_mm", "E_del1_del3_pm", "E_del1_del3_mp"]`
+    - pair (2,3): `["E_del2_del3_pp", "E_del2_del3_mm", "E_del2_del3_pm", "E_del2_del3_mp"]`
+- **Odd Basis** (12):
+  - $k=1$: `["E_eps1_del1_pp", "E_eps1_del1_pm", "E_eps1_del1_mp", "E_eps1_del1_mm"]`
+  - $k=2$: `["E_eps1_del2_pp", "E_eps1_del2_pm", "E_eps1_del2_mp", "E_eps1_del2_mm"]`
+  - $k=3$: `["E_eps1_del3_pp", "E_eps1_del3_pm", "E_eps1_del3_mp", "E_eps1_del3_mm"]`
+
+---
+
+### 3. Concrete PBW Ordering Options for Selection
+
+In all options, the global graded ordering follows the base convention:
+$$\kappa < [\text{odd basis}] < [\text{even basis}]$$
+
+We propose two concrete ordering schemes for the internal arrangement of the odd basis:
+
+#### Option A: Bosonic Mode Block Ordering (Recommended)
+- **Structure**: Group primarily by the bosonic oscillator index $k \in \{1, \dots, n\}$, and secondarily by the signs of $\varepsilon$ and $\delta_k$ (`pp`, `pm`, `mp`, `mm`).
+- **Order for $n=2$**:
+  `E_eps1_del1_pp`, `E_eps1_del1_pm`, `E_eps1_del1_mp`, `E_eps1_del1_mm`,
+  `E_eps1_del2_pp`, `E_eps1_del2_pm`, `E_eps1_del2_mp`, `E_eps1_del2_mm`
+- **Rationale**: Directly aligns with the $4 \times 1$ block structure of the deformation matrix $\mathrm{gb}_{\sigma, j, s}$ for each bosonic mode $j$. Simplifies indexing, tensor blocks, and coboundary matrix representations.
+
+#### Option B: Global Root Polarity Split (Direct $B(0,n)$ Analogue)
+- **Structure**: Group all positive $\varepsilon$ roots first, then all negative $\varepsilon$ roots, matching the positive-then-negative convention of $B(0,n)$ (where all `E_del{k}_p` precede all `E_del{k}_m`).
+- **Order for $n=2$**:
+  - Positive $\varepsilon$:
+    `E_eps1_del1_pp`, `E_eps1_del2_pp`, `E_eps1_del1_pm`, `E_eps1_del2_pm`
+  - Negative $\varepsilon$:
+    `E_eps1_del1_mp`, `E_eps1_del2_mp`, `E_eps1_del1_mm`, `E_eps1_del2_mm`
+- **Rationale**: Strictly preserves the root polarity partitioning $\Delta_{\bar{1}}^+ < \Delta_{\bar{1}}^-$.
+
+---
+
+### Human Approval Required
+Please confirm whether you prefer **Option A (Mode Block)** or **Option B (Polarity Split)**, or specify any adjustment to the conventions. No files will be modified until your approval is received.
+----- END OF WORKER REPLY -----

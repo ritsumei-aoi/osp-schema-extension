@@ -1,0 +1,27 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+Commit 30014e3 fixed the parameter label naming and resolved the documentation contradictions regarding the f = 0 test. However, two critical requirements remain unresolved in the code, data, and analytical reports:
+
+1. Rigorous Oscillator Computation of Deformation Gamma (src/C_gamma_generator.py, docs/math/C_inhomogeneous_definition.md)
+   - In src/C_gamma_generator.py (`_compute_gamma_pair`, lines 81-110), gamma is still assigned by a heuristic fixed rule (setting result[X] = gb_a1_σ_bj_s and result[Y] = -gb_a1_σ_bj_s for every pair of an even and an odd generator).
+   - It does not compute the bracket [X, Y] from the oscillator realizations of X and Y using the deformed commutation relations [b_j^s, a_1^σ] = -gb_{σ,j,s} \cdot \kappa given in docs/math/C_inhomogeneous_definition.md.
+   - Furthermore, there is no test or verification script comparing the generated gamma values against the mathematical definition (tests/ contains only test_C_generators.py for Schema 1).
+   - What you must do:
+     - Implement proper algebraic evaluation of [X, Y] using oscillator expressions and [b_j^s, a_1^σ] = -gb_{σ,j,s} \cdot \kappa to derive the exact cocycle coefficients \gamma(X, Y).
+     - Add tests or verification scripts that explicitly validate the computed gamma coefficients against the mathematical specification in docs/math/C_inhomogeneous_definition.md.
+     - Regenerate Schema 2 (gamma) and Schema 3 (evaluated) data files.
+
+2. Triviality Conditions on gb Parameters (docs/issues/I08.md, src/C_coboundary_generator.py)
+   - Issue I08.md (Requirement 3 and Completion Criteria) requires formulating a general rule/conjecture regarding the necessary and sufficient conditions on the gb parameters for the deformation to be trivial.
+   - Currently, docs/issues/I08.md only outlines the problem conceptually under "What This Analysis Does NOT Show", acknowledging that no triviality conditions on gb have been derived.
+   - In src/C_coboundary_generator.py (lines 34-45), the code still uses only f = 0. The linear system \gamma = \delta f for a general odd linear map f is described in the text of I08.md but is neither constructed nor solved in code or analytical derivations.
+   - What you must do:
+     - Implement the general odd linear map f: g -> g (parameterizing components mapping even generators to odd generators and odd generators to even generators) and compute the corresponding coboundary (\delta f)(X, Y) according to docs/math/C_coboundary_definition.md.
+     - Set up and solve (or algebraically analyze) the linear system \gamma(X, Y) = (\delta f)(X, Y) for the unknown coefficients of f to determine the exact necessary and sufficient conditions on the gb parameters for triviality.
+     - Update src/C_coboundary_generator.py, regenerate Schema 4 data, update triviality analysis scripts, and complete docs/issues/I08.md with the concrete conditions and mathematical findings.
+
+Please ensure all tests pass, data files across all schemas agree with the updated code, and commit your changes.
+----- END CORRECTION -----

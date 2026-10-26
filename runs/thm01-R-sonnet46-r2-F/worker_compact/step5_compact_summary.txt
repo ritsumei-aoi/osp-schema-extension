@@ -1,0 +1,231 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The user is a research assistant running a sequence of 8 tasks to extend B(0,n) = osp(1|2n) JSON schema to C(n+1) = osp(2|2n). The session operates in `<home>/notebook/git/thm01-R/thm01-R-sonnet46-r2-F`.
+
+**Security/access constraints (verbatim)**: "Do NOT access files outside this directory, and do not use external web access."
+
+Each step requires explicit human approval before proceeding. Steps 1–4 are complete. **Step 5 (Issue I05-1)** is currently in progress.
+
+**Step 5 task**: Implement `src/build_C_gamma.py` that computes Schema 2 (inhomogeneous deformation / gamma structure) JSON for n=1,2,3. Requirements:
+1. Define `gb_matrix` (size 2×2n) based on oscillator pairs
+2. Compute gamma coefficients γ_{abc} for the inhomogeneous deformation
+3. Design the `inhomogeneous_deformation` field per Schema 2 standards
+4. Generate `data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`
+5. Verify consistency with Schema 1
+
+**CRITICAL RULE**: "Do NOT write Schema 2 JSON until the human approves." (The human has now approved; code generation is in progress but failing.)
+
+2. Key Technical Concepts:
+
+- **C(n+1) = osp(2|2n)**: Lie superalgebra with fermionic pair a_1^± (CAR), bosonic oscillators b_k^± (CCR), and central elements K (even, K=1) and κ (odd, κ²=0)
+- **Inhomogeneous deformation**: `[b_j^s, a_1^σ]_γ = −gb_{σ,j,s}·κ` (deformed oscillator relation)
+- **Deformed bracket**: `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` (positive sign, approved by human)
+- **γ coefficient**: first-order in gb; computed by tracing b·a crossings during PBW reduction
+- **Crossing sign formula**: for bosonic osc_b from m_X crossing fermionic osc_f from m_Y: `(−1)^{f_L+1} × gb_{σ,j,s} × reduce_word(remaining)` where f_L = # fermionic oscillators in m_X strictly left of osc_b
+- **κ super-commutativity**: κ·(odd element) = −(odd element)·κ, κ·(even element) = (even element)·κ
+- **CCR constant**: `[b_k^−, b_k^+] = 1` produces constant term `()` in `reduce_word`, which requires K as a pseudo-generator in decomposition
+- **gb_matrix**: 2 rows (σ=+/−) × 2n columns, Option A (interleaved) column order: b_1^+, b_1^−, b_2^+, b_2^−, ..., b_n^+, b_n^−
+- **gb label format**: `gb_{σ}_{j}_{s}` e.g. `gb_p_1_p` for gb_{+,1,+}
+- **Schema 2 storage**: flat list of `{X, Y, Z, gb, coeff, sign_rule}` entries under key `inhomogeneous_deformation`; Z="K" denotes the even central element K=1
+- **PBW ordering**: a_1^+ (idx 0) < a_1^− (idx 1) < b_1^+ (idx 2) < b_1^− (idx 3) < b_2^+ (idx 4) < ...
+- **decompose function**: uses unique-word Step 1 + Gaussian elimination Step 2 (hardcoded to H_k generators); does NOT include K in its Cartan system by default
+
+3. Files and Code Sections:
+
+- **`src/verify_C_structure.py`** (created in Step 4, working):
+  - Loads `C_1_structure.json`, `C_2_structure.json`, `C_3_structure.json`
+  - Checks graded anti-symmetry: `[X,Y} + (−1)^{pXpY}[Y,X} = 0` for all N² pairs
+  - Checks Super Jacobi: iterates triples with xi ≤ yi ≤ zi using Fraction arithmetic
+  - Results: ALL PASS for n=1,2,3
+
+- **`src/build_C_gamma.py`** (created in Step 5, currently failing):
+```python
+#!/usr/bin/env python3
+"""
+build_C_gamma.py
+Compute Schema 2 (inhomogeneous deformation / gamma structure) for C(n+1) = osp(2|2n).
+Deformation: [b_j^s, a_1^σ]_γ = −gb_{σ,j,s}·κ
+[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)
+"""
+from __future__ import annotations
+import json, os, sys
+from fractions import Fraction
+from collections import OrderedDict
+from datetime import date
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_C_structure_constants import (
+    reduce_word, build_generators, decompose, is_fermionic,
+)
+
+def _gb_label(fermion_idx: int, boson_idx: int) -> str:
+    σ = 'p' if fermion_idx == 0 else 'm'
+    k = boson_idx // 2
+    s = 'p' if boson_idx % 2 == 0 else 'm'
+    return f'gb_{σ}_{k}_{s}'
+
+def gb_labels_all(n: int) -> list[str]:
+    labels = []
+    for j in range(1, n + 1):
+        for s in ('p', 'm'):
+            labels.append(f'gb_p_{j}_{s}')
+            labels.append(f'gb_m_{j}_{s}')
+    return labels
+
+def _kappa_product(m_X: tuple, m_Y: tuple) -> dict[str, dict[tuple, Fraction]]:
+    """First-order κ-coefficient of m_X·m_Y."""
+    result = {}
+    for i, osc_b in enumerate(m_X):
+        if is_fermionic(osc_b):
+            continue
+        f_L = sum(1 for j in range(i) if is_fermionic(m_X[j]))
+        sign = Fraction((-1) ** (f_L + 1))
+        for fi, osc_f in enumerate(m_Y):
+            if not is_fermionic(osc_f):
+                continue
+            gb = _gb_label(osc_f, osc_b)
+            remaining = m_X[:i] + m_X[i+1:] + m_Y[:fi] + m_Y[fi+1:]
+            reduced = reduce_word(remaining)
+            entry = result.setdefault(gb, {})
+            for word, c in reduced.items():
+                v = entry.get(word, Fraction(0)) + sign * c
+                if v: entry[word] = v
+                else: entry.pop(word, None)
+    return {k: v for k, v in result.items() if v}
+
+def _gamma_poly(X_poly, Y_poly, pX, pY):
+    """γ(X,Y) as {word: {gb: coeff}}."""
+    bracket_sign = Fraction((-1) ** (pX * pY))
+    acc = {}
+    def _add(word_dict, gb, scale):
+        for word, c in word_dict.items():
+            entry = acc.setdefault(word, {})
+            v = entry.get(gb, Fraction(0)) + scale * c
+            if v: entry[gb] = v
+            else: entry.pop(gb, None)
+        for word in [w for w, d in list(acc.items()) if not d]:
+            del acc[word]
+    for m_X, cx in X_poly.items():
+        for m_Y, cy in Y_poly.items():
+            for gb, wd in _kappa_product(m_X, m_Y).items():
+                _add(wd, gb, cx * cy)
+            for gb, wd in _kappa_product(m_Y, m_X).items():
+                _add(wd, gb, -bracket_sign * cy * cx)
+    return acc
+
+def _decompose_gamma(gp, gens, n):
+    """
+    Convert {word: {gb: coeff}} to list of (Zname, gb, coeff).
+    CURRENTLY FAILING: gens_ext adds K to the front of gens, but
+    decompose's Step 2 hardcodes cartan_names = ['H_1',...,'H_{n+1}']
+    and does NOT include 'K', so polynomials containing () still fail.
+    """
+    gens_ext = OrderedDict([('K', ({(): Fraction(1)}, 0))])
+    gens_ext.update(gens)
+    all_gbs = set()
+    for gb_dict in gp.values():
+        all_gbs.update(gb_dict.keys())
+    results = []
+    for gb in sorted(all_gbs):
+        gb_poly = {}
+        for word, gb_dict in gp.items():
+            c = gb_dict.get(gb, Fraction(0))
+            if c: gb_poly[word] = c
+        if gb_poly:
+            for Zname, coeff in decompose(gb_poly, gens_ext, n).items():
+                if coeff:
+                    results.append((Zname, gb, coeff))
+    return results
+```
+
+- **`src/build_C_structure_constants.py`** (from Step 3, imported):
+  - `reduce_word(word: tuple) -> dict[tuple, Fraction]`: PBW reduction; returns `{(): 1}` for CCR constants
+  - `decompose(poly, gens, n)`: Step 1 unique word extraction + Step 2 Gaussian elimination
+    - **CRITICAL**: Step 2 hardcoded: `cartan_names = [f'H_{k}' for k in range(1, n + 2)]`; does NOT include 'K' even if 'K' is in gens
+  - `build_generators(n)`: returns OrderedDict of all generators with (poly, parity)
+  - `is_fermionic(idx)`: returns True if idx < 2
+
+- **`data/C_1_structure.json`**, **`data/C_2_structure.json`**, **`data/C_3_structure.json`**: Schema 1 files, generated and verified ✓
+
+- **`data/C_1_gamma.json`**, **`data/C_2_gamma.json`**, **`data/C_3_gamma.json`**: NOT YET GENERATED (script failing)
+
+4. Errors and fixes:
+
+- **Step 4 — f-string syntax error in verify_C_structure.py**: `f'[{X}, {Y}}  residual=...'` had unbalanced `}`. Fixed to `f'[{X}, {Y}]  residual=...'`.
+
+- **Step 5 — AssertionError in decompose "Inconsistent rhs at row 2: -2"** (first failure):
+  - Root cause: CCR relation `[b_k^−, b_k^+] = 1` produces `{(): 1}` in `reduce_word`. The polynomial `{(2,3): -1, (): -1}` (representing N_1 and K terms from a crossing) cannot be decomposed into H_1, H_2 without including K as a generator. Original approach extracted `()` as K first, then tried to decompose `{(2,3): -1}` alone — which fails because `(2,3)` is shared between H_1 and H_{n+1}, creating a coupled system that requires K to resolve.
+  - Fix attempt: Add `K = ({(): Fraction(1)}, 0)` to the front of `gens_ext` and pass to `decompose`.
+
+- **Step 5 — AssertionError "Inconsistent rhs at row 2: 2"** (second failure, CURRENT):
+  - Root cause: The fix is incomplete. `decompose`'s Step 2 is hardcoded to only use `cartan_names = [f'H_{k}' for k in range(1, n + 2)]`. Even though 'K' is in `gens_ext`, it is NOT included in the Cartan Gaussian elimination system. So polynomials containing `()` still cannot be decomposed.
+  - Required fix: Either modify `decompose` to include 'K' in its Cartan system, or write a custom `decompose_gamma` in `build_C_gamma.py` that extends the cartan_names list to include 'K'.
+
+5. Problem Solving:
+
+**Verified mathematical formula for crossing sign**:
+For the product m_X · m_Y, when bosonic osc_b from m_X crosses fermionic osc_f from m_Y:
+- Algebraically: `b_j^s · a_1^σ = a_1^σ · b_j^s − gb_{σ,j,s} · κ`
+- The remaining oscillators to the left of the crossing are already in the stack; commuting κ past each fermionic oscillator adds a factor of −1
+- Net contribution: `(−1)^{f_L+1} × gb_{σ,j,s} × reduce_word(remaining)`
+
+**Verified examples**:
+- γ(H_1, E_eps1_del{1}_{+,+}): for gb_p_1_p = −H_1 − K; for gb_p_1_m = −E_2del1_p
+- γ(E_eps1_del{j}_{σ1,s1}, E_eps1_del{k}_{σ2,s2}) = gb_{σ2,j,s1}·E_eps1_del{k}_{σ1,s2} + gb_{σ1,k,s2}·E_eps1_del{j}_{σ2,s1}
+- γ(even, even) = 0 always (no fermionic oscillators to cross)
+
+**K appears** only in even×odd (or odd×even) γ computations from Cartan generators that contain bosonic number operators (H_k), since those bosonic pairs can produce CCR constants in the remaining word.
+
+**Key insight**: `decompose`'s Step 2 Cartan system must include K as a variable. The augmented system for n=1 would be:
+- Variables: α_H1, α_H2, α_K
+- The polynomial {(2,3): -1, (): -1} decomposes as H_2 − (1/2)·K (verified by algebra)
+
+6. All user messages:
+
+- "This session is being continued from a previous conversation..." [context message with summary of Steps 1-4]
+
+- Step 4 approval: "1. Anti-symmetry check: Approved. Your implementation accurately reflects the parity sign rule... 2. Super Jacobi check: Approved. The cyclic permutation signs are implemented correctly... 3. Approval to proceed: Approved. You may now proceed to Step 5."
+
+- "Step 5 of 8] Issue I05-1: Schema 2 (gamma structure) for C(n+1) [full task text including] CRITICAL RULE: Do NOT write Schema 2 JSON until the human approves."
+
+- Step 5 approval: "1. Column ordering of gb_matrix: We select Option A (interleaved: b_1^+, b_1^-, b_2^+, b_2^-, ...). 2. Gamma coefficient sign convention: Yes, confirmed. The deformation is `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` with a positive sign... 3. Storage format: The flat list format of `{X, Y, Z, gb, coeff, sign_rule}` entries is approved. However... please name the top-level array key `inhomogeneous_deformation` instead of `deformation_coefficients`. You may now proceed to write the schema JSON and gamma computation script..."
+
+- "CRITICAL: Respond with TEXT ONLY. Do NOT call any tools. [summary request]"
+
+7. Pending Tasks:
+
+- **Step 5 (in progress)**: Fix the `_decompose_gamma` function in `src/build_C_gamma.py` so that K is included in the Cartan Gaussian elimination system when calling `decompose`. Then successfully generate `data/C_1_gamma.json`, `data/C_2_gamma.json`, `data/C_3_gamma.json`, run consistency checks, and present results for human approval before proceeding.
+- **Steps 6–8**: Not yet described; will follow sequentially after Step 5 approval.
+
+8. Current Work:
+
+Working on `src/build_C_gamma.py` — the `_decompose_gamma` function is failing with:
+```
+AssertionError: Inconsistent rhs at row 2: 2
+  File "src/build_C_gamma.py", line 187, in _decompose_gamma
+    for Zname, coeff in decompose(gb_poly, gens_ext, n).items():
+  File "src/build_C_structure_constants.py", line 297, in decompose
+    assert aug[r][-1] == 0, (
+```
+
+The root cause: `decompose`'s Step 2 hardcodes `cartan_names = [f'H_{k}' for k in range(1, n + 2)]` (line 259 of `build_C_structure_constants.py`). Even when `gens_ext` includes 'K' = `{(): 1}`, the Gaussian elimination in Step 2 only processes H_k generators, so polynomials with `()` (the CCR constant K=1) that appear in the gamma result cannot be decomposed.
+
+The decompose function (lines 258–300 of `build_C_structure_constants.py`):
+```python
+# Step 2: Cartan system (words shared among H_1..H_{n+1})
+cartan_names = [f'H_{k}' for k in range(1, n + 2)]  # K NOT INCLUDED
+cartan_words_set = set(w for nm in cartan_names for w in gens[nm][0])
+assert all(w in cartan_words_set for w in remaining), ...
+```
+
+9. Optional Next Step:
+
+Fix `_decompose_gamma` in `src/build_C_gamma.py` by extending the Cartan system to include 'K'. The fix should modify the call to `decompose` so that K is included in the list of Cartan generators used in Step 2's Gaussian elimination. The most reliable approach (without modifying the imported `decompose`) is to write a custom gamma decomposition that extends the cartan_names list to include 'K', building the augmented matrix with K as an additional column variable alongside H_1 through H_{n+1}.
+
+This directly continues from the current work: "Still failing. The issue is still the Gaussian elimination... `decompose`'s Step 2 is hardcoded to only use `cartan_names = [f'H_{k}' for k in range(1, n + 2)]`. Even though 'K' is in `gens_ext`, it is NOT included in the Cartan Gaussian elimination system."
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-r2-F/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-r2-F/e7afdbb2-ca14-47b9-b9a3-c93fbcbbf1b8.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

@@ -1,0 +1,13 @@
+1. Item A (Oscillator Algebra Implementation):
+Approved. The PBW normal form reduction in `normalize()` with fermionic CAR ({a_1^-, a_1^+} = 1, (a_1^pm)^2 = 0) and bosonic CCR ([b_k^-, b_k^+] = 1), the graded bracket definition, and the exact rational Gaussian elimination in `decompose()` are mathematically rigorous and correct.
+
+2. Item B (Generator Realizations):
+Approved. All realizations for Cartan generators (including the -1/2 constant term in H_{n+1}), even root generators (including the 1/2 factor for E_2del{k}_p/m), and odd root generators strictly conform to Frappat, Cn1_definition.md, and the approved PBW Option A convention from Issue I01.
+
+3. Item C (Structure Constant Convention):
+Approved. Storing upper-triangular pairs (index_X <= index_Y) with {X, Y, Z, coeff, sign_rule: "graded"} strictly adheres to the Schema 1 v5.0 specification and fully captures the Lie superalgebra structure.
+
+4. Item D (Schema 1 Output Format):
+Approved. The dictionary structure in `build_schema()` provides all required fields in compliance with docs/json_schema_specification.md, and the output naming convention data/C_{n}_structure.json for n=1, 2, 3 is correct.
+
+You may now proceed to write `src/C_generators.py` and `tests/test_C_generators.py`, generate `data/C_{n}_structure.json` for n=1, 2, 3, verify that all tests pass, and complete Issue I03 according to the Phase 4 completion procedure in `handover/workflow.md`.

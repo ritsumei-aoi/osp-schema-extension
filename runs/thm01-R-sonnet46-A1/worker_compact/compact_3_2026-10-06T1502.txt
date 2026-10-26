@@ -1,0 +1,184 @@
+This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
+
+Summary:
+1. Primary Request and Intent:
+
+The session operates a file-based issue workflow for mathematical research on C(n+1) = osp(2|2n) Lie superalgebras. The agent reads handover/ documents, processes `docs/issues/issue_open.md`, and follows `handover/workflow.md` strictly.
+
+**CRITICAL RULES (must be preserved)**:
+- When an issue states "Human Approval Required", MUST ONLY append proposals to `issue_open.md`. STRICTLY FORBIDDEN from modifying any other files. MUST NOT create any commits until human explicitly approves.
+- Do NOT use `git reset --hard` or `git push --force`
+- Do NOT modify `.env`, `.git`, or system configuration files
+- Do NOT access external network resources unless explicitly instructed
+- Mathematical ambiguity → create `docs/issues/issue_needs_clarification.md`
+
+**Issues completed this session**:
+- **I03-1**: Implemented `src/C_generators.py`, `tests/test_C_generators.py`, generated `data/C_1/2/3_structure.json` — Phase 4 complete
+- **I04-1**: Implemented `src/verify_C_structure.py`, verified all 8590 Super Jacobi triples PASS — Phase 4 complete
+
+**Current issue I05-1** (in progress, no proposal written yet):
+- Compute gamma coefficients γ_{abc} for C(n+1) inhomogeneous deformation
+- Design `inhomogeneous_deformation` field per Schema 2 standards
+- Generate Schema 2 JSON for n=1,2,3
+- **Human Approval Required**: sign conventions for Gram matrix require human judgment
+- Must present proposal + stop; no file creation or commits until approval
+
+2. Key Technical Concepts:
+
+- **C(n+1) = osp(2|2n)**: Lie superalgebra with fermionic pair a₁⁺, a₁⁻ (CAR: {a₁⁻, a₁⁺}=1) and bosonic oscillators b_k⁺, b_k⁻ (CCR: [b_k⁻, b_l⁺]=δ_kl)
+- **Even subalgebra**: so(2) × sp(2n), dim 2n²+n+1; **Odd sector**: 4n generators
+- **PBW ordering (Option A)**: `a_1_p < a_1_m < b_1_p < b_1_m < ... < b_n_p < b_n_m`
+- **Schema 1 v5.0**: exactly 10 top-level keys: `schema_version, algebra, oscillator_generators, oscillator_relations, central_elements, basis, parity, generator_realization, structure_constants, metadata`
+- **Schema 2 (gamma structure)**: `C_n_gamma.json` — inhomogeneous deformation data
+- **4-layer schema**: Schema 1 (structure), Schema 2 (gamma), Schema 3 (evaluated), Schema 4 (coboundary)
+- **Inhomogeneous deformation**: `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ`, 4n parameters for C(n+1)
+- **Deformed bracket**: `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` where γ is a 2-cocycle
+- **Coboundary**: `(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])`
+- **Super Jacobi**: `(-1)^{pXpZ}[X,[Y,Z}} + (-1)^{pYpX}[Y,[Z,X}} + (-1)^{pZpY}[Z,[X,Y}} = 0`
+- **Graded bracket**: `[X,Y} = XY - (-1)^{pX·pY} YX`
+- **Exact arithmetic**: all computations use `fractions.Fraction`
+
+3. Files and Code Sections:
+
+- **`src/C_generators.py`** (created in I03-1, 548 lines):
+  - Full oscillator algebra simulation
+  - Key bug fix: fermionic nilpotency check `if pi==1 and oi==oj: return {}, True` placed BEFORE `pbw[oi] <= pbw[oj]` check in `_one_swap`
+  - Cartan identification via linear system: `alpha[1]=c_n1`, `alpha[n+1]=-2*c_const`, `alpha[2]=c_N[1]-alpha[1]`, `alpha[j+1]=c_N[j]+alpha[j]`
+  - `generate_schema1(n)` outputs exactly 10 top-level keys
+  - SC counts: n=1→20, n=2→99, n=3→264 JSON entries
+
+- **`tests/test_C_generators.py`** (created in I03-1, 11 tests):
+  - Import path: `sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))`
+  - T1–T10 + T5b; all 11 pass in 0.07s
+
+- **`data/C_1_structure.json`, `data/C_2_structure.json`, `data/C_3_structure.json`** (generated in I03-1):
+  - Schema 1 v5.0 output
+
+- **`src/verify_C_structure.py`** (created in I04-1):
+  ```python
+  def load_and_build(n):
+      # Loads JSON, builds bt[X][Y] = {Z: Fraction} for all X,Y
+      # Reverse: bt[Y][X] = -(-1)^{pX*pY} * bt[X][Y]
+  
+  def check_antisymmetry(parity, all_gens, bt):
+      # Consistency check of table construction
+  
+  def bracket_of(X, elem, bt):
+      # [X, Σ cW·W} = Σ cW·[X,W} (multilinearity)
+  
+  def check_jacobi(parity, all_gens, bt):
+      # Super Jacobi for all i<=j<=k triples (unordered with repetition)
+      # Short-circuit: skip if all inner brackets zero
+  
+  def verify(n): ...
+  def main(): ...  # runs for n=1,2,3; exits 0 if all pass
+  ```
+  - Results: n=1: 120 triples, n=2: 1330, n=3: 7140 — ALL PASS (0.01s total)
+
+- **`docs/issues/issue_open.md`** (currently reset to I05-1 template):
+  - Issue I05-1: Schema 2 gamma structure
+  - Human Approval Required before any file creation
+
+- **`handover/scripts/close_issue.sh`**:
+  - Usage: `./handover/scripts/close_issue.sh <YYMMDD> <NN> "<LABEL>" <NEXT>`
+  - Auto-stages: DONE_FILE, issue_open.md, issue_history.md (if changed), handover_memo_latest.md (if changed), itself (if changed)
+  - Extra files must be `git add`'d manually BEFORE calling the script
+  - Branch must match `study/thm*`
+
+- **`docs/math/C_inhomogeneous_definition.md`** (key reference for I05-1):
+  - Deformation: `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ`
+  - 4n parameters: `{gb_{a_1^+,b_j^+}, gb_{a_1^+,b_j^-}, gb_{a_1^-,b_j^+}, gb_{a_1^-,b_j^-} | j=1,...,n}`
+  - `[X,Y]_γ = [X,Y]_0 + κ·γ(X,Y)` where γ_{abc} derived from deformed oscillator relations
+
+- **`docs/math/C_coboundary_definition.md`**:
+  - `(δf)(X,Y) = (-1)^{p(X)}[X,f(Y)] - (-1)^{(p(X)+1)p(Y)}[Y,f(X)] - f([X,Y])`
+  - Deformation trivial iff ∃ odd map f: g→g with γ = δf
+
+- **`docs/math/B0n_schema_v5.md`**:
+  - 4-layer schema architecture
+  - Schema 2 file: `C_n_gamma.json`
+  - Schema 2 contains the γ-structure (inhomogeneous deformation data)
+
+4. Errors and Fixes:
+
+- **I03-1 Bug — fermionic nilpotency**: `_one_swap` only checked nilpotency inside the swap branch. When two `a_1_p` operators were adjacent with equal PBW indices, they bypassed the check. **Fix**: add `if pi == 1 and oi == oj: return {}, True` BEFORE the `pbw[oi] <= pbw[oj]` check.
+
+- **I03-1 Schema key count**: Rev.1 of `generate_schema1` produced 14 wrong-named keys. Human flagged: spec §2 defines exactly 10 keys. **Fix**: rewrote to produce exactly the 10 specified keys; merged `isomorphism`/dimensions into `algebra`; renamed `parity_assignment`→`parity`; `generator_realizations`→`generator_realization`; removed non-spec keys; moved `generated_date` into `metadata`.
+
+- **I04-1 Rev.1 failure**: Verification script written to scratchpad only. Human feedback: "you have not actually created the `src/verify_C_structure.py` file in the workspace." **Fix**: Created actual file in `src/`, ran from repo root, updated proposal.
+
+5. Problem Solving:
+
+**I03-1 (completed)**:
+- Oscillator algebra simulation with exact Fraction arithmetic
+- PBW reduction via bubble-sort using CAR/CCR
+- Cartan identification via linear system inversion
+- 11 unit tests all passing
+- Schema 1 v5.0 generator with exactly 10 top-level keys
+- SC counts match: n=1→20, n=2→99, n=3→264
+
+**I04-1 (completed)**:
+- Verified graded anti-symmetry (consistency check) and Super Jacobi identity (genuine algebraic check)
+- Note: anti-symmetry check is a sanity check since reverse direction is constructed using anti-symmetry; Jacobi is the genuine independent check
+- 8590 total triples verified PASS in exact arithmetic
+
+**I05-1 (in progress)**:
+- Need to compute γ_{abc}: for each (X,Y) pair, compute contribution from the deformed relation `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ`
+- γ(X,Y) = first-order terms in gb (since κ²=0, only linear terms survive)
+- Sign convention for Gram matrix requires human approval before proceeding
+
+6. All User Messages:
+
+- **Message 1** (session start, continuing from prior context summary): Instruction to continue from where previous session left off — create files in `src/` and `tests/`, run tests, generate JSON, confirm criteria, run `close_issue.sh`. Previous session had received explicit approval for rev.2 proposal.
+
+- **Message 2** (I04-1 rev.1 feedback): "1. Overview: Approved. 2. Implementation Plan: Revision required. The plan is sound, but you have not actually created the `src/verify_C_structure.py` file in the workspace. 3. Execution Output: Revision required. The outputs look mathematically correct, but this was only run in a scratchpad. The issue requires the script to be saved as a deliverable. 4. Completion Criteria Status: Do not proceed yet. Please create and save the verification script to `src/verify_C_structure.py`, update your proposal to reflect the actual file creation, and stop again for approval."
+
+- **Message 3** (I04-1 rev.2 approval): "1. Overview: Approved. 2. Implementation Plan: Approved. The verification script is now properly saved in `src/`. 3. Execution Output: Approved. The verification covers all triples correctly and demonstrates mathematical consistency. 4. Completion Criteria Status: Approved. You have fulfilled the issue requirements. You may now proceed to Phase 4 to commit the changes and close the issue."
+
+- **Message 4** (I05-1 session start): "You are an execution agent driven by a file-based issue system. First, read the documents under the handover/ directory in the order specified by README.md. Next, perform a MANDATORY file verification: read ALL documents in docs/math/ (especially docs/math/C_inhomogeneous_definition.md, which contains the mandatory mathematical grounding for this task) before proceeding. Once confirmed, read the contents of docs/issues/issue_open.md and begin processing Issue I05-1. Your goal is to compute the gamma structure for the C(n+1) inhomogeneous deformation and generate Schema 2 JSON for n=1, 2, 3."
+
+- **Message 5** (current): TEXT ONLY summary request — no tools allowed.
+
+7. Pending Tasks:
+
+- **I05-1**: Write proposal to `issue_open.md` for gamma computation:
+  - Define gb_matrix for C(n+1) (4n parameters indexed by σ∈{+,-}, j=1..n, s∈{+,-})
+  - Derive γ_{abc} by substituting deformed relation `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ` into all generator-pair brackets
+  - Present sign convention options for human approval
+  - STOP — no file creation or commits until human approves
+
+8. Current Work:
+
+Just finished reading all required documents in order:
+1. `handover/workflow.md` — execution loop and Phase 4 procedure
+2. `handover/ai_trust_policy.md` — forbidden actions
+3. `handover/notation.md` — PBW ordering, generator labels (from prior context)
+4. `docs/math/README.md` — math reference index
+5. `docs/math/Cn1_definition.md` — root system, oscillator realization
+6. `docs/math/C_inhomogeneous_definition.md` — deformation parameters, deformed bracket
+7. `docs/math/C_coboundary_definition.md` — coboundary operator, triviality condition
+8. `docs/math/B0n_definition.md` — B(0,n) reference case
+9. `docs/math/B0n_schema_v5.md` — 4-layer schema architecture
+10. `docs/issues/issue_open.md` — I05-1 requirements
+
+**I05-1 mathematical grounding**:
+- Deformation: `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ` with 4n parameters
+- γ(X,Y) computed as first-order terms in gb from the deformed oscillator bracket
+- Since κ is odd central and κ²=0, γ is bilinear in generators and linear in gb parameters
+- No code or proposal has been written yet for I05-1
+
+9. Optional Next Step:
+
+The next step is to write a proposal to `issue_open.md` for I05-1 (gamma computation), following the CRITICAL RULE: **ONLY append to `issue_open.md`; do NOT create any other files; do NOT commit**.
+
+The proposal must include:
+1. The mathematical derivation of γ_{abc} from the deformed relation `[b_j^s, a_1^σ] = -gb_{σ,j,s}·κ`
+2. The gb_matrix definition (4n parameters for C(n+1))
+3. Sign convention options for the Gram matrix (the item requiring human approval)
+4. Proposed Schema 2 JSON structure for `data/C_n_gamma.json`
+5. Scratchpad computation of sample γ coefficients for n=1
+
+As stated in the issue: "**Gram matrix sign conventions require human approval**" and "Propose the gamma computation method and sign convention options. **CRITICAL RULE**: Do NOT write Schema 2 JSON or commit until the human approves."
+
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: <home>/notebook/git/thm01-R-claude-config/sonnet46-A1/projects/-<home>-notebook-git-thm01-R-thm01-R-sonnet46-A1/83a3f902-4b00-4011-9884-dfe4b62872e9.jsonl
+Continue the conversation from where it left off without asking the user any further questions. Resume directly — do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.

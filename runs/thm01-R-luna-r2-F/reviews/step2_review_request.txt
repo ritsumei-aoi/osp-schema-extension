@@ -1,0 +1,29 @@
+The Worker has stopped in step 2 (stopped for approval). This run is condition F: there are no issue files. The Worker's latest chat reply is pasted below between the markers. You may also read the code and data in the Worker workspace (read-only). Then show your review (Part 1) and your draft to the Worker (Part 2) in full in your reply, in the format of Section 4 of MANAGER_BRIEF.md (in condition F, every draft is a chat message), and append "Manager memo 02" to memos/thm01-R-luna-r2-F/manager_memo.md as in Section 5. Append only: do not modify or delete any existing text in the memo file. Do not edit any other file.
+
+----- WORKER REPLY (pasted by the human) -----
+**Schema 1 proposal — C(n+1), v5.0**
+
+I propose retaining the v5.0 schema version and existing field shapes, with C-specific values selected by `algebra.family`. For C(n+1), `n` is the bosonic rank and `m` is fixed at 1.
+
+- **`algebra`**: Set `family` to `"C"`, `m` to `1`, `n` to the rank, and `cartan_type` to `"C(n+1)"`. Use `"osp": "osp(2|2n)"` and `"family_formula": "osp(2m|2n)"` in `alternative_notation`. Add `dimension_formula` values `"even": "2n^2 + n + 1"`, `"odd": "4n"`, and `"total": "2n^2 + 5n + 1"`. Keep `dimension` as computed integer values for each rank.
+
+- **`oscillator_generators`**: Omit `supplementary_fermion`. Define `fermions` with `"m": 1`, `"count": 2`, labels `["a_1_p", "a_1_m"]`, and parity 1. Define `bosons` with rank `n`, count `2n`, and labels `b_1_p, b_1_m, …, b_n_p, b_n_m`.
+
+- **`oscillator_relations`**: Define `standard_fermion_anticommutators` for `{a_1_m, a_1_p} = 1` and `{a_1_s, a_1_s} = 0`. Retain the v5.0 bosonic commutator definitions. Set undeformed mixed boson–fermion commutators to zero; deformation parameters belong in a later schema layer.
+
+- **`central_elements`**: Add this as a top-level key. Define `kappa` as central, parity 1, and nilpotent (`κ² = 0`). Define `K` as central, parity 0, and the identity (`K = 1`); it is not an independent basis element.
+
+- **`basis` and `parity`**: Use the Step 1 labels and root assignments. The even basis contains `H_1,…,H_{n+1}`, both `E_2del{k}_p/m` labels for every `k`, and all four `E_del{i}_del{j}_pp/pm/mp/mm` labels for every `i<j`. The odd basis contains all four `E_eps1_del{k}_pp/pm/mp/mm` labels for every `k`. Assign parity 0 to even labels and 1 to odd labels. Exclude `K` and `κ` from these basis lists.
+
+- **PBW ordering**: Use the approved root-triangular convention: negative root vectors, then `H_1,…,H_{n+1}`, then positive root vectors. The positive roots are `2δ_k`, `δ_i+δ_j`, `δ_i−δ_j` for `i<j`, and `ε+δ_k`, `ε−δ_k`. For a deterministic internal order, use negative odd (`mm,mp`), negative pair-even (`mm,mp`), negative long-even (`m`); then positive pair-even (`pp,pm`), positive long-even (`p`), positive odd (`pp,pm`), with indices ascending within each group.
+
+- **`generator_realization`**: Retain the v5.0 mapping shape (`description`, `ordering`, and `realizations`), replacing `a_0` with the `a_1_p`/`a_1_m` pair. Each realization retains `standard_form`, `frappat_form`, and `parity`. The Cartan labels use `H_1 = a_1_p a_1_m + b_1_p b_1_m`, `H_k = b_{k-1,p}b_{k-1,m} - b_{k,p}b_{k,m}` for `2≤k≤n`, and `H_{n+1} = -b_{n,p}b_{n,m} - 1/2`. **Normalization note:** the C(n+1) reference gives conflicting coefficients for `E_{±2δ_n}`: the simple-generator formulas use `1/2`, while the all-root formula omits it. The field shape is defined here, but those realization coefficients need a consistent choice before populated structure data is generated.
+
+- **`structure_constants`**: Retain the v5.0 array of nonzero graded brackets, with `X`, `Y`, `Z`, `coeff`, and `sign_rule`. C values are to be computed using the C(n+1) oscillator relations, not copied from B(0,n).
+
+- **`metadata`**: Retain the v5.0 fields and record the C(n+1) generator, source references, and generation date.
+
+**Compatibility and filenames:** Preserve all existing B(m,n) field meanings and data. Apply the new values and required top-level `central_elements` conditionally for `family: "C"`; B schemas remain unchanged. Name the C structure files `C_{n}_structure.json`, where `n` is the bosonic rank (`C_1_structure.json`, `C_2_structure.json`, `C_3_structure.json` for C(2), C(3), C(4)).
+
+No specification file has been modified. The field definitions are proposed and await your approval; the realization normalization noted above also needs resolution before encoding those coefficients.
+----- END OF WORKER REPLY -----

@@ -1,0 +1,41 @@
+A reviewer has examined the work in this repository and found problems.
+The correction below lists them. Read it, fix the work in this repository accordingly,
+and commit your changes with git when you are done. Do not push.
+
+----- CORRECTION -----
+You are tasked with reviewing and correcting the mathematical analysis and computational verification in this repository regarding the triviality of inhomogeneous deformations of C(n+1) = osp(2|2n).
+
+Please address the following issues in the repository:
+
+1. Incomplete Analytical Proof and Scope of Theorem 1
+   - In `docs/issues/mathematical_proof.md`, Theorem 1 states that the inhomogeneous deformation is trivial if and only if all parameters vanish for all n >= 1.
+   - However, the general analytical proof in Section 4 has critical gaps:
+     - In Step 2 (line 85), the proof assumes $f(Z_0) = 0$ based on "Z_0-invariance of f", which is neither specified in `docs/math/` nor derived from preceding steps (Step 1 yields an identity that imposes no condition on $f(Z_0)$).
+     - In Step 3 (line 101), the expression for $(\delta f)(F_1, F_2)$ contains the term $-f([F_1, F_2]_0)$. The proof ignores this term without evaluating it, yet concludes that a discrepancy exists between $(\delta f)(F_1, F_2)$ and $\gamma_{gb}(F_1, F_2)$.
+     - Meanwhile, the computational verification in Section 5 and `solve_triviality.py` only covers n = 1, 2, 3.
+   - What to do:
+     - Re-examine the analytical proof in Section 4. Rigorously evaluate the term $-f([F_1, F_2]_0)$ and justify or eliminate the assumption $f(Z_0) = 0$.
+     - If a complete and rigorous proof for general n cannot be established, adjust the scope of Theorem 1 and the report to match the computationally verified cases (n = 1, 2, 3) or state the general n case as a conjecture/computational observation. Ensure the proof, statements, and conclusions are mathematically sound and consistent.
+
+2. Discrepancy in Quantity Name and Value in `solve_triviality.py` and `verification_results.json`
+   - In `solve_triviality.py` (lines 304–308, 332), the script computes `rank_aug = aug_mat.rank()` for `aug_mat = M_f_mat.hstack(M_gb_mat)`, prints `Rank([M_f | M_gb]) = {rank_aug}`, and records `"rank_aug"` in `verification_results.json`.
+   - In `verification_results.json`, `"rank_aug"` is recorded as 4 (for n=1), 8 (for n=2), and 12 (for n=3), while `"rank_M_f"` is 28, 168, and 516 respectively.
+   - Mathematically, the rank of the augmented matrix $[M_f \mid M_{gb}]$ cannot be strictly less than $\mathrm{Rank}(M_f)$. The values 4, 8, 12 correspond to $\dim(gb) = 4n$ or the rank of the constraint matrix $P_{\mathrm{cokernel}} M_{gb}$, not the augmented matrix rank.
+   - What to do:
+     - Check what was actually computed and recorded. Fix the computation, variable names, print statements, and JSON keys in `solve_triviality.py` and `verification_results.json` so that each metric accurately describes what it contains.
+     - Ensure the metrics and tables in `docs/issues/mathematical_proof.md` agree with `verification_results.json`.
+
+3. Missing Computational Conventions in Report
+   - `docs/issues/mathematical_proof.md` does not clearly specify the algebraic conventions used in the computation and derivations:
+     - The parity assigned to the deformation parameters $gb_{\sigma, j, s}$ (e.g., whether they are treated as commuting scalars/c-numbers in the linear algebra system, despite `docs/math/C_inhomogeneous_definition.md` noting parity 1).
+     - The sign and supercommutation rules applied to the odd central element $\kappa$ when pulling it out of brackets or expressions.
+   - What to do:
+     - Explicitly document these conventions in `docs/issues/mathematical_proof.md` so that the setup of the linear system $\gamma_{gb} = \delta f$ and the theoretical formulas are transparent and reproducible.
+
+4. Invalid Absolute File Links
+   - In `docs/issues/mathematical_proof.md` (lines 136, 143, 144), file links point to an external non-existent path (`<home>/notebook/git/thm01-R-batch/...`).
+   - What to do:
+     - Update these links to valid relative paths within the repository.
+
+Ensure that `docs/issues/mathematical_proof.md`, `solve_triviality.py`, and `verification_results.json` are mutually consistent, and commit all changes to the repository.
+----- END CORRECTION -----

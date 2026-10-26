@@ -1,0 +1,14 @@
+Thank you for the clear proposal. Here is the review and selection for each item in your response:
+
+- **1. Mathematical Analysis & Generator Design**: Approved. The oscillator pairs ($b_k^\pm$, $a_1^\pm$), central element $\kappa$, root system decomposition, and superdimension formulas ($\dim \mathfrak{g}_{\bar{0}} = 2n^2 + n + 1$, $\dim \mathfrak{g}_{\bar{1}} = 4n$) for $n=1, 2, 3$ match `docs/math/Cn1_definition.md`.
+- **2. Generator Label Conventions**:
+  - **(a) Cartan Generators**: Approved (`H_1, ..., H_{n+1}` with the Frappat realizations).
+  - **(b) Even Root Generators**: Approved (`E_2del{k}_p/m` and `E_del{i}_del{j}_pp/pm/mp/mm`).
+  - **(c) Odd Root Generators**: Approved with one mandatory label adjustment: please use `E_eps1_del{k}_pp`, `E_eps1_del{k}_pm`, `E_eps1_del{k}_mp`, and `E_eps1_del{k}_mm` (with `eps1` rather than `eps`), to strictly match the specification in `docs/math/B0n_schema_v5.md` (Section "Task: Producing the C(n+1) Extension").
+- **3. Concrete Basis Lists ($n=1, 2, 3$)**: Approved for the even basis lists of $C(2)$, $C(3)$, and $C(4)$ (dimensions 4, 11, and 22).
+- **4 & 5. Proposed Concrete PBW Ordering Options & Request for Human Selection**:
+  - **Option 1 (Charge-Stratified PBW Ordering)**: **Selected and Approved** ($\kappa < [\text{odd: } ++, +-, -+, --] < [\text{even}]$), using the `E_eps1_del{k}_{s1}{s2}` labels for the odd basis lists (`E_eps1_del{k}_pp < E_eps1_del{k}_pm < E_eps1_del{k}_mp < E_eps1_del{k}_mm`, each for $k=1,\dots,n$). This directly generalizes the $B(0,n)$ schema convention.
+  - **Option 2 (Bosonic Mode-Grouped PBW Ordering)**: Rejected, as Option 1 preserves closer structural compatibility with the $B(0,n)$ schema.
+  - **Option 3 (Strictly Parity-Inverted PBW Ordering)**: Rejected, as the project convention requires $\kappa < [\text{odd}] < [\text{even}]$.
+
+You may now proceed to update `handover/notation.md` (incorporating Option 1 and the `E_eps1_del{k}_{s1}{s2}` odd generator labels), check off the completion criteria in `docs/issues/issue_open.md`, and execute the Phase 4 completion procedure (`close_issue.sh`).

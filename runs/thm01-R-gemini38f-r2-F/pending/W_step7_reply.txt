@@ -1,0 +1,103 @@
+### Proposal: Layer 4 Coboundary Structure ($C_{n}\text{\_coboundary.json}$) & Map $f$ Design (Issue I07-1)
+
+---
+
+### 1. Mathematical Definition of the Coboundary Operator $\delta f$
+
+Following [`docs/math/C_coboundary_definition.md`](file://<home>/notebook/git/thm01-R/thm01-R-gemini38f-r2-F/docs/math/C_coboundary_definition.md), for an **odd linear map** $f: \mathfrak{g} \to \mathfrak{g}$ (satisfying $p(f(X)) = p(X) + 1 \pmod 2$):
+
+$$(\delta f)(X, Y) = (-1)^{p(X)} [X, f(Y)] - (-1)^{(p(X)+1)p(Y)} [Y, f(X)] - f([X, Y])$$
+
+Properties:
+- **Graded Anti-Symmetry**: $(\delta f)(Y, X) = -(-1)^{p(X)p(Y)} (\delta f)(X, Y)$.
+- **Parity**: $p((\delta f)(X, Y)) = p(X) + p(Y) + 1 \pmod 2$ (the coboundary of an odd 1-cochain is an odd 2-cochain / 2-cocycle).
+- **Closure**: Always decomposes strictly within the basis of $\mathfrak{g}$.
+
+---
+
+### 2. Map $f$ Configuration Options for Selection
+
+We propose three concrete configurations for the odd linear map $f$:
+
+#### Option 1: Canonical Mode-Paired Exchange Map (`mode_paired_exchange`) — **(Recommended)**
+- **Concept**: Pairs the Cartan generators with the primary odd root generators for each bosonic mode $k \in \{1,\dots,n\}$:
+  - For each mode $k \in \{1, \dots, n\}$:
+    $$f(H_k) = \lambda \cdot E_{\varepsilon + \delta_k} \quad (\texttt{E\_eps1\_del}\{k\}\texttt{\_pp})$$
+    $$f(E_{\varepsilon + \delta_k}) = \lambda \cdot H_k$$
+  - For the terminal Cartan $H_{n+1}$:
+    $$f(H_{n+1}) = \lambda \cdot E_{-\varepsilon - \delta_n} \quad (\texttt{E\_eps1\_del}\{n\}\texttt{\_mm})$$
+    $$f(E_{-\varepsilon - \delta_n}) = \lambda \cdot H_{n+1}$$
+  - All other basis elements map to 0.
+- **Scaling**: $\lambda = 1$.
+- **Rationale**: Preserves the mode-block decomposition, non-trivially excites all modes $k=1,\dots,n$, and is involutive on the active sub-blocks ($f^2 = \lambda^2 \mathrm{Id}$).
+
+#### Option 2: Elementary Involutive Shift Map (`elementary_shift`)
+- **Concept**: Minimal non-zero odd map concentrated on the simple root sector:
+  $$f(H_1) = \lambda \cdot E_{\varepsilon+\delta_1}, \quad f(E_{\varepsilon+\delta_1}) = \lambda \cdot H_1$$
+  with all other basis elements mapped to 0.
+- **Scaling**: $\lambda = 1$.
+- **Rationale**: Minimal non-zero test map for cleanly isolating individual coboundary channels.
+
+#### Option 3: Full Mode-Block Uniform Map (`full_mode_block`)
+- **Concept**: Maps each Cartan generator $H_k$ to the sum of all 4 odd generators associated with mode $k$:
+  $$f(H_k) = \lambda \sum_{\sigma, s \in \{+,-\}} E_{\varepsilon^\sigma \delta_k^s}, \quad f(E_{\varepsilon^\sigma \delta_k^s}) = \lambda \cdot H_k$$
+- **Scaling**: $\lambda = 1$ (or $\lambda = 1/4$).
+- **Rationale**: Fully symmetric across all 4 odd polarities per mode.
+
+---
+
+### 3. Proposed Schema 4 JSON Format (`C_{n}_coboundary.json`)
+
+```json
+{
+  "schema_version": "5.0",
+  "algebra": { ... },
+  "central_elements": { ... },
+  "map_f": {
+    "configuration": "mode_paired_exchange",
+    "scaling": "1",
+    "description": "Odd linear map f: g -> g reversing parity (p(f(X)) = p(X) + 1 mod 2)",
+    "mapping": [
+      {"source": "H_1", "target": "E_eps1_del1_pp", "coeff": "1"},
+      {"source": "E_eps1_del1_pp", "target": "H_1", "coeff": "1"},
+      {"source": "H_2", "target": "E_eps1_del1_mm", "coeff": "1"},
+      {"source": "E_eps1_del1_mm", "target": "H_2", "coeff": "1"}
+    ]
+  },
+  "basis": { ... },
+  "parity": { ... },
+  "coboundary_structure_constants": [
+    {
+      "X": "H_1",
+      "Y": "E_eps1_del1_pp",
+      "Z": "H_1",
+      "coeff": "2",
+      "sign_rule": "graded"
+    }
+  ],
+  "metadata": {
+    "generated_by": "src/C_coboundary.py",
+    "generation_date": "2026-10-17",
+    "references": [
+      "Frappat et al. (2000), Dictionary on Lie Algebras and Superalgebras",
+      "docs/math/C_coboundary_definition.md"
+    ]
+  }
+}
+```
+
+---
+
+### 4. File Naming
+- $n=1$: `data/C_1_coboundary.json`
+- $n=2$: `data/C_2_coboundary.json`
+- $n=3$: `data/C_3_coboundary.json`
+
+---
+
+### Human Approval Required
+Please confirm whether:
+1. **Option 1 (`mode_paired_exchange`)** with scaling $\lambda = 1$ is approved (or select Option 2 / Option 3).
+2. The proposed Schema 4 JSON architecture and file naming are approved.
+
+Upon your explicit approval, we will implement the coboundary computation script and generate the Schema 4 JSON files in `data/`. No files will be generated until approval is received.

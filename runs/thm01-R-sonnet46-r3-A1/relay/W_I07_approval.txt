@@ -1,0 +1,15 @@
+1. Q1: Scope of f:
+Approved with Option A (General f) selected. Keeping all 2 * dim_even * dim_odd parameters free strictly adheres to the stated objective of constructing the coboundary structure for a general odd linear map, avoiding any artificial suppression of coboundary directions in subsequent triviality analysis (Issue I08).
+
+2. Q2: phi label encoding:
+Approved with Proposed (`phi_{out_idx}_{in_idx}`) selected. Using compact 1-based integer index pairs supported by the explicit lookup table in `phi_matrix` maintains concise and stable coboundary records while ensuring unambiguous generator mapping.
+
+3. Schema 4 JSON Format & Computation Logic:
+Approved. The algebraic expansion of $(\delta f)(X, Y)$ using Schema 1 structure constants under exact rational arithmetic, and the top-level schema design for `data/C_{n}_coboundary.json` (n=1, 2, 3), strictly conform to `docs/math/C_coboundary_definition.md` and Issue I07 requirements.
+
+4. Next Steps:
+Approved. You may proceed to:
+  (1) Implement `src/compute_coboundary.py`;
+  (2) Generate `data/C_{n}_coboundary.json` for n=1, 2, 3;
+  (3) Verify data consistency with Schema 1;
+  (4) Complete Phase 4 of `handover/workflow.md`.

@@ -1,0 +1,5 @@
+Before I send your draft (Manager memo 04), please consider the following fact and revise the draft if you judge it necessary.
+
+docs/json_schema_specification.md (lines 289-290, approved in step 2) says of `structure_constants`: "each generated file contains the complete set of nonzero brackets for its rank." In src/C_generators.py (lines 343-344), the bracket loop takes `right_label` only from `ordered_labels[left_index:]`, so each pair of generators is recorded in only one order: the reversed pair (Y, X) is never recorded. The Worker's counts of 20, 99, and 264 nonzero bracket records for n=1, 2, 3 cover 19, 92, and 243 pairs (X, Y).
+
+Please compare this with the step 3 task, with the specification, and with how later steps will read Schema 1, and state your judgment in Part 1. Then show Part 1 and Part 2 in full in your reply (revised or unchanged), and append the result as "Manager memo 05". Append only: do not modify or delete any existing text in the memo file. Do not edit any other file, and do not run any command in the Worker workspace.

@@ -1,0 +1,71 @@
+### Proposal: Layer 3 Evaluated Structure ($C_{n}\text{\_evaluated.json}$) Assignment Plan (Issue I06-1)
+
+---
+
+### 1. Proposed Representative $gb$ Parameter Sign Profiles
+
+For $C(n+1)$, there are $4n$ deformation parameters $\mathrm{gb}_{\sigma, j, s}$ ($\sigma \in \{+, -\}$, $j \in \{1,\dots,n\}$, $s \in \{+, -\}$). We propose the following concrete profiles for selection:
+
+#### Profile A: All-Ones Baseline (`all_plus_one`) — **(Recommended)**
+- **Definition**: Every parameter is assigned $+1$:
+  $$\mathrm{gb}_{\sigma, j, s} = +1 \quad \text{for all } \sigma, j, s$$
+- **Values for $n=1$**:
+  `{"gb_a1p_b1p": 1, "gb_a1p_b1m": 1, "gb_a1m_b1p": 1, "gb_a1m_b1m": 1}`
+- **Values for $n=2$**: All 8 parameters $= +1$.
+- **Values for $n=3$**: All 12 parameters $= +1$.
+- **Rationale**: The standard baseline in deformation and coboundary studies, ensuring every deformation channel is uniformly excited without sign cancellation artifacts.
+
+#### Profile B: Symplectic Alternating Profile (`alternating_signs`)
+- **Definition**: Signs alternate based on the product of fermionic and bosonic polarities:
+  $$\mathrm{gb}_{\sigma, j, s} = \operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(s)$$
+- **Values for $n=1$**:
+  `{"gb_a1p_b1p": 1, "gb_a1p_b1m": -1, "gb_a1m_b1p": -1, "gb_a1m_b1m": 1}`
+- **Rationale**: Respects the natural symplectic structure between creation and annihilation operators.
+
+#### Profile C: Directional / Single Active Channel (`unit_channel_1`)
+- **Definition**: $\mathrm{gb}_{a_1^+, b_1^+} = 1$, and all other parameters $= 0$.
+- **Rationale**: Minimal non-trivial deformation useful for isolating single-mode behavior.
+
+---
+
+### 2. Proposed Schema 3 Architecture (`C_{n}_evaluated.json`)
+
+Following Schema 3 standards, the output will contain:
+1. `schema_version`: `"5.0"`
+2. `algebra`: identical to Schema 1 & Schema 2
+3. `central_elements`: $\kappa$ ($p=1$) and $K$ ($p=0$)
+4. `evaluated_parameters`:
+   - `profile_name`: e.g. `"all_plus_one"`
+   - `parameter_values`: dictionary of `{param_name: "1"}`
+5. `basis` & `parity`: identical to Schema 1 & 2
+6. `evaluated_gamma_structure_constants`:
+   The evaluated 2-cocycle coefficients $\gamma(X, Y) = \sum_Z c_{XY}^Z Z$:
+   $$c_{XY}^Z(\text{eval}) = \sum_{\text{param}} c_{XY}^{Z, \text{param}} \cdot \mathrm{val}(\text{param})$$
+   ```json
+   {
+     "X": "H_1",
+     "Y": "E_eps1_del1_pp",
+     "Z": "E_2del1_p",
+     "coeff": "1",
+     "sign_rule": "graded"
+   }
+   ```
+7. `total_evaluated_bracket`: (or `total_structure_constants`):
+   Full bracket $[X, Y]_\gamma = [X, Y]_0 + \kappa \cdot \gamma(X, Y)|_{\text{eval}}$
+8. `metadata`: generator details, evaluation date, references.
+
+---
+
+### 3. File Naming
+- $n=1$: `data/C_1_evaluated.json`
+- $n=2$: `data/C_2_evaluated.json`
+- $n=3$: `data/C_3_evaluated.json`
+
+---
+
+### Human Approval Required
+Please confirm whether:
+1. **Profile A (`all_plus_one`)** is approved as the representative sign profile (or select Profile B / C).
+2. The proposed Schema 3 architecture and file naming are approved.
+
+Upon your explicit approval, we will run the substitution script and generate the Schema 3 JSON files in `data/`. No JSON files will be written until approval is granted.
